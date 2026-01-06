@@ -709,6 +709,8 @@
                     <div class="action-buttons">
                         <button class="buy-action-btn-large" id="investmentBuyBtn" title="買入">➕ 買入</button>
                         <button class="dca-action-btn-large" id="investmentDCABtn" title="定期定額">📅 定期定額</button>
+                        <button class="side-action-btn" id="investmentAllocationBtn" title="股債配置" style="display: none;">⚖️ 股債配置</button>
+                        <button class="side-action-btn" id="investmentRebalanceBtn" title="年度再平衡">🔁 年度再平衡</button>
                     </div>
                     <span class="stock-count" id="stockCount">0 檔</span>
                 </div>
@@ -769,7 +771,7 @@
                 </div>
             </div>
 
-            <div class="allocation-card" id="assetAllocationCard">
+            <div class="allocation-card" id="assetAllocationCard" style="display: none;">
                 <div class="allocation-card-header">
                     <div class="allocation-card-title">股債配置 / 年度再平衡</div>
                     <div class="allocation-card-sub" id="assetAllocationStatus">--</div>
