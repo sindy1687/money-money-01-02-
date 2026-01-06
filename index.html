@@ -768,6 +768,61 @@
                     </div>
                 </div>
             </div>
+
+            <div class="allocation-card" id="assetAllocationCard">
+                <div class="allocation-card-header">
+                    <div class="allocation-card-title">股債配置 / 年度再平衡</div>
+                    <div class="allocation-card-sub" id="assetAllocationStatus">--</div>
+                </div>
+
+                <div class="allocation-grid">
+                    <div class="allocation-field">
+                        <div class="allocation-label">目標股債比</div>
+                        <div class="allocation-inline">
+                            <input class="allocation-input" id="targetStockRatio" type="number" min="0" max="100" step="1" placeholder="80">
+                            <span class="allocation-sep">:</span>
+                            <input class="allocation-input" id="targetBondRatio" type="number" min="0" max="100" step="1" placeholder="20">
+                        </div>
+                    </div>
+
+                    <div class="allocation-field">
+                        <div class="allocation-label">每年檢視日期</div>
+                        <div class="allocation-inline">
+                            <input class="allocation-input" id="rebalanceMonth" type="number" min="1" max="12" step="1" placeholder="1">
+                            <span class="allocation-sep">/</span>
+                            <input class="allocation-input" id="rebalanceDay" type="number" min="1" max="28" step="1" placeholder="1">
+                        </div>
+                    </div>
+
+                    <div class="allocation-field">
+                        <div class="allocation-label">股票加碼標的（代碼）</div>
+                        <input class="allocation-input" id="rebalanceStockTicker" type="text" placeholder="例如 0050" list="rebalanceStockDatalist">
+                    </div>
+
+                    <div class="allocation-field">
+                        <div class="allocation-label">債券加碼標的（代碼）</div>
+                        <input class="allocation-input" id="rebalanceBondTicker" type="text" placeholder="例如 00751B 或 A04109" list="rebalanceBondDatalist">
+                    </div>
+
+                    <div class="allocation-field">
+                        <div class="allocation-label">本次加碼預算（NT$）</div>
+                        <input class="allocation-input" id="rebalanceLumpSumBudget" type="number" min="0" step="1" placeholder="例如 50000">
+                    </div>
+
+                    <div class="allocation-field">
+                        <div class="allocation-label">用幾個月拉回目標</div>
+                        <input class="allocation-input" id="rebalanceHorizonMonths" type="number" min="1" max="60" step="1" placeholder="12">
+                    </div>
+                </div>
+
+                <div class="allocation-actions">
+                    <button class="allocation-btn primary" id="rebalanceGenerateBtn">生成建議</button>
+                    <button class="allocation-btn" id="rebalanceApplyDcaBtn">套用到定期定額</button>
+                </div>
+
+                <datalist id="rebalanceStockDatalist"></datalist>
+                <datalist id="rebalanceBondDatalist"></datalist>
+            </div>
         </div>
 
         <!-- 個股詳情頁面 -->
