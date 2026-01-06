@@ -72,6 +72,154 @@ async function applyBackupDataPayload(data) {
     location.reload();
 }
 
+function showAppModal({ title, bodyEl, footerEl, maxWidth = 520 }) {
+    let close;
+    const promise = new Promise((resolve) => {
+        const root = document.createElement('div');
+        root.className = 'app-modal-root';
+
+        const overlay = document.createElement('div');
+        overlay.className = 'app-modal-overlay';
+
+        const modal = document.createElement('div');
+        modal.className = 'app-modal';
+        modal.style.maxWidth = `${maxWidth}px`;
+
+        const header = document.createElement('div');
+        header.className = 'app-modal-header';
+
+        const titleEl = document.createElement('div');
+        titleEl.className = 'app-modal-title';
+        titleEl.textContent = title || '';
+
+        const closeBtn = document.createElement('button');
+        closeBtn.type = 'button';
+        closeBtn.className = 'app-modal-close';
+        closeBtn.textContent = '✕';
+
+        header.appendChild(titleEl);
+        header.appendChild(closeBtn);
+
+        const body = document.createElement('div');
+        body.className = 'app-modal-body';
+        if (bodyEl) body.appendChild(bodyEl);
+
+        const footer = document.createElement('div');
+        footer.className = 'app-modal-footer';
+        if (footerEl) footer.appendChild(footerEl);
+
+        modal.appendChild(header);
+        modal.appendChild(body);
+        modal.appendChild(footer);
+
+        close = (v) => {
+            try { document.body.removeChild(root); } catch (_) {}
+            resolve(v);
+        };
+
+        overlay.addEventListener('click', () => close(null));
+        closeBtn.addEventListener('click', () => close(null));
+
+        root.appendChild(overlay);
+        root.appendChild(modal);
+        document.body.appendChild(root);
+
+        setTimeout(() => {
+            try { closeBtn.focus(); } catch (_) {}
+        }, 0);
+    });
+
+    promise.close = (v) => {
+        if (typeof close === 'function') close(v);
+    };
+    return promise;
+}
+
+function showAppAlert({ title, message, okText = '確定' }) {
+    const pre = document.createElement('pre');
+    pre.className = 'app-modal-pre';
+    pre.textContent = message || '';
+
+    const okBtn = document.createElement('button');
+    okBtn.type = 'button';
+    okBtn.className = 'app-modal-btn app-modal-btn--primary';
+    okBtn.textContent = okText;
+
+    const footer = document.createElement('div');
+    footer.className = 'app-modal-footer-inner';
+    footer.appendChild(okBtn);
+
+    const modalPromise = showAppModal({
+        title,
+        bodyEl: pre,
+        footerEl: footer,
+        maxWidth: 640
+    });
+    okBtn.addEventListener('click', () => modalPromise.close(true));
+    return modalPromise.then(() => true);
+}
+
+function showAppPromptNumber({ title, label, defaultValue = 0, placeholder = '0', okText = '確定', cancelText = '取消' }) {
+    const wrap = document.createElement('div');
+    wrap.className = 'app-modal-form';
+
+    const lab = document.createElement('div');
+    lab.className = 'app-modal-label';
+    lab.textContent = label || '';
+
+    const input = document.createElement('input');
+    input.type = 'number';
+    input.inputMode = 'decimal';
+    input.step = '1';
+    input.min = '0';
+    input.placeholder = placeholder;
+    input.className = 'app-modal-input';
+    input.value = (defaultValue != null && defaultValue !== '') ? String(defaultValue) : '';
+
+    wrap.appendChild(lab);
+    wrap.appendChild(input);
+
+    const cancelBtn = document.createElement('button');
+    cancelBtn.type = 'button';
+    cancelBtn.className = 'app-modal-btn';
+    cancelBtn.textContent = cancelText;
+
+    const okBtn = document.createElement('button');
+    okBtn.type = 'button';
+    okBtn.className = 'app-modal-btn app-modal-btn--primary';
+    okBtn.textContent = okText;
+
+    const footer = document.createElement('div');
+    footer.className = 'app-modal-footer-inner';
+    footer.appendChild(cancelBtn);
+    footer.appendChild(okBtn);
+
+    const modalPromise = showAppModal({ title, bodyEl: wrap, footerEl: footer, maxWidth: 520 });
+
+    const submit = () => {
+        const v = parseFloat(String(input.value || '').replace(/,/g, ''));
+        modalPromise.close(!isNaN(v) && v >= 0 ? v : null);
+    };
+
+    cancelBtn.addEventListener('click', () => modalPromise.close(null));
+    okBtn.addEventListener('click', submit);
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            submit();
+        }
+    });
+
+    setTimeout(() => {
+        try {
+            input.focus();
+            if (input.value) input.select();
+        } catch (_) {}
+    }, 0);
+
+    return modalPromise;
+}
+
 // 預設雲端備份服務（若使用者尚未設定 Sheet 網址）
 if (!localStorage.getItem('googleSheetUploadUrl')) {
     localStorage.setItem('googleSheetUploadUrl', 'https://script.google.com/macros/s/AKfycbw_0TfMTZvO3_qxXTFS5LxqiNEB6k5R3lZhlr9L6fZaiVl3KN2VDD4aX7m-QiMMhBm1/exec');
@@ -235,7 +383,7 @@ function maybeAlertQuoteProxyDown() {
     alert('目前無法連線到本機股價代理（localhost:5000）。\n\n系統將改用公開 CORS 代理抓取 Yahoo Finance（可能較慢或偶爾失敗）。');
 }
 
-async function fetchYahooChartViaPublicProxies(yahooUrl) {
+async function fetchYahooChartViaPublicProxies(yahooUrl, stockCode) {
     for (const proxyBase of publicQuoteProxies) {
         try {
             const controller = new AbortController();
@@ -271,7 +419,12 @@ async function fetchYahooChartViaPublicProxies(yahooUrl) {
                 if (data && data.chart && data.chart.result && data.chart.result.length > 0) {
                     const result = data.chart.result[0];
                     if (result && result.meta) {
-                        const currentPrice = result.meta.regularMarketPrice || result.meta.previousClose || null;
+                        const previousClose = result.meta.previousClose || result.meta.regularMarketPreviousClose || null;
+                        if (stockCode && previousClose && previousClose > 0) {
+                            saveStockPreviousClosePrice(stockCode, previousClose);
+                        }
+
+                        const currentPrice = result.meta.regularMarketPrice || previousClose || null;
                         if (currentPrice && currentPrice > 0) return currentPrice;
                     }
                 }
@@ -281,6 +434,19 @@ async function fetchYahooChartViaPublicProxies(yahooUrl) {
         } catch (_) {
             continue;
         }
+    }
+    return null;
+}
+
+function getStockPreviousClosePrice(stockCode) {
+    const previousCloses = JSON.parse(localStorage.getItem('stockPreviousClosePrices') || '{}');
+    const prevData = previousCloses[stockCode];
+
+    if (!prevData) return null;
+
+    if (typeof prevData === 'number') return prevData;
+    if (prevData && typeof prevData === 'object' && typeof prevData.price === 'number') {
+        return prevData.price;
     }
     return null;
 }
@@ -2437,21 +2603,31 @@ async function loadStockNames() {
         const response = await fetch('stocks.json');
         if (response.ok) {
             const data = await response.json();
+            window.stockNameData = data;
             // 合併所有類型的標的
             window.commonStocks = {
                 ...data.stocks,
                 ...data.etfs,
                 ...data.bonds
             };
+            try {
+                updateRebalanceDatalists();
+            } catch (_) {}
         } else {
             // 如果載入失敗，使用預設值
             console.warn('無法載入 stocks.json，使用預設值');
             setDefaultStockNames();
+            try {
+                updateRebalanceDatalists();
+            } catch (_) {}
         }
     } catch (error) {
         console.error('載入股票名稱失敗:', error);
         // 如果載入失敗，使用預設值
         setDefaultStockNames();
+        try {
+            updateRebalanceDatalists();
+        } catch (_) {}
     }
 }
 
@@ -2503,6 +2679,48 @@ function setDefaultStockNames() {
         'A04110': '20年期公債',
         'A04111': '30年期公債'
     };
+}
+
+function updateRebalanceDatalists() {
+    const stockListEl = document.getElementById('rebalanceStockDatalist');
+    const bondListEl = document.getElementById('rebalanceBondDatalist');
+    if (!stockListEl && !bondListEl) return;
+
+    const data = window.stockNameData || null;
+    const stocks = data && data.stocks ? data.stocks : null;
+    const etfs = data && data.etfs ? data.etfs : null;
+    const bonds = data && data.bonds ? data.bonds : null;
+
+    const addOptions = (datalist, entries) => {
+        if (!datalist || !entries) return;
+        const html = Object.entries(entries).map(([code, name]) => {
+            const label = name ? `${code} ${name}` : code;
+            return `<option value="${code}" label="${label}"></option>`;
+        }).join('');
+        datalist.innerHTML = html;
+    };
+
+    if (stockListEl) {
+        if (stocks || etfs) {
+            addOptions(stockListEl, { ...(stocks || {}), ...(etfs || {}) });
+        } else {
+            addOptions(stockListEl, window.commonStocks || {});
+        }
+    }
+
+    if (bondListEl) {
+        if (bonds) {
+            addOptions(bondListEl, bonds);
+        } else {
+            const onlyBonds = {};
+            Object.entries(window.commonStocks || {}).forEach(([code, name]) => {
+                if (isBondInstrumentByCode(code)) {
+                    onlyBonds[code] = name;
+                }
+            });
+            addOptions(bondListEl, onlyBonds);
+        }
+    }
 }
 
 // 從投資記錄中查找股票名稱的全局函數
@@ -2644,6 +2862,9 @@ function initInvestmentPage() {
 
     // 初始化搜尋功能
     initStockSearch();
+
+    // 初始化股債配置 / 年度再平衡
+    initAssetAllocationCard();
     
     // 先使用已保存的價格更新顯示
     updateInvestmentOverview();
@@ -2653,6 +2874,464 @@ function initInvestmentPage() {
     setTimeout(() => {
         autoLoadStockPrices();
     }, 500);
+}
+
+function getAssetAllocationSettings() {
+    try {
+        const raw = localStorage.getItem('assetAllocationSettings');
+        const parsed = raw ? JSON.parse(raw) : {};
+        const targetStock = parseFloat(parsed.targetStockRatio);
+        const targetBond = parseFloat(parsed.targetBondRatio);
+        const month = parseInt(parsed.rebalanceMonth, 10);
+        const day = parseInt(parsed.rebalanceDay, 10);
+        const horizon = parseInt(parsed.rebalanceHorizonMonths, 10);
+
+        return {
+            targetStockRatio: Number.isFinite(targetStock) ? targetStock : 80,
+            targetBondRatio: Number.isFinite(targetBond) ? targetBond : 20,
+            rebalanceMonth: Number.isFinite(month) ? month : 1,
+            rebalanceDay: Number.isFinite(day) ? day : 1,
+            rebalanceStockTicker: (parsed.rebalanceStockTicker || '0050').toString().trim(),
+            rebalanceBondTicker: (parsed.rebalanceBondTicker || '00751B').toString().trim(),
+            rebalanceHorizonMonths: Number.isFinite(horizon) ? horizon : 12
+        };
+    } catch (_) {
+        return {
+            targetStockRatio: 80,
+            targetBondRatio: 20,
+            rebalanceMonth: 1,
+            rebalanceDay: 1,
+            rebalanceStockTicker: '0050',
+            rebalanceBondTicker: '00751B',
+            rebalanceHorizonMonths: 12
+        };
+    }
+}
+
+function saveAssetAllocationSettings(settings) {
+    try {
+        localStorage.setItem('assetAllocationSettings', JSON.stringify(settings || {}));
+    } catch (error) {
+        console.error('保存股債配置設定失敗:', error);
+    }
+}
+
+function normalizeRatioPair(stockRatio, bondRatio) {
+    const s = Math.max(0, parseFloat(stockRatio) || 0);
+    const b = Math.max(0, parseFloat(bondRatio) || 0);
+    const sum = s + b;
+    if (sum <= 0) return { stockPct: 0.8, bondPct: 0.2 };
+    return { stockPct: s / sum, bondPct: b / sum };
+}
+
+function isBondInstrumentByCode(stockCode) {
+    const code = String(stockCode || '').trim();
+    if (!code) return false;
+    if (code.startsWith('A0')) return true;
+    if (code.endsWith('B')) return true;
+    return false;
+}
+
+function computeStockBondMarketValues() {
+    const portfolio = getPortfolio();
+    let stockValue = 0;
+    let bondValue = 0;
+
+    portfolio.forEach(item => {
+        const code = item.stockCode;
+        const currentPrice = getStockCurrentPrice(code) || item.avgCost || 0;
+        const value = (currentPrice || 0) * (item.shares || 0);
+        if (isBondInstrumentByCode(code)) {
+            bondValue += value;
+        } else {
+            stockValue += value;
+        }
+    });
+
+    return {
+        stockValue,
+        bondValue,
+        totalValue: stockValue + bondValue
+    };
+}
+
+function sumEnabledDcaAmount() {
+    const plans = JSON.parse(localStorage.getItem('dcaPlans') || '[]');
+    return plans.filter(p => p && p.enabled).reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+}
+
+function formatPct(value) {
+    if (value == null || !isFinite(value)) return '--';
+    return `${(value * 100).toFixed(1)}%`;
+}
+
+function formatNtd(value) {
+    const n = Math.round(parseFloat(value) || 0);
+    return `NT$${n.toLocaleString('zh-TW')}`;
+}
+
+function calculateRebalanceAdvice({ budget, horizonMonths, targetStockRatio, targetBondRatio }) {
+    const { stockPct, bondPct } = normalizeRatioPair(targetStockRatio, targetBondRatio);
+    const values = computeStockBondMarketValues();
+
+    const T = values.totalValue;
+    const S = values.stockValue;
+    const B = values.bondValue;
+
+    const X = Math.max(0, parseFloat(budget) || 0);
+    const N = Math.max(1, parseInt(horizonMonths, 10) || 12);
+    const M = sumEnabledDcaAmount();
+
+    const desiredStockAfterLump = stockPct * (T + X);
+    const lumpStock = Math.max(0, Math.min(X, desiredStockAfterLump - S));
+    const lumpBond = Math.max(0, X - lumpStock);
+
+    const afterLumpStockValue = S + lumpStock;
+    const afterLumpBondValue = B + lumpBond;
+    const afterLumpTotal = afterLumpStockValue + afterLumpBondValue;
+    const afterLumpStockPct = afterLumpTotal > 0 ? afterLumpStockValue / afterLumpTotal : 0;
+    const afterLumpBondPct = afterLumpTotal > 0 ? afterLumpBondValue / afterLumpTotal : 0;
+
+    const totalDcaHorizon = M * N;
+    const desiredStockAfterHorizon = stockPct * (T + totalDcaHorizon);
+    const neededStockOverHorizon = Math.max(0, Math.min(totalDcaHorizon, desiredStockAfterHorizon - S));
+    const monthlyStock = neededStockOverHorizon / N;
+    const monthlyBond = Math.max(0, M - monthlyStock);
+
+    const afterHorizonStockValue = S + neededStockOverHorizon;
+    const afterHorizonBondValue = B + (totalDcaHorizon - neededStockOverHorizon);
+    const afterHorizonTotal = afterHorizonStockValue + afterHorizonBondValue;
+    const afterHorizonStockPct = afterHorizonTotal > 0 ? afterHorizonStockValue / afterHorizonTotal : 0;
+    const afterHorizonBondPct = afterHorizonTotal > 0 ? afterHorizonBondValue / afterHorizonTotal : 0;
+
+    const currentStockPct = T > 0 ? S / T : 0;
+    const currentBondPct = T > 0 ? B / T : 0;
+
+    return {
+        values,
+        ratios: { stockPct, bondPct, currentStockPct, currentBondPct },
+        lumpSum: { total: X, stock: lumpStock, bond: lumpBond },
+        dca: { monthlyTotal: M, months: N, monthlyStock, monthlyBond },
+        projections: {
+            afterLump: { stockValue: afterLumpStockValue, bondValue: afterLumpBondValue, stockPct: afterLumpStockPct, bondPct: afterLumpBondPct },
+            afterHorizon: { stockValue: afterHorizonStockValue, bondValue: afterHorizonBondValue, stockPct: afterHorizonStockPct, bondPct: afterHorizonBondPct }
+        }
+    };
+}
+
+function getTickerApproxShares(ticker, amountNtd) {
+    const code = String(ticker || '').trim();
+    if (!code) return null;
+    const price = getStockCurrentPrice(code);
+    if (!price || price <= 0) return null;
+    const shares = Math.floor((parseFloat(amountNtd) || 0) / price);
+    return shares > 0 ? { shares, price } : { shares: 0, price };
+}
+
+function buildBuySuggestionLine({ label, ticker, amount }) {
+    const amt = Math.max(0, parseFloat(amount) || 0);
+    if (!ticker) return `${label}：${formatNtd(amt)}（未指定標的）`;
+    const shareInfo = getTickerApproxShares(ticker, amt);
+    if (!shareInfo) {
+        return `${label}：${formatNtd(amt)}（${ticker}；尚無現價，請先重新抓價或到個股詳情手動輸入現價）`;
+    }
+    return `${label}：${formatNtd(amt)}（${ticker} 約 ${shareInfo.shares.toLocaleString('zh-TW')} 股 @ ${shareInfo.price.toFixed(2)}）`;
+}
+
+function pickDominantAction(lumpSum) {
+    if (!lumpSum || !lumpSum.total || lumpSum.total <= 0) return '未輸入預算';
+    if (lumpSum.stock > lumpSum.bond) return '建議偏向買股';
+    if (lumpSum.bond > lumpSum.stock) return '建議偏向買債';
+    return '建議股債平均買入';
+}
+
+function updateAssetAllocationStatusText() {
+    const statusEl = document.getElementById('assetAllocationStatus');
+    if (!statusEl) return;
+    const values = computeStockBondMarketValues();
+    const T = values.totalValue;
+    if (!T || T <= 0) {
+        statusEl.textContent = '尚無市值資料';
+        return;
+    }
+    const stockPct = values.stockValue / T;
+    const bondPct = values.bondValue / T;
+    statusEl.textContent = `目前：股 ${formatPct(stockPct)} / 債 ${formatPct(bondPct)}`;
+}
+
+function maybePromptAnnualRebalance(settings) {
+    try {
+        const month = parseInt(settings.rebalanceMonth, 10);
+        const day = parseInt(settings.rebalanceDay, 10);
+        if (!month || !day) return;
+
+        const now = new Date();
+        const isMatch = (now.getMonth() + 1) === month && now.getDate() === day;
+        if (!isMatch) return;
+
+        const yearKey = String(now.getFullYear());
+        const lastYear = localStorage.getItem('assetAllocationLastPromptYear') || '';
+        if (lastYear === yearKey) return;
+
+        localStorage.setItem('assetAllocationLastPromptYear', yearKey);
+        alert('提醒：今天是你設定的年度檢視日，可以進行股債再平衡（生成建議/調整定期定額）。');
+    } catch (_) {}
+}
+
+function readAllocationInputs() {
+    const stockRatio = document.getElementById('targetStockRatio');
+    const bondRatio = document.getElementById('targetBondRatio');
+    const month = document.getElementById('rebalanceMonth');
+    const day = document.getElementById('rebalanceDay');
+    const stockTicker = document.getElementById('rebalanceStockTicker');
+    const bondTicker = document.getElementById('rebalanceBondTicker');
+    const budget = document.getElementById('rebalanceLumpSumBudget');
+    const horizon = document.getElementById('rebalanceHorizonMonths');
+
+    return {
+        targetStockRatio: parseFloat(stockRatio?.value) || 0,
+        targetBondRatio: parseFloat(bondRatio?.value) || 0,
+        rebalanceMonth: parseInt(month?.value, 10) || 1,
+        rebalanceDay: parseInt(day?.value, 10) || 1,
+        rebalanceStockTicker: (stockTicker?.value || '').toString().trim(),
+        rebalanceBondTicker: (bondTicker?.value || '').toString().trim(),
+        budget: parseFloat(budget?.value) || 0,
+        rebalanceHorizonMonths: parseInt(horizon?.value, 10) || 12
+    };
+}
+
+function fillAllocationInputsFromSettings(settings) {
+    const setVal = (id, v) => {
+        const el = document.getElementById(id);
+        if (el) el.value = v;
+    };
+
+    setVal('targetStockRatio', settings.targetStockRatio);
+    setVal('targetBondRatio', settings.targetBondRatio);
+    setVal('rebalanceMonth', settings.rebalanceMonth);
+    setVal('rebalanceDay', settings.rebalanceDay);
+    setVal('rebalanceStockTicker', settings.rebalanceStockTicker);
+    setVal('rebalanceBondTicker', settings.rebalanceBondTicker);
+    setVal('rebalanceHorizonMonths', settings.rebalanceHorizonMonths);
+}
+
+function initAssetAllocationCard() {
+    const card = document.getElementById('assetAllocationCard');
+    if (!card) return;
+
+    const settings = getAssetAllocationSettings();
+    fillAllocationInputsFromSettings(settings);
+    updateAssetAllocationStatusText();
+    maybePromptAnnualRebalance(settings);
+
+    const persist = () => {
+        const input = readAllocationInputs();
+        const cleaned = {
+            targetStockRatio: input.targetStockRatio,
+            targetBondRatio: input.targetBondRatio,
+            rebalanceMonth: input.rebalanceMonth,
+            rebalanceDay: input.rebalanceDay,
+            rebalanceStockTicker: input.rebalanceStockTicker || settings.rebalanceStockTicker,
+            rebalanceBondTicker: input.rebalanceBondTicker || settings.rebalanceBondTicker,
+            rebalanceHorizonMonths: input.rebalanceHorizonMonths
+        };
+        saveAssetAllocationSettings(cleaned);
+        updateAssetAllocationStatusText();
+    };
+
+    ['targetStockRatio','targetBondRatio','rebalanceMonth','rebalanceDay','rebalanceStockTicker','rebalanceBondTicker','rebalanceHorizonMonths']
+        .forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener('change', persist);
+        });
+
+    const generateBtn = document.getElementById('rebalanceGenerateBtn');
+    if (generateBtn) {
+        generateBtn.onclick = async () => {
+            playClickSound();
+            const input = readAllocationInputs();
+            if (!input.budget || input.budget <= 0) {
+                const v = await showAppPromptNumber({
+                    title: '一次性加碼預算',
+                    label: '請輸入本次一次性加碼預算（NT$）',
+                    defaultValue: 0,
+                    placeholder: '例如 50000'
+                });
+                if (v === null) return;
+                input.budget = v;
+                const budgetEl = document.getElementById('rebalanceLumpSumBudget');
+                if (budgetEl) {
+                    budgetEl.value = input.budget;
+                }
+            }
+            persist();
+
+            const advice = calculateRebalanceAdvice({
+                budget: input.budget,
+                horizonMonths: input.rebalanceHorizonMonths,
+                targetStockRatio: input.targetStockRatio,
+                targetBondRatio: input.targetBondRatio
+            });
+
+            const stockTicker = input.rebalanceStockTicker;
+            const bondTicker = input.rebalanceBondTicker;
+
+            const lumpStockLine = advice.lumpSum.total > 0
+                ? buildBuySuggestionLine({ label: '買股', ticker: stockTicker, amount: advice.lumpSum.stock })
+                : '未輸入預算';
+            const lumpBondLine = advice.lumpSum.total > 0
+                ? buildBuySuggestionLine({ label: '買債', ticker: bondTicker, amount: advice.lumpSum.bond })
+                : '未輸入預算';
+
+            const monthlyStockLine = advice.dca.monthlyTotal > 0
+                ? buildBuySuggestionLine({ label: '每月買股', ticker: stockTicker, amount: advice.dca.monthlyStock })
+                : '目前沒有啟用的定期定額';
+            const monthlyBondLine = advice.dca.monthlyTotal > 0
+                ? buildBuySuggestionLine({ label: '每月買債', ticker: bondTicker, amount: advice.dca.monthlyBond })
+                : '目前沒有啟用的定期定額';
+
+            const msg = [
+                `目前市值：股票 ${formatNtd(advice.values.stockValue)}／債券 ${formatNtd(advice.values.bondValue)}／合計 ${formatNtd(advice.values.totalValue)}`,
+                `目前比例：股 ${formatPct(advice.ratios.currentStockPct)}／債 ${formatPct(advice.ratios.currentBondPct)}`,
+                `目標比例：股 ${formatPct(advice.ratios.stockPct)}／債 ${formatPct(advice.ratios.bondPct)}`,
+                '',
+                `一次性加碼（只買不賣）：`,
+                pickDominantAction(advice.lumpSum),
+                lumpStockLine,
+                lumpBondLine,
+                `買完後比例：股 ${formatPct(advice.projections.afterLump.stockPct)}／債 ${formatPct(advice.projections.afterLump.bondPct)}`,
+                '',
+                `定期定額建議（${advice.dca.months} 個月拉回；以目前啟用總額 ${formatNtd(advice.dca.monthlyTotal)}/月）：`,
+                monthlyStockLine,
+                monthlyBondLine,
+                `跑完 ${advice.dca.months} 個月後比例：股 ${formatPct(advice.projections.afterHorizon.stockPct)}／債 ${formatPct(advice.projections.afterHorizon.bondPct)}`
+            ].join('\n');
+
+            localStorage.setItem('assetAllocationLastAdvice', JSON.stringify({
+                at: Date.now(),
+                input,
+                advice
+            }));
+
+            await showAppAlert({ title: '再平衡建議', message: msg });
+        };
+    }
+
+    const applyBtn = document.getElementById('rebalanceApplyDcaBtn');
+    if (applyBtn) {
+        applyBtn.onclick = () => {
+            playClickSound();
+            persist();
+            const input = readAllocationInputs();
+            const advice = calculateRebalanceAdvice({
+                budget: input.budget,
+                horizonMonths: input.rebalanceHorizonMonths,
+                targetStockRatio: input.targetStockRatio,
+                targetBondRatio: input.targetBondRatio
+            });
+            applyRebalanceToDcaPlans({
+                monthlyStock: advice.dca.monthlyStock,
+                monthlyBond: advice.dca.monthlyBond,
+                stockTicker: input.rebalanceStockTicker,
+                bondTicker: input.rebalanceBondTicker
+            });
+        };
+    }
+}
+
+function applyRebalanceToDcaPlans({ monthlyStock, monthlyBond, stockTicker, bondTicker }) {
+    let plans = JSON.parse(localStorage.getItem('dcaPlans') || '[]');
+    const enabledPlans = plans.filter(p => p && p.enabled);
+
+    const classifyPlan = (plan) => {
+        const code = String(plan.stockCode || '').trim();
+        return isBondInstrumentByCode(code) ? 'bond' : 'stock';
+    };
+
+    const stockPlans = enabledPlans.filter(p => classifyPlan(p) === 'stock');
+    const bondPlans = enabledPlans.filter(p => classifyPlan(p) === 'bond');
+
+    const pickTemplate = () => {
+        const base = enabledPlans[0] || plans[0];
+        return base ? {
+            day: base.day || 1,
+            autoFee: !!base.autoFee,
+            customFee: parseFloat(base.customFee) || 0,
+            fromAccountId: base.fromAccountId || '',
+            settlementAccountId: base.settlementAccountId || (base.fromAccountId || '')
+        } : {
+            day: 1,
+            autoFee: false,
+            customFee: 0,
+            fromAccountId: '',
+            settlementAccountId: ''
+        };
+    };
+
+    const ensurePlanExists = (group, ticker) => {
+        const code = String(ticker || '').trim();
+        if (!code) return null;
+        const existing = enabledPlans.find(p => String(p.stockCode || '').trim() === code);
+        if (existing) return existing;
+
+        const tpl = pickTemplate();
+        const newPlan = {
+            id: Date.now().toString() + Math.random().toString(16).slice(2),
+            stockCode: code,
+            stockName: (window.findStockName ? (window.findStockName(code) || code) : code),
+            amount: 0,
+            day: tpl.day,
+            customFee: tpl.customFee,
+            autoFee: tpl.autoFee,
+            enabled: true,
+            fromAccountId: tpl.fromAccountId,
+            settlementAccountId: tpl.settlementAccountId,
+            createdAt: new Date().toISOString(),
+            lastExecuted: null,
+            executedCount: 0
+        };
+        plans.push(newPlan);
+        enabledPlans.push(newPlan);
+        if (group === 'stock') stockPlans.push(newPlan);
+        if (group === 'bond') bondPlans.push(newPlan);
+        return newPlan;
+    };
+
+    if (stockPlans.length === 0) {
+        ensurePlanExists('stock', stockTicker);
+    }
+    if (bondPlans.length === 0) {
+        ensurePlanExists('bond', bondTicker);
+    }
+
+    const scaleGroup = (groupPlans, targetTotal) => {
+        if (!groupPlans || groupPlans.length === 0) return;
+        const total = groupPlans.reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+        if (total <= 0) {
+            const each = targetTotal / groupPlans.length;
+            groupPlans.forEach(p => {
+                p.amount = Math.max(0, Math.round(each));
+            });
+            return;
+        }
+
+        let remaining = Math.max(0, Math.round(targetTotal));
+        groupPlans.forEach((p, idx) => {
+            const weight = (parseFloat(p.amount) || 0) / total;
+            const next = idx === groupPlans.length - 1 ? remaining : Math.max(0, Math.round(targetTotal * weight));
+            p.amount = next;
+            remaining -= next;
+        });
+    };
+
+    scaleGroup(stockPlans, monthlyStock);
+    scaleGroup(bondPlans, monthlyBond);
+
+    localStorage.setItem('dcaPlans', JSON.stringify(plans));
+    if (typeof updateDCAList === 'function') {
+        updateDCAList();
+    }
+    alert(`已套用定期定額配置：\n每月股票約 ${formatNtd(monthlyStock)}\n每月債券約 ${formatNtd(monthlyBond)}\n\n（已按現有啟用計畫比例調整；若某邊原本沒有計畫，已用你選的加碼標的新增一筆）`);
 }
 
 // 初始化股票搜尋功能
@@ -3891,6 +4570,16 @@ function saveStockCurrentPrice(stockCode, price, isManual = false) {
     localStorage.setItem('stockCurrentPrices', JSON.stringify(stockPrices));
 }
 
+function saveStockPreviousClosePrice(stockCode, price) {
+    if (price == null || isNaN(price) || price <= 0) return;
+    const previousCloses = JSON.parse(localStorage.getItem('stockPreviousClosePrices') || '{}');
+    previousCloses[stockCode] = {
+        price: price,
+        timestamp: Date.now()
+    };
+    localStorage.setItem('stockPreviousClosePrices', JSON.stringify(previousCloses));
+}
+
 function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPrice }) {
     return new Promise((resolve) => {
         const modal = document.createElement('div');
@@ -4100,7 +4789,12 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
 
                     if (data && data.quoteResponse && data.quoteResponse.result && data.quoteResponse.result.length > 0) {
                         const q = data.quoteResponse.result[0];
-                        const currentPrice = q.regularMarketPrice || q.postMarketPrice || q.preMarketPrice || q.regularMarketPreviousClose || null;
+                        const previousClose = q.regularMarketPreviousClose || q.regularMarketPreviousClosePrice || q.regularMarketPreviousClose || null;
+                        if (previousClose && previousClose > 0) {
+                            saveStockPreviousClosePrice(stockCode, previousClose);
+                        }
+
+                        const currentPrice = q.regularMarketPrice || q.postMarketPrice || q.preMarketPrice || previousClose || null;
                         if (currentPrice && currentPrice > 0) {
                             saveStockCurrentPrice(stockCode, currentPrice, false);
                             console.log(`✓ 成功獲取 ${stockCode} 價格: ${currentPrice}`);
@@ -4115,7 +4809,12 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
 
                         const result = data.chart.result[0];
                         if (result && result.meta && !result.error) {
-                            const currentPrice = result.meta.regularMarketPrice || result.meta.previousClose || null;
+                            const previousClose = result.meta.previousClose || result.meta.regularMarketPreviousClose || null;
+                            if (previousClose && previousClose > 0) {
+                                saveStockPreviousClosePrice(stockCode, previousClose);
+                            }
+
+                            const currentPrice = result.meta.regularMarketPrice || previousClose || null;
                             if (currentPrice && currentPrice > 0) {
                                 saveStockCurrentPrice(stockCode, currentPrice, false);
                                 console.log(`✓ 成功獲取 ${stockCode} 價格: ${currentPrice}`);
@@ -4139,7 +4838,7 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
         // 2) Public proxy fallback for ALL symbols
         for (const candidateSymbol of symbolCandidates) {
             const yahooChartUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${candidateSymbol}?interval=1d&range=1d`;
-            const currentPrice = await fetchYahooChartViaPublicProxies(yahooChartUrl);
+            const currentPrice = await fetchYahooChartViaPublicProxies(yahooChartUrl, stockCode);
             if (currentPrice && currentPrice > 0) {
                 saveStockCurrentPrice(stockCode, currentPrice, false);
                 console.log(`✓ 透過公開代理成功獲取 ${stockCode} 價格: ${currentPrice}`);
@@ -15536,43 +16235,57 @@ function updateStockList() {
     filteredPortfolio.forEach(stock => {
         // 計算未實現損益（使用保存的當前價格，如果沒有則使用平均成本）
         const currentPrice = getStockCurrentPrice(stock.stockCode) || stock.avgCost;
-        const marketValue = currentPrice * stock.shares;
-        const unrealizedPnl = marketValue - stock.totalCost;
-        const pnlPercent = stock.avgCost > 0 ? ((currentPrice - stock.avgCost) / stock.avgCost * 100).toFixed(2) : 0;
+        const previousClose = getStockPreviousClosePrice(stock.stockCode);
+        const marketValue = (currentPrice || 0) * (stock.shares || 0);
+        const unrealizedPnl = marketValue - (stock.totalCost || 0);
         const isPositive = unrealizedPnl >= 0;
+
+        const priceArrowDir = (previousClose && previousClose > 0 && currentPrice != null)
+            ? (currentPrice > previousClose ? 'up' : (currentPrice < previousClose ? 'down' : ''))
+            : '';
+
+        const dailyChange = (previousClose && previousClose > 0 && currentPrice != null)
+            ? (currentPrice - previousClose)
+            : null;
+        const dailyChangePct = (dailyChange != null && previousClose && previousClose > 0)
+            ? (dailyChange / previousClose * 100)
+            : null;
+        const isDailyPositive = dailyChange != null ? dailyChange >= 0 : true;
+        const displayPrice = (currentPrice != null && currentPrice !== 0 ? currentPrice : 0).toFixed(2);
+        const displayAvg = (stock.avgCost != null && stock.avgCost !== 0 ? stock.avgCost : 0).toFixed(2);
+        const displayPnl = Math.abs(unrealizedPnl).toLocaleString('zh-TW');
+
+        const displayDailyChange = dailyChange != null ? Math.abs(dailyChange).toFixed(2) : '--';
+        const displayDailyPct = dailyChangePct != null ? Math.abs(dailyChangePct).toFixed(2) : '--';
+        const displayDailyText = dailyChange != null
+            ? `${isDailyPositive ? '+' : '-'}${displayDailyChange} (${isDailyPositive ? '+' : '-'}${displayDailyPct}%)`
+            : '--';
         
         html += `
             <div class="stock-item-card" data-stock-code="${stock.stockCode}">
-                <div class="stock-card-header">
-                    <div class="stock-card-icon">📈</div>
-                    <div class="stock-card-info">
+                <div class="stock-grid-card-top">
+                    <div class="stock-grid-card-title">
                         <div class="stock-card-name">${stock.stockName}</div>
                         <div class="stock-card-code">${stock.stockCode}</div>
                     </div>
-                    <div class="stock-card-status ${isPositive ? 'positive' : 'negative'}">
-                        ${isPositive ? '📈' : '📉'}
+                    <div class="stock-grid-card-price">
+                        <div class="stock-grid-card-price-value">
+                            <span class="stock-grid-card-price-number">${displayPrice}</span>
+                            <span class="stock-grid-card-price-arrow ${priceArrowDir}">${priceArrowDir === 'up' ? '▲' : (priceArrowDir === 'down' ? '▼' : '')}</span>
+                        </div>
+                        <div class="stock-grid-card-price-unit">NTD</div>
                     </div>
                 </div>
-                <div class="stock-card-body">
-                    <div class="stock-card-row">
-                        <span class="stock-card-label">持股數</span>
-                        <span class="stock-card-value">${stock.shares.toLocaleString('zh-TW')} 股</span>
-                    </div>
-                    <div class="stock-card-row">
-                        <span class="stock-card-label">平均成本</span>
-                        <span class="stock-card-value">NT$${(stock.avgCost != null && stock.avgCost !== 0 ? stock.avgCost : 0).toFixed(2)}</span>
-                    </div>
-                    <div class="stock-card-row">
-                        <span class="stock-card-label">現價</span>
-                        <span class="stock-card-value">NT$${(currentPrice != null && currentPrice !== 0 ? currentPrice : 0).toFixed(2)}</span>
-                    </div>
-                    <div class="stock-card-row highlight">
-                        <span class="stock-card-label">未實現損益</span>
-                        <span class="stock-card-value ${isPositive ? 'positive' : 'negative'}">
-                            ${isPositive ? '+' : ''}NT$${Math.abs(unrealizedPnl).toLocaleString('zh-TW')}
-                            <span class="pnl-percent">(${isPositive ? '+' : ''}${pnlPercent}%)</span>
-                        </span>
-                    </div>
+
+                <div class="stock-grid-card-change ${dailyChange != null ? (isDailyPositive ? 'positive' : 'negative') : ''}">
+                    <span class="stock-grid-card-change-arrow">${dailyChange != null ? (isDailyPositive ? '▲' : '▼') : ''}</span>
+                    <span class="stock-grid-card-change-value">${displayDailyText}</span>
+                </div>
+
+                <div class="stock-grid-card-tags">
+                    <div class="stock-grid-card-tag">${stock.shares.toLocaleString('zh-TW')} 股</div>
+                    <div class="stock-grid-card-tag">均價 ${displayAvg}</div>
+                    <div class="stock-grid-card-tag ${isPositive ? 'positive' : 'negative'}">損益 ${isPositive ? '+' : ''}${displayPnl}</div>
                 </div>
             </div>
         `;
