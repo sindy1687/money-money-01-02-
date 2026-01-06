@@ -159,6 +159,355 @@ function showAppAlert({ title, message, okText = '確定' }) {
     return modalPromise.then(() => true);
 }
 
+function showAssetAllocationModal() {
+    const settings = getAssetAllocationSettings();
+
+    const wrap = document.createElement('div');
+    wrap.className = 'app-modal-form';
+
+    const mkLabel = (t) => {
+        const el = document.createElement('div');
+        el.className = 'app-modal-label';
+        el.textContent = t;
+        return el;
+    };
+
+    const row = document.createElement('div');
+    row.style.display = 'grid';
+    row.style.gridTemplateColumns = '1fr 1fr';
+    row.style.gap = '10px';
+
+    const stockInput = document.createElement('input');
+    stockInput.type = 'number';
+    stockInput.inputMode = 'numeric';
+    stockInput.step = '1';
+    stockInput.min = '0';
+    stockInput.max = '100';
+    stockInput.className = 'app-modal-input';
+    stockInput.value = String(settings.targetStockRatio ?? 80);
+
+    const bondInput = document.createElement('input');
+    bondInput.type = 'number';
+    bondInput.inputMode = 'numeric';
+    bondInput.step = '1';
+    bondInput.min = '0';
+    bondInput.max = '100';
+    bondInput.className = 'app-modal-input';
+    bondInput.value = String(settings.targetBondRatio ?? 20);
+
+    row.appendChild(stockInput);
+    row.appendChild(bondInput);
+
+    wrap.appendChild(mkLabel('目標股債比（%）：股 / 債'));
+    wrap.appendChild(row);
+
+    const cancelBtn = document.createElement('button');
+    cancelBtn.type = 'button';
+    cancelBtn.className = 'app-modal-btn';
+    cancelBtn.textContent = '取消';
+
+    const okBtn = document.createElement('button');
+    okBtn.type = 'button';
+    okBtn.className = 'app-modal-btn app-modal-btn--primary';
+    okBtn.textContent = '儲存';
+
+    const footer = document.createElement('div');
+    footer.className = 'app-modal-footer-inner';
+    footer.appendChild(cancelBtn);
+    footer.appendChild(okBtn);
+
+    const modalPromise = showAppModal({
+        title: '股債配置',
+        bodyEl: wrap,
+        footerEl: footer,
+        maxWidth: 560
+    });
+
+    cancelBtn.addEventListener('click', () => modalPromise.close(false));
+    okBtn.addEventListener('click', () => {
+        const stock = Math.max(0, Math.min(100, parseFloat(stockInput.value) || 0));
+        const bond = Math.max(0, Math.min(100, parseFloat(bondInput.value) || 0));
+        saveAssetAllocationSettings({
+            ...settings,
+            targetStockRatio: stock,
+            targetBondRatio: bond
+        });
+        try {
+            fillAllocationInputsFromSettings(getAssetAllocationSettings());
+            updateAssetAllocationStatusText();
+        } catch (_) {}
+        modalPromise.close(true);
+    });
+}
+
+function showAnnualRebalanceModal() {
+    const settings = getAssetAllocationSettings();
+
+    const wrap = document.createElement('div');
+    wrap.className = 'app-modal-form';
+
+    const mkLabel = (t) => {
+        const el = document.createElement('div');
+        el.className = 'app-modal-label';
+        el.textContent = t;
+        return el;
+    };
+
+    const currentRatioEl = document.createElement('div');
+    currentRatioEl.className = 'app-modal-label';
+    currentRatioEl.style.marginTop = '-4px';
+    currentRatioEl.style.fontSize = '12px';
+    currentRatioEl.style.fontWeight = '700';
+    currentRatioEl.style.opacity = '0.85';
+    try {
+        const values = computeStockBondMarketValues();
+        const T = values.totalValue;
+        if (T && T > 0) {
+            const stockPct = values.stockValue / T;
+            const bondPct = values.bondValue / T;
+            currentRatioEl.textContent = `目前股債比：股 ${formatPct(stockPct)} / 債 ${formatPct(bondPct)}`;
+        } else {
+            currentRatioEl.textContent = '目前股債比：尚無市值資料';
+        }
+    } catch (_) {
+        currentRatioEl.textContent = '目前股債比：--';
+    }
+
+    const twoCol = document.createElement('div');
+    twoCol.style.display = 'grid';
+    twoCol.style.gridTemplateColumns = '1fr auto 1fr';
+    twoCol.style.alignItems = 'center';
+    twoCol.style.gap = '10px';
+
+    const ratioRow = document.createElement('div');
+    ratioRow.style.display = 'grid';
+    ratioRow.style.gridTemplateColumns = '1fr auto 1fr';
+    ratioRow.style.alignItems = 'center';
+    ratioRow.style.gap = '10px';
+
+    const targetStockRatio = document.createElement('input');
+    targetStockRatio.type = 'number';
+    targetStockRatio.step = '1';
+    targetStockRatio.min = '0';
+    targetStockRatio.max = '100';
+    targetStockRatio.className = 'app-modal-input';
+    targetStockRatio.value = String(settings.targetStockRatio ?? 80);
+
+    const ratioSep = document.createElement('div');
+    ratioSep.style.opacity = '0.65';
+    ratioSep.style.fontWeight = '800';
+    ratioSep.textContent = ':';
+
+    const targetBondRatio = document.createElement('input');
+    targetBondRatio.type = 'number';
+    targetBondRatio.step = '1';
+    targetBondRatio.min = '0';
+    targetBondRatio.max = '100';
+    targetBondRatio.className = 'app-modal-input';
+    targetBondRatio.value = String(settings.targetBondRatio ?? 20);
+
+    const monthInput = document.createElement('input');
+    monthInput.type = 'number';
+    monthInput.step = '1';
+    monthInput.min = '1';
+    monthInput.max = '12';
+    monthInput.className = 'app-modal-input';
+    monthInput.value = String(settings.rebalanceMonth ?? 1);
+
+    const dayInput = document.createElement('input');
+    dayInput.type = 'number';
+    dayInput.step = '1';
+    dayInput.min = '1';
+    dayInput.max = '28';
+    dayInput.className = 'app-modal-input';
+    dayInput.value = String(settings.rebalanceDay ?? 1);
+
+    const dateSep = document.createElement('div');
+    dateSep.style.opacity = '0.65';
+    dateSep.style.fontWeight = '900';
+    dateSep.textContent = '/';
+
+    twoCol.appendChild(monthInput);
+    twoCol.appendChild(dateSep);
+    twoCol.appendChild(dayInput);
+
+    const stockTicker = document.createElement('input');
+    stockTicker.type = 'text';
+    stockTicker.className = 'app-modal-input';
+    stockTicker.value = String(settings.rebalanceStockTicker ?? '0050');
+
+    const bondTicker = document.createElement('input');
+    bondTicker.type = 'text';
+    bondTicker.className = 'app-modal-input';
+    bondTicker.value = String(settings.rebalanceBondTicker ?? '00751B');
+
+    const horizon = document.createElement('input');
+    horizon.type = 'number';
+    horizon.step = '1';
+    horizon.min = '1';
+    horizon.max = '60';
+    horizon.className = 'app-modal-input';
+    horizon.value = String(settings.rebalanceHorizonMonths ?? 12);
+
+    const budget = document.createElement('input');
+    budget.type = 'number';
+    budget.step = '1';
+    budget.min = '0';
+    budget.className = 'app-modal-input';
+    budget.value = '';
+    budget.placeholder = '例如 50000';
+
+    const adviceBox = document.createElement('pre');
+    adviceBox.className = 'app-modal-pre';
+    adviceBox.style.marginTop = '10px';
+    adviceBox.style.whiteSpace = 'pre-wrap';
+    adviceBox.textContent = '';
+
+    const persistFromModal = () => {
+        const stock = Math.max(0, Math.min(100, parseFloat(targetStockRatio.value) || 0));
+        const bond = Math.max(0, Math.min(100, parseFloat(targetBondRatio.value) || 0));
+        const month = Math.max(1, Math.min(12, parseInt(monthInput.value, 10) || 1));
+        const day = Math.max(1, Math.min(28, parseInt(dayInput.value, 10) || 1));
+        const cleanedStock = String(stockTicker.value || '').trim() || settings.rebalanceStockTicker;
+        const cleanedBond = String(bondTicker.value || '').trim() || settings.rebalanceBondTicker;
+        const cleanedHorizon = Math.max(1, Math.min(60, parseInt(horizon.value, 10) || 12));
+
+        const next = {
+            ...settings,
+            targetStockRatio: stock,
+            targetBondRatio: bond,
+            rebalanceMonth: month,
+            rebalanceDay: day,
+            rebalanceStockTicker: cleanedStock,
+            rebalanceBondTicker: cleanedBond,
+            rebalanceHorizonMonths: cleanedHorizon
+        };
+        saveAssetAllocationSettings(next);
+        return {
+            settings: next,
+            budget: Math.max(0, parseFloat(budget.value) || 0)
+        };
+    };
+
+    ratioRow.appendChild(targetStockRatio);
+    ratioRow.appendChild(ratioSep);
+    ratioRow.appendChild(targetBondRatio);
+
+    wrap.appendChild(mkLabel('目標股債比（%）'));
+    wrap.appendChild(currentRatioEl);
+    wrap.appendChild(ratioRow);
+
+    wrap.appendChild(mkLabel('每年檢視日期（月 / 日）'));
+    wrap.appendChild(twoCol);
+    wrap.appendChild(mkLabel('股票加碼標的（代碼）'));
+    wrap.appendChild(stockTicker);
+    wrap.appendChild(mkLabel('債券加碼標的（代碼）'));
+    wrap.appendChild(bondTicker);
+    wrap.appendChild(mkLabel('本次加碼預算（NT$）'));
+    wrap.appendChild(budget);
+
+    wrap.appendChild(mkLabel('用幾個月拉回目標'));
+    wrap.appendChild(horizon);
+    wrap.appendChild(adviceBox);
+
+    const suggestBtn = document.createElement('button');
+    suggestBtn.type = 'button';
+    suggestBtn.className = 'app-modal-btn app-modal-btn--primary';
+    suggestBtn.textContent = '生成建議';
+
+    const applyBtn = document.createElement('button');
+    applyBtn.type = 'button';
+    applyBtn.className = 'app-modal-btn';
+    applyBtn.textContent = '套用到定期定額';
+
+    const footer = document.createElement('div');
+    footer.className = 'app-modal-footer-inner app-modal-footer-inner--grid';
+    footer.appendChild(suggestBtn);
+    footer.appendChild(applyBtn);
+
+    const modalPromise = showAppModal({
+        title: '年度再平衡',
+        bodyEl: wrap,
+        footerEl: footer,
+        maxWidth: 560
+    });
+
+    suggestBtn.addEventListener('click', () => {
+        const persisted = persistFromModal();
+        const nextSettings = persisted.settings;
+        const budgetValue = persisted.budget;
+        const advice = calculateRebalanceAdvice({
+            budget: budgetValue,
+            horizonMonths: nextSettings.rebalanceHorizonMonths,
+            targetStockRatio: nextSettings.targetStockRatio,
+            targetBondRatio: nextSettings.targetBondRatio
+        });
+
+        const stockTicker = nextSettings.rebalanceStockTicker;
+        const bondTicker = nextSettings.rebalanceBondTicker;
+
+        const lumpStockLine = advice.lumpSum.total > 0
+            ? buildBuySuggestionLine({ label: '買股', ticker: stockTicker, amount: advice.lumpSum.stock })
+            : '未輸入預算';
+        const lumpBondLine = advice.lumpSum.total > 0
+            ? buildBuySuggestionLine({ label: '買債', ticker: bondTicker, amount: advice.lumpSum.bond })
+            : '未輸入預算';
+
+        const monthlyStockLine = advice.dca.monthlyTotal > 0
+            ? buildBuySuggestionLine({ label: '每月買股', ticker: stockTicker, amount: advice.dca.monthlyStock })
+            : '目前沒有啟用的定期定額';
+        const monthlyBondLine = advice.dca.monthlyTotal > 0
+            ? buildBuySuggestionLine({ label: '每月買債', ticker: bondTicker, amount: advice.dca.monthlyBond })
+            : '目前沒有啟用的定期定額';
+
+        adviceBox.textContent = [
+            `目前市值：股票 ${formatNtd(advice.values.stockValue)}／債券 ${formatNtd(advice.values.bondValue)}／合計 ${formatNtd(advice.values.totalValue)}`,
+            `目前比例：股 ${formatPct(advice.ratios.currentStockPct)}／債 ${formatPct(advice.ratios.currentBondPct)}`,
+            `目標比例：股 ${formatPct(advice.ratios.stockPct)}／債 ${formatPct(advice.ratios.bondPct)}`,
+            '',
+            `一次性加碼（只買不賣；預算 ${formatNtd(advice.lumpSum.total)}）：`,
+            pickDominantAction(advice.lumpSum),
+            lumpStockLine,
+            lumpBondLine,
+            `買完後比例：股 ${formatPct(advice.projections.afterLump.stockPct)}／債 ${formatPct(advice.projections.afterLump.bondPct)}`,
+            '',
+            `定期定額建議（${advice.dca.months} 個月拉回；以目前啟用總額 ${formatNtd(advice.dca.monthlyTotal)}/月）：`,
+            monthlyStockLine,
+            monthlyBondLine,
+            `跑完 ${advice.dca.months} 個月後比例：股 ${formatPct(advice.projections.afterHorizon.stockPct)}／債 ${formatPct(advice.projections.afterHorizon.bondPct)}`
+        ].join('\n');
+    });
+
+    applyBtn.addEventListener('click', () => {
+        const persisted = persistFromModal();
+        const nextSettings = persisted.settings;
+        const budgetValue = persisted.budget;
+
+        const advice = calculateRebalanceAdvice({
+            budget: budgetValue,
+            horizonMonths: nextSettings.rebalanceHorizonMonths,
+            targetStockRatio: nextSettings.targetStockRatio,
+            targetBondRatio: nextSettings.targetBondRatio
+        });
+
+        applyRebalanceToDcaPlans({
+            monthlyStock: advice.dca.monthlyStock,
+            monthlyBond: advice.dca.monthlyBond,
+            stockTicker: nextSettings.rebalanceStockTicker,
+            bondTicker: nextSettings.rebalanceBondTicker
+        });
+
+        modalPromise.close(true);
+    });
+
+    modalPromise.then(() => {
+        try {
+            fillAllocationInputsFromSettings(getAssetAllocationSettings());
+            updateAssetAllocationStatusText();
+        } catch (_) {}
+    });
+}
+
 function showAppPromptNumber({ title, label, defaultValue = 0, placeholder = '0', okText = '確定', cancelText = '取消' }) {
     const wrap = document.createElement('div');
     wrap.className = 'app-modal-form';
@@ -2830,6 +3179,22 @@ function initInvestmentPage() {
             showDCAManagementPage();
         });
     }
+
+    const allocationBtn = document.getElementById('investmentAllocationBtn');
+    if (allocationBtn) {
+        allocationBtn.addEventListener('click', () => {
+            playClickSound();
+            showAssetAllocationModal();
+        });
+    }
+
+    const rebalanceBtn = document.getElementById('investmentRebalanceBtn');
+    if (rebalanceBtn) {
+        rebalanceBtn.addEventListener('click', () => {
+            playClickSound();
+            showAnnualRebalanceModal();
+        });
+    }
     
     // 初始化強制重新抓價按鈕
     const forceRefreshBtn = document.getElementById('forceRefreshBtn');
@@ -3761,7 +4126,21 @@ function cloudRestoreFromGoogleSheet() {
     window[cbName] = async (res) => {
         try {
             if (!res || !res.ok) {
-                alert('雲端還原失敗：' + ((res && res.error) ? res.error : '未知錯誤'));
+                const err = (res && res.error) ? String(res.error) : '未知錯誤';
+                if (err === 'Backup not found') {
+                    const safeKey = backupKey ? `${backupKey.slice(0, 3)}***（長度 ${backupKey.length}）` : '(空)';
+                    alert(
+                        '雲端還原失敗：Backup not found\n\n' +
+                        '代表雲端找不到此備份碼的備份資料。請依序檢查：\n' +
+                        '1) 你是否曾在「雲端備份（完整）」成功備份過？（建議先備份一次再還原）\n' +
+                        '2) Web App URL 是否正確、是否指到同一份 Google Sheet？\n' +
+                        '3) 雲端備份碼是否完全一致（含大小寫/空白）？\n\n' +
+                        `目前 Web App URL：${url}\n` +
+                        `目前備份碼：${safeKey}`
+                    );
+                } else {
+                    alert('雲端還原失敗：' + err);
+                }
                 cleanup();
                 return;
             }
@@ -4759,9 +5138,10 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
             ? [`${stockCode}.TWO`, `${stockCode}.TW`]
             : [yahooSymbol];
 
-        // 1) Try local proxy if not in cooldown
+        // 1) Try local proxy (opt-in)
         const proxyEndpoint = 'http://localhost:5000/api/quote?symbols=';
-        if (!isLocalQuoteProxyInCooldown()) {
+        const enableLocalQuoteProxy = String(localStorage.getItem('useLocalQuoteProxy') || '').toLowerCase() === 'true';
+        if (enableLocalQuoteProxy && !isLocalQuoteProxyInCooldown()) {
             for (const candidateSymbol of symbolCandidates) {
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 8000);
@@ -16260,6 +16640,8 @@ function updateStockList() {
         const displayDailyText = dailyChange != null
             ? `${isDailyPositive ? '+' : '-'}${displayDailyChange} (${isDailyPositive ? '+' : '-'}${displayDailyPct}%)`
             : '--';
+
+        const showDailyChange = dailyChange != null;
         
         html += `
             <div class="stock-item-card" data-stock-code="${stock.stockCode}">
@@ -16277,13 +16659,15 @@ function updateStockList() {
                     </div>
                 </div>
 
-                <div class="stock-grid-card-change ${dailyChange != null ? (isDailyPositive ? 'positive' : 'negative') : ''}">
-                    <span class="stock-grid-card-change-arrow">${dailyChange != null ? (isDailyPositive ? '▲' : '▼') : ''}</span>
+                ${showDailyChange ? `
+                <div class="stock-grid-card-change ${isDailyPositive ? 'positive' : 'negative'}">
+                    <span class="stock-grid-card-change-arrow">${isDailyPositive ? '▲' : '▼'}</span>
                     <span class="stock-grid-card-change-value">${displayDailyText}</span>
                 </div>
+                ` : ''}
 
                 <div class="stock-grid-card-tags">
-                    <div class="stock-grid-card-tag">${stock.shares.toLocaleString('zh-TW')} 股</div>
+                    <div class="stock-grid-card-tag stock-grid-card-tag--shares">${stock.shares.toLocaleString('zh-TW')} 股</div>
                     <div class="stock-grid-card-tag">均價 ${displayAvg}</div>
                     <div class="stock-grid-card-tag ${isPositive ? 'positive' : 'negative'}">損益 ${isPositive ? '+' : ''}${displayPnl}</div>
                 </div>
@@ -21498,3 +21882,4 @@ function initImageCropModal() {
         });
     }
 }
+
