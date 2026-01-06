@@ -21882,4 +21882,3 @@ function initImageCropModal() {
         });
     }
 }
-
