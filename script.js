@@ -9,6 +9,347 @@ if (typeof window !== 'undefined' && typeof window.applyAutoWidth !== 'function'
     window.applyAutoWidth = function () {};
 }
 
+// 股票交易分析（買入 / 賣出 / 股利）
+function updateStockTradeChart() {
+    const canvas = document.getElementById('stockTradeChart');
+    if (!canvas) return;
+    const insightEl = document.getElementById('stockTradeInsight');
+    const records = JSON.parse(localStorage.getItem('investmentRecords') || '[]');
+
+    // 取近12個月
+    const monthly = {};
+    const now = new Date();
+    for (let i = 11; i >= 0; i--) {
+        const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+        monthly[key] = { buy: 0, sell: 0, dividend: 0 };
+    }
+
+    records.forEach(r => {
+        const date = new Date(r.date);
+        const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+        if (!monthly[key]) return;
+        if (r.type === 'buy') {
+            const fee = r.fee || 0;
+            monthly[key].buy -= ((r.price || 0) * (r.shares || 0) + fee);
+        } else if (r.type === 'sell') {
+            const fee = r.fee || 0;
+            const tax = r.tax || 0;
+            monthly[key].sell += ((r.price || 0) * (r.shares || 0)) - fee - tax;
+        } else if (r.type === 'dividend') {
+            monthly[key].dividend += (r.amount || 0);
+        }
+    });
+
+    const labels = Object.keys(monthly);
+    const buyData = labels.map(k => monthly[k].buy);
+    const sellData = labels.map(k => monthly[k].sell);
+    const divData = labels.map(k => monthly[k].dividend);
+
+    if ([...buyData, ...sellData, ...divData].every(v => v === 0)) {
+        if (stockTradeChartInstance) {
+            stockTradeChartInstance.destroy();
+            stockTradeChartInstance = null;
+        }
+        if (insightEl) insightEl.textContent = '近12月尚無交易';
+        return;
+    }
+
+    if (stockTradeChartInstance) {
+        stockTradeChartInstance.destroy();
+    }
+
+    const primary = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim() || '#ff69b4';
+    const success = getComputedStyle(document.documentElement).getPropertyValue('--color-success').trim() || '#10b981';
+    const danger = getComputedStyle(document.documentElement).getPropertyValue('--color-danger').trim() || '#ef4444';
+    const borderLight = getComputedStyle(document.documentElement).getPropertyValue('--border-light').trim() || '#e5e7eb';
+    const textSecondary = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim() || '#6b7280';
+
+    stockTradeChartInstance = new Chart(canvas, {
+        type: 'bar',
+        data: {
+            labels,
+            datasets: [
+                {
+                    label: '買入（支出）',
+                    data: buyData,
+                    backgroundColor: danger,
+                    borderColor: danger,
+                    borderWidth: 1,
+                    borderRadius: 6,
+                    barThickness: 12,
+                    stack: 'trade'
+                },
+                {
+                    label: '賣出（收入）',
+                    data: sellData,
+                    backgroundColor: primary,
+                    borderColor: primary,
+                    borderWidth: 1,
+                    borderRadius: 6,
+                    barThickness: 12,
+                    stack: 'trade'
+                },
+                {
+                    label: '股利（收入）',
+                    data: divData,
+                    backgroundColor: success,
+                    borderColor: success,
+                    borderWidth: 1,
+                    borderRadius: 6,
+                    barThickness: 12,
+                    stack: 'trade'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(ctx) {
+                            return `${ctx.dataset.label}: NT$${ctx.parsed.y.toLocaleString('zh-TW')}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    stacked: true,
+                    ticks: {
+                        callback: function(value) {
+                            return 'NT$' + value.toLocaleString('zh-TW');
+                        },
+                        color: textSecondary
+                    },
+                    grid: { color: borderLight }
+                },
+                x: {
+                    stacked: true,
+                    ticks: { color: textSecondary, maxRotation: 45 },
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+
+    if (insightEl) {
+        const totalBuy = buyData.reduce((a, b) => a + b, 0);
+        const totalSell = sellData.reduce((a, b) => a + b, 0);
+        const totalDiv = divData.reduce((a, b) => a + b, 0);
+        const net = totalBuy + totalSell + totalDiv;
+        insightEl.textContent = `近12月淨流 ${net >= 0 ? '入' : '出'} NT$${Math.abs(net).toLocaleString('zh-TW')}（買入：NT$${Math.abs(totalBuy).toLocaleString('zh-TW')}、賣出：NT$${totalSell.toLocaleString('zh-TW')}、股利：NT$${totalDiv.toLocaleString('zh-TW')}）`;
+    }
+}
+
+// 股票持倉盈虧
+function updateStockPnlChart() {
+    const canvas = document.getElementById('stockPnlChart');
+    if (!canvas) return;
+    const insightEl = document.getElementById('stockPnlInsight');
+    const portfolio = getPortfolio();
+
+    if (!portfolio || portfolio.length === 0) {
+        if (stockPnlChartInstance) {
+            stockPnlChartInstance.destroy();
+            stockPnlChartInstance = null;
+        }
+        if (insightEl) insightEl.textContent = '尚無持股';
+        return;
+    }
+
+    const items = portfolio.map(stock => {
+        const price = getStockCurrentPrice(stock.stockCode) || stock.avgCost || 0;
+        const shares = stock.shares || 0;
+        const cost = (stock.avgCost || 0) * shares;
+        const value = price * shares;
+        const pnl = value - cost;
+        return {
+            label: stock.stockName || stock.stockCode,
+            pnl,
+            cost,
+            value
+        };
+    });
+
+    // 防呆：若持股過多，僅顯示前 12 檔（按絕對盈虧排序），其餘合併為「其他」
+    items.sort((a, b) => Math.abs(b.pnl) - Math.abs(a.pnl));
+    const MAX_ITEMS = 12;
+    const mainItems = items.slice(0, MAX_ITEMS);
+    const rest = items.slice(MAX_ITEMS);
+    if (rest.length > 0) {
+        const restPnl = rest.reduce((s, i) => s + i.pnl, 0);
+        const restCost = rest.reduce((s, i) => s + i.cost, 0);
+        const restValue = rest.reduce((s, i) => s + i.value, 0);
+        mainItems.push({ label: `其他（${rest.length} 檔）`, pnl: restPnl, cost: restCost, value: restValue });
+    }
+
+    const labels = mainItems.map(i => i.label);
+    const gains = mainItems.map(i => i.pnl);
+    const costs = mainItems.map(i => i.cost);
+    const totalCost = mainItems.reduce((s, i) => s + i.cost, 0);
+    const totalValue = mainItems.reduce((s, i) => s + i.value, 0);
+
+    if (gains.every(g => g === 0)) {
+        if (stockPnlChartInstance) {
+            stockPnlChartInstance.destroy();
+            stockPnlChartInstance = null;
+        }
+        if (insightEl) insightEl.textContent = '尚無盈虧資料';
+        return;
+    }
+
+    if (stockPnlChartInstance) {
+        stockPnlChartInstance.destroy();
+    }
+
+    const primary = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim() || '#ff69b4';
+    const danger = getComputedStyle(document.documentElement).getPropertyValue('--color-danger').trim() || '#ef4444';
+    const borderLight = getComputedStyle(document.documentElement).getPropertyValue('--border-light').trim() || '#e5e7eb';
+    const textSecondary = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim() || '#6b7280';
+
+    const colors = gains.map(g => g >= 0 ? primary : danger);
+
+    stockPnlChartInstance = new Chart(canvas, {
+        type: 'bar',
+        data: {
+            labels,
+            datasets: [{
+                label: '盈虧',
+                data: gains,
+                backgroundColor: colors,
+                borderColor: colors,
+                borderWidth: 1,
+                borderRadius: 8,
+                barThickness: Math.max(10, Math.min(16, 240 / labels.length))
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(ctx) {
+                            return `NT$${ctx.parsed.y.toLocaleString('zh-TW')}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        callback: function(value) {
+                            return 'NT$' + value.toLocaleString('zh-TW');
+                        },
+                        color: textSecondary
+                    },
+                    grid: { color: borderLight }
+                },
+                x: {
+                    ticks: { color: textSecondary, maxRotation: 45 },
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+
+    if (insightEl) {
+        const bestIdx = gains.indexOf(Math.max(...gains));
+        const worstIdx = gains.indexOf(Math.min(...gains));
+        const totalPnl = totalValue - totalCost;
+        insightEl.textContent = `總盈虧 NT$${totalPnl.toLocaleString('zh-TW')}，最佳 ${labels[bestIdx]}，最弱 ${labels[worstIdx]}`;
+    }
+}
+
+// 股票持倉分佈（以市值計算權重）
+function updateStockAllocationChart() {
+    const canvas = document.getElementById('stockAllocationChart');
+    if (!canvas) return;
+
+    const insightEl = document.getElementById('stockAllocationInsight');
+    const portfolio = getPortfolio();
+
+    if (!portfolio || portfolio.length === 0) {
+        if (stockAllocationChartInstance) {
+            stockAllocationChartInstance.destroy();
+            stockAllocationChartInstance = null;
+        }
+        if (insightEl) insightEl.textContent = '尚無持股';
+        return;
+    }
+
+    const labels = [];
+    const values = [];
+    let totalValue = 0;
+    portfolio.forEach(stock => {
+        const price = getStockCurrentPrice(stock.stockCode) || stock.avgCost || 0;
+        const value = price * (stock.shares || 0);
+        labels.push(stock.stockName || stock.stockCode);
+        values.push(value);
+        totalValue += value;
+    });
+
+    if (values.every(v => v === 0)) {
+        if (stockAllocationChartInstance) {
+            stockAllocationChartInstance.destroy();
+            stockAllocationChartInstance = null;
+        }
+        if (insightEl) insightEl.textContent = '尚無價格資料';
+        return;
+    }
+
+    const colors = generateColors(labels.length);
+
+    if (stockAllocationChartInstance) {
+        stockAllocationChartInstance.destroy();
+    }
+
+    stockAllocationChartInstance = new Chart(canvas, {
+        type: 'doughnut',
+        data: {
+            labels,
+            datasets: [{
+                data: values,
+                backgroundColor: colors.backgrounds,
+                borderColor: colors.borders,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '52%',
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const label = context.label || '';
+                            const val = context.parsed || 0;
+                            const pct = totalValue > 0 ? ((val / totalValue) * 100).toFixed(1) : '0';
+                            return `${label}: NT$${val.toLocaleString('zh-TW')}（${pct}%）`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    if (insightEl) {
+        const maxIdx = values.indexOf(Math.max(...values));
+        const topLabel = labels[maxIdx];
+        const topVal = values[maxIdx] || 0;
+        const pct = totalValue > 0 ? ((topVal / totalValue) * 100).toFixed(1) : '0';
+        insightEl.textContent = `最大持倉「${topLabel}」佔約 ${pct}%（NT$${topVal.toLocaleString('zh-TW')}）`;
+    }
+}
+
+
 async function applyBackupDataPayload(data) {
     // 還原資料（包含所有資料）
     if (data.accountingRecords) {
@@ -6190,16 +6531,7 @@ function updateInvestmentRecords() {
     }
 
     const sortedRecords = [...records].sort((a, b) => parseRecordDate(b) - parseRecordDate(a));
-    const buyRecords = sortedRecords.filter(record => record.type === 'buy');
-    const otherRecords = sortedRecords.filter(record => record.type !== 'buy');
-
-    const totalPages = Math.max(1, Math.ceil(buyRecords.length / INVESTMENT_RECORDS_PAGE_SIZE));
-    if (investmentRecordsCurrentPage >= totalPages) {
-        investmentRecordsCurrentPage = totalPages - 1;
-    }
-
-    const pageStart = investmentRecordsCurrentPage * INVESTMENT_RECORDS_PAGE_SIZE;
-    const pageRecords = buyRecords.slice(pageStart, pageStart + INVESTMENT_RECORDS_PAGE_SIZE);
+    const pageRecords = sortedRecords;
 
     const grouped = {};
     const groupOrder = [];
@@ -6215,13 +6547,8 @@ function updateInvestmentRecords() {
     let html = `
         <div class="investment-records-header">
             <div>
-                <div class="investment-records-title">買入記錄</div>
-                <div class="investment-records-summary">共 ${buyRecords.length} 筆買入，分頁展示</div>
-            </div>
-            <div class="investment-records-pager">
-                <button class="investment-pager-btn" data-direction="prev" ${investmentRecordsCurrentPage === 0 ? 'disabled' : ''}>上一頁</button>
-                <span>第 ${investmentRecordsCurrentPage + 1} / ${totalPages} 頁</span>
-                <button class="investment-pager-btn" data-direction="next" ${investmentRecordsCurrentPage >= totalPages - 1 ? 'disabled' : ''}>下一頁</button>
+                <div class="investment-records-title">投資紀錄</div>
+                <div class="investment-records-summary">新資料在最上方，共 ${pageRecords.length} 筆</div>
             </div>
         </div>
     `;
@@ -6242,114 +6569,91 @@ function updateInvestmentRecords() {
             `;
             grouped[key].forEach(record => {
                 const recordId = record.timestamp || record.id || Date.now().toString();
-                const price = record.price != null ? record.price : 0;
-                const shares = record.shares || 0;
-                const totalAmount = Math.ceil(price * shares + (record.fee || 0));
-                const amountClass = getAmountLevelClass(totalAmount);
-                let dcaLine = '';
-                if (record.isDCA) {
-                    const cycleNo = parseInt(record.dcaCycleNumber, 10);
-                    dcaLine = `<div>🔁 定期定額${!isNaN(cycleNo) && cycleNo > 0 ? `・第 ${cycleNo} 期` : ''}</div>`;
-                }
-                html += `
-                    <div class="investment-record-item amount-glow ${amountClass}" data-record-id="${recordId}">
-                        <div class="record-header">
-                            <div class="record-header-info">
-                                <span class="record-type buy" data-stock-code="${record.stockCode || ''}" data-stock-name="${record.stockName || ''}" data-price="${price}" data-shares="${shares}" data-fee="${record.fee || 0}" data-isdca="${record.isDCA ? '1' : '0'}" title="再買一次">買入</span>
-                                <span class="record-date">${record.date}</span>
+                if (record.type === 'buy') {
+                    const price = record.price != null ? record.price : 0;
+                    const shares = record.shares || 0;
+                    const totalAmount = Math.ceil(price * shares + (record.fee || 0));
+                    const amountClass = getAmountLevelClass(totalAmount);
+                    let dcaLine = '';
+                    if (record.isDCA) {
+                        const cycleNo = parseInt(record.dcaCycleNumber, 10);
+                        dcaLine = `<div>🔁 定期定額${!isNaN(cycleNo) && cycleNo > 0 ? `・第 ${cycleNo} 期` : ''}</div>`;
+                    }
+                    html += `
+                        <div class="investment-record-item amount-glow ${amountClass}" data-record-id="${recordId}">
+                            <div class="record-header">
+                                <div class="record-header-info">
+                                    <span class="record-type buy" data-stock-code="${record.stockCode || ''}" data-stock-name="${record.stockName || ''}" data-price="${price}" data-shares="${shares}" data-fee="${record.fee || 0}" data-isdca="${record.isDCA ? '1' : '0'}" title="再買一次">買入</span>
+                                    <span class="record-date">${record.date}</span>
+                                </div>
+                                ${renderRecordActionButtons(recordId)}
                             </div>
-                            ${renderRecordActionButtons(recordId)}
+                            <div class="record-stock">${record.stockCode}</div>
+                            <div class="record-details">
+                                <div>價格：NT$${price.toFixed(2)}</div>
+                                <div>股數：${shares} 股</div>
+                                <div>手續費：NT$${(record.fee || 0).toLocaleString('zh-TW')}</div>
+                                ${dcaLine}
+                            </div>
+                            <div class="record-amount ${amountClass}">投入金額：NT$${(totalAmount != null ? totalAmount : 0).toLocaleString('zh-TW')}</div>
+                            ${record.note ? `<div class="text-secondary" style="margin-top: 8px; font-size: 12px;">備註：${record.note}</div>` : ''}
                         </div>
-                        <div class="record-stock">${record.stockCode}</div>
-                        <div class="record-details">
-                            <div>價格：NT$${price.toFixed(2)}</div>
-                            <div>股數：${shares} 股</div>
-                            <div>手續費：NT$${(record.fee || 0).toLocaleString('zh-TW')}</div>
-                            ${dcaLine}
+                    `;
+                } else if (record.type === 'sell') {
+                    const price = record.price != null ? record.price : 0;
+                    const shares = record.shares || 0;
+                    const totalAmount = price * shares - (record.fee || 0) - (record.tax || 0);
+                    html += `
+                        <div class="investment-record-item" data-record-id="${recordId}">
+                            <div class="record-header">
+                                <div class="record-header-info">
+                                    <span class="record-type sell">賣出</span>
+                                    <span class="record-date">${record.date}</span>
+                                </div>
+                                ${renderRecordActionButtons(recordId)}
+                            </div>
+                            <div class="record-stock">${record.stockCode}</div>
+                            <div class="record-details">
+                                <div>價格：NT$${(record.price != null ? record.price : 0).toFixed(2)}</div>
+                                <div>股數：${record.shares || 0} 股</div>
+                                <div>手續費：NT$${(record.fee || 0).toLocaleString('zh-TW')}</div>
+                                <div>證交稅：NT$${(record.tax || 0).toLocaleString('zh-TW')}</div>
+                            </div>
+                            <div class="record-amount">實收金額：NT$${(totalAmount != null ? totalAmount : 0).toLocaleString('zh-TW')}</div>
+                            <div class="record-amount ${(record.realizedPnl || 0) >= 0 ? 'positive' : 'negative'}">
+                                實現損益：${(record.realizedPnl || 0) >= 0 ? '+' : ''}NT$${(record.realizedPnl != null ? record.realizedPnl : 0).toLocaleString('zh-TW')}
+                            </div>
+                            ${record.note ? `<div class="text-secondary" style="margin-top: 8px; font-size: 12px;">備註：${record.note}</div>` : ''}
                         </div>
-                        <div class="record-amount ${amountClass}">投入金額：NT$${(totalAmount != null ? totalAmount : 0).toLocaleString('zh-TW')}</div>
-                        ${record.note ? `<div class="text-secondary" style="margin-top: 8px; font-size: 12px;">備註：${record.note}</div>` : ''}
-                    </div>
-                `;
+                    `;
+                } else if (record.type === 'dividend') {
+                    html += `
+                        <div class="investment-record-item" data-record-id="${recordId}">
+                            <div class="record-header">
+                                <div class="record-header-info">
+                                    <span class="record-type dividend">${record.dividendType === 'cash' ? '現金股利' : '股票股利'}</span>
+                                    <span class="record-date">${record.date}</span>
+                                </div>
+                                ${renderRecordActionButtons(recordId)}
+                            </div>
+                            <div class="record-stock">${record.stockCode}</div>
+                            <div class="record-details">
+                                <div>每股：NT$${(record.perShare != null ? record.perShare : 0).toFixed(2)}</div>
+                                <div>股數：${record.shares || 0} 股</div>
+                                ${record.exDividendDate ? `<div>除息日：${record.exDividendDate}</div>` : ''}
+                                ${record.historicalPerShare ? `<div>過去每股：NT$${Number(record.historicalPerShare).toFixed(2)}</div>` : ''}
+                                ${record.reinvest ? '<div>再投入 ✓</div>' : ''}
+                            </div>
+                            <div class="record-amount">實收金額：NT$${(record.amount != null ? record.amount : 0).toLocaleString('zh-TW')}</div>
+                            ${record.note ? `<div class="text-secondary" style="margin-top: 8px; font-size: 12px;">備註：${record.note}</div>` : ''}
+                        </div>
+                    `;
+                }
             });
         });
     }
 
-    if (otherRecords.length > 0) {
-        html += `
-            <div class="investment-records-secondary">
-                <div class="investment-records-title investment-records-secondary-title">其他紀錄</div>
-        `;
-        otherRecords.forEach(record => {
-            const recordId = record.timestamp || record.id || Date.now().toString();
-            if (record.type === 'sell') {
-                const price = record.price != null ? record.price : 0;
-                const shares = record.shares || 0;
-                const totalAmount = price * shares - (record.fee || 0) - (record.tax || 0);
-                html += `
-                    <div class="investment-record-item" data-record-id="${recordId}">
-                        <div class="record-header">
-                            <div class="record-header-info">
-                                <span class="record-type sell">賣出</span>
-                                <span class="record-date">${record.date}</span>
-                            </div>
-                            ${renderRecordActionButtons(recordId)}
-                        </div>
-                        <div class="record-stock">${record.stockCode}</div>
-                        <div class="record-details">
-                            <div>價格：NT$${(record.price != null ? record.price : 0).toFixed(2)}</div>
-                            <div>股數：${record.shares || 0} 股</div>
-                            <div>手續費：NT$${(record.fee || 0).toLocaleString('zh-TW')}</div>
-                            <div>證交稅：NT$${(record.tax || 0).toLocaleString('zh-TW')}</div>
-                        </div>
-                        <div class="record-amount">實收金額：NT$${(totalAmount != null ? totalAmount : 0).toLocaleString('zh-TW')}</div>
-                        <div class="record-amount ${(record.realizedPnl || 0) >= 0 ? 'positive' : 'negative'}">
-                            實現損益：${(record.realizedPnl || 0) >= 0 ? '+' : ''}NT$${(record.realizedPnl != null ? record.realizedPnl : 0).toLocaleString('zh-TW')}
-                        </div>
-                        ${record.note ? `<div class="text-secondary" style="margin-top: 8px; font-size: 12px;">備註：${record.note}</div>` : ''}
-                    </div>
-                `;
-            } else if (record.type === 'dividend') {
-                html += `
-                    <div class="investment-record-item" data-record-id="${recordId}">
-                        <div class="record-header">
-                            <div class="record-header-info">
-                                <span class="record-type dividend">${record.dividendType === 'cash' ? '現金股利' : '股票股利'}</span>
-                                <span class="record-date">${record.date}</span>
-                            </div>
-                            ${renderRecordActionButtons(recordId)}
-                        </div>
-                        <div class="record-stock">${record.stockCode}</div>
-                        <div class="record-details">
-                            <div>每股：NT$${(record.perShare != null ? record.perShare : 0).toFixed(2)}</div>
-                            <div>股數：${record.shares || 0} 股</div>
-                            ${record.exDividendDate ? `<div>除息日：${record.exDividendDate}</div>` : ''}
-                            ${record.historicalPerShare ? `<div>過去每股：NT$${Number(record.historicalPerShare).toFixed(2)}</div>` : ''}
-                            ${record.reinvest ? '<div>再投入 ✓</div>' : ''}
-                        </div>
-                        <div class="record-amount">實收金額：NT$${(record.amount != null ? record.amount : 0).toLocaleString('zh-TW')}</div>
-                        ${record.note ? `<div class="text-secondary" style="margin-top: 8px; font-size: 12px;">備註：${record.note}</div>` : ''}
-                    </div>
-                `;
-            }
-        });
-        html += `</div>`;
-    }
-
     recordsList.innerHTML = html;
-
-    recordsList.querySelectorAll('.investment-pager-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const direction = btn.dataset.direction;
-            if (direction === 'prev' && investmentRecordsCurrentPage > 0) {
-                investmentRecordsCurrentPage -= 1;
-                updateInvestmentRecords();
-            } else if (direction === 'next' && investmentRecordsCurrentPage < totalPages - 1) {
-                investmentRecordsCurrentPage += 1;
-                updateInvestmentRecords();
-            }
-        });
-    });
 
     bindRecordOverflowMenu(recordsList);
 
@@ -8442,6 +8746,9 @@ let pieChartInstance = null;
 let barChartInstance = null;
 let lineChartInstance = null;
 let monthCompareChartInstance = null;
+let stockAllocationChartInstance = null;
+let stockPnlChartInstance = null;
+let stockTradeChartInstance = null;
 
 // 提供理財建議
 function provideFinancialAdvice(records) {
@@ -9089,6 +9396,9 @@ function updateAllCharts() {
     updateBarChart();    // 長條圖：各分類支出
     updateMonthCompareChart(); // 長條圖：上月 vs 本月分類比較
     updateLineChart();   // 折線圖：每月總支出趨勢
+    updateStockAllocationChart(); // 股票持倉分佈
+    updateStockPnlChart(); // 股票持倉盈虧
+    updateStockTradeChart(); // 股票交易分析
 }
 
 function updateMonthCompareChart() {
@@ -17034,8 +17344,6 @@ function updateStockList() {
                 ` : ''}
                 <div class="stock-grid-card-tags">
                     <div class="stock-grid-card-tag stock-grid-card-tag--shares">${stock.shares} 股</div>
-                    <div class="stock-grid-card-tag">均價 ${formatNumber(stock.avgCost || 0, 2)}</div>
-                    <div class="stock-grid-card-tag ${isPositive ? 'positive' : 'negative'}">${isPositive ? '損益 +' : '損益 '}${formatNumber(unrealizedPnl, 2)}</div>
                 </div>
             </div>
         `;
