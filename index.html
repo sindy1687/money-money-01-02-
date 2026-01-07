@@ -725,7 +725,7 @@
             </div>
 
             <!-- 總覽摘要卡片 -->
-            <div class="overview-summary-grid">
+            <div class="overview-summary-grid" id="overviewSummaryGrid" style="display: none;">
                 <div class="summary-card primary full-width">
                     <div class="summary-icon">💰</div>
                     <div class="summary-content">
@@ -825,6 +825,32 @@
                 <datalist id="rebalanceStockDatalist"></datalist>
                 <datalist id="rebalanceBondDatalist"></datalist>
             </div>
+
+            <!-- 摘要總覽按鈕（移至底部） -->
+            <button class="summary-toggle" id="summaryToggleBtn" aria-expanded="false">
+                <div class="summary-toggle__top">
+                    <span class="summary-toggle__label">總覽摘要</span>
+                    <span class="summary-toggle__hint">點擊展開詳細</span>
+                </div>
+                <div class="summary-toggle__metrics">
+                    <div class="summary-toggle__metric">
+                        <span class="summary-toggle__metric-label">總投入</span>
+                        <span class="summary-toggle__metric-value" id="summaryToggleInvested">--</span>
+                    </div>
+                    <div class="summary-toggle__metric">
+                        <span class="summary-toggle__metric-label">未實現</span>
+                        <span class="summary-toggle__metric-value" id="summaryTogglePnl">--</span>
+                    </div>
+                    <div class="summary-toggle__metric">
+                        <span class="summary-toggle__metric-label">年化</span>
+                        <span class="summary-toggle__metric-value" id="summaryToggleReturn">--</span>
+                    </div>
+                    <div class="summary-toggle__metric">
+                        <span class="summary-toggle__metric-label">今年股息</span>
+                        <span class="summary-toggle__metric-value" id="summaryToggleDividend">--</span>
+                    </div>
+                </div>
+            </button>
         </div>
 
         <!-- 個股詳情頁面 -->

@@ -72,6 +72,23 @@ async function applyBackupDataPayload(data) {
     location.reload();
 }
 
+// 數字格式化（含千分位，預設兩位小數）
+function formatNumber(value, decimals = 2) {
+    if (value === '' || value == null || isNaN(Number(value))) return '--';
+    const num = Number(value);
+    const opts = { minimumFractionDigits: decimals, maximumFractionDigits: decimals };
+    try {
+        return num.toLocaleString('zh-TW', opts);
+    } catch (_) {
+        return num.toFixed(decimals);
+    }
+}
+
+// 全域常數
+const ENABLE_MULTIPLE_PROXY = true;
+const REBALANCE_LOG_KEY = 'rebalanceLogs';
+const SCHEDULED_BUY_STORAGE_KEY = 'scheduledBuyOrders';
+
 function showAppModal({ title, bodyEl, footerEl, maxWidth = 520 }) {
     let close;
     const promise = new Promise((resolve) => {
@@ -702,16 +719,212 @@ let quoteProxyAvailability = {
     alertedAt: 0
 };
 
+// 用於補抓昨收價時的去重集合，避免重複呼叫
+const pendingPrevCloseFetch = new Set();
+
+// 簡易代理冷卻：若 429/403 過載，暫停使用該代理一段時間
+const proxyCooldowns = {};
+const PROXY_COOLDOWN_MS = 5 * 60 * 1000;
+// 每檔昨收拉取冷卻，避免短時間重複打同一檔造成風險：5 分鐘
+const prevCloseAttemptAt = {};
+const PREV_CLOSE_COOLDOWN_MS = 5 * 60 * 1000;
+
 const publicQuoteProxies = [
+    // Put Jina first: raw fetch (least likely to 404)
+    'https://r.jina.ai/http://',
     // Returns JSON wrapper: { contents: "..." }
     'https://api.allorigins.win/raw?url=',
     // Usually returns raw proxied content
-    'https://api.codetabs.com/v1/proxy/?quest=',
-    // Returns raw proxied content
-    'https://corsproxy.io/?',
-    // Sometimes requires full URL (no encoding)
-    'https://r.jina.ai/http://'
+    'https://api.codetabs.com/v1/proxy/?quest='
+    // 2025/01: corsproxy.io frequently 404，暫時移除以降低噪音
 ];
+
+function isProxyInCooldown(proxyBase) {
+    if (!proxyCooldowns[proxyBase]) return false;
+    return Date.now() - proxyCooldowns[proxyBase] < PROXY_COOLDOWN_MS;
+}
+
+function markProxyRateLimited(proxyBase) {
+    proxyCooldowns[proxyBase] = Date.now();
+}
+
+function shuffleProxies() {
+    return [...publicQuoteProxies].sort(() => Math.random() - 0.5);
+}
+
+// 嘗試直接從臺灣交易所/櫃買中心 MIS 取昨收（y），降低對 Yahoo 依賴
+async function fetchPrevCloseFromTwseOtc(stockCode) {
+    try {
+        const isOtc = (stockCode.endsWith('B') || stockCode.endsWith('L') || stockCode.endsWith('R') || stockCode.endsWith('U') || stockCode.endsWith('K'));
+        const exchange = isOtc ? 'otc' : 'tse';
+        const exCh = `${exchange}_${stockCode.toUpperCase()}.tw`;
+        const url = `https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=${exCh}`;
+        const shuffledProxies = shuffleProxies();
+        for (const proxyBase of shuffledProxies) {
+            if (isProxyInCooldown(proxyBase)) continue;
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 8000);
+                let finalUrl;
+                if (proxyBase.includes('r.jina.ai')) {
+                    const cleaned = url.replace(/^https?:\/\//, '');
+                    finalUrl = `${proxyBase}${cleaned}`;
+                } else {
+                    finalUrl = `${proxyBase}${encodeURIComponent(url)}`;
+                }
+                const resp = await fetch(finalUrl, { signal: controller.signal });
+                clearTimeout(timeoutId);
+                if (!resp) continue;
+                if (resp.status === 429 || resp.status === 403) {
+                    markProxyRateLimited(proxyBase);
+                    continue;
+                }
+                if (!resp.ok) continue;
+                const text = await resp.text();
+                let raw = text;
+                try {
+                    const wrapped = JSON.parse(text);
+                    if (wrapped && typeof wrapped === 'object' && typeof wrapped.contents === 'string') {
+                        raw = wrapped.contents;
+                    }
+                } catch (_) {}
+                const data = JSON.parse(raw);
+                const yVal = data?.msgArray?.[0]?.y ? Number(data.msgArray[0].y) : null;
+                if (yVal && yVal > 0) {
+                    return yVal;
+                }
+            } catch (_) {
+                continue;
+            }
+        }
+    } catch (_) {
+        return null;
+    }
+    return null;
+}
+
+// 補抓昨收價：僅抓 previousClose，避免畫面顯示 --。具備簡單去重。
+async function fetchPreviousCloseOnly(stockCode) {
+    if (!stockCode || pendingPrevCloseFetch.has(stockCode)) return null;
+    const lastAttempt = prevCloseAttemptAt[stockCode];
+    if (lastAttempt && Date.now() - lastAttempt < PREV_CLOSE_COOLDOWN_MS) return null;
+    prevCloseAttemptAt[stockCode] = Date.now();
+    pendingPrevCloseFetch.add(stockCode);
+    try {
+        // 先嘗試 TWSE/OTC 來源（不依賴 Yahoo）
+        const twPrev = await fetchPrevCloseFromTwseOtc(stockCode);
+        if (twPrev && twPrev > 0) {
+            saveStockPreviousClosePrice(stockCode, twPrev);
+            return twPrev;
+        }
+
+        let yahooSymbol;
+        if (stockCode.endsWith('B') || stockCode.endsWith('L') || stockCode.endsWith('R') || stockCode.endsWith('U') || stockCode.endsWith('K')) {
+            yahooSymbol = `${stockCode}.TWO`;
+        } else if (stockCode.startsWith('A0')) {
+            return null;
+        } else {
+            yahooSymbol = `${stockCode}.TW`;
+        }
+
+        const symbolCandidates = (stockCode.endsWith('B') || stockCode.endsWith('L') || stockCode.endsWith('R') || stockCode.endsWith('U') || stockCode.endsWith('K'))
+            ? [`${stockCode}.TWO`, `${stockCode}.TW`]
+            : [yahooSymbol];
+
+        // 隨機化代理順序，分散同一來源的速率限制
+        const shuffledProxies = shuffleProxies();
+
+        for (const candidateSymbol of symbolCandidates) {
+            // 1) chart API（優先）
+            const yahooChartUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${candidateSymbol}?interval=1d&range=1d`;
+            for (const proxyBase of shuffledProxies) {
+                if (isProxyInCooldown(proxyBase)) continue;
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 8000);
+                    let finalUrl;
+                    if (proxyBase.includes('r.jina.ai')) {
+                        const cleaned = yahooChartUrl.replace(/^https?:\/\//, '');
+                        finalUrl = `${proxyBase}${cleaned}`;
+                    } else {
+                        finalUrl = `${proxyBase}${encodeURIComponent(yahooChartUrl)}`;
+                    }
+                    const resp = await fetch(finalUrl, { signal: controller.signal });
+                    clearTimeout(timeoutId);
+                    if (!resp) continue;
+                    if (resp.status === 429 || resp.status === 403) {
+                        markProxyRateLimited(proxyBase);
+                        continue;
+                    }
+                    if (!resp.ok) continue;
+                    const text = await resp.text();
+                    let raw = text;
+                    try {
+                        const wrapped = JSON.parse(text);
+                        if (wrapped && typeof wrapped === 'object' && typeof wrapped.contents === 'string') {
+                            raw = wrapped.contents;
+                        }
+                    } catch (_) {}
+                    const firstBrace = raw.indexOf('{');
+                    if (firstBrace > 0) raw = raw.slice(firstBrace);
+                    const data = JSON.parse(raw);
+                    const result = data?.chart?.result?.[0];
+                    const prev = result?.meta?.previousClose || result?.meta?.regularMarketPreviousClose || null;
+                    if (prev && prev > 0) {
+                        saveStockPreviousClosePrice(stockCode, prev);
+                        return prev;
+                    }
+                } catch (_) {
+                    continue;
+                }
+            }
+
+            // 2) quote API 作為備援：regularMarketPreviousClose
+            const yahooQuoteUrl = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${candidateSymbol}`;
+            for (const proxyBase of shuffledProxies) {
+                if (isProxyInCooldown(proxyBase)) continue;
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 8000);
+                    let finalUrl;
+                    if (proxyBase.includes('r.jina.ai')) {
+                        const cleaned = yahooQuoteUrl.replace(/^https?:\/\//, '');
+                        finalUrl = `${proxyBase}${cleaned}`;
+                    } else {
+                        finalUrl = `${proxyBase}${encodeURIComponent(yahooQuoteUrl)}`;
+                    }
+                    const resp = await fetch(finalUrl, { signal: controller.signal });
+                    clearTimeout(timeoutId);
+                    if (!resp) continue;
+                    if (resp.status === 429 || resp.status === 403) {
+                        markProxyRateLimited(proxyBase);
+                        continue;
+                    }
+                    if (!resp.ok) continue;
+                    const text = await resp.text();
+                    let raw = text;
+                    try {
+                        const wrapped = JSON.parse(text);
+                        if (wrapped && typeof wrapped === 'object' && typeof wrapped.contents === 'string') {
+                            raw = wrapped.contents;
+                        }
+                    } catch (_) {}
+                    const data = JSON.parse(raw);
+                    const prev = data?.quoteResponse?.result?.[0]?.regularMarketPreviousClose || null;
+                    if (prev && prev > 0) {
+                        saveStockPreviousClosePrice(stockCode, prev);
+                        return prev;
+                    }
+                } catch (_) {
+                    continue;
+                }
+            }
+        }
+        return null;
+    } finally {
+        pendingPrevCloseFetch.delete(stockCode);
+    }
+}
 
 function isLocalQuoteProxyInCooldown() {
     if (quoteProxyAvailability.reachable !== false) return false;
@@ -3101,6 +3314,66 @@ window.findStockName = function(code) {
     return null;
 };
 
+// 摘要按鈕切換（投資總覽）
+function initSummaryToggle() {
+    const toggleBtn = document.getElementById('summaryToggleBtn');
+    const overviewGrid = document.getElementById('overviewSummaryGrid');
+    if (!toggleBtn || !overviewGrid) return;
+    toggleBtn.addEventListener('click', () => {
+        const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+        const next = !isOpen;
+        toggleBtn.setAttribute('aria-expanded', String(next));
+        overviewGrid.style.display = next ? 'grid' : 'none';
+    });
+}
+
+// 檢查並執行到期的預約買入
+function checkScheduledBuys() {
+    const todayStr = new Date().toISOString().split('T')[0];
+    let scheduled = JSON.parse(localStorage.getItem(SCHEDULED_BUY_STORAGE_KEY) || '[]');
+    if (!Array.isArray(scheduled) || scheduled.length === 0) return;
+    
+    const due = [];
+    const pending = [];
+    scheduled.forEach(item => {
+        const dateStr = item.date;
+        if (dateStr && dateStr <= todayStr) {
+            due.push(item);
+        } else {
+            pending.push(item);
+        }
+    });
+    
+    if (due.length === 0) return;
+    
+    let records = JSON.parse(localStorage.getItem('investmentRecords') || '[]');
+    const nowIso = new Date().toISOString();
+    due.forEach(item => {
+        records.push({
+            type: 'buy',
+            stockCode: item.stockCode,
+            stockName: item.stockName || item.stockCode,
+            date: item.date,
+            price: item.price,
+            shares: item.shares,
+            fee: item.fee || 0,
+            isDCA: item.isDCA || false,
+            note: item.note || '預約買入自動執行',
+            timestamp: nowIso,
+            scheduledId: item.id || null
+        });
+    });
+    
+    localStorage.setItem('investmentRecords', JSON.stringify(records));
+    localStorage.setItem(SCHEDULED_BUY_STORAGE_KEY, JSON.stringify(pending));
+    
+    // 更新顯示
+    updateInvestmentSummary();
+    updatePortfolioList();
+    updateInvestmentRecords();
+    updateStockSelects();
+}
+
 // 初始化投資專區頁面
 function initInvestmentPage() {
     // 顯示投資總覽頁面
@@ -3161,6 +3434,17 @@ function initInvestmentPage() {
     if (dividendDate && !dividendDate.value) {
         dividendDate.value = new Date().toISOString().split('T')[0];
     }
+    
+    // 摘要按鈕切換
+    initSummaryToggle();
+    // 檢查預約買入
+    checkScheduledBuys();
+    
+    // 載入投資紀錄
+    updateInvestmentRecords();
+    
+    // 更新投資總覽
+    updateInvestmentOverview();
     
     // 初始化買入按鈕
     const buyBtn = document.getElementById('investmentBuyBtn');
@@ -3880,7 +4164,7 @@ async function autoLoadStockPrices() {
                     continue;
                 }
 
-                const price = await fetchStockPrice(code);
+                const price = await fetchStockPrice(code, { allowPrompt: false });
                 if (price) {
                     successCount++;
                     console.log(`成功獲取 ${code} 價格: ${price}`);
@@ -4506,6 +4790,7 @@ function initBuyForm() {
             const buyFee = parseFloat(document.getElementById('buyFee').value) || 0;
             const isDCA = document.getElementById('isDCA').checked;
             const buyNote = document.getElementById('buyNote').value.trim();
+            const todayStr = new Date().toISOString().split('T')[0];
             
             if (!stockCode || !buyDate || !buyPrice || !buyShares) {
                 alert('請填寫所有必填欄位');
@@ -4517,23 +4802,42 @@ function initBuyForm() {
                     return;
             }
             
-            const buyRecord = {
-                type: 'buy',
-                stockCode: stockCode,
-                stockName: stockCode, // 可以後續擴展為股票名稱查詢
-                date: buyDate,
-                price: buyPrice,
-                shares: buyShares,
-                fee: buyFee,
-                isDCA: isDCA,
-                note: buyNote,
-                timestamp: new Date().toISOString()
-            };
-            
-            // 儲存記錄
-            let records = JSON.parse(localStorage.getItem('investmentRecords') || '[]');
-            records.push(buyRecord);
-            localStorage.setItem('investmentRecords', JSON.stringify(records));
+            const timestamp = new Date().toISOString();
+            // 如果日期在未來，儲存為預約買入，不立即出現在紀錄
+            if (buyDate > todayStr) {
+                const scheduled = JSON.parse(localStorage.getItem(SCHEDULED_BUY_STORAGE_KEY) || '[]');
+                scheduled.push({
+                    id: timestamp,
+                    type: 'buy',
+                    stockCode,
+                    stockName: stockCode,
+                    date: buyDate,
+                    price: buyPrice,
+                    shares: buyShares,
+                    fee: buyFee,
+                    isDCA,
+                    note: buyNote || '預約買入'
+                });
+                localStorage.setItem(SCHEDULED_BUY_STORAGE_KEY, JSON.stringify(scheduled));
+            } else {
+                const buyRecord = {
+                    type: 'buy',
+                    stockCode: stockCode,
+                    stockName: stockCode, // 可以後續擴展為股票名稱查詢
+                    date: buyDate,
+                    price: buyPrice,
+                    shares: buyShares,
+                    fee: buyFee,
+                    isDCA: isDCA,
+                    note: buyNote,
+                    timestamp
+                };
+                
+                // 儲存記錄
+                let records = JSON.parse(localStorage.getItem('investmentRecords') || '[]');
+                records.push(buyRecord);
+                localStorage.setItem('investmentRecords', JSON.stringify(records));
+            }
             
             // 重置表單
             document.getElementById('stockCode').value = '';
@@ -4543,11 +4847,15 @@ function initBuyForm() {
             document.getElementById('isDCA').checked = false;
             document.getElementById('buyNote').value = '';
             
-            // 更新顯示
-            updateInvestmentSummary();
-            updatePortfolioList();
-            updateInvestmentRecords();
-            updateStockSelects();
+            // 即時更新只在立即買入時
+            if (buyDate <= todayStr) {
+                updateInvestmentSummary();
+                updatePortfolioList();
+                updateInvestmentRecords();
+                updateStockSelects();
+                // 更新投資總覽
+                updateInvestmentOverview();
+            }
             
             // 返回投資總覽頁面
             const overview = document.getElementById('investmentOverview');
@@ -4555,10 +4863,7 @@ function initBuyForm() {
             if (overview) overview.style.display = 'block';
             if (buyForm) buyForm.style.display = 'none';
             
-            // 更新投資總覽
-            updateInvestmentOverview();
-            
-            alert('買入記錄已儲存！');
+            alert(buyDate > todayStr ? `已預約 ${buyDate} 買入！到期會自動入帳並顯示。` : '買入記錄已儲存！');
         });
     }
 }
@@ -4914,6 +5219,17 @@ function getStockCurrentPrice(stockCode) {
     return null;
 }
 
+// 取得完整的價格資料（含 timestamp / isManual）
+function getStockPriceData(stockCode) {
+    const stockPrices = JSON.parse(localStorage.getItem('stockCurrentPrices') || '{}');
+    const priceData = stockPrices[stockCode];
+    if (!priceData) return null;
+    if (typeof priceData === 'number') {
+        return { price: priceData, timestamp: null, isManual: false };
+    }
+    return priceData;
+}
+
 // 檢查是否有今天手動輸入的價格
 function hasManualPriceToday(stockCode) {
     const stockPrices = JSON.parse(localStorage.getItem('stockCurrentPrices') || '{}');
@@ -5107,13 +5423,22 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
 }
 
  // 從 API 獲取股票現價
- async function fetchStockPrice(stockCode) {
-     // 檢查是否有今天手動輸入的價格，如果有則跳過網絡請求
-     if (hasManualPriceToday(stockCode)) {
-         const manualPrice = getStockCurrentPrice(stockCode);
-         console.log(`📝 ${stockCode} 今天已有手動輸入的價格 (NT$${manualPrice.toFixed(2)})，跳過自動更新`);
-         return manualPrice;
-     }
+ async function fetchStockPrice(stockCode, options = {}) {
+     const { allowPrompt = true, maxAgeMs = 6 * 60 * 60 * 1000 } = options;
+    // 檢查是否有今天手動輸入的價格，如果有則跳過網絡請求
+    if (hasManualPriceToday(stockCode)) {
+        const manualPrice = getStockCurrentPrice(stockCode);
+        console.log(`📝 ${stockCode} 今天已有手動輸入的價格 (NT$${manualPrice.toFixed(2)})，跳過自動更新`);
+        return manualPrice;
+    }
+
+    // 若本地緩存價格仍新鮮，直接使用（減少外部請求）
+    if (maxAgeMs && maxAgeMs > 0) {
+        const cached = getStockPriceData(stockCode);
+        if (cached && cached.price && cached.timestamp && Date.now() - cached.timestamp < maxAgeMs) {
+            return cached.price;
+        }
+    }
      
      try {
         // 處理債券 ETF 和特殊格式
@@ -5215,14 +5540,16 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
             }
         }
 
-        // 2) Public proxy fallback for ALL symbols
-        for (const candidateSymbol of symbolCandidates) {
-            const yahooChartUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${candidateSymbol}?interval=1d&range=1d`;
-            const currentPrice = await fetchYahooChartViaPublicProxies(yahooChartUrl, stockCode);
-            if (currentPrice && currentPrice > 0) {
-                saveStockCurrentPrice(stockCode, currentPrice, false);
-                console.log(`✓ 透過公開代理成功獲取 ${stockCode} 價格: ${currentPrice}`);
-                return currentPrice;
+        // 2) Public proxy fallback for ALL symbols，附加輕量重試
+        for (let attempt = 0; attempt < 2; attempt++) {
+            for (const candidateSymbol of symbolCandidates) {
+                const yahooChartUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${candidateSymbol}?interval=1d&range=1d`;
+                const currentPrice = await fetchYahooChartViaPublicProxies(yahooChartUrl, stockCode);
+                if (currentPrice && currentPrice > 0) {
+                    saveStockCurrentPrice(stockCode, currentPrice, false);
+                    console.log(`✓ 透過公開代理成功獲取 ${stockCode} 價格: ${currentPrice}`);
+                    return currentPrice;
+                }
             }
         }
 
@@ -5301,7 +5628,7 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
         const hasManualToday = hasManualPriceToday(stockCode);
         
         // 顯示友好的提示框（如果今天還沒有手動輸入過價格）
-        if (!hasManualToday) {
+        if (allowPrompt && !hasManualToday) {
             const stockName = findStockName(stockCode) || stockCode;
             const isBondETF = stockCode.endsWith('B');
 
@@ -5500,10 +5827,17 @@ function updateInvestmentSummary() {
     const unrealizedPnlEl = document.getElementById('unrealizedPnl');
     const yearDividendEl = document.getElementById('yearDividend');
     const annualReturnEl = document.getElementById('annualReturn');
+    const summaryToggleInvested = document.getElementById('summaryToggleInvested');
+    const summaryTogglePnl = document.getElementById('summaryTogglePnl');
+    const summaryToggleReturn = document.getElementById('summaryToggleReturn');
+    const summaryToggleDividend = document.getElementById('summaryToggleDividend');
     
     if (totalInvestedEl) {
         const roundedTotalInvested = Math.round(totalInvested);
         totalInvestedEl.textContent = `NT$${roundedTotalInvested.toLocaleString('zh-TW', { maximumFractionDigits: 0 })}`;
+        if (summaryToggleInvested) {
+            summaryToggleInvested.textContent = `NT$${roundedTotalInvested.toLocaleString('zh-TW')}`;
+        }
     }
     if (totalMarketValueEl) {
         const roundedTotalMarketValue = Math.round(totalMarketValue);
@@ -5513,15 +5847,26 @@ function updateInvestmentSummary() {
         const roundedUnrealizedPnl = Math.round(unrealizedPnl);
         unrealizedPnlEl.textContent = `NT$${roundedUnrealizedPnl.toLocaleString('zh-TW', { maximumFractionDigits: 0 })}`;
         unrealizedPnlEl.className = `summary-value auto-size ${unrealizedPnl >= 0 ? 'positive' : 'negative'}`;
+        if (summaryTogglePnl) {
+            summaryTogglePnl.textContent = `${unrealizedPnl >= 0 ? '+' : ''}${Math.round(unrealizedPnl).toLocaleString('zh-TW')}`;
+            summaryTogglePnl.className = `summary-toggle__metric-value ${unrealizedPnl > 0 ? 'positive' : (unrealizedPnl < 0 ? 'negative' : 'neutral')}`;
+        }
     }
     if (yearDividendEl) {
         yearDividendEl.textContent = `NT$${yearDividend.toLocaleString('zh-TW')}`;
+        if (summaryToggleDividend) {
+            summaryToggleDividend.textContent = `NT$${yearDividend.toLocaleString('zh-TW')}`;
+        }
     }
     if (annualReturnEl) {
         if (annualReturn !== null && !isNaN(annualReturn) && isFinite(annualReturn)) {
             const returnValue = (annualReturn * 100).toFixed(2);
             annualReturnEl.textContent = `${returnValue >= 0 ? '+' : ''}${returnValue}%`;
             annualReturnEl.className = `summary-value ${annualReturn >= 0 ? 'positive' : 'negative'}`;
+            if (summaryToggleReturn) {
+                summaryToggleReturn.textContent = `${returnValue >= 0 ? '+' : ''}${returnValue}%`;
+                summaryToggleReturn.className = `summary-toggle__metric-value ${annualReturn > 0 ? 'positive' : (annualReturn < 0 ? 'negative' : 'neutral')}`;
+            }
         } else {
             // 檢查為什麼無法計算
             const buyRecords = records.filter(r => r.type === 'buy');
@@ -5552,6 +5897,10 @@ function updateInvestmentSummary() {
                 }
             }
             annualReturnEl.className = 'summary-value';
+            if (summaryToggleReturn) {
+                summaryToggleReturn.textContent = '--';
+                summaryToggleReturn.className = 'summary-toggle__metric-value neutral';
+            }
         }
     }
 }
@@ -16616,6 +16965,19 @@ function updateStockList() {
         // 計算未實現損益（使用保存的當前價格，如果沒有則使用平均成本）
         const currentPrice = getStockCurrentPrice(stock.stockCode) || stock.avgCost;
         const previousClose = getStockPreviousClosePrice(stock.stockCode);
+        // 若昨收缺失，背景嘗試補抓，避免顯示 --
+        if (!previousClose) {
+            fetchPreviousCloseOnly(stock.stockCode).then((prev) => {
+                if (prev) {
+                    // 略微延遲刷新，避免頻繁重繪
+                    setTimeout(() => {
+                        try {
+                            updateStockList();
+                        } catch (_) {}
+                    }, 120);
+                }
+            });
+        }
         const marketValue = (currentPrice || 0) * (stock.shares || 0);
         const unrealizedPnl = marketValue - (stock.totalCost || 0);
         const isPositive = unrealizedPnl >= 0;
@@ -16632,6 +16994,7 @@ function updateStockList() {
             : null;
         const isDailyPositive = dailyChange != null ? dailyChange >= 0 : true;
         const displayPrice = (currentPrice != null && currentPrice !== 0 ? currentPrice : 0).toFixed(2);
+        const displayPrevClose = (previousClose != null && previousClose > 0 ? previousClose : null);
         const displayAvg = (stock.avgCost != null && stock.avgCost !== 0 ? stock.avgCost : 0).toFixed(2);
         const displayPnl = Math.abs(unrealizedPnl).toLocaleString('zh-TW');
 
@@ -16652,10 +17015,14 @@ function updateStockList() {
                     </div>
                     <div class="stock-grid-card-price">
                         <div class="stock-grid-card-price-value">
-                            <span class="stock-grid-card-price-number">${displayPrice}</span>
+                            <span class="stock-grid-card-price-number">${formatNumber(currentPrice || 0, 2)}</span>
+                            <span class="stock-grid-card-price-unit">現價</span>
                             <span class="stock-grid-card-price-arrow ${priceArrowDir}">${priceArrowDir === 'up' ? '▲' : (priceArrowDir === 'down' ? '▼' : '')}</span>
                         </div>
-                        <div class="stock-grid-card-price-unit">NTD</div>
+                        <div class="stock-grid-card-price-sub">
+                            <span class="stock-grid-card-price-prev-label">昨收</span>
+                            <span class="stock-grid-card-price-prev">${displayPrevClose != null ? formatNumber(displayPrevClose, 2) : '--'}</span>
+                        </div>
                     </div>
                 </div>
 
@@ -16665,11 +17032,10 @@ function updateStockList() {
                     <span class="stock-grid-card-change-value">${displayDailyText}</span>
                 </div>
                 ` : ''}
-
                 <div class="stock-grid-card-tags">
-                    <div class="stock-grid-card-tag stock-grid-card-tag--shares">${stock.shares.toLocaleString('zh-TW')} 股</div>
-                    <div class="stock-grid-card-tag">均價 ${displayAvg}</div>
-                    <div class="stock-grid-card-tag ${isPositive ? 'positive' : 'negative'}">損益 ${isPositive ? '+' : ''}${displayPnl}</div>
+                    <div class="stock-grid-card-tag stock-grid-card-tag--shares">${stock.shares} 股</div>
+                    <div class="stock-grid-card-tag">均價 ${formatNumber(stock.avgCost || 0, 2)}</div>
+                    <div class="stock-grid-card-tag ${isPositive ? 'positive' : 'negative'}">${isPositive ? '損益 +' : '損益 '}${formatNumber(unrealizedPnl, 2)}</div>
                 </div>
             </div>
         `;
