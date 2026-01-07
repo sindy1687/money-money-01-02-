@@ -431,6 +431,8 @@
             </div>
         </div>
 
+        <h3 class="chart-section-title" style="margin-top: 12px;">帳務分析</h3>
+
         <!-- 圓餅圖：本月支出結構 -->
         <div class="chart-section">
             <h3 class="chart-section-title">本月支出結構</h3>
@@ -466,6 +468,36 @@
             </div>
             <div class="chart-insight" id="lineChartInsight"></div>
         </div>
+
+        <h3 class="chart-section-title" style="margin-top: 18px;">投資 / 股票分析</h3>
+
+        <!-- 股票持倉分佈 -->
+        <div class="chart-section">
+            <h3 class="chart-section-title">股票持倉分佈</h3>
+            <div class="chart-container">
+                <canvas id="stockAllocationChart"></canvas>
+            </div>
+            <div class="chart-insight" id="stockAllocationInsight"></div>
+        </div>
+
+        <!-- 股票持倉盈虧 -->
+        <div class="chart-section">
+            <h3 class="chart-section-title">股票持倉盈虧</h3>
+            <div class="chart-container">
+                <canvas id="stockPnlChart"></canvas>
+            </div>
+            <div class="chart-insight" id="stockPnlInsight"></div>
+        </div>
+
+        <!-- 股票交易分析（買入 / 賣出 / 股利） -->
+        <div class="chart-section">
+            <h3 class="chart-section-title">股票交易分析（近12月）</h3>
+            <div class="chart-container">
+                <canvas id="stockTradeChart"></canvas>
+            </div>
+            <div class="chart-insight" id="stockTradeInsight"></div>
+        </div>
+
     </div>
 
     <!-- 預算設定頁面 -->
