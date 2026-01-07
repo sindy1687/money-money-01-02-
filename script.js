@@ -11,8 +11,11 @@ if (typeof window !== 'undefined' && typeof window.applyAutoWidth !== 'function'
 
 // 股票交易分析（買入 / 賣出 / 股利）
 function updateStockTradeChart() {
-    const canvas = document.getElementById('stockTradeChart');
-    if (!canvas) return;
+    const sellCanvas = document.getElementById('stockTradeChartSell');
+    const divCanvas = document.getElementById('stockTradeChartDiv');
+    if (!sellCanvas || !divCanvas) return;
+    const sellSubtitle = sellCanvas.previousElementSibling; // 「賣出（收入）」文字
+    const divSubtitle = divCanvas.previousElementSibling;  // 「股利（收入）」文字
     const insightEl = document.getElementById('stockTradeInsight');
     const records = JSON.parse(localStorage.getItem('investmentRecords') || '[]');
 
@@ -46,77 +49,77 @@ function updateStockTradeChart() {
     const sellData = labels.map(k => monthly[k].sell);
     const divData = labels.map(k => monthly[k].dividend);
 
-    if ([...buyData, ...sellData, ...divData].every(v => v === 0)) {
-        if (stockTradeChartInstance) {
-            stockTradeChartInstance.destroy();
-            stockTradeChartInstance = null;
+    const destroyChart = (instanceSetter) => {
+        if (instanceSetter && instanceSetter.chart) {
+            instanceSetter.chart.destroy();
+            instanceSetter.chart = null;
         }
+    };
+
+    const divHasData = divData.some(v => v !== 0);
+    const sellHasData = sellData.some(v => v !== 0);
+    const buyHasData = buyData.some(v => v !== 0);
+
+    // 如果全為 0，清空並提示
+    if (![buyHasData, sellHasData, divHasData].some(Boolean)) {
+        destroyChart(stockTradeChartSellInstance);
+        destroyChart(stockTradeChartDivInstance);
+        if (sellSubtitle) sellSubtitle.style.display = 'none';
+        sellCanvas.style.display = 'none';
+        if (divSubtitle) divSubtitle.style.display = 'none';
+        divCanvas.style.display = 'none';
         if (insightEl) insightEl.textContent = '近12月尚無交易';
         return;
     }
 
-    if (stockTradeChartInstance) {
-        stockTradeChartInstance.destroy();
+    // 清理舊圖表
+    destroyChart(stockTradeChartSellInstance);
+    destroyChart(stockTradeChartDivInstance);
+
+    // 顯示/隱藏賣出圖表
+    if (sellHasData) {
+        sellCanvas.style.display = '';
+        if (sellSubtitle) sellSubtitle.style.display = '';
+    } else {
+        destroyChart(stockTradeChartSellInstance);
+        sellCanvas.style.display = 'none';
+        if (sellSubtitle) sellSubtitle.style.display = 'none';
+    }
+
+    // 顯示/隱藏股利圖表
+    if (divHasData) {
+        divCanvas.style.display = '';
+        if (divSubtitle) divSubtitle.style.display = '';
+    } else {
+        destroyChart(stockTradeChartDivInstance);
+        divCanvas.style.display = 'none';
+        if (divSubtitle) divSubtitle.style.display = 'none';
     }
 
     const primary = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim() || '#ff69b4';
+    const primaryLight = getComputedStyle(document.documentElement).getPropertyValue('--color-primary-light').trim() || primary;
     const success = getComputedStyle(document.documentElement).getPropertyValue('--color-success').trim() || '#10b981';
     const danger = getComputedStyle(document.documentElement).getPropertyValue('--color-danger').trim() || '#ef4444';
     const borderLight = getComputedStyle(document.documentElement).getPropertyValue('--border-light').trim() || '#e5e7eb';
     const textSecondary = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim() || '#6b7280';
 
-    stockTradeChartInstance = new Chart(canvas, {
+    const commonOptions = {
         type: 'bar',
-        data: {
-            labels,
-            datasets: [
-                {
-                    label: '買入（支出）',
-                    data: buyData,
-                    backgroundColor: danger,
-                    borderColor: danger,
-                    borderWidth: 1,
-                    borderRadius: 6,
-                    barThickness: 12,
-                    stack: 'trade'
-                },
-                {
-                    label: '賣出（收入）',
-                    data: sellData,
-                    backgroundColor: primary,
-                    borderColor: primary,
-                    borderWidth: 1,
-                    borderRadius: 6,
-                    barThickness: 12,
-                    stack: 'trade'
-                },
-                {
-                    label: '股利（收入）',
-                    data: divData,
-                    backgroundColor: success,
-                    borderColor: success,
-                    borderWidth: 1,
-                    borderRadius: 6,
-                    barThickness: 12,
-                    stack: 'trade'
-                }
-            ]
-        },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
+                legend: { display: false },
                 tooltip: {
                     callbacks: {
                         label: function(ctx) {
-                            return `${ctx.dataset.label}: NT$${ctx.parsed.y.toLocaleString('zh-TW')}`;
+                            return `NT$${ctx.parsed.y.toLocaleString('zh-TW')}`;
                         }
                     }
                 }
             },
             scales: {
                 y: {
-                    stacked: true,
                     ticks: {
                         callback: function(value) {
                             return 'NT$' + value.toLocaleString('zh-TW');
@@ -126,13 +129,52 @@ function updateStockTradeChart() {
                     grid: { color: borderLight }
                 },
                 x: {
-                    stacked: true,
                     ticks: { color: textSecondary, maxRotation: 45 },
                     grid: { display: false }
                 }
             }
         }
-    });
+    };
+
+    if (sellHasData) {
+        stockTradeChartSellInstance = {
+            chart: new Chart(sellCanvas, {
+                ...commonOptions,
+                data: {
+                    labels,
+                    datasets: [{
+                        label: '💜 賣出（收入）',
+                        data: sellData,
+                        backgroundColor: primary,
+                        borderColor: primary,
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        barThickness: 12,
+                    }]
+                }
+            })
+        };
+    }
+
+    if (divHasData) {
+        stockTradeChartDivInstance = {
+            chart: new Chart(divCanvas, {
+                ...commonOptions,
+                data: {
+                    labels,
+                    datasets: [{
+                        label: '💰 股利（收入）',
+                        data: divData,
+                        backgroundColor: primaryLight || success,
+                        borderColor: primaryLight || success,
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        barThickness: 12,
+                    }]
+                }
+            })
+        };
+    }
 
     if (insightEl) {
         const totalBuy = buyData.reduce((a, b) => a + b, 0);
@@ -6732,7 +6774,13 @@ style.textContent = `
 document.head.appendChild(style);
 
 // ========== 底部導航初始化 ==========
+function showBottomNav() {
+    const bottomNav = document.querySelector('.bottom-nav');
+    if (bottomNav) bottomNav.style.display = 'flex';
+}
+
 function initBottomNav() {
+    showBottomNav();
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', () => {
             // 檢查分類管理頁面是否顯示，如果顯示則不執行切換
@@ -6742,6 +6790,7 @@ function initBottomNav() {
             }
             
             const page = item.dataset.page;
+            showBottomNav();
             
             // 更新導航狀態
             document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
@@ -8744,11 +8793,15 @@ function getCategoryIcon(category) {
 // 圖表實例
 let pieChartInstance = null;
 let barChartInstance = null;
-let lineChartInstance = null;
 let monthCompareChartInstance = null;
-let stockAllocationChartInstance = null;
+let lineChartInstance = null;
+let stockTradeChartSellInstance = null;
+let stockTradeChartDivInstance = null;
 let stockPnlChartInstance = null;
-let stockTradeChartInstance = null;
+let stockAllocationChartInstance = null;
+let stockSectorChartInstance = null;
+let stockCurrencyChartInstance = null;
+let chartTabInited = false;
 
 // 提供理財建議
 function provideFinancialAdvice(records) {
@@ -9386,8 +9439,35 @@ function getCategoryIcon(category) {
 
 // 初始化圖表頁面
 function initChart() {
+    setupChartTabs();
     // 初始化所有圖表
     updateAllCharts();
+}
+
+function setupChartTabs() {
+    if (chartTabInited) return;
+    const tabExpense = document.getElementById('chartTabExpense');
+    const tabInvestment = document.getElementById('chartTabInvestment');
+    const pageExpense = document.getElementById('chartExpensePage');
+    const pageInvestment = document.getElementById('chartInvestmentPage');
+    if (!tabExpense || !tabInvestment || !pageExpense || !pageInvestment) return;
+
+    const activate = (target) => {
+        const showExpense = target === 'expense';
+        tabExpense.classList.toggle('active', showExpense);
+        tabInvestment.classList.toggle('active', !showExpense);
+        pageExpense.classList.toggle('chart-page--active', showExpense);
+        pageInvestment.classList.toggle('chart-page--active', !showExpense);
+        // 重繪圖表避免尺寸錯誤
+        if (typeof updateAllCharts === 'function') {
+            setTimeout(() => updateAllCharts(), 30);
+        }
+    };
+
+    tabExpense.addEventListener('click', () => activate('expense'));
+    tabInvestment.addEventListener('click', () => activate('investment'));
+    activate('expense');
+    chartTabInited = true;
 }
 
 // 更新所有圖表
@@ -11271,8 +11351,17 @@ function closeNextMonthBillsPage() {
 
     const bottomNav = document.querySelector('.bottom-nav');
     if (bottomNav) {
-        // dailyBudget / nextMonthBills 頁面都不顯示底部導航
-        bottomNav.style.display = (returnId === 'pageLedger' || returnId === 'pageChart' || returnId === 'pageBudget' || returnId === 'pageSettings') ? 'flex' : 'none';
+        // dailyBudget / nextMonthBills 頁面不顯示；其他主頁恢復底部導航
+        const showNavIds = [
+            'pageLedger',
+            'pageChart',
+            'pageBudget',
+            'pageSettings',
+            'pageInvestment',
+            'pageWallet',
+            'pageMonthlyPlanner'
+        ];
+        bottomNav.style.display = showNavIds.includes(returnId) ? 'flex' : 'none';
     }
 }
 
@@ -17712,14 +17801,37 @@ function updateStockRecords(stockCode) {
         bindRecordOverflowMenu(sellList);
     }
     
-    // 股息記錄
-    const dividendRecords = stockRecords.filter(r => r.type === 'dividend');
+    // 股息記錄（排序：最新在前）
+    const dividendRecords = stockRecords
+        .filter(r => r.type === 'dividend')
+        .sort((a, b) => {
+            const timeA = new Date(a.timestamp || a.date || 0).getTime();
+            const timeB = new Date(b.timestamp || b.date || 0).getTime();
+            return timeB - timeA;
+        });
     const dividendList = document.getElementById('dividendRecordList');
     if (dividendList) {
-        let html = '';
-        
-        // 添加增加股息按鈕（無論是否有記錄都顯示）
-        html += `
+        // 先取舊值以便重新渲染後保留使用者輸入
+        const currentYearValue = (dividendList.querySelector('#dividendYearFilter') || {}).value || '';
+        const yearTrimmed = currentYearValue.trim();
+        const hasYearFilter = yearTrimmed.length > 0;
+        const isYearValid = /^\d{4}$/.test(yearTrimmed);
+        const yearKey = hasYearFilter && isYearValid ? yearTrimmed : null;
+        const filteredDividend = hasYearFilter
+            ? (isYearValid
+                ? dividendRecords.filter(r => {
+                    const exYear = String(r.exDividendDate || '').slice(0, 4);
+                    return exYear === yearKey;
+                })
+                : [])
+            : dividendRecords;
+
+        const yearEscaped = (currentYearValue || '').replace(/"/g, '&quot;');
+
+        let html = `
+            <div class="record-search">
+                <input type="text" id="dividendYearFilter" class="record-search-input" placeholder="除息年份（全部）" value="${yearEscaped}" aria-label="依除息年份篩選，例如 2024">
+            </div>
             <div class="dividend-add-btn-container">
                 <button class="dividend-quick-add-btn" data-stock-code="${stockCode}">
                     <span class="dividend-quick-add-icon">➕</span>
@@ -17728,21 +17840,35 @@ function updateStockRecords(stockCode) {
             </div>
         `;
         
-        if (dividendRecords.length === 0) {
+        if (filteredDividend.length === 0) {
             html += `
                 <div class="dividend-empty-state">
                     <div class="dividend-empty-icon">
                         <img src="./image/1.png" alt="股息" style="width: 83px; height: 83px; opacity: 0.5; object-fit: contain;">
                     </div>
-                    <div class="dividend-empty-text">尚無股息記錄</div>
-                    <div class="dividend-empty-hint">點擊上方按鈕開始記錄股息</div>
+                    <div class="dividend-empty-text">${hasYearFilter ? '該年份沒有除息日記錄' : '尚無股息記錄'}</div>
+                    <div class="dividend-empty-hint">${hasYearFilter ? '請確認除息年份或清空篩選' : '點擊上方按鈕開始記錄股息'}</div>
                 </div>
             `;
         } else {
-            html += dividendRecords.map(r => createRecordCard(r)).join('');
+            html += filteredDividend.map(r => createRecordCard(r)).join('');
         }
         
         dividendList.innerHTML = html;
+        
+        // 重新綁定新的輸入欄位
+        const newYearInput = dividendList.querySelector('#dividendYearFilter');
+        if (newYearInput && !newYearInput.dataset.bound) {
+            const handleYearFilter = () => {
+                const val = (newYearInput.value || '').trim();
+                if (val === '' || /^\d{4}$/.test(val)) {
+                    updateStockRecords(stockCode);
+                }
+            };
+            newYearInput.addEventListener('change', handleYearFilter);
+            newYearInput.addEventListener('input', handleYearFilter);
+            newYearInput.dataset.bound = '1';
+        }
         
         // 綁定快捷按鈕事件
         const quickAddBtn = dividendList.querySelector('.dividend-quick-add-btn');
@@ -17791,7 +17917,7 @@ function createRecordCard(record) {
             <div class="record-card ${isDividendReinvest ? 'dividend-reinvest' : ''} ${isDCA ? 'dca-invest' : ''}" data-record-id="${recordId}">
                 <div class="record-card-header">
                     <div class="record-card-headline">
-                        <span class="record-card-type buy ${isDividendReinvest ? 'dividend-reinvest-badge' : ''} ${isDCA ? 'dca-badge' : ''}" data-stock-code="${record.stockCode || ''}" data-stock-name="${record.stockName || ''}" data-price="${price}" data-shares="${shares}" data-fee="${record.fee || 0}" data-isdca="${isDCA ? '1' : '0'}" title="再買一次">${isDividendReinvest ? '💰 股利購買' : isDCA ? '📅 定期定額' : '買入'}</span>
+                        <span class="record-card-type buy ${isDividendReinvest ? 'dividend-reinvest-badge' : ''} ${isDCA ? 'dca-badge' : ''}" data-stock-code="${record.stockCode || ''}" data-stock-name="${record.stockName || ''}" data-price="${price}" data-shares="${shares}" data-fee="${record.fee || 0}" data-isdca="${isDCA ? '1' : '0'}" title="再買一次">${isDividendReinvest ? '💰 股利購買' : isDCA ? '📅 定期定額' : '📈 買入'}</span>
                         <span class="record-card-date">${record.date}</span>
                     </div>
                     ${renderRecordActionButtons(recordId)}
@@ -17814,7 +17940,7 @@ function createRecordCard(record) {
             <div class="record-card" data-record-id="${recordId}">
                 <div class="record-card-header">
                     <div class="record-card-headline">
-                        <span class="record-card-type sell">賣出</span>
+                        <span class="record-card-type sell">🔻 賣出</span>
                         <span class="record-card-date">${record.date}</span>
                     </div>
                     ${renderRecordActionButtons(recordId)}
@@ -17832,11 +17958,13 @@ function createRecordCard(record) {
             </div>
         `;
     } else if (record.type === 'dividend') {
+        const exMonth = record.exDividendDate ? record.exDividendDate.slice(0, 7) : '';
+        const payMonth = record.date ? String(record.date).slice(0, 7) : '';
         return `
             <div class="record-card" data-record-id="${recordId}">
                 <div class="record-card-header">
                     <div class="record-card-headline">
-                        <span class="record-card-type dividend">${record.dividendType === 'cash' ? '現金股利' : '股票股利'}</span>
+                        <span class="record-card-type dividend">${record.dividendType === 'cash' ? '💰 現金股利' : '🪙 股票股利'}</span>
                         <span class="record-card-date">${record.date}</span>
                     </div>
                     ${renderRecordActionButtons(recordId)}
@@ -17845,6 +17973,7 @@ function createRecordCard(record) {
                     <div>每股：NT$${(record.perShare != null ? record.perShare : 0).toFixed(2)}</div>
                     <div>股數：${record.shares || 0} 股</div>
                     ${record.exDividendDate ? `<div>除息日：${record.exDividendDate}</div>` : ''}
+                    ${record.date ? `<div>領息日：${record.date}</div>` : ''}
                     ${record.historicalPerShare ? `<div>過去每股：NT$${Number(record.historicalPerShare).toFixed(2)}</div>` : ''}
                     ${record.reinvest ? '<div>再投入 ✓</div>' : ''}
                 </div>
