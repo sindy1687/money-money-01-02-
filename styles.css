@@ -10312,6 +10312,53 @@ width: 100%;
     background: linear-gradient(135deg, #fff9e6 0%, #fff5d6 100%);
     box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4), 0 2px 8px rgba(255, 215, 0, 0.2);
     position: relative;
+    color: #3b2a0d;
+}
+
+[data-theme]:not([data-theme*="dark"]) .record-card.dividend-reinvest .record-card-type,
+[data-theme]:not([data-theme*="dark"]) .record-card.dividend-reinvest .record-card-title,
+[data-theme]:not([data-theme*="dark"]) .record-card.dividend-reinvest .record-card-content,
+[data-theme]:not([data-theme*="dark"]) .record-card.dividend-reinvest .record-details,
+[data-theme]:not([data-theme*="dark"]) .record-card.dividend-reinvest .record-amount,
+[data-theme]:not([data-theme*="dark"]) .record-card.dividend-reinvest .record-meta,
+[data-theme]:not([data-theme*="dark"]) .record-card.dividend-reinvest .dividend-reinvest-label {
+    color: #3b2a0d;
+}
+
+[data-theme*="dark"] .record-card.dividend-reinvest {
+    background: linear-gradient(140deg, rgba(255, 249, 230, 0.92) 0%, rgba(255, 237, 196, 0.9) 100%);
+    border-color: #f1c550;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #3b2a0d;
+}
+
+[data-theme*="dark"] .record-card.dividend-reinvest .record-card-type,
+[data-theme*="dark"] .record-card.dividend-reinvest .record-card-title,
+[data-theme*="dark"] .record-card.dividend-reinvest .record-card-content,
+[data-theme*="dark"] .record-card.dividend-reinvest .record-details,
+[data-theme*="dark"] .record-card.dividend-reinvest .record-amount,
+[data-theme*="dark"] .record-card.dividend-reinvest .record-meta,
+[data-theme*="dark"] .record-card.dividend-reinvest .dividend-reinvest-label,
+[data-theme*="dark"] .record-card.dividend-reinvest .record-details div,
+[data-theme*="dark"] .record-card.dividend-reinvest .record-amount,
+[data-theme*="dark"] .record-card.dividend-reinvest .record-date {
+    color: #3b2a0d;
+    text-shadow: none;
+}
+
+.record-card.dividend-reinvest .record-card-details > div,
+.record-card.dividend-reinvest .record-card-amount,
+.record-card.dividend-reinvest .dividend-reinvest-label,
+.record-card.dividend-reinvest .record-card-date {
+    background: rgba(255, 255, 255, 0.6);
+    color: #3b2a0d;
+}
+
+[data-theme*="dark"] .record-card.dividend-reinvest .record-card-details > div,
+[data-theme*="dark"] .record-card.dividend-reinvest .record-card-amount,
+[data-theme*="dark"] .record-card.dividend-reinvest .dividend-reinvest-label,
+[data-theme*="dark"] .record-card.dividend-reinvest .record-card-date {
+    background: rgba(255, 255, 255, 0.4);
 }
 
 .record-card.dividend-reinvest::before {
@@ -10320,6 +10367,10 @@ width: 100%;
 
 .record-card.dividend-reinvest::after {
     background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+}
+
+[data-theme*="dark"] .record-card.dividend-reinvest::after {
+    background: linear-gradient(90deg, transparent, rgba(245, 224, 164, 0.2), transparent);
 }
 
 .record-card.dividend-reinvest:hover {
