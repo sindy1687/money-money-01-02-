@@ -15298,7 +15298,27 @@ const themes = [
         preview: 'linear-gradient(135deg, #140f26 0%, #f472b6 40%, #facc15 100%)',
         color: '#f97316'
     }
+    ,
+    {
+        id: 'money',
+        name: '金錢主題',
+        icon: '💰',
+        buttonIcon: '💰',
+        preview: 'linear-gradient(135deg, #dafbdc 0%, #66f1a1 60%, #16a34a 100%)',
+        color: '#16a34a'
+    }
 ];
+
+const themeAnimations = {
+    sakura: {
+        create: createSakuraPetals,
+        remove: removeSakuraPetals
+    },
+    money: {
+        create: createMoneyDrops,
+        remove: removeMoneyDrops
+    }
+};
 
 // 獲取當前主題
 function getCurrentTheme() {
@@ -15318,11 +15338,15 @@ function applyTheme(themeId) {
     updateThemeButtons(themeId);
     
     // 櫻花主題：創建飄落花瓣動畫
-    if (themeId === 'sakura') {
-        createSakuraPetals();
-    } else {
-        removeSakuraPetals();
-    }
+    Object.keys(themeAnimations).forEach(id => {
+        if (themeAnimations[id]) {
+            if (id === themeId) {
+                themeAnimations[id].create();
+            } else {
+                themeAnimations[id].remove();
+            }
+        }
+    });
     
     // 如果圖表頁面正在顯示，重新生成圖表以應用新主題顏色
     const pageChart = document.getElementById('pageChart');
@@ -15333,7 +15357,7 @@ function applyTheme(themeId) {
     }
 }
 
-// 創建櫻花花瓣動畫
+// 櫻花主題：創建飄落花瓣動畫
 function createSakuraPetals() {
     // 移除現有的花瓣
     removeSakuraPetals();
@@ -15360,6 +15384,53 @@ function removeSakuraPetals() {
     const container = document.getElementById('sakuraPetalContainer');
     if (container) {
         container.remove();
+    }
+}
+
+let moneyBagElement = null;
+let moneyLayerElement = null;
+
+// 金錢主題：創建飄落鈔票與金幣動畫
+function createMoneyDrops() {
+    removeMoneyDrops();
+
+    const bag = document.createElement('div');
+    bag.className = 'money-bag';
+    document.body.appendChild(bag);
+    moneyBagElement = bag;
+
+    const bagRect = bag.getBoundingClientRect();
+    const bagCenterX = bagRect.left + bagRect.width / 2;
+
+    const layer = document.createElement('div');
+    layer.className = 'money-particle-layer';
+    document.body.appendChild(layer);
+    moneyLayerElement = layer;
+
+    const viewportWidth = window.innerWidth;
+
+    for (let i = 0; i < 16; i++) {
+        const drop = document.createElement('div');
+        drop.className = 'money-drop';
+        const startLeft = Math.random() * (viewportWidth - 40) + 20;
+        drop.style.left = `${startLeft}px`;
+        const targetX = bagCenterX - startLeft;
+        drop.style.setProperty('--target-x', `${targetX}px`);
+        drop.style.animationDelay = `${Math.random() * 4}s`;
+        drop.style.animationDuration = `${6 + Math.random() * 4}s`;
+        layer.appendChild(drop);
+    }
+}
+
+// 移除金錢動畫
+function removeMoneyDrops() {
+    if (moneyLayerElement) {
+        moneyLayerElement.remove();
+        moneyLayerElement = null;
+    }
+    if (moneyBagElement) {
+        moneyBagElement.remove();
+        moneyBagElement = null;
     }
 }
 
@@ -16047,19 +16118,6 @@ function showThemeSelector() {
     
     const currentTheme = getCurrentTheme();
     const customTheme = getCustomTheme();
-    
-    // 預設顏色值
-    const defaultColors = {
-        primaryColor: customTheme.primaryColor || '#ff69b4',
-        buttonColor: customTheme.buttonColor || '#ff69b4',
-        boxColor: customTheme.boxColor || '#ffffff',
-        backgroundColor: customTheme.backgroundColor || 'linear-gradient(135deg, #ffeef5 0%, #fff5f9 100%)',
-        chartColor1: customTheme.chartColors?.[0] || '#ff69b4',
-        chartColor2: customTheme.chartColors?.[1] || '#ffb6d9',
-        chartColor3: customTheme.chartColors?.[2] || '#ffc0cb',
-        chartColor4: customTheme.chartColors?.[3] || '#ff1493',
-        chartColor5: customTheme.chartColors?.[4] || '#db7093'
-    };
 
     modal.innerHTML = `
         <div class="theme-custom-content modal-content-standard">
@@ -16074,69 +16132,6 @@ function showThemeSelector() {
                     <input id="themeSearchInput" class="theme-search-input" type="text" placeholder="搜尋主題..." autocomplete="off" />
                 </div>
                 <div id="themeGrid" class="theme-grid theme-grid--auto"></div>
-            </div>
-
-            <div class="theme-section theme-section--divider">
-                <div class="theme-section-title">自訂顏色</div>
-
-                <div class="theme-form">
-                    <div class="theme-field">
-                        <label class="theme-label">主色調（按鈕、邊框）</label>
-                        <div class="theme-field-row">
-                            <input type="color" id="primaryColorPicker" value="${defaultColors.primaryColor}" class="theme-color-picker">
-                            <input type="text" id="primaryColorText" value="${defaultColors.primaryColor}" class="theme-text-input">
-                        </div>
-                    </div>
-
-                    <div class="theme-field">
-                        <label class="theme-label">框的背景顏色</label>
-                        <div class="theme-field-row">
-                            <input type="color" id="boxColorPicker" value="${defaultColors.boxColor}" class="theme-color-picker">
-                            <input type="text" id="boxColorText" value="${defaultColors.boxColor}" class="theme-text-input">
-                        </div>
-                    </div>
-
-                    <div class="theme-field">
-                        <label class="theme-label">背景顏色</label>
-                        <div class="theme-field-row">
-                            <input type="color" id="backgroundColorPicker" value="#ffeef5" class="theme-color-picker">
-                            <input type="text" id="backgroundColorText" value="${defaultColors.backgroundColor}" placeholder="例如: #ffeef5 或 linear-gradient(...)" class="theme-text-input">
-                        </div>
-                        <div class="theme-help">支援顏色代碼或漸層（linear-gradient）</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="theme-section theme-section--divider">
-                <div class="theme-section-title">圖表顏色</div>
-                <div class="theme-form">
-                    ${[1, 2, 3, 4, 5].map(i => `
-                        <div class="theme-field">
-                            <label class="theme-label">圖表顏色 ${i}</label>
-                            <div class="theme-field-row">
-                                <input type="color" id="chartColor${i}Picker" value="${defaultColors[`chartColor${i}`]}" class="theme-color-picker">
-                                <input type="text" id="chartColor${i}Text" value="${defaultColors[`chartColor${i}`]}" class="theme-text-input">
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-
-            <div class="theme-section theme-section--divider">
-                <div class="theme-section-title">背景圖片</div>
-                <input type="file" id="backgroundImageInput" accept="image/*" style="display: none;">
-                <button id="uploadImageBtn" class="theme-primary-btn" type="button">📷 上傳背景圖片</button>
-                ${customTheme.backgroundImage ? `
-                    <div id="imagePreviewContainer" class="theme-image-preview">
-                        <img src="${customTheme.backgroundImage}" alt="背景預覽" class="theme-image-preview-img">
-                        <button id="removeImageBtn" class="theme-image-remove-btn" type="button">✕</button>
-                    </div>
-                ` : '<div id="imagePreviewContainer"></div>'}
-            </div>
-
-            <div class="theme-actions">
-                <button id="resetThemeBtn" class="theme-secondary-btn" type="button">重置</button>
-                <button id="saveThemeBtn" class="theme-primary-btn" type="button">儲存設定</button>
             </div>
         </div>
     `;
@@ -16349,9 +16344,7 @@ function initTheme() {
     // 確保按鈕圖標也被更新（延遲執行以確保DOM已載入）
     setTimeout(() => {
         updateThemeButtons(savedTheme);
-        // 如果是櫻花主題，確保動畫已創建並更新所有按鈕
         if (savedTheme === 'sakura') {
-            createSakuraPetals();
             updateSakuraButtons();
         }
     }, 100);
