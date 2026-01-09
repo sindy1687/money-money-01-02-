@@ -15409,10 +15409,15 @@ function createMoneyDrops() {
 
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight || 800;
+    const devicePixelRatio = window.devicePixelRatio || 1;
+    const isPortraitMobile = viewportWidth <= 820;
 
-    // 在小螢幕（特別是手機）上放慢掉落速度，避免動畫過快
-    const referenceHeight = 900;
-    const slowDownFactor = Math.min(1.8, Math.max(1, referenceHeight / Math.max(360, viewportHeight)));
+    // 依照螢幕高度/寬度與裝置像素密度放慢速度，確保手機上也有悠緩的掉落效果
+    const referenceHeight = 960;
+    const heightFactor = Math.max(1.2, referenceHeight / Math.max(420, viewportHeight));
+    const widthFactor = isPortraitMobile ? Math.max(1.1, 600 / Math.max(360, viewportWidth)) : 1;
+    const dprFactor = Math.min(1.5, devicePixelRatio);
+    const slowDownFactor = Math.min(3, heightFactor * widthFactor * dprFactor);
 
     for (let i = 0; i < 16; i++) {
         const drop = document.createElement('div');
@@ -15422,7 +15427,7 @@ function createMoneyDrops() {
         const targetX = bagCenterX - startLeft;
         drop.style.setProperty('--target-x', `${targetX}px`);
         drop.style.animationDelay = `${Math.random() * 4}s`;
-        const baseDuration = 6 + Math.random() * 4;
+        const baseDuration = 7 + Math.random() * 4.5;
         drop.style.animationDuration = `${(baseDuration * slowDownFactor).toFixed(2)}s`;
         layer.appendChild(drop);
     }
