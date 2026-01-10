@@ -19125,3 +19125,10 @@ body {
 :root.dark .record-card.dividend-reinvest {
     color: #fff9d2 !important;
 }
+/* 📱 手機保險設定：強制所有動畫變慢 */
+@media (max-width: 768px) {
+  * {
+    animation-duration: 4s !important;
+    transition-duration: 4s !important;
+  }
+}
