@@ -19132,3 +19132,10 @@ body {
     transition-duration: 4s !important;
   }
 }
+@media (max-width: 768px) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
