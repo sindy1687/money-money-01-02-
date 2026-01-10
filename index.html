@@ -143,13 +143,8 @@
             
             <!-- 圖片預覽 -->
             <div class="image-preview" id="imagePreview" style="display: none;">
-                <div class="image-preview-container" id="imagePreviewContainer">
-                    <!-- 圖片將由 JavaScript 動態生成 -->
-                </div>
-                <div class="image-preview-controls">
-                    <button class="image-add-btn" id="addImageBtn" title="添加更多圖片">➕</button>
-                    <span class="image-count" id="imageCount">0/5</span>
-                </div>
+                <img id="previewImage" src="" alt="預覽">
+                <button class="image-remove-btn" id="removeImageBtn">✕</button>
             </div>
 
             <!-- 金額顯示 -->
@@ -783,13 +778,6 @@
                     </div>
                 </div>
                 <div class="summary-card highlight">
-                    <div class="summary-icon">📊</div>
-                    <div class="summary-content">
-                        <div class="summary-label">總市值</div>
-                        <div class="summary-value" id="totalMarketValue">NT$0</div>
-                    </div>
-                </div>
-                <div class="summary-card highlight">
                     <div class="summary-icon">📈</div>
                     <div class="summary-content">
                         <div class="summary-label">未實現損益</div>
@@ -797,6 +785,13 @@
                     </div>
                 </div>
                 <div class="summary-card highlight">
+                    <div class="summary-icon">📊</div>
+                    <div class="summary-content">
+                        <div class="summary-label">總市值</div>
+                        <div class="summary-value" id="totalMarketValue">NT$0</div>
+                    </div>
+                </div>
+                <div class="summary-card highlight annual-return-card">
                     <div class="summary-icon">📊</div>
                     <div class="summary-content">
                         <div class="summary-label">年化報酬率</div>
@@ -810,11 +805,12 @@
                         <div class="summary-value" id="yearDividend">NT$0</div>
                     </div>
                 </div>
-                <div class="summary-card highlight">
-                    <div class="summary-icon">⚖️</div>
+                <div class="summary-card highlight full-width" id="investmentExpenseRatioCard" style="display: none;">
+                    <div class="summary-icon">📊</div>
                     <div class="summary-content">
-                        <div class="summary-label">股債占比</div>
-                        <div class="summary-value" id="stockBondSummaryValue">--</div>
+                        <div class="summary-label">投資 vs 生活支出比例</div>
+                        <div class="summary-value auto-size" id="investmentExpenseRatio">--</div>
+                        <div class="summary-hint" id="investmentExpenseRatioHint" style="font-size: 11px; color: var(--text-secondary); margin-top: 6px;"></div>
                     </div>
                 </div>
             </div>
