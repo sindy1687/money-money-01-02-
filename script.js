@@ -3420,6 +3420,21 @@ function initSaveButton() {
         // 獲取選中的圖片（收據）- 支援多張圖片
         const receiptImages = window.selectedReceiptImages || [];
         
+        // 驗證圖片數據 - 確保沒有損壞的圖片
+        const validReceiptImages = receiptImages.filter(img => {
+            if (typeof img !== 'string' || !img.startsWith('data:image/')) {
+                console.warn('發現無效的圖片數據，已移除:', img);
+                return false;
+            }
+            return true;
+        });
+        
+        // 如果有圖片被移除，更新全局變數
+        if (validReceiptImages.length !== receiptImages.length) {
+            window.selectedReceiptImages = validReceiptImages;
+            console.log(`清理了 ${receiptImages.length - validReceiptImages.length} 張無效圖片`);
+        }
+        
         // 創建記錄
         const record = {
             type: recordType,
@@ -3430,15 +3445,60 @@ function initSaveButton() {
             account: selectedAccount.id,
             emoji: selectedEmoji,
             member: selectedMember,
-            receiptImages: receiptImages, // 保存收據圖片陣列
+            receiptImages: validReceiptImages, // 使用驗證後的圖片陣列
             isNextMonthBill: isNextMonth, // 標記是否為下月帳單
             timestamp: new Date().toISOString()
         };
         
-        // 保存到 localStorage
+        // 保存到 localStorage - 添加錯誤處理
         let records = JSON.parse(localStorage.getItem('accountingRecords') || '[]');
         records.push(record);
-        localStorage.setItem('accountingRecords', JSON.stringify(records));
+        
+        try {
+            // 嘗試保存記錄
+            const recordsJson = JSON.stringify(records);
+            
+            // 檢查數據大小
+            const sizeInMB = new Blob([recordsJson]).size / (1024 * 1024);
+            if (sizeInMB > 4) {
+                console.warn(`記錄數據較大 (${sizeInMB.toFixed(2)}MB)，可能影響性能`);
+                
+                // 如果數據太大，嘗試移除一些圖片
+                if (record.receiptImages && record.receiptImages.length > 0) {
+                    console.log('數據太大，移除圖片以節省空間');
+                    record.receiptImages = [];
+                    const recordsWithoutImages = JSON.stringify(records);
+                    localStorage.setItem('accountingRecords', recordsWithoutImages);
+                    alert('記錄已保存，但圖片因空間限制已被移除。建議定期清理舊記錄。');
+                } else {
+                    localStorage.setItem('accountingRecords', recordsJson);
+                    alert('記錄已保存，但數據量較大，建議定期清理舊記錄。');
+                }
+            } else {
+                localStorage.setItem('accountingRecords', recordsJson);
+            }
+        } catch (error) {
+            console.error('保存記錄失敗:', error);
+            
+            // 如果保存失敗，嘗試不保存圖片
+            if (record.receiptImages && record.receiptImages.length > 0) {
+                console.log('保存失敗，嘗試不保存圖片');
+                record.receiptImages = [];
+                const recordsWithoutImages = JSON.stringify(records);
+                
+                try {
+                    localStorage.setItem('accountingRecords', recordsWithoutImages);
+                    alert('記錄已保存，但圖片保存失敗。請檢查瀏覽器存儲空間。');
+                } catch (fallbackError) {
+                    console.error('即使不保存圖片也失敗:', fallbackError);
+                    alert('記帳失敗，請檢查瀏覽器存儲空間或重新整理頁面後重試。');
+                    return;
+                }
+            } else {
+                alert('記帳失敗，請檢查瀏覽器存儲空間或重新整理頁面後重試。');
+                return;
+            }
+        }
         
         // 如果是收入記錄，播放入帳音效
         if (recordType === 'income') {
@@ -17289,25 +17349,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // 處理每個圖片文件
+        let successCount = 0;
+        let failCount = 0;
+        
         for (const file of files) {
             // 檢查文件大小（限制為 5MB）
             if (file.size > 5 * 1024 * 1024) {
+                console.error(`圖片 "${file.name}" 太大: ${file.size} bytes`);
                 alert(`圖片 "${file.name}" 太大！請選擇小於 5MB 的圖片。`);
+                failCount++;
                 continue;
             }
             
             try {
+                console.log(`開始處理圖片: ${file.name} (${file.size} bytes)`);
                 const imageData = await processImageFile(file);
                 window.selectedReceiptImages.push(imageData);
+                successCount++;
+                console.log(`圖片 "${file.name}" 處理成功，大小: ${imageData.length} chars`);
             } catch (error) {
-                console.error('處理圖片失敗:', error);
-                alert(`處理圖片 "${file.name}" 失敗，請重試。`);
+                console.error(`處理圖片 "${file.name}" 失敗:`, error);
+                alert(`處理圖片 "${file.name}" 失敗：${error.message || '未知錯誤'}。請重試或選擇其他圖片。`);
+                failCount++;
             }
         }
         
         // 更新預覽
         updateImagePreview();
         imageInput.value = '';
+        
+        // 顯示處理結果
+        if (successCount > 0 && failCount > 0) {
+            alert(`成功上傳 ${successCount} 張圖片，${failCount} 張失敗。`);
+        } else if (successCount > 0) {
+            console.log(`成功上傳 ${successCount} 張圖片`);
+        } else if (failCount > 0) {
+            alert(`所有圖片上傳失敗，請檢查圖片格式和大小。`);
+        }
         
         // 檢查是否達到最小圖片數量
         if (window.selectedReceiptImages.length >= minImages) {
@@ -17322,20 +17400,43 @@ document.addEventListener('DOMContentLoaded', () => {
             reader.onload = async (event) => {
                 let imageData = event.target.result;
                 
-                // 壓縮圖片
-                if (typeof compressImage === 'function') {
-                    try {
-                        imageData = await compressImage(imageData, 800, 800, 0.7);
-                        console.log('圖片已壓縮');
-                    } catch (error) {
-                        console.error('圖片壓縮失敗:', error);
-                        // 如果壓縮失敗，使用原始圖片
+                try {
+                    // 壓縮圖片 - 添加超時和錯誤處理
+                    if (typeof compressImage === 'function') {
+                        try {
+                            // 設置超時，避免手機版卡住
+                            const compressPromise = compressImage(imageData, 800, 800, 0.7);
+                            const timeoutPromise = new Promise((_, timeoutReject) => {
+                                setTimeout(() => timeoutReject(new Error('圖片壓縮超時')), 10000);
+                            });
+                            
+                            imageData = await Promise.race([compressPromise, timeoutPromise]);
+                            console.log('圖片已壓縮');
+                        } catch (compressError) {
+                            console.warn('圖片壓縮失敗，使用原始圖片:', compressError);
+                            // 如果壓縮失敗，使用原始圖片
+                            // 但檢查原始圖片大小，如果太大則拒絕
+                            if (imageData.length > 2 * 1024 * 1024) { // 2MB
+                                throw new Error('圖片太大且壓縮失敗，請選擇較小的圖片');
+                            }
+                        }
+                    } else {
+                        console.warn('compressImage 函數不存在，使用原始圖片');
+                        // 檢查原始圖片大小
+                        if (imageData.length > 2 * 1024 * 1024) { // 2MB
+                            throw new Error('圖片太大且無法壓縮，請選擇較小的圖片');
+                        }
                     }
+                    
+                    resolve(imageData);
+                } catch (error) {
+                    console.error('處理圖片失敗:', error);
+                    reject(error);
                 }
-                
-                resolve(imageData);
             };
-            reader.onerror = reject;
+            reader.onerror = () => {
+                reject(new Error('讀取圖片文件失敗'));
+            };
             reader.readAsDataURL(file);
         });
     }
