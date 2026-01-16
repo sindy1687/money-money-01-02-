@@ -14904,6 +14904,30 @@ const themes = [
         buttonIcon: '🌌',
         preview: 'linear-gradient(135deg, #001428 0%, #002850 60%, #8a2be2 100%)',
         color: '#00d4ff'
+    },
+    {
+        id: 'caitu',
+        name: '財兔滿滿',
+        icon: '🐰',
+        buttonIcon: '🐰',
+        preview: 'linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 223, 0, 0.2) 50%, rgba(255, 193, 7, 0.3) 100%), url("https://i.pinimg.com/736x/85/9c/7c/859c7c50479b84c65089909c4acec1f3.jpg") center/cover',
+        color: '#FFD700'
+    },
+    {
+        id: 'goldenTree',
+        name: '金樹計畫',
+        icon: '🌳',
+        buttonIcon: '🌳',
+        preview: 'linear-gradient(135deg, rgba(139, 69, 19, 0.3) 0%, rgba(160, 82, 45, 0.2) 50%, rgba(184, 134, 11, 0.3) 100%), url("https://i.pinimg.com/736x/28/a0/be/28a0be222d619be4c2944dbd309c4153.jpg") center/cover',
+        color: '#8B4513'
+    },
+    {
+        id: 'chaonengli',
+        name: '鈔能力',
+        icon: '💰',
+        buttonIcon: '💰',
+        preview: 'linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(255, 215, 0, 0.2) 50%, rgba(184, 134, 11, 0.3) 100%), url("https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg") center/cover',
+        color: '#D4AF37'
     }
     ];
 
@@ -14983,16 +15007,7 @@ function applyTheme(themeId) {
     updateThemeButtons(themeId);
     themeVideoController.setActive(themeId);
     
-    // 櫻花主題：創建飄落花瓣動畫
-    Object.keys(themeAnimations).forEach(id => {
-        if (themeAnimations[id]) {
-            if (id === themeId) {
-                themeAnimations[id].create();
-            } else {
-                themeAnimations[id].remove();
-            }
-        }
-    });
+    
     
     // 如果圖表頁面正在顯示，重新生成圖表以應用新主題顏色
     const pageChart = document.getElementById('pageChart');
