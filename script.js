@@ -14730,6 +14730,30 @@ const themes = [
         color: '#ff6fb5'
     },
     {
+        id: 'totoro',
+        name: '龍貓主題',
+        icon: '🌼',
+        buttonIcon: '🌼',
+        preview: 'linear-gradient(135deg, #f5f5dc 0%, #b0e0e6 60%, #87ceeb 100%)',
+        color: '#4682B4'
+    },
+    {
+        id: 'noface',
+        name: '無臉男主題',
+        icon: '🎭',
+        buttonIcon: '🎭',
+        preview: 'linear-gradient(135deg, #0f0c12 0%, #1f1b24 55%, #f6c343 100%)',
+        color: '#f6c343'
+    },
+    {
+        id: 'demonslayer',
+        name: '鬼滅之刃主題',
+        icon: '🗡️',
+        buttonIcon: '🗡️',
+        preview: 'linear-gradient(135deg, #08131e 0%, #0f2434 60%, #00c2d1 100%)',
+        color: '#00c2d1'
+    },
+    {
         id: 'purple',
         name: '紫色主題',
         icon: '💜',
@@ -15092,6 +15116,30 @@ function updateThemeButtons(themeId) {
             navLedger: '🫧',
             navWallet: '💧',
             navInvestment: '📉',
+            navChart: '📊',
+            navSettings: '⚙️'
+        },
+        noface: {
+            fab: '🪙',
+            navLedger: '📜',
+            navWallet: '💰',
+            navInvestment: '📈',
+            navChart: '📊',
+            navSettings: '⚙️'
+        },
+        demonslayer: {
+            fab: '🗡️',
+            navLedger: '📓',
+            navWallet: '💠',
+            navInvestment: '📈',
+            navChart: '📊',
+            navSettings: '⚙️'
+        },
+        totoro: {
+            fab: '🌱',
+            navLedger: '📗',
+            navWallet: '💰',
+            navInvestment: '📈',
             navChart: '📊',
             navSettings: '⚙️'
         },
