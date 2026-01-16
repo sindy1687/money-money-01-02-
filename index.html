@@ -47,6 +47,22 @@
                 <button class="back-btn" id="inputPageBackBtn">←</button>
             </div>
             
+            <!-- 記錄類型標籤切換 -->
+            <div class="record-type-tabs">
+                <button class="record-type-tab active" data-type="expense">
+                    <span class="record-type-icon">👤</span>
+                    <span class="record-type-text">支出</span>
+                </button>
+                <button class="record-type-tab" data-type="income">
+                    <span class="record-type-icon">💰</span>
+                    <span class="record-type-text">收入</span>
+                </button>
+                <button class="record-type-tab" data-type="transfer">
+                    <span class="record-type-icon">💳</span>
+                    <span class="record-type-text">轉帳</span>
+                </button>
+            </div>
+            
             <!-- 中間：模式切換列 -->
             <div class="tab-section">
                 <div class="tabs">
@@ -114,6 +130,23 @@
                 <span class="account-info">預設帳戶(TWD) 0</span>
             </div>
             
+            <!-- 轉帳專用帳戶選擇區域 -->
+            <div class="transfer-accounts-section" id="transferAccountsSection" style="display: none;">
+                <div class="transfer-account-row">
+                    <label class="transfer-account-label">從</label>
+                    <select class="transfer-account-select" id="transferFromAccount">
+                        <option value="">選擇帳戶</option>
+                    </select>
+                </div>
+                <div class="transfer-arrow">→</div>
+                <div class="transfer-account-row">
+                    <label class="transfer-account-label">到</label>
+                    <select class="transfer-account-select" id="transferToAccount">
+                        <option value="">選擇帳戶</option>
+                    </select>
+                </div>
+            </div>
+            
             <!-- 常用備註按鈕 -->
             <div class="quick-notes-container" id="quickNotesContainer">
                 <div class="quick-notes-label">常用備註：</div>
@@ -137,12 +170,12 @@
             </div>
             
             <!-- 計入下月選項 -->
-            <div class="next-month-option" id="nextMonthOption" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: rgba(102, 126, 234, 0.05); border-radius: 12px; margin: 8px 0; border: 1px solid rgba(102, 126, 234, 0.15);">
+            <div class="next-month-option" id="nextMonthOption" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: color-mix(in srgb, var(--color-primary) 5%, transparent); border: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent); border-radius: 12px; margin: 8px 0;">
                 <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; flex: 1;">
-                    <input type="checkbox" id="nextMonthCheckbox" style="width: 20px; height: 20px; cursor: pointer; accent-color: #667eea;">
+                    <input type="checkbox" id="nextMonthCheckbox" style="width: 20px; height: 20px; cursor: pointer; accent-color: var(--color-primary);">
                     <span style="font-size: 14px; font-weight: 600; color: var(--text-primary);">📅 計入下個月（本月不計）</span>
                 </label>
-                <button class="custom-date-btn" id="customDateBtn" style="display: none; padding: 6px 12px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap;">設定日期</button>
+                <button class="custom-date-btn" id="customDateBtn" style="display: none; padding: 6px 12px; background: linear-gradient(135deg, var(--color-primary), color-mix(in srgb, var(--color-primary) 70%, var(--color-primary-dark))); color: white; border: none; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap;">設定日期</button>
             </div>
             
             <!-- 成員顯示 -->
@@ -666,8 +699,16 @@
                 </div>
             </div>
 
-            <div class="monthly-planner-card">
-                <div class="monthly-planner-card-title">存股 / 儲蓄</div>
+            <div class="monthly-planner-card monthly-planner-card--savings">
+                <div class="monthly-planner-card-title">
+                    <span class="title-icon">📈</span>
+                    存股 / 儲蓄
+                    <div class="savings-type-tabs">
+                        <button class="savings-type-tab active" data-type="all">全部</button>
+                        <button class="savings-type-tab" data-type="stock">存股</button>
+                        <button class="savings-type-tab" data-type="savings">儲蓄</button>
+                    </div>
+                </div>
                 <div class="monthly-planner-items" id="monthlyPlannerSavingsList"></div>
                 <div class="monthly-planner-subtotal">
                     <span class="monthly-planner-subtotal-label">存股＋預備金小計</span>
@@ -675,6 +716,7 @@
                 </div>
                 <div class="monthly-planner-actions monthly-planner-actions--inline">
                     <button class="monthly-planner-btn monthly-planner-btn--secondary" id="monthlyPlannerAddSavingsBtn">新增項目</button>
+                    <button class="monthly-planner-btn monthly-planner-btn--outline" id="monthlyPlannerQuickAddBtn">快速新增</button>
                 </div>
             </div>
 
@@ -1934,6 +1976,7 @@
     <script src="js/categories.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/advisor.js"></script>
+    <script src="js/theme.js"></script>
     <!-- 主腳本（保留其他功能） -->
     <script src="script.js?v=20251227_1"></script>
     <script src="searchHistoryInit.js" type="module"></script>
