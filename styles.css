@@ -22075,3 +22075,717 @@ body {
         width: 100%;
     }
 }
+
+/* 財兔滿滿主題樣式 */
+:root[data-theme="caitu"] {
+    --color-primary: #FFD700;
+    --color-primary-light: #FFED4E;
+    --color-primary-lighter: #FFF59D;
+    --color-primary-dark: #FFC107;
+    --color-secondary: #FFA000;
+    --color-secondary-light: #FFB300;
+    --color-secondary-dark: #FF8F00;
+    --bg-primary: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 193, 7, 0.1) 65%, rgba(255, 160, 0, 0.05) 100%);
+    --bg-body: rgba(255, 248, 225, 0.95);
+    --bg-body-strong: rgba(255, 245, 200, 0.98);
+    --bg-gradient: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 193, 7, 0.15) 60%, rgba(255, 160, 0, 0.1) 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(255, 193, 7, 0.15) 100%);
+    --bg-white: rgba(255, 248, 225, 0.9);
+    --bg-card: rgba(255, 245, 200, 0.85);
+    --bg-light: rgba(255, 235, 180, 0.7);
+    --bg-lighter: rgba(255, 225, 150, 0.6);
+    --bg-soft: rgba(255, 215, 100, 0.5);
+    --bg-soft-strong: rgba(255, 200, 80, 0.65);
+    --text-primary: rgba(51, 25, 0, 0.95);
+    --text-secondary: rgba(102, 51, 0, 0.8);
+    --text-tertiary: rgba(153, 102, 51, 0.7);
+    --text-strong: rgba(0, 0, 0, 0.9);
+    --text-white: rgba(255, 255, 255, 0.98);
+    --border-primary: rgba(255, 193, 7, 0.6);
+    --border-light: rgba(255, 215, 0, 0.3);
+    --border-medium: rgba(255, 160, 0, 0.4);
+    --card-border-color: rgba(255, 193, 7, 0.5);
+    --control-border-color: rgba(255, 215, 0, 0.4);
+    --table-border-color: rgba(255, 215, 0, 0.2);
+    --shadow-primary: 0 20px 60px rgba(255, 193, 7, 0.3);
+    --shadow-primary-lg: 0 30px 80px rgba(255, 193, 7, 0.25);
+    --color-primary-rgba-08: rgba(255, 215, 0, 0.08);
+    --color-primary-rgba-10: rgba(255, 215, 0, 0.1);
+    --color-primary-rgba-15: rgba(255, 215, 0, 0.15);
+    --color-primary-rgba-20: rgba(255, 215, 0, 0.2);
+    --color-primary-rgba-25: rgba(255, 215, 0, 0.25);
+    --color-primary-rgba-30: rgba(255, 215, 0, 0.3);
+    --color-primary-rgba-40: rgba(255, 215, 0, 0.4);
+    --color-primary-light-rgba-08: rgba(255, 237, 78, 0.08);
+    --color-primary-light-rgba-10: rgba(255, 237, 78, 0.1);
+    --color-primary-light-rgba-15: rgba(255, 237, 78, 0.15);
+    --color-primary-light-rgba-20: rgba(255, 237, 78, 0.2);
+    --color-primary-light-rgba-25: rgba(255, 237, 78, 0.25);
+    --color-primary-light-rgba-30: rgba(255, 237, 78, 0.3);
+    --color-primary-light-rgba-40: rgba(255, 237, 78, 0.4);
+    --color-secondary-rgba-08: rgba(255, 160, 0, 0.08);
+    --color-secondary-rgba-10: rgba(255, 160, 0, 0.1);
+    --color-secondary-rgba-15: rgba(255, 160, 0, 0.15);
+    --color-secondary-rgba-20: rgba(255, 160, 0, 0.2);
+    --color-secondary-rgba-25: rgba(255, 160, 0, 0.25);
+    --color-secondary-rgba-30: rgba(255, 160, 0, 0.3);
+    --color-secondary-rgba-40: rgba(255, 160, 0, 0.4);
+    --bg-light-gradient: linear-gradient(135deg, rgba(255, 248, 225, 0.85) 0%, rgba(255, 245, 200, 0.65) 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, rgba(255, 248, 225, 0.85) 0%, rgba(255, 245, 200, 0.65) 100%);
+    --action-side-bg: color-mix(in srgb, rgba(255, 245, 200, 0.92) 75%, rgba(255, 193, 7, 0.08));
+    --action-side-bg-hover: color-mix(in srgb, rgba(255, 245, 200, 0.92) 65%, rgba(255, 193, 7, 0.2));
+    --action-side-text: rgba(51, 25, 0, 0.95);
+}
+
+:root[data-theme="caitu"] body {
+    background: url("https://i.pinimg.com/736x/85/9c/7c/859c7c50479b84c65089909c4acec1f3.jpg") center/cover no-repeat fixed;
+    background-color: #FFF8E1;
+    color: var(--text-primary);
+}
+
+:root[data-theme="caitu"] body::before {
+    display: none;
+}
+
+:root[data-theme="caitu"] .page-ledger {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+:root[data-theme="caitu"] .page-input,
+:root[data-theme="caitu"] .page-chart,
+:root[data-theme="caitu"] .page-budget,
+:root[data-theme="caitu"] .page-monthly-planner,
+:root[data-theme="caitu"] .page-daily-budget,
+:root[data-theme="caitu"] .page-settings,
+:root[data-theme="caitu"] .page-category-manage,
+:root[data-theme="caitu"] .page-investment,
+:root[data-theme="caitu"] .page-wallet,
+:root[data-theme="caitu"] .page-history,
+:root[data-theme="caitu"] .page-planner {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+:root[data-theme="caitu"] .card,
+:root[data-theme="caitu"] .record-card,
+:root[data-theme="caitu"] .ledger-card,
+:root[data-theme="caitu"] .summary-card,
+:root[data-theme="caitu"] .budget-card,
+:root[data-theme="caitu"] .wallet-card,
+:root[data-theme="caitu"] .chart-card,
+:root[data-theme="caitu"] .investment-card {
+    background: rgba(255, 248, 225, 0.85);
+    border: 1px solid rgba(255, 193, 7, 0.4);
+    box-shadow: 0 12px 32px rgba(255, 193, 7, 0.2);
+}
+
+:root[data-theme="caitu"] .investment-card,
+:root[data-theme="caitu"] .stock-item-card {
+    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-light) 25%, var(--color-secondary) 50%, var(--bg-lighter) 75%, var(--bg-soft) 100%);
+    border: 1px solid var(--color-secondary);
+    box-shadow: 
+        0 8px 24px rgba(255, 160, 0, 0.15),
+        0 0 30px var(--color-secondary-rgba-40);
+}
+
+:root[data-theme="caitu"] .investment-card::before,
+:root[data-theme="caitu"] .stock-item-card::before {
+    background: linear-gradient(135deg, var(--color-secondary-rgba-40) 0%, var(--color-secondary-rgba-30) 55%, var(--color-secondary-rgba-20) 100%);
+}
+
+:root[data-theme="caitu"] .nav-item.active {
+    background: var(--color-secondary-rgba-20);
+    box-shadow: 0 8px 20px rgba(255, 160, 0, 0.25);
+}
+
+:root[data-theme="caitu"] .nav-item.active:hover {
+    filter: brightness(1.1);
+}
+
+:root[data-theme="caitu"] .modal-content,
+:root[data-theme="caitu"] .modal-content-standard,
+:root[data-theme="caitu"] .budget-category-modal-content,
+:root[data-theme="caitu"] .budget-setting-modal-content,
+:root[data-theme="caitu"] .category-modal-content,
+:root[data-theme="caitu"] .dca-execute-modal .modal-content,
+:root[data-theme="caitu"] .account-modal-content,
+:root[data-theme="caitu"] .emoji-modal-content,
+:root[data-theme="caitu"] .crop-modal-content,
+:root[data-theme="caitu"] .history-modal-content {
+    background: rgba(255, 248, 225, 0.95);
+    border: 1px solid rgba(255, 193, 7, 0.5);
+    box-shadow: 0 12px 32px rgba(255, 193, 7, 0.25);
+}
+
+:root[data-theme="caitu"] .input-section {
+    background: rgba(255, 245, 200, 0.92);
+    border: 2px solid rgba(255, 193, 7, 0.4);
+    box-shadow: 0 -4px 20px rgba(255, 160, 0, 0.15);
+}
+
+:root[data-theme="caitu"] .bottom-nav {
+    background: rgba(255, 248, 225, 0.9) !important;
+    border-top: 1px solid rgba(255, 193, 7, 0.5) !important;
+    backdrop-filter: blur(14px);
+}
+
+:root[data-theme="caitu"] .form-input,
+:root[data-theme="caitu"] .form-select,
+:root[data-theme="caitu"] .form-textarea,
+:root[data-theme="caitu"] .note-input {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 2px solid rgba(255, 193, 7, 0.4) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="caitu"] .form-input:focus,
+:root[data-theme="caitu"] .form-select:focus,
+:root[data-theme="caitu"] .form-textarea:focus,
+:root[data-theme="caitu"] .note-input:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+:root[data-theme="caitu"] .header-section {
+    background: rgba(255, 248, 225, 0.9) !important;
+    border-bottom: 1px solid rgba(255, 193, 7, 0.4) !important;
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="caitu"] .tab-btn {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(255, 193, 7, 0.4) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="caitu"] .tab-btn.active {
+    background: rgba(255, 215, 0, 0.3) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.25) !important;
+}
+
+:root[data-theme="caitu"] .tab-btn:hover {
+    background: rgba(255, 215, 0, 0.2) !important;
+    border-color: rgba(255, 160, 0, 0.4) !important;
+}
+
+:root[data-theme="caitu"] .key-btn {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 2px solid rgba(255, 193, 7, 0.4) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="caitu"] .key-btn:hover {
+    background: rgba(255, 215, 0, 0.3) !important;
+    border-color: var(--color-primary) !important;
+}
+
+:root[data-theme="caitu"] .key-btn.active {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary-dark) !important;
+}
+
+:root[data-theme="caitu"] .btn-primary {
+    background: var(--color-primary) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--color-primary-dark) !important;
+}
+
+:root[data-theme="caitu"] .btn-primary:hover {
+    background: var(--color-primary-light) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+}
+
+:root[data-theme="caitu"] .btn-secondary {
+    background: rgba(255, 255, 255, 0.8) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid rgba(255, 193, 7, 0.4) !important;
+}
+
+:root[data-theme="caitu"] .btn-secondary:hover {
+    background: rgba(255, 215, 0, 0.2) !important;
+    border-color: var(--color-primary) !important;
+}
+
+/* 金樹計畫主題樣式 */
+:root[data-theme="goldenTree"] {
+    --color-primary: #8B4513;
+    --color-primary-light: #A0522D;
+    --color-primary-lighter: #CD853F;
+    --color-primary-dark: #654321;
+    --color-secondary: #B8860B;
+    --color-secondary-light: #DAA520;
+    --color-secondary-dark: #996515;
+    --bg-primary: linear-gradient(135deg, rgba(139, 69, 19, 0.15) 0%, rgba(160, 82, 45, 0.1) 65%, rgba(184, 134, 11, 0.05) 100%);
+    --bg-body: rgba(245, 235, 220, 0.95);
+    --bg-body-strong: rgba(240, 230, 210, 0.98);
+    --bg-gradient: linear-gradient(135deg, rgba(139, 69, 19, 0.2) 0%, rgba(160, 82, 45, 0.15) 60%, rgba(184, 134, 11, 0.1) 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(139, 69, 19, 0.08) 0%, rgba(184, 134, 11, 0.15) 100%);
+    --bg-white: rgba(245, 235, 220, 0.9);
+    --bg-card: rgba(240, 230, 210, 0.85);
+    --bg-light: rgba(235, 225, 200, 0.7);
+    --bg-lighter: rgba(230, 220, 190, 0.6);
+    --bg-soft: rgba(225, 215, 180, 0.5);
+    --bg-soft-strong: rgba(220, 210, 170, 0.65);
+    --text-primary: rgba(51, 25, 0, 0.95);
+    --text-secondary: rgba(102, 51, 0, 0.8);
+    --text-tertiary: rgba(153, 102, 51, 0.7);
+    --text-strong: rgba(0, 0, 0, 0.9);
+    --text-white: rgba(255, 255, 255, 0.98);
+    --border-primary: rgba(184, 134, 11, 0.6);
+    --border-light: rgba(139, 69, 19, 0.3);
+    --border-medium: rgba(160, 82, 45, 0.4);
+    --card-border-color: rgba(184, 134, 11, 0.5);
+    --control-border-color: rgba(139, 69, 19, 0.4);
+    --table-border-color: rgba(139, 69, 19, 0.2);
+    --shadow-primary: 0 20px 60px rgba(139, 69, 19, 0.3);
+    --shadow-primary-lg: 0 30px 80px rgba(139, 69, 19, 0.25);
+    --color-primary-rgba-08: rgba(139, 69, 19, 0.08);
+    --color-primary-rgba-10: rgba(139, 69, 19, 0.1);
+    --color-primary-rgba-15: rgba(139, 69, 19, 0.15);
+    --color-primary-rgba-20: rgba(139, 69, 19, 0.2);
+    --color-primary-rgba-25: rgba(139, 69, 19, 0.25);
+    --color-primary-rgba-30: rgba(139, 69, 19, 0.3);
+    --color-primary-rgba-40: rgba(139, 69, 19, 0.4);
+    --color-primary-light-rgba-08: rgba(160, 82, 45, 0.08);
+    --color-primary-light-rgba-10: rgba(160, 82, 45, 0.1);
+    --color-primary-light-rgba-15: rgba(160, 82, 45, 0.15);
+    --color-primary-light-rgba-20: rgba(160, 82, 45, 0.2);
+    --color-primary-light-rgba-25: rgba(160, 82, 45, 0.25);
+    --color-primary-light-rgba-30: rgba(160, 82, 45, 0.3);
+    --color-primary-light-rgba-40: rgba(160, 82, 45, 0.4);
+    --color-secondary-rgba-08: rgba(184, 134, 11, 0.08);
+    --color-secondary-rgba-10: rgba(184, 134, 11, 0.1);
+    --color-secondary-rgba-15: rgba(184, 134, 11, 0.15);
+    --color-secondary-rgba-20: rgba(184, 134, 11, 0.2);
+    --color-secondary-rgba-25: rgba(184, 134, 11, 0.25);
+    --color-secondary-rgba-30: rgba(184, 134, 11, 0.3);
+    --color-secondary-rgba-40: rgba(184, 134, 11, 0.4);
+    --bg-light-gradient: linear-gradient(135deg, rgba(245, 235, 220, 0.85) 0%, rgba(240, 230, 210, 0.65) 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, rgba(245, 235, 220, 0.85) 0%, rgba(240, 230, 210, 0.65) 100%);
+    --action-side-bg: color-mix(in srgb, rgba(240, 230, 210, 0.92) 75%, rgba(184, 134, 11, 0.08));
+    --action-side-bg-hover: color-mix(in srgb, rgba(240, 230, 210, 0.92) 65%, rgba(184, 134, 11, 0.2));
+    --action-side-text: rgba(51, 25, 0, 0.95);
+}
+
+:root[data-theme="goldenTree"] body {
+    background: url("https://i.pinimg.com/736x/28/a0/be/28a0be222d619be4c2944dbd309c4153.jpg") center/cover no-repeat fixed;
+    background-color: #F5EBDC;
+    color: var(--text-primary);
+}
+
+:root[data-theme="goldenTree"] body::before {
+    display: none;
+}
+
+:root[data-theme="goldenTree"] .page-ledger {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+:root[data-theme="goldenTree"] .page-input,
+:root[data-theme="goldenTree"] .page-chart,
+:root[data-theme="goldenTree"] .page-budget,
+:root[data-theme="goldenTree"] .page-monthly-planner,
+:root[data-theme="goldenTree"] .page-daily-budget,
+:root[data-theme="goldenTree"] .page-settings,
+:root[data-theme="goldenTree"] .page-category-manage,
+:root[data-theme="goldenTree"] .page-investment,
+:root[data-theme="goldenTree"] .page-wallet,
+:root[data-theme="goldenTree"] .page-history,
+:root[data-theme="goldenTree"] .page-planner {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+:root[data-theme="goldenTree"] .card,
+:root[data-theme="goldenTree"] .record-card,
+:root[data-theme="goldenTree"] .ledger-card,
+:root[data-theme="goldenTree"] .summary-card,
+:root[data-theme="goldenTree"] .budget-card,
+:root[data-theme="goldenTree"] .wallet-card,
+:root[data-theme="goldenTree"] .chart-card,
+:root[data-theme="goldenTree"] .investment-card {
+    background: rgba(245, 235, 220, 0.85);
+    border: 1px solid rgba(184, 134, 11, 0.4);
+    box-shadow: 0 12px 32px rgba(139, 69, 19, 0.2);
+}
+
+:root[data-theme="goldenTree"] .investment-card,
+:root[data-theme="goldenTree"] .stock-item-card {
+    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-light) 25%, var(--color-secondary) 50%, var(--bg-lighter) 75%, var(--bg-soft) 100%);
+    border: 1px solid var(--color-secondary);
+    box-shadow: 
+        0 8px 24px rgba(184, 134, 11, 0.15),
+        0 0 30px var(--color-secondary-rgba-40);
+}
+
+:root[data-theme="goldenTree"] .investment-card::before,
+:root[data-theme="goldenTree"] .stock-item-card::before {
+    background: linear-gradient(135deg, var(--color-secondary-rgba-40) 0%, var(--color-secondary-rgba-30) 55%, var(--color-secondary-rgba-20) 100%);
+}
+
+:root[data-theme="goldenTree"] .nav-item.active {
+    background: var(--color-secondary-rgba-20);
+    box-shadow: 0 8px 20px rgba(184, 134, 11, 0.25);
+}
+
+:root[data-theme="goldenTree"] .nav-item.active:hover {
+    filter: brightness(1.1);
+}
+
+:root[data-theme="goldenTree"] .modal-content,
+:root[data-theme="goldenTree"] .modal-content-standard,
+:root[data-theme="goldenTree"] .budget-category-modal-content,
+:root[data-theme="goldenTree"] .budget-setting-modal-content,
+:root[data-theme="goldenTree"] .category-modal-content,
+:root[data-theme="goldenTree"] .dca-execute-modal .modal-content,
+:root[data-theme="goldenTree"] .account-modal-content,
+:root[data-theme="goldenTree"] .emoji-modal-content,
+:root[data-theme="goldenTree"] .crop-modal-content,
+:root[data-theme="goldenTree"] .history-modal-content {
+    background: rgba(245, 235, 220, 0.95);
+    border: 1px solid rgba(184, 134, 11, 0.5);
+    box-shadow: 0 12px 32px rgba(139, 69, 19, 0.25);
+}
+
+:root[data-theme="goldenTree"] .input-section {
+    background: rgba(240, 230, 210, 0.92);
+    border: 2px solid rgba(184, 134, 11, 0.4);
+    box-shadow: 0 -4px 20px rgba(160, 82, 45, 0.15);
+}
+
+:root[data-theme="goldenTree"] .bottom-nav {
+    background: rgba(245, 235, 220, 0.9) !important;
+    border-top: 1px solid rgba(184, 134, 11, 0.5) !important;
+    backdrop-filter: blur(14px);
+}
+
+:root[data-theme="goldenTree"] .form-input,
+:root[data-theme="goldenTree"] .form-select,
+:root[data-theme="goldenTree"] .form-textarea,
+:root[data-theme="goldenTree"] .note-input {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 2px solid rgba(184, 134, 11, 0.4) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="goldenTree"] .form-input:focus,
+:root[data-theme="goldenTree"] .form-select:focus,
+:root[data-theme="goldenTree"] .form-textarea:focus,
+:root[data-theme="goldenTree"] .note-input:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.2) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+:root[data-theme="goldenTree"] .header-section {
+    background: rgba(245, 235, 220, 0.9) !important;
+    border-bottom: 1px solid rgba(184, 134, 11, 0.4) !important;
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="goldenTree"] .tab-btn {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(184, 134, 11, 0.4) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="goldenTree"] .tab-btn.active {
+    background: rgba(139, 69, 19, 0.3) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 4px 12px rgba(184, 134, 11, 0.25) !important;
+}
+
+:root[data-theme="goldenTree"] .tab-btn:hover {
+    background: rgba(139, 69, 19, 0.2) !important;
+    border-color: rgba(160, 82, 45, 0.4) !important;
+}
+
+:root[data-theme="goldenTree"] .key-btn {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 2px solid rgba(184, 134, 11, 0.4) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="goldenTree"] .key-btn:hover {
+    background: rgba(139, 69, 19, 0.3) !important;
+    border-color: var(--color-primary) !important;
+}
+
+:root[data-theme="goldenTree"] .key-btn.active {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary-dark) !important;
+}
+
+:root[data-theme="goldenTree"] .btn-primary {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border: 1px solid var(--color-primary-dark) !important;
+}
+
+:root[data-theme="goldenTree"] .btn-primary:hover {
+    background: var(--color-primary-light) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+}
+
+:root[data-theme="goldenTree"] .btn-secondary {
+    background: rgba(255, 255, 255, 0.8) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid rgba(184, 134, 11, 0.4) !important;
+}
+
+:root[data-theme="goldenTree"] .btn-secondary:hover {
+    background: rgba(139, 69, 19, 0.2) !important;
+    border-color: var(--color-primary) !important;
+}
+
+/* 鈔能力主題樣式 */
+:root[data-theme="chaonengli"] {
+    --color-primary: #D4AF37;
+    --color-primary-light: #F4E4C1;
+    --color-primary-lighter: #FAEBD7;
+    --color-primary-dark: #B8860B;
+    --color-secondary: #FFD700;
+    --color-secondary-light: #FFED4E;
+    --color-secondary-dark: #FFC107;
+    --bg-primary: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(255, 215, 0, 0.1) 65%, rgba(184, 134, 11, 0.05) 100%);
+    --bg-body: rgba(50, 30, 15, 0.95);
+    --bg-body-strong: rgba(40, 25, 10, 0.98);
+    --bg-gradient: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(255, 215, 0, 0.15) 60%, rgba(184, 134, 11, 0.1) 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(255, 215, 0, 0.15) 100%);
+    --bg-white: rgba(50, 30, 15, 0.9);
+    --bg-card: rgba(40, 25, 10, 0.85);
+    --bg-light: rgba(60, 40, 20, 0.7);
+    --bg-lighter: rgba(80, 50, 25, 0.6);
+    --bg-soft: rgba(100, 60, 30, 0.5);
+    --bg-soft-strong: rgba(90, 55, 28, 0.65);
+    --text-primary: rgba(255, 248, 220, 0.95);
+    --text-secondary: rgba(255, 235, 180, 0.8);
+    --text-tertiary: rgba(255, 220, 150, 0.7);
+    --text-strong: rgba(255, 255, 255, 0.98);
+    --text-white: rgba(255, 255, 255, 0.98);
+    --border-primary: rgba(255, 215, 0, 0.6);
+    --border-light: rgba(212, 175, 55, 0.3);
+    --border-medium: rgba(255, 193, 7, 0.4);
+    --card-border-color: rgba(255, 215, 0, 0.5);
+    --control-border-color: rgba(212, 175, 55, 0.4);
+    --table-border-color: rgba(212, 175, 55, 0.2);
+    --shadow-primary: 0 20px 60px rgba(212, 175, 55, 0.3);
+    --shadow-primary-lg: 0 30px 80px rgba(212, 175, 55, 0.25);
+    --color-primary-rgba-08: rgba(212, 175, 55, 0.08);
+    --color-primary-rgba-10: rgba(212, 175, 55, 0.1);
+    --color-primary-rgba-15: rgba(212, 175, 55, 0.15);
+    --color-primary-rgba-20: rgba(212, 175, 55, 0.2);
+    --color-primary-rgba-25: rgba(212, 175, 55, 0.25);
+    --color-primary-rgba-30: rgba(212, 175, 55, 0.3);
+    --color-primary-rgba-40: rgba(212, 175, 55, 0.4);
+    --color-primary-light-rgba-08: rgba(244, 228, 193, 0.08);
+    --color-primary-light-rgba-10: rgba(244, 228, 193, 0.1);
+    --color-primary-light-rgba-15: rgba(244, 228, 193, 0.15);
+    --color-primary-light-rgba-20: rgba(244, 228, 193, 0.2);
+    --color-primary-light-rgba-25: rgba(244, 228, 193, 0.25);
+    --color-primary-light-rgba-30: rgba(244, 228, 193, 0.3);
+    --color-primary-light-rgba-40: rgba(244, 228, 193, 0.4);
+    --color-secondary-rgba-08: rgba(255, 215, 0, 0.08);
+    --color-secondary-rgba-10: rgba(255, 215, 0, 0.1);
+    --color-secondary-rgba-15: rgba(255, 215, 0, 0.15);
+    --color-secondary-rgba-20: rgba(255, 215, 0, 0.2);
+    --color-secondary-rgba-25: rgba(255, 215, 0, 0.25);
+    --color-secondary-rgba-30: rgba(255, 215, 0, 0.3);
+    --color-secondary-rgba-40: rgba(255, 215, 0, 0.4);
+    --bg-light-gradient: linear-gradient(135deg, rgba(50, 30, 15, 0.85) 0%, rgba(40, 25, 10, 0.65) 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, rgba(50, 30, 15, 0.85) 0%, rgba(40, 25, 10, 0.65) 100%);
+    --action-side-bg: color-mix(in srgb, rgba(40, 25, 10, 0.92) 75%, rgba(212, 175, 55, 0.08));
+    --action-side-bg-hover: color-mix(in srgb, rgba(40, 25, 10, 0.92) 65%, rgba(212, 175, 55, 0.2));
+    --action-side-text: rgba(255, 248, 220, 0.95);
+}
+
+:root[data-theme="chaonengli"] body {
+    background: url("https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg") center/cover no-repeat fixed;
+    background-color: #321E0F;
+    color: var(--text-primary);
+}
+
+:root[data-theme="chaonengli"] body::before {
+    display: none;
+}
+
+:root[data-theme="chaonengli"] .page-ledger {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+:root[data-theme="chaonengli"] .page-input,
+:root[data-theme="chaonengli"] .page-chart,
+:root[data-theme="chaonengli"] .page-budget,
+:root[data-theme="chaonengli"] .page-monthly-planner,
+:root[data-theme="chaonengli"] .page-daily-budget,
+:root[data-theme="chaonengli"] .page-settings,
+:root[data-theme="chaonengli"] .page-category-manage,
+:root[data-theme="chaonengli"] .page-investment,
+:root[data-theme="chaonengli"] .page-wallet,
+:root[data-theme="chaonengli"] .page-history,
+:root[data-theme="chaonengli"] .page-planner {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+:root[data-theme="chaonengli"] .card,
+:root[data-theme="chaonengli"] .record-card,
+:root[data-theme="chaonengli"] .ledger-card,
+:root[data-theme="chaonengli"] .summary-card,
+:root[data-theme="chaonengli"] .budget-card,
+:root[data-theme="chaonengli"] .wallet-card,
+:root[data-theme="chaonengli"] .chart-card,
+:root[data-theme="chaonengli"] .investment-card {
+    background: rgba(40, 25, 10, 0.85);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.2);
+}
+
+:root[data-theme="chaonengli"] .investment-card,
+:root[data-theme="chaonengli"] .stock-item-card {
+    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-light) 25%, var(--color-secondary) 50%, var(--bg-lighter) 75%, var(--bg-soft) 100%);
+    border: 1px solid var(--color-secondary);
+    box-shadow: 
+        0 8px 24px rgba(255, 215, 0, 0.15),
+        0 0 30px var(--color-secondary-rgba-40);
+}
+
+:root[data-theme="chaonengli"] .investment-card::before,
+:root[data-theme="chaonengli"] .stock-item-card::before {
+    background: linear-gradient(135deg, var(--color-secondary-rgba-40) 0%, var(--color-secondary-rgba-30) 55%, var(--color-secondary-rgba-20) 100%);
+}
+
+:root[data-theme="chaonengli"] .nav-item.active {
+    background: var(--color-secondary-rgba-20);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.25);
+}
+
+:root[data-theme="chaonengli"] .nav-item.active:hover {
+    filter: brightness(1.1);
+}
+
+:root[data-theme="chaonengli"] .modal-content,
+:root[data-theme="chaonengli"] .modal-content-standard,
+:root[data-theme="chaonengli"] .budget-category-modal-content,
+:root[data-theme="chaonengli"] .budget-setting-modal-content,
+:root[data-theme="chaonengli"] .category-modal-content,
+:root[data-theme="chaonengli"] .dca-execute-modal .modal-content,
+:root[data-theme="chaonengli"] .account-modal-content,
+:root[data-theme="chaonengli"] .emoji-modal-content,
+:root[data-theme="chaonengli"] .crop-modal-content,
+:root[data-theme="chaonengli"] .history-modal-content {
+    background: rgba(40, 25, 10, 0.95);
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.25);
+}
+
+:root[data-theme="chaonengli"] .input-section {
+    background: rgba(50, 30, 15, 0.92);
+    border: 2px solid rgba(255, 215, 0, 0.4);
+    box-shadow: 0 -4px 20px rgba(184, 134, 11, 0.15);
+}
+
+:root[data-theme="chaonengli"] .bottom-nav {
+    background: rgba(40, 25, 10, 0.9) !important;
+    border-top: 1px solid rgba(255, 215, 0, 0.5) !important;
+    backdrop-filter: blur(14px);
+}
+
+:root[data-theme="chaonengli"] .form-input,
+:root[data-theme="chaonengli"] .form-select,
+:root[data-theme="chaonengli"] .form-textarea,
+:root[data-theme="chaonengli"] .note-input {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid rgba(255, 215, 0, 0.4) !important;
+    color: #321E0F !important;
+}
+
+:root[data-theme="chaonengli"] .form-input:focus,
+:root[data-theme="chaonengli"] .form-select:focus,
+:root[data-theme="chaonengli"] .form-textarea:focus,
+:root[data-theme="chaonengli"] .note-input:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+:root[data-theme="chaonengli"] .header-section {
+    background: rgba(40, 25, 10, 0.9) !important;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.4) !important;
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="chaonengli"] .tab-btn {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(255, 215, 0, 0.4) !important;
+    color: #321E0F !important;
+}
+
+:root[data-theme="chaonengli"] .tab-btn.active {
+    background: rgba(212, 175, 55, 0.3) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: #321E0F !important;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.25) !important;
+}
+
+:root[data-theme="chaonengli"] .tab-btn:hover {
+    background: rgba(212, 175, 55, 0.2) !important;
+    border-color: rgba(184, 134, 11, 0.4) !important;
+}
+
+:root[data-theme="chaonengli"] .key-btn {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 2px solid rgba(255, 215, 0, 0.4) !important;
+    color: #321E0F !important;
+}
+
+:root[data-theme="chaonengli"] .key-btn:hover {
+    background: rgba(212, 175, 55, 0.3) !important;
+    border-color: var(--color-primary) !important;
+}
+
+:root[data-theme="chaonengli"] .key-btn.active {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary-dark) !important;
+}
+
+:root[data-theme="chaonengli"] .btn-primary {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border: 1px solid var(--color-primary-dark) !important;
+}
+
+:root[data-theme="chaonengli"] .btn-primary:hover {
+    background: var(--color-primary-light) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+:root[data-theme="chaonengli"] .btn-secondary {
+    background: rgba(255, 255, 255, 0.8) !important;
+    color: #321E0F !important;
+    border: 1px solid rgba(255, 215, 0, 0.4) !important;
+}
+
+:root[data-theme="chaonengli"] .btn-secondary:hover {
+    background: rgba(212, 175, 55, 0.2) !important;
+    border-color: var(--color-primary) !important;
+}
