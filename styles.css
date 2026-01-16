@@ -132,56 +132,6 @@
     filter: brightness(1.2);
 }
 
-:root[data-theme="anime"] {
-    --color-primary: #ff8fb1;
-    --color-primary-light: #ffd6e5;
-    --color-primary-lighter: #fff2f7;
-    --color-primary-dark: #c7516d;
-    --bg-primary: linear-gradient(135deg, #ffe3f1 0%, #ffd8a2 40%, #a8dbff 100%);
-    --bg-gradient: linear-gradient(135deg, #ff9bb8 0%, #ffd58b 45%, #8ac9ff 100%);
-    --bg-gradient-light: linear-gradient(135deg, rgba(255, 159, 184, 0.22) 0%, rgba(255, 212, 139, 0.18) 45%, rgba(138, 201, 255, 0.18) 100%);
-    --bg-light-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 243, 234, 0.9) 100%);
-    --bg-light-gradient-reverse: linear-gradient(180deg, rgba(255, 243, 234, 0.92) 0%, rgba(255, 255, 255, 0.96) 100%);
-    --bg-card: rgba(255, 255, 255, 0.94);
-    --bg-white: rgba(255, 255, 255, 0.95);
-    --bg-light: rgba(255, 253, 248, 0.9);
-    --bg-lighter: rgba(255, 249, 242, 0.82);
-    --text-primary: #3f2327;
-    --text-secondary: rgba(63, 35, 39, 0.78);
-    --text-tertiary: rgba(63, 35, 39, 0.58);
-    --border-light: rgba(255, 159, 184, 0.25);
-    --border-medium: rgba(138, 201, 255, 0.25);
-    --card-border-color: rgba(255, 159, 184, 0.35);
-    --card-border-color-strong: rgba(199, 81, 109, 0.55);
-    --border-primary: #ff8fb1;
-    --shadow-primary: 0 10px 28px rgba(199, 81, 109, 0.28);
-    --shadow-primary-lg: 0 14px 36px rgba(138, 201, 255, 0.28);
-    --color-primary-rgba-08: rgba(255, 143, 177, 0.08);
-    --color-primary-rgba-10: rgba(255, 143, 177, 0.10);
-    --color-primary-rgba-12: rgba(255, 143, 177, 0.12);
-    --color-primary-rgba-15: rgba(255, 143, 177, 0.15);
-    --color-primary-rgba-20: rgba(255, 143, 177, 0.20);
-    --color-primary-rgba-25: rgba(255, 143, 177, 0.25);
-    --color-primary-rgba-30: rgba(255, 143, 177, 0.30);
-    --color-primary-rgba-40: rgba(255, 143, 177, 0.40);
-    --color-primary-light-rgba-08: rgba(255, 214, 229, 0.08);
-    --color-primary-light-rgba-10: rgba(255, 214, 229, 0.10);
-    --color-primary-light-rgba-12: rgba(255, 214, 229, 0.12);
-    --color-primary-light-rgba-15: rgba(255, 214, 229, 0.15);
-    --color-primary-light-rgba-20: rgba(255, 214, 229, 0.20);
-    --color-primary-light-rgba-25: rgba(255, 214, 229, 0.25);
-    --color-primary-light-rgba-30: rgba(255, 214, 229, 0.30);
-    --color-primary-light-rgba-40: rgba(255, 214, 229, 0.40);
-}
-
-:root[data-theme="anime"] body {
-    background: url("https://i.pinimg.com/1200x/2b/90/63/2b9063e62dc17263b7713b324dbcb734.jpg") center/cover no-repeat fixed;
-    background-color: #ffeaf6;
-}
-
-:root[data-theme="anime"] body::before {
-    display: none;
-}
 
 :root[data-theme="totoro"] {
     --color-primary: #4682B4;
@@ -227,7 +177,7 @@
 
 :root[data-theme="totoro"] body {
     background: url("https://i.pinimg.com/736x/f6/e9/10/f6e910dc17992265ad9833055ff153ac.jpg") center/cover no-repeat fixed;
-    background-color: #F5F5DC;
+    background-color: var(--bg-primary);
 }
 
 :root[data-theme="totoro"] body::before {
@@ -307,14 +257,14 @@
 :root[data-theme="totoro"] .note-input {
     background: rgba(255, 255, 255, 0.8) !important;
     border: 2px solid rgba(135, 206, 235, 0.3) !important;
-    color: #36454F !important;
+    color: var(--text-primary) !important;
 }
 
 :root[data-theme="totoro"] .form-input:focus,
 :root[data-theme="totoro"] .form-select:focus,
 :root[data-theme="totoro"] .form-textarea:focus,
 :root[data-theme="totoro"] .note-input:focus {
-    border-color: #4682B4 !important;
+    border-color: var(--color-primary) !important;
     box-shadow: 0 0 0 3px rgba(70, 130, 180, 0.15) !important;
     background: rgba(255, 255, 255, 0.95) !important;
 }
@@ -328,13 +278,13 @@
 :root[data-theme="totoro"] .tab-btn {
     background: rgba(255, 255, 255, 0.7) !important;
     border: 1px solid rgba(135, 206, 235, 0.3) !important;
-    color: #36454F !important;
+    color: var(--text-primary) !important;
 }
 
 :root[data-theme="totoro"] .tab-btn.active {
     background: rgba(135, 206, 235, 0.3) !important;
     border: 2px solid #4682B4 !important;
-    color: #36454F !important;
+    color: var(--text-primary) !important;
     box-shadow: 0 4px 12px rgba(70, 130, 180, 0.2) !important;
 }
 
@@ -346,7 +296,7 @@
 :root[data-theme="totoro"] .key-btn {
     background: rgba(255, 255, 255, 0.8) !important;
     border: 2px solid rgba(135, 206, 235, 0.3) !important;
-    color: #36454F !important;
+    color: var(--text-primary) !important;
     box-shadow: 0 4px 12px rgba(70, 130, 180, 0.1) !important;
 }
 
@@ -363,26 +313,26 @@
 
 :root[data-theme="totoro"] .key-btn.operator {
     background: rgba(70, 130, 180, 0.7) !important;
-    color: #ffffff !important;
+    color: var(--text-white) !important;
 }
 
 :root[data-theme="totoro"] .key-btn.equal {
-    background: linear-gradient(135deg, #4682B4 0%, #36454F 100%) !important;
-    color: #ffffff !important;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+    color: var(--text-white) !important;
 }
 
 :root[data-theme="totoro"] .key-btn.delete {
     background: rgba(220, 53, 69, 0.8) !important;
-    color: #ffffff !important;
+    color: var(--text-white) !important;
 }
 
 :root[data-theme="totoro"] .fab-btn {
-    background: linear-gradient(135deg, #4682B4 0%, #87CEEB 100%) !important;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%) !important;
     box-shadow: 0 8px 24px rgba(70, 130, 180, 0.3) !important;
 }
 
 :root[data-theme="totoro"] .fab-btn:hover {
-    background: linear-gradient(135deg, #36454F 0%, #4682B4 100%) !important;
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%) !important;
     box-shadow: 0 12px 32px rgba(70, 130, 180, 0.4) !important;
 }
 
@@ -430,7 +380,7 @@
 
 :root[data-theme="noface"] body {
     background: url("https://i.pinimg.com/1200x/fe/b3/f9/feb3f9990f903e1b7b0f4a2066a97722.jpg") center/cover no-repeat fixed;
-    background-color: #1f1b24;
+    background-color: var(--bg-primary);
 }
 
 :root[data-theme="noface"] body::before {
@@ -475,7 +425,7 @@
     background: rgba(14, 12, 18, 0.88);
     border: 1px solid rgba(246, 195, 67, 0.35);
     box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6);
-    color: #f9f6ef;
+    color: var(--text-primary);
 }
 
 :root[data-theme="noface"] .card .value,
@@ -493,18 +443,18 @@
 :root[data-theme="noface"] .transaction-note,
 :root[data-theme="noface"] .investment-metric-value,
 :root[data-theme="noface"] .investment-metric-label {
-    color: #fdf8e9 !important;
+    color: var(--text-primary-light) !important;
 }
 
 :root[data-theme="noface"] .stock-card-name {
-    color: #fff8d2 !important;
+    color: var(--text-primary-lighter) !important;
     text-shadow: 0 0 10px rgba(246, 195, 67, 0.3);
 }
 
 :root[data-theme="noface"] .stock-grid-card-price-number,
 :root[data-theme="noface"] .stock-grid-card-price-unit,
 :root[data-theme="noface"] .stock-grid-card-price-arrow {
-    color: #fff9dc !important;
+    color: var(--text-primary-lightest) !important;
     text-shadow: 0 0 14px rgba(246, 195, 67, 0.35);
 }
 
@@ -513,7 +463,7 @@
 :root[data-theme="noface"] .badge,
 :root[data-theme="noface"] .status-pill {
     background: rgba(246, 195, 67, 0.15) !important;
-    color: #ffe8a7 !important;
+    color: var(--color-primary-light) !important;
     border-color: rgba(246, 195, 67, 0.35) !important;
 }
 
@@ -560,14 +510,14 @@
 :root[data-theme="noface"] .note-input {
     background: rgba(24, 20, 27, 0.85) !important;
     border: 2px solid rgba(246, 195, 67, 0.35) !important;
-    color: #f9f6ef !important;
+    color: var(--text-primary) !important;
 }
 
 :root[data-theme="noface"] .form-input:focus,
 :root[data-theme="noface"] .form-select:focus,
 :root[data-theme="noface"] .form-textarea:focus,
 :root[data-theme="noface"] .note-input:focus {
-    border-color: #f6c343 !important;
+    border-color: var(--color-primary) !important;
     box-shadow: 0 0 0 3px rgba(246, 195, 67, 0.25) !important;
     background: rgba(20, 17, 24, 0.95) !important;
 }
@@ -581,13 +531,13 @@
 :root[data-theme="noface"] .tab-btn {
     background: rgba(20, 17, 24, 0.85) !important;
     border: 1px solid rgba(246, 195, 67, 0.25) !important;
-    color: #f9f6ef !important;
+    color: var(--text-primary) !important;
 }
 
 :root[data-theme="noface"] .tab-btn.active {
     background: rgba(246, 195, 67, 0.2) !important;
     border: 2px solid #f6c343 !important;
-    color: #f9f6ef !important;
+    color: var(--text-primary) !important;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45) !important;
 }
 
@@ -599,7 +549,7 @@
 :root[data-theme="noface"] .key-btn {
     background: rgba(24, 20, 27, 0.85) !important;
     border: 2px solid rgba(246, 195, 67, 0.35) !important;
-    color: #f9f6ef !important;
+    color: var(--text-primary) !important;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -616,12 +566,12 @@
 
 :root[data-theme="noface"] .key-btn.operator {
     background: rgba(246, 195, 67, 0.35) !important;
-    color: #1f1b24 !important;
+    color: var(--color-primary-dark) !important;
 }
 
 :root[data-theme="noface"] .key-btn.equal {
-    background: linear-gradient(135deg, #f6c343 0%, #cc8f1f 100%) !important;
-    color: #1f1b24 !important;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+    color: var(--color-primary-dark) !important;
 }
 
 :root[data-theme="noface"] .key-btn.delete {
@@ -630,13 +580,13 @@
 }
 
 :root[data-theme="noface"] .fab-btn {
-    background: linear-gradient(135deg, #f6c343 0%, #b77c16 100%) !important;
-    color: #1f1b24 !important;
+    background: linear-gradient(135deg, var(--color-primary) 0%, color-mix(in srgb, var(--color-primary) 70%, black) 100%) !important;
+    color: var(--color-primary-dark) !important;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65) !important;
 }
 
 :root[data-theme="noface"] .fab-btn:hover {
-    background: linear-gradient(135deg, #ffe08a 0%, #f6c343 100%) !important;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%) !important;
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65) !important;
 }
 
@@ -684,7 +634,7 @@
 
 :root[data-theme="demonslayer"] body {
     background: url("https://i.pinimg.com/736x/73/3c/b0/733cb0696372d66f16702dd385a5aa5b.jpg") center/cover no-repeat fixed;
-    background-color: #08111b;
+    background-color: var(--bg-primary);
 }
 
 :root[data-theme="demonslayer"] body::before {
@@ -729,7 +679,7 @@
     background: rgba(5, 12, 20, 0.88);
     border: 1px solid rgba(0, 194, 209, 0.4);
     box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
-    color: #f0feff;
+    color: var(--text-primary);
 }
 
 :root[data-theme="demonslayer"] .card .value,
@@ -747,7 +697,7 @@
 :root[data-theme="demonslayer"] .transaction-note,
 :root[data-theme="demonslayer"] .investment-metric-value,
 :root[data-theme="demonslayer"] .investment-metric-label {
-    color: #e5fdff !important;
+    color: var(--text-primary-light) !important;
 }
 
 :root[data-theme="demonslayer"] .metric-pill,
@@ -755,7 +705,7 @@
 :root[data-theme="demonslayer"] .badge,
 :root[data-theme="demonslayer"] .status-pill {
     background: rgba(0, 194, 209, 0.15) !important;
-    color: #88f6ff !important;
+    color: var(--color-primary-light) !important;
     border-color: rgba(0, 194, 209, 0.35) !important;
 }
 
@@ -802,14 +752,14 @@
 :root[data-theme="demonslayer"] .note-input {
     background: rgba(12, 27, 40, 0.85) !important;
     border: 2px solid rgba(0, 194, 209, 0.35) !important;
-    color: #e7fdff !important;
+    color: var(--text-primary-light) !important;
 }
 
 :root[data-theme="demonslayer"] .form-input:focus,
 :root[data-theme="demonslayer"] .form-select:focus,
 :root[data-theme="demonslayer"] .form-textarea:focus,
 :root[data-theme="demonslayer"] .note-input:focus {
-    border-color: #00c2d1 !important;
+    border-color: var(--color-primary) !important;
     box-shadow: 0 0 0 3px rgba(0, 194, 209, 0.25) !important;
     background: rgba(8, 19, 30, 0.96) !important;
 }
@@ -823,13 +773,13 @@
 :root[data-theme="demonslayer"] .tab-btn {
     background: rgba(10, 24, 36, 0.85) !important;
     border: 1px solid rgba(0, 194, 209, 0.25) !important;
-    color: #e7fdff !important;
+    color: var(--text-primary-light) !important;
 }
 
 :root[data-theme="demonslayer"] .tab-btn.active {
     background: rgba(0, 194, 209, 0.2) !important;
     border: 2px solid #00c2d1 !important;
-    color: #e7fdff !important;
+    color: var(--text-primary-light) !important;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45) !important;
 }
 
@@ -841,7 +791,7 @@
 :root[data-theme="demonslayer"] .key-btn {
     background: rgba(12, 27, 40, 0.85) !important;
     border: 2px solid rgba(0, 194, 209, 0.35) !important;
-    color: #e7fdff !important;
+    color: var(--text-primary-light) !important;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -858,12 +808,12 @@
 
 :root[data-theme="demonslayer"] .key-btn.operator {
     background: rgba(0, 194, 209, 0.35) !important;
-    color: #08131e !important;
+    color: var(--color-primary-dark) !important;
 }
 
 :root[data-theme="demonslayer"] .key-btn.equal {
-    background: linear-gradient(135deg, #00c2d1 0%, #00a0b6 100%) !important;
-    color: #08131e !important;
+    background: linear-gradient(135deg, var(--color-primary) 0%, color-mix(in srgb, var(--color-primary) 85%, var(--color-primary-dark)) 100%) !important;
+    color: var(--color-primary-dark) !important;
 }
 
 :root[data-theme="demonslayer"] .key-btn.delete {
@@ -872,31 +822,16 @@
 }
 
 :root[data-theme="demonslayer"] .fab-btn {
-    background: linear-gradient(135deg, #00c2d1 0%, #00a7c6 100%) !important;
-    color: #08131e !important;
+    background: linear-gradient(135deg, var(--color-primary) 0%, color-mix(in srgb, var(--color-primary) 90%, var(--color-primary-dark)) 100%) !important;
+    color: var(--color-primary-dark) !important;
     box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6) !important;
 }
 
 :root[data-theme="demonslayer"] .fab-btn:hover {
-    background: linear-gradient(135deg, #7af5ff 0%, #00c2d1 100%) !important;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%) !important;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65) !important;
 }
 
-:root[data-theme="anime"] .page-input,
-:root[data-theme="anime"] .page-ledger,
-:root[data-theme="anime"] .page-chart,
-:root[data-theme="anime"] .page-budget,
-:root[data-theme="anime"] .page-monthly-planner,
-:root[data-theme="anime"] .page-daily-budget,
-:root[data-theme="anime"] .page-settings,
-:root[data-theme="anime"] .page-category-manage,
-:root[data-theme="anime"] .page-investment,
-:root[data-theme="anime"] .page-wallet,
-:root[data-theme="anime"] .page-history,
-:root[data-theme="anime"] .page-planner {
-    background: transparent !important;
-    box-shadow: none;
-}
 
 :root[data-theme="pink"].dark,
 :root[data-theme="blue"].dark,
@@ -907,15 +842,6 @@
 :root[data-theme="cyan"].dark,
 :root[data-theme="star"].dark,
 :root[data-theme="red"].dark,
-:root[data-theme="yellow"].dark,
-:root[data-theme="indigo"].dark,
-:root[data-theme="teal"].dark,
-:root[data-theme="rosegold"].dark,
-:root[data-theme="aurora"].dark,
-:root[data-theme="bubble"].dark,
-:root[data-theme="firefly"].dark,
-:root[data-theme="snow"].dark,
-:root[data-theme="cute"].dark,
 :root[data-theme="auroraflow"].dark,
 :root[data-theme="midnight"].dark,
 :root[data-theme="neon"].dark,
@@ -947,12 +873,12 @@
 /* ========== CSS 變數定義（統一顏色和格式） ========== */
 :root {
     /* 主色 */
-    --color-primary: #ff69b4;
-    --color-primary-light: #ffb6d9;
-    --color-primary-lighter: #ff9ec7;
-    --color-primary-rgba-20: rgba(255, 105, 180, 0.2);
-    --color-primary-rgba-12: rgba(255, 105, 180, 0.12);
-    --color-primary-rgba-08: rgba(255, 105, 180, 0.08);
+    --color-primary: var(--color-primary, #4a90e2);
+    --color-primary-light: var(--color-primary-light, #7bb3f0);
+    --color-primary-lighter: var(--color-primary-lighter, #5da3ed);
+    --color-primary-rgba-20: var(--color-primary-rgba-20, rgba(74, 144, 226, 0.2));
+    --color-primary-rgba-12: var(--color-primary-rgba-12, rgba(74, 144, 226, 0.12));
+    --color-primary-rgba-08: var(--color-primary-rgba-08, rgba(74, 144, 226, 0.08));
     --color-success: #22c55e;
     --color-danger: #ef4444;
     --color-error: var(--color-danger);
@@ -968,7 +894,13 @@
     --bg-card: #ffffff;
     --bg-soft: #f8fafc;
     --bg-soft-strong: #eef2ff;
-    --bg-light-gradient: linear-gradient(135deg, #ffeef5 0%, #fff5f9 100%);
+    --bg-light-gradient: linear-gradient(135deg, #ffffff 0%, #e8f4fd 100%);
+    --bg-warning: #fff3cd;
+    --bg-danger: #fee2e2;
+    --bg-input-focus: #f8f9ff;
+    --bg-hover: #f0f0f0;
+    --bg-dark: #000000;
+    --bg-toggle: #e0e0e0;
     
     /* 文字顏色（預設淺色背景用深色字） */
     --text-primary: #0f172a;
@@ -976,9 +908,13 @@
     --text-tertiary: rgba(15, 23, 42, 0.58);
     --text-strong: var(--text-primary);
     --text-white: #ffffff;
-    --text-primary-color: #ff69b4;
+    --text-primary-color: var(--color-primary, #4a90e2);
     --text-shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.14);
     --text-shadow-strong: 0 2px 6px rgba(0, 0, 0, 0.24);
+    --text-warning: #856404;
+    --text-primary-light: #fdf8e9;
+    --text-primary-lighter: #fff8d2;
+    --text-primary-lightest: #fff9dc;
 
     /* 邊框與陰影 */
     --border-light: #e5e7eb;
@@ -993,7 +929,7 @@
     --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.2);
     --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.12);
     --shadow-soft: 0 8px 18px rgba(0, 0, 0, 0.08);
-    --shadow-focus: 0 0 0 3px rgba(255, 105, 180, 0.2);
+    --shadow-focus: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
 
     /* 圓角 */
     --radius-xs: 8px;
@@ -1049,19 +985,19 @@
 
     /* 動作按鈕（會依主題動態混色） */
     --action-buy-bg: linear-gradient(135deg,
-        color-mix(in srgb, var(--color-primary-light, #ffb6d9) 80%, white) 0%,
-        color-mix(in srgb, var(--color-primary, #ff69b4) 85%, var(--color-primary-dark, #ff1493)) 100%);
+        color-mix(in srgb, var(--color-primary-light, #7bb3f0) 80%, white) 0%,
+        color-mix(in srgb, var(--color-primary, #4a90e2) 85%, var(--color-primary-dark, #2e7bd6)) 100%);
     --action-buy-bg-hover: linear-gradient(135deg,
-        color-mix(in srgb, var(--color-primary, #ff69b4) 85%, white) 0%,
-        color-mix(in srgb, var(--color-primary-dark, #ff1493) 90%, black) 100%);
+        color-mix(in srgb, var(--color-primary, #4a90e2) 85%, white) 0%,
+        color-mix(in srgb, var(--color-primary-dark, #2e7bd6) 90%, black) 100%);
     --action-buy-text: #ffffff;
 
     --action-dca-bg: linear-gradient(135deg,
-        color-mix(in srgb, var(--color-primary-light, #ffb6d9) 25%, #5eead4) 0%,
-        color-mix(in srgb, var(--color-primary, #ff69b4) 45%, #6366f1) 100%);
+        color-mix(in srgb, var(--color-primary-light, #7bb3f0) 25%, #5eead4) 0%,
+        color-mix(in srgb, var(--color-primary, #4a90e2) 45%, #6366f1) 100%);
     --action-dca-bg-hover: linear-gradient(135deg,
-        color-mix(in srgb, var(--color-primary, #ff69b4) 30%, #5eead4) 0%,
-        color-mix(in srgb, var(--color-primary-dark, #ff1493) 55%, #4338ca) 100%);
+        color-mix(in srgb, var(--color-primary, #4a90e2) 30%, #5eead4) 0%,
+        color-mix(in srgb, var(--color-primary-dark, #2e7bd6) 55%, #4338ca) 100%);
     --action-dca-text: #ffffff;
 
     --action-side-bg: color-mix(in srgb, var(--bg-white) 75%, rgba(15, 23, 42, 0.08));
@@ -1499,36 +1435,6 @@
     --bg-light-gradient-reverse: linear-gradient(180deg, #f0f9f8 0%, #ffffff 100%);
 }
 
-/* ========== 新增主題：玫瑰金主題 ========== */
-:root[data-theme="rosegold"] {
-    --color-primary: #e91e63;
-    --color-primary-light: #f06292;
-    --color-primary-lighter: #f48fb1;
-    --color-primary-dark: #c2185b;
-    --bg-primary: linear-gradient(135deg, #fce4ec 0%, #fff0f5 100%);
-    --bg-gradient: linear-gradient(135deg, #f06292 0%, #e91e63 100%);
-    --bg-gradient-light: linear-gradient(135deg, #fce4ec 0%, #fff0f5 100%);
-    --border-primary: #e91e63;
-    --shadow-primary: 0 2px 8px rgba(233, 30, 99, 0.25);
-    --shadow-primary-lg: 0 4px 12px rgba(233, 30, 99, 0.3);
-    --color-primary-rgba-08: rgba(233, 30, 99, 0.08);
-    --color-primary-rgba-10: rgba(233, 30, 99, 0.1);
-    --color-primary-rgba-15: rgba(233, 30, 99, 0.15);
-    --color-primary-rgba-20: rgba(233, 30, 99, 0.2);
-    --color-primary-rgba-25: rgba(233, 30, 99, 0.25);
-    --color-primary-rgba-30: rgba(233, 30, 99, 0.3);
-    --color-primary-rgba-12: rgba(233, 30, 99, 0.12);
-    --color-primary-rgba-18: rgba(233, 30, 99, 0.18);
-    --color-primary-light-rgba-08: rgba(240, 98, 146, 0.08);
-    --color-primary-light-rgba-10: rgba(240, 98, 146, 0.1);
-    --color-primary-light-rgba-15: rgba(240, 98, 146, 0.15);
-    --color-primary-light-rgba-20: rgba(240, 98, 146, 0.2);
-    --color-primary-light-rgba-25: rgba(240, 98, 146, 0.25);
-    --color-primary-light-rgba-30: rgba(240, 98, 146, 0.3);
-    --color-primary-light-rgba-40: rgba(240, 98, 146, 0.4);
-    --bg-light-gradient: linear-gradient(135deg, #ffffff 0%, #fff0f5 100%);
-    --bg-light-gradient-reverse: linear-gradient(180deg, #fff0f5 0%, #ffffff 100%);
-}
 
 :root[data-theme="aurora"] {
     --color-primary: #00d4ff;
@@ -1560,35 +1466,6 @@
     --bg-light-gradient-reverse: linear-gradient(180deg, rgba(0, 212, 255, 0.08) 0%, #ffffff 100%);
 }
 
-:root[data-theme="bubble"] {
-    --color-primary: #4dd0e1;
-    --color-primary-light: #81e6ef;
-    --color-primary-lighter: #b2f5f9;
-    --color-primary-dark: #00acc1;
-    --bg-primary: linear-gradient(135deg, #e6f7ff 0%, #ffffff 100%);
-    --bg-gradient: linear-gradient(135deg, #81e6ef 0%, #4dd0e1 100%);
-    --bg-gradient-light: linear-gradient(135deg, rgba(129, 230, 239, 0.18) 0%, rgba(77, 208, 225, 0.12) 100%);
-    --border-primary: #4dd0e1;
-    --shadow-primary: 0 2px 8px rgba(77, 208, 225, 0.25);
-    --shadow-primary-lg: 0 4px 12px rgba(77, 208, 225, 0.3);
-    --color-primary-rgba-08: rgba(77, 208, 225, 0.08);
-    --color-primary-rgba-10: rgba(77, 208, 225, 0.1);
-    --color-primary-rgba-15: rgba(77, 208, 225, 0.15);
-    --color-primary-rgba-20: rgba(77, 208, 225, 0.2);
-    --color-primary-rgba-25: rgba(77, 208, 225, 0.25);
-    --color-primary-rgba-30: rgba(77, 208, 225, 0.3);
-    --color-primary-rgba-12: rgba(77, 208, 225, 0.12);
-    --color-primary-rgba-18: rgba(77, 208, 225, 0.18);
-    --color-primary-light-rgba-08: rgba(129, 230, 239, 0.08);
-    --color-primary-light-rgba-10: rgba(129, 230, 239, 0.1);
-    --color-primary-light-rgba-15: rgba(129, 230, 239, 0.15);
-    --color-primary-light-rgba-20: rgba(129, 230, 239, 0.2);
-    --color-primary-light-rgba-25: rgba(129, 230, 239, 0.25);
-    --color-primary-light-rgba-30: rgba(129, 230, 239, 0.3);
-    --color-primary-light-rgba-40: rgba(129, 230, 239, 0.4);
-    --bg-light-gradient: linear-gradient(135deg, #ffffff 0%, #e6f7ff 100%);
-    --bg-light-gradient-reverse: linear-gradient(180deg, #e6f7ff 0%, #ffffff 100%);
-}
 
 :root[data-theme="firefly"] {
     --color-primary: #facc15;
@@ -4842,7 +4719,7 @@ width: 100%;
     position: relative;
     margin: 12px 0;
     padding: 8px;
-    background: #f8f8f8;
+    background: var(--bg-light);
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -4894,15 +4771,15 @@ width: 100%;
     font-size: var(--font-xxl);
     border-radius: 16px;
     background: linear-gradient(135deg,
-        var(--color-primary-light-rgba-20, color-mix(in srgb, var(--color-primary, #ff69b4) 15%, transparent)) 0%,
-        var(--color-primary-light-rgba-08, color-mix(in srgb, var(--color-primary, #ff69b4) 8%, transparent)) 100%);
-    box-shadow: 0 2px 8px color-mix(in srgb, var(--color-primary, #ff69b4) 18%, transparent);
+        var(--color-primary-light-rgba-20, color-mix(in srgb, var(--color-primary) 15%, transparent)) 0%,
+        var(--color-primary-light-rgba-08, color-mix(in srgb, var(--color-primary) 8%, transparent)) 100%);
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--color-primary) 18%, transparent);
     transition: all 0.3s ease;
 }
 
 .transaction-item:hover .transaction-icon {
     transform: scale(1.1);
-    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-primary, #ff69b4) 28%, transparent);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-primary) 28%, transparent);
 }
 
 .transaction-icon svg {
@@ -4952,7 +4829,7 @@ width: 100%;
 .member-display {
     padding: 8px 12px;
     margin: 8px 0;
-    background: #f8f8f8;
+    background: var(--bg-light);
     border-radius: 8px;
     font-size: 14px;
     color: #666;
@@ -4997,19 +4874,19 @@ width: 100%;
     border: 2px solid #f0f0f0;
     border-radius: 12px;
     margin-bottom: 8px;
-    background: #ffffff;
+    background: var(--bg-white);
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .member-item:hover {
     border-color: #ff9ec7;
-    background: #fff5f9;
+    background: var(--bg-lighter);
 }
 
 .member-item.selected {
-    border-color: #ff69b4;
-    background: linear-gradient(135deg, #fff5f9 0%, #ffeef5 100%);
+    border-color: var(--color-primary);
+    background: linear-gradient(135deg, var(--bg-light-gradient) 0%, var(--bg-light-gradient) 100%);
 }
 
 .member-item-icon {
@@ -5027,7 +4904,7 @@ width: 100%;
 
 .member-item-check {
     font-size: 18px;
-    color: #ff69b4;
+    color: var(--color-primary);
     font-weight: 600;
 }
 
@@ -5040,7 +4917,7 @@ width: 100%;
 .member-display {
     padding: 8px 12px;
     margin: 8px 0;
-    background: #f8f8f8;
+    background: var(--bg-light);
     border-radius: 8px;
     font-size: 14px;
     color: #666;
@@ -5085,19 +4962,19 @@ width: 100%;
     border: 2px solid #f0f0f0;
     border-radius: 12px;
     margin-bottom: 8px;
-    background: #ffffff;
+    background: var(--bg-white);
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .member-item:hover {
     border-color: #ff9ec7;
-    background: #fff5f9;
+    background: var(--bg-lighter);
 }
 
 .member-item.selected {
-    border-color: #ff69b4;
-    background: linear-gradient(135deg, #fff5f9 0%, #ffeef5 100%);
+    border-color: var(--color-primary);
+    background: linear-gradient(135deg, var(--bg-light-gradient) 0%, var(--bg-light-gradient) 100%);
 }
 
 .member-item-icon {
@@ -5115,7 +4992,7 @@ width: 100%;
 
 .member-item-check {
     font-size: 18px;
-    color: #ff69b4;
+    color: var(--color-primary);
     font-weight: 600;
 }
 
@@ -6017,11 +5894,62 @@ width: 100%;
     border: 1px solid var(--card-border-color);
 }
 
+.monthly-planner-card--savings {
+    background: linear-gradient(135deg, var(--bg-white) 0%, rgba(52, 152, 219, 0.05) 100%);
+    border-color: rgba(52, 152, 219, 0.3);
+}
+
 .monthly-planner-card-title {
     font-size: 16px;
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.title-icon {
+    font-size: 18px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.savings-type-tabs {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+}
+
+.savings-type-tab {
+    padding: 4px 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    background: var(--bg-white);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.savings-type-tab:hover {
+    background: var(--bg-light);
+    color: var(--text-primary);
+}
+
+.savings-type-tab.active {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.savings-type-tab[data-type="stock"].active {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.savings-type-tab[data-type="savings"].active {
+    background: linear-gradient(135deg, #27ae60, #229954);
 }
 
 .monthly-planner-form {
@@ -6045,6 +5973,73 @@ width: 100%;
     color: var(--text-tertiary);
     font-size: 13px;
     text-align: center;
+}
+
+/* 儲蓄項目樣式 */
+.savings-item-row {
+    display: grid;
+    grid-template-columns: auto 1fr 100px 1fr auto;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    transition: all 0.2s ease;
+}
+
+.savings-item-row:hover {
+    background: var(--bg-white);
+    border-color: var(--border-medium);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.savings-item-icon {
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+}
+
+.savings-item-name {
+    font-weight: 500;
+}
+
+/* 儲蓄類型顏色編碼 */
+.savings-item-row[data-type="stock"] {
+    border-left: 4px solid #3498db;
+    background: linear-gradient(to right, rgba(52, 152, 219, 0.05), transparent);
+}
+
+.savings-item-row[data-type="savings"] {
+    border-left: 4px solid #27ae60;
+    background: linear-gradient(to right, rgba(39, 174, 96, 0.05), transparent);
+}
+
+.savings-item-row[data-type="stock"]:hover {
+    background: linear-gradient(to right, rgba(52, 152, 219, 0.1), rgba(255, 255, 255, 0.9));
+}
+
+.savings-item-row[data-type="savings"]:hover {
+    background: linear-gradient(to right, rgba(39, 174, 96, 0.1), rgba(255, 255, 255, 0.9));
+}
+
+/* 標籤懸停效果 */
+.savings-type-tab:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.savings-type-tab.active:hover {
+    transform: translateY(0);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 模板按鈕懸停效果 */
+.savings-template-btn:hover {
+    background: white !important;
+    border-color: var(--color-primary) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .monthly-planner-item-row {
@@ -6275,8 +6270,9 @@ width: 100%;
 
 .monthly-planner-goal-meta {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
+    margin-bottom: 10px;
     font-size: 13px;
     color: var(--text-secondary);
     font-weight: 700;
@@ -6308,8 +6304,9 @@ width: 100%;
     font-size: 12px;
     color: var(--text-tertiary);
     font-weight: 800;
-    min-width: 52px;
+    min-width: 100px;
     text-align: right;
+    white-space: nowrap;
 }
 
 .monthly-planner-goal-eta {
@@ -6317,6 +6314,94 @@ width: 100%;
     font-size: 13px;
     color: var(--text-secondary);
     line-height: 1.4;
+}
+
+.monthly-planner-goal-card.goal-completed {
+    border: 2px solid var(--color-success);
+    background: linear-gradient(145deg, var(--bg-white) 0%, rgba(var(--color-success-rgb), 0.05) 100%);
+    box-shadow: 0 8px 24px rgba(var(--color-success-rgb), 0.15);
+}
+
+.monthly-planner-goal-card.goal-completed .monthly-planner-goal-bar-fill {
+    background: var(--color-success);
+}
+
+.monthly-planner-goal-status {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--color-success);
+    text-align: center;
+    padding: 6px 12px;
+    background: rgba(var(--color-success-rgb), 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(var(--color-success-rgb), 0.2);
+}
+
+/* 轉帳專用帳戶選擇區域 */
+.transfer-accounts-section {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(var(--color-primary-rgb), 0.05);
+    border-radius: 12px;
+    margin: 8px 0;
+    border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+    position: relative;
+    z-index: 10;
+}
+
+.transfer-account-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.transfer-account-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.transfer-account-select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    background: var(--bg-white);
+    color: var(--text-primary);
+    font-size: 14px;
+    cursor: pointer;
+    min-height: 40px;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    padding-right: 32px;
+    position: relative;
+    z-index: 1;
+}
+
+.transfer-account-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.transfer-arrow {
+    font-size: 18px;
+    color: var(--color-primary);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
 }
 
 .monthly-planner-goal-actions {
@@ -6337,7 +6422,7 @@ width: 100%;
     }
 
     .monthly-planner-goal-meta {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
@@ -6392,11 +6477,55 @@ width: 100%;
     box-shadow: var(--shadow-sm);
 }
 
+.monthly-planner-btn--outline {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    box-shadow: none;
+}
+
+.monthly-planner-btn--outline:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+.savings-item-row {
+    position: relative;
+}
+
+.savings-item-row[data-type="stock"] {
+    border-left: 4px solid #3498db;
+    background: linear-gradient(90deg, rgba(52, 152, 219, 0.05) 0%, transparent 100%);
+}
+
+.savings-item-row[data-type="savings"] {
+    border-left: 4px solid #27ae60;
+    background: linear-gradient(90deg, rgba(39, 174, 96, 0.05) 0%, transparent 100%);
+}
+
+.savings-item-icon {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+.savings-item-row[data-type="stock"] .savings-item-name,
+.savings-item-row[data-type="savings"] .savings-item-name {
+    padding-left: 28px;
+}
+
 /* ========== 每日預算追蹤頁面 ========== */
 .page-daily-budget {
     min-height: calc(100vh - 60px);
     padding-bottom: 20px;
     background: var(--bg-primary);
+}
+
+:root.dark .page-daily-budget {
+    background: var(--bg-primary-dark);
 }
 
 .daily-budget-header {
@@ -6408,6 +6537,11 @@ width: 100%;
     position: sticky;
     top: 0;
     z-index: 100;
+}
+
+:root.dark .daily-budget-header {
+    background: var(--bg-dark);
+    border-bottom-color: var(--border-dark);
 }
 
 .daily-budget-back-btn {
@@ -6427,6 +6561,10 @@ width: 100%;
     transform: scale(1.05);
 }
 
+:root.dark .daily-budget-back-btn:hover {
+    background: var(--bg-darker);
+}
+
 .daily-budget-back-btn:active {
     transform: scale(0.95);
 }
@@ -6437,6 +6575,12 @@ width: 100%;
     color: var(--text-primary);
     margin: 0;
     flex: 1;
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+}
+
+:root.dark .daily-budget-title {
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.3);
 }
 
 .daily-budget-summary {
@@ -6453,6 +6597,11 @@ width: 100%;
     gap: var(--spacing-lg);
 }
 
+:root.dark .daily-budget-summary-card {
+    background: var(--bg-dark);
+    box-shadow: var(--shadow-md-dark);
+}
+
 .summary-item {
     display: flex;
     flex-direction: column;
@@ -6467,6 +6616,11 @@ width: 100%;
     background: var(--bg-light);
     cursor: pointer;
     transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+:root.dark .summary-item.summary-item--cta {
+    border-color: var(--border-dark);
+    background: var(--bg-darker);
 }
 
 .summary-item.summary-item--cta:hover {
@@ -6489,6 +6643,12 @@ width: 100%;
     font-size: 12px;
     color: var(--text-tertiary);
     margin-bottom: 8px;
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+}
+
+:root.dark .summary-label {
+    color: var(--text-tertiary);
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.3);
 }
 
 .summary-value {
@@ -6500,22 +6660,241 @@ width: 100%;
     letter-spacing: 0.01em;
     font-variant-numeric: tabular-nums;
     text-rendering: optimizeLegibility;
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+}
+
+:root.dark .summary-value {
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.3);
 }
 
 .summary-value.highlight {
     color: var(--color-success);
+    text-shadow: 0 1px 2px rgba(46, 204, 113, 0.3);
+}
+
+:root.dark .summary-value.highlight {
+    color: var(--color-success);
+    text-shadow: 0 1px 2px rgba(46, 204, 113, 0.5);
 }
 
 .summary-value.over {
     color: var(--color-error);
+    text-shadow: 0 1px 2px rgba(231, 76, 60, 0.3);
+}
+
+:root.dark .summary-value.over {
+    color: var(--color-error);
+    text-shadow: 0 1px 2px rgba(231, 76, 60, 0.5);
 }
 
 .summary-value.positive {
     color: var(--color-success);
+    text-shadow: 0 1px 2px rgba(46, 204, 113, 0.3);
+}
+
+:root.dark .summary-value.positive {
+    color: var(--color-success);
+    text-shadow: 0 1px 2px rgba(46, 204, 113, 0.5);
 }
 
 .summary-value.negative {
     color: var(--color-error);
+    text-shadow: 0 1px 2px rgba(231, 76, 60, 0.3);
+}
+
+:root.dark .summary-value.negative {
+    color: var(--color-error);
+    text-shadow: 0 1px 2px rgba(231, 76, 60, 0.5);
+}
+
+/* ========== 每日詳情模態 ========== */
+.daily-detail-modal {
+    position: fixed;
+    inset: 0;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--bg-primary, #050816) 45%, rgba(0, 0, 0, 0.78));
+    backdrop-filter: blur(18px) saturate(120%);
+    z-index: 10006;
+}
+
+.daily-detail-modal__panel {
+    width: min(520px, 100%);
+    max-height: 80vh;
+    overflow: hidden;
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: var(--shadow-primary-lg, 0 24px 60px rgba(3, 7, 18, 0.7));
+    color: var(--text-primary);
+    animation: slideIn 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.daily-detail-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.daily-detail-modal__title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.daily-detail-modal__icon {
+    font-size: 28px;
+}
+
+.daily-detail-close-btn {
+    background: none;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    font-size: 24px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast, 0.2s ease);
+}
+
+.daily-detail-close-btn:hover {
+    background: var(--bg-light, rgba(255, 255, 255, 0.12));
+    color: var(--text-primary);
+    transform: scale(1.05);
+}
+
+.daily-detail-close-btn:active {
+    transform: scale(0.95);
+}
+
+.daily-detail-summary-card {
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid var(--border-light);
+    background: var(--bg-gradient-light, var(--bg-light));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.daily-detail-summary-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.daily-detail-summary-value,
+.daily-detail-summary-value-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.daily-detail-summary-value,
+.daily-detail-summary-value-wrap .daily-detail-summary-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.daily-detail-summary-total {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-error);
+}
+
+.daily-detail-records-header {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: -8px;
+}
+
+.daily-detail-records-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.daily-detail-modal .summary-item.summary-item--cta {
+    width: 100%;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.daily-detail-quick-add-btn {
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 16px;
+    background: var(--bg-gradient);
+    color: var(--text-white);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: var(--shadow-primary-lg);
+    transition: transform var(--transition-fast, 0.2s), box-shadow var(--transition-fast, 0.2s);
+    position: relative;
+    overflow: hidden;
+}
+
+.daily-detail-quick-add-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.daily-detail-quick-add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--color-primary, #7c3aed) 25%, rgba(0, 0, 0, 0.45));
+}
+
+.daily-detail-quick-add-btn:hover::after {
+    opacity: 1;
+}
+
+.daily-detail-quick-add-btn:active {
+    transform: scale(0.97);
+}
+
+.daily-detail-quick-add-btn__icon {
+    font-size: 20px;
+}
+
+@media (max-width: 576px) {
+    .daily-detail-modal__panel {
+        padding: 22px;
+        border-radius: 20px;
+        max-height: 85vh;
+    }
+
+    .daily-detail-summary-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 .daily-budget-calendar {
@@ -6528,6 +6907,12 @@ width: 100%;
     color: var(--text-primary);
     margin-bottom: 16px;
     padding: 0 4px;
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+}
+
+:root.dark .daily-calendar-title {
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.3);
 }
 
 .daily-calendar-grid {
@@ -6544,9 +6929,18 @@ width: 100%;
     transition: all 0.2s;
 }
 
+:root.dark .daily-calendar-item {
+    background: var(--bg-dark);
+    box-shadow: var(--shadow-sm-dark);
+}
+
 .daily-calendar-item.today {
     border: 2px solid var(--color-primary);
     background: var(--bg-gradient-light);
+}
+
+:root.dark .daily-calendar-item.today {
+    background: var(--bg-gradient-light-dark);
 }
 
 .daily-calendar-item.past {
@@ -6566,10 +6960,20 @@ width: 100%;
     border-bottom: 1px solid var(--border-light);
 }
 
+:root.dark .daily-item-header {
+    border-bottom-color: var(--border-dark);
+}
+
 .daily-item-day {
     font-size: 14px;
     font-weight: 600;
     color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+}
+
+:root.dark .daily-item-day {
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.3);
 }
 
 .daily-item-today-badge {
@@ -6596,24 +7000,54 @@ width: 100%;
 .daily-item-label {
     font-size: 11px;
     color: var(--text-tertiary);
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+}
+
+:root.dark .daily-item-label {
+    color: var(--text-tertiary);
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.3);
 }
 
 .daily-item-value {
     font-size: 12px;
     font-weight: 600;
     color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+}
+
+:root.dark .daily-item-value {
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.3);
 }
 
 .daily-item-value.over {
     color: var(--color-error);
+    text-shadow: 0 1px 2px rgba(231, 76, 60, 0.3);
+}
+
+:root.dark .daily-item-value.over {
+    color: var(--color-error);
+    text-shadow: 0 1px 2px rgba(231, 76, 60, 0.5);
 }
 
 .daily-item-value.positive {
     color: var(--color-success);
+    text-shadow: 0 1px 2px rgba(46, 204, 113, 0.3);
+}
+
+:root.dark .daily-item-value.positive {
+    color: var(--color-success);
+    text-shadow: 0 1px 2px rgba(46, 204, 113, 0.5);
 }
 
 .daily-item-value.negative {
     color: var(--color-error);
+    text-shadow: 0 1px 2px rgba(231, 76, 60, 0.3);
+}
+
+:root.dark .daily-item-value.negative {
+    color: var(--color-error);
+    text-shadow: 0 1px 2px rgba(231, 76, 60, 0.5);
 }
 
 .daily-budget-track-btn {
@@ -6634,6 +7068,11 @@ width: 100%;
     justify-content: center;
     gap: 6px;
     min-height: 44px;
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.2);
+}
+
+:root.dark .daily-budget-track-btn {
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.4);
 }
 
 .daily-budget-track-btn:hover {
@@ -6658,6 +7097,10 @@ width: 100%;
     border-top: 1px solid var(--border-light);
 }
 
+:root.dark .budget-add-section {
+    border-top-color: var(--border-dark);
+}
+
 .budget-add-btn-full {
     width: 100%;
     margin: 0;
@@ -6674,6 +7117,146 @@ width: 100%;
     margin: var(--spacing-xl);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     border: 1px solid var(--card-border-color);
+}
+
+:root.dark .modal-content-standard {
+    background: var(--bg-dark);
+    border-color: var(--border-dark);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* ========== 存股/儲蓄功能樣式 ========== */
+
+/* 儲蓄類型標籤 */
+.savings-type-tabs {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.savings-type-tab {
+    padding: 6px 12px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: var(--font-sm);
+    font-weight: var(--font-medium);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+:root.dark .savings-type-tab {
+    color: var(--text-secondary);
+}
+
+.savings-type-tab:hover {
+    background: rgba(var(--color-primary-rgb), 0.1);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.savings-type-tab.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--text-white);
+}
+
+
+/* 儲蓄項目行 */
+.savings-item-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+.savings-item-icon {
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.savings-item-name {
+    flex: 1;
+    min-width: 120px;
+}
+
+/* 類型特定樣式 */
+.savings-item-row[data-type="stock"] {
+    border-left: 3px solid var(--color-primary);
+    padding-left: 12px;
+}
+
+.savings-item-row[data-type="savings"] {
+    border-left: 3px solid var(--color-success);
+    padding-left: 12px;
+}
+
+.savings-item-row[data-type="stock"] .savings-item-icon {
+    color: var(--color-primary);
+}
+
+.savings-item-row[data-type="savings"] .savings-item-icon {
+    color: var(--color-success);
+}
+
+/* 儲蓄卡片特殊樣式 */
+.monthly-planner-card--savings {
+    border-left: 4px solid var(--color-success);
+}
+
+:root.dark .monthly-planner-card--savings {
+    border-left-color: var(--color-success);
+}
+
+/* 內聯操作按鈕 */
+.monthly-planner-actions--inline {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.monthly-planner-actions--inline .monthly-planner-btn {
+    flex: 1;
+}
+
+/* 模板對話框樣式 */
+.savings-type-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.savings-template-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary);
+}
+
+/* 主題適配的對話框樣式 */
+.savings-type-option {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-light);
+}
+
+:root.dark .savings-type-option {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-light);
+}
+
+.savings-template-btn {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-light);
+}
+
+:root.dark .savings-template-btn {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-light);
 }
 
 /* ========== 主題選擇器 ========== */
@@ -6708,6 +7291,12 @@ width: 100%;
     font-weight: var(--font-semibold);
     color: var(--text-primary);
     letter-spacing: 0.02em;
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+}
+
+:root.dark .theme-modal-title {
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.3);
 }
 
 .theme-close-btn {
@@ -6744,7 +7333,12 @@ width: 100%;
     font-size: var(--font-base);
     font-weight: var(--font-semibold);
     color: var(--text-primary);
-    margin-bottom: var(--spacing-md);
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+}
+
+:root.dark .theme-section-title {
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.3);
 }
 
 .theme-toolbar {
@@ -6860,6 +7454,12 @@ width: 100%;
     font-weight: 800;
     color: var(--text-primary);
     letter-spacing: 0.2px;
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+}
+
+:root.dark .theme-item-name {
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.3);
 }
 
 .theme-item-check {
@@ -6904,6 +7504,12 @@ width: 100%;
     font-size: var(--font-sm);
     color: var(--text-secondary);
     font-weight: var(--font-medium);
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+}
+
+:root.dark .theme-label {
+    color: var(--text-secondary);
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.3);
 }
 
 .theme-field-row {
@@ -6942,6 +7548,12 @@ width: 100%;
     font-size: 12px;
     color: var(--text-tertiary);
     line-height: 1.4;
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+}
+
+:root.dark .theme-help {
+    color: var(--text-tertiary);
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.3);
 }
 
 .theme-actions {
@@ -6965,6 +7577,11 @@ width: 100%;
     background: var(--color-primary);
     color: #fff;
     box-shadow: var(--shadow-primary);
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.2);
+}
+
+:root.dark .theme-primary-btn {
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.4);
 }
 
 .theme-primary-btn:hover {
@@ -6977,6 +7594,12 @@ width: 100%;
     background: var(--bg-light);
     border-color: var(--border-light);
     color: var(--text-secondary);
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+}
+
+:root.dark .theme-secondary-btn {
+    color: var(--text-secondary);
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.3);
 }
 
 .theme-secondary-btn:hover {
@@ -7011,6 +7634,7 @@ width: 100%;
     background: rgba(0, 0, 0, 0.55);
     color: #fff;
     cursor: pointer;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .theme-image-remove-btn:hover {
@@ -8822,7 +9446,7 @@ width: 100%;
 }
 
 .category-modal-content {
-    background: #ffffff;
+    background: var(--bg-white);
     border-radius: 16px;
     padding: 24px;
     width: 100%;
@@ -8849,7 +9473,7 @@ width: 100%;
     width: 32px;
     height: 32px;
     border: none;
-    background: #f5f5f5;
+    background: var(--bg-soft);
     border-radius: 50%;
     font-size: 20px;
     cursor: pointer;
@@ -8899,15 +9523,15 @@ width: 100%;
     padding: 12px;
     border: 2px solid #f0f0f0;
     border-radius: 10px;
-    background: #ffffff;
+    background: var(--bg-white);
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .category-modal-type-option.active {
-    background: linear-gradient(135deg, #ffb6d9 0%, #ff9ec7 100%);
-    border-color: #ff69b4;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary-lighter) 100%);
+    border-color: var(--color-primary);
     color: #ffffff;
     font-weight: 600;
 }
@@ -8935,7 +9559,7 @@ width: 100%;
 }
 
 .category-modal-btn.secondary {
-    background: #f5f5f5;
+    background: var(--bg-soft);
     color: #666;
 }
 
@@ -9390,8 +10014,8 @@ width: 100%;
 }
 
 .record-type.dividend {
-    background: #fff3cd;
-    color: #856404;
+    background: var(--bg-warning);
+    color: var(--text-warning);
 }
 
 .investment-records-header {
@@ -9438,7 +10062,7 @@ width: 100%;
 }
 
 .investment-pager-btn:not(:disabled):hover {
-    background: #f0f0f0;
+    background: var(--bg-hover);
 }
 
 .investment-record-date {
@@ -10347,65 +10971,101 @@ width: 100%;
 }
 
 .stock-grid-card-price-arrow {
-    font-size: 12px;
+    font-size: 16px;
     line-height: 1;
     font-weight: 900;
     transform: translateY(-0.5px);
 }
 
 .stock-grid-card-price-arrow.up {
-    color: #7f1d1d;
+    color: #f44336; /* 紅色表示漲 */
 }
 
 .stock-grid-card-price-arrow.down {
-    color: #14532d;
+    color: #4caf50; /* 綠色表示跌 */
 }
 
 .stock-grid-card-price-arrow:empty {
     display: none;
 }
 
- .stock-grid-card-price-unit {
-font-size: 10px;
-font-weight: 700;
-color: rgba(255, 255, 255, 0.72);
-letter-spacing: 0.15px;
+.stock-grid-card-change-arrow {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.stock-item-card .stock-grid-card-price-arrow {
+    font-size: 18px !important;
+    font-weight: 900 !important;
+}
+
+.stock-item-card .stock-grid-card-change-arrow {
+    font-size: 16px !important;
+    font-weight: 900 !important;
 }
 
 .stock-grid-card-change {
-margin-top: 8px;
-display: inline-flex;
-align-items: center;
-gap: 6px;
-font-size: 12px;
-font-weight: 800;
-padding: 5px 12px;
-border-radius: 999px;
-width: fit-content;
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.2;
+    letter-spacing: 0.3px;
+    text-align: center;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     background: rgba(255, 255, 255, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    letter-spacing: 0.22px;
     color: #1b1f2e;
-    text-shadow: none;
 }
 
 .stock-grid-card-change.positive {
-    color: #b91c1c;
-    background: rgba(255, 255, 255, 0.9);
-    border-color: rgba(248, 113, 113, 0.45);
-    box-shadow: 0 6px 16px rgba(248, 113, 113, 0.3);
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #f44336 0%, #e53935 100%) !important;
+    border: 1px solid #d32f2f !important;
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.4px !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.stock-grid-card-change.positive:hover {
+    background: linear-gradient(135deg, #e53935 0%, #d32f2f 100%) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(244, 67, 54, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
 }
 
 .stock-grid-card-change.negative {
-    color: #0f766e;
-    background: rgba(255, 255, 255, 0.9);
-    border-color: rgba(16, 185, 129, 0.4);
-    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.2);
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #4caf50 0%, #43a047 100%) !important;
+    border: 1px solid #388e3c !important;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.4px !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.stock-grid-card-change.negative:hover {
+    background: linear-gradient(135deg, #43a047 0%, #388e3c 100%) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
 }
 
 .stock-grid-card-change-arrow {
-font-size: 11px;
-line-height: 1;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 900;
+    margin-right: 2px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .stock-grid-card-tags {
@@ -11300,7 +11960,7 @@ line-height: 1;
 }
 
 .record-search-input:focus {
-    outline: 2px solid var(--color-primary, #ff69b4);
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
 }
 
@@ -11512,12 +12172,6 @@ line-height: 1;
 :root[data-theme="yellow"] .record-card-type.dividend-reinvest-badge,
 :root[data-theme="indigo"] .record-card-type.dividend-reinvest-badge,
 :root[data-theme="teal"] .record-card-type.dividend-reinvest-badge,
-:root[data-theme="rosegold"] .record-card-type.dividend-reinvest-badge,
-:root[data-theme="aurora"] .record-card-type.dividend-reinvest-badge,
-:root[data-theme="bubble"] .record-card-type.dividend-reinvest-badge,
-:root[data-theme="firefly"] .record-card-type.dividend-reinvest-badge,
-:root[data-theme="snow"] .record-card-type.dividend-reinvest-badge,
-:root[data-theme="cute"] .record-card-type.dividend-reinvest-badge,
 :root[data-theme="auroraflow"] .record-card-type.dividend-reinvest-badge,
 :root[data-theme="meteor"] .record-card-type.dividend-reinvest-badge,
 :root[data-theme="cyber"] .record-card-type.dividend-reinvest-badge,
@@ -11636,7 +12290,7 @@ line-height: 1;
 
 .dividend-reinvest-label {
     grid-column: 1 / -1;
-    background: #ffffff;
+    background: var(--bg-white);
     padding: 10px 16px;
     border-radius: 8px;
     border: 1px solid #e0e0e0;
@@ -11974,26 +12628,26 @@ line-height: 1;
     gap: 6px;
     padding: 8px 12px;
     background: linear-gradient(135deg,
-        color-mix(in srgb, var(--color-primary-light, #ffb6d9) 35%, var(--bg-white, #ffffff)) 0%,
-        color-mix(in srgb, var(--color-primary-light, #ffb6d9) 15%, var(--bg-white, #ffffff)) 100%);
-    border: 2px solid color-mix(in srgb, var(--color-primary-light, #ffb6d9) 55%, transparent);
+        color-mix(in srgb, var(--color-primary-light) 35%, var(--bg-white)) 0%,
+        color-mix(in srgb, var(--color-primary-light) 15%, var(--bg-white)) 100%);
+    border: 2px solid color-mix(in srgb, var(--color-primary-light) 55%, transparent);
     border-radius: 12px;
-    color: var(--color-primary, #ff69b4);
+    color: var(--color-primary);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     z-index: 10;
-    box-shadow: 0 2px 4px color-mix(in srgb, var(--color-primary, #ff69b4) 25%, transparent);
+    box-shadow: 0 2px 4px color-mix(in srgb, var(--color-primary) 25%, transparent);
 }
 
 .investment-form-back-btn:hover {
     background: linear-gradient(135deg,
-        color-mix(in srgb, var(--color-primary, #ff69b4) 40%, var(--bg-white, #ffffff)) 0%,
-        color-mix(in srgb, var(--color-primary-dark, #ff1493) 35%, var(--bg-white, #ffffff)) 100%);
+        color-mix(in srgb, var(--color-primary) 40%, var(--bg-white)) 0%,
+        color-mix(in srgb, var(--color-primary-dark) 35%, var(--bg-white)) 100%);
     color: #ffffff;
     transform: translateX(-2px);
-    box-shadow: 0 4px 8px color-mix(in srgb, var(--color-primary, #ff69b4) 35%, transparent);
+    box-shadow: 0 4px 8px color-mix(in srgb, var(--color-primary) 35%, transparent);
 }
 
 .investment-form-back-btn:active {
@@ -12572,7 +13226,7 @@ line-height: 1;
     cursor: pointer;
     appearance: none;
     -webkit-appearance: none;
-    border: 2px solid color-mix(in srgb, var(--color-primary, #ff69b4) 18%, #d1d5db 82%);
+    border: 2px solid color-mix(in srgb, var(--color-primary) 18%, #d1d5db 82%);
     border-radius: 6px;
     background: var(--bg-white, #ffffff);
     position: relative;
@@ -12582,9 +13236,9 @@ line-height: 1;
 
 .form-checkbox:checked {
     background: linear-gradient(135deg,
-        var(--color-primary-light, #ffb6d9) 0%,
-        var(--color-primary, #ff69b4) 100%);
-    border-color: var(--color-primary, #ff69b4);
+        var(--color-primary-light) 0%,
+        var(--color-primary) 100%);
+    border-color: var(--color-primary);
 }
 
 .form-checkbox:checked::after {
@@ -12606,14 +13260,14 @@ line-height: 1;
 }
 
 .form-checkbox-label:has(.form-checkbox:checked) {
-    border-color: var(--color-primary, #ff69b4);
+    border-color: var(--color-primary);
     background: linear-gradient(135deg,
-        color-mix(in srgb, var(--color-primary-light, #ffb6d9) 25%, transparent) 0%,
-        color-mix(in srgb, var(--color-primary-light, #ffb6d9) 45%, transparent) 100%);
+        color-mix(in srgb, var(--color-primary-light) 25%, transparent) 0%,
+        color-mix(in srgb, var(--color-primary-light) 45%, transparent) 100%);
 }
 
 .form-checkbox-label:has(.form-checkbox:checked) .form-checkbox-text {
-    color: var(--color-primary, #ff69b4);
+    color: var(--color-primary);
     font-weight: 600;
 }
 
@@ -12632,7 +13286,7 @@ line-height: 1;
     position: absolute;
     right: 16px;
     font-size: 20px;
-    color: #ff69b4;
+    color: var(--color-primary);
     pointer-events: none;
     font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
     transition: transform 0.3s ease;
@@ -12647,8 +13301,8 @@ line-height: 1;
     width: 100%;
     padding: 14px;
     background: linear-gradient(135deg,
-        var(--color-primary-light, #ffb6d9) 0%,
-        var(--color-primary, #ff69b4) 100%);
+        var(--color-primary-light) 0%,
+        var(--color-primary) 100%);
     border-radius: 16px;
     border: none;
     color: #fff;
@@ -12695,15 +13349,15 @@ line-height: 1;
 
 .form-query-btn:hover {
     background: linear-gradient(135deg,
-        var(--color-primary, #ff69b4) 0%,
-        var(--color-primary-dark, #ff1493) 100%);
+        var(--color-primary) 0%,
+        var(--color-primary-dark) 100%);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-primary, #ff69b4) 35%, transparent);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-primary) 35%, transparent);
 }
 
 .form-query-btn:active {
     transform: translateY(0);
-    box-shadow: 0 2px 6px color-mix(in srgb, var(--color-primary, #ff69b4) 24%, transparent);
+    box-shadow: 0 2px 6px color-mix(in srgb, var(--color-primary) 24%, transparent);
 }
 
 .input-grid {
@@ -12730,7 +13384,7 @@ line-height: 1;
 }
 
 .input-group {
-    background: #ffffff;
+    background: var(--bg-white);
     border-radius: 16px;
     padding: 16px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -12778,7 +13432,7 @@ line-height: 1;
     font-size: 28px;
     font-weight: 700;
     color: #333;
-    background: #ffffff;
+    background: var(--bg-white);
     transition: all 0.3s ease;
     text-align: right;
     cursor: text;
@@ -12804,13 +13458,13 @@ line-height: 1;
 
 .input-number:hover {
     border-color: #667eea;
-    background: #f8f9ff;
+    background: var(--bg-input-focus);
 }
 
 .input-number:focus {
     outline: none;
     border-color: #667eea;
-    background: #ffffff;
+    background: var(--bg-white);
     box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15), 0 4px 12px rgba(102, 126, 234, 0.2);
     transform: scale(1.02);
 }
@@ -12838,7 +13492,7 @@ line-height: 1;
 
 /* 快捷股數按鈕 */
 .quick-shares-section {
-    background: #ffffff;
+    background: var(--bg-white);
     border-radius: 16px;
     padding: 16px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -12875,7 +13529,7 @@ line-height: 1;
     padding: 10px;
     border: 2px solid #e0e0e0;
     border-radius: 10px;
-    background: #f8f9ff;
+    background: var(--bg-input-focus);
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -12886,7 +13540,7 @@ line-height: 1;
 
 .quick-btn:hover {
     border-color: #667eea;
-    background: #ffffff;
+    background: var(--bg-white);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
 }
@@ -12994,7 +13648,7 @@ line-height: 1;
     left: 0;
     right: 0;
     padding: 16px 20px;
-    background: #ffffff;
+    background: var(--bg-white);
     border-top: 1px solid #f0f0f0;
     z-index: 2001;
     max-width: 100%;
@@ -13267,7 +13921,7 @@ line-height: 1;
     top: 16px;
     background: rgba(255, 255, 255, 0.95);
     border: none;
-    color: #ff69b4;
+    color: var(--color-primary);
     font-size: 18px;
     font-weight: 700;
     cursor: pointer;
@@ -13288,7 +13942,7 @@ line-height: 1;
 }
 
 .investment-back-btn:hover {
-    background: #ffffff;
+    background: var(--bg-white);
     transform: translateX(-4px) scale(1.05);
     box-shadow: 0 6px 16px rgba(255, 105, 180, 0.3);
 }
@@ -13342,7 +13996,7 @@ line-height: 1;
 
 .input-field-label {
     font-size: 15px;
-    color: #ff69b4;
+    color: var(--color-primary);
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -13362,7 +14016,7 @@ line-height: 1;
     border-radius: 20px;
     font-size: 36px;
     font-weight: 700;
-    color: #ff69b4;
+    color: var(--color-primary);
     background: linear-gradient(135deg, #ffffff 0%, #fff9fc 100%);
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     box-sizing: border-box;
@@ -13371,10 +14025,10 @@ line-height: 1;
 
 .input-field-large:focus {
     outline: none;
-    border-color: #ff69b4;
-    box-shadow: 0 0 0 4px rgba(255, 105, 180, 0.15), 0 4px 12px rgba(255, 105, 180, 0.2);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 15%, transparent), 0 4px 12px color-mix(in srgb, var(--color-primary) 20%, transparent);
     transform: scale(1.02);
-    background: #ffffff;
+    background: var(--bg-white);
 }
 
 .input-field-large::placeholder {
@@ -13399,7 +14053,7 @@ line-height: 1;
 
 .instruction-text {
     font-size: 14px;
-    color: #ff69b4;
+    color: var(--color-primary);
     font-weight: 600;
 }
 
@@ -13424,15 +14078,15 @@ line-height: 1;
     font-size: 20px;
     font-weight: 600;
     color: #333;
-    background: #ffffff;
+    background: var(--bg-white);
     transition: all 0.3s ease;
     box-sizing: border-box;
 }
 
 .calc-input:focus {
     outline: none;
-    border-color: #ff69b4;
-    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 10%, transparent);
 }
 
 .calc-input::placeholder {
@@ -13468,7 +14122,7 @@ line-height: 1;
     justify-content: space-between;
     align-items: center;
     padding: 16px;
-    background: #ffffff;
+    background: var(--bg-white);
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(255, 105, 180, 0.1);
     border: 2px solid transparent;
@@ -13502,13 +14156,13 @@ line-height: 1;
 }
 
 .calc-value.active {
-    color: #ff69b4;
+    color: var(--color-primary);
     transform: scale(1.05);
 }
 
 .calc-row.active {
-    border-color: #ff69b4;
-    background: #ffeef5;
+    border-color: var(--color-primary);
+    background: var(--bg-light-gradient);
 }
 
 .calc-result-section {
@@ -13910,12 +14564,12 @@ line-height: 1;
     border-radius: 12px;
     margin-bottom: 24px;
     box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);
-    border: 2px solid #ff69b4;
+    border: 2px solid var(--color-primary);
 }
 
 .dividend-label {
     font-size: 14px;
-    color: #ff69b4;
+    color: var(--color-primary);
     margin-bottom: 8px;
     font-weight: 500;
 }
@@ -13923,7 +14577,7 @@ line-height: 1;
 .dividend-amount-large {
     font-size: 48px;
     font-weight: 700;
-    color: #ff69b4;
+    color: var(--color-primary);
 }
 
 .dividend-month-summary {
@@ -13931,7 +14585,7 @@ line-height: 1;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: #ffffff;
+    background: var(--bg-white);
     border-radius: 12px;
     margin-bottom: 24px;
     box-shadow: 0 2px 8px rgba(255, 105, 180, 0.1);
@@ -13947,12 +14601,12 @@ line-height: 1;
 .dividend-amount {
     font-size: 24px;
     font-weight: 700;
-    color: #ff69b4;
+    color: var(--color-primary);
 }
 
 .reinvest-toggle-container {
     padding: 20px;
-    background: #ffffff;
+    background: var(--bg-white);
     border-radius: 12px;
     margin-bottom: 24px;
     box-shadow: 0 2px 8px rgba(255, 105, 180, 0.1);
@@ -13993,7 +14647,7 @@ line-height: 1;
     position: absolute;
     width: 24px;
     height: 24px;
-    background: #ffffff;
+    background: var(--bg-white);
     border-radius: 50%;
     top: 2px;
     left: 2px;
@@ -14035,7 +14689,7 @@ line-height: 1;
     position: relative;
     width: 50px;
     height: 28px;
-    background: #e0e0e0;
+    background: var(--bg-toggle);
     border-radius: 28px;
     transition: all 0.3s ease;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -14046,7 +14700,7 @@ line-height: 1;
     position: absolute;
     width: 24px;
     height: 24px;
-    background: #ffffff;
+    background: var(--bg-white);
     border-radius: 50%;
     top: 2px;
     left: 2px;
@@ -14385,7 +15039,7 @@ line-height: 1;
 .dividend-btn {
     background: var(--bg-gradient) !important;
     box-shadow: var(--shadow-primary) !important;
-    color: #ffffff !important;
+    color: var(--text-white) !important;
 }
 
 .dividend-btn:hover {
@@ -14425,7 +15079,7 @@ line-height: 1;
     position: fixed;
     width: 10px;
     height: 10px;
-    background: #ff69b4;
+    background: var(--color-primary);
     animation: confetti 2s ease-out forwards;
     pointer-events: none;
     z-index: 10000;
@@ -14581,7 +15235,7 @@ line-height: 1;
 
 .dca-execute-modal .modal-btn.confirm-btn {
     border: none;
-    background: linear-gradient(135deg, #ff69b4 0%, #ff4da6 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: #ffffff;
     box-shadow: 0 14px 30px rgba(255, 105, 180, 0.28);
 }
@@ -14624,7 +15278,7 @@ line-height: 1;
 
 .modal-content {
     position: relative;
-    background: #ffffff;
+    background: var(--bg-white);
     border-radius: 20px;
     width: 90%;
     max-width: 400px;
@@ -14666,7 +15320,7 @@ line-height: 1;
 }
 
 .modal-close-btn:hover {
-    background: #f5f5f5;
+    background: var(--bg-soft);
     color: #333;
 }
 
@@ -14948,7 +15602,7 @@ transform: scale(0.99);
 
 .price-query-modal__btn--cancel {
     border: 1px solid rgba(0, 0, 0, 0.08);
-    background: #ffffff;
+    background: var(--bg-white);
     color: var(--text-primary);
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
 }
@@ -14959,7 +15613,7 @@ transform: scale(0.99);
 
 .price-query-modal__btn--ok {
     border: none;
-    background: linear-gradient(135deg, #ff69b4 0%, #ff4da6 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: #ffffff;
     box-shadow: 0 12px 28px rgba(255, 105, 180, 0.32);
 }
@@ -14998,7 +15652,7 @@ transform: scale(0.99);
     align-items: center;
     gap: 12px;
     padding: 16px;
-    background: #ffffff;
+    background: var(--bg-white);
     border: 2px solid #f0f0f0;
     border-radius: 12px;
     margin-bottom: 12px;
@@ -15008,14 +15662,14 @@ transform: scale(0.99);
 
 .account-item:hover {
     border-color: #ffb6d9;
-    background: #fff5f9;
+    background: var(--bg-lighter);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(255, 105, 180, 0.15);
 }
 
 .account-item.selected {
-    border-color: #ff69b4;
-    background: linear-gradient(135deg, #fff5f9 0%, #ffeef5 100%);
+    border-color: var(--color-primary);
+    background: linear-gradient(135deg, var(--bg-light-gradient) 0%, var(--bg-light-gradient) 100%);
     box-shadow: 0 2px 8px rgba(255, 105, 180, 0.2);
 }
 
@@ -15079,22 +15733,22 @@ transform: scale(0.99);
 
 .account-detail-btn:hover,
 .account-edit-btn:hover {
-    background: #f5f5f5;
+    background: var(--bg-soft);
 }
 
 .account-detail-btn:active,
 .account-edit-btn:active {
-    background: #e0e0e0;
+    background: var(--bg-toggle);
     transform: scale(0.95);
 }
 
 .account-add-btn {
     width: 100%;
     padding: 14px 24px;
-    border: 2px dashed #ff69b4;
+    border: 2px dashed var(--color-primary);
     border-radius: 12px;
     background: linear-gradient(135deg, #fff5f9 0%, #ffeef5 100%);
-    color: #ff69b4;
+    color: var(--color-primary);
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
@@ -15136,7 +15790,7 @@ transform: scale(0.99);
 }
 
 .modal-back-btn:hover {
-    background: #f5f5f5;
+    background: var(--bg-soft);
 }
 
 .modal-header {
@@ -15188,7 +15842,7 @@ transform: scale(0.99);
 
 .dca-back-btn:hover,
 .dca-setup-back-btn:hover {
-    background: #f5f5f5;
+    background: var(--bg-soft);
 }
 
 .dca-page-title,
@@ -15291,7 +15945,7 @@ transform: scale(0.99);
 .dca-progress-fill {
     height: 100%;
     border-radius: 999px;
-    background: linear-gradient(135deg, #ff69b4 0%, #ff9ec7 45%, #8a6cff 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-lighter) 45%, var(--color-accent) 100%);
     box-shadow: 0 2px 10px rgba(255, 105, 180, 0.35);
     transition: width 0.4s ease;
     position: relative;
@@ -15375,7 +16029,7 @@ transform: scale(0.99);
 }
 
 .dca-item-status.inactive {
-    background: #f5f5f5;
+    background: var(--bg-soft);
     color: #999;
 }
 
@@ -15538,7 +16192,7 @@ transform: scale(0.99);
 
 .action-btn.dca-btn {
     background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%) !important;
-    color: #ffffff !important;
+    color: var(--text-white) !important;
     border: none !important;
     box-shadow: var(--shadow-primary) !important;
 }
@@ -15670,8 +16324,8 @@ transform: scale(0.99);
     margin-top: 12px;
     border: 2px dashed #ffb6d9;
     border-radius: 12px;
-    background: #fff5f9;
-    color: #ff69b4;
+    background: var(--bg-lighter);
+    color: var(--color-primary);
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
@@ -15784,7 +16438,7 @@ transform: scale(0.99);
 .balance-value {
     font-size: 32px;
     font-weight: 700;
-    color: #ff69b4;
+    color: var(--color-primary);
 }
 
 .detail-section-title {
@@ -15869,7 +16523,7 @@ transform: scale(0.99);
     height: 160px;
     border-radius: 20px;
     border: 2px dashed #ffb6d9;
-    background: #fff5f9;
+    background: var(--bg-lighter);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15902,7 +16556,7 @@ transform: scale(0.99);
     border: 2px solid #ffb6d9;
     border-radius: 12px;
     background: linear-gradient(135deg, #fff5f9 0%, #ffeef5 100%);
-    color: #ff69b4;
+    color: var(--color-primary);
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
@@ -15978,7 +16632,7 @@ transform: scale(0.99);
 
 .crop-box {
     position: absolute;
-    border: 3px solid #ff69b4;
+    border: 3px solid var(--color-primary);
     background: transparent;
     cursor: move;
     box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
@@ -15989,7 +16643,7 @@ transform: scale(0.99);
 .crop-box::after {
     content: '';
     position: absolute;
-    background: #ff69b4;
+    background: var(--color-primary);
 }
 
 .crop-box::before {
@@ -16010,7 +16664,7 @@ transform: scale(0.99);
 
 .crop-controls {
     padding: 16px;
-    background: #ffffff;
+    background: var(--bg-white);
     border-radius: 12px;
 }
 
@@ -16061,12 +16715,12 @@ transform: scale(0.99);
 }
 
 .crop-cancel-btn {
-    background: #f0f0f0;
+    background: var(--bg-hover);
     color: #666;
 }
 
 .crop-cancel-btn:hover {
-    background: #e0e0e0;
+    background: var(--bg-toggle);
 }
 
 .crop-confirm-btn {
@@ -16639,13 +17293,13 @@ transform: scale(0.99);
     }
     
     .dividend-btn {
-        background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%) !important;
-        color: #ffffff !important;
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+        color: var(--text-white) !important;
     }
     
     .dca-btn {
         background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%) !important;
-        color: #ffffff !important;
+        color: var(--text-white) !important;
         font-size: 14px;
     }
 }
@@ -18470,57 +19124,6 @@ transform: scale(0.99);
     color: rgba(0, 0, 0, 0.9);
 }
 
-/* ========== 泡泡主題動畫 ========== */
-:root[data-theme="bubble"] body {
-    position: relative;
-    overflow-x: hidden;
-}
-
-:root[data-theme="bubble"] body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(circle at 15% 80%, rgba(77, 208, 225, 0.18) 0%, transparent 38%),
-        radial-gradient(circle at 35% 60%, rgba(129, 230, 239, 0.16) 0%, transparent 35%),
-        radial-gradient(circle at 65% 75%, rgba(77, 208, 225, 0.14) 0%, transparent 40%),
-        radial-gradient(circle at 85% 55%, rgba(129, 230, 239, 0.16) 0%, transparent 35%);
-    z-index: 0;
-    pointer-events: none;
-    filter: blur(2px);
-    animation: bubbleFloat 12s ease-in-out infinite;
-}
-
-:root[data-theme="bubble"] body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(circle at 25% 90%, rgba(255, 255, 255, 0.28) 0%, transparent 30%),
-        radial-gradient(circle at 75% 85%, rgba(255, 255, 255, 0.22) 0%, transparent 28%),
-        radial-gradient(circle at 55% 95%, rgba(255, 255, 255, 0.18) 0%, transparent 26%);
-    z-index: 0;
-    pointer-events: none;
-    animation: bubbleRise 10s linear infinite;
-}
-
-@keyframes bubbleFloat {
-    0% { transform: translateY(0) translateX(0); opacity: 0.7; }
-    50% { transform: translateY(-14px) translateX(10px); opacity: 0.9; }
-    100% { transform: translateY(0) translateX(0); opacity: 0.7; }
-}
-
-@keyframes bubbleRise {
-    0% { transform: translateY(12%); opacity: 0.0; }
-    15% { opacity: 0.7; }
-    100% { transform: translateY(-22%); opacity: 0.0; }
-}
 
 /* ========== 螢火蟲主題動畫 ========== */
 :root[data-theme="firefly"] body {
@@ -19654,7 +20257,7 @@ transform: scale(0.99);
 }
 
 .page-tutorial-modal .tutorial-close-btn:hover {
-    background: #f5f5f5;
+    background: var(--bg-soft);
     color: #666;
 }
 
@@ -19677,7 +20280,7 @@ transform: scale(0.99);
 }
 
 .page-tutorial-modal .tutorial-prev-btn:hover {
-    background: #f5f5f5;
+    background: var(--bg-soft);
     border-color: #d0d0d0;
 }
 
@@ -20431,10 +21034,12 @@ body {
     font-weight: 600;
     color: #2c3e50;
     margin-bottom: 8px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 :root.dark .entry-detail-category {
     color: #ecf0f1;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
 }
 
 .entry-detail-amount {
@@ -20442,34 +21047,41 @@ body {
     font-weight: 700;
     color: #e74c3c;
     margin-bottom: 8px;
+    text-shadow: 0 1px 3px rgba(231, 76, 60, 0.3);
 }
 
 .entry-detail-amount.income {
     color: #27ae60;
+    text-shadow: 0 1px 3px rgba(39, 174, 96, 0.3);
 }
 
 .entry-detail-amount.transfer {
     color: #3498db;
+    text-shadow: 0 1px 3px rgba(52, 152, 219, 0.3);
 }
 
 .entry-detail-date {
     font-size: 14px;
     color: #7f8c8d;
     margin-bottom: 8px;
+    text-shadow: 0 1px 2px rgba(127, 140, 141, 0.2);
 }
 
 :root.dark .entry-detail-date {
     color: #95a5a6;
+    text-shadow: 0 1px 2px rgba(149, 165, 166, 0.2);
 }
 
 .entry-detail-note {
     font-size: 16px;
     color: #2c3e50;
     line-height: 1.5;
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
 }
 
 :root.dark .entry-detail-note {
     color: #ecf0f1;
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.1);
 }
 
 .entry-detail-images {
@@ -20483,10 +21095,12 @@ body {
     font-weight: 600;
     color: #2c3e50;
     margin-bottom: 16px;
+    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
 }
 
 :root.dark .images-title {
     color: #ecf0f1;
+    text-shadow: 0 1px 2px rgba(236, 240, 241, 0.1);
 }
 
 .images-gallery {
@@ -20710,8 +21324,8 @@ body {
 }
 
 .settings-group-content .settings-item:hover {
-    border-left-color: #ff69b4;
-    background: rgba(255, 105, 180, 0.1);
+    border-left-color: var(--color-primary);
+    background: color-mix(in srgb, var(--color-primary) 10%, transparent);
 }
 
 .settings-group-content .settings-item-text {
@@ -20782,8 +21396,8 @@ body {
 }
 
 .light-theme .settings-group-content .settings-item:hover {
-    border-left-color: #ff69b4;
-    background: rgba(255, 105, 180, 0.1);
+    border-left-color: var(--color-primary);
+    background: color-mix(in srgb, var(--color-primary) 10%, transparent);
 }
 
 /* ========== 星雲漂移主題 ========== */
@@ -22788,4 +23402,1557 @@ body {
 :root[data-theme="chaonengli"] .btn-secondary:hover {
     background: rgba(212, 175, 55, 0.2) !important;
     border-color: var(--color-primary) !important;
+}
+
+/* 記錄類型標籤樣式 */
+.record-type-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.record-type-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 60px;
+}
+
+.record-type-tab:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.record-type-tab.active {
+    background: var(--color-primary, #ff6b6b);
+    border-color: var(--color-primary, #ff6b6b);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.record-type-icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.record-type-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.record-type-tab.active .record-type-text {
+    color: white;
+}
+
+/* ========== 水果清爽主題樣式 ========== */
+:root[data-theme="fruit"] {
+    --color-primary: #40E0D0;
+    --color-primary-light: #7FFFD4;
+    --color-primary-lighter: #AFEEEE;
+    --color-primary-dark: #48D1CC;
+    --color-secondary: #FF69B4;
+    --color-secondary-light: #FFB6D9;
+    --color-secondary-lighter: #FF9EC7;
+    --color-accent: #32CD32;
+    --color-accent-light: #90EE90;
+    --bg-primary: linear-gradient(135deg, rgba(64, 224, 208, 0.3) 0%, rgba(255, 105, 180, 0.2) 50%, rgba(50, 205, 50, 0.3) 100%);
+    --bg-gradient: linear-gradient(135deg, #40E0D0 0%, #48D1CC 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(175, 238, 238, 0.3) 0%, rgba(255, 182, 193, 0.3) 100%);
+    --border-primary: #40E0D0;
+    --border-secondary: #FF69B4;
+    --shadow-primary: 0 2px 8px rgba(64, 224, 208, 0.25);
+    --shadow-primary-lg: 0 4px 12px rgba(64, 224, 208, 0.3);
+    --shadow-secondary: 0 2px 8px rgba(255, 105, 180, 0.25);
+    --color-primary-rgba-08: rgba(64, 224, 208, 0.08);
+    --color-primary-rgba-10: rgba(64, 224, 208, 0.1);
+    --color-primary-rgba-12: rgba(64, 224, 208, 0.12);
+    --color-primary-rgba-15: rgba(64, 224, 208, 0.15);
+    --color-primary-rgba-18: rgba(64, 224, 208, 0.18);
+    --color-primary-rgba-20: rgba(64, 224, 208, 0.2);
+    --color-primary-rgba-25: rgba(64, 224, 208, 0.25);
+    --color-primary-rgba-30: rgba(64, 224, 208, 0.3);
+    --color-primary-rgba-40: rgba(64, 224, 208, 0.4);
+    --color-primary-light-rgba-08: rgba(127, 255, 212, 0.08);
+    --color-primary-light-rgba-10: rgba(127, 255, 212, 0.1);
+    --color-primary-light-rgba-15: rgba(127, 255, 212, 0.15);
+    --color-primary-light-rgba-20: rgba(127, 255, 212, 0.2);
+    --color-primary-light-rgba-25: rgba(127, 255, 212, 0.25);
+    --color-primary-light-rgba-30: rgba(127, 255, 212, 0.3);
+    --color-secondary-rgba-08: rgba(255, 105, 180, 0.08);
+    --color-secondary-rgba-10: rgba(255, 105, 180, 0.1);
+    --color-secondary-rgba-15: rgba(255, 105, 180, 0.15);
+    --color-secondary-rgba-20: rgba(255, 105, 180, 0.2);
+    --color-secondary-rgba-25: rgba(255, 105, 180, 0.25);
+    --color-secondary-rgba-30: rgba(255, 105, 180, 0.3);
+    --color-secondary-rgba-40: rgba(255, 105, 180, 0.4);
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-light: rgba(240, 255, 255, 0.95);
+    --bg-lighter: rgba(245, 255, 250, 0.98);
+    --bg-soft: rgba(250, 255, 250, 0.99);
+    --text-primary: #2F4F4F;
+    --text-secondary: #708090;
+    --text-light: rgba(255, 255, 255, 0.9);
+    --action-side-text: rgba(255, 255, 255, 0.95);
+}
+
+:root[data-theme="fruit"] body {
+    background: url("https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg") center/cover no-repeat fixed;
+    background-color: #40E0D0;
+    color: var(--text-primary);
+}
+
+:root[data-theme="fruit"] body::before {
+    display: none;
+}
+
+:root[data-theme="fruit"] .page-ledger {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+:root[data-theme="fruit"] .page-input,
+:root[data-theme="fruit"] .page-chart,
+:root[data-theme="fruit"] .page-budget,
+:root[data-theme="fruit"] .page-monthly-planner,
+:root[data-theme="fruit"] .page-daily-budget,
+:root[data-theme="fruit"] .page-settings,
+:root[data-theme="fruit"] .page-category-manage,
+:root[data-theme="fruit"] .page-investment,
+:root[data-theme="fruit"] .page-wallet,
+:root[data-theme="fruit"] .page-history,
+:root[data-theme="fruit"] .page-planner {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+:root[data-theme="fruit"] .card,
+:root[data-theme="fruit"] .record-card,
+:root[data-theme="fruit"] .ledger-card,
+:root[data-theme="fruit"] .summary-card,
+:root[data-theme="fruit"] .budget-card,
+:root[data-theme="fruit"] .wallet-card,
+:root[data-theme="fruit"] .chart-card,
+:root[data-theme="fruit"] .investment-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(64, 224, 208, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(64, 224, 208, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="fruit"] .investment-card,
+:root[data-theme="fruit"] .stock-item-card {
+    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-light) 25%, var(--color-primary-rgba-20) 50%, var(--bg-lighter) 75%, var(--bg-soft) 100%);
+    border: 1px solid var(--color-primary);
+    border-radius: 20px;
+    box-shadow: 
+        0 8px 24px rgba(64, 224, 208, 0.2),
+        0 0 30px var(--color-primary-rgba-15);
+}
+
+:root[data-theme="fruit"] .investment-card::before,
+:root[data-theme="fruit"] .stock-item-card::before {
+    background: linear-gradient(135deg, var(--color-primary-rgba-40) 0%, var(--color-primary-rgba-30) 55%, var(--color-primary-rgba-20) 100%);
+}
+
+/* 水果主題持股卡片文字顏色 */
+:root[data-theme="fruit"] .stock-item-card {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="fruit"] .stock-item-card h1,
+:root[data-theme="fruit"] .stock-item-card h2,
+:root[data-theme="fruit"] .stock-item-card h3,
+:root[data-theme="fruit"] .stock-item-card h4,
+:root[data-theme="fruit"] .stock-item-card h5,
+:root[data-theme="fruit"] .stock-item-card h6,
+:root[data-theme="fruit"] .stock-item-card .title,
+:root[data-theme="fruit"] .stock-item-card .subtitle,
+:root[data-theme="fruit"] .stock-item-card .card-title,
+:root[data-theme="fruit"] .stock-item-card .card-subtitle,
+:root[data-theme="fruit"] .stock-item-card .stock-name {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="fruit"] .stock-item-card .text,
+:root[data-theme="fruit"] .stock-item-card .description,
+:root[data-theme="fruit"] .stock-item-card .content,
+:root[data-theme="fruit"] .stock-item-card p,
+:root[data-theme="fruit"] .stock-item-card span,
+:root[data-theme="fruit"] .stock-item-card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="fruit"] .stock-item-card .highlight,
+:root[data-theme="fruit"] .stock-item-card .accent,
+:root[data-theme="fruit"] .stock-item-card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="fruit"] .stock-item-card .secondary-text,
+:root[data-theme="fruit"] .stock-item-card .muted-text,
+:root[data-theme="fruit"] .stock-item-card .stock-code {
+    color: var(--text-secondary) !important;
+}
+
+:root[data-theme="fruit"] .stock-item-card .label,
+:root[data-theme="fruit"] .stock-item-card .form-label {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="fruit"] .stock-item-card .value,
+:root[data-theme="fruit"] .stock-item-card .amount,
+:root[data-theme="fruit"] .stock-item-card .stock-price {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="fruit"] .stock-item-card .stock-change,
+:root[data-theme="fruit"] .stock-item-card .profit-loss {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="fruit"] .stock-item-card .profit-loss.positive {
+    color: #f44336 !important; /* 紅色表示漲 */
+}
+
+:root[data-theme="fruit"] .stock-item-card .profit-loss.negative {
+    color: #4caf50 !important; /* 綠色表示跌 */
+}
+
+:root[data-theme="fruit"] .stock-item-card .stock-card-icon {
+    background: var(--color-primary-rgba-15) !important;
+    color: var(--color-primary) !important;
+    border: 2px solid var(--color-primary-rgba-30) !important;
+}
+
+:root[data-theme="fruit"] .stock-item-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(64, 224, 208, 0.25) !important;
+    border-color: var(--color-primary) !important;
+}
+
+:root[data-theme="fruit"] .stock-item-card:hover .stock-card-icon {
+    transform: scale(1.05) rotate(3deg);
+    box-shadow: 0 4px 12px rgba(64, 224, 208, 0.3) !important;
+}
+
+/* 通用持股卡片文字顏色樣式 */
+.stock-item-card {
+    color: var(--text-primary) !important;
+}
+
+.stock-item-card h1,
+.stock-item-card h2,
+.stock-item-card h3,
+.stock-item-card h4,
+.stock-item-card h5,
+.stock-item-card h6,
+.stock-item-card .title,
+.stock-item-card .subtitle,
+.stock-item-card .card-title,
+.stock-item-card .card-subtitle,
+.stock-item-card .stock-name {
+    color: var(--color-primary) !important;
+}
+
+.stock-item-card .text,
+.stock-item-card .description,
+.stock-item-card .content,
+.stock-item-card p,
+.stock-item-card span,
+.stock-item-card div {
+    color: var(--text-primary) !important;
+}
+
+.stock-item-card .highlight,
+.stock-item-card .accent,
+.stock-item-card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+.stock-item-card .secondary-text,
+.stock-item-card .muted-text,
+.stock-item-card .stock-code {
+    color: var(--text-secondary) !important;
+}
+
+.stock-item-card .label,
+.stock-item-card .form-label {
+    color: var(--color-primary) !important;
+}
+
+.stock-item-card .value,
+.stock-item-card .amount,
+.stock-item-card .stock-price {
+    color: var(--text-primary) !important;
+}
+
+.stock-item-card .stock-change,
+.stock-item-card .profit-loss {
+    color: var(--text-primary) !important;
+}
+
+.stock-item-card .profit-loss.positive {
+    color: #f44336 !important; /* 紅色表示漲 */
+}
+
+.stock-item-card .profit-loss.negative {
+    color: #4caf50 !important; /* 綠色表示跌 */
+}
+
+.stock-item-card .stock-card-icon {
+    background: var(--color-primary-rgba-15) !important;
+    color: var(--color-primary) !important;
+    border: 2px solid var(--color-primary-rgba-30) !important;
+}
+
+:root[data-theme="fruit"] .nav-item.active {
+    background: var(--color-primary-rgba-20);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(64, 224, 208, 0.25);
+}
+
+:root[data-theme="fruit"] .nav-item.active:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+:root[data-theme="fruit"] .modal-content,
+:root[data-theme="fruit"] .modal-content-standard,
+:root[data-theme="fruit"] .budget-category-modal-content,
+:root[data-theme="fruit"] .budget-setting-modal-content,
+:root[data-theme="fruit"] .category-modal-content,
+:root[data-theme="fruit"] .dca-execute-modal .modal-content,
+:root[data-theme="fruit"] .account-modal-content,
+:root[data-theme="fruit"] .emoji-modal-content,
+:root[data-theme="fruit"] .crop-modal-content,
+:root[data-theme="fruit"] .history-modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(64, 224, 208, 0.5);
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(64, 224, 208, 0.25);
+    backdrop-filter: blur(15px);
+}
+
+:root[data-theme="fruit"] .input-section {
+    background: rgba(255, 255, 255, 0.92);
+    border: 2px solid rgba(64, 224, 208, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 -4px 20px rgba(64, 224, 208, 0.15);
+    backdrop-filter: blur(12px);
+}
+
+:root[data-theme="fruit"] .bottom-nav {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-top: 2px solid rgba(64, 224, 208, 0.5) !important;
+    border-radius: 20px 20px 0 0;
+    backdrop-filter: blur(15px);
+}
+
+:root[data-theme="fruit"] .form-input,
+:root[data-theme="fruit"] .form-select,
+:root[data-theme="fruit"] .form-textarea,
+:root[data-theme="fruit"] .note-input {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 2px solid rgba(64, 224, 208, 0.3) !important;
+    border-radius: 12px;
+    color: var(--text-primary) !important;
+    backdrop-filter: blur(5px);
+}
+
+:root[data-theme="fruit"] .form-input:focus,
+:root[data-theme="fruit"] .form-select:focus,
+:root[data-theme="fruit"] .form-textarea:focus,
+:root[data-theme="fruit"] .note-input:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 3px rgba(64, 224, 208, 0.2) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+:root[data-theme="fruit"] .header-section {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-bottom: 2px solid rgba(64, 224, 208, 0.4) !important;
+    border-radius: 0 0 20px 20px;
+    backdrop-filter: blur(12px);
+}
+
+:root[data-theme="fruit"] .tab-btn {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 2px solid rgba(64, 224, 208, 0.3) !important;
+    border-radius: 12px;
+    color: var(--text-primary) !important;
+    backdrop-filter: blur(5px);
+}
+
+:root[data-theme="fruit"] .tab-btn.active {
+    background: var(--color-primary) !important;
+    border: 2px solid var(--color-primary-dark) !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(64, 224, 208, 0.25) !important;
+}
+
+:root[data-theme="fruit"] .tab-btn:hover {
+    background: var(--color-primary-rgba-20) !important;
+    border-color: var(--color-primary) !important;
+    transform: translateY(-2px);
+}
+
+:root[data-theme="fruit"] .key-btn {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 2px solid rgba(64, 224, 208, 0.3) !important;
+    border-radius: 12px;
+    color: var(--text-primary) !important;
+    backdrop-filter: blur(5px);
+}
+
+:root[data-theme="fruit"] .key-btn:hover {
+    background: var(--color-primary-rgba-20) !important;
+    border-color: var(--color-primary) !important;
+    transform: translateY(-2px);
+}
+
+:root[data-theme="fruit"] .key-btn.active {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary-dark) !important;
+    box-shadow: 0 4px 12px rgba(64, 224, 208, 0.3);
+}
+
+:root[data-theme="fruit"] .btn-primary {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border: 2px solid var(--color-primary-dark) !important;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(64, 224, 208, 0.25);
+}
+
+:root[data-theme="fruit"] .btn-primary:hover {
+    background: var(--color-primary-light) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(64, 224, 208, 0.3);
+}
+
+:root[data-theme="fruit"] .btn-secondary {
+    background: rgba(255, 255, 255, 0.8) !important;
+    color: var(--text-primary) !important;
+    border: 2px solid rgba(64, 224, 208, 0.3) !important;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+}
+
+:root[data-theme="fruit"] .btn-secondary:hover {
+    background: var(--color-primary-rgba-20) !important;
+    border-color: var(--color-primary) !important;
+    transform: translateY(-2px);
+}
+
+/* 小森對話框樣式 */
+:root[data-theme="fruit"] .mori-dialog {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 2px solid rgba(64, 224, 208, 0.5) !important;
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(64, 224, 208, 0.25);
+    backdrop-filter: blur(15px);
+}
+
+:root[data-theme="fruit"] .mori-dialog-content {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="fruit"] .mori-dialog-title {
+    color: var(--color-primary) !important;
+    border-bottom: 2px solid var(--color-primary-rgba-30) !important;
+}
+
+/* 返回按鈕樣式 */
+:root[data-theme="fruit"] .back-btn,
+:root[data-theme="fruit"] .return-btn {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border: 2px solid var(--color-primary-dark) !important;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(64, 224, 208, 0.25);
+}
+
+:root[data-theme="fruit"] .back-btn:hover,
+:root[data-theme="fruit"] .return-btn:hover {
+    background: var(--color-primary-light) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(64, 224, 208, 0.3);
+}
+
+/* 投資卡片圖片 */
+:root[data-theme="fruit"] .investment-card-image {
+    background-image: url("https://i.pinimg.com/736x/9f/2c/4d/9f2c4d979cd3ea629ad900d9b838b38f.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+}
+
+/* 記帳卡片圖片 */
+:root[data-theme="fruit"] .ledger-card-image {
+    background-image: url("https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+}
+
+/* 錢包預算設定卡片圖片 */
+:root[data-theme="fruit"] .budget-card-image {
+    background-image: url("https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+}
+
+/* 每月規劃卡片圖片 */
+:root[data-theme="fruit"] .monthly-planner-card-image {
+    background-image: url("https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+}
+
+/* 投資設定卡片圖片 */
+:root[data-theme="fruit"] .investment-settings-card-image {
+    background-image: url("https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+}
+
+/* 持有中/買入卡片圖片 */
+:root[data-theme="fruit"] .hold-card-image,
+:root[data-theme="fruit"] .buy-card-image {
+    background-image: url("https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+}
+
+/* 賣出卡片圖片 */
+:root[data-theme="fruit"] .sell-card-image {
+    background-image: url("https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+}
+
+/* 股息卡片圖片 */
+:root[data-theme="fruit"] .dividend-card-image {
+    background-image: url("https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+}
+
+/* 定期定額頁面樣式 */
+:root[data-theme="fruit"] .page-dca {
+    background: transparent !important;
+}
+
+:root[data-theme="fruit"] .dca-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(64, 224, 208, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(64, 224, 208, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* 管理投資卡片頁面樣式 */
+:root[data-theme="fruit"] .page-manage-investment {
+    background: transparent !important;
+}
+
+:root[data-theme="fruit"] .manage-investment-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(64, 224, 208, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(64, 224, 208, 0.15);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="fruit"] .manage-investment-card h1,
+:root[data-theme="fruit"] .manage-investment-card h2,
+:root[data-theme="fruit"] .manage-investment-card h3,
+:root[data-theme="fruit"] .manage-investment-card h4,
+:root[data-theme="fruit"] .manage-investment-card h5,
+:root[data-theme="fruit"] .manage-investment-card h6,
+:root[data-theme="fruit"] .manage-investment-card .title,
+:root[data-theme="fruit"] .manage-investment-card .subtitle,
+:root[data-theme="fruit"] .manage-investment-card .card-title,
+:root[data-theme="fruit"] .manage-investment-card .card-subtitle {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="fruit"] .manage-investment-card .text,
+:root[data-theme="fruit"] .manage-investment-card .description,
+:root[data-theme="fruit"] .manage-investment-card .content,
+:root[data-theme="fruit"] .manage-investment-card p,
+:root[data-theme="fruit"] .manage-investment-card span,
+:root[data-theme="fruit"] .manage-investment-card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="fruit"] .manage-investment-card .highlight,
+:root[data-theme="fruit"] .manage-investment-card .accent,
+:root[data-theme="fruit"] .manage-investment-card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="fruit"] .manage-investment-card .secondary-text,
+:root[data-theme="fruit"] .manage-investment-card .muted-text {
+    color: var(--text-secondary) !important;
+}
+
+:root[data-theme="fruit"] .manage-investment-card .label,
+:root[data-theme="fruit"] .manage-investment-card .form-label {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="fruit"] .manage-investment-card .value,
+:root[data-theme="fruit"] .manage-investment-card .amount {
+    color: var(--color-accent) !important;
+}
+
+/* ========== 喵喵喵主題樣式 ========== */
+:root[data-theme="meow"] {
+    --color-primary: #87CEEB;
+    --color-primary-light: #ADD8E6;
+    --color-primary-lighter: #B0E0E6;
+    --color-primary-dark: #4682B4;
+    --color-secondary: #FFB6C1;
+    --color-secondary-light: #FFC0CB;
+    --color-secondary-lighter: #FFD1DC;
+    --color-accent: #98FB98;
+    --bg-primary: linear-gradient(135deg, rgba(135, 206, 235, 0.4) 0%, rgba(255, 182, 193, 0.3) 50%, rgba(152, 251, 152, 0.4) 100%);
+    --bg-gradient: linear-gradient(135deg, #87CEEB 0%, #4682B4 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(173, 216, 230, 0.3) 0%, rgba(255, 182, 193, 0.3) 100%);
+    --border-primary: #87CEEB;
+    --border-secondary: #FFB6C1;
+    --shadow-primary: 0 2px 8px rgba(135, 206, 235, 0.25);
+    --shadow-primary-lg: 0 4px 12px rgba(135, 206, 235, 0.3);
+    --shadow-secondary: 0 2px 8px rgba(255, 182, 193, 0.25);
+    --color-primary-rgba-08: rgba(135, 206, 235, 0.08);
+    --color-primary-rgba-10: rgba(135, 206, 235, 0.1);
+    --color-primary-rgba-12: rgba(135, 206, 235, 0.12);
+    --color-primary-rgba-15: rgba(135, 206, 235, 0.15);
+    --color-primary-rgba-18: rgba(135, 206, 235, 0.18);
+    --color-primary-rgba-20: rgba(135, 206, 235, 0.2);
+    --color-primary-rgba-25: rgba(135, 206, 235, 0.25);
+    --color-primary-rgba-30: rgba(135, 206, 235, 0.3);
+    --color-primary-rgba-40: rgba(135, 206, 235, 0.4);
+    --color-primary-light-rgba-08: rgba(173, 216, 230, 0.08);
+    --color-primary-light-rgba-10: rgba(173, 216, 230, 0.1);
+    --color-primary-light-rgba-15: rgba(173, 216, 230, 0.15);
+    --color-primary-light-rgba-20: rgba(173, 216, 230, 0.2);
+    --color-primary-light-rgba-25: rgba(173, 216, 230, 0.25);
+    --color-primary-light-rgba-30: rgba(173, 216, 230, 0.3);
+    --color-secondary-rgba-08: rgba(255, 182, 193, 0.08);
+    --color-secondary-rgba-10: rgba(255, 182, 193, 0.1);
+    --color-secondary-rgba-15: rgba(255, 182, 193, 0.15);
+    --color-secondary-rgba-20: rgba(255, 182, 193, 0.2);
+    --color-secondary-rgba-25: rgba(255, 182, 193, 0.25);
+    --color-secondary-rgba-30: rgba(255, 182, 193, 0.3);
+    --color-secondary-rgba-40: rgba(255, 182, 193, 0.4);
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-light: rgba(240, 248, 255, 0.95);
+    --bg-lighter: rgba(245, 250, 255, 0.98);
+    --bg-soft: rgba(250, 255, 255, 0.99);
+    --text-primary: #2F4F4F;
+    --text-secondary: #708090;
+    --text-light: rgba(255, 255, 255, 0.9);
+    --action-side-text: rgba(255, 255, 255, 0.95);
+}
+
+:root[data-theme="meow"] body {
+    background: url("https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg") center/cover no-repeat fixed;
+    background-color: #87CEEB;
+    color: var(--text-primary);
+}
+
+:root[data-theme="meow"] body::before {
+    display: none;
+}
+
+/* ========== 秘術師主題樣式 ========== */
+:root[data-theme="enchanter"] {
+    --color-primary: #1a3a3a;
+    --color-primary-light: #2a4a4a;
+    --color-primary-lighter: #3a5a5a;
+    --color-primary-dark: #0f2f2f;
+    --color-primary-darker: #051f1f;
+    --color-secondary: #39ff14;
+    --color-secondary-light: #66ff33;
+    --color-secondary-lighter: #99ff66;
+    --color-accent: #32cd32;
+    --bg-primary: linear-gradient(135deg, rgba(26, 58, 58, 0.4) 0%, rgba(58, 90, 90, 0.3) 50%, rgba(57, 255, 20, 0.4) 100%);
+    --bg-gradient: linear-gradient(135deg, #1a3a3a 0%, #39ff14 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(26, 58, 58, 0.3) 0%, rgba(57, 255, 20, 0.3) 100%);
+    --border-primary: #1a3a3a;
+    --border-secondary: #39ff14;
+    --shadow-primary: 0 2px 8px rgba(26, 58, 58, 0.25);
+    --shadow-primary-lg: 0 4px 12px rgba(26, 58, 58, 0.3);
+    --shadow-secondary: 0 2px 8px rgba(57, 255, 20, 0.25);
+    --color-primary-rgba-08: rgba(26, 58, 58, 0.08);
+    --color-primary-rgba-10: rgba(26, 58, 58, 0.1);
+    --color-primary-rgba-12: rgba(26, 58, 58, 0.12);
+    --color-primary-rgba-15: rgba(26, 58, 58, 0.15);
+    --color-primary-rgba-18: rgba(26, 58, 58, 0.18);
+    --color-primary-rgba-20: rgba(26, 58, 58, 0.2);
+    --color-primary-rgba-25: rgba(26, 58, 58, 0.25);
+    --color-primary-rgba-30: rgba(26, 58, 58, 0.3);
+    --color-primary-rgba-40: rgba(26, 58, 58, 0.4);
+    --color-primary-light-rgba-08: rgba(42, 74, 74, 0.08);
+    --color-primary-light-rgba-10: rgba(42, 74, 74, 0.1);
+    --color-primary-light-rgba-15: rgba(42, 74, 74, 0.15);
+    --color-primary-light-rgba-20: rgba(42, 74, 74, 0.2);
+    --color-primary-light-rgba-25: rgba(42, 74, 74, 0.25);
+    --color-primary-light-rgba-30: rgba(42, 74, 74, 0.3);
+    --color-secondary-rgba-08: rgba(57, 255, 20, 0.08);
+    --color-secondary-rgba-10: rgba(57, 255, 20, 0.1);
+    --color-secondary-rgba-15: rgba(57, 255, 20, 0.15);
+    --color-secondary-rgba-20: rgba(57, 255, 20, 0.2);
+    --color-secondary-rgba-25: rgba(57, 255, 20, 0.25);
+    --color-secondary-rgba-30: rgba(57, 255, 20, 0.3);
+    --color-secondary-rgba-40: rgba(57, 255, 20, 0.4);
+    --bg-card: rgba(18, 18, 18, 0.9);
+    --bg-light: rgba(30, 30, 30, 0.85);
+    --bg-lighter: rgba(40, 40, 40, 0.75);
+    --bg-soft: rgba(50, 50, 50, 0.65);
+    --text-primary: #8a9a5b;
+    --text-secondary: #ffd700;
+    --text-light: rgba(138, 154, 91, 0.9);
+    --action-side-text: rgba(255, 215, 0, 0.95);
+}
+
+:root[data-theme="enchanter"] body {
+    background: url("https://i.pinimg.com/1200x/88/01/f5/8801f51ecd5d4fa73e8bef1c314c2eab.jpg") center/cover no-repeat fixed;
+    background-color: #1a3a3a;
+    color: var(--text-primary);
+}
+
+:root[data-theme="enchanter"] body::before {
+    display: none;
+}
+
+:root[data-theme="enchanter"] .page-ledger {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+:root[data-theme="enchanter"] .page-input,
+:root[data-theme="enchanter"] .page-chart,
+:root[data-theme="enchanter"] .page-budget,
+:root[data-theme="enchanter"] .page-monthly-planner,
+:root[data-theme="enchanter"] .page-daily-budget,
+:root[data-theme="enchanter"] .page-settings,
+:root[data-theme="enchanter"] .page-category-manage,
+:root[data-theme="enchanter"] .page-investment,
+:root[data-theme="enchanter"] .page-wallet,
+:root[data-theme="enchanter"] .page-history,
+:root[data-theme="enchanter"] .page-planner {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+:root[data-theme="enchanter"] .card,
+:root[data-theme="enchanter"] .record-card,
+:root[data-theme="enchanter"] .ledger-card,
+:root[data-theme="enchanter"] .summary-card,
+:root[data-theme="enchanter"] .budget-card,
+:root[data-theme="enchanter"] .wallet-card,
+:root[data-theme="enchanter"] .chart-card,
+:root[data-theme="enchanter"] .investment-card {
+    background: rgba(18, 18, 18, 0.85);
+    border: 1px solid rgba(26, 58, 58, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(26, 58, 58, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="enchanter"] .investment-card,
+:root[data-theme="enchanter"] .stock-item-card {
+    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-light) 25%, var(--color-primary-rgba-20) 50%, var(--bg-lighter) 75%, var(--bg-soft) 100%);
+    border: 1px solid var(--color-primary);
+    border-radius: 20px;
+    box-shadow: 
+        0 8px 24px rgba(26, 58, 58, 0.15),
+        inset 0 1px 0 rgba(57, 255, 20, 0.1),
+        0 0 30px var(--color-primary-rgba-15);
+}
+
+:root[data-theme="enchanter"] .investment-card::before,
+:root[data-theme="enchanter"] .stock-item-card::before {
+    background: linear-gradient(135deg, var(--color-primary-rgba-40) 0%, var(--color-primary-rgba-30) 55%, var(--color-primary-rgba-20) 100%);
+}
+
+/* 秘術師主題持股卡片文字顏色 */
+:root[data-theme="enchanter"] .stock-item-card {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="enchanter"] .stock-item-card h1,
+:root[data-theme="enchanter"] .stock-item-card h2,
+:root[data-theme="enchanter"] .stock-item-card h3,
+:root[data-theme="enchanter"] .stock-item-card h4,
+:root[data-theme="enchanter"] .stock-item-card h5,
+:root[data-theme="enchanter"] .stock-item-card h6,
+:root[data-theme="enchanter"] .stock-item-card .title,
+:root[data-theme="enchanter"] .stock-item-card .subtitle,
+:root[data-theme="enchanter"] .stock-item-card .card-title,
+:root[data-theme="enchanter"] .stock-item-card .card-subtitle,
+:root[data-theme="enchanter"] .stock-item-card .stock-name {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="enchanter"] .stock-item-card .text,
+:root[data-theme="enchanter"] .stock-item-card .description,
+:root[data-theme="enchanter"] .stock-item-card .content,
+:root[data-theme="enchanter"] .stock-item-card p,
+:root[data-theme="enchanter"] .stock-item-card span,
+:root[data-theme="enchanter"] .stock-item-card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="enchanter"] .stock-item-card .highlight,
+:root[data-theme="enchanter"] .stock-item-card .accent,
+:root[data-theme="enchanter"] .stock-item-card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="enchanter"] .stock-item-card .secondary-text,
+:root[data-theme="enchanter"] .stock-item-card .muted-text,
+:root[data-theme="enchanter"] .stock-item-card .stock-code {
+    color: var(--text-secondary) !important;
+}
+
+/* 管理投資卡片頁面樣式 */
+:root[data-theme="enchanter"] .page-manage-investment {
+    background: transparent !important;
+}
+
+:root[data-theme="enchanter"] .manage-investment-card {
+    background: rgba(18, 18, 18, 0.85);
+    border: 2px solid rgba(26, 58, 58, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="enchanter"] .manage-investment-card h1,
+:root[data-theme="enchanter"] .manage-investment-card h2,
+:root[data-theme="enchanter"] .manage-investment-card h3,
+:root[data-theme="enchanter"] .manage-investment-card h4,
+:root[data-theme="enchanter"] .manage-investment-card h5,
+:root[data-theme="enchanter"] .manage-investment-card h6,
+:root[data-theme="enchanter"] .manage-investment-card .title,
+:root[data-theme="enchanter"] .manage-investment-card .subtitle,
+:root[data-theme="enchanter"] .manage-investment-card .card-title,
+:root[data-theme="enchanter"] .manage-investment-card .card-subtitle {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="enchanter"] .manage-investment-card .text,
+:root[data-theme="enchanter"] .manage-investment-card .description,
+:root[data-theme="enchanter"] .manage-investment-card .content,
+:root[data-theme="enchanter"] .manage-investment-card p,
+:root[data-theme="enchanter"] .manage-investment-card span,
+:root[data-theme="enchanter"] .manage-investment-card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="enchanter"] .manage-investment-card .highlight,
+:root[data-theme="enchanter"] .manage-investment-card .accent,
+:root[data-theme="enchanter"] .manage-investment-card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="enchanter"] .manage-investment-card .secondary-text,
+:root[data-theme="enchanter"] .manage-investment-card .muted-text {
+    color: var(--text-secondary) !important;
+}
+
+:root[data-theme="enchanter"] .manage-investment-card .label,
+:root[data-theme="enchanter"] .manage-investment-card .form-label {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="enchanter"] .manage-investment-card .value,
+:root[data-theme="enchanter"] .manage-investment-card .amount {
+    color: var(--color-accent) !important;
+}
+
+/* 年度報告頁面樣式 */
+:root[data-theme="enchanter"] .page-annual-report {
+    background: transparent !important;
+}
+
+:root[data-theme="enchanter"] .annual-report-card {
+    background: rgba(18, 18, 18, 0.85);
+    border: 2px solid rgba(26, 58, 58, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary) !important;
+}
+
+/* 關於記帳本頁面樣式 */
+:root[data-theme="enchanter"] .page-about {
+    background: transparent !important;
+}
+
+:root[data-theme="enchanter"] .about-card {
+    background: rgba(18, 18, 18, 0.85);
+    border: 2px solid rgba(26, 58, 58, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary) !important;
+}
+
+/* 記帳日記頁面樣式 */
+:root[data-theme="enchanter"] .page-diary {
+    background: transparent !important;
+}
+
+:root[data-theme="enchanter"] .diary-card {
+    background: rgba(18, 18, 18, 0.85);
+    border: 2px solid rgba(26, 58, 58, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary) !important;
+}
+
+/* 分期網頁樣式 */
+:root[data-theme="enchanter"] .page-installment {
+    background: transparent !important;
+}
+
+:root[data-theme="enchanter"] .installment-card {
+    background: rgba(18, 18, 18, 0.85);
+    border: 2px solid rgba(26, 58, 58, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary) !important;
+}
+
+/* 定期定額卡片樣式 */
+:root[data-theme="enchanter"] .recurring-deposit-card {
+    background: rgba(18, 18, 18, 0.85);
+    border: 2px solid rgba(26, 58, 58, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary) !important;
+}
+
+/* 每月規劃卡片樣式 */
+:root[data-theme="enchanter"] .monthly-planning-card {
+    background: url("https://i.pinimg.com/736x/8a/42/0b/8a420b2c26a91187da871ef11f859731.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(26, 58, 58, 0.3) !important;
+    border: 2px solid rgba(26, 58, 58, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 錢包預算設定卡片樣式 */
+:root[data-theme="enchanter"] .wallet-budget-card {
+    background: url("https://i.pinimg.com/1200x/da/af/29/daaf2933df91dc69201590262a495c01.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(26, 58, 58, 0.3) !important;
+    border: 2px solid rgba(26, 58, 58, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 記帳卡片樣式 */
+:root[data-theme="enchanter"] .ledger-card {
+    background: url("https://i.pinimg.com/1200x/da/af/29/daaf2933df91dc69201590262a495c01.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(26, 58, 58, 0.3) !important;
+    border: 2px solid rgba(26, 58, 58, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 投資卡片樣式 */
+:root[data-theme="enchanter"] .investment-card {
+    background: url("https://i.pinimg.com/736x/9f/2c/4d/9f2c4d979cd3ea629ad900d9b838b38f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(26, 58, 58, 0.3) !important;
+    border: 2px solid rgba(26, 58, 58, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 持有中買入卡片樣式 */
+:root[data-theme="enchanter"] .buy-card {
+    background: rgba(18, 18, 18, 0.85);
+    border: 2px solid rgba(26, 58, 58, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary) !important;
+}
+
+/* 賣出卡片樣式 */
+:root[data-theme="enchanter"] .sell-card {
+    background: rgba(18, 18, 18, 0.85);
+    border: 2px solid rgba(26, 58, 58, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary) !important;
+}
+
+/* 股息卡片樣式 */
+:root[data-theme="enchanter"] .dividend-card {
+    background: rgba(18, 18, 18, 0.85);
+    border: 2px solid rgba(26, 58, 58, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary) !important;
+}
+
+/* 返回按鈕樣式 */
+:root[data-theme="enchanter"] .back-btn {
+    background: var(--color-primary) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--color-secondary) !important;
+}
+
+:root[data-theme="enchanter"] .back-btn:hover {
+    background: var(--color-secondary) !important;
+    color: var(--color-primary) !important;
+}
+
+/* 小森對話框樣式 */
+:root[data-theme="enchanter"] .komori-dialog {
+    background: rgba(18, 18, 18, 0.95) !important;
+    border: 2px solid var(--color-primary) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="enchanter"] .komori-dialog .dialog-title {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="enchanter"] .komori-dialog .dialog-content {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="meow"] .page-ledger {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+:root[data-theme="meow"] .page-input,
+:root[data-theme="meow"] .page-chart,
+:root[data-theme="meow"] .page-budget,
+:root[data-theme="meow"] .page-monthly-planner,
+:root[data-theme="meow"] .page-daily-budget,
+:root[data-theme="meow"] .page-settings,
+:root[data-theme="meow"] .page-category-manage,
+:root[data-theme="meow"] .page-investment,
+:root[data-theme="meow"] .page-wallet,
+:root[data-theme="meow"] .page-history,
+:root[data-theme="meow"] .page-planner {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+:root[data-theme="meow"] .card,
+:root[data-theme="meow"] .record-card,
+:root[data-theme="meow"] .ledger-card,
+:root[data-theme="meow"] .summary-card,
+:root[data-theme="meow"] .budget-card,
+:root[data-theme="meow"] .wallet-card,
+:root[data-theme="meow"] .chart-card,
+:root[data-theme="meow"] .investment-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(135, 206, 235, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="meow"] .investment-card,
+:root[data-theme="meow"] .stock-item-card {
+    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-light) 25%, var(--color-primary-rgba-20) 50%, var(--bg-lighter) 75%, var(--bg-soft) 100%);
+    border: 1px solid var(--color-primary);
+    border-radius: 20px;
+    box-shadow: 
+        0 8px 24px rgba(135, 206, 235, 0.2),
+        0 0 30px var(--color-primary-rgba-15);
+}
+
+:root[data-theme="meow"] .investment-card::before,
+:root[data-theme="meow"] .stock-item-card::before {
+    background: linear-gradient(135deg, var(--color-primary-rgba-40) 0%, var(--color-primary-rgba-30) 55%, var(--color-primary-rgba-20) 100%);
+}
+
+/* 喵喵喵主題持股卡片文字顏色 */
+:root[data-theme="meow"] .stock-item-card {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="meow"] .stock-item-card h1,
+:root[data-theme="meow"] .stock-item-card h2,
+:root[data-theme="meow"] .stock-item-card h3,
+:root[data-theme="meow"] .stock-item-card h4,
+:root[data-theme="meow"] .stock-item-card h5,
+:root[data-theme="meow"] .stock-item-card h6,
+:root[data-theme="meow"] .stock-item-card .title,
+:root[data-theme="meow"] .stock-item-card .subtitle,
+:root[data-theme="meow"] .stock-item-card .card-title,
+:root[data-theme="meow"] .stock-item-card .card-subtitle,
+:root[data-theme="meow"] .stock-item-card .stock-name {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="meow"] .stock-item-card .text,
+:root[data-theme="meow"] .stock-item-card .description,
+:root[data-theme="meow"] .stock-item-card .content,
+:root[data-theme="meow"] .stock-item-card p,
+:root[data-theme="meow"] .stock-item-card span,
+:root[data-theme="meow"] .stock-item-card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="meow"] .stock-item-card .highlight,
+:root[data-theme="meow"] .stock-item-card .accent,
+:root[data-theme="meow"] .stock-item-card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="meow"] .stock-item-card .secondary-text,
+:root[data-theme="meow"] .stock-item-card .muted-text,
+:root[data-theme="meow"] .stock-item-card .stock-code {
+    color: var(--text-secondary) !important;
+}
+
+/* 管理投資卡片頁面樣式 */
+:root[data-theme="meow"] .page-manage-investment {
+    background: transparent !important;
+}
+
+:root[data-theme="meow"] .manage-investment-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(135, 206, 235, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="meow"] .manage-investment-card h1,
+:root[data-theme="meow"] .manage-investment-card h2,
+:root[data-theme="meow"] .manage-investment-card h3,
+:root[data-theme="meow"] .manage-investment-card h4,
+:root[data-theme="meow"] .manage-investment-card h5,
+:root[data-theme="meow"] .manage-investment-card h6,
+:root[data-theme="meow"] .manage-investment-card .title,
+:root[data-theme="meow"] .manage-investment-card .subtitle,
+:root[data-theme="meow"] .manage-investment-card .card-title,
+:root[data-theme="meow"] .manage-investment-card .card-subtitle {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="meow"] .manage-investment-card .text,
+:root[data-theme="meow"] .manage-investment-card .description,
+:root[data-theme="meow"] .manage-investment-card .content,
+:root[data-theme="meow"] .manage-investment-card p,
+:root[data-theme="meow"] .manage-investment-card span,
+:root[data-theme="meow"] .manage-investment-card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="meow"] .manage-investment-card .highlight,
+:root[data-theme="meow"] .manage-investment-card .accent,
+:root[data-theme="meow"] .manage-investment-card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="meow"] .manage-investment-card .secondary-text,
+:root[data-theme="meow"] .manage-investment-card .muted-text {
+    color: var(--text-secondary) !important;
+}
+
+:root[data-theme="meow"] .manage-investment-card .label,
+:root[data-theme="meow"] .manage-investment-card .form-label {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="meow"] .manage-investment-card .value,
+:root[data-theme="meow"] .manage-investment-card .amount {
+    color: var(--color-accent) !important;
+}
+
+/* 年度報告頁面樣式 */
+:root[data-theme="meow"] .page-annual-report {
+    background: transparent !important;
+}
+
+:root[data-theme="meow"] .annual-report-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(135, 206, 235, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* 關於記帳本頁面樣式 */
+:root[data-theme="meow"] .page-about {
+    background: transparent !important;
+}
+
+:root[data-theme="meow"] .about-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(135, 206, 235, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* 記帳日記頁面樣式 */
+:root[data-theme="meow"] .page-diary {
+    background: transparent !important;
+}
+
+:root[data-theme="meow"] .diary-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(135, 206, 235, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* 分期網頁樣式 */
+:root[data-theme="meow"] .page-installment {
+    background: transparent !important;
+}
+
+:root[data-theme="meow"] .installment-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(135, 206, 235, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* 小森對話框主題適配 */
+:root[data-theme="meow"] .mori-dialog-box {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="meow"] .mori-dialog-content {
+    background: transparent !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="meow"] .mori-message {
+    color: var(--text-primary) !important;
+}
+
+/* 返回按鈕主題適配 */
+:root[data-theme="meow"] .back-btn,
+:root[data-theme="meow"] .dca-setup-back-btn,
+:root[data-theme="meow"] .stock-detail-back-btn,
+:root[data-theme="meow"] .history-close-btn,
+:root[data-theme="meow"] .advisor-close-btn {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border: 1px solid var(--color-primary) !important;
+    border-radius: 8px !important;
+}
+
+:root[data-theme="meow"] .back-btn:hover,
+:root[data-theme="meow"] .dca-setup-back-btn:hover,
+:root[data-theme="meow"] .stock-detail-back-btn:hover,
+:root[data-theme="meow"] .history-close-btn:hover,
+:root[data-theme="meow"] .advisor-close-btn:hover {
+    background: var(--color-primary-dark) !important;
+    transform: scale(1.05) !important;
+}
+
+/* 定期定額頁面樣式 */
+:root[data-theme="meow"] .page-dca-management,
+:root[data-theme="meow"] .page-dca-setup {
+    background: transparent !important;
+}
+
+:root[data-theme="meow"] .dca-card,
+:root[data-theme="meow"] .dca-setup-form {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 投資設定頁面樣式 */
+:root[data-theme="meow"] .page-investment-settings {
+    background: transparent !important;
+}
+
+:root[data-theme="meow"] .investment-settings-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 持有中頁面樣式 */
+:root[data-theme="meow"] .page-stock-detail {
+    background: transparent !important;
+}
+
+:root[data-theme="meow"] .stock-detail-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 買入卡片樣式 */
+:root[data-theme="meow"] .buy-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 賣出卡片樣式 */
+:root[data-theme="meow"] .sell-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 股息卡片樣式 */
+:root[data-theme="meow"] .dividend-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 每月規劃卡片樣式 */
+:root[data-theme="meow"] .monthly-planner-card {
+    background: url("https://i.pinimg.com/736x/8a/42/0b/8a420b2c26a91187da871ef11f859731.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.3) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 錢包預算設定卡片樣式 */
+:root[data-theme="meow"] .wallet-budget-card {
+    background: url("https://i.pinimg.com/1200x/da/af/29/daaf2933df91dc69201590262a495c01.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.3) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 記帳卡片樣式 */
+:root[data-theme="meow"] .ledger-card {
+    background: url("https://i.pinimg.com/1200x/da/af/29/daaf2933df91dc69201590262a495c01.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.3) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 投資卡片樣式 */
+:root[data-theme="meow"] .investment-card {
+    background: url("https://i.pinimg.com/736x/db/0a/4c/db0a4ca3e630deafb765969aa41396b5.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.3) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 通用管理投資卡片文字顏色樣式 */
+.manage-investment-card {
+    color: var(--text-primary) !important;
+}
+
+.manage-investment-card h1,
+.manage-investment-card h2,
+.manage-investment-card h3,
+.manage-investment-card h4,
+.manage-investment-card h5,
+.manage-investment-card h6,
+.manage-investment-card .title,
+.manage-investment-card .subtitle,
+.manage-investment-card .card-title,
+.manage-investment-card .card-subtitle {
+    color: var(--color-primary) !important;
+}
+
+.manage-investment-card .text,
+.manage-investment-card .description,
+.manage-investment-card .content,
+.manage-investment-card p,
+.manage-investment-card span,
+.manage-investment-card div {
+    color: var(--text-primary) !important;
+}
+
+.manage-investment-card .highlight,
+.manage-investment-card .accent,
+.manage-investment-card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+.manage-investment-card .secondary-text,
+.manage-investment-card .muted-text {
+    color: var(--text-secondary) !important;
+}
+
+.manage-investment-card .label,
+.manage-investment-card .form-label {
+    color: var(--color-primary) !important;
+}
+
+.manage-investment-card .value,
+.manage-investment-card .amount {
+    color: var(--color-accent) !important;
+}
+
+/* 年度報告頁面樣式 */
+:root[data-theme="fruit"] .page-annual-report {
+    background: transparent !important;
+}
+
+:root[data-theme="fruit"] .annual-report-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(64, 224, 208, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(64, 224, 208, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* 關於記帳本頁面樣式 */
+:root[data-theme="fruit"] .page-about {
+    background: transparent !important;
+}
+
+:root[data-theme="fruit"] .about-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(64, 224, 208, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(64, 224, 208, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* 記帳日記頁面樣式 */
+:root[data-theme="fruit"] .page-diary {
+    background: transparent !important;
+}
+
+:root[data-theme="fruit"] .diary-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(64, 224, 208, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(64, 224, 208, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* 分期網頁樣式 */
+:root[data-theme="fruit"] .page-installment {
+    background: transparent !important;
+}
+
+:root[data-theme="fruit"] .installment-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(64, 224, 208, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(64, 224, 208, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* 確保所有頁面元素都使用主題顏色 */
+:root[data-theme="fruit"] * {
+    scrollbar-color: var(--color-primary) rgba(255, 255, 255, 0.3);
+}
+
+:root[data-theme="fruit"] *::-webkit-scrollbar {
+    width: 8px;
+}
+
+:root[data-theme="fruit"] *::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+:root[data-theme="fruit"] *::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+}
+
+:root[data-theme="fruit"] *::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-dark);
 }
