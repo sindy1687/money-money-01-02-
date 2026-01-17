@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>預算設定問題診斷</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .diagnostic-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .output {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .test-btn {
+            margin: 5px;
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            background: white;
+        }
+        .test-btn:hover {
+            background: #f0f0f0;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .warning {
+            color: orange;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body data-theme="cuteCats">
+    <div class="diagnostic-container">
+        <h1>預算設定背景圖片問題診斷</h1>
+        
+        <div class="section">
+            <h3>步驟 1: 檢查CSS載入</h3>
+            <button class="test-btn" onclick="checkCSSLoading()">檢查CSS文件載入</button>
+            <div id="cssLoadingOutput" class="output"></div>
+        </div>
+        
+        <div class="section">
+            <h3>步驟 2: 檢查主題CSS規則</h3>
+            <button class="test-btn" onclick="checkThemeCSSRules()">檢查主題CSS規則</button>
+            <div id="themeCSSOutput" class="output"></div>
+        </div>
+        
+        <div class="section">
+            <h3>步驟 3: 測試預算設定模態框</h3>
+            <button class="test-btn" onclick="testBudgetModal()">測試預算設定模態框</button>
+            <button class="test-btn" onclick="simulateRealBudgetModal()">模擬真實預算設定</button>
+            <div id="budgetModalOutput" class="output"></div>
+        </div>
+        
+        <div class="section">
+            <h3>步驟 4: 檢查JavaScript干擾</h3>
+            <button class="test-btn" onclick="checkJSInterference()">檢查JavaScript干擾</button>
+            <button class="test-btn" onclick="monitorStyleChanges()">監控樣式變化</button>
+            <div id="jsInterferenceOutput" class="output"></div>
+        </div>
+        
+        <div class="section">
+            <h3>測試區域</h3>
+            <div id="testArea"></div>
+        </div>
+    </div>
+    
+    <script>
+        // 模擬真真實的預算設定函數
+        function simulateRealBudgetModal() {
+            const budgets = JSON.parse(localStorage.getItem('categoryBudgets') || '{}');
+            const categoryName = '餐飲';
+            const currentBudget = budgets[categoryName] || 0;
+            const categoryIcon = '🍽️';
+            
+            // 創建預算設定模態框 - 完全按照真實代碼
+            const budgetModal = document.createElement('div');
+            budgetModal.className = 'budget-setting-modal';
+            
+            budgetModal.innerHTML = `
+                <div class="budget-setting-modal-content" style="border-radius: 24px; padding: 28px; max-width: 420px; width: 100%; box-shadow: var(--shadow-primary-lg), 0 4px 16px rgba(0, 0, 0, 0.15); border: 1px solid var(--color-primary-rgba-20); animation: slideIn 0.3s ease-out;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                        <h2 style="margin: 0; font-size: 22px; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 28px;">${categoryIcon}</span>
+                            <span>設定預算</span>
+                        </h2>
+                        <button class="budget-setup-close-btn" style="background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-tertiary); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: all 0.2s;">×</button>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px; padding: 16px; background: var(--bg-gradient-light); border-radius: 12px; border: 1px solid var(--color-primary-rgba-20);">
+                        <div style="font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">分類名稱</div>
+                        <div style="font-size: 18px; color: var(--color-primary-dark); font-weight: 600;">
+                            ${categoryName}
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 24px;">
+                        <label for="budgetAmountInput" style="display: block; font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">預算金額 <span style="font-size: 12px; font-weight: normal; color: var(--text-tertiary);">(輸入 0 可刪除預算)</span></label>
+                        <div style="position: relative;">
+                            <span style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); font-weight: 600; font-size: 16px;">NT$</span>
+                            <input type="number" id="budgetAmountInput" value="${currentBudget}" step="0.01" min="0" placeholder="請輸入預算金額" class="budget-amount-input" style="width: 100%; padding: 14px 16px 14px 60px; border: 2px solid var(--border-light); border-radius: 12px; font-size: 18px; font-weight: 600; background: var(--bg-white); color: var(--text-primary); transition: all 0.3s; box-sizing: border-box;">
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 12px;">
+                        <button id="budgetSetupCancelBtn" class="budget-setup-cancel-btn" style="flex: 1; padding: 14px; border: 2px solid var(--border-light); border-radius: 12px; background: var(--bg-white); color: var(--text-primary); font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;">取消</button>
+                        <button id="budgetSetupSaveBtn" class="budget-setup-save-btn" style="flex: 2; padding: 14px; border: none; border-radius: 12px; background: var(--bg-gradient); color: var(--text-white); font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: var(--shadow-primary);">儲存</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(budgetModal);
+            
+            // 檢查創建後的樣式
+            setTimeout(() => {
+                const modalContent = budgetModal.querySelector('.budget-setting-modal-content');
+                if (modalContent) {
+                    const computedStyle = window.getComputedStyle(modalContent);
+                    const output = document.getElementById('budgetModalOutput');
+                    
+                    const hasBackgroundImage = computedStyle.backgroundImage.includes('956499812b93c3c5bf8226051c7e627f');
+                    
+                    output.innerHTML = `
+<span class="${hasBackgroundImage ? 'success' : 'error'}">預算設定模態框創建成功</span>
+
+=== 創建後的樣式檢查 ===
+背景圖片: ${hasBackgroundImage ? '✅ 正確' : '❌ 錯誤'}
+實際背景: ${computedStyle.backgroundColor}
+背景圖片URL: ${computedStyle.backgroundImage}
+混合模式: ${computedStyle.backgroundBlendMode}
+毛玻璃: ${computedStyle.backdropFilter}
+
+=== 內聯樣式檢查 ===
+元素有內聯樣式: ${modalContent.hasAttribute('style') ? '是' : '否'}
+內聯樣式內容: ${modalContent.getAttribute('style') || '無'}
+
+=== 問題診斷 ===
+${hasBackgroundImage ? 
+    '✅ CSS樣式正確應用，背景圖片顯示正常' : 
+    '❌ CSS樣式未正確應用，需要進一步調查'}
+                    `;
+                    
+                    // 5秒後自動關閉
+                    setTimeout(() => {
+                        if (document.body.contains(budgetModal)) {
+                            document.body.removeChild(budgetModal);
+                        }
+                    }, 5000);
+                }
+            }, 100);
+        }
+        
+        function checkCSSLoading() {
+            const output = document.getElementById('cssLoadingOutput');
+            
+            // 檢查CSS文件是否載入
+            const stylesheets = document.styleSheets;
+            let cssLoaded = false;
+            let cssInfo = [];
+            
+            for (let i = 0; i < stylesheets.length; i++) {
+                const sheet = stylesheets[i];
+                if (sheet.href && sheet.href.includes('styles.css')) {
+                    cssLoaded = true;
+                    cssInfo.push(`✅ styles.css 載入成功: ${sheet.href}`);
+                    break;
+                }
+            }
+            
+            if (!cssLoaded) {
+                cssInfo.push('❌ styles.css 未找到或未載入');
+            }
+            
+            // 檢查CSS規則數量
+            try {
+                const rules = document.styleSheets[0].cssRules;
+                cssInfo.push(`CSS規則數量: ${rules.length}`);
+                
+                // 檢查預算設定相關規則
+                let budgetRules = 0;
+                for (let i = 0; i < rules.length; i++) {
+                    const rule = rules[i];
+                    if (rule.selectorText && rule.selectorText.includes('budget-setting-modal-content')) {
+                        budgetRules++;
+                    }
+                }
+                cssInfo.push(`預算設定相關規則: ${budgetRules}`);
+            } catch (e) {
+                cssInfo.push(`❌ 無法檢查CSS規則: ${e.message}`);
+            }
+            
+            output.innerHTML = cssInfo.join('\n');
+        }
+        
+        function checkThemeCSSRules() {
+            const output = document.getElementById('themeCSSOutput');
+            const theme = document.body.getAttribute('data-theme');
+            
+            // 檢查當前主題的所有CSS規則
+            let themeRules = [];
+            
+            for (let i = 0; i < document.styleSheets.length; i++) {
+                try {
+                    const sheet = document.styleSheets[i];
+                    if (sheet.cssRules) {
+                        for (let j = 0; j < sheet.cssRules.length; j++) {
+                            const rule = sheet.cssRules[j];
+                            if (rule.selectorText && 
+                                rule.selectorText.includes(`data-theme="${theme}"`) &&
+                                rule.selectorText.includes('budget-setting-modal-content')) {
+                                themeRules.push({
+                                    selector: rule.selectorText,
+                                    style: rule.style.cssText
+                                });
+                            }
+                        }
+                    }
+                } catch (e) {
+                    // 跨域樣式表無法訪問
+                }
+            }
+            
+            if (themeRules.length === 0) {
+                output.innerHTML = `<span class="error">❌ 沒有找到主題 ${theme} 的預算設定CSS規則</span>`;
+            } else {
+                let outputHtml = `<span class="success">✅ 找到 ${themeRules.length} 個主題CSS規則</span>\n\n`;
+                themeRules.forEach((rule, index) => {
+                    outputHtml += `規則 ${index + 1}:\n`;
+                    outputHtml += `選擇器: ${rule.selector}\n`;
+                    outputHtml += `樣式: ${rule.style}\n\n`;
+                });
+                output.innerHTML = outputHtml;
+            }
+        }
+        
+        function testBudgetModal() {
+            const testArea = document.getElementById('testArea');
+            testArea.innerHTML = `
+                <div class="budget-setting-modal-content" style="max-width: 400px; margin: 20px auto;">
+                    <h3>簡單測試</h3>
+                    <p>這是一個簡單的預算設定模態框內容測試。</p>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                const element = document.querySelector('.budget-setting-modal-content');
+                if (element) {
+                    const computedStyle = window.getComputedStyle(element);
+                    const output = document.getElementById('budgetModalOutput');
+                    
+                    const hasBackgroundImage = computedStyle.backgroundImage.includes('956499812b93c3c5bf8226051c7e627f');
+                    
+                    output.innerHTML = `
+<span class="${hasBackgroundImage ? 'success' : 'error'}">簡單測試結果</span>
+
+=== 計算樣式 ===
+背景圖片: ${hasBackgroundImage ? '✅ 正確' : '❌ 錯誤'}
+實際背景: ${computedStyle.backgroundColor}
+背景圖片URL: ${computedStyle.backgroundImage}
+                    `;
+                }
+            }, 100);
+        }
+        
+        function checkJSInterference() {
+            const output = document.getElementById('jsInterferenceOutput');
+            
+            // 檢查是否有JavaScript可能干擾
+            let interference = [];
+            
+            // 檢查是否有全局樣式重置
+            if (window.getComputedStyle) {
+                const testElement = document.createElement('div');
+                testElement.className = 'budget-setting-modal-content';
+                document.body.appendChild(testElement);
+                
+                const initialStyle = window.getComputedStyle(testElement);
+                document.body.removeChild(testElement);
+                
+                interference.push(`初始背景: ${initialStyle.backgroundColor}`);
+            }
+            
+            // 檢查是否有CSS變數問題
+            if (getComputedStyle) {
+                const rootStyle = getComputedStyle(document.documentElement);
+                const primaryColor = rootStyle.getPropertyValue('--color-primary');
+                interference.push(`主題色變數: ${primaryColor || '未定義'}`);
+            }
+            
+            // 檢查是否有!important覆蓋問題
+            interference.push('建議檢查CSS優先級和!important使用情況');
+            
+            output.innerHTML = interference.join('\n');
+        }
+        
+        function monitorStyleChanges() {
+            const output = document.getElementById('jsInterferenceOutput');
+            
+            // 創建測試元素
+            const testElement = document.createElement('div');
+            testElement.className = 'budget-setting-modal-content';
+            testElement.style.cssText = 'width: 200px; height: 100px; padding: 10px; margin: 10px; border: 1px solid #ccc;';
+            document.getElementById('testArea').appendChild(testElement);
+            
+            let changes = [];
+            let lastBackground = '';
+            
+            // 監控樣式變化
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                        const currentStyle = testElement.getAttribute('style');
+                        if (currentStyle !== lastBackground) {
+                            changes.push(`樣式變化: ${currentStyle}`);
+                            lastBackground = currentStyle;
+                            
+                            // 更新輸出
+                            output.innerHTML = `監控樣式變化:\n${changes.join('\n')}`;
+                        }
+                    }
+                });
+            });
+            
+            observer.observe(testElement, { attributes: true, attributeFilter: ['style'] });
+            
+            // 5秒後停止監控
+            setTimeout(() => {
+                observer.disconnect();
+                changes.push('監控結束');
+                output.innerHTML = `監控樣式變化:\n${changes.join('\n')}`;
+            }, 5000);
+            
+            output.innerHTML = '開始監控樣式變化...';
+        }
+        
+        // 頁面載入時自動檢查
+        window.addEventListener('load', () => {
+            setTimeout(checkCSSLoading, 500);
+        });
+    </script>
+</body>
+</html>

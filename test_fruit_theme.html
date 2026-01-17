@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水果主題測試</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .theme-switcher {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .theme-btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #40E0D0;
+            color: white;
+            font-weight: bold;
+        }
+        .theme-btn:hover {
+            background: #32CD32;
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-switcher">
+        <button class="theme-btn" onclick="setTheme('default')">預設主題</button>
+        <button class="theme-btn" onclick="setTheme('fruit')">水果清爽主題</button>
+    </div>
+
+    <div class="test-container">
+        <h2>記帳記錄條目測試</h2>
+        
+        <!-- 模擬記帳記錄卡片 -->
+        <div class="record-card">
+            <div class="record-card-header">
+                <div class="record-card-date">01-18 星期日</div>
+                <div class="record-menu">
+                    <button class="record-menu-btn">🗑️</button>
+                </div>
+            </div>
+            <div class="record-card-content">
+                <div class="record-card-details">
+                    <div>
+                        <div class="record-card-category">💳 卡費</div>
+                        <div class="record-card-account">Sindy (下月帳單)</div>
+                    </div>
+                    <div>
+                        <div class="record-card-description">Readkiz</div>
+                    </div>
+                </div>
+                <div class="record-card-amount">-NT$314</div>
+            </div>
+        </div>
+
+        <br><br>
+
+        <!-- 收入記錄 -->
+        <div class="record-card">
+            <div class="record-card-header">
+                <div class="record-card-date">01-18 星期日</div>
+                <div class="record-menu">
+                    <button class="record-menu-btn">🗑️</button>
+                </div>
+            </div>
+            <div class="record-card-content">
+                <div class="record-card-details">
+                    <div>
+                        <div class="record-card-category">💰 工資</div>
+                        <div class="record-card-account">銀行帳戶</div>
+                    </div>
+                    <div>
+                        <div class="record-card-description">月薪</div>
+                    </div>
+                </div>
+                <div class="record-card-amount positive">+NT$50000</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setTheme(themeId) {
+            document.documentElement.setAttribute('data-theme', themeId);
+            console.log('主題已切換為:', themeId);
+        }
+
+        // 初始化為水果主題
+        setTheme('fruit');
+    </script>
+</body>
+</html>

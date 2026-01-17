@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡喤測試 - 持股漲跌標籤</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .test-area {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .debug-output {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>簡單測試 - 持股漲跌標籤主題變數</h1>
+    
+    <div class="test-area">
+        <h2>測試1: 基本樣式</h2>
+        <div class="stock-grid-card-change positive">漲 (positive)</div>
+        <div class="stock-grid-card-change negative">跌 (negative)</div>
+    </div>
+    
+    <div class="test-area">
+        <h2>測試2: 強制樣式檢查</h2>
+        <div class="stock-grid-card-change positive" style="background: red !important; color: white !important;">強制紅色</div>
+        <div class="stock-grid-card-change negative" style="background: green !important; color: white !important;">強制綠色</div>
+    </div>
+    
+    <div class="test-area">
+        <h2>測試3: 主題切換</h2>
+        <button onclick="switchTheme('pink')">粉色主題</button>
+        <button onclick="switchTheme('blue')">藍色主題</button>
+        <button onclick="switchTheme('dreamyfish')">夢幻魚語</button>
+        <button onclick="switchTheme('money')">金錢主題</button>
+        <button onclick="switchTheme('totoro')">龍貓主題</button>
+        
+        <div class="debug-output" id="debug-output">
+            正在檢查樣式...
+        </div>
+    </div>
+
+    <script>
+        function switchTheme(themeName) {
+            document.documentElement.setAttribute('data-theme', themeName);
+            checkStyles();
+        }
+        
+        function checkStyles() {
+            const positiveElement = document.querySelector('.stock-grid-card-change.positive');
+            const negativeElement = document.querySelector('.stock-grid-card-change.negative');
+            
+            if (positiveElement && negativeElement) {
+                const positiveStyles = window.getComputedStyle(positiveElement);
+                const negativeStyles = window.getComputedStyle(negativeElement);
+                
+                const debugOutput = document.getElementById('debug-output');
+                debugOutput.innerHTML = `
+                    <strong>當前主題:</strong> ${document.documentElement.getAttribute('data-theme') || 'default'}<br><br>
+                    <strong>Positive 元素樣式:</strong><br>
+                    - 背景: ${positiveStyles.background}<br>
+                    - 文字顏色: ${positiveStyles.color}<br>
+                    - 邊框: ${positiveStyles.border}<br><br>
+                    <strong>Negative 元素樣式:</strong><br>
+                    - 背景: ${negativeStyles.background}<br>
+                    - 文字顏色: ${negativeStyles.color}<br>
+                    - 邊框: ${negativeStyles.border}<br><br>
+                    <strong>CSS變數檢查:</strong><br>
+                    - --color-success: ${getComputedStyle(document.documentElement).getPropertyValue('--color-success').trim()}<br>
+                    - --color-danger: ${getComputedStyle(document.documentElement).getPropertyValue('--color-danger').trim()}<br>
+                    - --text-white: ${getComputedStyle(document.documentElement).getPropertyValue('--text-white').trim()}
+                `;
+            }
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(checkStyles, 100); // 等待樣式載入
+        });
+        
+        // 監聽主題變化
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+                    setTimeout(checkStyles, 100);
+                }
+            });
+        });
+        
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+    </script>
+</body>
+</html>

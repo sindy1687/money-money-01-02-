@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡單測試</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="fruit">
+    <h1>水果主題測試</h1>
+    <p>如果水果主題樣式正確應用，記帳卡片應該有：</p>
+    <ul>
+        <li>淺粉綠色漸層背景</li>
+        <li>粉色邊框</li>
+        <li>紅色調試邊框（outline）</li>
+    </ul>
+
+    <div class="record-card">
+        <h3>測試卡片</h3>
+        <p>這是一個測試記帳卡片。</p>
+        <div class="record-card-date">01-18 星期日</div>
+        <div class="record-card-amount">-NT$314</div>
+    </div>
+
+    <script>
+        // 檢查主題
+        console.log('當前主題:', document.documentElement.getAttribute('data-theme'));
+        
+        // 檢查計算後樣式
+        const card = document.querySelector('.record-card');
+        if (card) {
+            const style = window.getComputedStyle(card);
+            console.log('背景:', style.background);
+            console.log('邊框:', style.border);
+            console.log('外框:', style.outline);
+        }
+    </script>
+</body>
+</html>

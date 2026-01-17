@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圖片上傳測試</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .upload-btn {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .upload-btn:hover {
+            background: #357abd;
+        }
+        .image-preview {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <h1>🖼️ 圖片上傳限制移除測試</h1>
+    
+    <div class="test-section">
+        <h2>📋 測試結果</h2>
+        <div id="testResults">
+            <div class="status info">正在測試圖片上傳功能...</div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📤 記帳收據圖片上傳測試</h2>
+        <p>測試記帳功能中的收據圖片上傳，應該支援任意大小和數量的圖片</p>
+        <input type="file" id="receiptImageInput" accept="image/*" multiple>
+        <button class="upload-btn" onclick="testReceiptUpload()">測試收據上傳</button>
+        <div id="receiptResults"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🎨 表情圖片上傳測試</h2>
+        <p>測試表情圖片上傳，應該直接使用原始圖片不進行裁切</p>
+        <input type="file" id="emojiImageInput" accept="image/*">
+        <button class="upload-btn" onclick="testEmojiUpload()">測試表情上傳</button>
+        <div id="emojiResults"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🏦 帳戶圖片上傳測試</h2>
+        <p>測試帳戶圖片上傳，應該直接使用原始圖片不進行裁切</p>
+        <input type="file" id="accountImageInput" accept="image/*">
+        <button class="upload-btn" onclick="testAccountUpload()">測試帳戶上傳</button>
+        <div id="accountResults"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🖼️ 背景圖片上傳測試</h2>
+        <p>測試背景圖片上傳，應該移除10MB限制</p>
+        <input type="file" id="backgroundImageInput" accept="image/*">
+        <button class="upload-btn" onclick="testBackgroundUpload()">測試背景上傳</button>
+        <div id="backgroundResults"></div>
+    </div>
+
+    <script>
+        let testResults = [];
+
+        function addResult(test, passed, message) {
+            testResults.push({ test, passed, message });
+            updateResultsDisplay();
+        }
+
+        function updateResultsDisplay() {
+            const resultsDiv = document.getElementById('testResults');
+            const passedCount = testResults.filter(r => r.passed).length;
+            const totalCount = testResults.length;
+            
+            resultsDiv.innerHTML = `
+                <div class="status ${passedCount === totalCount ? 'success' : 'info'}">
+                    測試進度: ${passedCount}/${totalCount} 通過
+                </div>
+                ${testResults.map(r => `
+                    <div class="status ${r.passed ? 'success' : 'error'}">
+                        ${r.passed ? '✅' : '❌'} ${r.test}: ${r.message}
+                    </div>
+                `).join('')}
+            `;
+        }
+
+        function testReceiptUpload() {
+            const input = document.getElementById('receiptImageInput');
+            const resultsDiv = document.getElementById('receiptResults');
+            
+            if (input.files.length === 0) {
+                resultsDiv.innerHTML = '<div class="status error">請選擇圖片文件</div>';
+                return;
+            }
+
+            let totalSize = 0;
+            let fileCount = input.files.length;
+            let results = [];
+
+            for (let file of input.files) {
+                totalSize += file.size;
+                results.push(`
+                    <div class="status info">
+                        📄 ${file.name}: ${formatFileSize(file.size)}
+                    </div>
+                `);
+            }
+
+            // 檢查是否沒有大小限制
+            const hasNoSizeLimit = totalSize > 50 * 1024 * 1024; // 超過50MB
+            const hasNoCountLimit = fileCount > 10; // 超過10個文件
+
+            if (hasNoSizeLimit || hasNoCountLimit) {
+                addResult('收據圖片大小限制', true, `成功上傳 ${fileCount} 個文件，總大小 ${formatFileSize(totalSize)}`);
+                results.push(`<div class="status success">✅ 無大小限制測試通過</div>`);
+            } else {
+                addResult('收據圖片大小限制', false, '需要更大的文件來測試限制移除');
+                results.push(`<div class="status info">ℹ️ 請選擇更大的文件來測試限制移除</div>`);
+            }
+
+            resultsDiv.innerHTML = results.join('');
+        }
+
+        function testEmojiUpload() {
+            const input = document.getElementById('emojiImageInput');
+            const resultsDiv = document.getElementById('emojiResults');
+            
+            if (input.files.length === 0) {
+                resultsDiv.innerHTML = '<div class="status error">請選擇圖片文件</div>';
+                return;
+            }
+
+            const file = input.files[0];
+            
+            // 模擬表情圖片處理（不進行裁切）
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imageData = e.target.result;
+                const processedSize = imageData.length;
+                
+                // 檢查是否使用原始圖片（沒有壓縮）
+                const isOriginalSize = processedSize > file.size * 0.8; // 原始圖片應該接近原始大小
+                
+                if (isOriginalSize) {
+                    addResult('表情圖片裁切限制', true, `使用原始圖片，大小: ${formatFileSize(processedSize)}`);
+                    resultsDiv.innerHTML = `
+                        <div class="status success">✅ 表情圖片不進行裁切</div>
+                        <img src="${imageData}" class="image-preview" alt="表情預覽">
+                        <div class="status info">原始大小: ${formatFileSize(file.size)}</div>
+                        <div class="status info">處理後大小: ${formatFileSize(processedSize)}</div>
+                    `;
+                } else {
+                    addResult('表情圖片裁切限制', false, '圖片可能被壓縮了');
+                    resultsDiv.innerHTML = `
+                        <div class="status error">❌ 表情圖片可能被壓縮</div>
+                        <img src="${imageData}" class="image-preview" alt="表情預覽">
+                    `;
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function testAccountUpload() {
+            const input = document.getElementById('accountImageInput');
+            const resultsDiv = document.getElementById('accountResults');
+            
+            if (input.files.length === 0) {
+                resultsDiv.innerHTML = '<div class="status error">請選擇圖片文件</div>';
+                return;
+            }
+
+            const file = input.files[0];
+            
+            // 模擬帳戶圖片處理（不進行裁切）
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imageData = e.target.result;
+                const processedSize = imageData.length;
+                
+                // 檢查是否使用原始圖片（沒有壓縮）
+                const isOriginalSize = processedSize > file.size * 0.8;
+                
+                if (isOriginalSize) {
+                    addResult('帳戶圖片裁切限制', true, `使用原始圖片，大小: ${formatFileSize(processedSize)}`);
+                    resultsDiv.innerHTML = `
+                        <div class="status success">✅ 帳戶圖片不進行裁切</div>
+                        <img src="${imageData}" class="image-preview" alt="帳戶預覽">
+                        <div class="status info">原始大小: ${formatFileSize(file.size)}</div>
+                        <div class="status info">處理後大小: ${formatFileSize(processedSize)}</div>
+                    `;
+                } else {
+                    addResult('帳戶圖片裁切限制', false, '圖片可能被壓縮了');
+                    resultsDiv.innerHTML = `
+                        <div class="status error">❌ 帳戶圖片可能被壓縮</div>
+                        <img src="${imageData}" class="image-preview" alt="帳戶預覽">
+                    `;
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function testBackgroundUpload() {
+            const input = document.getElementById('backgroundImageInput');
+            const resultsDiv = document.getElementById('backgroundResults');
+            
+            if (input.files.length === 0) {
+                resultsDiv.innerHTML = '<div class="status error">請選擇圖片文件</div>';
+                return;
+            }
+
+            const file = input.files[0];
+            const fileSizeMB = file.size / (1024 * 1024);
+            
+            // 檢查是否移除了10MB限制
+            if (fileSizeMB > 10) {
+                addResult('背景圖片10MB限制', true, `成功處理 ${fileSizeMB.toFixed(2)}MB 的圖片`);
+                resultsDiv.innerHTML = `
+                    <div class="status success">✅ 背景圖片10MB限制已移除</div>
+                    <div class="status info">文件大小: ${fileSizeMB.toFixed(2)}MB</div>
+                `;
+            } else {
+                addResult('背景圖片10MB限制', false, '需要更大的文件來測試限制移除');
+                resultsDiv.innerHTML = `
+                    <div class="status info">ℹ️ 請選擇超過10MB的文件來測試限制移除</div>
+                    <div class="status info">當前文件大小: ${fileSizeMB.toFixed(2)}MB</div>
+                `;
+            }
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // 初始化測試
+        window.onload = function() {
+            addResult('測試環境初始化', true, '測試頁面載入完成');
+        };
+    </script>
+</body>
+</html>

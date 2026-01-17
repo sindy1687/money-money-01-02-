@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最小化測試 - 持股漲跌標籤</title>
+    <link rel="stylesheet" href="test_minimal.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .debug-info {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            margin: 10px 0;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>最小化測試 - 持股漲跌標籤</h1>
+    
+    <div class="debug-info" id="debug-info">
+        正在檢查變數...
+    </div>
+    
+    <div class="test-section">
+        <h2>持股漲跌標籤測試</h2>
+        <div class="stock-grid-card-change positive">▲ +5.2%</div>
+        <div class="stock-grid-card-change negative">▼ -2.8%</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>主題切換</h2>
+        <button onclick="switchTheme('pink')">粉色主題</button>
+        <button onclick="switchTheme('blue')">藍色主題</button>
+        <button onclick="switchTheme('dreamyfish')">夢幻魚語</button>
+        <button onclick="switchTheme('money')">金錢主題</button>
+        <button onclick="switchTheme('totoro')">龍貓主題</button>
+        <button onclick="switchTheme('')">預設主題</button>
+        <button onclick="checkVariables()">檢查變數</button>
+    </div>
+
+    <script>
+        function switchTheme(themeName) {
+            if (themeName) {
+                document.documentElement.setAttribute('data-theme', themeName);
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+            setTimeout(checkVariables, 100);
+        }
+        
+        function checkVariables() {
+            const style = getComputedStyle(document.documentElement);
+            const debugInfo = document.getElementById('debug-info');
+            
+            debugInfo.textContent = `當前主題: ${document.documentElement.getAttribute('data-theme') || 'default'}
+
+CSS變數值:
+--color-success: "${style.getPropertyValue('--color-success').trim()}"
+--color-danger: "${style.getPropertyValue('--color-danger').trim()}"
+--text-white: "${style.getPropertyValue('--text-white').trim()}"
+
+檢查元素實際樣式:`;
+            
+            // 檢查元素的實際樣式
+            const positiveElement = document.querySelector('.stock-grid-card-change.positive');
+            const negativeElement = document.querySelector('.stock-grid-card-change.negative');
+            
+            if (positiveElement) {
+                const styles = window.getComputedStyle(positiveElement);
+                debugInfo.textContent += `\nPositive元素:
+  背景: ${styles.background}
+  文字: ${styles.color}
+  邊框: ${styles.border}`;
+            }
+            
+            if (negativeElement) {
+                const styles = window.getComputedStyle(negativeElement);
+                debugInfo.textContent += `\nNegative元素:
+  背景: ${styles.background}
+  文字: ${styles.color}
+  邊框: ${styles.border}`;
+            }
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(checkVariables, 200);
+        });
+        
+        // 監聽主題變化
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+                    setTimeout(checkVariables, 100);
+                }
+            });
+        });
+        
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+    </script>
+</body>
+</html>

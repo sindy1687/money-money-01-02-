@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>財兔滿滿主題日期測試</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .debug-info {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .expected {
+            color: #8B4513;
+            font-weight: bold;
+        }
+        .current {
+            color: #FFD700;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body data-theme="caitu">
+    <div style="padding: 20px;">
+        <h1>財兔滿滿主題日期顏色測試</h1>
+        
+        <div class="debug-info">
+            <strong>調試信息：</strong><br>
+            當前主題：caitu (財兔滿滿)<br>
+            預期日期顏色：<span class="expected">#8B4513 (咖啡色)</span><br>
+            如果顯示為<span class="current">#FFD700 (金色)</span>，表示CSS優先級問題
+        </div>
+        
+        <div class="transaction-group">
+            <div class="group-header">2025-12-31 星期三</div>
+            <div class="transaction-item">
+                <div class="transaction-icon">🍽️</div>
+                <div class="transaction-info">
+                    <div class="transaction-category">晚餐</div>
+                </div>
+                <div class="transaction-amount-wrapper">
+                    <div class="transaction-amount expense">-NT$300</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="transaction-group">
+            <div class="group-header">2025-12-30 星期二</div>
+            <div class="transaction-item">
+                <div class="transaction-icon">🚌</div>
+                <div class="transaction-info">
+                    <div class="transaction-category">交通</div>
+                </div>
+                <div class="transaction-amount-wrapper">
+                    <div class="transaction-amount expense">-NT$120</div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <h3>測試說明：</h3>
+            <ul>
+                <li>上方日期 "2025-12-31 星期三" 和 "2025-12-30 星期二" 應該顯示為咖啡色</li>
+                <li>如果仍顯示為金色，需要檢查CSS優先級</li>
+                <li>可以打開瀏覽器開發者工具檢查實際應用的CSS規則</li>
+            </ul>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <button onclick="checkStyles()">檢查實際CSS樣式</button>
+            <div id="style-output"></div>
+        </div>
+    </div>
+    
+    <script>
+        function checkStyles() {
+            const header = document.querySelector('.group-header');
+            if (header) {
+                const computedStyle = window.getComputedStyle(header);
+                const output = document.getElementById('style-output');
+                output.innerHTML = `
+                    <div class="debug-info">
+                        <strong>實際應用的CSS樣式：</strong><br>
+                        color: ${computedStyle.color}<br>
+                        background: ${computedStyle.background}<br>
+                        border: ${computedStyle.border}<br>
+                        font-weight: ${computedStyle.fontWeight}<br>
+                        font-size: ${computedStyle.fontSize}
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡單CSS測試</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .test-box {
+            width: 300px;
+            height: 200px;
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+        }
+        .debug-info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+        .theme-btn {
+            margin: 5px;
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            background: white;
+        }
+        .theme-btn.active {
+            background: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body data-theme="cuteCats">
+    <h1>簡單CSS背景測試</h1>
+    
+    <div class="theme-selector">
+        <button class="theme-btn active" onclick="switchTheme('cuteCats')">可愛貓咪</button>
+        <button class="theme-btn" onclick="switchTheme('dreamy')">夢幻境域</button>
+        <button class="theme-btn" onclick="switchTheme('chick')">萌雞樂園</button>
+        <button class="theme-btn" onclick="switchTheme('dreamyfish')">夢幻魚語</button>
+        <button class="theme-btn" onclick="switchTheme('emerald')">翠綠之夢</button>
+        <button class="theme-btn" onclick="switchTheme('meow')">喵喵喵</button>
+    </div>
+    
+    <div class="budget-setting-modal-content test-box">
+        <h2>預算設定測試</h2>
+        <p>這是一個測試框，用於檢查CSS背景圖片是否正確載入。</p>
+    </div>
+    
+    <button onclick="checkStyles()">檢查CSS樣式</button>
+    <button onclick="checkAllThemes()">檢查所有主題</button>
+    
+    <div id="output"></div>
+    
+    <script>
+        function switchTheme(themeId) {
+            document.body.setAttribute('data-theme', themeId);
+            
+            // 更新按鈕狀態
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // 自動檢查樣式
+            setTimeout(checkStyles, 100);
+        }
+        
+        function checkStyles() {
+            const element = document.querySelector('.budget-setting-modal-content');
+            if (element) {
+                const computedStyle = window.getComputedStyle(element);
+                const output = document.getElementById('output');
+                
+                output.innerHTML = `
+                    <div class="debug-info">
+<strong>當前主題：${document.body.getAttribute('data-theme')}</strong>
+
+<strong>實際應用的CSS樣式：</strong>
+background: ${computedStyle.background}
+background-color: ${computedStyle.backgroundColor}
+background-image: ${computedStyle.backgroundImage}
+background-blend-mode: ${computedStyle.backgroundBlendMode}
+border: ${computedStyle.border}
+border-radius: ${computedStyle.borderRadius}
+backdrop-filter: ${computedStyle.backdropFilter}
+color: ${computedStyle.color}
+
+<strong>檢查結果：</strong>
+✅ 背景圖片URL: ${computedStyle.backgroundImage.includes('956499812b93c3c5bf8226051c7e627f') ? '正確' : '錯誤'}
+✅ 有背景混合模式: ${computedStyle.backgroundBlendMode !== 'normal' ? '是' : '否'}
+✅ 有毛玻璃效果: ${computedStyle.backdropFilter !== 'none' ? '是' : '否'}
+
+<strong>背景圖片URL完整：</strong>
+${computedStyle.backgroundImage}
+                    </div>
+                `;
+            }
+        }
+        
+        function checkAllThemes() {
+            const themes = ['cuteCats', 'dreamy', 'chick', 'dreamyfish', 'emerald', 'meow'];
+            const output = document.getElementById('output');
+            let results = '<div class="debug-info"><strong>所有主題檢查結果：</strong>\n\n';
+            
+            themes.forEach(theme => {
+                document.body.setAttribute('data-theme', theme);
+                setTimeout(() => {
+                    const element = document.querySelector('.budget-setting-modal-content');
+                    const computedStyle = window.getComputedStyle(element);
+                    const hasBackgroundImage = computedStyle.backgroundImage.includes('956499812b93c3c5bf8226051c7e627f');
+                    
+                    results += `${theme}: ${hasBackgroundImage ? '✅' : '❌'} 背景圖片\n`;
+                    
+                    if (theme === themes[themes.length - 1]) {
+                        results += '\n<strong>檢查完成！</strong>';
+                        output.innerHTML = `<pre>${results}</pre>`;
+                    }
+                }, 100);
+            });
+        }
+        
+        // 頁面載入時自動檢查
+        window.addEventListener('load', () => {
+            setTimeout(checkStyles, 500);
+        });
+    </script>
+</body>
+</html>

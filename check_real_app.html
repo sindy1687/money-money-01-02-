@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>實際應用問題檢查</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .btn {
+            margin: 5px;
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            background: white;
+        }
+        .btn:hover {
+            background: #f0f0f0;
+        }
+        .output {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        .warning { color: orange; font-weight: bold; }
+    </style>
+</head>
+<body data-theme="cuteCats">
+    <div class="container">
+        <h1>實際應用問題檢查</h1>
+        
+        <div class="section">
+            <h3>步驟 1: 檢查實際應用的JavaScript</h3>
+            <button class="btn" onclick="loadRealAppJS()">載入實際應用JS</button>
+            <button class="btn" onclick="testRealBudgetModal()">測試真實預算設定</button>
+            <div id="jsOutput" class="output">點擊按鈕開始檢查...</div>
+        </div>
+        
+        <div class="section">
+            <h3>步驟 2: 檢查CSS衝突</h3>
+            <button class="btn" onclick="checkCSSConflicts()">檢查CSS衝突</button>
+            <button class="btn" onclick="testCSSPriority()">測試CSS優先級</button>
+            <div id="cssOutput" class="output">點擊按鈕開始檢查...</div>
+        </div>
+        
+        <div class="section">
+            <h3>步驟 3: 模擬完整預算設定流程</h3>
+            <button class="btn" onclick="simulateFullBudgetFlow()">模擬完整流程</button>
+            <button class="btn" onclick="testWithRealData()">使用真實數據測試</button>
+            <div id="flowOutput" class="output">點擊按鈕開始檢查...</div>
+        </div>
+        
+        <div class="section">
+            <h3>測試區域</h3>
+            <div id="testArea"></div>
+        </div>
+    </div>
+    
+    <script>
+        // 載入實際應用的JavaScript函數
+        function loadRealAppJS() {
+            const output = document.getElementById('jsOutput');
+            output.innerHTML = '正在載入實際應用JavaScript...\n';
+            
+            // 嘗試載入script.js中的相關函數
+            fetch('script.js')
+                .then(response => response.text())
+                .then(scriptContent => {
+                    output.innerHTML += '✅ script.js 載入成功\n';
+                    
+                    // 檢查是否有showBudgetSettingDialog函數
+                    if (scriptContent.includes('showBudgetSettingDialog')) {
+                        output.innerHTML += '✅ 找到 showBudgetSettingDialog 函數\n';
+                        
+                        // 提取函數代碼
+                        const functionStart = scriptContent.indexOf('function showBudgetSettingDialog');
+                        if (functionStart !== -1) {
+                            const functionEnd = scriptContent.indexOf('function ', functionStart + 1);
+                            const functionCode = functionEnd !== -1 ? 
+                                scriptContent.substring(functionStart, functionEnd) :
+                                scriptContent.substring(functionStart);
+                            
+                            output.innerHTML += '✅ 提取函數代碼成功\n';
+                            output.innerHTML += '函數長度: ' + functionCode.length + ' 字符\n';
+                            
+                            // 檢查函數中是否有內聯樣式
+                            if (functionCode.includes('style="background:')) {
+                                output.innerHTML += '❌ 發現內聯背景樣式\n';
+                            } else {
+                                output.innerHTML += '✅ 沒有發現內聯背景樣式\n';
+                            }
+                            
+                            // 嘗試執行函數（可能會失敗）
+                            try {
+                                eval(functionCode);
+                                output.innerHTML += '✅ 函數定義成功\n';
+                                window.hasRealBudgetFunction = true;
+                            } catch (e) {
+                                output.innerHTML += '❌ 函數定義失敗: ' + e.message + '\n';
+                            }
+                        }
+                    } else {
+                        output.innerHTML += '❌ 沒有找到 showBudgetSettingDialog 函數\n';
+                    }
+                })
+                .catch(error => {
+                    output.innerHTML += '❌ script.js 載入失敗: ' + error.message + '\n';
+                });
+        }
+        
+        function testRealBudgetModal() {
+            const output = document.getElementById('jsOutput');
+            
+            if (!window.hasRealBudgetFunction) {
+                output.innerHTML += '❌ 請先載入實際應用JavaScript\n';
+                return;
+            }
+            
+            output.innerHTML += '正在測試真實預算設定模態框...\n';
+            
+            try {
+                // 模擬真實的預算設定調用
+                showBudgetSettingDialog('餐飲');
+                
+                setTimeout(() => {
+                    const modal = document.querySelector('.budget-setting-modal-content');
+                    if (modal) {
+                        const computedStyle = window.getComputedStyle(modal);
+                        const hasBackgroundImage = computedStyle.backgroundImage.includes('956499812b93c3c5bf8226051c7e627f');
+                        
+                        output.innerHTML += `=== 真實模態框測試結果 ===\n`;
+                        output.innerHTML += `背景圖片: ${hasBackgroundImage ? '✅ 正確' : '❌ 錯誤'}\n`;
+                        output.innerHTML += `實際背景: ${computedStyle.backgroundColor}\n`;
+                        output.innerHTML += `背景圖片URL: ${computedStyle.backgroundImage}\n`;
+                        
+                        if (!hasBackgroundImage) {
+                            output.innerHTML += `\n❌ 問題分析:\n`;
+                            output.innerHTML += `- 真實應用中的模態框沒有顯示背景圖片\n`;
+                            output.innerHTML += `- 可能是JavaScript動態設置了背景\n`;
+                            output.innerHTML += `- 可能是CSS優先級問題\n`;
+                        }
+                        
+                        // 5秒後關閉模態框
+                        setTimeout(() => {
+                            const modalOverlay = document.querySelector('.budget-setting-modal');
+                            if (modalOverlay) {
+                                document.body.removeChild(modalOverlay);
+                            }
+                        }, 5000);
+                    } else {
+                        output.innerHTML += '❌ 沒有找到預算設定模態框\n';
+                    }
+                }, 500);
+            } catch (e) {
+                output.innerHTML += '❌ 測試失敗: ' + e.message + '\n';
+            }
+        }
+        
+        function checkCSSConflicts() {
+            const output = document.getElementById('cssOutput');
+            output.innerHTML = '正在檢查CSS衝突...\n';
+            
+            // 創建測試元素
+            const testElement = document.createElement('div');
+            testElement.className = 'budget-setting-modal-content';
+            testElement.style.cssText = 'width: 200px; height: 100px; padding: 10px; margin: 10px; border: 1px solid #ccc;';
+            document.getElementById('testArea').appendChild(testElement);
+            
+            setTimeout(() => {
+                const computedStyle = window.getComputedStyle(testElement);
+                
+                output.innerHTML += `=== CSS衝突檢查 ===\n`;
+                output.innerHTML += `當前主題: ${document.body.getAttribute('data-theme')}\n`;
+                output.innerHTML += `背景圖片: ${computedStyle.backgroundImage.includes('956499812b93c3c5bf8226051c7e627f') ? '✅ 正確' : '❌ 錯誤'}\n`;
+                output.innerHTML += `背景顏色: ${computedStyle.backgroundColor}\n`;
+                output.innerHTML += `混合模式: ${computedStyle.backgroundBlendMode}\n`;
+                output.innerHTML += `毛玻璃: ${computedStyle.backdropFilter}\n\n`;
+                
+                // 檢查是否有其他樣式覆蓋
+                output.innerHTML += `=== 樣式優先級分析 ===\n`;
+                
+                // 檢查通用樣式
+                const genericModal = document.createElement('div');
+                genericModal.className = 'modal-content';
+                genericModal.style.cssText = 'width: 200px; height: 100px; padding: 10px; margin: 10px; border: 1px solid #ccc;';
+                document.getElementById('testArea').appendChild(genericModal);
+                
+                setTimeout(() => {
+                    const genericStyle = window.getComputedStyle(genericModal);
+                    output.innerHTML += `通用模態框背景: ${genericStyle.backgroundColor}\n`;
+                    
+                    if (genericStyle.backgroundColor !== 'rgba(0, 0, 0, 0)' && genericStyle.backgroundColor !== 'transparent') {
+                        output.innerHTML += `⚠️ 通用模態框有背景色，可能影響優先級\n`;
+                    }
+                    
+                    // 清理測試元素
+                    document.getElementById('testArea').innerHTML = '';
+                    
+                }, 100);
+            }, 100);
+        }
+        
+        function testCSSPriority() {
+            const output = document.getElementById('cssOutput');
+            output.innerHTML = '正在測試CSS優先級...\n';
+            
+            // 創建多個不同選擇器的測試元素
+            const tests = [
+                { selector: '.budget-setting-modal-content', name: '基礎選擇器' },
+                { selector: 'body .budget-setting-modal-content', name: 'body選擇器' },
+                { selector: '[data-theme="cuteCats"] .budget-setting-modal-content', name: '屬性選擇器' },
+                { selector: 'body[data-theme="cuteCats"] .budget-setting-modal-content', name: 'body+屬性選擇器' },
+                { selector: ':root[data-theme="cuteCats"] .budget-setting-modal-content', name: 'root選擇器' },
+                { selector: 'html:has([data-theme="cuteCats"]) .budget-setting-modal-content', name: 'html:has選擇器' }
+            ];
+            
+            output.innerHTML += `=== CSS優先級測試 ===\n\n`;
+            
+            tests.forEach((test, index) => {
+                const element = document.createElement('div');
+                element.className = 'budget-setting-modal-content';
+                element.style.cssText = 'width: 150px; height: 50px; padding: 5px; margin: 5px; border: 1px solid #ccc; font-size: 12px;';
+                element.textContent = test.name;
+                document.getElementById('testArea').appendChild(element);
+                
+                setTimeout(() => {
+                    const computedStyle = window.getComputedStyle(element);
+                    const hasBackgroundImage = computedStyle.backgroundImage.includes('956499812b93c3c5bf8226051c7e627f');
+                    
+                    output.innerHTML += `${test.name}: ${hasBackgroundImage ? '✅' : '❌'}\n`;
+                    
+                    if (index === tests.length - 1) {
+                        setTimeout(() => {
+                            document.getElementById('testArea').innerHTML = '';
+                        }, 1000);
+                    }
+                }, 100 * (index + 1));
+            });
+        }
+        
+        function simulateFullBudgetFlow() {
+            const output = document.getElementById('flowOutput');
+            output.innerHTML = '正在模擬完整預算設定流程...\n';
+            
+            // 步驟1: 檢查localStorage
+            const budgets = JSON.parse(localStorage.getItem('categoryBudgets') || '{}');
+            output.innerHTML += `✅ 預算數據: ${Object.keys(budgets).length} 個分類\n`;
+            
+            // 步驟2: 檢查分類數據
+            if (typeof allCategories !== 'undefined') {
+                const category = allCategories.find(cat => cat.name === '餐飲');
+                output.innerHTML += `✅ 分類數據: ${category ? '找到餐飲分類' : '沒有找到餐飲分類'}\n`;
+            } else {
+                output.innerHTML += `⚠️  分類數據: allCategories 未定義\n`;
+            }
+            
+            // 步驟3: 創建模態框
+            const budgetModal = document.createElement('div');
+            budgetModal.className = 'budget-setting-modal';
+            
+            // 使用與實際應用完全相同的HTML結構
+            budgetModal.innerHTML = `
+                <div class="budget-setting-modal-content" style="border-radius: 24px; padding: 28px; max-width: 420px; width: 100%; box-shadow: var(--shadow-primary-lg), 0 4px 16px rgba(0, 0, 0, 0.15); border: 1px solid var(--color-primary-rgba-20); animation: slideIn 0.3s ease-out;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                        <h2 style="margin: 0; font-size: 22px; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 28px;">🍽️</span>
+                            <span>設定預算</span>
+                        </h2>
+                        <button onclick="this.closest('.budget-setting-modal').remove()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-tertiary);">×</button>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--text-primary);">預算金額</label>
+                        <input type="number" value="5000" style="width: 100%; padding: 12px; border: 2px solid var(--border-light); border-radius: 12px; background: rgba(255, 255, 255, 0.8);">
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(budgetModal);
+            
+            setTimeout(() => {
+                const modalContent = budgetModal.querySelector('.budget-setting-modal-content');
+                if (modalContent) {
+                    const computedStyle = window.getComputedStyle(modalContent);
+                    const hasBackgroundImage = computedStyle.backgroundImage.includes('956499812b93c3c5bf8226051c7e627f');
+                    
+                    output.innerHTML += `\n=== 完整流程測試結果 ===\n`;
+                    output.innerHTML += `模態框創建: ✅\n`;
+                    output.innerHTML += `背景圖片: ${hasBackgroundImage ? '✅ 正確' : '❌ 錯誤'}\n`;
+                    output.innerHTML += `實際背景: ${computedStyle.backgroundColor}\n`;
+                    output.innerHTML += `內聯樣式: ${modalContent.hasAttribute('style') ? '有' : '無'}\n`;
+                    
+                    if (modalContent.hasAttribute('style')) {
+                        output.innerHTML += `內聯內容: ${modalContent.getAttribute('style')}\n`;
+                    }
+                    
+                    if (!hasBackgroundImage) {
+                        output.innerHTML += `\n❌ 問題診斷:\n`;
+                        output.innerHTML += `1. 檢查內聯樣式是否覆蓋了CSS\n`;
+                        output.innerHTML += `2. 檢查CSS文件是否正確載入\n`;
+                        output.innerHTML += `3. 檢查選擇器優先級\n`;
+                    }
+                    
+                    // 5秒後自動關閉
+                    setTimeout(() => {
+                        if (document.body.contains(budgetModal)) {
+                            document.body.removeChild(budgetModal);
+                        }
+                    }, 5000);
+                }
+            }, 500);
+        }
+        
+        function testWithRealData() {
+            const output = document.getElementById('flowOutput');
+            output.innerHTML = '正在使用真實數據測試...\n';
+            
+            // 檢查實際的分類數據
+            fetch('js/categories.js')
+                .then(response => response.text())
+                .then(categoriesContent => {
+                    output.innerHTML += '✅ categories.js 載入成功\n';
+                    
+                    // 嘗試解析分類
+                    try {
+                        eval(categoriesContent);
+                        output.innerHTML += `✅ 分類數據解析成功: ${allCategories ? allCategories.length : 0} 個分類\n`;
+                        
+                        // 找到第一個分類進行測試
+                        const testCategory = allCategories ? allCategories[0] : { name: '測試', icon: '🍽️' };
+                        
+                        // 使用真實分類數據創建模態框
+                        const budgetModal = document.createElement('div');
+                        budgetModal.className = 'budget-setting-modal';
+                        
+                        budgetModal.innerHTML = `
+                            <div class="budget-setting-modal-content">
+                                <h2 style="margin: 0 0 20px 0; font-size: 22px; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                                    <span style="font-size: 28px;">${testCategory.icon || '💰'}</span>
+                                    ${testCategory.name} - 預算設定
+                                </h2>
+                                <div style="margin-bottom: 20px;">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--text-primary);">月度預算金額</label>
+                                    <input type="number" placeholder="輸入預算金額" style="width: 100%; padding: 12px; border: 2px solid var(--border-light); border-radius: 8px; background: rgba(255, 255, 255, 0.8);">
+                                </div>
+                                <button onclick="this.closest('.budget-setting-modal').remove()" style="padding: 10px 20px; border: none; border-radius: 8px; background: var(--color-primary); color: white; cursor: pointer;">關閉</button>
+                            </div>
+                        `;
+                        
+                        document.body.appendChild(budgetModal);
+                        
+                        setTimeout(() => {
+                            const modalContent = budgetModal.querySelector('.budget-setting-modal-content');
+                            if (modalContent) {
+                                const computedStyle = window.getComputedStyle(modalContent);
+                                const hasBackgroundImage = computedStyle.backgroundImage.includes('956499812b93c3c5bf8226051c7e627f');
+                                
+                                output.innerHTML += `\n=== 真實數據測試結果 ===\n`;
+                                output.innerHTML += `使用分類: ${testCategory.name}\n`;
+                                output.innerHTML += `背景圖片: ${hasBackgroundImage ? '✅ 正確' : '❌ 錯誤'}\n`;
+                                output.innerHTML += `背景顏色: ${computedStyle.backgroundColor}\n`;
+                                
+                                setTimeout(() => {
+                                    if (document.body.contains(budgetModal)) {
+                                        document.body.removeChild(budgetModal);
+                                    }
+                                }, 3000);
+                            }
+                        }, 500);
+                        
+                    } catch (e) {
+                        output.innerHTML += '❌ 分類數據解析失敗: ' + e.message + '\n';
+                    }
+                })
+                .catch(error => {
+                    output.innerHTML += '❌ categories.js 載入失敗: ' + error.message + '\n';
+                });
+        }
+        
+        // 頁面載入時自動檢查基礎CSS
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                checkCSSConflicts();
+            }, 500);
+        });
+    </script>
+</body>
+</html>

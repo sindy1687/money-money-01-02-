@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>實際應用調試工具</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .debug-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .debug-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .debug-info {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+        .test-btn {
+            margin: 5px;
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            background: white;
+        }
+        .test-btn:hover {
+            background: #f0f0f0;
+        }
+        .test-btn.active {
+            background: #007bff;
+            color: white;
+        }
+        .budget-test {
+            width: 300px;
+            height: 200px;
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body data-theme="cuteCats">
+    <div class="debug-container">
+        <h1>實際應用調試工具</h1>
+        
+        <div class="debug-section">
+            <h3>主題切換</h3>
+            <button class="test-btn active" onclick="switchTheme('cuteCats')">可愛貓咪</button>
+            <button class="test-btn" onclick="switchTheme('dreamy')">夢幻境域</button>
+            <button class="test-btn" onclick="switchTheme('chick')">萌雞樂園</button>
+            <button class="test-btn" onclick="switchTheme('dreamyfish')">夢幻魚語</button>
+            <button class="test-btn" onclick="switchTheme('emerald')">翠綠之夢</button>
+            <button class="test-btn" onclick="switchTheme('meow')">喵喵喵</button>
+        </div>
+        
+        <div class="debug-section">
+            <h3>測試按鈕</h3>
+            <button class="test-btn" onclick="testBasicElement()">測試基礎元素</button>
+            <button class="test-btn" onclick="testBudgetModalContent()">測試預算模態框內容</button>
+            <button class="test-btn" onclick="testModalContent()">測試通用模態框內容</button>
+            <button class="test-btn" onclick="checkCSSRules()">檢查CSS規則</button>
+            <button class="test-btn" onclick="testInlineStyles()">測試內聯樣式影響</button>
+        </div>
+        
+        <div class="debug-section">
+            <h3>測試區域</h3>
+            <div id="testArea"></div>
+        </div>
+        
+        <div class="debug-section">
+            <h3>調試信息</h3>
+            <div id="debugInfo" class="debug-info">點擊測試按鈕開始調試...</div>
+        </div>
+    </div>
+    
+    <script>
+        let currentTest = null;
+        
+        function switchTheme(themeId) {
+            document.body.setAttribute('data-theme', themeId);
+            
+            // 更新按鈕狀態
+            document.querySelectorAll('.test-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // 如果有測試元素，重新檢查
+            if (currentTest) {
+                setTimeout(() => {
+                    switch(currentTest) {
+                        case 'basic':
+                            testBasicElement();
+                            break;
+                        case 'budget':
+                            testBudgetModalContent();
+                            break;
+                        case 'modal':
+                            testModalContent();
+                            break;
+                    }
+                }, 100);
+            }
+        }
+        
+        function testBasicElement() {
+            currentTest = 'basic';
+            const testArea = document.getElementById('testArea');
+            testArea.innerHTML = `
+                <div class="budget-test">
+                    <h3>基礎測試元素</h3>
+                    <p>這是一個簡單的測試元素，沒有特殊類別。</p>
+                </div>
+            `;
+            
+            checkElementStyles('.budget-test');
+        }
+        
+        function testBudgetModalContent() {
+            currentTest = 'budget';
+            const testArea = document.getElementById('testArea');
+            testArea.innerHTML = `
+                <div class="budget-setting-modal-content budget-test">
+                    <h3>預算設定模態框內容</h3>
+                    <p>這是 .budget-setting-modal-content 類別的測試。</p>
+                </div>
+            `;
+            
+            checkElementStyles('.budget-setting-modal-content');
+        }
+        
+        function testModalContent() {
+            currentTest = 'modal';
+            const testArea = document.getElementById('testArea');
+            testArea.innerHTML = `
+                <div class="modal-content budget-test">
+                    <h3>通用模態框內容</h3>
+                    <p>這是 .modal-content 類別的測試。</p>
+                </div>
+            `;
+            
+            checkElementStyles('.modal-content');
+        }
+        
+        function checkElementStyles(selector) {
+            const element = document.querySelector(selector);
+            if (element) {
+                const computedStyle = window.getComputedStyle(element);
+                const debugInfo = document.getElementById('debugInfo');
+                
+                const hasBackgroundImage = computedStyle.backgroundImage.includes('956499812b93c3c5bf8226051c7e627f');
+                const hasBlendMode = computedStyle.backgroundBlendMode !== 'normal';
+                const hasBackdropFilter = computedStyle.backdropFilter !== 'none';
+                
+                debugInfo.innerHTML = `
+當前主題: ${document.body.getAttribute('data-theme')}
+測試元素: ${selector}
+
+=== 計算樣式 ===
+background: ${computedStyle.background}
+background-color: ${computedStyle.backgroundColor}
+background-image: ${computedStyle.backgroundImage}
+background-blend-mode: ${computedStyle.backgroundBlendMode}
+border: ${computedStyle.border}
+border-radius: ${computedStyle.borderRadius}
+backdrop-filter: ${computedStyle.backdropFilter}
+color: ${computedStyle.color}
+
+=== 檢查結果 ===
+${hasBackgroundImage ? '✅' : '❌'} 背景圖片: ${hasBackgroundImage ? '正確' : '錯誤'}
+${hasBlendMode ? '✅' : '❌'} 混合模式: ${hasBlendMode ? '是' : '否'}
+${hasBackdropFilter ? '✅' : '❌'} 毛玻璃: ${hasBackdropFilter ? '是' : '否'}
+
+=== 完整背景圖片URL ===
+${computedStyle.backgroundImage}
+                `;
+            }
+        }
+        
+        function checkCSSRules() {
+            const debugInfo = document.getElementById('debugInfo');
+            const theme = document.body.getAttribute('data-theme');
+            
+            // 檢查所有相關的CSS規則
+            const rules = [];
+            for (let i = 0; i < document.styleSheets.length; i++) {
+                try {
+                    const sheet = document.styleSheets[i];
+                    if (sheet.cssRules) {
+                        for (let j = 0; j < sheet.cssRules.length; j++) {
+                            const rule = sheet.cssRules[j];
+                            if (rule.selectorText && 
+                                (rule.selectorText.includes('budget-setting-modal-content') || 
+                                 rule.selectorText.includes('modal-content'))) {
+                                rules.push({
+                                    selector: rule.selectorText,
+                                    style: rule.style.cssText,
+                                    sheet: sheet.href || 'inline'
+                                });
+                            }
+                        }
+                    }
+                } catch (e) {
+                    // 跨域樣式表可能無法訪問
+                }
+            }
+            
+            let output = `=== CSS規則檢查 (主題: ${theme}) ===\n\n`;
+            
+            // 過濾相關規則
+            const relevantRules = rules.filter(rule => 
+                rule.selector.includes('budget-setting-modal-content')
+            );
+            
+            if (relevantRules.length === 0) {
+                output += '❌ 沒有找到相關的CSS規則\n\n';
+            } else {
+                relevantRules.forEach(rule => {
+                    output += `✅ ${rule.selector}\n`;
+                    output += `   ${rule.style}\n`;
+                    output += `   來源: ${rule.sheet}\n\n`;
+                });
+            }
+            
+            // 檢查通用規則
+            const modalRules = rules.filter(rule => 
+                rule.selector.includes('modal-content') && 
+                !rule.selector.includes('budget-setting-modal-content')
+            );
+            
+            if (modalRules.length > 0) {
+                output += `=== 可能影響的通用模態框規則 ===\n\n`;
+                modalRules.forEach(rule => {
+                    output += `⚠️  ${rule.selector}\n`;
+                    output += `   ${rule.style}\n\n`;
+                });
+            }
+            
+            debugInfo.innerHTML = `<pre>${output}</pre>`;
+        }
+        
+        function testInlineStyles() {
+            const debugInfo = document.getElementById('debugInfo');
+            const testArea = document.getElementById('testArea');
+            
+            // 創建一個有內聯樣式的元素
+            testArea.innerHTML = `
+                <div class="budget-setting-modal-content budget-test" 
+                     style="background: white; border: 1px solid #ccc;">
+                    <h3>內聯樣式測試</h3>
+                    <p>這個元素有內聯背景樣式。</p>
+                </div>
+                <div class="budget-setting-modal-content budget-test">
+                    <h3>無內聯樣式測試</h3>
+                    <p>這個元素沒有內聯背景樣式。</p>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                const elements = document.querySelectorAll('.budget-setting-modal-content');
+                let output = `=== 內聯樣式影響測試 ===\n\n`;
+                
+                elements.forEach((element, index) => {
+                    const computedStyle = window.getComputedStyle(element);
+                    const hasInline = element.hasAttribute('style');
+                    const hasBackgroundImage = computedStyle.backgroundImage.includes('956499812b93c3c5bf8226051c7e627f');
+                    
+                    output += `元素 ${index + 1}:\n`;
+                    output += `  有內聯樣式: ${hasInline ? '是' : '否'}\n`;
+                    output += `  背景圖片: ${hasBackgroundImage ? '✅ 正確' : '❌ 錯誤'}\n`;
+                    output += `  實際背景: ${computedStyle.backgroundColor}\n`;
+                    output += `  背景圖片URL: ${computedStyle.backgroundImage}\n\n`;
+                });
+                
+                debugInfo.innerHTML = `<pre>${output}</pre>`;
+            }, 100);
+        }
+        
+        // 頁面載入時自動測試
+        window.addEventListener('load', () => {
+            setTimeout(testBudgetModalContent, 500);
+        });
+    </script>
+</body>
+</html>

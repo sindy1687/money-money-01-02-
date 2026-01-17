@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>預算設定模態框背景測試</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .test-container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .theme-selector {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+        }
+        .theme-btn {
+            margin: 5px;
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            background: white;
+        }
+        .theme-btn:hover {
+            background: #f0f0f0;
+        }
+        .theme-btn.active {
+            background: #007bff;
+            color: white;
+        }
+        .test-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .test-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: var(--color-primary, #007bff);
+            color: white;
+            font-weight: 600;
+        }
+        .test-btn:hover {
+            background: var(--color-primary-dark, #0056b3);
+        }
+        .debug-info {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-overlay.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body data-theme="cuteCats">
+    <div class="test-container">
+        <h1>預算設定模態框背景圖片測試</h1>
+        
+        <div class="theme-selector">
+            <h3>選擇主題：</h3>
+            <button class="theme-btn active" onclick="switchTheme('cuteCats')">可愛貓咪</button>
+            <button class="theme-btn" onclick="switchTheme('dreamy')">夢幻境域</button>
+            <button class="theme-btn" onclick="switchTheme('chick')">萌雞樂園</button>
+            <button class="theme-btn" onclick="switchTheme('dreamyfish')">夢幻魚語</button>
+            <button class="theme-btn" onclick="switchTheme('emerald')">翠綠之夢</button>
+            <button class="theme-btn" onclick="switchTheme('meow')">喵喵喵</button>
+        </div>
+        
+        <div class="test-buttons">
+            <button class="test-btn" onclick="showBudgetSettingModal()">顯示預算設定模態框</button>
+            <button class="test-btn" onclick="showDirectBudgetCard()">顯示直接預算卡片</button>
+            <button class="test-btn" onclick="checkStyles()">檢查CSS樣式</button>
+        </div>
+        
+        <div class="debug-info">
+            <strong>測試說明：</strong><br>
+            • 預期背景圖片：https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg<br>
+            • 點擊「顯示預算設定模態框」測試實際的預算設定對話框<br>
+            • 點擊「顯示直接預算卡片」測試 .budget-setting-modal-content 類別<br>
+            • 點擊「檢查CSS樣式」查看實際應用的CSS規則<br>
+            • 當前主題：<span id="current-theme">cuteCats</span>
+        </div>
+        
+        <div id="direct-test-container" style="margin-top: 20px;"></div>
+        <div id="style-output" style="margin-top: 20px;"></div>
+    </div>
+    
+    <!-- 模態框容器 -->
+    <div id="modalContainer"></div>
+    
+    <script>
+        function switchTheme(themeId) {
+            document.body.setAttribute('data-theme', themeId);
+            document.getElementById('current-theme').textContent = themeId;
+            
+            // 更新按鈕狀態
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+        
+        function showBudgetSettingModal() {
+            // 創建預算設定模態框 - 移除內聯背景樣式
+            const modalHtml = `
+                <div class="modal-overlay" onclick="closeModal(event)">
+                    <div class="budget-setting-modal-content" onclick="event.stopPropagation()">
+                        <h2 style="margin: 0 0 20px 0; font-size: 22px; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 28px;">🍽️</span>
+                            餐飲 - 預算設定
+                        </h2>
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--text-primary);">月度預算金額</label>
+                            <input type="number" placeholder="輸入預算金額" style="width: 100%; padding: 12px; border: 2px solid var(--border-light); border-radius: 8px; font-size: 16px; background: rgba(255, 255, 255, 0.8); color: var(--text-primary);">
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--text-primary);">預算提醒</label>
+                            <select style="width: 100%; padding: 12px; border: 2px solid var(--border-light); border-radius: 8px; font-size: 16px; background: rgba(255, 255, 255, 0.8); color: var(--text-primary);">
+                                <option>達到80%時提醒</option>
+                                <option>達到90%時提醒</option>
+                                <option>達到100%時提醒</option>
+                            </select>
+                        </div>
+                        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                            <button onclick="closeModal()" style="padding: 10px 20px; border: 1px solid var(--border-light); border-radius: 8px; background: rgba(255, 255, 255, 0.8); color: var(--text-primary); cursor: pointer;">取消</button>
+                            <button onclick="saveBudget()" style="padding: 10px 20px; border: none; border-radius: 8px; background: var(--color-primary); color: white; cursor: pointer; font-weight: 600;">儲存</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('modalContainer').innerHTML = modalHtml;
+        }
+        
+        function showDirectBudgetCard() {
+            const container = document.getElementById('direct-test-container');
+            container.innerHTML = `
+                <h3>直接測試 .budget-setting-modal-content 類別：</h3>
+                <div class="budget-setting-modal-content">
+                    <h2 style="margin: 0 0 20px 0; font-size: 22px; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 28px;">🍽️</span>
+                        餐飲 - 預算設定
+                    </h2>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--text-primary);">月度預算金額</label>
+                        <input type="number" placeholder="輸入預算金額" value="5000" style="width: 100%; padding: 12px; border: 2px solid var(--border-light); border-radius: 8px; font-size: 16px; background: rgba(255, 255, 255, 0.8); color: var(--text-primary);">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--text-primary);">預算提醒</label>
+                        <select style="width: 100%; padding: 12px; border: 2px solid var(--border-light); border-radius: 8px; font-size: 16px; background: rgba(255, 255, 255, 0.8); color: var(--text-primary);">
+                            <option selected>達到80%時提醒</option>
+                            <option>達到90%時提醒</option>
+                            <option>達到100%時提醒</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                        <button style="padding: 10px 20px; border: 1px solid var(--border-light); border-radius: 8px; background: rgba(255, 255, 255, 0.8); color: var(--text-primary); cursor: pointer;">取消</button>
+                        <button style="padding: 10px 20px; border: none; border-radius: 8px; background: var(--color-primary); color: white; cursor: pointer; font-weight: 600;">儲存</button>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function checkStyles() {
+            const modalContent = document.querySelector('.budget-setting-modal-content');
+            if (modalContent) {
+                const computedStyle = window.getComputedStyle(modalContent);
+                const output = document.getElementById('style-output');
+                output.innerHTML = `
+                    <div class="debug-info">
+                        <strong>實際應用的CSS樣式：</strong><br>
+                        background: ${computedStyle.background}<br>
+                        background-color: ${computedStyle.backgroundColor}<br>
+                        background-image: ${computedStyle.backgroundImage}<br>
+                        border: ${computedStyle.border}<br>
+                        border-radius: ${computedStyle.borderRadius}<br>
+                        backdrop-filter: ${computedStyle.backdropFilter}<br>
+                        color: ${computedStyle.color}<br>
+                        <br>
+                        <strong>檢查結果：</strong><br>
+                        背景圖片URL: ${computedStyle.backgroundImage.includes('956499812b93c3c5bf8226051c7e627f') ? '✅ 正確' : '❌ 錯誤'}<br>
+                        有背景混合模式: ${computedStyle.backgroundBlendMode !== 'normal' ? '✅ 是' : '❌ 否'}<br>
+                        有毛玻璃效果: ${computedStyle.backdropFilter !== 'none' ? '✅ 是' : '❌ 否'}
+                    </div>
+                `;
+            } else {
+                document.getElementById('style-output').innerHTML = `
+                    <div class="debug-info">
+                        <strong>找不到 .budget-setting-modal-content 元素</strong><br>
+                        請先點擊「顯示直接預算卡片」按鈕
+                    </div>
+                `;
+            }
+        }
+        
+        function closeModal(event) {
+            if (!event || event.target.classList.contains('modal-overlay')) {
+                document.getElementById('modalContainer').innerHTML = '';
+            }
+        }
+        
+        function saveBudget() {
+            alert('預算已儲存！（這只是測試）');
+            closeModal();
+        }
+        
+        // 頁面載入時自動顯示直接測試卡片
+        window.addEventListener('load', () => {
+            showDirectBudgetCard();
+        });
+    </script>
+</body>
+</html>

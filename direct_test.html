@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>直接測試 - 持股漲跌標籤</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 強制覆蓋任何可能的樣式 */
+        .test-positive {
+            color: var(--text-white) !important;
+            background: var(--color-danger) !important;
+            border: 1px solid var(--color-danger) !important;
+            padding: 6px 12px;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 5px;
+        }
+        
+        .test-negative {
+            color: var(--text-white) !important;
+            background: var(--color-success) !important;
+            border: 1px solid var(--color-success) !important;
+            padding: 6px 12px;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 5px;
+        }
+        
+        .debug-info {
+            background: #f0f0f0;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>直接測試 - 持股漲跌標籤</h1>
+    
+    <div class="debug-info" id="debug-info">
+        正在檢查變數...
+    </div>
+    
+    <h2>測試1: 原始class</h2>
+    <div class="stock-grid-card-change positive">原始 positive</div>
+    <div class="stock-grid-card-change negative">原始 negative</div>
+    
+    <h2>測試2: 自定義class</h2>
+    <div class="test-positive">自定義 positive</div>
+    <div class="test-negative">自定義 negative</div>
+    
+    <h2>測試3: 內聯樣式</h2>
+    <div style="color: var(--text-white); background: var(--color-danger); border: 1px solid var(--color-danger); padding: 6px 12px; border-radius: 12px; display: inline-block; margin: 5px;">
+        內聯 positive
+    </div>
+    <div style="color: var(--text-white); background: var(--color-success); border: 1px solid var(--color-success); padding: 6px 12px; border-radius: 12px; display: inline-block; margin: 5px;">
+        內聯 negative
+    </div>
+    
+    <h2>測試4: 固定顏色對比</h2>
+    <div style="color: white; background: red; border: 1px solid red; padding: 6px 12px; border-radius: 12px; display: inline-block; margin: 5px;">
+        固定紅色
+    </div>
+    <div style="color: white; background: green; border: 1px solid green; padding: 6px 12px; border-radius: 12px; display: inline-block; margin: 5px;">
+        固定綠色
+    </div>
+    
+    <h2>主題切換</h2>
+    <button onclick="switchTheme('pink')">粉色</button>
+    <button onclick="switchTheme('blue')">藍色</button>
+    <button onclick="switchTheme('dreamyfish')">夢幻魚語</button>
+    <button onclick="switchTheme('money')">金錢</button>
+    <button onclick="switchTheme('totoro')">龍貓</button>
+    <button onclick="checkVariables()">檢查變數</button>
+
+    <script>
+        function switchTheme(themeName) {
+            document.documentElement.setAttribute('data-theme', themeName);
+            setTimeout(checkVariables, 100);
+        }
+        
+        function checkVariables() {
+            const style = getComputedStyle(document.documentElement);
+            const debugInfo = document.getElementById('debug-info');
+            
+            debugInfo.textContent = `當前主題: ${document.documentElement.getAttribute('data-theme') || 'default'}
+
+CSS變數值:
+--color-success: "${style.getPropertyValue('--color-success').trim()}"
+--color-danger: "${style.getPropertyValue('--color-danger').trim()}"
+--text-white: "${style.getPropertyValue('--text-white').trim()}"
+
+檢查元素實際樣式:`;
+            
+            // 檢查各個元素的實際樣式
+            const elements = [
+                { name: '原始positive', selector: '.stock-grid-card-change.positive' },
+                { name: '原始negative', selector: '.stock-grid-card-change.negative' },
+                { name: '自定義positive', selector: '.test-positive' },
+                { name: '自定義negative', selector: '.test-negative' }
+            ];
+            
+            elements.forEach(item => {
+                const element = document.querySelector(item.selector);
+                if (element) {
+                    const styles = window.getComputedStyle(element);
+                    debugInfo.textContent += `\n${item.name}:
+  背景: ${styles.background}
+  文字: ${styles.color}
+  邊框: ${styles.border}`;
+                }
+            });
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(checkVariables, 200);
+        });
+    </script>
+</body>
+</html>

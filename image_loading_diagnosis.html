@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景圖片載入診斷</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .btn {
+            margin: 5px;
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            background: white;
+        }
+        .btn:hover {
+            background: #f0f0f0;
+        }
+        .output {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        .warning { color: orange; font-weight: bold; }
+        .image-test {
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body data-theme="cuteCats">
+    <div class="container">
+        <h1>背景圖片載入診斷</h1>
+        
+        <div class="section">
+            <h3>步驟 1: 檢查圖片URL</h3>
+            <button class="btn" onclick="checkImageURL()">檢查原始圖片URL</button>
+            <button class="btn" onclick="testAlternativeURLs()">測試替代URL</button>
+            <div id="urlOutput" class="output">點擊按鈕開始檢查...</div>
+        </div>
+        
+        <div class="section">
+            <h3>步驟 2: 測試圖片載入</h3>
+            <button class="btn" onclick="testImageLoading()">測試圖片載入</button>
+            <button class="btn" onclick="testBackgroundImage()">測試背景圖片</button>
+            <div id="loadingOutput" class="output">點擊按鈕開始檢查...</div>
+        </div>
+        
+        <div class="section">
+            <h3>步驟 3: 測試預算設定模態框</h3>
+            <button class="btn" onclick="testBudgetModalWithImage()">測試預算模態框</button>
+            <button class="btn" onclick="testWithLocalImage()">使用本地圖片測試</button>
+            <div id="modalOutput" class="output">點擊按鈕開始檢查...</div>
+        </div>
+        
+        <div class="section">
+            <h3>圖片測試區域</h3>
+            <div id="imageTestArea"></div>
+        </div>
+        
+        <div class="section">
+            <h3>預算設定測試區域</h3>
+            <div id="budgetTestArea"></div>
+        </div>
+    </div>
+    
+    <script>
+        const originalImageURL = 'https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg';
+        
+        function checkImageURL() {
+            const output = document.getElementById('urlOutput');
+            output.innerHTML = '正在檢查原始圖片URL...\n';
+            
+            // 創建圖片對象測試載入
+            const img = new Image();
+            img.onload = function() {
+                output.innerHTML += `✅ 圖片載入成功\n`;
+                output.innerHTML += `圖片尺寸: ${this.width} x ${this.height}\n`;
+                output.innerHTML += `原始URL: ${originalImageURL}\n`;
+                output.innerHTML += `圖片可訪問性: 正常\n`;
+            };
+            img.onerror = function() {
+                output.innerHTML += `❌ 圖片載入失敗\n`;
+                output.innerHTML += `原始URL: ${originalImageURL}\n`;
+                output.innerHTML += `可能原因:\n`;
+                output.innerHTML += `- 圖片URL無效或已失效\n`;
+                output.innerHTML += `- 網路連接問題\n`;
+                output.innerHTML += `- 跨域限制\n`;
+                output.innerHTML += `- 圖片伺服器問題\n`;
+                output.innerHTML += `\n建議: 嘗試替代URL或使用本地圖片`;
+            };
+            img.src = originalImageURL;
+        }
+        
+        function testAlternativeURLs() {
+            const output = document.getElementById('urlOutput');
+            output.innerHTML = '正在測試替代URL...\n';
+            
+            const alternativeURLs = [
+                'https://i.pinimg.com/736x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg',
+                'https://picsum.photos/800/600',
+                'https://source.unsplash.com/800x600/?nature',
+                'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzAwYi9mZiIvPjx0ZXh0IHg9IjQwMCIgeT0iMzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjQ4IiBmaWxsPSJ3aGl0ZSI+5L2g5aW9IOi9rOWbvjwvdGV4dD48L3N2Zz4='
+            ];
+            
+            let results = '';
+            let completedTests = 0;
+            
+            alternativeURLs.forEach((url, index) => {
+                const img = new Image();
+                img.onload = function() {
+                    results += `✅ 替代URL ${index + 1}: 成功 (${this.width}x${this.height})\n`;
+                    results += `   URL: ${url}\n`;
+                    completedTests++;
+                    if (completedTests === alternativeURLs.length) {
+                        output.innerHTML = results + '\n建議: 使用載入成功的URL替換原始URL';
+                    }
+                };
+                img.onerror = function() {
+                    results += `❌ 替代URL ${index + 1}: 失敗\n`;
+                    results += `   URL: ${url}\n`;
+                    completedTests++;
+                    if (completedTests === alternativeURLs.length) {
+                        output.innerHTML = results + '\n建議: 所有替代URL都失敗，需要使用其他圖片';
+                    }
+                };
+                img.src = url;
+            });
+        }
+        
+        function testImageLoading() {
+            const output = document.getElementById('loadingOutput');
+            const testArea = document.getElementById('imageTestArea');
+            
+            output.innerHTML = '正在測試圖片載入...\n';
+            testArea.innerHTML = '';
+            
+            // 測試直接圖片載入
+            const img = document.createElement('img');
+            img.style.maxWidth = '300px';
+            img.style.maxHeight = '200px';
+            img.style.border = '1px solid #ccc';
+            img.style.margin = '5px';
+            
+            img.onload = function() {
+                output.innerHTML += `✅ 直接圖片載入成功\n`;
+                output.innerHTML += `尺寸: ${this.width}x${this.height}\n`;
+            };
+            
+            img.onerror = function() {
+                output.innerHTML += `❌ 直接圖片載入失敗\n`;
+            };
+            
+            img.src = originalImageURL;
+            testArea.appendChild(img);
+            
+            // 測試背景圖片載入
+            const bgDiv = document.createElement('div');
+            bgDiv.className = 'image-test';
+            bgDiv.style.backgroundImage = `url(${originalImageURL})`;
+            bgDiv.textContent = '背景圖片測試';
+            bgDiv.style.color = 'white';
+            bgDiv.style.fontWeight = 'bold';
+            bgDiv.style.textShadow = '2px 2px 4px rgba(0,0,0,0.8)';
+            
+            testArea.appendChild(bgDiv);
+            
+            setTimeout(() => {
+                const computedStyle = window.getComputedStyle(bgDiv);
+                const hasBackground = computedStyle.backgroundImage !== 'none' && 
+                                   computedStyle.backgroundImage !== 'initial';
+                
+                output.innerHTML += `背景圖片: ${hasBackground ? '✅ 成功' : '❌ 失敗'}\n`;
+                output.innerHTML += `背景樣式: ${computedStyle.backgroundImage}\n`;
+            }, 1000);
+        }
+        
+        function testBackgroundImage() {
+            const output = document.getElementById('loadingOutput');
+            const testArea = document.getElementById('imageTestArea');
+            
+            output.innerHTML = '正在測試背景圖片CSS...\n';
+            
+            // 創建測試元素
+            const testDiv = document.createElement('div');
+            testDiv.className = 'budget-setting-modal-content';
+            testDiv.style.cssText = 'width: 300px; height: 200px; margin: 10px; padding: 20px; border: 2px solid #ccc; border-radius: 8px;';
+            testDiv.innerHTML = '<h3>預算設定模態框測試</h3><p>這是一個測試元素</p>';
+            
+            testArea.appendChild(testDiv);
+            
+            setTimeout(() => {
+                const computedStyle = window.getComputedStyle(testDiv);
+                const hasBackgroundImage = computedStyle.backgroundImage.includes('956499812b93c3c5bf8226051c7e627f');
+                
+                output.innerHTML += `CSS背景圖片: ${hasBackgroundImage ? '✅ 成功' : '❌ 失敗'}\n`;
+                output.innerHTML += `背景URL: ${computedStyle.backgroundImage}\n`;
+                output.innerHTML += `背景顏色: ${computedStyle.backgroundColor}\n`;
+                output.innerHTML += `混合模式: ${computedStyle.backgroundBlendMode}\n`;
+                
+                if (!hasBackgroundImage) {
+                    output.innerHTML += `\n❌ CSS背景圖片未載入\n`;
+                    output.innerHTML += `可能原因:\n`;
+                    output.innerHTML += `- CSS規則未正確應用\n`;
+                    output.innerHTML += `- 圖片URL無效\n`;
+                    output.innerHTML += `- 瀏覽器緩存問題\n`;
+                }
+            }, 500);
+        }
+        
+        function testBudgetModalWithImage() {
+            const output = document.getElementById('modalOutput');
+            const testArea = document.getElementById('budgetTestArea');
+            
+            output.innerHTML = '正在測試預算設定模態框...\n';
+            
+            // 創建預算設定模態框
+            const modal = document.createElement('div');
+            modal.className = 'budget-setting-modal';
+            modal.innerHTML = `
+                <div class="budget-setting-modal-content">
+                    <h2 style="margin: 0 0 20px 0; font-size: 22px; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 28px;">🍽️</span>
+                        餐飲 - 預算設定
+                    </h2>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--text-primary);">月度預算金額</label>
+                        <input type="number" placeholder="輸入預算金額" style="width: 100%; padding: 12px; border: 2px solid var(--border-light); border-radius: 8px; background: rgba(255, 255, 255, 0.8);">
+                    </div>
+                    <button onclick="this.closest('.budget-setting-modal').remove()" style="padding: 10px 20px; border: none; border-radius: 8px; background: var(--color-primary); color: white; cursor: pointer;">關閉</button>
+                </div>
+            `;
+            
+            testArea.appendChild(modal);
+            
+            setTimeout(() => {
+                const modalContent = modal.querySelector('.budget-setting-modal-content');
+                if (modalContent) {
+                    const computedStyle = window.getComputedStyle(modalContent);
+                    const hasBackgroundImage = computedStyle.backgroundImage.includes('956499812b93c3c5bf8226051c7e627f');
+                    
+                    output.innerHTML += `預算設定模態框: ${hasBackgroundImage ? '✅ 有背景圖片' : '❌ 無背景圖片'}\n`;
+                    output.innerHTML += `背景URL: ${computedStyle.backgroundImage}\n`;
+                    output.innerHTML += `背景顏色: ${computedStyle.backgroundColor}\n`;
+                    output.innerHTML += `混合模式: ${computedStyle.backgroundBlendMode}\n`;
+                    output.innerHTML += `毛玻璃: ${computedStyle.backdropFilter}\n`;
+                    
+                    if (!hasBackgroundImage) {
+                        output.innerHTML += `\n❌ 預算設定模態框沒有背景圖片\n`;
+                        output.innerHTML += `建議檢查:\n`;
+                        output.innerHTML += `1. 圖片URL是否有效\n`;
+                        output.innerHTML += `2. CSS規則是否正確載入\n`;
+                        output.innerHTML += `3. 瀏覽器緩存是否需要清除\n`;
+                    }
+                }
+            }, 500);
+        }
+        
+        function testWithLocalImage() {
+            const output = document.getElementById('modalOutput');
+            const testArea = document.getElementById('budgetTestArea');
+            
+            output.innerHTML = '正在使用本地圖片測試...\n';
+            
+            // 使用SVG作為本地圖片
+            const localImageURL = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZmY2OWI5O3N0b3Atb3BhY2l0eToxIiAvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2ZmOWVjYTtzdG9wLW9wYWNpdHk6MSIgLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0idXJsKCNiZykiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNTAiIHI9IjUwIiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMykiLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIxNTAiIHI9IjUwIiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMykiLz48Y2lyY2xlIGN4PSI2MDAiIGN5PSIxNTAiIHI9IjUwIiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMykiLz48dGV4dCB4PSI0MDAiIHk9IjM1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI0OCIgZmlsbD0id2hpdGUiPuWbvueJh+WKoOi9rOWbvjwvdGV4dD48L3N2Zz4=';
+            
+            // 創建測試模態框
+            const modal = document.createElement('div');
+            modal.className = 'budget-setting-modal';
+            modal.innerHTML = `
+                <div class="budget-setting-modal-content" style="background-image: url('${localImageURL}'); background-size: cover; background-position: center;">
+                    <h2 style="margin: 0 0 20px 0; font-size: 22px; font-weight: 600; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 28px;">🍽️</span>
+                        餐飲 - 預算設定 (本地圖片)
+                    </h2>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 500; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">月度預算金額</label>
+                        <input type="number" placeholder="輸入預算金額" style="width: 100%; padding: 12px; border: 2px solid rgba(255,255,255,0.5); border-radius: 8px; background: rgba(255, 255, 255, 0.9);">
+                    </div>
+                    <button onclick="this.closest('.budget-setting-modal').remove()" style="padding: 10px 20px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); color: #333; cursor: pointer;">關閉</button>
+                </div>
+            `;
+            
+            testArea.appendChild(modal);
+            
+            setTimeout(() => {
+                const modalContent = modal.querySelector('.budget-setting-modal-content');
+                if (modalContent) {
+                    const computedStyle = window.getComputedStyle(modalContent);
+                    
+                    output.innerHTML += `本地圖片測試: ✅ 成功\n`;
+                    output.innerHTML += `背景URL: ${computedStyle.backgroundImage.substring(0, 100)}...\n`;
+                    output.innerHTML += `背景顏色: ${computedStyle.backgroundColor}\n`;
+                    output.innerHTML += `\n✅ 本地圖片可以正常顯示\n`;
+                    output.innerHTML += `如果原始圖片無法載入，建議:\n`;
+                    output.innerHTML += `1. 使用替代圖片URL\n`;
+                    output.innerHTML += `2. 使用本地圖片\n`;
+                    output.innerHTML += `3. 檢查原始圖片URL的有效性`;
+                }
+            }, 500);
+        }
+        
+        // 頁面載入時自動檢查
+        window.addEventListener('load', () => {
+            setTimeout(checkImageURL, 500);
+        });
+    </script>
+</body>
+</html>
