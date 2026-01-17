@@ -2104,6 +2104,246 @@
     100% { transform: translate(0, 0) rotate(0deg); background-position: 0% 50%; }
 }
 
+/* ========== 字體美化設定 ========== */
+
+/* 標題字體美化 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 
+        'SF Pro Display', 'Helvetica Neue', 'Arial',
+        -apple-system, BlinkMacSystemFont,
+        'PingFang TC', 'PingFang SC', 'Microsoft JhengHei', 'Microsoft YaHei',
+        'Noto Sans TC', 'Noto Sans SC', 'Source Han Sans TC', 'Source Han Sans SC',
+        sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* 重要文字強調 */
+.important-text, .highlight-text, .emphasis-text {
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+/* 卡片標題美化 */
+.card-title, .modal-title, .section-title {
+    font-family: 
+        'SF Pro Display', 'Helvetica Neue', 'Arial',
+        -apple-system, BlinkMacSystemFont,
+        'PingFang TC', 'PingFang SC', 'Microsoft JhengHei', 'Microsoft YaHei',
+        'Noto Sans TC', 'Noto Sans SC', 'Source Han Sans TC', 'Source Han Sans SC',
+        sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+}
+
+/* 數字和金額字體美化 */
+.amount-text, .price-text, .number-text {
+    font-family: 
+        'SF Mono', 'Monaco', 'Menlo', 'Consolas',
+        'Courier New', monospace;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 小字體美化 */
+.small-text, .caption-text, .helper-text {
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+}
+
+/* 按鈕文字進一步美化 */
+.btn-text, .button-text {
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: none;
+}
+
+/* 輸入框佔位符美化 */
+::placeholder {
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    opacity: 0.7;
+}
+
+/* 標籤文字美化 */
+.label-text, .tag-text, .badge-text {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 描述文字美化 */
+.description-text, .helper-text, .caption-text {
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+    opacity: 0.8;
+}
+
+/* 鏈接文字美化 */
+.link-text, .anchor-text {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+/* 狀態文字美化 */
+.status-text, .state-text {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.85em;
+}
+
+/* 時間日期文字美化 */
+.time-text, .date-text {
+    font-family: 
+        'SF Mono', 'Monaco', 'Menlo', 'Consolas',
+        'Courier New', monospace;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 表單和輸入文字美化 */
+.form-input, .form-select, .form-textarea, .note-input {
+    font-family: 
+        'SF Pro Text', 'Helvetica Neue', 'Arial',
+        -apple-system, BlinkMacSystemFont,
+        'PingFang TC', 'PingFang SC', 'Microsoft JhengHei', 'Microsoft YaHei',
+        'Noto Sans TC', 'Noto Sans SC', 'Source Han Sans TC', 'Source Han Sans SC',
+        sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.form-label, .input-label {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.form-hint, .input-hint, .form-error {
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    font-size: 0.9em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.modal-title {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.modal-subtitle, .modal-description {
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    opacity: 0.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 通用文字類別美化 */
+.title, .subtitle, .caption, .label, .value {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.title {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+}
+
+.subtitle {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+.caption {
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.label {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+}
+
+.value {
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+}
+
+/* 特殊元素字體美化 */
+.empty-text, .no-data-text {
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    opacity: 0.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.loading-text, .processing-text {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.success-text, .confirmation-text {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.warning-text, .alert-text {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 搜索和過濾文字美化 */
+.search-input, .filter-input {
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.search-result-text, .filter-label {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========== 字體美化設定結束 ========== */
+
 * {
     margin: 0;
     padding: 0;
@@ -2112,17 +2352,27 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', 'Helvetica Neue', 'Arial', 'Noto Sans TC', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
+    font-family: 
+        'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Arial',
+        -apple-system, BlinkMacSystemFont,
+        'PingFang TC', 'PingFang SC', 'Microsoft JhengHei', 'Microsoft YaHei',
+        'Noto Sans TC', 'Noto Sans SC', 'Source Han Sans TC', 'Source Han Sans SC',
+        'Roboto', 'Segoe UI',
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji',
+        sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1;
     background: var(--bg-primary);
     min-height: 100vh;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
     color: var(--text-primary);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    font-feature-settings: "kern" 1;
-    font-kerning: normal;
     letter-spacing: 0.005em;
     line-height: 1.6;
 }
@@ -2293,9 +2543,11 @@ button {
     cursor: pointer;
     user-select: none;
     font-family: inherit;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    letter-spacing: 0.01em;
+    text-rendering: optimizeLegibility;
     transition: all var(--transition-base);
     border: none;
     outline: none;
@@ -2307,9 +2559,11 @@ button {
 
 input, textarea, select {
     font-family: inherit;
+    font-weight: 400;
+    letter-spacing: 0.005em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    letter-spacing: 0.005em;
+    text-rendering: optimizeLegibility;
 }
 
 :where(input, textarea, select, .form-input, .note-input) {
@@ -2340,7 +2594,14 @@ h1, h2, h3, h4, h5, h6 {
 .stat-value,
 .amount,
 .next-month-bill-amount {
+    font-family: 
+        'SF Mono', 'Monaco', 'Menlo', 'Consolas',
+        'Courier New', monospace;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 p, span, div, label {
@@ -2378,22 +2639,43 @@ button:active {
 
 .text-primary {
     color: var(--text-primary);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .text-secondary {
     color: var(--text-secondary);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .text-tertiary {
     color: var(--text-tertiary);
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    opacity: 0.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .text-success {
     color: var(--color-success);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .text-error {
     color: var(--color-error);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .bg-white {
@@ -3949,11 +4231,14 @@ width: 100%;
 .amount {
     font-size: 36px;
     color: var(--text-primary);
-    font-weight: var(--font-bold);
+    font-weight: 700;
+    font-family: 
+        'SF Mono', 'Monaco', 'Menlo', 'Consolas',
+        'Courier New', monospace;
+    letter-spacing: 0.02em;
     font-variant-numeric: tabular-nums;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    letter-spacing: 0.01em;
     text-rendering: optimizeLegibility;
 }
 
@@ -5232,6 +5517,16 @@ width: 100%;
     position: fixed;
     bottom: 120px;
     right: 20px;
+    font-family: 
+        'SF Pro Display', 'Helvetica Neue', 'Arial',
+        -apple-system, BlinkMacSystemFont,
+        'PingFang TC', 'PingFang SC', 'Microsoft JhengHei', 'Microsoft YaHei',
+        'Noto Sans TC', 'Noto Sans SC', 'Source Han Sans TC', 'Source Han Sans SC',
+        sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     width: 56px;
     height: 56px;
     border: none;
@@ -5333,6 +5628,16 @@ width: 100%;
     flex: 1;
     display: flex;
     flex-direction: column;
+    font-family: 
+        'SF Pro Display', 'Helvetica Neue', 'Arial',
+        -apple-system, BlinkMacSystemFont,
+        'PingFang TC', 'PingFang SC', 'Microsoft JhengHei', 'Microsoft YaHei',
+        'Noto Sans TC', 'Noto Sans SC', 'Source Han Sans TC', 'Source Han Sans SC',
+        sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     align-items: center;
     justify-content: center;
     padding: 4px 8px;
@@ -5369,8 +5674,11 @@ width: 100%;
 
 .nav-item.active .nav-text {
     color: var(--color-primary);
-    font-weight: 800;
+    font-weight: 700;
     font-size: 14px;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* 手機優化：增大觸控目標和字體 */
@@ -7255,15 +7563,28 @@ width: 100%;
     align-items: center;
     justify-content: space-between;
     gap: var(--spacing-md);
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-light);
 }
 
 .theme-modal-title {
     font-size: var(--font-xl);
-    font-weight: var(--font-semibold);
+    font-weight: var(--font-bold);
     color: var(--text-primary);
     letter-spacing: 0.02em;
     text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.theme-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xxl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-light);
 }
 
 :root.dark .theme-modal-title {
@@ -7293,19 +7614,32 @@ width: 100%;
 }
 
 .theme-section {
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
 }
 
 .theme-section--divider {
-    padding-top: var(--spacing-xl);
-    border-top: 1px solid var(--border-light);
+    padding-top: var(--spacing-xxl);
+    border-top: 2px solid var(--border-light);
+    margin-top: var(--spacing-xl);
 }
 
 .theme-section-title {
-    font-size: var(--font-base);
-    font-weight: var(--font-semibold);
+    font-size: var(--font-lg);
+    font-weight: var(--font-bold);
     color: var(--text-primary);
     text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.theme-section-title::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: var(--color-primary);
+    border-radius: 2px;
 }
 
 :root.dark .theme-section-title {
@@ -7317,6 +7651,119 @@ width: 100%;
     display: flex;
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-md);
+}
+
+.theme-category-tabs {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-xl);
+    padding: 6px;
+    background: var(--bg-soft);
+    border-radius: var(--radius-xl);
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    border: 1px solid var(--border-light);
+}
+
+.theme-category-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.theme-category-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: var(--radius-lg);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: var(--font-sm);
+    font-weight: var(--font-semibold);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+    min-width: 0;
+    position: relative;
+}
+
+.theme-category-tab:hover {
+    background: var(--bg-light);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
+
+.theme-category-tab.active {
+    background: var(--color-primary);
+    color: #fff;
+    box-shadow: 0 6px 16px var(--color-primary-rgba-30), 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-category-tab.active::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.theme-category-tab.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmerActive 2s infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmerActive {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.theme-category-tab:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.theme-category-tab.active:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.category-icon {
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.category-name {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Source Han Sans SC", "Noto Sans SC", "WenQuanYi Micro Hei", "WenQuanYi Zen Hei", sans-serif;
 }
 
 .theme-search-input {
@@ -7350,83 +7797,326 @@ width: 100%;
 
 .theme-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: var(--spacing-lg);
 }
 
+.theme-grid--categorized {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
 .theme-grid--auto {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--spacing-md);
+}
+
+/* 主題分類標籤 */
+.theme-category-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: var(--bg-light);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+}
+
+.category-tab {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.category-tab:hover {
+    background: var(--bg-soft);
+    border-color: var(--border-medium);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--color-primary-rgba-15);
+}
+
+.category-tab.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--text-white);
+    box-shadow: 0 6px 20px var(--color-primary-rgba-25);
+}
+
+.category-tab-icon {
+    font-size: var(--font-md);
+}
+
+.category-tab-name {
+    font-weight: 600;
+}
+
+.category-tab-count {
+    background: rgba(255, 255, 255, 0.2);
+    color: inherit;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-xs);
+    font-weight: 700;
+    min-width: 20px;
+    text-align: center;
+}
+
+.category-tab.active .category-tab-count {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* 主題分類區塊 */
+.theme-category-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.theme-category-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--bg-light);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-category-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+.theme-category-icon {
+    font-size: var(--font-xl);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.theme-category-name {
+    font-size: var(--font-lg);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.theme-category-description {
+    font-size: var(--font-sm);
+    color: var(--text-tertiary);
+    margin-left: auto;
+    font-style: italic;
+}
+
+.theme-category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-sm);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .theme-category-tabs {
+        gap: var(--spacing-xs);
+        padding: var(--spacing-xs);
+    }
+    
+    .category-tab {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: var(--font-xs);
+    }
+    
+    .category-tab-name {
+        display: none;
+    }
+    
+    .category-tab-icon {
+        font-size: var(--font-sm);
+    }
+    
+    .theme-category-header {
+        padding: var(--spacing-sm) var(--spacing-md);
+        flex-wrap: wrap;
+    }
+    
+    .theme-category-description {
+        width: 100%;
+        margin-left: 0;
+        margin-top: var(--spacing-xs);
+        text-align: center;
+    }
+    
+    .theme-category-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .theme-category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-xs);
+    }
+    
+    .theme-category-header {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    .theme-category-name {
+        font-size: var(--font-md);
+    }
+    
+    .theme-category-description {
+        font-size: var(--font-xs);
+    }
 }
 
 .theme-item {
     position: relative;
-    border: 1px solid color-mix(in srgb, var(--border-light) 82%, transparent);
-    border-radius: 22px;
+    border: 2px solid color-mix(in srgb, var(--border-light) 82%, transparent);
+    border-radius: 24px;
     overflow: hidden;
     cursor: pointer;
     transition: all var(--transition-base);
     background: linear-gradient(180deg, color-mix(in srgb, var(--bg-white) 92%, transparent) 0%, color-mix(in srgb, var(--bg-white) 86%, transparent) 100%);
-    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.10);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
     transform: translateZ(0);
 }
 
 .theme-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 18px 46px rgba(15, 23, 42, 0.16);
-    border-color: color-mix(in srgb, var(--color-primary) 60%, var(--border-light));
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 56px rgba(15, 23, 42, 0.18);
+    border-color: color-mix(in srgb, var(--color-primary) 70%, var(--border-light));
 }
 
 .theme-item.selected {
-    border-color: color-mix(in srgb, var(--color-primary) 72%, white);
-    box-shadow: 0 18px 52px color-mix(in srgb, var(--color-primary) 26%, rgba(15, 23, 42, 0.12));
+    border-color: var(--color-primary);
+    box-shadow: 0 24px 64px color-mix(in srgb, var(--color-primary) 30%, rgba(15, 23, 42, 0.15));
+    transform: translateY(-2px) scale(1.01);
 }
 
 .theme-item-preview {
     width: 100%;
-    height: 110px;
-    border-radius: 18px;
+    height: 120px;
+    border-radius: 20px;
     margin: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.45);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 10px 22px rgba(15, 23, 42, 0.10);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.6), 0 12px 28px rgba(15, 23, 42, 0.12);
     position: relative;
+    overflow: hidden;
+}
+
+.theme-item-preview--image {
+    border-color: rgba(255, 255, 255, 0.3);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.theme-item-preview--image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.theme-item-preview--image.loading {
+    background-image: linear-gradient(90deg, var(--bg-light) 25%, var(--bg-soft) 50%, var(--bg-light) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.theme-item-preview--image.error {
+    background-image: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-soft) 100%);
+    border-color: var(--border-medium);
+}
+
+.theme-item-preview--image.error::after {
+    content: '🖼️';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    opacity: 0.3;
 }
 
 .theme-item-preview::after {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 18px;
-    background: radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.65), transparent 55%);
+    border-radius: 20px;
     pointer-events: none;
 }
 
+.theme-item:hover .theme-item-preview:not(.theme-item-preview--image)::after {
+    background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.8), transparent 50%);
+}
+
 .theme-item-content {
-    padding: 12px 14px 14px;
+    padding: 14px 16px 16px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     position: relative;
 }
 
 .theme-item-icon {
-    font-size: 22px;
-    width: 40px;
-    height: 40px;
+    font-size: 24px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: color-mix(in srgb, var(--bg-light) 78%, transparent);
-    border: 1px solid color-mix(in srgb, var(--border-light) 70%, transparent);
-    border-radius: 14px;
+    border: 2px solid color-mix(in srgb, var(--border-light) 70%, transparent);
+    border-radius: 16px;
+    transition: all var(--transition-fast);
+}
+
+.theme-item:hover .theme-item-icon {
+    background: color-mix(in srgb, var(--color-primary) 15%, var(--bg-light));
+    border-color: color-mix(in srgb, var(--color-primary) 40%, var(--border-light));
+    transform: scale(1.05);
 }
 
 .theme-item-name {
     flex: 1;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 800;
     color: var(--text-primary);
     letter-spacing: 0.2px;
     text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+    transition: color var(--transition-fast);
+}
+
+.theme-item:hover .theme-item-name {
+    color: var(--color-primary);
 }
 
 :root.dark .theme-item-name {
@@ -7436,19 +8126,26 @@ width: 100%;
 
 .theme-item-check {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 14px;
+    right: 14px;
     font-size: 14px;
     color: var(--text-white);
     font-weight: 900;
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     border-radius: 999px;
-    box-shadow: 0 12px 28px color-mix(in srgb, var(--color-primary) 35%, rgba(15, 23, 42, 0.18));
+    box-shadow: 0 14px 32px color-mix(in srgb, var(--color-primary) 35%, rgba(15, 23, 42, 0.18));
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all var(--transition-fast);
+}
+
+.theme-item.selected:hover .theme-item-check {
+    transform: scale(1.1);
+    box-shadow: 0 16px 40px color-mix(in srgb, var(--color-primary) 45%, rgba(15, 23, 42, 0.22));
 }
 
 .theme-item-check--placeholder {
@@ -7526,12 +8223,6 @@ width: 100%;
 :root.dark .theme-help {
     color: var(--text-tertiary);
     text-shadow: 0 1px 2px rgba(236, 240, 241, 0.3);
-}
-
-.theme-actions {
-    display: flex;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-lg);
 }
 
 .theme-primary-btn,
@@ -8135,24 +8826,33 @@ width: 100%;
         padding: var(--spacing-lg) var(--spacing-md);
     }
     .theme-custom-content.modal-content-standard {
-        width: 100%;
-        max-width: none;
-        margin: 0;
-        border-radius: 0 0 var(--radius-xl) var(--radius-xl);
-        min-height: calc(100vh - var(--spacing-lg));
         padding: var(--spacing-xl) var(--spacing-lg);
-    }
-    .theme-modal-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing-sm);
+        margin: var(--spacing-lg) var(--spacing-md);
     }
     .theme-modal-title {
         font-size: calc(var(--font-lg) + 2px);
     }
     .theme-grid--auto {
-        grid-template-columns: repeat(2, minmax(140px, 1fr));
-        gap: var(--spacing-md);
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: var(--spacing-sm);
+    }
+    .theme-category-tabs {
+        gap: 2px;
+        padding: 4px;
+        margin-bottom: var(--spacing-lg);
+    }
+    .theme-category-tab {
+        padding: 8px 12px;
+        font-size: 13px;
+        gap: 6px;
+    }
+    .category-icon {
+        font-size: 14px;
+        width: 18px;
+        height: 18px;
+    }
+    .category-name {
+        font-size: 12px;
     }
     .theme-item-icon {
         font-size: var(--font-xl);
@@ -8163,7 +8863,6 @@ width: 100%;
     }
     .theme-color-picker {
         width: 100%;
-        height: 48px;
     }
     .theme-text-input {
         width: 100%;
@@ -8173,8 +8872,8 @@ width: 100%;
     }
     .theme-primary-btn,
     .theme-secondary-btn {
-        flex: unset;
         width: 100%;
+        margin-bottom: var(--spacing-sm);
     }
 }
 
@@ -8184,15 +8883,48 @@ width: 100%;
     }
     .theme-custom-content.modal-content-standard {
         padding: var(--spacing-lg) var(--spacing-md);
-    }
-    .theme-grid--auto {
-        grid-template-columns: 1fr;
-    }
-    .theme-item-preview {
-        height: 64px;
+        margin: var(--spacing-md) var(--spacing-sm);
     }
     .theme-modal-title {
         font-size: var(--font-lg);
+    }
+    .theme-grid--auto {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: var(--spacing-xs);
+    }
+    .theme-category-tabs {
+        gap: 1px;
+        padding: 3px;
+        margin-bottom: var(--spacing-md);
+    }
+    .theme-category-tab {
+        padding: 6px 10px;
+        font-size: 12px;
+        gap: 4px;
+    }
+    .category-icon {
+        font-size: 12px;
+        width: 16px;
+        height: 16px;
+    }
+    .category-name {
+        font-size: 11px;
+    }
+    .theme-item-preview {
+        height: 100px;
+        margin: 8px;
+    }
+    .theme-item-content {
+        padding: 10px 12px 12px;
+        gap: 8px;
+    }
+    .theme-item-icon {
+        font-size: 20px;
+        width: 36px;
+        height: 36px;
+    }
+    .theme-item-name {
+        font-size: 14px;
     }
 }
 
@@ -25487,4 +26219,1683 @@ body {
 :root[data-theme="bluerose"] .account-item-currency,
 :root[data-theme="bluerose"] .tab-text {
     color: rgba(173, 216, 230, 0.8) !important;
+}
+
+/* ========== 翡翠王子主題樣式 ========== */
+:root[data-theme="emeraldPrince"] {
+    --color-primary: #2E8B57;
+    --color-primary-light: #4AA672;
+    --color-primary-lighter: #6BC28D;
+    --color-primary-dark: #236B45;
+    --color-secondary: #DAA520;
+    --color-accent: #FFD700;
+    --text-primary: #2C3E50;
+    --text-secondary: #34495E;
+    --text-tertiary: #7F8C8D;
+    --bg-white: rgba(46, 139, 87, 0.15);
+    --bg-light: rgba(46, 139, 87, 0.25);
+    --bg-medium: rgba(46, 139, 87, 0.35);
+    --bg-dark: rgba(46, 139, 87, 0.45);
+    --bg-soft: rgba(218, 165, 32, 0.2);
+    --border-light: rgba(255, 215, 0, 0.3);
+    --border-medium: rgba(255, 215, 0, 0.5);
+    --border-dark: rgba(255, 215, 0, 0.7);
+    --shadow-light: rgba(46, 139, 87, 0.2);
+    --shadow-medium: rgba(46, 139, 87, 0.4);
+    --shadow-dark: rgba(46, 139, 87, 0.6);
+    --color-primary-rgba-08: rgba(46, 139, 87, 0.08);
+    --color-primary-rgba-10: rgba(46, 139, 87, 0.1);
+    --color-primary-rgba-12: rgba(46, 139, 87, 0.12);
+    --color-primary-rgba-15: rgba(46, 139, 87, 0.15);
+    --color-primary-rgba-18: rgba(46, 139, 87, 0.18);
+    --color-primary-rgba-20: rgba(46, 139, 87, 0.2);
+    --color-primary-rgba-25: rgba(46, 139, 87, 0.25);
+    --color-primary-rgba-30: rgba(46, 139, 87, 0.3);
+    --color-primary-rgba-40: rgba(46, 139, 87, 0.4);
+    --color-primary-rgba-50: rgba(46, 139, 87, 0.5);
+    --color-primary-rgba-60: rgba(46, 139, 87, 0.6);
+    --color-primary-rgba-70: rgba(46, 139, 87, 0.7);
+    --color-primary-rgba-80: rgba(46, 139, 87, 0.8);
+    --color-primary-rgba-90: rgba(46, 139, 87, 0.9);
+    --color-secondary-rgba-08: rgba(218, 165, 32, 0.08);
+    --color-secondary-rgba-10: rgba(218, 165, 32, 0.1);
+    --color-secondary-rgba-12: rgba(218, 165, 32, 0.12);
+    --color-secondary-rgba-15: rgba(218, 165, 32, 0.15);
+    --color-secondary-rgba-18: rgba(218, 165, 32, 0.18);
+    --color-secondary-rgba-20: rgba(218, 165, 32, 0.2);
+    --color-secondary-rgba-25: rgba(218, 165, 32, 0.25);
+    --color-secondary-rgba-30: rgba(218, 165, 32, 0.3);
+    --color-accent-rgba-08: rgba(255, 215, 0, 0.08);
+    --color-accent-rgba-10: rgba(255, 215, 0, 0.1);
+    --color-accent-rgba-12: rgba(255, 215, 0, 0.12);
+    --color-accent-rgba-15: rgba(255, 215, 0, 0.15);
+    --color-accent-rgba-18: rgba(255, 215, 0, 0.18);
+    --color-accent-rgba-20: rgba(255, 215, 0, 0.2);
+    --color-accent-rgba-25: rgba(255, 215, 0, 0.25);
+    --color-accent-rgba-30: rgba(255, 215, 0, 0.3);
+}
+
+/* 翡翠王子主題背景圖片 */
+:root[data-theme="emeraldPrince"] body {
+    background-image: url("https://i.pinimg.com/736x/55/40/2f/55402fb6bcf0c65c832636ad5504499f.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* 翡翠王子主題卡片背景 */
+:root[data-theme="emeraldPrince"] .page,
+:root[data-theme="emeraldPrince"] .modal-content,
+:root[data-theme="emeraldPrince"] .card,
+:root[data-theme="emeraldPrince"] .dialog-container,
+:root[data-theme="emeraldPrince"] .installment-page,
+:root[data-theme="emeraldPrince"] .fixed-deposit-page,
+:root[data-theme="emeraldPrince"] .investment-management-card,
+:root[data-theme="emeraldPrince"] .komori-dialog,
+:root[data-theme="emeraldPrince"] .annual-report,
+:root[data-theme="emeraldPrince"] .about-ledger,
+:root[data-theme="emeraldPrince"] .ledger-diary {
+    background: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-light);
+    border-radius: 15px;
+}
+
+/* 翡翠王子主題按鈕樣式 */
+:root[data-theme="emeraldPrince"] .btn,
+:root[data-theme="emeraldPrince"] .btn-primary,
+:root[data-theme="emeraldPrince"] .btn-secondary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: #FFFFFF;
+    border: 1px solid var(--border-medium);
+    border-radius: 25px;
+    box-shadow: 0 4px 15px var(--shadow-medium);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="emeraldPrince"] .btn:hover,
+:root[data-theme="emeraldPrince"] .btn-primary:hover,
+:root[data-theme="emeraldPrince"] .btn-secondary:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-dark);
+}
+
+/* 翡翠王子主題返回按鈕 */
+:root[data-theme="emeraldPrince"] .back-btn,
+:root[data-theme="emeraldPrince"] .return-btn {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+    color: #2C3E50;
+    border: 2px solid var(--border-dark);
+}
+
+/* 翡翠王子主題文字顏色 */
+:root[data-theme="emeraldPrince"] h1,
+:root[data-theme="emeraldPrince"] h2,
+:root[data-theme="emeraldPrince"] h3,
+:root[data-theme="emeraldPrince"] h4,
+:root[data-theme="emeraldPrince"] h5,
+:root[data-theme="emeraldPrince"] h6,
+:root[data-theme="emeraldPrince"] .title,
+:root[data-theme="emeraldPrince"] .card-title {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="emeraldPrince"] p,
+:root[data-theme="emeraldPrince"] .text,
+:root[data-theme="emeraldPrince"] .description,
+:root[data-theme="emeraldPrince"] .content {
+    color: var(--text-secondary) !important;
+}
+
+/* 翡翠王子主題記帳日記文字顏色 */
+:root[data-theme="emeraldPrince"] .diary-card,
+:root[data-theme="emeraldPrince"] .diary-content,
+:root[data-theme="emeraldPrince"] .diary-text {
+    color: var(--text-primary) !important;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border-light);
+}
+
+/* 翡翠王子主題卡片圖片 */
+:root[data-theme="emeraldPrince"] .investment-card {
+    background-image: url("https://i.pinimg.com/736x/9f/2c/4d/9f2c4d979cd3ea629ad900d9b838b38f.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid var(--border-medium);
+}
+
+:root[data-theme="emeraldPrince"] .accounting-card {
+    background-image: url("https://i.pinimg.com/1200x/da/af/29/daaf2933df91dc69201590262a495c01.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid var(--border-medium);
+}
+
+:root[data-theme="emeraldPrince"] .wallet-budget-card {
+    background-image: url("https://i.pinimg.com/1200x/da/af/29/daaf2933df91dc69201590262a495c01.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid var(--border-medium);
+}
+
+:root[data-theme="emeraldPrince"] .monthly-planning-card {
+    background-image: url("https://i.pinimg.com/736x/8a/42/0b/8a420b2c26a91187da871ef11f859731.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid var(--border-medium);
+}
+
+:root[data-theme="emeraldPrince"] .holdings-card,
+:root[data-theme="emeraldPrince"] .buy-card {
+    background-image: url("https://i.pinimg.com/736x/db/0a/4c/db0a4ca3e630deafb765969aa41396b5.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid var(--border-medium);
+}
+
+:root[data-theme="emeraldPrince"] .sell-card {
+    background-image: url("https://i.pinimg.com/736x/db/0a/4c/db0a4ca3e630deafb765969aa41396b5.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid var(--border-medium);
+}
+
+:root[data-theme="emeraldPrince"] .dividend-card {
+    background-image: url("https://i.pinimg.com/736x/db/0a/4c/db0a4ca3e630deafb765969aa41396b5.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid var(--border-medium);
+}
+
+/* 翡翠王子主題小森對話框 */
+:root[data-theme="emeraldPrince"] .komori-dialog {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 230, 140, 0.8) 100%) !important;
+    border: 2px solid var(--border-dark);
+    color: var(--text-primary);
+}
+
+:root[data-theme="emeraldPrince"] .komori-dialog::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid rgba(255, 255, 255, 0.9);
+}
+
+/* 翡翠王子主題持股卡片 */
+:root[data-theme="emeraldPrince"] .stock-item-card {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="emeraldPrince"] .stock-item-card .stock-name {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="emeraldPrince"] .stock-item-card .stock-code {
+    color: var(--text-secondary) !important;
+}
+
+:root[data-theme="emeraldPrince"] .stock-item-card .stock-price {
+    color: var(--color-accent) !important;
+}
+
+/* 翡翠王子主題淺色文字調整 */
+:root[data-theme="emeraldPrince"] .budget-summary-label,
+:root[data-theme="emeraldPrince"] .budget-detail-label,
+:root[data-theme="emeraldPrince"] .stat-label,
+:root[data-theme="emeraldPrince"] .dividend-stat-label,
+:root[data-theme="emeraldPrince"] .account-info,
+:root[data-theme="emeraldPrince"] .account-item-name,
+:root[data-theme="emeraldPrince"] .account-item-currency,
+:root[data-theme="emeraldPrince"] .tab-text {
+    color: rgba(52, 73, 94, 0.8) !important;
+}
+
+/* 翡翠王子主題輸入框樣式 */
+:root[data-theme="emeraldPrince"] input,
+:root[data-theme="emeraldPrince"] textarea,
+:root[data-theme="emeraldPrince"] select {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    border-radius: 10px;
+}
+
+:root[data-theme="emeraldPrince"] input:focus,
+:root[data-theme="emeraldPrince"] textarea:focus,
+:root[data-theme="emeraldPrince"] select:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 10px var(--color-accent-rgba-30);
+}
+
+/* 翡翠王子主題滾動條 */
+:root[data-theme="emeraldPrince"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+:root[data-theme="emeraldPrince"] ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+:root[data-theme="emeraldPrince"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: 4px;
+}
+
+:root[data-theme="emeraldPrince"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent) 100%);
+}
+
+/* 翡翠王子主題圖表顏色 */
+:root[data-theme="emeraldPrince"] .chart-primary {
+    background-color: var(--color-primary);
+}
+
+:root[data-theme="emeraldPrince"] .chart-secondary {
+    background-color: var(--color-secondary);
+}
+
+:root[data-theme="emeraldPrince"] .chart-accent {
+    background-color: var(--color-accent);
+}
+
+/* 翡翠王子主題FAB按鈕 */
+:root[data-theme="emeraldPrince"] .fab-btn {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+    color: #000;
+    border: 2px solid var(--border-dark);
+    box-shadow: 0 4px 20px var(--shadow-dark);
+}
+
+:root[data-theme="emeraldPrince"] .fab-btn:hover {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+    transform: scale(1.1) rotate(15deg);
+}
+
+/* 翡翠王子主題導航列 */
+:root[data-theme="emeraldPrince"] .nav-item {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--border-light);
+}
+
+:root[data-theme="emeraldPrince"] .nav-item.active {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-color: var(--border-dark);
+}
+
+:root[data-theme="emeraldPrince"] .nav-item:hover {
+    background: rgba(46, 139, 87, 0.8);
+    transform: translateY(-2px);
+}
+
+/* 翡翠王子主題模態框 */
+:root[data-theme="emeraldPrince"] .modal {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+:root[data-theme="emeraldPrince"] .modal-content {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(46, 139, 87, 0.3) 100%);
+    border: 2px solid var(--border-medium);
+    border-radius: 20px;
+}
+
+/* 翡翠王子主題表格樣式 */
+:root[data-theme="emeraldPrince"] table {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--border-light);
+}
+
+:root[data-theme="emeraldPrince"] th {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: #FFFFFF;
+}
+
+:root[data-theme="emeraldPrince"] td {
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--text-secondary);
+    border-color: var(--border-light);
+}
+
+/* 翡翠王子主題進度條 */
+:root[data-theme="emeraldPrince"] .progress-bar {
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+}
+
+:root[data-theme="emeraldPrince"] .progress-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* 翡翠王子主題標籤 */
+:root[data-theme="emeraldPrince"] .tag,
+:root[data-theme="emeraldPrince"] .badge {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+    color: var(--text-primary);
+    border: 1px solid var(--border-medium);
+}
+
+/* 翡翠王子主題警告和提示 */
+:root[data-theme="emeraldPrince"] .alert,
+:root[data-theme="emeraldPrince"] .warning {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--color-secondary);
+    color: var(--text-secondary);
+}
+
+:root[data-theme="emeraldPrince"] .success {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--color-primary);
+    color: var(--text-primary);
+}
+
+:root[data-theme="emeraldPrince"] .error {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ff0000;
+    color: #8B0000;
+}
+
+/* 翡翠王子主題動畫效果 */
+@keyframes emeraldGlow {
+    0% { box-shadow: 0 0 5px var(--color-primary-rgba-50); }
+    50% { box-shadow: 0 0 20px var(--color-primary-rgba-80); }
+    100% { box-shadow: 0 0 5px var(--color-primary-rgba-50); }
+}
+
+:root[data-theme="emeraldPrince"] .btn:hover {
+    animation: emeraldGlow 2s infinite;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px var(--color-primary-rgba-30);
+    color: #333;
+}
+
+/* 翡翠王子主題特殊效果 */
+:root[data-theme="emeraldPrince"] .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px var(--shadow-dark);
+    border-color: var(--border-dark);
+}
+
+:root[data-theme="emeraldPrince"] .portfolio-shares {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(240, 230, 140, 0.6) 100%);
+    border: 1px solid var(--border-medium);
+    color: var(--text-primary);
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 8px 16px;
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="emeraldPrince"] .stock-grid-card-tag--shares {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(240, 230, 140, 0.6) 100%);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 4px 8px;
+}
+
+/* ========== 鎏金之夢主題 ========== */
+:root[data-theme="goldenElegance"] {
+    --color-primary: #D4AF37;
+    --color-secondary: #B8860B;
+    --color-accent: #FFD700;
+    --color-primary-light: #E6C88C;
+    --color-primary-lighter: #F0D890;
+    --color-primary-dark: #B8941F;
+    --color-primary-rgba-08: rgba(212, 175, 55, 0.08);
+    --color-primary-rgba-10: rgba(212, 175, 55, 0.1);
+    --color-primary-rgba-12: rgba(212, 175, 55, 0.12);
+    --color-primary-rgba-15: rgba(212, 175, 55, 0.15);
+    --color-primary-rgba-18: rgba(212, 175, 55, 0.18);
+    --color-primary-rgba-20: rgba(212, 175, 55, 0.2);
+    --color-primary-rgba-25: rgba(212, 175, 55, 0.25);
+    --color-primary-rgba-30: rgba(212, 175, 55, 0.3);
+    --color-primary-light-rgba-08: rgba(230, 200, 140, 0.08);
+    --color-primary-light-rgba-10: rgba(230, 200, 140, 0.1);
+    --color-primary-light-rgba-15: rgba(230, 200, 140, 0.15);
+    --color-primary-light-rgba-20: rgba(230, 200, 140, 0.2);
+    --color-primary-light-rgba-25: rgba(230, 200, 140, 0.25);
+    --text-primary: #2C1810;
+    --text-secondary: #5C4033;
+    --text-tertiary: #8B7355;
+    --bg-white: rgba(255, 255, 255, 0.95);
+    --bg-light: rgba(255, 251, 235, 0.9);
+    --bg-soft: rgba(255, 248, 220, 0.8);
+    --bg-medium: rgba(255, 245, 205, 0.7);
+    --bg-dark: rgba(44, 24, 16, 0.8);
+    --border-light: rgba(212, 175, 55, 0.3);
+    --border-medium: rgba(212, 175, 55, 0.5);
+    --border-dark: rgba(184, 134, 11, 0.7);
+    --shadow-light: rgba(212, 175, 55, 0.1);
+    --shadow-medium: rgba(212, 175, 55, 0.2);
+    --shadow-dark: rgba(44, 24, 16, 0.3);
+}
+
+:root[data-theme="goldenElegance"] .page {
+    background: transparent;
+}
+
+:root[data-theme="goldenElegance"] .card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px var(--shadow-light);
+}
+
+:root[data-theme="goldenElegance"] .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px var(--shadow-medium);
+    border-color: var(--border-medium);
+}
+
+:root[data-theme="goldenElegance"] .btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    border: 1px solid var(--color-primary);
+    box-shadow: 0 4px 15px var(--shadow-light);
+}
+
+:root[data-theme="goldenElegance"] .btn:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px var(--shadow-medium);
+}
+
+:root[data-theme="goldenElegance"] .modal {
+    background: var(--bg-white);
+    border: 1px solid var(--border-medium);
+    backdrop-filter: blur(20px);
+}
+
+:root[data-theme="goldenElegance"] .dialog {
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    backdrop-filter: blur(15px);
+}
+
+:root[data-theme="goldenElegance"] .komori-dialog {
+    background: var(--bg-soft);
+    border: 1px solid var(--border-medium);
+    color: var(--text-primary);
+    backdrop-filter: blur(20px);
+}
+
+:root[data-theme="goldenElegance"] .return-btn {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+    color: white;
+    border: 1px solid var(--color-primary);
+}
+
+:root[data-theme="goldenElegance"] .return-btn:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent) 100%);
+    transform: translateY(-2px);
+}
+
+:root[data-theme="goldenElegance"] .portfolio-shares {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(212, 175, 55, 0.3) 100%);
+    border: 1px solid var(--color-primary);
+    color: var(--text-primary);
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 8px 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px var(--shadow-light);
+}
+
+:root[data-theme="goldenElegance"] .stock-grid-card-tag--shares {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(212, 175, 55, 0.25) 100%);
+    border: 1px solid var(--color-primary);
+    color: var(--text-primary);
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 4px 8px;
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+:root[data-theme="goldenElegance"] .investment-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    backdrop-filter: blur(15px);
+}
+
+:root[data-theme="goldenElegance"] .investment-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px var(--shadow-medium);
+    border-color: var(--color-primary);
+}
+
+:root[data-theme="goldenElegance"] .ledger-card {
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    backdrop-filter: blur(15px);
+}
+
+:root[data-theme="goldenElegance"] .wallet-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--border-medium);
+    backdrop-filter: blur(15px);
+}
+
+:root[data-theme="goldenElegance"] .budget-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    backdrop-filter: blur(15px);
+}
+
+:root[data-theme="goldenElegance"] .monthly-planning-card {
+    background: var(--bg-light);
+    border: 1px solid var(--border-medium);
+    backdrop-filter: blur(15px);
+}
+
+:root[data-theme="goldenElegance"] .holdings-card {
+    background: var(--bg-white);
+    border: 1px solid var(--color-primary);
+    backdrop-filter: blur(15px);
+}
+
+:root[data-theme="goldenElegance"] .buy-sell-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--border-light);
+    backdrop-filter: blur(15px);
+}
+
+:root[data-theme="goldenElegance"] .dividend-card {
+    background: var(--bg-light);
+    border: 1px solid var(--color-accent);
+    backdrop-filter: blur(15px);
+}
+
+/* 鎏金之夢主題動畫效果 */
+@keyframes goldenShimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+:root[data-theme="goldenElegance"] .btn:hover {
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-primary) 100%);
+    background-size: 200% auto;
+    animation: goldenShimmer 3s linear infinite;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--shadow-medium);
+}
+
+:root[data-theme="goldenElegance"] .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px var(--shadow-dark);
+    border-color: var(--color-accent);
+}
+
+/* 鎏金之夢主題特殊效果 */
+:root[data-theme="goldenElegance"] .portfolio-shares:hover {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(212, 175, 55, 0.4) 100%);
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px var(--shadow-medium);
+}
+
+:root[data-theme="goldenElegance"] .stock-grid-card-tag--shares:hover {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.25) 0%, rgba(212, 175, 55, 0.35) 100%);
+    transform: scale(1.08);
+    box-shadow: 0 4px 15px var(--shadow-medium);
+}
+
+:root[data-theme="goldenElegance"] .error {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #B8860B;
+    color: #8B4513;
+}
+
+:root[data-theme="goldenElegance"] .success {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid var(--color-accent);
+    color: var(--color-primary-dark);
+}
+
+/* ========== 可愛貓咪主題樣式 ========== */
+:root[data-theme="cuteCats"] {
+    --color-primary: #FFB6C1;
+    --color-primary-light: #FFC0CB;
+    --color-primary-lighter: #FFD1DC;
+    --color-primary-dark: #FF91A4;
+    --color-secondary: #FFA07A;
+    --color-secondary-light: #FFB399;
+    --color-secondary-dark: #FF8C69;
+    --color-accent: #87CEEB;
+    --color-accent-light: #ADD8E6;
+    --color-accent-dark: #6BB6D6;
+    --bg-primary: linear-gradient(135deg, rgba(255, 182, 193, 0.94) 0%, rgba(255, 160, 122, 0.85) 65%, rgba(135, 206, 235, 0.35) 100%);
+    --bg-body: rgba(255, 182, 193, 0.96);
+    --bg-body-strong: rgba(255, 160, 122, 0.98);
+    --bg-gradient: linear-gradient(135deg, #FF91A4 0%, #FFB6C1 60%, #87CEEB 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(255, 160, 122, 0.08) 0%, rgba(135, 206, 235, 0.25) 100%);
+    --bg-white: rgba(255, 255, 255, 0.78);
+    --bg-card: rgba(255, 255, 255, 0.8);
+    --bg-light: rgba(255, 182, 193, 0.64);
+    --bg-lighter: rgba(255, 160, 122, 0.52);
+    --bg-soft: rgba(135, 206, 235, 0.55);
+    --bg-soft-strong: rgba(255, 182, 193, 0.68);
+    --text-primary: rgba(139, 69, 19, 0.96);
+    --text-secondary: rgba(160, 82, 45, 0.78);
+    --text-tertiary: rgba(205, 133, 63, 0.6);
+    --text-strong: rgba(101, 67, 33, 0.98);
+    --text-white: rgba(255, 255, 255, 0.98);
+    --border-primary: rgba(255, 182, 193, 0.65);
+    --border-light: rgba(255, 255, 255, 0.24);
+    --border-medium: rgba(255, 160, 122, 0.4);
+    --card-border-color: rgba(255, 182, 193, 0.45);
+    --control-border-color: rgba(255, 255, 255, 0.32);
+    --table-border-color: rgba(255, 255, 255, 0.22);
+    --shadow-primary: 0 20px 60px rgba(255, 182, 193, 0.8);
+    --shadow-primary-lg: 0 30px 80px rgba(255, 182, 193, 0.7);
+    --color-primary-rgba-08: rgba(255, 182, 193, 0.08);
+    --color-primary-rgba-10: rgba(255, 182, 193, 0.1);
+    --color-primary-rgba-15: rgba(255, 182, 193, 0.15);
+    --color-primary-rgba-20: rgba(255, 182, 193, 0.2);
+    --color-primary-rgba-25: rgba(255, 182, 193, 0.25);
+    --color-primary-rgba-30: rgba(255, 182, 193, 0.3);
+    --color-primary-rgba-40: rgba(255, 182, 193, 0.4);
+    --color-primary-light-rgba-08: rgba(255, 255, 255, 0.08);
+    --color-primary-light-rgba-10: rgba(255, 255, 255, 0.1);
+    --color-primary-light-rgba-15: rgba(255, 255, 255, 0.15);
+    --color-primary-light-rgba-20: rgba(255, 255, 255, 0.2);
+    --color-primary-light-rgba-25: rgba(255, 255, 255, 0.25);
+    --color-primary-light-rgba-30: rgba(255, 255, 255, 0.3);
+    --color-primary-light-rgba-40: rgba(255, 255, 255, 0.4);
+    --color-secondary-rgba-08: rgba(255, 160, 122, 0.08);
+    --color-secondary-rgba-10: rgba(255, 160, 122, 0.1);
+    --color-secondary-rgba-15: rgba(255, 160, 122, 0.15);
+    --color-secondary-rgba-20: rgba(255, 160, 122, 0.2);
+    --color-secondary-rgba-25: rgba(255, 160, 122, 0.25);
+    --color-secondary-rgba-30: rgba(255, 160, 122, 0.3);
+    --color-secondary-rgba-40: rgba(255, 160, 122, 0.4);
+    --color-accent-rgba-08: rgba(135, 206, 235, 0.08);
+    --color-accent-rgba-10: rgba(135, 206, 235, 0.1);
+    --color-accent-rgba-15: rgba(135, 206, 235, 0.15);
+    --color-accent-rgba-20: rgba(135, 206, 235, 0.2);
+    --color-accent-rgba-25: rgba(135, 206, 235, 0.25);
+    --color-accent-rgba-30: rgba(135, 206, 235, 0.3);
+    --color-accent-rgba-40: rgba(135, 206, 235, 0.4);
+    --action-side-bg: rgba(255, 182, 193, 0.95);
+    --action-side-text: rgba(139, 69, 19, 0.95);
+}
+
+:root[data-theme="cuteCats"] body {
+    background: url("https://i.pinimg.com/736x/fe/2a/cf/fe2acfb6eedcf65941dad52ad03e3490.jpg") center/cover no-repeat fixed;
+    background-color: #FFB6C1;
+    color: var(--text-primary);
+}
+
+:root[data-theme="cuteCats"] body::before {
+    display: none;
+}
+
+:root[data-theme="cuteCats"] .page-ledger {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+:root[data-theme="cuteCats"] .page-input,
+:root[data-theme="cuteCats"] .page-chart,
+:root[data-theme="cuteCats"] .page-budget,
+:root[data-theme="cuteCats"] .page-monthly-planner,
+:root[data-theme="cuteCats"] .page-daily-budget,
+:root[data-theme="cuteCats"] .page-settings,
+:root[data-theme="cuteCats"] .page-category-manage,
+:root[data-theme="cuteCats"] .page-investment,
+:root[data-theme="cuteCats"] .page-wallet,
+:root[data-theme="cuteCats"] .page-history,
+:root[data-theme="cuteCats"] .page-planner {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+:root[data-theme="cuteCats"] .card,
+:root[data-theme="cuteCats"] .record-card,
+:root[data-theme="cuteCats"] .ledger-card,
+:root[data-theme="cuteCats"] .summary-card,
+:root[data-theme="cuteCats"] .budget-card,
+:root[data-theme="cuteCats"] .wallet-card,
+:root[data-theme="cuteCats"] .chart-card,
+:root[data-theme="cuteCats"] .investment-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 182, 193, 0.4);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="cuteCats"] .investment-card,
+:root[data-theme="cuteCats"] .stock-item-card {
+    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-light) 25%, var(--color-primary-rgba-20) 50%, var(--bg-lighter) 75%, var(--bg-soft) 100%);
+    border: 1px solid var(--color-primary);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px var(--color-primary-rgba-15),
+        0 0 30px var(--color-primary-rgba-15);
+}
+
+:root[data-theme="cuteCats"] .investment-card::before,
+:root[data-theme="cuteCats"] .stock-item-card::before {
+    background: linear-gradient(135deg, var(--color-primary-rgba-40) 0%, var(--color-primary-rgba-30) 55%, var(--color-primary-rgba-20) 100%);
+}
+
+/* 可愛貓咪主題持股卡片文字顏色 */
+:root[data-theme="cuteCats"] .stock-item-card {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="cuteCats"] .stock-item-card h1,
+:root[data-theme="cuteCats"] .stock-item-card h2,
+:root[data-theme="cuteCats"] .stock-item-card h3,
+:root[data-theme="cuteCats"] .stock-item-card h4,
+:root[data-theme="cuteCats"] .stock-item-card h5,
+:root[data-theme="cuteCats"] .stock-item-card h6,
+:root[data-theme="cuteCats"] .stock-item-card .title,
+:root[data-theme="cuteCats"] .stock-item-card .subtitle,
+:root[data-theme="cuteCats"] .stock-item-card .card-title,
+:root[data-theme="cuteCats"] .stock-item-card .card-subtitle,
+:root[data-theme="cuteCats"] .stock-item-card .stock-name {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="cuteCats"] .stock-item-card .text,
+:root[data-theme="cuteCats"] .stock-item-card .description,
+:root[data-theme="cuteCats"] .stock-item-card .content,
+:root[data-theme="cuteCats"] .stock-item-card p,
+:root[data-theme="cuteCats"] .stock-item-card span,
+:root[data-theme="cuteCats"] .stock-item-card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="cuteCats"] .stock-item-card .highlight,
+:root[data-theme="cuteCats"] .stock-item-card .accent,
+:root[data-theme="cuteCats"] .stock-item-card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="cuteCats"] .stock-item-card .secondary-text,
+:root[data-theme="cuteCats"] .stock-item-card .muted-text,
+:root[data-theme="cuteCats"] .stock-item-card .stock-code {
+    color: var(--text-secondary) !important;
+}
+
+/* 管理投資卡片頁面樣式 */
+:root[data-theme="cuteCats"] .page-manage-investment {
+    background: transparent !important;
+}
+
+:root[data-theme="cuteCats"] .manage-investment-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(255, 182, 193, 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="cuteCats"] .manage-investment-card h1,
+:root[data-theme="cuteCats"] .manage-investment-card h2,
+:root[data-theme="cuteCats"] .manage-investment-card h3,
+:root[data-theme="cuteCats"] .manage-investment-card h4,
+:root[data-theme="cuteCats"] .manage-investment-card h5,
+:root[data-theme="cuteCats"] .manage-investment-card h6,
+:root[data-theme="cuteCats"] .manage-investment-card .title,
+:root[data-theme="cuteCats"] .manage-investment-card .subtitle,
+:root[data-theme="cuteCats"] .manage-investment-card .card-title,
+:root[data-theme="cuteCats"] .manage-investment-card .card-subtitle {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="cuteCats"] .manage-investment-card .text,
+:root[data-theme="cuteCats"] .manage-investment-card .description,
+:root[data-theme="cuteCats"] .manage-investment-card .content,
+:root[data-theme="cuteCats"] .manage-investment-card p,
+:root[data-theme="cuteCats"] .manage-investment-card span,
+:root[data-theme="cuteCats"] .manage-investment-card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="cuteCats"] .manage-investment-card .highlight,
+:root[data-theme="cuteCats"] .manage-investment-card .accent,
+:root[data-theme="cuteCats"] .manage-investment-card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="cuteCats"] .manage-investment-card .secondary-text,
+:root[data-theme="cuteCats"] .manage-investment-card .muted-text {
+    color: var(--text-secondary) !important;
+}
+
+:root[data-theme="cuteCats"] .manage-investment-card .label,
+:root[data-theme="cuteCats"] .manage-investment-card .form-label {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="cuteCats"] .manage-investment-card .value,
+:root[data-theme="cuteCats"] .manage-investment-card .amount {
+    color: var(--color-accent) !important;
+}
+
+/* 年度報告頁面樣式 */
+:root[data-theme="cuteCats"] .page-annual-report {
+    background: transparent !important;
+}
+
+:root[data-theme="cuteCats"] .annual-report-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(255, 182, 193, 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+}
+
+/* 關於記帳本頁面樣式 */
+:root[data-theme="cuteCats"] .page-about {
+    background: transparent !important;
+}
+
+:root[data-theme="cuteCats"] .about-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(255, 182, 193, 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+}
+
+/* 記帳日記頁面樣式 */
+:root[data-theme="cuteCats"] .page-diary {
+    background: transparent !important;
+}
+
+:root[data-theme="cuteCats"] .diary-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(255, 182, 193, 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+}
+
+/* 分期網頁樣式 */
+:root[data-theme="cuteCats"] .page-installment {
+    background: transparent !important;
+}
+
+:root[data-theme="cuteCats"] .installment-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(255, 182, 193, 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+}
+
+/* 定期定額頁面樣式 */
+:root[data-theme="cuteCats"] .page-fixed-deposit {
+    background: transparent !important;
+}
+
+:root[data-theme="cuteCats"] .fixed-deposit-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(255, 182, 193, 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+}
+
+/* 小森對話框樣式 */
+:root[data-theme="cuteCats"] .advisor-dialog {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid var(--color-primary) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="cuteCats"] .advisor-dialog .dialog-header {
+    background: var(--color-primary) !important;
+    color: var(--text-white) !important;
+    border-radius: 18px 18px 0 0 !important;
+}
+
+:root[data-theme="cuteCats"] .advisor-dialog .dialog-content {
+    background: transparent !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="cuteCats"] .advisor-dialog .dialog-footer {
+    background: transparent !important;
+    border-top: 1px solid var(--border-primary) !important;
+}
+
+/* 返回按鈕樣式 */
+:root[data-theme="cuteCats"] .back-btn {
+    background: var(--color-primary) !important;
+    color: var(--text-white) !important;
+    border: 1px solid var(--color-primary-dark) !important;
+}
+
+:root[data-theme="cuteCats"] .back-btn:hover {
+    background: var(--color-primary-dark) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--color-primary-rgba-30);
+}
+
+/* 持有中卡片樣式 */
+:root[data-theme="cuteCats"] .holdings-card {
+    background: var(--bg-white);
+    border: 1px solid var(--color-primary);
+    backdrop-filter: blur(15px);
+}
+
+/* 買入卡片樣式 */
+:root[data-theme="cuteCats"] .buy-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--border-light);
+    backdrop-filter: blur(15px);
+}
+
+/* 賣出卡片樣式 */
+:root[data-theme="cuteCats"] .sell-card {
+    background: var(--bg-light);
+    border: 1px solid var(--color-secondary);
+    backdrop-filter: blur(15px);
+}
+
+/* 股息卡片樣式 */
+:root[data-theme="cuteCats"] .dividend-card {
+    background: var(--bg-lighter);
+    border: 1px solid var(--color-accent);
+    backdrop-filter: blur(15px);
+}
+
+/* 可愛貓咪主題動畫效果 */
+@keyframes cuteCatsBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+:root[data-theme="cuteCats"] .btn:hover {
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+    background-size: 200% auto;
+    animation: cuteCatsBounce 2s ease-in-out infinite;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--color-primary-rgba-30);
+}
+
+:root[data-theme="cuteCats"] .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px var(--color-primary-rgba-25);
+    border-color: var(--color-secondary);
+}
+
+/* 可愛貓咪主題特殊效果 */
+:root[data-theme="cuteCats"] .portfolio-shares:hover {
+    background: linear-gradient(135deg, rgba(255, 182, 193, 0.3) 0%, rgba(255, 160, 122, 0.4) 100%);
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px var(--color-primary-rgba-25);
+}
+
+:root[data-theme="cuteCats"] .stock-grid-card-tag--shares:hover {
+    background: linear-gradient(135deg, rgba(255, 182, 193, 0.25) 0%, rgba(255, 160, 122, 0.35) 100%);
+    transform: scale(1.08);
+    box-shadow: 0 4px 15px var(--color-primary-rgba-25);
+}
+
+:root[data-theme="cuteCats"] .error {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--color-primary-dark);
+    color: var(--text-primary);
+}
+
+:root[data-theme="cuteCats"] .success {
+    background: rgba(255, 182, 193, 0.1);
+    border: 1px solid var(--color-accent);
+    color: var(--color-primary-dark);
+}
+
+/* ========== 夢幻境域主題 ========== */
+:root[data-theme="dreamy"] {
+    --color-primary: #87CEEB;
+    --color-primary-light: #ADD8E6;
+    --color-primary-lighter: #B0E0E6;
+    --color-primary-dark: #4682B4;
+    --color-secondary: #DDA0DD;
+    --color-secondary-light: #E6B8E6;
+    --color-secondary-dark: #BA55D3;
+    --color-accent: #90EE90;
+    --color-accent-light: #98FB98;
+    --color-accent-dark: #7CFC00;
+    --bg-primary: linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(221, 160, 221, 0.12) 50%, rgba(144, 238, 144, 0.1) 100%);
+    --bg-body: rgba(255, 255, 255, 0.95);
+    --bg-body-strong: rgba(255, 255, 255, 0.98);
+    --bg-gradient: linear-gradient(135deg, #87CEEB 0%, #DDA0DD 50%, #90EE90 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(135, 206, 235, 0.08) 0%, rgba(221, 160, 221, 0.06) 50%, rgba(144, 238, 144, 0.04) 100%);
+    --bg-white: rgba(255, 255, 255, 0.85);
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-light: rgba(135, 206, 235, 0.15);
+    --bg-lighter: rgba(221, 160, 221, 0.12);
+    --bg-soft: rgba(144, 238, 144, 0.1);
+    --bg-soft-strong: rgba(135, 206, 235, 0.2);
+    --text-primary: rgba(70, 130, 180, 0.95);
+    --text-secondary: rgba(135, 206, 235, 0.8);
+    --text-tertiary: rgba(221, 160, 221, 0.7);
+    --text-strong: rgba(70, 130, 180, 0.98);
+    --text-white: rgba(255, 255, 255, 0.95);
+    --border-primary: rgba(135, 206, 235, 0.6);
+    --border-light: rgba(135, 206, 235, 0.2);
+    --border-medium: rgba(221, 160, 221, 0.4);
+    --card-border-color: rgba(135, 206, 235, 0.5);
+    --control-border-color: rgba(221, 160, 221, 0.3);
+    --table-border-color: rgba(144, 238, 144, 0.2);
+    --shadow-primary: 0 20px 60px rgba(135, 206, 235, 0.3);
+    --shadow-primary-lg: 0 30px 80px rgba(135, 206, 235, 0.25);
+    --color-primary-rgba-08: rgba(135, 206, 235, 0.08);
+    --color-primary-rgba-10: rgba(135, 206, 235, 0.1);
+    --color-primary-rgba-15: rgba(135, 206, 235, 0.15);
+    --color-primary-rgba-20: rgba(135, 206, 235, 0.2);
+    --color-primary-rgba-25: rgba(135, 206, 235, 0.25);
+    --color-primary-rgba-30: rgba(135, 206, 235, 0.3);
+    --color-primary-rgba-40: rgba(135, 206, 235, 0.4);
+    --color-primary-light-rgba-08: rgba(173, 216, 230, 0.08);
+    --color-primary-light-rgba-10: rgba(173, 216, 230, 0.1);
+    --color-primary-light-rgba-15: rgba(173, 216, 230, 0.15);
+    --color-primary-light-rgba-20: rgba(173, 216, 230, 0.2);
+    --color-primary-light-rgba-25: rgba(173, 216, 230, 0.25);
+    --color-primary-light-rgba-30: rgba(173, 216, 230, 0.3);
+    --color-primary-light-rgba-40: rgba(173, 216, 230, 0.4);
+    --color-secondary-rgba-08: rgba(221, 160, 221, 0.08);
+    --color-secondary-rgba-10: rgba(221, 160, 221, 0.1);
+    --color-secondary-rgba-15: rgba(221, 160, 221, 0.15);
+    --color-secondary-rgba-20: rgba(221, 160, 221, 0.2);
+    --color-secondary-rgba-25: rgba(221, 160, 221, 0.25);
+    --color-secondary-rgba-30: rgba(221, 160, 221, 0.3);
+    --color-secondary-rgba-40: rgba(221, 160, 221, 0.4);
+    --bg-light-gradient: linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(221, 160, 221, 0.12) 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, rgba(135, 206, 235, 0.15) 0%, rgba(221, 160, 221, 0.12) 100%);
+    --action-side-bg: color-mix(in srgb, rgba(255, 255, 255, 0.92) 75%, rgba(135, 206, 235, 0.08));
+    --action-side-bg-hover: color-mix(in srgb, rgba(255, 255, 255, 0.92) 65%, rgba(135, 206, 235, 0.2));
+    --action-side-text: rgba(70, 130, 180, 0.96);
+}
+
+:root[data-theme="dreamy"] body {
+    background: transparent;
+    color: var(--text-primary);
+}
+
+:root[data-theme="dreamy"] body::before {
+    display: none;
+}
+
+/* 夢幻境域主題頁面背景透明化 */
+:root[data-theme="dreamy"] .page-ledger,
+:root[data-theme="dreamy"] .page-input,
+:root[data-theme="dreamy"] .page-chart,
+:root[data-theme="dreamy"] .page-budget,
+:root[data-theme="dreamy"] .page-monthly-planner,
+:root[data-theme="dreamy"] .page-daily-budget,
+:root[data-theme="dreamy"] .page-settings,
+:root[data-theme="dreamy"] .page-category-manage,
+:root[data-theme="dreamy"] .page-investment,
+:root[data-theme="dreamy"] .page-wallet,
+:root[data-theme="dreamy"] .page-history,
+:root[data-theme="dreamy"] .page-planner,
+:root[data-theme="dreamy"] .page-manage-investment,
+:root[data-theme="dreamy"] .page-annual-report,
+:root[data-theme="dreamy"] .page-diary {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+/* 夢幻境域主題卡片樣式 */
+:root[data-theme="dreamy"] .card,
+:root[data-theme="dreamy"] .record-card,
+:root[data-theme="dreamy"] .ledger-card,
+:root[data-theme="dreamy"] .summary-card,
+:root[data-theme="dreamy"] .budget-card,
+:root[data-theme="dreamy"] .wallet-card,
+:root[data-theme="dreamy"] .chart-card,
+:root[data-theme="dreamy"] .investment-card,
+:root[data-theme="dreamy"] .manage-investment-card,
+:root[data-theme="dreamy"] .annual-report-card,
+:root[data-theme="dreamy"] .diary-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+    box-shadow: 0 15px 35px rgba(135, 206, 235, 0.2) !important;
+}
+
+/* 夢幻境域主題文字顏色 */
+:root[data-theme="dreamy"] .card h1,
+:root[data-theme="dreamy"] .card h2,
+:root[data-theme="dreamy"] .card h3,
+:root[data-theme="dreamy"] .card h4,
+:root[data-theme="dreamy"] .card h5,
+:root[data-theme="dreamy"] .card h6,
+:root[data-theme="dreamy"] .card .title,
+:root[data-theme="dreamy"] .card .subtitle,
+:root[data-theme="dreamy"] .card .card-title,
+:root[data-theme="dreamy"] .card .card-subtitle {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="dreamy"] .card .text,
+:root[data-theme="dreamy"] .card .description,
+:root[data-theme="dreamy"] .card .content,
+:root[data-theme="dreamy"] .card p,
+:root[data-theme="dreamy"] .card span,
+:root[data-theme="dreamy"] .card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="dreamy"] .card .highlight,
+:root[data-theme="dreamy"] .card .accent,
+:root[data-theme="dreamy"] .card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="dreamy"] .card .secondary-text,
+:root[data-theme="dreamy"] .card .muted-text {
+    color: var(--text-secondary) !important;
+}
+
+/* 夢幻境域主題按鈕樣式 */
+:root[data-theme="dreamy"] .btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: white !important;
+    border-radius: 25px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="dreamy"] .btn:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px rgba(135, 206, 235, 0.4) !important;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 50%, var(--color-accent-light) 100%) !important;
+}
+
+/* 夢幻境域主題返回按鈕 */
+:root[data-theme="dreamy"] .back-btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: white !important;
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="dreamy"] .back-btn:hover {
+    transform: scale(1.1) rotate(15deg) !important;
+    box-shadow: 0 8px 20px rgba(135, 206, 235, 0.5) !important;
+}
+
+/* 夢幻境域主題模態框 */
+:root[data-theme="dreamy"] .modal,
+:root[data-theme="dreamy"] .dialog,
+:root[data-theme="dreamy"] .popup {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 2px solid rgba(135, 206, 235, 0.5) !important;
+    border-radius: 25px !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 25px 50px rgba(135, 206, 235, 0.3) !important;
+}
+
+/* 夢幻境域主題小森對話框 */
+:root[data-theme="dreamy"] .xiaosen-dialog {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid var(--color-primary) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+:root[data-theme="dreamy"] .xiaosen-dialog .dialog-title {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="dreamy"] .xiaosen-dialog .dialog-content {
+    color: var(--text-primary) !important;
+}
+
+/* 夢幻境域主題投資卡片 */
+:root[data-theme="dreamy"] .investment-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題記帳卡片 */
+:root[data-theme="dreamy"] .record-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(221, 160, 221, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題錢包預算設定卡片 */
+:root[data-theme="dreamy"] .budget-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(144, 238, 144, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題每月規劃卡片 */
+:root[data-theme="dreamy"] .monthly-planning-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題投資設定卡片 */
+:root[data-theme="dreamy"] .investment-settings-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(221, 160, 221, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題持有中卡片 */
+:root[data-theme="dreamy"] .holding-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(144, 238, 144, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題買入卡片 */
+:root[data-theme="dreamy"] .buying-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題賣出卡片 */
+:root[data-theme="dreamy"] .selling-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(221, 160, 221, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題股息卡片 */
+:root[data-theme="dreamy"] .dividend-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(144, 238, 144, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題定期定額卡片 */
+:root[data-theme="dreamy"] .regular-investment-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題動畫效果 */
+@keyframes dreamyFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(2deg); }
+}
+
+:root[data-theme="dreamy"] .btn:hover {
+    animation: dreamyFloat 3s ease-in-out infinite;
+}
+
+:root[data-theme="dreamy"] .card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(135, 206, 235, 0.3);
+    border-color: var(--color-secondary);
+}
+
+/* 夢幻境域主題特殊效果 */
+:root[data-theme="dreamy"] .portfolio-shares:hover {
+    background: linear-gradient(135deg, rgba(135, 206, 235, 0.3) 0%, rgba(221, 160, 221, 0.3) 100%);
+    transform: scale(1.08);
+    box-shadow: 0 8px 25px rgba(135, 206, 235, 0.4);
+}
+
+:root[data-theme="dreamy"] .stock-grid-card-tag--shares:hover {
+    background: linear-gradient(135deg, rgba(221, 160, 221, 0.25) 0%, rgba(144, 238, 144, 0.25) 100%);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(221, 160, 221, 0.3);
+}
+
+/* 夢幻境域主題滾動條 */
+:root[data-theme="dreamy"] ::-webkit-scrollbar {
+    width: 12px;
+}
+
+:root[data-theme="dreamy"] ::-webkit-scrollbar-track {
+    background: rgba(135, 206, 235, 0.1);
+    border-radius: 10px;
+}
+
+:root[data-theme="dreamy"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: 10px;
+}
+
+:root[data-theme="dreamy"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%);
+}
+
+/* ========== 萌雞樂園主題 ========== */
+:root[data-theme="chick"] {
+    --color-primary: #98FB98;
+    --color-primary-light: #90EE90;
+    --color-primary-lighter: #7FFF00;
+    --color-primary-dark: #7CFC00;
+    --color-secondary: #FFB6C1;
+    --color-secondary-light: #FFC0CB;
+    --color-secondary-dark: #FF69B4;
+    --color-accent: #FFD700;
+    --color-accent-light: #FFED4B;
+    --color-accent-dark: #FFA500;
+    --bg-primary: linear-gradient(135deg, rgba(152, 251, 152, 0.94) 0%, rgba(255, 182, 193, 0.85) 65%, rgba(255, 215, 0, 0.35) 100%);
+    --bg-body: rgba(152, 251, 152, 0.96);
+    --bg-body-strong: rgba(255, 182, 193, 0.98);
+    --bg-gradient: linear-gradient(135deg, #7CFC00 0%, #98FB98 60%, #FFD700 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(152, 251, 152, 0.08) 0%, rgba(255, 215, 0, 0.25) 100%);
+    --bg-white: rgba(255, 255, 255, 0.85);
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-light: rgba(152, 251, 152, 0.64);
+    --bg-lighter: rgba(255, 182, 193, 0.52);
+    --bg-soft: rgba(255, 215, 0, 0.55);
+    --bg-soft-strong: rgba(152, 251, 152, 0.68);
+    --text-primary: rgba(34, 139, 34, 0.96);
+    --text-secondary: rgba(255, 105, 180, 0.78);
+    --text-tertiary: rgba(255, 140, 0, 0.6);
+    --text-strong: rgba(0, 100, 0, 0.98);
+    --text-white: rgba(255, 255, 255, 0.98);
+    --border-primary: rgba(152, 251, 152, 0.65);
+    --border-light: rgba(255, 182, 193, 0.24);
+    --border-medium: rgba(255, 215, 0, 0.4);
+    --card-border-color: rgba(152, 251, 152, 0.45);
+    --control-border-color: rgba(255, 182, 193, 0.32);
+    --table-border-color: rgba(255, 215, 0, 0.22);
+    --shadow-primary: 0 20px 60px rgba(152, 251, 152, 0.8);
+    --shadow-primary-lg: 0 30px 80px rgba(152, 251, 152, 0.7);
+    --color-primary-rgba-08: rgba(152, 251, 152, 0.08);
+    --color-primary-rgba-10: rgba(152, 251, 152, 0.1);
+    --color-primary-rgba-15: rgba(152, 251, 152, 0.15);
+    --color-primary-rgba-20: rgba(152, 251, 152, 0.2);
+    --color-primary-rgba-25: rgba(152, 251, 152, 0.25);
+    --color-primary-rgba-30: rgba(152, 251, 152, 0.3);
+    --color-primary-rgba-40: rgba(152, 251, 152, 0.4);
+    --color-primary-light-rgba-08: rgba(144, 238, 144, 0.08);
+    --color-primary-light-rgba-10: rgba(144, 238, 144, 0.1);
+    --color-primary-light-rgba-15: rgba(144, 238, 144, 0.15);
+    --color-primary-light-rgba-20: rgba(144, 238, 144, 0.2);
+    --color-primary-light-rgba-25: rgba(144, 238, 144, 0.25);
+    --color-primary-light-rgba-30: rgba(144, 238, 144, 0.3);
+    --color-primary-light-rgba-40: rgba(144, 238, 144, 0.4);
+    --color-secondary-rgba-08: rgba(255, 182, 193, 0.08);
+    --color-secondary-rgba-10: rgba(255, 182, 193, 0.1);
+    --color-secondary-rgba-15: rgba(255, 182, 193, 0.15);
+    --color-secondary-rgba-20: rgba(255, 182, 193, 0.2);
+    --color-secondary-rgba-25: rgba(255, 182, 193, 0.25);
+    --color-secondary-rgba-30: rgba(255, 182, 193, 0.3);
+    --color-secondary-rgba-40: rgba(255, 182, 193, 0.4);
+    --color-accent-rgba-08: rgba(255, 215, 0, 0.08);
+    --color-accent-rgba-10: rgba(255, 215, 0, 0.1);
+    --color-accent-rgba-15: rgba(255, 215, 0, 0.15);
+    --color-accent-rgba-20: rgba(255, 215, 0, 0.2);
+    --color-accent-rgba-25: rgba(255, 215, 0, 0.25);
+    --color-accent-rgba-30: rgba(255, 215, 0, 0.3);
+    --color-accent-rgba-40: rgba(255, 215, 0, 0.4);
+    --action-side-text: rgba(34, 139, 34, 0.96);
+}
+
+:root[data-theme="chick"] body {
+    background: transparent;
+    color: var(--text-primary);
+}
+
+:root[data-theme="chick"] body::before {
+    display: none;
+}
+
+/* 萌雞樂園主題頁面背景透明化 */
+:root[data-theme="chick"] .page-ledger,
+:root[data-theme="chick"] .page-input,
+:root[data-theme="chick"] .page-chart,
+:root[data-theme="chick"] .page-budget,
+:root[data-theme="chick"] .page-monthly-planner,
+:root[data-theme="chick"] .page-daily-budget,
+:root[data-theme="chick"] .page-settings,
+:root[data-theme="chick"] .page-category-manage,
+:root[data-theme="chick"] .page-investment,
+:root[data-theme="chick"] .page-wallet,
+:root[data-theme="chick"] .page-history,
+:root[data-theme="chick"] .page-planner,
+:root[data-theme="chick"] .page-manage-investment,
+:root[data-theme="chick"] .page-annual-report,
+:root[data-theme="chick"] .page-diary {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+/* 萌雞樂園主題卡片樣式 */
+:root[data-theme="chick"] .card,
+:root[data-theme="chick"] .record-card,
+:root[data-theme="chick"] .ledger-card,
+:root[data-theme="chick"] .summary-card,
+:root[data-theme="chick"] .budget-card,
+:root[data-theme="chick"] .wallet-card,
+:root[data-theme="chick"] .chart-card,
+:root[data-theme="chick"] .investment-card,
+:root[data-theme="chick"] .manage-investment-card,
+:root[data-theme="chick"] .annual-report-card,
+:root[data-theme="chick"] .diary-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(152, 251, 152, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 8px 32px rgba(152, 251, 152, 0.3) !important;
+}
+
+/* 萌雞樂園主題文字顏色 */
+:root[data-theme="chick"] .card h1,
+:root[data-theme="chick"] .card h2,
+:root[data-theme="chick"] .card h3,
+:root[data-theme="chick"] .card h4,
+:root[data-theme="chick"] .card h5,
+:root[data-theme="chick"] .card h6,
+:root[data-theme="chick"] .card .title,
+:root[data-theme="chick"] .card .subtitle,
+:root[data-theme="chick"] .card .card-title,
+:root[data-theme="chick"] .card .card-subtitle {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="chick"] .card .text,
+:root[data-theme="chick"] .card .description,
+:root[data-theme="chick"] .card .content,
+:root[data-theme="chick"] .card p,
+:root[data-theme="chick"] .card span,
+:root[data-theme="chick"] .card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="chick"] .card .highlight,
+:root[data-theme="chick"] .card .accent,
+:root[data-theme="chick"] .card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="chick"] .card .secondary-text,
+:root[data-theme="chick"] .card .muted-text {
+    color: var(--text-secondary) !important;
+}
+
+/* 萌雞樂園主題按鈕樣式 */
+:root[data-theme="chick"] .btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: white !important;
+    border-radius: 25px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 15px rgba(152, 251, 152, 0.3) !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="chick"] .btn:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px rgba(152, 251, 152, 0.4) !important;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 50%, var(--color-accent-light) 100%) !important;
+}
+
+/* 萌雞樂園主題返回按鈕 */
+:root[data-theme="chick"] .back-btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: white !important;
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    box-shadow: 0 4px 15px rgba(152, 251, 152, 0.3) !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="chick"] .back-btn:hover {
+    transform: scale(1.1) rotate(15deg) !important;
+    box-shadow: 0 8px 20px rgba(152, 251, 152, 0.5) !important;
+}
+
+/* 萌雞樂園主題模態框 */
+:root[data-theme="chick"] .modal,
+:root[data-theme="chick"] .dialog,
+:root[data-theme="chick"] .popup {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 2px solid rgba(152, 251, 152, 0.5) !important;
+    border-radius: 25px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 萌雞樂園主題小森對話框 */
+:root[data-theme="chick"] .xiaosen-dialog {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid var(--color-primary) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+:root[data-theme="chick"] .xiaosen-dialog .dialog-title {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="chick"] .xiaosen-dialog .dialog-content {
+    color: var(--text-primary) !important;
+}
+
+/* 萌雞樂園主題投資卡片 */
+:root[data-theme="chick"] .investment-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(152, 251, 152, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 萌雞樂園主題記帳卡片 */
+:root[data-theme="chick"] .record-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(255, 182, 193, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 萌雞樂園主題錢包預算設定卡片 */
+:root[data-theme="chick"] .budget-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(255, 215, 0, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 萌雞樂園主題每月規劃卡片 */
+:root[data-theme="chick"] .monthly-planning-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(152, 251, 152, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 萌雞樂園主題投資設定卡片 */
+:root[data-theme="chick"] .investment-settings-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(255, 182, 193, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 萌雞樂園主題持有中卡片 */
+:root[data-theme="chick"] .holding-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(255, 215, 0, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 萌雞樂園主題買入卡片 */
+:root[data-theme="chick"] .buying-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(152, 251, 152, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 萌雞樂園主題賣出卡片 */
+:root[data-theme="chick"] .selling-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(255, 182, 193, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 萌雞樂園主題股息卡片 */
+:root[data-theme="chick"] .dividend-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(255, 215, 0, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 萌雞樂園主題滾動條 */
+:root[data-theme="chick"] ::-webkit-scrollbar {
+    width: 12px;
+}
+
+:root[data-theme="chick"] ::-webkit-scrollbar-track {
+    background: rgba(152, 251, 152, 0.1);
+    border-radius: 10px;
+}
+
+:root[data-theme="chick"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: 10px;
+}
+
+:root[data-theme="chick"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%);
 }
