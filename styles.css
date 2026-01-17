@@ -30903,3 +30903,606 @@ body[data-theme="meow"] .modal-content.budget-setting-modal-content,
     backdrop-filter: blur(10px) !important;
     color: var(--text-primary) !important;
 }
+
+/* ========== 塗鴉風格主題 ========== */
+:root[data-theme="graffiti"] {
+    /* 主要顏色 - 基於圖片中的塗鴉色彩 */
+    --color-primary: #1E90FF; /* 深天藍色 */
+    --color-secondary: #FF4500; /* 橙紅色 */
+    --color-accent: #ADFF2F; /* 黃綠色 */
+    
+    /* 背景顏色 */
+    --bg-white: rgba(30, 30, 30, 0.85);
+    --bg-light: rgba(40, 40, 40, 0.8);
+    --bg-soft: rgba(50, 50, 50, 0.75);
+    --bg-medium: rgba(60, 60, 60, 0.7);
+    --bg-dark: rgba(20, 20, 20, 0.9);
+    
+    /* 文字顏色 */
+    --text-primary: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --text-tertiary: rgba(255, 255, 255, 0.6);
+    --text-inverse: #1a1a1a;
+    
+    /* 邊框顏色 */
+    --border-light: rgba(30, 144, 255, 0.3);
+    --border-medium: rgba(30, 144, 255, 0.5);
+    --border-dark: rgba(30, 144, 255, 0.7);
+    
+    /* RGBA透明度變數 */
+    --color-primary-rgba-08: rgba(30, 144, 255, 0.08);
+    --color-primary-rgba-10: rgba(30, 144, 255, 0.10);
+    --color-primary-rgba-12: rgba(30, 144, 255, 0.12);
+    --color-primary-rgba-15: rgba(30, 144, 255, 0.15);
+    --color-primary-rgba-20: rgba(30, 144, 255, 0.20);
+    --color-primary-rgba-25: rgba(30, 144, 255, 0.25);
+    --color-primary-rgba-30: rgba(30, 144, 255, 0.30);
+    
+    --color-secondary-rgba-08: rgba(255, 69, 0, 0.08);
+    --color-secondary-rgba-10: rgba(255, 69, 0, 0.10);
+    --color-secondary-rgba-12: rgba(255, 69, 0, 0.12);
+    --color-secondary-rgba-15: rgba(255, 69, 0, 0.15);
+    --color-secondary-rgba-20: rgba(255, 69, 0, 0.20);
+    --color-secondary-rgba-25: rgba(255, 69, 0, 0.25);
+    --color-secondary-rgba-30: rgba(255, 69, 0, 0.30);
+    
+    --color-accent-rgba-08: rgba(173, 255, 47, 0.08);
+    --color-accent-rgba-10: rgba(173, 255, 47, 0.10);
+    --color-accent-rgba-12: rgba(173, 255, 47, 0.12);
+    --color-accent-rgba-15: rgba(173, 255, 47, 0.15);
+    --color-accent-rgba-20: rgba(173, 255, 47, 0.20);
+    --color-accent-rgba-25: rgba(173, 255, 47, 0.25);
+    --color-accent-rgba-30: rgba(173, 255, 47, 0.30);
+    
+    /* 狀態顏色 */
+    --color-success: #4CAF50;
+    --color-warning: #FF9800;
+    --color-danger: #F44336;
+    --color-info: #2196F3;
+    
+    /* 漸層背景 */
+    --gradient-primary: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-15) 50%, var(--color-primary-rgba-10) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--color-secondary-rgba-10) 0%, var(--color-secondary-rgba-15) 50%, var(--color-secondary-rgba-10) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-accent-rgba-10) 0%, var(--color-accent-rgba-15) 50%, var(--color-accent-rgba-10) 100%);
+    
+    /* 陰影 */
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* 塗鴉主題背景 */
+:root[data-theme="graffiti"] body,
+:root[data-theme="graffiti"] html,
+html:has([data-theme="graffiti"]) body,
+html:has([data-theme="graffiti"]) html,
+body[data-theme="graffiti"] body,
+body[data-theme="graffiti"] html {
+    background: url("https://i.pinimg.com/1200x/fa/a1/0c/faa10cd0b7816efb3ac74d940bc4bda4.jpg") center/cover fixed !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* 塗鴉主題主要頁面背景透明化 */
+:root[data-theme="graffiti"] .page,
+:root[data-theme="graffiti"] .container,
+:root[data-theme="graffiti"] .content,
+:root[data-theme="graffiti"] main,
+:root[data-theme="graffiti"] .main-content,
+html:has([data-theme="graffiti"]) .page,
+html:has([data-theme="graffiti"]) .container,
+html:has([data-theme="graffiti"]) .content,
+html:has([data-theme="graffiti"]) main,
+html:has([data-theme="graffiti"]) .main-content,
+body[data-theme="graffiti"] .page,
+body[data-theme="graffiti"] .container,
+body[data-theme="graffiti"] .content,
+body[data-theme="graffiti"] main,
+body[data-theme="graffiti"] .main-content {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* 塗鴉主題卡片樣式 */
+:root[data-theme="graffiti"] .card,
+:root[data-theme="graffiti"] .modal-content,
+:root[data-theme="graffiti"] .dialog-content,
+:root[data-theme="graffiti"] .panel,
+:root[data-theme="graffiti"] .box,
+html:has([data-theme="graffiti"]) .card,
+html:has([data-theme="graffiti"]) .modal-content,
+html:has([data-theme="graffiti"]) .dialog-content,
+html:has([data-theme="graffiti"]) .panel,
+html:has([data-theme="graffiti"]) .box,
+body[data-theme="graffiti"] .card,
+body[data-theme="graffiti"] .modal-content,
+body[data-theme="graffiti"] .dialog-content,
+body[data-theme="graffiti"] .panel,
+body[data-theme="graffiti"] .box {
+    background: var(--bg-white) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid var(--border-medium) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--shadow-medium) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 塗鴉主題按鈕樣式 */
+:root[data-theme="graffiti"] .btn,
+:root[data-theme="graffiti"] .button,
+:root[data-theme="graffiti"] button,
+html:has([data-theme="graffiti"]) .btn,
+html:has([data-theme="graffiti"]) .button,
+html:has([data-theme="graffiti"]) button,
+body[data-theme="graffiti"] .btn,
+body[data-theme="graffiti"] .button,
+body[data-theme="graffiti"] button {
+    background: var(--gradient-primary) !important;
+    border: 1px solid var(--border-dark) !important;
+    border-radius: 12px !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="graffiti"] .btn:hover,
+:root[data-theme="graffiti"] .button:hover,
+:root[data-theme="graffiti"] button:hover,
+html:has([data-theme="graffiti"]) .btn:hover,
+html:has([data-theme="graffiti"]) .button:hover,
+html:has([data-theme="graffiti"]) button:hover,
+body[data-theme="graffiti"] .btn:hover,
+body[data-theme="graffiti"] .button:hover,
+body[data-theme="graffiti"] button:hover {
+    background: var(--gradient-secondary) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-heavy) !important;
+}
+
+/* 塗鴉主題輸入框樣式 */
+:root[data-theme="graffiti"] input,
+:root[data-theme="graffiti"] textarea,
+:root[data-theme="graffiti"] select,
+html:has([data-theme="graffiti"]) input,
+html:has([data-theme="graffiti"]) textarea,
+html:has([data-theme="graffiti"]) select,
+body[data-theme="graffiti"] input,
+body[data-theme="graffiti"] textarea,
+body[data-theme="graffiti"] select {
+    background: var(--bg-light) !important;
+    border: 1px solid var(--border-medium) !important;
+    border-radius: 8px !important;
+    color: var(--text-primary) !important;
+}
+
+/* 塗鴉主題導航列 */
+:root[data-theme="graffiti"] .bottom-nav,
+:root[data-theme="graffiti"] .nav-bar,
+:root[data-theme="graffiti"] .navigation,
+html:has([data-theme="graffiti"]) .bottom-nav,
+html:has([data-theme="graffiti"]) .nav-bar,
+html:has([data-theme="graffiti"]) .navigation,
+body[data-theme="graffiti"] .bottom-nav,
+body[data-theme="graffiti"] .nav-bar,
+body[data-theme="graffiti"] .navigation {
+    background: var(--bg-dark) !important;
+    backdrop-filter: blur(20px) !important;
+    border-top: 1px solid var(--border-medium) !important;
+}
+
+/* 塗鴉主題FAB按鈕 */
+:root[data-theme="graffiti"] .fab,
+:root[data-theme="graffiti"] .floating-action-btn,
+:root[data-theme="graffiti"] #fabBtn,
+html:has([data-theme="graffiti"]) .fab,
+html:has([data-theme="graffiti"]) .floating-action-btn,
+html:has([data-theme="graffiti"]) #fabBtn,
+body[data-theme="graffiti"] .fab,
+body[data-theme="graffiti"] .floating-action-btn,
+body[data-theme="graffiti"] #fabBtn {
+    background: var(--gradient-accent) !important;
+    border: 2px solid var(--border-dark) !important;
+    box-shadow: var(--shadow-heavy) !important;
+    color: var(--text-inverse) !important;
+}
+
+/* 塗鴉主題返回按鈕 */
+:root[data-theme="graffiti"] .back-btn,
+:root[data-theme="graffiti"] .return-btn,
+:root[data-theme="graffiti"] .go-back,
+html:has([data-theme="graffiti"]) .back-btn,
+html:has([data-theme="graffiti"]) .return-btn,
+html:has([data-theme="graffiti"]) .go-back,
+body[data-theme="graffiti"] .back-btn,
+body[data-theme="graffiti"] .return-btn,
+body[data-theme="graffiti"] .go-back {
+    background: var(--gradient-primary) !important;
+    border: 1px solid var(--border-medium) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 塗鴉主題小森對話框 */
+:root[data-theme="graffiti"] .mori-dialog,
+:root[data-theme="graffiti"] .mori-modal,
+:root[data-theme="graffiti"] .advisor-dialog,
+html:has([data-theme="graffiti"]) .mori-dialog,
+html:has([data-theme="graffiti"]) .mori-modal,
+html:has([data-theme="graffiti"]) .advisor-dialog,
+body[data-theme="graffiti"] .mori-dialog,
+body[data-theme="graffiti"] .mori-modal,
+body[data-theme="graffiti"] .advisor-dialog {
+    background: var(--bg-white) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 2px solid var(--border-dark) !important;
+    border-radius: 20px !important;
+    box-shadow: var(--shadow-heavy) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 塗鴉主題統計項目 */
+:root[data-theme="graffiti"] .stat-item,
+:root[data-theme="graffiti"] .stat-card,
+html:has([data-theme="graffiti"]) .stat-item,
+html:has([data-theme="graffiti"]) .stat-card,
+body[data-theme="graffiti"] .stat-item,
+body[data-theme="graffiti"] .stat-card {
+    background: var(--gradient-primary) !important;
+    border: 1px solid var(--border-medium) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--shadow-light) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="graffiti"] .stat-item:hover,
+:root[data-theme="graffiti"] .stat-card:hover,
+html:has([data-theme="graffiti"]) .stat-item:hover,
+html:has([data-theme="graffiti"]) .stat-card:hover,
+body[data-theme="graffiti"] .stat-item:hover,
+body[data-theme="graffiti"] .stat-card:hover {
+    background: var(--gradient-secondary) !important;
+    box-shadow: var(--shadow-medium) !important;
+    transform: translateY(-2px) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 塗鴉主題記帳記錄卡片 */
+:root[data-theme="graffiti"] .record-card,
+:root[data-theme="graffiti"] .transaction-item,
+html:has([data-theme="graffiti"]) .record-card,
+html:has([data-theme="graffiti"]) .transaction-item,
+body[data-theme="graffiti"] .record-card,
+body[data-theme="graffiti"] .transaction-item {
+    background: var(--gradient-primary) !important;
+    border: 1px solid var(--border-medium) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(12px) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+/* 塗鴉主題記帳記錄條目文字顏色 - 咖啡色美化 */
+:root[data-theme="graffiti"] .record-card .transaction-title,
+:root[data-theme="graffiti"] .record-card .transaction-amount,
+:root[data-theme="graffiti"] .record-card .transaction-category,
+:root[data-theme="graffiti"] .record-card .transaction-date,
+:root[data-theme="graffiti"] .transaction-item .transaction-title,
+:root[data-theme="graffiti"] .transaction-item .transaction-amount,
+:root[data-theme="graffiti"] .transaction-item .transaction-category,
+:root[data-theme="graffiti"] .transaction-item .transaction-date,
+:root[data-theme="graffiti"] .record-card p,
+:root[data-theme="graffiti"] .record-card span,
+:root[data-theme="graffiti"] .record-card div,
+:root[data-theme="graffiti"] .transaction-item p,
+:root[data-theme="graffiti"] .transaction-item span,
+:root[data-theme="graffiti"] .transaction-item div,
+html:has([data-theme="graffiti"]) .record-card .transaction-title,
+html:has([data-theme="graffiti"]) .record-card .transaction-amount,
+html:has([data-theme="graffiti"]) .record-card .transaction-category,
+html:has([data-theme="graffiti"]) .record-card .transaction-date,
+html:has([data-theme="graffiti"]) .transaction-item .transaction-title,
+html:has([data-theme="graffiti"]) .transaction-item .transaction-amount,
+html:has([data-theme="graffiti"]) .transaction-item .transaction-category,
+html:has([data-theme="graffiti"]) .transaction-item .transaction-date,
+html:has([data-theme="graffiti"]) .record-card p,
+html:has([data-theme="graffiti"]) .record-card span,
+html:has([data-theme="graffiti"]) .record-card div,
+html:has([data-theme="graffiti"]) .transaction-item p,
+html:has([data-theme="graffiti"]) .transaction-item span,
+html:has([data-theme="graffiti"]) .transaction-item div,
+body[data-theme="graffiti"] .record-card .transaction-title,
+body[data-theme="graffiti"] .record-card .transaction-amount,
+body[data-theme="graffiti"] .record-card .transaction-category,
+body[data-theme="graffiti"] .record-card .transaction-date,
+body[data-theme="graffiti"] .transaction-item .transaction-title,
+body[data-theme="graffiti"] .transaction-item .transaction-amount,
+body[data-theme="graffiti"] .transaction-item .transaction-category,
+body[data-theme="graffiti"] .transaction-item .transaction-date,
+body[data-theme="graffiti"] .record-card p,
+body[data-theme="graffiti"] .record-card span,
+body[data-theme="graffiti"] .record-card div,
+body[data-theme="graffiti"] .transaction-item p,
+body[data-theme="graffiti"] .transaction-item span,
+body[data-theme="graffiti"] .transaction-item div {
+    color: #8B4513 !important; /* 咖啡色 */
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important; /* 文字陰影 */
+    letter-spacing: 0.5px !important; /* 字間距 */
+    line-height: 1.4 !important; /* 行高 */
+    transition: all 0.3s ease !important; /* 過渡動畫 */
+}
+
+/* 交易標題特殊美化 */
+:root[data-theme="graffiti"] .record-card .transaction-title,
+:root[data-theme="graffiti"] .transaction-item .transaction-title,
+html:has([data-theme="graffiti"]) .record-card .transaction-title,
+html:has([data-theme="graffiti"]) .transaction-item .transaction-title,
+body[data-theme="graffiti"] .record-card .transaction-title,
+body[data-theme="graffiti"] .transaction-item .transaction-title {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #654321 !important; /* 深咖啡色 */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+    letter-spacing: 0.8px !important;
+    margin-bottom: 4px !important;
+}
+
+/* 交易金額特殊美化 */
+:root[data-theme="graffiti"] .record-card .transaction-amount,
+:root[data-theme="graffiti"] .transaction-item .transaction-amount,
+html:has([data-theme="graffiti"]) .record-card .transaction-amount,
+html:has([data-theme="graffiti"]) .transaction-item .transaction-amount,
+body[data-theme="graffiti"] .record-card .transaction-amount,
+body[data-theme="graffiti"] .transaction-item .transaction-amount {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #A0522D !important; /* 淺咖啡色 */
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3) !important;
+    letter-spacing: 0.3px !important;
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.1) 0%, rgba(160, 82, 45, 0.1) 100%) !important;
+    padding: 2px 6px !important;
+    border-radius: 6px !important;
+    border: 1px solid rgba(139, 69, 19, 0.2) !important;
+}
+
+/* 交易分類美化 */
+:root[data-theme="graffiti"] .record-card .transaction-category,
+:root[data-theme="graffiti"] .transaction-item .transaction-category,
+html:has([data-theme="graffiti"]) .record-card .transaction-category,
+html:has([data-theme="graffiti"]) .transaction-item .transaction-category,
+body[data-theme="graffiti"] .record-card .transaction-category,
+body[data-theme="graffiti"] .transaction-item .transaction-category {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #8B4513 !important;
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.15) 0%, rgba(160, 82, 45, 0.15) 100%) !important;
+    padding: 3px 8px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(139, 69, 19, 0.25) !important;
+    display: inline-block !important;
+    margin: 2px 4px 2px 0 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 交易日期美化 */
+:root[data-theme="graffiti"] .record-card .transaction-date,
+:root[data-theme="graffiti"] .transaction-item .transaction-date,
+html:has([data-theme="graffiti"]) .record-card .transaction-date,
+html:has([data-theme="graffiti"]) .transaction-item .transaction-date,
+body[data-theme="graffiti"] .record-card .transaction-date,
+body[data-theme="graffiti"] .transaction-item .transaction-date {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: var(--coffee-rgba-60) !important; /* 60%透明度咖啡色 */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+    letter-spacing: 0.6px !important;
+    font-style: italic !important;
+}
+
+/* 懸停時的文字效果 */
+:root[data-theme="graffiti"] .record-card:hover .transaction-title,
+:root[data-theme="graffiti"] .record-card:hover .transaction-amount,
+:root[data-theme="graffiti"] .record-card:hover .transaction-category,
+:root[data-theme="graffiti"] .record-card:hover .transaction-date,
+:root[data-theme="graffiti"] .transaction-item:hover .transaction-title,
+:root[data-theme="graffiti"] .transaction-item:hover .transaction-amount,
+:root[data-theme="graffiti"] .transaction-item:hover .transaction-category,
+:root[data-theme="graffiti"] .transaction-item:hover .transaction-date,
+html:has([data-theme="graffiti"]) .record-card:hover .transaction-title,
+html:has([data-theme="graffiti"]) .record-card:hover .transaction-amount,
+html:has([data-theme="graffiti"]) .record-card:hover .transaction-category,
+html:has([data-theme="graffiti"]) .record-card:hover .transaction-date,
+html:has([data-theme="graffiti"]) .transaction-item:hover .transaction-title,
+html:has([data-theme="graffiti"]) .transaction-item:hover .transaction-amount,
+html:has([data-theme="graffiti"]) .transaction-item:hover .transaction-category,
+html:has([data-theme="graffiti"]) .transaction-item:hover .transaction-date,
+body[data-theme="graffiti"] .record-card:hover .transaction-title,
+body[data-theme="graffiti"] .record-card:hover .transaction-amount,
+body[data-theme="graffiti"] .record-card:hover .transaction-category,
+body[data-theme="graffiti"] .record-card:hover .transaction-date,
+body[data-theme="graffiti"] .transaction-item:hover .transaction-title,
+body[data-theme="graffiti"] .transaction-item:hover .transaction-amount,
+body[data-theme="graffiti"] .transaction-item:hover .transaction-category,
+body[data-theme="graffiti"] .transaction-item:hover .transaction-date {
+    color: #A0522D !important; /* 懸停時變淺咖啡色 */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* 咖啡色透明度變數 */
+:root[data-theme="graffiti"] {
+    --coffee-primary: #8B4513;
+    --coffee-light: #A0522D;
+    --coffee-dark: #654321;
+    --coffee-rgba-80: rgba(139, 69, 19, 0.8);
+    --coffee-rgba-60: rgba(139, 69, 19, 0.6);
+    --coffee-rgba-40: rgba(139, 69, 19, 0.4);
+}
+
+:root[data-theme="graffiti"] .record-card:hover,
+:root[data-theme="graffiti"] .transaction-item:hover,
+html:has([data-theme="graffiti"]) .record-card:hover,
+html:has([data-theme="graffiti"]) .transaction-item:hover,
+body[data-theme="graffiti"] .record-card:hover,
+body[data-theme="graffiti"] .transaction-item:hover {
+    background: var(--gradient-secondary) !important;
+    box-shadow: var(--shadow-medium) !important;
+    transform: translateY(-2px) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 塗鴉主題投資卡片 */
+:root[data-theme="graffiti"] .investment-card,
+:root[data-theme="graffiti"] .stock-card,
+:root[data-theme="graffiti"] .portfolio-card,
+html:has([data-theme="graffiti"]) .investment-card,
+html:has([data-theme="graffiti"]) .stock-card,
+html:has([data-theme="graffiti"]) .portfolio-card,
+body[data-theme="graffiti"] .investment-card,
+body[data-theme="graffiti"] .stock-card,
+body[data-theme="graffiti"] .portfolio-card {
+    background: url("https://i.pinimg.com/1200x/fa/a1/0c/faa10cd0b7816efb3ac74d940bc4bda4.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(30, 30, 30, 0.8) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 2px solid var(--border-dark) !important;
+    border-radius: 20px !important;
+    box-shadow: var(--shadow-heavy) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 塗鴉主題卡片圖片 */
+:root[data-theme="graffiti"] .investment-card::before,
+:root[data-theme="graffiti"] .stock-card::before,
+:root[data-theme="graffiti"] .portfolio-card::before,
+:root[data-theme="graffiti"] .budget-card::before,
+:root[data-theme="graffiti"] .planning-card::before,
+html:has([data-theme="graffiti"]) .investment-card::before,
+html:has([data-theme="graffiti"]) .stock-card::before,
+html:has([data-theme="graffiti"]) .portfolio-card::before,
+html:has([data-theme="graffiti"]) .budget-card::before,
+html:has([data-theme="graffiti"]) .planning-card::before,
+body[data-theme="graffiti"] .investment-card::before,
+body[data-theme="graffiti"] .stock-card::before,
+body[data-theme="graffiti"] .portfolio-card::before,
+body[data-theme="graffiti"] .budget-card::before,
+body[data-theme="graffiti"] .planning-card::before {
+    background-image: url("https://i.pinimg.com/1200x/fa/a1/0c/faa10cd0b7816efb3ac74d940bc4bda4.jpg") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    opacity: 0.15 !important;
+}
+
+/* 塗鴉主題滾動條 */
+:root[data-theme="graffiti"] ::-webkit-scrollbar,
+html:has([data-theme="graffiti"]) ::-webkit-scrollbar,
+body[data-theme="graffiti"] ::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+:root[data-theme="graffiti"] ::-webkit-scrollbar-track,
+html:has([data-theme="graffiti"]) ::-webkit-scrollbar-track,
+body[data-theme="graffiti"] ::-webkit-scrollbar-track {
+    background: var(--bg-dark) !important;
+    border-radius: 4px !important;
+}
+
+:root[data-theme="graffiti"] ::-webkit-scrollbar-thumb,
+html:has([data-theme="graffiti"]) ::-webkit-scrollbar-thumb,
+body[data-theme="graffiti"] ::-webkit-scrollbar-thumb {
+    background: var(--color-primary) !important;
+    border-radius: 4px !important;
+}
+
+:root[data-theme="graffiti"] ::-webkit-scrollbar-thumb:hover,
+html:has([data-theme="graffiti"]) ::-webkit-scrollbar-thumb:hover,
+body[data-theme="graffiti"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary) !important;
+}
+
+/* 塗鴉主題特殊頁面樣式 */
+:root[data-theme="graffiti"] .installment-page,
+:root[data-theme="graffiti"] .dca-page,
+:root[data-theme="graffiti"] .fixed-deposit-page,
+html:has([data-theme="graffiti"]) .installment-page,
+html:has([data-theme="graffiti"]) .dca-page,
+html:has([data-theme="graffiti"]) .fixed-deposit-page,
+body[data-theme="graffiti"] .installment-page,
+body[data-theme="graffiti"] .dca-page,
+body[data-theme="graffiti"] .fixed-deposit-page {
+    background: transparent !important;
+}
+
+:root[data-theme="graffiti"] .installment-card,
+:root[data-theme="graffiti"] .dca-card,
+:root[data-theme="graffiti"] .fixed-deposit-card,
+html:has([data-theme="graffiti"]) .installment-card,
+html:has([data-theme="graffiti"]) .dca-card,
+html:has([data-theme="graffiti"]) .fixed-deposit-card,
+body[data-theme="graffiti"] .installment-card,
+body[data-theme="graffiti"] .dca-card,
+body[data-theme="graffiti"] .fixed-deposit-card {
+    background: var(--bg-white) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 2px solid var(--border-dark) !important;
+    border-radius: 20px !important;
+    box-shadow: var(--shadow-heavy) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 塗鴉主題標題樣式 */
+:root[data-theme="graffiti"] h1,
+:root[data-theme="graffiti"] h2,
+:root[data-theme="graffiti"] h3,
+:root[data-theme="graffiti"] h4,
+:root[data-theme="graffiti"] h5,
+:root[data-theme="graffiti"] h6,
+html:has([data-theme="graffiti"]) h1,
+html:has([data-theme="graffiti"]) h2,
+html:has([data-theme="graffiti"]) h3,
+html:has([data-theme="graffiti"]) h4,
+html:has([data-theme="graffiti"]) h5,
+html:has([data-theme="graffiti"]) h6,
+body[data-theme="graffiti"] h1,
+body[data-theme="graffiti"] h2,
+body[data-theme="graffiti"] h3,
+body[data-theme="graffiti"] h4,
+body[data-theme="graffiti"] h5,
+body[data-theme="graffiti"] h6 {
+    color: var(--text-primary) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 塗鴉主題文字樣式 */
+:root[data-theme="graffiti"] p,
+:root[data-theme="graffiti"] span,
+:root[data-theme="graffiti"] div,
+:root[data-theme="graffiti"] label,
+html:has([data-theme="graffiti"]) p,
+html:has([data-theme="graffiti"]) span,
+html:has([data-theme="graffiti"]) div,
+html:has([data-theme="graffiti"]) label,
+body[data-theme="graffiti"] p,
+body[data-theme="graffiti"] span,
+body[data-theme="graffiti"] div,
+body[data-theme="graffiti"] label {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="graffiti"] .text-secondary,
+:root[data-theme="graffiti"] .secondary-text,
+html:has([data-theme="graffiti"]) .text-secondary,
+html:has([data-theme="graffiti"]) .secondary-text,
+body[data-theme="graffiti"] .text-secondary,
+body[data-theme="graffiti"] .secondary-text {
+    color: var(--text-secondary) !important;
+}
+
+:root[data-theme="graffiti"] .text-tertiary,
+:root[data-theme="graffiti"] .tertiary-text,
+html:has([data-theme="graffiti"]) .text-tertiary,
+html:has([data-theme="graffiti"]) .tertiary-text,
+body[data-theme="graffiti"] .text-tertiary,
+body[data-theme="graffiti"] .tertiary-text {
+    color: var(--text-tertiary) !important;
+}
