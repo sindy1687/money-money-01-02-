@@ -2688,12 +2688,6 @@ button:active {
     margin-top: 2px;
 }
 
-/* 上一筆複製按鈕 */
-.copy-last-section {
-margin-bottom: 12px;
-display: flex;
-justify-content: center;
-}
 
 .metric-price-wrapper {
 display: flex;
@@ -2885,37 +2879,6 @@ width: 100%;
     }
 }
 
-.copy-last-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background: var(--bg-gradient-light);
-    border: 2px solid var(--color-primary-light);
-    border-radius: var(--radius-lg);
-    color: var(--color-primary);
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: var(--shadow-sm);
-}
-
-.copy-last-btn:hover {
-    background: var(--bg-gradient);
-    color: white;
-    border-color: var(--color-primary);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-primary);
-}
-
-.copy-last-icon {
-    font-size: 18px;
-}
-
-.copy-last-text {
-    font-weight: 600;
-}
 
 .category-section::-webkit-scrollbar {
     width: 4px;
@@ -16750,34 +16713,7 @@ transform: scale(0.99);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-.theme-custom-content input[type="color"] {
-    width: 60px;
-    height: 40px;
-    border: 2px solid var(--border-light);
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
 
-.theme-custom-content input[type="color"]:hover {
-    border-color: var(--color-primary);
-    transform: scale(1.05);
-}
-
-.theme-custom-content input[type="text"] {
-    padding: 10px 12px;
-    border: 2px solid var(--border-light);
-    border-radius: var(--radius-md);
-    font-size: var(--font-sm);
-    transition: all var(--transition-fast);
-    font-family: monospace;
-}
-
-.theme-custom-content input[type="text"]:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
-}
 
 .theme-custom-content button {
     transition: all var(--transition-fast);
@@ -20009,7 +19945,7 @@ transform: scale(0.99);
 .history-transaction-note {
     font-size: var(--font-xs) !important;
     margin-top: 4px !important;
-    color: var(--text-tertiary) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
     line-height: 1.4 !important;
     word-break: break-word !important;
 }
@@ -24088,390 +24024,6 @@ body {
     display: none;
 }
 
-/* ========== 秘術師主題樣式 ========== */
-:root[data-theme="enchanter"] {
-    --color-primary: #1a3a3a;
-    --color-primary-light: #2a4a4a;
-    --color-primary-lighter: #3a5a5a;
-    --color-primary-dark: #0f2f2f;
-    --color-primary-darker: #051f1f;
-    --color-secondary: #39ff14;
-    --color-secondary-light: #66ff33;
-    --color-secondary-lighter: #99ff66;
-    --color-accent: #32cd32;
-    --bg-primary: linear-gradient(135deg, rgba(26, 58, 58, 0.4) 0%, rgba(58, 90, 90, 0.3) 50%, rgba(57, 255, 20, 0.4) 100%);
-    --bg-gradient: linear-gradient(135deg, #1a3a3a 0%, #39ff14 100%);
-    --bg-gradient-light: linear-gradient(135deg, rgba(26, 58, 58, 0.3) 0%, rgba(57, 255, 20, 0.3) 100%);
-    --border-primary: #1a3a3a;
-    --border-secondary: #39ff14;
-    --shadow-primary: 0 2px 8px rgba(26, 58, 58, 0.25);
-    --shadow-primary-lg: 0 4px 12px rgba(26, 58, 58, 0.3);
-    --shadow-secondary: 0 2px 8px rgba(57, 255, 20, 0.25);
-    --color-primary-rgba-08: rgba(26, 58, 58, 0.08);
-    --color-primary-rgba-10: rgba(26, 58, 58, 0.1);
-    --color-primary-rgba-12: rgba(26, 58, 58, 0.12);
-    --color-primary-rgba-15: rgba(26, 58, 58, 0.15);
-    --color-primary-rgba-18: rgba(26, 58, 58, 0.18);
-    --color-primary-rgba-20: rgba(26, 58, 58, 0.2);
-    --color-primary-rgba-25: rgba(26, 58, 58, 0.25);
-    --color-primary-rgba-30: rgba(26, 58, 58, 0.3);
-    --color-primary-rgba-40: rgba(26, 58, 58, 0.4);
-    --color-primary-light-rgba-08: rgba(42, 74, 74, 0.08);
-    --color-primary-light-rgba-10: rgba(42, 74, 74, 0.1);
-    --color-primary-light-rgba-15: rgba(42, 74, 74, 0.15);
-    --color-primary-light-rgba-20: rgba(42, 74, 74, 0.2);
-    --color-primary-light-rgba-25: rgba(42, 74, 74, 0.25);
-    --color-primary-light-rgba-30: rgba(42, 74, 74, 0.3);
-    --color-secondary-rgba-08: rgba(57, 255, 20, 0.08);
-    --color-secondary-rgba-10: rgba(57, 255, 20, 0.1);
-    --color-secondary-rgba-15: rgba(57, 255, 20, 0.15);
-    --color-secondary-rgba-20: rgba(57, 255, 20, 0.2);
-    --color-secondary-rgba-25: rgba(57, 255, 20, 0.25);
-    --color-secondary-rgba-30: rgba(57, 255, 20, 0.3);
-    --color-secondary-rgba-40: rgba(57, 255, 20, 0.4);
-    --bg-card: rgba(18, 18, 18, 0.9);
-    --bg-light: rgba(30, 30, 30, 0.85);
-    --bg-lighter: rgba(40, 40, 40, 0.75);
-    --bg-soft: rgba(50, 50, 50, 0.65);
-    --text-primary: #8a9a5b;
-    --text-secondary: #ffd700;
-    --text-light: rgba(138, 154, 91, 0.9);
-    --action-side-text: rgba(255, 215, 0, 0.95);
-}
-
-:root[data-theme="enchanter"] body {
-    background: url("https://i.pinimg.com/1200x/88/01/f5/8801f51ecd5d4fa73e8bef1c314c2eab.jpg") center/cover no-repeat fixed;
-    background-color: #1a3a3a;
-    color: var(--text-primary);
-}
-
-:root[data-theme="enchanter"] body::before {
-    display: none;
-}
-
-:root[data-theme="enchanter"] .page-ledger {
-    background: transparent !important;
-    backdrop-filter: none !important;
-    box-shadow: none !important;
-}
-
-:root[data-theme="enchanter"] .page-input,
-:root[data-theme="enchanter"] .page-chart,
-:root[data-theme="enchanter"] .page-budget,
-:root[data-theme="enchanter"] .page-monthly-planner,
-:root[data-theme="enchanter"] .page-daily-budget,
-:root[data-theme="enchanter"] .page-settings,
-:root[data-theme="enchanter"] .page-category-manage,
-:root[data-theme="enchanter"] .page-investment,
-:root[data-theme="enchanter"] .page-wallet,
-:root[data-theme="enchanter"] .page-history,
-:root[data-theme="enchanter"] .page-planner {
-    background: transparent;
-    backdrop-filter: none;
-    box-shadow: none;
-}
-
-:root[data-theme="enchanter"] .card,
-:root[data-theme="enchanter"] .record-card,
-:root[data-theme="enchanter"] .ledger-card,
-:root[data-theme="enchanter"] .summary-card,
-:root[data-theme="enchanter"] .budget-card,
-:root[data-theme="enchanter"] .wallet-card,
-:root[data-theme="enchanter"] .chart-card,
-:root[data-theme="enchanter"] .investment-card {
-    background: rgba(18, 18, 18, 0.85);
-    border: 1px solid rgba(26, 58, 58, 0.4);
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(26, 58, 58, 0.2);
-    backdrop-filter: blur(10px);
-}
-
-:root[data-theme="enchanter"] .investment-card,
-:root[data-theme="enchanter"] .stock-item-card {
-    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-light) 25%, var(--color-primary-rgba-20) 50%, var(--bg-lighter) 75%, var(--bg-soft) 100%);
-    border: 1px solid var(--color-primary);
-    border-radius: 20px;
-    box-shadow: 
-        0 8px 24px rgba(26, 58, 58, 0.15),
-        inset 0 1px 0 rgba(57, 255, 20, 0.1),
-        0 0 30px var(--color-primary-rgba-15);
-}
-
-:root[data-theme="enchanter"] .investment-card::before,
-:root[data-theme="enchanter"] .stock-item-card::before {
-    background: linear-gradient(135deg, var(--color-primary-rgba-40) 0%, var(--color-primary-rgba-30) 55%, var(--color-primary-rgba-20) 100%);
-}
-
-/* 秘術師主題持股卡片文字顏色 */
-:root[data-theme="enchanter"] .stock-item-card {
-    color: var(--text-primary) !important;
-}
-
-:root[data-theme="enchanter"] .stock-item-card h1,
-:root[data-theme="enchanter"] .stock-item-card h2,
-:root[data-theme="enchanter"] .stock-item-card h3,
-:root[data-theme="enchanter"] .stock-item-card h4,
-:root[data-theme="enchanter"] .stock-item-card h5,
-:root[data-theme="enchanter"] .stock-item-card h6,
-:root[data-theme="enchanter"] .stock-item-card .title,
-:root[data-theme="enchanter"] .stock-item-card .subtitle,
-:root[data-theme="enchanter"] .stock-item-card .card-title,
-:root[data-theme="enchanter"] .stock-item-card .card-subtitle,
-:root[data-theme="enchanter"] .stock-item-card .stock-name {
-    color: var(--color-primary) !important;
-}
-
-:root[data-theme="enchanter"] .stock-item-card .text,
-:root[data-theme="enchanter"] .stock-item-card .description,
-:root[data-theme="enchanter"] .stock-item-card .content,
-:root[data-theme="enchanter"] .stock-item-card p,
-:root[data-theme="enchanter"] .stock-item-card span,
-:root[data-theme="enchanter"] .stock-item-card div {
-    color: var(--text-primary) !important;
-}
-
-:root[data-theme="enchanter"] .stock-item-card .highlight,
-:root[data-theme="enchanter"] .stock-item-card .accent,
-:root[data-theme="enchanter"] .stock-item-card .primary-text {
-    color: var(--color-secondary) !important;
-}
-
-:root[data-theme="enchanter"] .stock-item-card .secondary-text,
-:root[data-theme="enchanter"] .stock-item-card .muted-text,
-:root[data-theme="enchanter"] .stock-item-card .stock-code {
-    color: var(--text-secondary) !important;
-}
-
-/* 管理投資卡片頁面樣式 */
-:root[data-theme="enchanter"] .page-manage-investment {
-    background: transparent !important;
-}
-
-:root[data-theme="enchanter"] .manage-investment-card {
-    background: rgba(18, 18, 18, 0.85);
-    border: 2px solid rgba(26, 58, 58, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
-    backdrop-filter: blur(10px);
-    color: var(--text-primary) !important;
-}
-
-:root[data-theme="enchanter"] .manage-investment-card h1,
-:root[data-theme="enchanter"] .manage-investment-card h2,
-:root[data-theme="enchanter"] .manage-investment-card h3,
-:root[data-theme="enchanter"] .manage-investment-card h4,
-:root[data-theme="enchanter"] .manage-investment-card h5,
-:root[data-theme="enchanter"] .manage-investment-card h6,
-:root[data-theme="enchanter"] .manage-investment-card .title,
-:root[data-theme="enchanter"] .manage-investment-card .subtitle,
-:root[data-theme="enchanter"] .manage-investment-card .card-title,
-:root[data-theme="enchanter"] .manage-investment-card .card-subtitle {
-    color: var(--color-primary) !important;
-}
-
-:root[data-theme="enchanter"] .manage-investment-card .text,
-:root[data-theme="enchanter"] .manage-investment-card .description,
-:root[data-theme="enchanter"] .manage-investment-card .content,
-:root[data-theme="enchanter"] .manage-investment-card p,
-:root[data-theme="enchanter"] .manage-investment-card span,
-:root[data-theme="enchanter"] .manage-investment-card div {
-    color: var(--text-primary) !important;
-}
-
-:root[data-theme="enchanter"] .manage-investment-card .highlight,
-:root[data-theme="enchanter"] .manage-investment-card .accent,
-:root[data-theme="enchanter"] .manage-investment-card .primary-text {
-    color: var(--color-secondary) !important;
-}
-
-:root[data-theme="enchanter"] .manage-investment-card .secondary-text,
-:root[data-theme="enchanter"] .manage-investment-card .muted-text {
-    color: var(--text-secondary) !important;
-}
-
-:root[data-theme="enchanter"] .manage-investment-card .label,
-:root[data-theme="enchanter"] .manage-investment-card .form-label {
-    color: var(--color-primary) !important;
-}
-
-:root[data-theme="enchanter"] .manage-investment-card .value,
-:root[data-theme="enchanter"] .manage-investment-card .amount {
-    color: var(--color-accent) !important;
-}
-
-/* 年度報告頁面樣式 */
-:root[data-theme="enchanter"] .page-annual-report {
-    background: transparent !important;
-}
-
-:root[data-theme="enchanter"] .annual-report-card {
-    background: rgba(18, 18, 18, 0.85);
-    border: 2px solid rgba(26, 58, 58, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
-    backdrop-filter: blur(10px);
-    color: var(--text-primary) !important;
-}
-
-/* 關於記帳本頁面樣式 */
-:root[data-theme="enchanter"] .page-about {
-    background: transparent !important;
-}
-
-:root[data-theme="enchanter"] .about-card {
-    background: rgba(18, 18, 18, 0.85);
-    border: 2px solid rgba(26, 58, 58, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
-    backdrop-filter: blur(10px);
-    color: var(--text-primary) !important;
-}
-
-/* 記帳日記頁面樣式 */
-:root[data-theme="enchanter"] .page-diary {
-    background: transparent !important;
-}
-
-:root[data-theme="enchanter"] .diary-card {
-    background: rgba(18, 18, 18, 0.85);
-    border: 2px solid rgba(26, 58, 58, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
-    backdrop-filter: blur(10px);
-    color: var(--text-primary) !important;
-}
-
-/* 分期網頁樣式 */
-:root[data-theme="enchanter"] .page-installment {
-    background: transparent !important;
-}
-
-:root[data-theme="enchanter"] .installment-card {
-    background: rgba(18, 18, 18, 0.85);
-    border: 2px solid rgba(26, 58, 58, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
-    backdrop-filter: blur(10px);
-    color: var(--text-primary) !important;
-}
-
-/* 定期定額卡片樣式 */
-:root[data-theme="enchanter"] .recurring-deposit-card {
-    background: rgba(18, 18, 18, 0.85);
-    border: 2px solid rgba(26, 58, 58, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
-    backdrop-filter: blur(10px);
-    color: var(--text-primary) !important;
-}
-
-/* 每月規劃卡片樣式 */
-:root[data-theme="enchanter"] .monthly-planning-card {
-    background: url("https://i.pinimg.com/736x/8a/42/0b/8a420b2c26a91187da871ef11f859731.jpg") center/cover !important;
-    background-blend-mode: overlay !important;
-    background-color: rgba(26, 58, 58, 0.3) !important;
-    border: 2px solid rgba(26, 58, 58, 0.4) !important;
-    border-radius: 20px !important;
-    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15) !important;
-    backdrop-filter: blur(10px) !important;
-    color: var(--text-primary) !important;
-}
-
-/* 錢包預算設定卡片樣式 */
-:root[data-theme="enchanter"] .wallet-budget-card {
-    background: url("https://i.pinimg.com/1200x/da/af/29/daaf2933df91dc69201590262a495c01.jpg") center/cover !important;
-    background-blend-mode: overlay !important;
-    background-color: rgba(26, 58, 58, 0.3) !important;
-    border: 2px solid rgba(26, 58, 58, 0.4) !important;
-    border-radius: 20px !important;
-    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15) !important;
-    backdrop-filter: blur(10px) !important;
-    color: var(--text-primary) !important;
-}
-
-/* 記帳卡片樣式 */
-:root[data-theme="enchanter"] .ledger-card {
-    background: url("https://i.pinimg.com/1200x/da/af/29/daaf2933df91dc69201590262a495c01.jpg") center/cover !important;
-    background-blend-mode: overlay !important;
-    background-color: rgba(26, 58, 58, 0.3) !important;
-    border: 2px solid rgba(26, 58, 58, 0.4) !important;
-    border-radius: 20px !important;
-    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15) !important;
-    backdrop-filter: blur(10px) !important;
-    color: var(--text-primary) !important;
-}
-
-/* 投資卡片樣式 */
-:root[data-theme="enchanter"] .investment-card {
-    background: url("https://i.pinimg.com/736x/9f/2c/4d/9f2c4d979cd3ea629ad900d9b838b38f.jpg") center/cover !important;
-    background-blend-mode: overlay !important;
-    background-color: rgba(26, 58, 58, 0.3) !important;
-    border: 2px solid rgba(26, 58, 58, 0.4) !important;
-    border-radius: 20px !important;
-    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15) !important;
-    backdrop-filter: blur(10px) !important;
-    color: var(--text-primary) !important;
-}
-
-/* 持有中買入卡片樣式 */
-:root[data-theme="enchanter"] .buy-card {
-    background: rgba(18, 18, 18, 0.85);
-    border: 2px solid rgba(26, 58, 58, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
-    backdrop-filter: blur(10px);
-    color: var(--text-primary) !important;
-}
-
-/* 賣出卡片樣式 */
-:root[data-theme="enchanter"] .sell-card {
-    background: rgba(18, 18, 18, 0.85);
-    border: 2px solid rgba(26, 58, 58, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
-    backdrop-filter: blur(10px);
-    color: var(--text-primary) !important;
-}
-
-/* 股息卡片樣式 */
-:root[data-theme="enchanter"] .dividend-card {
-    background: rgba(18, 18, 18, 0.85);
-    border: 2px solid rgba(26, 58, 58, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15);
-    backdrop-filter: blur(10px);
-    color: var(--text-primary) !important;
-}
-
-/* 返回按鈕樣式 */
-:root[data-theme="enchanter"] .back-btn {
-    background: var(--color-primary) !important;
-    color: var(--text-primary) !important;
-    border: 1px solid var(--color-secondary) !important;
-}
-
-:root[data-theme="enchanter"] .back-btn:hover {
-    background: var(--color-secondary) !important;
-    color: var(--color-primary) !important;
-}
-
-/* 小森對話框樣式 */
-:root[data-theme="enchanter"] .komori-dialog {
-    background: rgba(18, 18, 18, 0.95) !important;
-    border: 2px solid var(--color-primary) !important;
-    border-radius: 20px !important;
-    box-shadow: 0 8px 24px rgba(26, 58, 58, 0.15) !important;
-    color: var(--text-primary) !important;
-}
-
-:root[data-theme="enchanter"] .komori-dialog .dialog-title {
-    color: var(--color-primary) !important;
-}
-
-:root[data-theme="enchanter"] .komori-dialog .dialog-content {
-    color: var(--text-primary) !important;
-}
-
 :root[data-theme="meow"] .page-ledger {
     background: transparent !important;
     backdrop-filter: none !important;
@@ -24955,4 +24507,912 @@ body {
 
 :root[data-theme="fruit"] *::-webkit-scrollbar-thumb:hover {
     background: var(--color-primary-dark);
+}
+
+/* ========== 華麗古風主題樣式 ========== */
+:root[data-theme="elegant"] {
+    --color-primary: #A52A2A;
+    --color-primary-light: #CD5C5C;
+    --color-primary-lighter: #E9967A;
+    --color-primary-dark: #8B1A1A;
+    --color-secondary: #FFDAB9;
+    --color-secondary-light: #FFE4B5;
+    --color-secondary-dark: #DEB887;
+    --color-accent: #DAA520;
+    --color-accent-light: #F0E68C;
+    --color-accent-dark: #B8860B;
+    
+    /* 背景顏色 */
+    --bg-primary: linear-gradient(135deg, #1A1A1A 0%, #2C1810 45%, #3D2817 100%);
+    --bg-gradient: linear-gradient(135deg, rgba(165, 42, 42, 0.25) 0%, rgba(26, 26, 26, 0.9) 70%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(26, 26, 26, 0.92) 0%, rgba(44, 24, 16, 0.9) 60%, rgba(165, 42, 42, 0.25) 100%);
+    --bg-white: rgba(26, 26, 26, 0.85);
+    --bg-light: rgba(44, 24, 16, 0.75);
+    --bg-lighter: rgba(61, 40, 23, 0.65);
+    --bg-soft: rgba(26, 26, 26, 0.95);
+    --bg-card: rgba(255, 218, 185, 0.15);
+    --bg-overlay: rgba(26, 26, 26, 0.8);
+    
+    /* 文字顏色 */
+    --text-primary: #FFFFFF;
+    --text-secondary: #D3D3D3;
+    --text-muted: #A9A9A9;
+    --text-white: #FFFFFF;
+    --text-dark: #333333;
+    
+    /* 邊框顏色 */
+    --border-primary: #A52A2A;
+    --border-light: rgba(165, 42, 42, 0.3);
+    --border-medium: rgba(165, 42, 42, 0.5);
+    --border-dark: rgba(165, 42, 42, 0.8);
+    
+    /* 陰影效果 */
+    --shadow-primary: 0 12px 32px rgba(165, 42, 42, 0.25);
+    --shadow-primary-lg: 0 18px 40px rgba(165, 42, 42, 0.35);
+    --shadow-card: 0 8px 24px rgba(26, 26, 26, 0.4);
+    
+    /* RGBA 透明度變數 */
+    --color-primary-rgba-08: rgba(165, 42, 42, 0.08);
+    --color-primary-rgba-10: rgba(165, 42, 42, 0.10);
+    --color-primary-rgba-12: rgba(165, 42, 42, 0.12);
+    --color-primary-rgba-15: rgba(165, 42, 42, 0.15);
+    --color-primary-rgba-20: rgba(165, 42, 42, 0.20);
+    --color-primary-rgba-25: rgba(165, 42, 42, 0.25);
+    --color-primary-rgba-30: rgba(165, 42, 42, 0.30);
+    --color-primary-rgba-40: rgba(165, 42, 42, 0.40);
+    --color-primary-light-rgba-08: rgba(205, 92, 92, 0.08);
+    --color-primary-light-rgba-10: rgba(205, 92, 92, 0.10);
+    --color-primary-light-rgba-12: rgba(205, 92, 92, 0.12);
+    --color-primary-light-rgba-15: rgba(205, 92, 92, 0.15);
+    --color-primary-light-rgba-20: rgba(205, 92, 92, 0.20);
+    --color-primary-light-rgba-25: rgba(205, 92, 92, 0.25);
+    --color-primary-light-rgba-30: rgba(205, 92, 92, 0.30);
+    --color-primary-light-rgba-40: rgba(205, 92, 92, 0.40);
+    --color-secondary-rgba-08: rgba(255, 218, 185, 0.08);
+    --color-secondary-rgba-10: rgba(255, 218, 185, 0.10);
+    --color-secondary-rgba-15: rgba(255, 218, 185, 0.15);
+    --color-secondary-rgba-20: rgba(255, 218, 185, 0.20);
+    --color-secondary-rgba-25: rgba(255, 218, 185, 0.25);
+    --color-secondary-rgba-30: rgba(255, 218, 185, 0.30);
+    --color-accent-rgba-08: rgba(218, 165, 32, 0.08);
+    --color-accent-rgba-10: rgba(218, 165, 32, 0.10);
+    --color-accent-rgba-15: rgba(218, 165, 32, 0.15);
+    --color-accent-rgba-20: rgba(218, 165, 32, 0.20);
+    --color-accent-rgba-25: rgba(218, 165, 32, 0.25);
+    --color-accent-rgba-30: rgba(218, 165, 32, 0.30);
+    
+    /* 其他顏色 */
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+    
+    /* 表格顏色 */
+    --table-header-bg: rgba(165, 42, 42, 0.1);
+    --table-row-hover: rgba(165, 42, 42, 0.05);
+    --table-border-color: rgba(165, 42, 42, 0.2);
+    
+    /* 按鈕顏色 */
+    --btn-primary-bg: var(--color-primary);
+    --btn-primary-hover: var(--color-primary-dark);
+    --btn-secondary-bg: var(--color-secondary);
+    --btn-secondary-hover: var(--color-secondary-dark);
+    
+    /* 特殊效果顏色 */
+    --action-side-bg: rgba(165, 42, 42, 0.15);
+    --action-side-text: rgba(255, 255, 255, 0.96);
+}
+
+:root[data-theme="elegant"] body {
+    background: url("https://i.pinimg.com/1200x/26/a9/18/26a9180e011176e4795f5fe21ab761ea.jpg") center/cover no-repeat fixed;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+:root[data-theme="elegant"] body::before {
+    display: none;
+}
+
+/* 頁面背景透明化 */
+:root[data-theme="elegant"] .page-ledger,
+:root[data-theme="elegant"] .page-investment,
+:root[data-theme="elegant"] .page-wallet,
+:root[data-theme="elegant"] .page-history,
+:root[data-theme="elegant"] .page-planner {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+/* 卡片樣式 */
+:root[data-theme="elegant"] .budget-card,
+:root[data-theme="elegant"] .wallet-card,
+:root[data-theme="elegant"] .chart-card,
+:root[data-theme="elegant"] .investment-card {
+    background: rgba(26, 26, 26, 0.85);
+    border: 2px solid rgba(165, 42, 42, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(165, 42, 42, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="elegant"] .investment-card,
+:root[data-theme="elegant"] .stock-item-card {
+    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-light) 25%, var(--color-primary-rgba-20) 50%, var(--bg-lighter) 75%, var(--bg-soft) 100%);
+    border: 2px solid var(--color-primary);
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3);
+}
+
+:root[data-theme="elegant"] .investment-card::before,
+:root[data-theme="elegant"] .stock-item-card::before {
+    background: linear-gradient(135deg, var(--color-primary-rgba-40) 0%, var(--color-primary-rgba-30) 55%, var(--color-primary-rgba-20) 100%);
+}
+
+/* 持股卡片文字顏色 */
+:root[data-theme="elegant"] .stock-item-card {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="elegant"] .stock-item-card .title,
+:root[data-theme="elegant"] .stock-item-card .header,
+:root[data-theme="elegant"] .stock-item-card .card-title,
+:root[data-theme="elegant"] .stock-item-card .card-subtitle,
+:root[data-theme="elegant"] .stock-item-card .stock-name {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="elegant"] .stock-item-card .subtitle,
+:root[data-theme="elegant"] .stock-item-card .card-title,
+:root[data-theme="elegant"] .stock-item-card .card-subtitle,
+:root[data-theme="elegant"] .stock-item-card .stock-name {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="elegant"] .stock-item-card .content,
+:root[data-theme="elegant"] .stock-item-card p,
+:root[data-theme="elegant"] .stock-item-card span,
+:root[data-theme="elegant"] .stock-item-card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="elegant"] .stock-item-card .highlight,
+:root[data-theme="elegant"] .stock-item-card .accent,
+:root[data-theme="elegant"] .stock-item-card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="elegant"] .stock-item-card .secondary-text,
+:root[data-theme="elegant"] .stock-item-card .muted-text,
+:root[data-theme="elegant"] .stock-item-card .stock-code {
+    color: var(--text-secondary) !important;
+}
+
+/* 管理投資卡片頁面樣式 */
+:root[data-theme="elegant"] .page-manage-investment {
+    background: transparent !important;
+}
+
+:root[data-theme="elegant"] .manage-investment-card {
+    background: rgba(26, 26, 26, 0.85);
+    border: 2px solid rgba(165, 42, 42, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="elegant"] .manage-investment-card .title,
+:root[data-theme="elegant"] .manage-investment-card .subtitle,
+:root[data-theme="elegant"] .manage-investment-card .card-title,
+:root[data-theme="elegant"] .manage-investment-card .card-subtitle {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="elegant"] .manage-investment-card .content,
+:root[data-theme="elegant"] .manage-investment-card p,
+:root[data-theme="elegant"] .manage-investment-card span,
+:root[data-theme="elegant"] .manage-investment-card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="elegant"] .manage-investment-card .highlight,
+:root[data-theme="elegant"] .manage-investment-card .accent,
+:root[data-theme="elegant"] .manage-investment-card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="elegant"] .manage-investment-card .secondary-text,
+:root[data-theme="elegant"] .manage-investment-card .muted-text {
+    color: var(--text-secondary) !important;
+}
+
+:root[data-theme="elegant"] .manage-investment-card .label,
+:root[data-theme="elegant"] .manage-investment-card .form-label {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="elegant"] .manage-investment-card .value,
+:root[data-theme="elegant"] .manage-investment-card .amount {
+    color: var(--color-accent) !important;
+}
+
+/* 年度報告頁面樣式 */
+:root[data-theme="elegant"] .page-annual-report {
+    background: transparent !important;
+}
+
+:root[data-theme="elegant"] .annual-report-card {
+    background: rgba(26, 26, 26, 0.85);
+    border: 2px solid rgba(165, 42, 42, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+/* 關於記帳本頁面樣式 */
+:root[data-theme="elegant"] .page-about {
+    background: transparent !important;
+}
+
+:root[data-theme="elegant"] .about-card {
+    background: rgba(26, 26, 26, 0.85);
+    border: 2px solid rgba(165, 42, 42, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+/* 記帳日記頁面樣式 */
+:root[data-theme="elegant"] .page-diary {
+    background: transparent !important;
+}
+
+:root[data-theme="elegant"] .diary-card {
+    background: rgba(26, 26, 26, 0.85);
+    border: 2px solid rgba(165, 42, 42, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+/* 分期網頁樣式 */
+:root[data-theme="elegant"] .page-installment {
+    background: transparent !important;
+}
+
+:root[data-theme="elegant"] .installment-card {
+    background: rgba(26, 26, 26, 0.85);
+    border: 2px solid rgba(165, 42, 42, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+/* 小森對話框主題適配 */
+:root[data-theme="elegant"] .mori-dialog-box {
+    background: rgba(26, 26, 26, 0.9) !important;
+    border: 2px solid rgba(165, 42, 42, 0.4) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="elegant"] .mori-dialog-content {
+    background: transparent !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="elegant"] .mori-message {
+    color: var(--text-primary) !important;
+}
+
+/* 返回按鈕樣式 */
+:root[data-theme="elegant"] .dca-setup-back-btn,
+:root[data-theme="elegant"] .stock-detail-back-btn,
+:root[data-theme="elegant"] .history-close-btn,
+:root[data-theme="elegant"] .advisor-close-btn {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border: 1px solid var(--color-primary) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 6px 16px rgba(165, 42, 42, 0.3) !important;
+}
+
+:root[data-theme="elegant"] .dca-setup-back-btn:hover,
+:root[data-theme="elegant"] .stock-detail-back-btn:hover,
+:root[data-theme="elegant"] .history-close-btn:hover,
+:root[data-theme="elegant"] .advisor-close-btn:hover {
+    background: var(--color-primary-dark) !important;
+    transform: scale(1.05) !important;
+}
+
+/* 定期定額頁面樣式 */
+:root[data-theme="elegant"] .page-dca-management,
+:root[data-theme="elegant"] .page-dca-setup {
+    background: transparent !important;
+}
+
+:root[data-theme="elegant"] .dca-card,
+:root[data-theme="elegant"] .dca-setup-card {
+    background: rgba(26, 26, 26, 0.85);
+    border: 2px solid rgba(165, 42, 42, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+/* 模態框樣式 */
+:root[data-theme="elegant"] .account-modal-content,
+:root[data-theme="elegant"] .emoji-modal-content,
+:root[data-theme="elegant"] .crop-modal-content,
+:root[data-theme="elegant"] .history-modal-content {
+    background: rgba(26, 26, 26, 0.95);
+    border: 2px solid rgba(165, 42, 42, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 20px 48px rgba(165, 42, 42, 0.35);
+}
+
+:root[data-theme="elegant"] .input-section {
+    background: rgba(26, 26, 26, 0.92);
+    border: 2px solid rgba(165, 42, 42, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 -8px 32px rgba(165, 42, 42, 0.25);
+}
+
+:root[data-theme="elegant"] .bottom-nav {
+    background: rgba(26, 26, 26, 0.9) !important;
+    border-top: 2px solid rgba(165, 42, 42, 0.4) !important;
+    backdrop-filter: blur(14px);
+}
+
+:root[data-theme="elegant"] .nav-item.active {
+    background: rgba(165, 42, 42, 0.25);
+    box-shadow: 0 8px 20px rgba(165, 42, 42, 0.3);
+}
+
+/* 表單元素樣式 */
+:root[data-theme="elegant"] .form-input,
+:root[data-theme="elegant"] .form-select,
+:root[data-theme="elegant"] .form-textarea,
+:root[data-theme="elegant"] .note-input {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 2px solid rgba(165, 42, 42, 0.3) !important;
+    color: var(--text-primary) !important;
+    border-radius: 12px !important;
+}
+
+:root[data-theme="elegant"] .form-input:focus,
+:root[data-theme="elegant"] .form-select:focus,
+:root[data-theme="elegant"] .form-textarea:focus,
+:root[data-theme="elegant"] .note-input:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 3px rgba(165, 42, 42, 0.25) !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+:root[data-theme="elegant"] .header-section {
+    background: rgba(26, 26, 26, 0.9) !important;
+    border-bottom: 2px solid rgba(165, 42, 42, 0.3) !important;
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="elegant"] .tab-btn {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(165, 42, 42, 0.3) !important;
+    color: var(--text-primary) !important;
+    border-radius: 12px !important;
+}
+
+:root[data-theme="elegant"] .tab-btn.active {
+    background: rgba(165, 42, 42, 0.3) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 6px 16px rgba(165, 42, 42, 0.3) !important;
+}
+
+:root[data-theme="elegant"] .tab-btn:hover {
+    background: rgba(165, 42, 42, 0.2) !important;
+    border-color: rgba(165, 42, 42, 0.4) !important;
+}
+
+/* 計算機按鈕樣式 */
+:root[data-theme="elegant"] .key-btn {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 2px solid rgba(165, 42, 42, 0.3) !important;
+    color: var(--text-primary) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 6px 16px rgba(165, 42, 42, 0.2) !important;
+}
+
+:root[data-theme="elegant"] .key-btn:hover {
+    background: rgba(165, 42, 42, 0.3) !important;
+    border-color: rgba(165, 42, 42, 0.4) !important;
+    box-shadow: 0 8px 20px rgba(165, 42, 42, 0.3) !important;
+}
+
+:root[data-theme="elegant"] .key-btn:active {
+    background: rgba(165, 42, 42, 0.4) !important;
+    transform: scale(0.95);
+}
+
+:root[data-theme="elegant"] .key-btn.operator {
+    background: rgba(165, 42, 42, 0.7) !important;
+    color: var(--text-white) !important;
+}
+
+:root[data-theme="elegant"] .key-btn.equal {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+    color: var(--text-white) !important;
+}
+
+:root[data-theme="elegant"] .key-btn.delete {
+    background: rgba(220, 53, 69, 0.8) !important;
+    color: var(--text-white) !important;
+}
+
+/* FAB按鈕樣式 */
+:root[data-theme="elegant"] .fab-btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%) !important;
+    box-shadow: 0 12px 32px rgba(165, 42, 42, 0.4) !important;
+}
+
+:root[data-theme="elegant"] .fab-btn:hover {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%) !important;
+    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.5) !important;
+}
+
+/* 確保所有滾動條都使用主題顏色 */
+:root[data-theme="elegant"] * {
+    scrollbar-color: var(--color-primary) rgba(26, 26, 26, 0.3);
+}
+
+:root[data-theme="elegant"] *::-webkit-scrollbar {
+    width: 8px;
+}
+
+:root[data-theme="elegant"] *::-webkit-scrollbar-track {
+    background: rgba(26, 26, 26, 0.3);
+    border-radius: 4px;
+}
+
+:root[data-theme="elegant"] *::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+}
+
+:root[data-theme="elegant"] *::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-dark);
+}
+
+/* ========== 預算設定卡片文字淺色樣式 ========== */
+/* 為所有主題統一設置預算標籤文字為淺色 */
+.budget-summary-label {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+.budget-detail-label {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+.stat-label {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+.dividend-stat-label {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+.account-info {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+.account-item-name {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+.account-item-currency {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+.tab-text {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+.portfolio-shares {
+    color: var(--color-accent) !important;
+    font-weight: 800 !important;
+    font-size: 18px !important;
+    background: linear-gradient(135deg, var(--color-accent-rgba-10) 0%, var(--color-accent-rgba-05) 100%) !important;
+    border: 2px solid var(--color-accent-rgba-20) !important;
+    border-radius: 20px !important;
+    padding: 8px 16px !important;
+    display: inline-block !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: 
+        0 4px 12px var(--color-accent-rgba-15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+.portfolio-shares::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.portfolio-shares:hover::before {
+    left: 100%;
+}
+
+.stock-grid-card-tag--shares {
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    color: var(--color-accent) !important;
+    background: linear-gradient(145deg, var(--color-accent-rgba-15) 0%, var(--color-accent-rgba-25) 50%, var(--color-accent-rgba-15) 100%) !important;
+    border: 2px solid var(--color-accent-rgba-30) !important;
+    border-radius: 12px !important;
+    padding: 6px 12px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: 
+        0 3px 10px var(--color-accent-rgba-20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    transform: translateY(0) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.stock-grid-card-tag--shares::before {
+    content: '📊';
+    font-size: 14px !important;
+    opacity: 0.8 !important;
+}
+
+.stock-grid-card-tag--shares:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 
+        0 6px 20px var(--color-accent-rgba-30),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+    border-color: var(--color-accent-rgba-40) !important;
+}
+
+/* 各主題特定調整 */
+:root[data-theme="pink"] .budget-summary-label,
+:root[data-theme="pink"] .budget-detail-label,
+:root[data-theme="pink"] .stat-label,
+:root[data-theme="pink"] .dividend-stat-label,
+:root[data-theme="pink"] .account-info,
+:root[data-theme="pink"] .account-item-name,
+:root[data-theme="pink"] .account-item-currency,
+:root[data-theme="pink"] .tab-text {
+    color: rgba(255, 105, 180, 0.8) !important;
+}
+
+:root[data-theme="pink"] .portfolio-shares,
+:root[data-theme="pink"] .stock-grid-card-tag--shares {
+    color: var(--color-accent) !important;
+    background: linear-gradient(145deg, rgba(255, 105, 180, 0.15) 0%, rgba(255, 105, 180, 0.25) 50%, rgba(255, 105, 180, 0.15) 100%) !important;
+    border: 2px solid rgba(255, 105, 180, 0.35) !important;
+    box-shadow: 
+        0 4px 15px rgba(255, 105, 180, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+:root[data-theme="pink"] .portfolio-shares:hover,
+:root[data-theme="pink"] .stock-grid-card-tag--shares:hover {
+    border-color: rgba(255, 105, 180, 0.5) !important;
+    box-shadow: 
+        0 8px 25px rgba(255, 105, 180, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+:root[data-theme="blue"] .budget-summary-label,
+:root[data-theme="blue"] .budget-detail-label,
+:root[data-theme="blue"] .stat-label,
+:root[data-theme="blue"] .dividend-stat-label,
+:root[data-theme="blue"] .account-info,
+:root[data-theme="blue"] .account-item-name,
+:root[data-theme="blue"] .account-item-currency,
+:root[data-theme="blue"] .tab-text {
+    color: rgba(74, 144, 226, 0.8) !important;
+}
+
+:root[data-theme="blue"] .portfolio-shares,
+:root[data-theme="blue"] .stock-grid-card-tag--shares {
+    color: var(--color-accent) !important;
+    background: linear-gradient(145deg, rgba(74, 144, 226, 0.15) 0%, rgba(74, 144, 226, 0.25) 50%, rgba(74, 144, 226, 0.15) 100%) !important;
+    border: 2px solid rgba(74, 144, 226, 0.35) !important;
+    box-shadow: 
+        0 4px 15px rgba(74, 144, 226, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+:root[data-theme="blue"] .portfolio-shares:hover,
+:root[data-theme="blue"] .stock-grid-card-tag--shares:hover {
+    border-color: rgba(74, 144, 226, 0.5) !important;
+    box-shadow: 
+        0 8px 25px rgba(74, 144, 226, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+:root[data-theme="green"] .budget-summary-label,
+:root[data-theme="green"] .budget-detail-label,
+:root[data-theme="green"] .stat-label,
+:root[data-theme="green"] .dividend-stat-label,
+:root[data-theme="green"] .account-info,
+:root[data-theme="green"] .account-item-name,
+:root[data-theme="green"] .account-item-currency,
+:root[data-theme="green"] .tab-text {
+    color: rgba(76, 175, 80, 0.8) !important;
+}
+
+:root[data-theme="green"] .portfolio-shares,
+:root[data-theme="green"] .stock-grid-card-tag--shares {
+    color: var(--color-accent) !important;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2) 0%, rgba(76, 175, 80, 0.15) 100%) !important;
+    border: 1px solid rgba(76, 175, 80, 0.3) !important;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.25) !important;
+}
+
+:root[data-theme="purple"] .budget-summary-label,
+:root[data-theme="purple"] .budget-detail-label,
+:root[data-theme="purple"] .stat-label,
+:root[data-theme="purple"] .dividend-stat-label,
+:root[data-theme="purple"] .account-info,
+:root[data-theme="purple"] .account-item-name,
+:root[data-theme="purple"] .account-item-currency,
+:root[data-theme="purple"] .tab-text {
+    color: rgba(156, 39, 176, 0.8) !important;
+}
+
+:root[data-theme="orange"] .budget-summary-label,
+:root[data-theme="orange"] .budget-detail-label,
+:root[data-theme="orange"] .stat-label,
+:root[data-theme="orange"] .dividend-stat-label,
+:root[data-theme="orange"] .account-info,
+:root[data-theme="orange"] .account-item-name,
+:root[data-theme="orange"] .account-item-currency,
+:root[data-theme="orange"] .tab-text {
+    color: rgba(255, 152, 0, 0.8) !important;
+}
+
+:root[data-theme="red"] .budget-summary-label,
+:root[data-theme="red"] .budget-detail-label,
+:root[data-theme="red"] .stat-label,
+:root[data-theme="red"] .dividend-stat-label,
+:root[data-theme="red"] .account-info,
+:root[data-theme="red"] .account-item-name,
+:root[data-theme="red"] .account-item-currency,
+:root[data-theme="red"] .tab-text {
+    color: rgba(229, 57, 53, 0.8) !important;
+}
+
+:root[data-theme="yellow"] .budget-summary-label,
+:root[data-theme="yellow"] .budget-detail-label,
+:root[data-theme="yellow"] .stat-label,
+:root[data-theme="yellow"] .dividend-stat-label,
+:root[data-theme="yellow"] .account-info,
+:root[data-theme="yellow"] .account-item-name,
+:root[data-theme="yellow"] .account-item-currency,
+:root[data-theme="yellow"] .tab-text {
+    color: rgba(251, 192, 45, 0.8) !important;
+}
+
+:root[data-theme="cyan"] .budget-summary-label,
+:root[data-theme="cyan"] .budget-detail-label,
+:root[data-theme="cyan"] .stat-label,
+:root[data-theme="cyan"] .dividend-stat-label,
+:root[data-theme="cyan"] .account-info,
+:root[data-theme="cyan"] .account-item-name,
+:root[data-theme="cyan"] .account-item-currency,
+:root[data-theme="cyan"] .tab-text {
+    color: rgba(0, 188, 212, 0.8) !important;
+}
+
+:root[data-theme="star"] .budget-summary-label,
+:root[data-theme="star"] .budget-detail-label,
+:root[data-theme="star"] .stat-label,
+:root[data-theme="star"] .dividend-stat-label,
+:root[data-theme="star"] .account-info,
+:root[data-theme="star"] .account-item-name,
+:root[data-theme="star"] .account-item-currency,
+:root[data-theme="star"] .tab-text {
+    color: rgba(139, 124, 246, 0.8) !important;
+}
+
+:root[data-theme="forest"] .budget-summary-label,
+:root[data-theme="forest"] .budget-detail-label,
+:root[data-theme="forest"] .stat-label,
+:root[data-theme="forest"] .dividend-stat-label,
+:root[data-theme="forest"] .account-info,
+:root[data-theme="forest"] .account-item-name,
+:root[data-theme="forest"] .account-item-currency,
+:root[data-theme="forest"] .tab-text {
+    color: rgba(47, 133, 90, 0.8) !important;
+}
+
+:root[data-theme="totoro"] .budget-summary-label,
+:root[data-theme="totoro"] .budget-detail-label,
+:root[data-theme="totoro"] .stat-label,
+:root[data-theme="totoro"] .dividend-stat-label,
+:root[data-theme="totoro"] .account-info,
+:root[data-theme="totoro"] .account-item-name,
+:root[data-theme="totoro"] .account-item-currency,
+:root[data-theme="totoro"] .tab-text {
+    color: rgba(70, 130, 180, 0.7) !important;
+}
+
+:root[data-theme="noface"] .budget-summary-label,
+:root[data-theme="noface"] .budget-detail-label,
+:root[data-theme="noface"] .stat-label,
+:root[data-theme="noface"] .dividend-stat-label,
+:root[data-theme="noface"] .account-info,
+:root[data-theme="noface"] .account-item-name,
+:root[data-theme="noface"] .account-item-currency,
+:root[data-theme="noface"] .tab-text {
+    color: rgba(246, 195, 67, 0.7) !important;
+}
+
+:root[data-theme="demonslayer"] .budget-summary-label,
+:root[data-theme="demonslayer"] .budget-detail-label,
+:root[data-theme="demonslayer"] .stat-label,
+:root[data-theme="demonslayer"] .dividend-stat-label,
+:root[data-theme="demonslayer"] .account-info,
+:root[data-theme="demonslayer"] .account-item-name,
+:root[data-theme="demonslayer"] .account-item-currency,
+:root[data-theme="demonslayer"] .tab-text {
+    color: rgba(0, 194, 209, 0.7) !important;
+}
+
+:root[data-theme="neon"] .budget-summary-label,
+:root[data-theme="neon"] .budget-detail-label,
+:root[data-theme="neon"] .stat-label,
+:root[data-theme="neon"] .dividend-stat-label,
+:root[data-theme="neon"] .account-info,
+:root[data-theme="neon"] .account-item-name,
+:root[data-theme="neon"] .account-item-currency,
+:root[data-theme="neon"] .tab-text {
+    color: rgba(124, 58, 237, 0.7) !important;
+}
+
+:root[data-theme="money"] .budget-summary-label,
+:root[data-theme="money"] .budget-detail-label,
+:root[data-theme="money"] .stat-label,
+:root[data-theme="money"] .dividend-stat-label,
+:root[data-theme="money"] .account-info,
+:root[data-theme="money"] .account-item-name,
+:root[data-theme="money"] .account-item-currency,
+:root[data-theme="money"] .tab-text {
+    color: rgba(22, 244, 154, 0.7) !important;
+}
+
+:root[data-theme="peach"] .budget-summary-label,
+:root[data-theme="peach"] .budget-detail-label,
+:root[data-theme="peach"] .stat-label,
+:root[data-theme="peach"] .dividend-stat-label,
+:root[data-theme="peach"] .account-info,
+:root[data-theme="peach"] .account-item-name,
+:root[data-theme="peach"] .account-item-currency,
+:root[data-theme="peach"] .tab-text {
+    color: rgba(251, 113, 133, 0.7) !important;
+}
+
+:root[data-theme="snow"] .budget-summary-label,
+:root[data-theme="snow"] .budget-detail-label,
+:root[data-theme="snow"] .stat-label,
+:root[data-theme="snow"] .dividend-stat-label,
+:root[data-theme="snow"] .account-info,
+:root[data-theme="snow"] .account-item-name,
+:root[data-theme="snow"] .account-item-currency,
+:root[data-theme="snow"] .tab-text {
+    color: rgba(147, 197, 253, 0.8) !important;
+}
+
+:root[data-theme="midnight"] .budget-summary-label,
+:root[data-theme="midnight"] .budget-detail-label,
+:root[data-theme="midnight"] .stat-label,
+:root[data-theme="midnight"] .dividend-stat-label,
+:root[data-theme="midnight"] .account-info,
+:root[data-theme="midnight"] .account-item-name,
+:root[data-theme="midnight"] .account-item-currency,
+:root[data-theme="midnight"] .tab-text {
+    color: rgba(99, 102, 241, 0.7) !important;
+}
+
+:root[data-theme="space"] .budget-summary-label,
+:root[data-theme="space"] .budget-detail-label,
+:root[data-theme="space"] .stat-label,
+:root[data-theme="space"] .dividend-stat-label,
+:root[data-theme="space"] .account-info,
+:root[data-theme="space"] .account-item-name,
+:root[data-theme="space"] .account-item-currency,
+:root[data-theme="space"] .tab-text {
+    color: rgba(0, 212, 255, 0.7) !important;
+}
+
+:root[data-theme="caitu"] .budget-summary-label,
+:root[data-theme="caitu"] .budget-detail-label,
+:root[data-theme="caitu"] .stat-label,
+:root[data-theme="caitu"] .dividend-stat-label,
+:root[data-theme="caitu"] .account-info,
+:root[data-theme="caitu"] .account-item-name,
+:root[data-theme="caitu"] .account-item-currency,
+:root[data-theme="caitu"] .tab-text {
+    color: rgba(255, 215, 0, 0.7) !important;
+}
+
+:root[data-theme="goldenTree"] .budget-summary-label,
+:root[data-theme="goldenTree"] .budget-detail-label,
+:root[data-theme="goldenTree"] .stat-label,
+:root[data-theme="goldenTree"] .dividend-stat-label,
+:root[data-theme="goldenTree"] .account-info,
+:root[data-theme="goldenTree"] .account-item-name,
+:root[data-theme="goldenTree"] .account-item-currency,
+:root[data-theme="goldenTree"] .tab-text {
+    color: rgba(139, 69, 19, 0.7) !important;
+}
+
+:root[data-theme="chaonengli"] .budget-summary-label,
+:root[data-theme="chaonengli"] .budget-detail-label,
+:root[data-theme="chaonengli"] .stat-label,
+:root[data-theme="chaonengli"] .dividend-stat-label,
+:root[data-theme="chaonengli"] .account-info,
+:root[data-theme="chaonengli"] .account-item-name,
+:root[data-theme="chaonengli"] .account-item-currency,
+:root[data-theme="chaonengli"] .tab-text {
+    color: rgba(212, 175, 55, 0.7) !important;
+}
+
+:root[data-theme="fruit"] .budget-summary-label,
+:root[data-theme="fruit"] .budget-detail-label,
+:root[data-theme="fruit"] .stat-label,
+:root[data-theme="fruit"] .dividend-stat-label,
+:root[data-theme="fruit"] .account-info,
+:root[data-theme="fruit"] .account-item-name,
+:root[data-theme="fruit"] .account-item-currency,
+:root[data-theme="fruit"] .tab-text {
+    color: rgba(64, 224, 208, 0.7) !important;
+}
+
+:root[data-theme="meow"] .budget-summary-label,
+:root[data-theme="meow"] .budget-detail-label,
+:root[data-theme="meow"] .stat-label,
+:root[data-theme="meow"] .dividend-stat-label,
+:root[data-theme="meow"] .account-info,
+:root[data-theme="meow"] .account-item-name,
+:root[data-theme="meow"] .account-item-currency,
+:root[data-theme="meow"] .tab-text {
+    color: rgba(135, 206, 235, 0.7) !important;
+}
+
+:root[data-theme="elegant"] .budget-summary-label,
+:root[data-theme="elegant"] .budget-detail-label,
+:root[data-theme="elegant"] .stat-label,
+:root[data-theme="elegant"] .dividend-stat-label,
+:root[data-theme="elegant"] .account-info,
+:root[data-theme="elegant"] .account-item-name,
+:root[data-theme="elegant"] .account-item-currency,
+:root[data-theme="elegant"] .tab-text {
+    color: rgba(255, 218, 185, 0.8) !important;
 }
