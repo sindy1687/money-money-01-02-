@@ -116,7 +116,7 @@ function showMoriDialog(message) {
     dialogBox.innerHTML = `
         <div class="mori-dialog-content">
             <div class="mori-avatar">
-                <img src="./image/7.png" alt="小森" class="mori-avatar-image" onerror="this.style.display='none'">
+                <img src="./image/7.png" alt="小森" class="mori-avatar-image" onerror="this.style.display='none'; this.parentElement.innerHTML='🤖';">
             </div>
             <div class="mori-message">${message}</div>
         </div>
@@ -145,13 +145,16 @@ function showMoriDialog(message) {
 }
 
 // 檢查並觸發小森對話（保存記錄時調用）
-function checkAndTriggerMoriDialog(record, allRecords) {
+function checkAndTriggerMoriDialog(record) {
     if (!advisorDialogs) {
         loadAdvisorDialogs().then(() => {
-            checkAndTriggerMoriDialog(record, allRecords);
+            checkAndTriggerMoriDialog(record);
         });
         return;
     }
+    
+    // 從 localStorage 獲取所有記錄
+    const allRecords = JSON.parse(localStorage.getItem('accountingRecords') || '[]');
     
     const usedKeys = getTodayUsedDialogKeys();
     const now = new Date();
@@ -499,13 +502,16 @@ function checkMonthlySummaryDialog(allRecords) {
 }
 
 // 檢查超支原因並提示
-function checkOverspendReasonDialog(allRecords) {
+function checkOverspendReasonDialog() {
     if (!advisorDialogs) {
         loadAdvisorDialogs().then(() => {
-            checkOverspendReasonDialog(allRecords);
+            checkOverspendReasonDialog();
         });
         return;
     }
+    
+    // 從 localStorage 獲取所有記錄
+    const allRecords = JSON.parse(localStorage.getItem('accountingRecords') || '[]');
     
     const usedKeys = getTodayUsedDialogKeys();
     const now = new Date();
@@ -622,13 +628,16 @@ function updateAccountingStreak(allRecords) {
 }
 
 // 檢查連續記帳鼓勵對話
-function checkStreakEncouragementDialog(allRecords) {
+function checkStreakEncouragementDialog() {
     if (!advisorDialogs) {
         loadAdvisorDialogs().then(() => {
-            checkStreakEncouragementDialog(allRecords);
+            checkStreakEncouragementDialog();
         });
         return;
     }
+    
+    // 從 localStorage 獲取所有記錄
+    const allRecords = JSON.parse(localStorage.getItem('accountingRecords') || '[]');
     
     const usedKeys = getTodayUsedDialogKeys();
     const streak = updateAccountingStreak(allRecords);
@@ -899,7 +908,7 @@ function showTypingIndicator(container, statusElement) {
     typingDiv.id = 'advisorTypingIndicator';
     typingDiv.innerHTML = `
         <div class="advisor-message-avatar">
-            <img src="./image/7.png" alt="小森" class="advisor-message-avatar-image" onerror="this.style.display='none'">
+            <img src="./image/7.png" alt="小森" class="advisor-message-avatar-image" onerror="this.style.display='none'; this.parentElement.innerHTML='🤖';">
         </div>
         <div class="advisor-message-content">
             <div class="advisor-typing-dots">
@@ -938,7 +947,7 @@ function addAdvisorMessageTyping(container, type, message, onComplete) {
     if (type === 'advisor') {
         messageDiv.innerHTML = `
             <div class="advisor-message-avatar">
-                <img src="./image/7.png" alt="小森" class="advisor-message-avatar-image" onerror="this.style.display='none'">
+                <img src="./image/7.png" alt="小森" class="advisor-message-avatar-image" onerror="this.style.display='none'; this.parentElement.innerHTML='🤖';">
             </div>
             <div class="advisor-message-content">
                 <div class="advisor-message-text"></div>
@@ -1004,7 +1013,7 @@ function addAdvisorMessage(container, type, message) {
     if (type === 'advisor') {
         messageDiv.innerHTML = `
             <div class="advisor-message-avatar">
-                <img src="./image/7.png" alt="小森" class="advisor-message-avatar-image" onerror="this.style.display='none'">
+                <img src="./image/7.png" alt="小森" class="advisor-message-avatar-image" onerror="this.style.display='none'; this.parentElement.innerHTML='🤖';">
             </div>
             <div class="advisor-message-content">
                 <div class="advisor-message-text">${formattedMessage}</div>
