@@ -293,7 +293,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         backgroundImage: 'https://i.pinimg.com/736x/fe/2a/cf/fe2acfb6eedcf65941dad52ad03e3490.jpg',
         investmentCardImage: 'https://i.pinimg.com/736x/bf/bb/d8/bfbbd8069018715418b04a38e199a34d.jpg',
         accountingCardImage: 'https://i.pinimg.com/736x/a7/bb/f9/a7bbf99031a6d722e01446217985af5f.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/736x/a7/bb/f9/a7bbf99031a6d722e01446217985af5f.jpg'
+        walletBudgetCardImage: 'https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg'
     },
     {
         id: 'dreamy',
@@ -306,7 +306,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         backgroundImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
         investmentCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
         accountingCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg',
         monthlyPlanningCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
         investmentSettingsCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
         holdingCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
@@ -325,13 +325,51 @@ var themes = window.AppThemes || (window.AppThemes = [
         backgroundImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
         investmentCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
         accountingCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg',
         monthlyPlanningCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
         investmentSettingsCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
         holdingCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
         buyingCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
         sellingCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
         dividendCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg'
+    },
+    {
+        id: 'dreamyfish',
+        name: '夢幻魚語',
+        icon: '🐠',
+        buttonIcon: '🐟',
+        preview: 'url("https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg") center/cover',
+        color: '#87CEEB',
+        category: 'cute',
+        backgroundImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg'
+    },
+    {
+        id: 'emerald',
+        name: '翠綠之夢',
+        icon: '💎',
+        buttonIcon: '🌿',
+        preview: 'url("https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg") center/cover',
+        color: '#2E8B57',
+        category: 'fantasy',
+        backgroundImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg'
     }
 ]);
 
@@ -732,6 +770,22 @@ function updateThemeButtons(themeId) {
             navInvestment: '🐥',
             navChart: '🐣',
             navSettings: '🐤'
+        },
+        dreamyfish: {
+            fab: '🐠',
+            navLedger: '🐟',
+            navWallet: '🐡',
+            navInvestment: '🦈',
+            navChart: '🐙',
+            navSettings: '🦑'
+        },
+        emerald: {
+            fab: '💎',
+            navLedger: '🌿',
+            navWallet: '🍃',
+            navInvestment: '🌱',
+            navChart: '🍀',
+            navSettings: '🌳'
         }
     };
 
