@@ -247,7 +247,6 @@
 :root[data-theme="totoro"] .dca-execute-modal .modal-content,
 :root[data-theme="totoro"] .account-modal-content,
 :root[data-theme="totoro"] .emoji-modal-content,
-:root[data-theme="totoro"] .crop-modal-content,
 :root[data-theme="totoro"] .history-modal-content {
     background: rgba(245, 245, 220, 0.95);
     border: 1px solid rgba(135, 206, 235, 0.4);
@@ -500,7 +499,6 @@
 :root[data-theme="noface"] .dca-execute-modal .modal-content,
 :root[data-theme="noface"] .account-modal-content,
 :root[data-theme="noface"] .emoji-modal-content,
-:root[data-theme="noface"] .crop-modal-content,
 :root[data-theme="noface"] .history-modal-content {
     background: rgba(13, 11, 16, 0.95);
     border: 1px solid rgba(246, 195, 67, 0.4);
@@ -742,7 +740,6 @@
 :root[data-theme="demonslayer"] .dca-execute-modal .modal-content,
 :root[data-theme="demonslayer"] .account-modal-content,
 :root[data-theme="demonslayer"] .emoji-modal-content,
-:root[data-theme="demonslayer"] .crop-modal-content,
 :root[data-theme="demonslayer"] .history-modal-content {
     background: rgba(5, 13, 20, 0.95);
     border: 1px solid rgba(0, 194, 209, 0.4);
@@ -17374,158 +17371,65 @@ transform: scale(0.99);
     flex-shrink: 0;
 }
 
-/* ========== 圖片裁切對話框 ========== */
-.image-crop-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 10001;
+/* ========== 帳戶圖片移動端響應式 ========== */
+@media (max-width: 480px) {
+    .account-item-icon-image {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+    }
+    
+    .account-detail-icon-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 16px;
+    }
+    
+    .account-image-preview {
+        width: 140px;
+        height: 140px;
+        border-radius: 16px;
+    }
+    
+    .account-image-placeholder {
+        font-size: 40px;
+    }
+    
+    .account-image-upload-btn,
+    .account-image-remove-btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
 }
 
-.crop-modal-content {
-    max-width: 500px;
-    width: 90%;
-    max-height: 90vh;
-}
-
-.crop-container {
-    position: relative;
-    width: 400px;
-    height: 400px;
-    margin: 0 auto 20px;
-    border: 2px solid #f0f0f0;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #fafafa;
-}
-
-#cropCanvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-.crop-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    cursor: move;
-}
-
-.crop-box {
-    position: absolute;
-    border: 3px solid var(--color-primary);
-    background: transparent;
-    cursor: move;
-    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
-    z-index: 10;
-}
-
-.crop-box::before,
-.crop-box::after {
-    content: '';
-    position: absolute;
-    background: var(--color-primary);
-}
-
-.crop-box::before {
-    width: 20px;
-    height: 3px;
-    top: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.crop-box::after {
-    width: 3px;
-    height: 20px;
-    left: -3px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.crop-controls {
-    padding: 16px;
-    background: var(--bg-white);
-    border-radius: 12px;
-}
-
-.crop-size-inputs {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
-    justify-content: center;
-}
-
-.crop-size-inputs label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    color: #666;
-}
-
-.crop-size-inputs input {
-    width: 80px;
-    padding: 6px 10px;
-    border: 2px solid #f0f0f0;
-    border-radius: 8px;
-    font-size: 14px;
-    text-align: center;
-}
-
-.crop-size-inputs input:focus {
-    outline: none;
-    border-color: #ffb6d9;
-}
-
-.crop-actions {
-    display: flex;
-    gap: 12px;
-}
-
-.crop-cancel-btn,
-.crop-confirm-btn {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.crop-cancel-btn {
-    background: var(--bg-hover);
-    color: #666;
-}
-
-.crop-cancel-btn:hover {
-    background: var(--bg-toggle);
-}
-
-.crop-confirm-btn {
-    background: var(--bg-gradient);
-    color: var(--text-white);
-    box-shadow: 0 2px 8px var(--color-primary-rgba-30);
-}
-
-.crop-confirm-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.4);
-}
-
-.crop-confirm-btn:active {
-    transform: translateY(0);
+@media (max-width: 375px) {
+    .account-item-icon-image {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+    }
+    
+    .account-detail-icon-image {
+        width: 72px;
+        height: 72px;
+        border-radius: 14px;
+    }
+    
+    .account-image-preview {
+        width: 120px;
+        height: 120px;
+        border-radius: 14px;
+    }
+    
+    .account-image-placeholder {
+        font-size: 36px;
+    }
+    
+    .account-image-upload-btn,
+    .account-image-remove-btn {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
 }
 
 /* ========== 主題自訂頁面樣式 ========== */
@@ -23591,7 +23495,6 @@ body {
 :root[data-theme="caitu"] .dca-execute-modal .modal-content,
 :root[data-theme="caitu"] .account-modal-content,
 :root[data-theme="caitu"] .emoji-modal-content,
-:root[data-theme="caitu"] .crop-modal-content,
 :root[data-theme="caitu"] .history-modal-content {
     background: rgba(255, 248, 225, 0.95);
     border: 1px solid rgba(255, 193, 7, 0.5);
@@ -23845,7 +23748,6 @@ body {
 :root[data-theme="goldenTree"] .dca-execute-modal .modal-content,
 :root[data-theme="goldenTree"] .account-modal-content,
 :root[data-theme="goldenTree"] .emoji-modal-content,
-:root[data-theme="goldenTree"] .crop-modal-content,
 :root[data-theme="goldenTree"] .history-modal-content {
     background: rgba(245, 235, 220, 0.95);
     border: 1px solid rgba(184, 134, 11, 0.5);
@@ -24083,7 +23985,6 @@ body {
 :root[data-theme="chaonengli"] .dca-execute-modal .modal-content,
 :root[data-theme="chaonengli"] .account-modal-content,
 :root[data-theme="chaonengli"] .emoji-modal-content,
-:root[data-theme="chaonengli"] .crop-modal-content,
 :root[data-theme="chaonengli"] .history-modal-content {
     background: rgba(40, 25, 10, 0.95);
     border: 1px solid rgba(255, 215, 0, 0.5);
@@ -24709,7 +24610,6 @@ body {
 :root[data-theme="fruit"] .dca-execute-modal .modal-content,
 :root[data-theme="fruit"] .account-modal-content,
 :root[data-theme="fruit"] .emoji-modal-content,
-:root[data-theme="fruit"] .crop-modal-content,
 :root[data-theme="fruit"] .history-modal-content {
     background: rgba(255, 255, 255, 0.95);
     border: 2px solid rgba(64, 224, 208, 0.5);
