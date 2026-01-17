@@ -233,12 +233,12 @@ var themes = window.AppThemes || (window.AppThemes = [
         color: '#87CEEB'
     },
     {
-        id: 'enchanter',
-        name: '秘術師',
-        icon: '🧙‍♂️',
-        buttonIcon: '🪄',
-        preview: 'linear-gradient(135deg, rgba(26, 58, 58, 0.4) 0%, rgba(58, 90, 90, 0.3) 50%, rgba(57, 255, 20, 0.4) 100%), url("https://i.pinimg.com/1200x/88/01/f5/8801f51ecd5d4fa73e8bef1c314c2eab.jpg") center/cover',
-        color: '#1a3a3a'
+        id: 'elegant',
+        name: '華麗古風',
+        icon: '🏮',
+        buttonIcon: '🎋',
+        preview: 'linear-gradient(135deg, rgba(165, 42, 42, 0.4) 0%, rgba(255, 218, 185, 0.3) 50%, rgba(218, 165, 32, 0.4) 100%), url("https://i.pinimg.com/1200x/26/a9/18/26a9180e011176e4795f5fe21ab761ea.jpg") center/cover',
+        color: '#A52A2A'
     }
 ]);
 
@@ -419,7 +419,7 @@ function updateThemeButtons(themeId) {
                 noface: {
             fab: '🪙',
             navLedger: '📜',
-            navWallet: '�',
+            navWallet: '💰',
             navInvestment: '📈',
             navChart: '📊',
             navSettings: '⚙️'
@@ -480,30 +480,6 @@ function updateThemeButtons(themeId) {
             navChart: '📊',
             navSettings: '⚙️'
         },
-        galaxy: {
-            fab: '🪐',
-            navLedger: '🪐',
-            navWallet: '💫',
-            navInvestment: '🌟',
-            navChart: '🔭',
-            navSettings: '🌠'
-        },
-        peach: {
-            fab: '🍑',
-            navLedger: '🍑',
-            navWallet: '💰',
-            navInvestment: '📉',
-            navChart: '📊',
-            navSettings: '⚙️'
-        },
-        sunrise: {
-            fab: '🌅',
-            navLedger: '🌄',
-            navWallet: '💰',
-            navInvestment: '📈',
-            navChart: '📊',
-            navSettings: '⚙️'
-        },
         space: {
             fab: '🚀',
             navLedger: '🛸',
@@ -528,9 +504,9 @@ function updateThemeButtons(themeId) {
             navChart: '🐹',
             navSettings: '🐰'
         },
-        enchanter: {
-            fab: '🧙‍♂️',
-            navLedger: '🪄',
+        elegant: {
+            fab: '🏮',
+            navLedger: '🎋',
             navWallet: '💰',
             navInvestment: '📈',
             navChart: '📊',
@@ -849,18 +825,6 @@ function showThemeSelector() {
     const currentTheme = getCurrentTheme();
     const customTheme = getCustomTheme();
 
-    const defaultColors = {
-        primaryColor: customTheme.primaryColor || 'var(--color-primary, #4a90e2)',
-        buttonColor: customTheme.buttonColor || 'var(--color-primary, #4a90e2)',
-        boxColor: customTheme.boxColor || 'var(--bg-white, #ffffff)',
-        backgroundColor: customTheme.backgroundColor || 'var(--bg-light-gradient, linear-gradient(135deg, #ffffff 0%, #e8f4fd 100%))',
-        chartColor1: customTheme.chartColors?.[0] || 'var(--color-primary, #4a90e2)',
-        chartColor2: customTheme.chartColors?.[1] || 'var(--color-primary-light, #7bb3f0)',
-        chartColor3: customTheme.chartColors?.[2] || 'var(--color-primary-lighter, #5da3ed)',
-        chartColor4: customTheme.chartColors?.[3] || 'var(--color-primary-dark, #2e7bd6)',
-        chartColor5: customTheme.chartColors?.[4] || 'var(--color-primary-darker, #1e5ba8)'
-    };
-
     modal.innerHTML = `
         <div class="theme-custom-content modal-content-standard">
             <div class="theme-modal-header">
@@ -876,52 +840,8 @@ function showThemeSelector() {
                 <div id="themeGrid" class="theme-grid theme-grid--auto"></div>
             </div>
 
-            <div class="theme-section theme-section--divider">
-                <div class="theme-section-title">自訂顏色</div>
-
-                <div class="theme-form">
-                    <div class="theme-field">
-                        <label class="theme-label">主色調（按鈕、邊框）</label>
-                        <div class="theme-field-row">
-                            <input type="color" id="primaryColorPicker" value="${defaultColors.primaryColor}" class="theme-color-picker">
-                            <input type="text" id="primaryColorText" value="${defaultColors.primaryColor}" class="theme-text-input">
-                        </div>
-                    </div>
-
-                    <div class="theme-field">
-                        <label class="theme-label">框的背景顏色</label>
-                        <div class="theme-field-row">
-                            <input type="color" id="boxColorPicker" value="${defaultColors.boxColor}" class="theme-color-picker">
-                            <input type="text" id="boxColorText" value="${defaultColors.boxColor}" class="theme-text-input">
-                        </div>
-                    </div>
-
-                    <div class="theme-field">
-                        <label class="theme-label">背景顏色</label>
-                        <div class="theme-field-row">
-                            <input type="color" id="backgroundColorPicker" value="#ffeef5" class="theme-color-picker">
-                            <input type="text" id="backgroundColorText" value="${defaultColors.backgroundColor}" placeholder="例如: #ffeef5 或 linear-gradient(...)" class="theme-text-input">
-                        </div>
-                        <div class="theme-help">支援顏色代碼或漸層（linear-gradient）</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="theme-section theme-section--divider">
-                <div class="theme-section-title">圖表顏色</div>
-                <div class="theme-form">
-                    ${[1, 2, 3, 4, 5].map(i => `
-                        <div class="theme-field">
-                            <label class="theme-label">圖表顏色 ${i}</label>
-                            <div class="theme-field-row">
-                                <input type="color" id="chartColor${i}Picker" value="${defaultColors[`chartColor${i}`]}" class="theme-color-picker">
-                                <input type="text" id="chartColor${i}Text" value="${defaultColors[`chartColor${i}`]}" class="theme-text-input">
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-
+            
+            
             <div class="theme-section theme-section--divider">
                 <div class="theme-section-title">背景圖片</div>
                 <input type="file" id="backgroundImageInput" accept="image/*" style="display: none;">
@@ -996,28 +916,7 @@ function showThemeSelector() {
         });
     }
 
-    const colorInputs = [
-        { picker: 'primaryColorPicker', text: 'primaryColorText' },
-        { picker: 'boxColorPicker', text: 'boxColorText' },
-        { picker: 'backgroundColorPicker', text: 'backgroundColorText' },
-        ...Array.from({length: 5}, (_, i) => ({ picker: `chartColor${i+1}Picker`, text: `chartColor${i+1}Text` }))
-    ];
-
-    colorInputs.forEach(({picker, text}) => {
-        const pickerEl = document.getElementById(picker);
-        const textEl = document.getElementById(text);
-        if (pickerEl && textEl) {
-            pickerEl.addEventListener('input', (e) => {
-                textEl.value = e.target.value;
-            });
-            textEl.addEventListener('input', (e) => {
-                if (e.target.value.match(/^#[0-9A-Fa-f]{6}$/)) {
-                    pickerEl.value = e.target.value;
-                }
-            });
-        }
-    });
-
+    
     const uploadBtn = document.getElementById('uploadImageBtn');
     const imageInput = document.getElementById('backgroundImageInput');
     const removeImageBtn = document.getElementById('removeImageBtn');
@@ -1065,19 +964,7 @@ function showThemeSelector() {
     if (saveBtn) {
         saveBtn.addEventListener('click', () => {
             playClickSound();
-            const theme = {
-                primaryColor: document.getElementById('primaryColorText').value,
-                buttonColor: document.getElementById('primaryColorText').value,
-                boxColor: document.getElementById('boxColorText').value,
-                backgroundColor: document.getElementById('backgroundColorText').value,
-                chartColors: [
-                    document.getElementById('chartColor1Text').value,
-                    document.getElementById('chartColor2Text').value,
-                    document.getElementById('chartColor3Text').value,
-                    document.getElementById('chartColor4Text').value,
-                    document.getElementById('chartColor5Text').value
-                ]
-            };
+            const theme = {};
 
             const imagePreview = document.querySelector('#imagePreviewContainer img');
             if (imagePreview) {
