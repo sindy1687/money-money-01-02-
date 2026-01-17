@@ -6,7 +6,8 @@ var themes = window.AppThemes || (window.AppThemes = [
         icon: '💖',
         buttonIcon: '💗',
         preview: 'linear-gradient(135deg, #ffeef5 0%, #fff5f9 100%)',
-        color: '#ff69b4'
+        color: '#ff69b4',
+        category: 'basic'
     },
     {
         id: 'blue',
@@ -14,7 +15,8 @@ var themes = window.AppThemes || (window.AppThemes = [
         icon: '💙',
         buttonIcon: '💙',
         preview: 'linear-gradient(135deg, #e8f4fd 0%, #f0f8ff 100%)',
-        color: '#4a90e2'
+        color: '#4a90e2',
+        category: 'basic'
     },
     {
         id: 'green',
@@ -22,39 +24,8 @@ var themes = window.AppThemes || (window.AppThemes = [
         icon: '💚',
         buttonIcon: '💚',
         preview: 'linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%)',
-        color: '#4caf50'
-    },
-    {
-        id: 'forest',
-        name: '森林清風',
-        icon: '🌿',
-        buttonIcon: '🌲',
-        preview: 'linear-gradient(135deg, #03130d 0%, #103524 45%, #2f855a 100%)',
-        color: '#2f855a'
-    },
-        {
-        id: 'totoro',
-        name: '龍貓主題',
-        icon: '🌼',
-        buttonIcon: '🌼',
-        preview: 'linear-gradient(135deg, #f5f5dc 0%, #b0e0e6 60%, #87ceeb 100%)',
-        color: '#4682B4'
-    },
-    {
-        id: 'noface',
-        name: '無臉男主題',
-        icon: '🎭',
-        buttonIcon: '🎭',
-        preview: 'linear-gradient(135deg, #0f0c12 0%, #1f1b24 55%, #f6c343 100%)',
-        color: '#f6c343'
-    },
-    {
-        id: 'demonslayer',
-        name: '鬼滅之刃主題',
-        icon: '🗡️',
-        buttonIcon: '🗡️',
-        preview: 'linear-gradient(135deg, #08131e 0%, #0f2434 60%, #00c2d1 100%)',
-        color: '#00c2d1'
+        color: '#4caf50',
+        category: 'basic'
     },
     {
         id: 'purple',
@@ -62,7 +33,8 @@ var themes = window.AppThemes || (window.AppThemes = [
         icon: '💜',
         buttonIcon: '💜',
         preview: 'linear-gradient(135deg, #f3e5f5 0%, #fce4ec 100%)',
-        color: '#9c27b0'
+        color: '#9c27b0',
+        category: 'basic'
     },
     {
         id: 'orange',
@@ -70,23 +42,17 @@ var themes = window.AppThemes || (window.AppThemes = [
         icon: '🧡',
         buttonIcon: '🧡',
         preview: 'linear-gradient(135deg, #fff3e0 0%, #fff8f0 100%)',
-        color: '#ff9800'
+        color: '#ff9800',
+        category: 'basic'
     },
     {
         id: 'cyan',
         name: '青色主題',
-        icon: '💠',
-        buttonIcon: '💠',
+        icon: '🩵',
+        buttonIcon: '🩵',
         preview: 'linear-gradient(135deg, #e0f7fa 0%, #f0fdfe 100%)',
-        color: '#00bcd4'
-    },
-    {
-        id: 'star',
-        name: '星空主題',
-        icon: '✨',
-        buttonIcon: '✨',
-        preview: 'linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%)',
-        color: '#8b7cf6'
+        color: '#00bcd4',
+        category: 'basic'
     },
     {
         id: 'red',
@@ -94,7 +60,8 @@ var themes = window.AppThemes || (window.AppThemes = [
         icon: '❤️',
         buttonIcon: '❤️',
         preview: 'linear-gradient(135deg, #ffebee 0%, #fce4ec 100%)',
-        color: '#e53935'
+        color: '#e53935',
+        category: 'basic'
     },
     {
         id: 'yellow',
@@ -102,15 +69,17 @@ var themes = window.AppThemes || (window.AppThemes = [
         icon: '💛',
         buttonIcon: '💛',
         preview: 'linear-gradient(135deg, #fffde7 0%, #fffef5 100%)',
-        color: '#fbc02d'
+        color: '#fbc02d',
+        category: 'basic'
     },
     {
         id: 'indigo',
         name: '靛藍主題',
-        icon: '💙',
-        buttonIcon: '💙',
+        icon: '🔵',
+        buttonIcon: '🔵',
         preview: 'linear-gradient(135deg, #e8eaf6 0%, #f3f4f9 100%)',
-        color: '#5c6bc0'
+        color: '#5c6bc0',
+        category: 'basic'
     },
     {
         id: 'teal',
@@ -118,47 +87,17 @@ var themes = window.AppThemes || (window.AppThemes = [
         icon: '💚',
         buttonIcon: '💚',
         preview: 'linear-gradient(135deg, #e0f2f1 0%, #f0f9f8 100%)',
-        color: '#26a69a'
-    },
-        {
-        id: 'aurora',
-        name: '極光主題',
-        icon: '🌈',
-        buttonIcon: '🌈',
-        preview: 'linear-gradient(135deg, #071a52 0%, #0b8457 50%, #7c3aed 100%)',
-        color: '#00d4ff'
-    },
-        {
-        id: 'firefly',
-        name: '螢火蟲主題',
-        icon: '✨',
-        buttonIcon: '✨',
-        preview: 'linear-gradient(135deg, #0b1020 0%, #1a2b3f 100%)',
-        color: '#facc15'
+        color: '#26a69a',
+        category: 'basic'
     },
     {
-        id: 'neon',
-        name: '霓虹波動',
-        icon: '🟣',
-        buttonIcon: '🟣',
-        preview: 'linear-gradient(135deg, #0b1020 0%, #1f1147 50%, #00d4ff 100%)',
-        color: '#7c3aed'
-    },
-    {
-        id: 'money',
-        name: '金錢滿滿',
-        icon: '💸',
-        buttonIcon: '💸',
-        preview: 'linear-gradient(135deg, #03130d 0%, #0b3720 45%, #31ff9b 100%)',
-        color: '#16f49a'
-    },
-    {
-        id: 'peach',
-        name: '蜜桃柔霧',
-        icon: '🍑',
-        buttonIcon: '🍑',
-        preview: 'linear-gradient(135deg, #fff1f2 0%, #ffedd5 50%, #ffe4e6 100%)',
-        color: '#fb7185'
+        id: 'forest',
+        name: '森林清風',
+        icon: '🌿',
+        buttonIcon: '🌲',
+        preview: 'linear-gradient(135deg, #03130d 0%, #103524 45%, #2f855a 100%)',
+        color: '#2f855a',
+        category: 'nature'
     },
     {
         id: 'snow',
@@ -166,15 +105,44 @@ var themes = window.AppThemes || (window.AppThemes = [
         icon: '❄️',
         buttonIcon: '❄️',
         preview: 'linear-gradient(135deg, #e8f1ff 0%, #ffffff 100%)',
-        color: '#93c5fd'
+        color: '#93c5fd',
+        category: 'nature'
     },
     {
-        id: 'cute',
-        name: '可愛圖片主題',
-        icon: '🐾',
-        buttonIcon: '🐾',
-        preview: 'linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(230, 247, 255, 0.75) 100%), url("image/BMG.jpg") center/cover',
-        color: '#4dd0e1'
+        id: 'star',
+        name: '星空主題',
+        icon: '✨',
+        buttonIcon: '✨',
+        preview: 'linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%)',
+        color: '#8b7cf6',
+        category: 'cosmic'
+    },
+    {
+        id: 'aurora',
+        name: '極光主題',
+        icon: '🌈',
+        buttonIcon: '🌈',
+        preview: 'linear-gradient(135deg, #071a52 0%, #0b8457 50%, #7c3aed 100%)',
+        color: '#00d4ff',
+        category: 'cosmic'
+    },
+    {
+        id: 'firefly',
+        name: '螢火蟲主題',
+        icon: '✨',
+        buttonIcon: '✨',
+        preview: 'linear-gradient(135deg, #0b1020 0%, #1a2b3f 100%)',
+        color: '#facc15',
+        category: 'cosmic'
+    },
+    {
+        id: 'neon',
+        name: '霓虹波動',
+        icon: '🟣',
+        buttonIcon: '🟣',
+        preview: 'linear-gradient(135deg, #0b1020 0%, #1f1147 50%, #00d4ff 100%)',
+        color: '#7c3aed',
+        category: 'cosmic'
     },
     {
         id: 'midnight',
@@ -182,65 +150,234 @@ var themes = window.AppThemes || (window.AppThemes = [
         icon: '🌙',
         buttonIcon: '🌙',
         preview: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
-        color: '#6366f1'
+        color: '#6366f1',
+        category: 'dark'
     },
     {
         id: 'space',
         name: '星際宇航',
         icon: '🚀',
-        buttonIcon: '🌌',
+        buttonIcon: '🛸',
         preview: 'linear-gradient(135deg, #001428 0%, #002850 60%, #8a2be2 100%)',
-        color: '#00d4ff'
+        color: '#00d4ff',
+        category: 'cosmic'
+    },
+    {
+        id: 'totoro',
+        name: '龍貓主題',
+        icon: '🌼',
+        buttonIcon: '🌼',
+        preview: 'url("https://i.pinimg.com/736x/f6/e9/10/f6e910dc17992265ad9833055ff153ac.jpg") center/cover',
+        color: '#4682B4',
+        category: 'anime',
+        backgroundImage: 'https://i.pinimg.com/736x/f6/e9/10/f6e910dc17992265ad9833055ff153ac.jpg'
+    },
+    {
+        id: 'noface',
+        name: '無臉男主題',
+        icon: '🎭',
+        buttonIcon: '🎭',
+        preview: 'url("https://i.pinimg.com/1200x/fe/b3/f9/feb3f9990f903e1b7b0f4a2066a97722.jpg") center/cover',
+        color: '#f6c343',
+        category: 'anime',
+        backgroundImage: 'https://i.pinimg.com/1200x/fe/b3/f9/feb3f9990f903e1b7b0f4a2066a97722.jpg'
+    },
+    {
+        id: 'demonslayer',
+        name: '鬼滅之刃主題',
+        icon: '🗡️',
+        buttonIcon: '🗡️',
+        preview: 'url("https://i.pinimg.com/736x/73/3c/b0/733cb0696372d66f16702dd385a5aa5b.jpg") center/cover',
+        color: '#00c2d1',
+        category: 'anime',
+        backgroundImage: 'https://i.pinimg.com/736x/73/3c/b0/733cb0696372d66f16702dd385a5aa5b.jpg'
+    },
+    {
+        id: 'money',
+        name: '金錢滿滿',
+        icon: '💸',
+        buttonIcon: '💸',
+        preview: 'url("https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg") center/cover',
+        color: '#16f49a',
+        category: 'wealth',
+        backgroundImage: 'https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg'
     },
     {
         id: 'caitu',
         name: '財兔滿滿',
         icon: '🐰',
         buttonIcon: '🐰',
-        preview: 'linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 223, 0, 0.2) 50%, rgba(255, 193, 7, 0.3) 100%), url("https://i.pinimg.com/736x/85/9c/7c/859c7c50479b84c65089909c4acec1f3.jpg") center/cover',
-        color: '#FFD700'
+        preview: 'url("https://i.pinimg.com/736x/85/9c/7c/859c7c50479b84c65089909c4acec1f3.jpg") center/cover',
+        color: '#FFD700',
+        category: 'wealth',
+        backgroundImage: 'https://i.pinimg.com/736x/85/9c/7c/859c7c50479b84c65089909c4acec1f3.jpg'
     },
     {
         id: 'goldenTree',
         name: '金樹計畫',
         icon: '🌳',
         buttonIcon: '🌳',
-        preview: 'linear-gradient(135deg, rgba(139, 69, 19, 0.3) 0%, rgba(160, 82, 45, 0.2) 50%, rgba(184, 134, 11, 0.3) 100%), url("https://i.pinimg.com/736x/28/a0/be/28a0be222d619be4c2944dbd309c4153.jpg") center/cover',
-        color: '#8B4513'
+        preview: 'url("https://i.pinimg.com/736x/28/a0/be/28a0be222d619be4c2944dbd309c4153.jpg") center/cover',
+        color: '#8B4513',
+        category: 'wealth',
+        backgroundImage: 'https://i.pinimg.com/736x/28/a0/be/28a0be222d619be4c2944dbd309c4153.jpg'
     },
     {
         id: 'chaonengli',
         name: '鈔能力',
         icon: '💰',
         buttonIcon: '💰',
-        preview: 'linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(255, 215, 0, 0.2) 50%, rgba(184, 134, 11, 0.3) 100%), url("https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg") center/cover',
-        color: '#D4AF37'
+        preview: 'url("https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg") center/cover',
+        color: '#D4AF37',
+        category: 'wealth',
+        backgroundImage: 'https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg'
     },
     {
         id: 'fruit',
         name: '水果清爽',
         icon: '🍓',
         buttonIcon: '🍋',
-        preview: 'linear-gradient(135deg, rgba(64, 224, 208, 0.3) 0%, rgba(255, 105, 180, 0.2) 50%, rgba(50, 205, 50, 0.3) 100%), url("https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg") center/cover',
-        color: '#40E0D0'
+        preview: 'url("https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg") center/cover',
+        color: '#40E0D0',
+        category: 'cute',
+        backgroundImage: 'https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg'
     },
     {
         id: 'meow',
         name: '喵喵喵',
         icon: '🐱',
         buttonIcon: '🐈',
-        preview: 'linear-gradient(135deg, rgba(135, 206, 235, 0.4) 0%, rgba(255, 182, 193, 0.3) 50%, rgba(152, 251, 152, 0.4) 100%), url("https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg") center/cover',
-        color: '#87CEEB'
+        preview: 'url("https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg") center/cover',
+        color: '#87CEEB',
+        category: 'cute',
+        backgroundImage: 'https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg'
+    },
+    {
+        id: 'cute',
+        name: '可愛圖片主題',
+        icon: '🐾',
+        buttonIcon: '🐾',
+        preview: 'url("image/BMG.jpg") center/cover',
+        color: '#4dd0e1',
+        category: 'cute',
+        backgroundImage: 'image/BMG.jpg'
     },
     {
         id: 'bluerose',
         name: '藍玫瑰騎士',
         icon: '🌹',
         buttonIcon: '🗡️',
-        preview: 'linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(30, 60, 114, 0.6) 50%, rgba(0, 123, 255, 0.4) 100%), url("https://i.pinimg.com/1200x/d5/a1/c1/d5a1c149ab3b2a049576504e83fd21f7.jpg") center/cover',
-        color: '#007bff'
+        preview: 'url("https://i.pinimg.com/1200x/d5/a1/c1/d5a1c149ab3b2a049576504e83fd21f7.jpg") center/cover',
+        color: '#007bff',
+        category: 'fantasy',
+        backgroundImage: 'https://i.pinimg.com/1200x/d5/a1/c1/d5a1c149ab3b2a049576504e83fd21f7.jpg'
     },
-    ]);
+    {
+        id: 'emeraldPrince',
+        name: '翡翠王子',
+        icon: '👑',
+        buttonIcon: '🗡️',
+        preview: 'url("https://i.pinimg.com/736x/55/40/2f/55402fb6bcf0c65c832636ad5504499f.jpg") center/cover',
+        color: '#2E8B57',
+        category: 'fantasy',
+        backgroundImage: 'https://i.pinimg.com/736x/55/40/2f/55402fb6bcf0c65c832636ad5504499f.jpg'
+    },
+    {
+        id: 'cuteCats',
+        name: '可愛貓咪',
+        icon: '🐱',
+        buttonIcon: '🐈',
+        preview: 'url("https://i.pinimg.com/736x/fe/2a/cf/fe2acfb6eedcf65941dad52ad03e3490.jpg") center/cover',
+        color: '#FFB6C1',
+        category: 'cute',
+        backgroundImage: 'https://i.pinimg.com/736x/fe/2a/cf/fe2acfb6eedcf65941dad52ad03e3490.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/bf/bb/d8/bfbbd8069018715418b04a38e199a34d.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/a7/bb/f9/a7bbf99031a6d722e01446217985af5f.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/736x/a7/bb/f9/a7bbf99031a6d722e01446217985af5f.jpg'
+    },
+    {
+        id: 'dreamy',
+        name: '夢幻境域',
+        icon: '🌈',
+        buttonIcon: '🎨',
+        preview: 'url("https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg") center/cover',
+        color: '#87CEEB',
+        category: 'cute',
+        backgroundImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg'
+    },
+    {
+        id: 'chick',
+        name: '萌雞樂園',
+        icon: '🐥',
+        buttonIcon: '🐣',
+        preview: 'url("https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg") center/cover',
+        color: '#98FB98',
+        category: 'cute',
+        backgroundImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/e0/43/7a/e0437a16e63e214acd07430c25dfc251.jpg'
+    }
+]);
+
+// 主題分類定義
+const themeCategories = {
+    basic: {
+        name: '經典色彩',
+        icon: '🎨',
+        description: '純色經典主題'
+    },
+    nature: {
+        name: '自然風光',
+        icon: '🌿',
+        description: '森林、雪景等自然主題'
+    },
+    cosmic: {
+        name: '宇宙星空',
+        icon: '🌌',
+        description: '星空、極光等宇宙主題'
+    },
+    dark: {
+        name: '深色主題',
+        icon: '🌙',
+        description: '深色護眼主題'
+    },
+    anime: {
+        name: '動漫風格',
+        icon: '🎌',
+        description: '吉卜力、鬼滅等動漫主題'
+    },
+    wealth: {
+        name: '財富金錢',
+        icon: '💰',
+        description: '金錢、財富相關主題'
+    },
+    cute: {
+        name: '可愛風格',
+        icon: '🐾',
+        description: '可愛、萌系主題'
+    },
+    fantasy: {
+        name: '奇幻風格',
+        icon: '🗡️',
+        description: '騎士、奇幻主題'
+    }
+};
 
 const themeAnimations = {};
 
@@ -307,6 +444,19 @@ function applyTheme(themeId) {
     root.setAttribute('data-theme', themeId);
     localStorage.setItem('selectedTheme', themeId);
     root.style.removeProperty('--bg-white');
+    
+    // 自動應用主題背景圖片
+    const theme = themes.find(t => t.id === themeId);
+    if (theme && theme.backgroundImage) {
+        applyThemeBackgroundImage(theme.backgroundImage);
+    } else {
+        // 如果主題沒有背景圖片，清除背景
+        document.body.style.backgroundImage = '';
+        document.body.style.backgroundSize = '';
+        document.body.style.backgroundPosition = '';
+        document.body.style.backgroundRepeat = '';
+    }
+    
     updateThemeButtons(themeId);
     themeVideoController.setActive(themeId);
 
@@ -316,6 +466,37 @@ function applyTheme(themeId) {
             updateAllCharts();
         }
     }
+}
+
+function applyThemeBackgroundImage(imageUrl) {
+    if (!imageUrl) return;
+    
+    // 檢查圖片是否可以載入
+    const img = new Image();
+    img.onload = function() {
+        // 圖片載入成功，應用背景
+        document.body.style.backgroundImage = `url(${imageUrl})`;
+        document.body.style.backgroundSize = 'cover';
+        document.body.style.backgroundPosition = 'center';
+        document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundAttachment = 'fixed';
+        
+        // 可選：添加載入成功的視覺反饋
+        console.log(`✅ 主題背景圖片載入成功: ${imageUrl}`);
+    };
+    
+    img.onerror = function() {
+        // 圖片載入失敗，清除背景
+        document.body.style.backgroundImage = '';
+        document.body.style.backgroundSize = '';
+        document.body.style.backgroundPosition = '';
+        document.body.style.backgroundRepeat = '';
+        
+        console.warn(`⚠️ 主題背景圖片載入失敗: ${imageUrl}`);
+    };
+    
+    // 開始載入圖片
+    img.src = imageUrl;
 }
 
 function updateThemeButtons(themeId) {
@@ -511,16 +692,46 @@ function updateThemeButtons(themeId) {
             navInvestment: '🛡️',
             navChart: '🏰',
             navSettings: '⚔️'
-        }
-    };
-
-    const iconAssetsDefault = {
-        nav: {
-            ledger: 'image/1.png',
-            wallet: 'image/2.png',
-            investment: 'image/3.png',
-            chart: 'image/4.png',
-            settings: 'image/5.png'
+        },
+        emeraldPrince: {
+            fab: '👑',
+            navLedger: '📜',
+            navWallet: '💎',
+            navInvestment: '🗡️',
+            navChart: '🏰',
+            navSettings: '⚔️'
+        },
+        goldenElegance: {
+            fab: '🦋',
+            navLedger: '📜',
+            navWallet: '💎',
+            navInvestment: '🗡️',
+            navChart: '🏰',
+            navSettings: '⚔️'
+        },
+        cuteCats: {
+            fab: '🐱',
+            navLedger: '🐈',
+            navWallet: '🐾',
+            navInvestment: '🐭',
+            navChart: '🐹',
+            navSettings: '🐰'
+        },
+        dreamy: {
+            fab: '🌈',
+            navLedger: '🎨',
+            navWallet: '💖',
+            navInvestment: '🌸',
+            navChart: '🦋',
+            navSettings: '✨'
+        },
+        chick: {
+            fab: '🐥',
+            navLedger: '🐣',
+            navWallet: '🐤',
+            navInvestment: '🐥',
+            navChart: '🐣',
+            navSettings: '🐤'
         }
     };
 
@@ -536,12 +747,11 @@ function updateThemeButtons(themeId) {
     };
 
     const setButtonImgIcon = (btn, src) => {
-        if (!btn) return;
         btn.innerHTML = `<img src="${src}" alt="icon" class="ui-icon-img" style="width: 28px; height: 28px; object-fit: contain;" />`;
     };
 
     const icons = buttonIcons[themeId] || buttonIcons.pink;
-    const iconAssets = themeId === 'cute' ? iconAssetsCute : iconAssetsDefault;
+    const iconAssets = themeId === 'cute' ? iconAssetsCute : null;
 
     const fabBtn = document.getElementById('fabBtn');
     if (fabBtn) {
@@ -558,7 +768,7 @@ function updateThemeButtons(themeId) {
         const navIcon = item.querySelector('.nav-icon');
         if (navIcon) {
             if (navIcon.tagName === 'IMG') {
-                const src = iconAssets.nav[page];
+                const src = iconAssets && iconAssets.nav && iconAssets.nav[page];
                 if (src) {
                     navIcon.src = src;
                 }
@@ -833,11 +1043,12 @@ function showThemeSelector() {
             </div>
 
             <div class="theme-section">
-                <div class="theme-section-title">主題</div>
+                <div class="theme-section-title">主題分類</div>
                 <div class="theme-toolbar">
                     <input id="themeSearchInput" class="theme-search-input" type="text" placeholder="搜尋主題..." autocomplete="off" />
+                    <div id="categoryTabs" class="theme-category-tabs"></div>
                 </div>
-                <div id="themeGrid" class="theme-grid theme-grid--auto"></div>
+                <div id="themeGrid" class="theme-grid theme-grid--categorized"></div>
             </div>
 
             
@@ -863,36 +1074,118 @@ function showThemeSelector() {
 
     document.body.appendChild(modal);
 
-    const renderThemeGrid = (query = '') => {
+    // 初始化分類標籤
+    const initCategoryTabs = () => {
+        const categoryTabs = document.getElementById('categoryTabs');
+        if (!categoryTabs) return;
+
+        // 添加「全部」選項
+        let tabsHTML = `
+            <button class="category-tab active" data-category="all">
+                <span class="category-tab-icon">🎨</span>
+                <span class="category-tab-name">全部</span>
+                <span class="category-tab-count">${themes.length}</span>
+            </button>
+        `;
+
+        // 添加各個分類
+        Object.entries(themeCategories).forEach(([categoryId, categoryInfo]) => {
+            const categoryThemes = themes.filter(t => t.category === categoryId);
+            if (categoryThemes.length > 0) {
+                tabsHTML += `
+                    <button class="category-tab" data-category="${categoryId}">
+                        <span class="category-tab-icon">${categoryInfo.icon}</span>
+                        <span class="category-tab-name">${categoryInfo.name}</span>
+                        <span class="category-tab-count">${categoryThemes.length}</span>
+                    </button>
+                `;
+            }
+        });
+
+        categoryTabs.innerHTML = tabsHTML;
+
+        // 添加點擊事件
+        categoryTabs.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                categoryTabs.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                renderThemeGrid('', tab.dataset.category);
+            });
+        });
+    };
+
+    const renderThemeGrid = (query = '', selectedCategory = 'all') => {
         const q = (query || '').trim().toLowerCase();
         const grid = document.getElementById('themeGrid');
         if (!grid) return;
 
-        const list = themes.filter(t => {
+        let list = themes.filter(t => {
             if (!q) return true;
             return (t.name || '').toLowerCase().includes(q) || (t.id || '').toLowerCase().includes(q);
         });
 
-        grid.innerHTML = list.map(theme => {
-            const isSelected = theme.id === currentTheme && !customTheme.primaryColor;
-            return `
-                <div class="theme-item ${isSelected ? 'selected' : ''}" data-theme-id="${theme.id}">
-                    <div class="theme-item-preview" style="background: ${theme.preview};"></div>
-                    <div class="theme-item-content theme-item-content--compact">
-                        <div class="theme-item-icon">${theme.icon}</div>
-                        <div class="theme-item-name">${theme.name}</div>
-                        ${isSelected ? '<div class="theme-item-check">✓</div>' : '<div class="theme-item-check theme-item-check--placeholder"></div>'}
+        // 按分類篩選
+        if (selectedCategory !== 'all') {
+            list = list.filter(t => t.category === selectedCategory);
+        }
+
+        // 按分類分組
+        const groupedThemes = {};
+        list.forEach(theme => {
+            const category = theme.category || 'basic';
+            if (!groupedThemes[category]) {
+                groupedThemes[category] = [];
+            }
+            groupedThemes[category].push(theme);
+        });
+
+        let gridHTML = '';
+        
+        Object.entries(groupedThemes).forEach(([categoryId, categoryThemes]) => {
+            const categoryInfo = themeCategories[categoryId] || { name: '其他', icon: '📁', description: '' };
+            
+            gridHTML += `
+                <div class="theme-category-section">
+                    <div class="theme-category-header">
+                        <span class="theme-category-icon">${categoryInfo.icon}</span>
+                        <span class="theme-category-name">${categoryInfo.name}</span>
+                        <span class="theme-category-description">${categoryInfo.description}</span>
+                    </div>
+                    <div class="theme-category-grid">
+                        ${categoryThemes.map(theme => {
+                            const isSelected = theme.id === currentTheme && !customTheme.primaryColor;
+                            const hasBackgroundImage = theme.backgroundImage;
+                            return `
+                                <div class="theme-item ${isSelected ? 'selected' : ''}" data-theme-id="${theme.id}">
+                                    <div class="theme-item-preview ${hasBackgroundImage ? 'theme-item-preview--image' : ''}" ${hasBackgroundImage ? `style="background-image: url('${theme.backgroundImage}');"` : `style="background: ${theme.preview};"`}></div>
+                                    <div class="theme-item-content theme-item-content--compact">
+                                        <div class="theme-item-icon">${theme.icon}</div>
+                                        <div class="theme-item-name">${theme.name}</div>
+                                        ${isSelected ? '<div class="theme-item-check">✓</div>' : '<div class="theme-item-check theme-item-check--placeholder"></div>'}
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
                     </div>
                 </div>
             `;
-        }).join('');
+        });
+
+        grid.innerHTML = gridHTML;
 
         grid.querySelectorAll('.theme-item').forEach(item => {
             item.addEventListener('click', () => {
                 const themeId = item.dataset.themeId;
-                applyTheme(themeId);
+                const theme = themes.find(t => t.id === themeId);
+                
+                // 清除自訂主題設定，應用預設主題
                 saveCustomTheme({});
-                applyCustomTheme();
+                applyTheme(themeId);
+                
+                // 如果主題有背景圖片，會自動在applyTheme中處理
+                if (theme && theme.backgroundImage) {
+                    console.log(` 切換到主題 "${theme.name}" 並載入背景圖片`);
+                }
 
                 grid.querySelectorAll('.theme-item').forEach(t => t.classList.remove('selected'));
                 item.classList.add('selected');
@@ -907,12 +1200,16 @@ function showThemeSelector() {
         });
     };
 
+    // 初始化
+    initCategoryTabs();
     renderThemeGrid('');
 
     const themeSearchInput = document.getElementById('themeSearchInput');
     if (themeSearchInput) {
         themeSearchInput.addEventListener('input', (e) => {
-            renderThemeGrid(e.target.value);
+            const activeTab = document.querySelector('.category-tab.active');
+            const selectedCategory = activeTab ? activeTab.dataset.category : 'all';
+            renderThemeGrid(e.target.value, selectedCategory);
         });
     }
 
@@ -1022,6 +1319,10 @@ function initTheme() {
     const savedTheme = getCurrentTheme();
     applyTheme(savedTheme);
     applyCustomTheme();
+    const customTheme = getCustomTheme();
+    if (customTheme.backgroundImage) {
+        document.body.style.backgroundImage = `url(${customTheme.backgroundImage})`;
+    }
     setTimeout(() => {
         updateThemeButtons(savedTheme);
     }, 100);
