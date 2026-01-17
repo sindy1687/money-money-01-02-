@@ -7,7 +7,14 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="alternate icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23ff69b4'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>💰</text></svg>">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="flame-theme.css">
     <link rel="stylesheet" href="searchHistory.css">
+    
+    <!-- Google Fonts - 美觀字體系統 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&family=Clash+Display:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
@@ -20,25 +27,6 @@
         </video>
         <div class="theme-video-gradient"></div>
     </div>
-    <!-- Header部分 -->
-    <div class="header-section" style="display: none;">
-        <button class="close-btn">←</button>
-        <div class="header-tabs">
-            <button class="header-tab active" data-type="expense">
-                <span class="header-tab-icon">👤</span>
-                <span class="header-tab-text">支出</span>
-            </button>
-            <button class="header-tab" data-type="income">
-                <span class="header-tab-icon">💰</span>
-                <span class="header-tab-text">收入</span>
-            </button>
-            <button class="header-tab" data-type="transfer">
-                <span class="header-tab-icon">💳</span>
-                <span class="header-tab-text">轉帳</span>
-            </button>
-        </div>
-    </div>
-
     <!-- 記帳輸入頁面 -->
     <div class="page-input" id="pageInput" style="display: none;">
         <div class="app-container">
@@ -1965,11 +1953,83 @@
         </button>
     </div>
 
+    <!-- 自動轉帳管理頁面 -->
+    <div class="auto-transfer-management-page" id="autoTransferManagementPage" style="display: none;">
+        <div class="auto-transfer-header">
+            <button class="auto-transfer-back-btn" id="autoTransferBackBtn">← 返回</button>
+            <h2 class="auto-transfer-title">自動轉帳管理</h2>
+            <button class="auto-transfer-add-btn" id="autoTransferAddBtn">➕ 新增</button>
+        </div>
+        
+        <div class="auto-transfer-list-container" id="autoTransferListContainer">
+            <!-- 自動轉帳計劃列表將由 JavaScript 動態生成 -->
+        </div>
+    </div>
+
+    <!-- 自動轉帳設定頁面 -->
+    <div class="auto-transfer-setup-page" id="autoTransferSetupPage" style="display: none;">
+        <div class="auto-transfer-setup-header">
+            <button class="auto-transfer-setup-back-btn" id="autoTransferSetupBackBtn">← 返回</button>
+            <h2 class="auto-transfer-setup-title" id="autoTransferSetupTitle">新增轉帳計劃</h2>
+        </div>
+        
+        <div class="auto-transfer-setup-form">
+            <div class="form-field">
+                <label class="form-label">計劃名稱</label>
+                <input type="text" class="form-input" id="transferNameInput" placeholder="例如：每月薪資轉儲蓄">
+            </div>
+            
+            <div class="form-field">
+                <label class="form-label">轉出帳戶</label>
+                <select class="form-select" id="transferFromAccount">
+                    <!-- 帳戶選項將由 JavaScript 動態生成 -->
+                </select>
+            </div>
+            
+            <div class="form-field">
+                <label class="form-label">轉入帳戶</label>
+                <select class="form-select" id="transferToAccount">
+                    <!-- 帳戶選項將由 JavaScript 動態生成 -->
+                </select>
+            </div>
+            
+            <div class="form-field">
+                <label class="form-label">轉帳金額</label>
+                <input type="number" class="form-input" id="transferAmountInput" placeholder="請輸入轉帳金額" min="1" step="1">
+            </div>
+            
+            <div class="form-field">
+                <label class="form-label">轉帳日期</label>
+                <select class="form-select" id="transferDaySelect">
+                    <!-- 日期選項將由 JavaScript 動態生成 -->
+                </select>
+            </div>
+            
+            <div class="form-field">
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" id="transferEnabledInput" checked>
+                    <span class="form-checkbox-text">啟用此轉帳計劃</span>
+                </label>
+            </div>
+            
+            <div class="form-field">
+                <label class="form-label">備註（選填）</label>
+                <textarea class="form-textarea" id="transferNoteInput" placeholder="新增備註說明"></textarea>
+            </div>
+            
+            <div class="auto-transfer-setup-actions">
+                <button class="form-submit-btn" id="transferSaveBtn">儲存</button>
+                <button class="form-delete-btn" id="transferDeleteBtn" style="display: none;">刪除</button>
+            </div>
+        </div>
+    </div>
+
     <!-- 模組化腳本 -->
     <script src="js/categories.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/advisor.js"></script>
     <script src="js/theme.js"></script>
+    <script src="js/autoTransfer.js"></script>
     <!-- 主腳本（保留其他功能） -->
     <script src="script.js?v=20251227_1"></script>
     <script src="searchHistoryInit.js" type="module"></script>
