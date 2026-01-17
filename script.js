@@ -20821,6 +20821,156 @@ function loadImageEmojis(container) {
     });
 }
 
+// 上傳圖片表情
+function uploadImageEmoji(container) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                // 顯示圖片裁切對話框
+                showImageCropModalForEmoji(event.target.result, container);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+    input.click();
+}
+
+// 顯示表情圖片裁切對話框
+function showImageCropModalForEmoji(imageData, container) {
+    const modal = document.getElementById('imageCropModal');
+    const canvas = document.getElementById('cropCanvas');
+    const overlay = document.getElementById('cropOverlay');
+    cropBox = document.getElementById('cropBox');
+    
+    if (!modal || !canvas || !overlay || !cropBox) return;
+    
+    cropImageData = imageData;
+    cropCanvas = canvas;
+    cropCtx = canvas.getContext('2d');
+    
+    // 保存表情容器引用
+    window.currentEmojiContainer = container;
+    
+    // 設置畫布大小
+    const maxSize = 400;
+    canvas.width = maxSize;
+    canvas.height = maxSize;
+    
+    // 載入圖片
+    const img = new Image();
+    img.onload = () => {
+        // 計算縮放比例以適應畫布
+        const scale = Math.min(maxSize / img.width, maxSize / img.height);
+        const displayWidth = img.width * scale;
+        const displayHeight = img.height * scale;
+        
+        // 居中顯示
+        const offsetX = (maxSize - displayWidth) / 2;
+        const offsetY = (maxSize - displayHeight) / 2;
+        
+        // 清空畫布
+        cropCtx.fillStyle = '#f0f0f0';
+        cropCtx.fillRect(0, 0, maxSize, maxSize);
+        
+        // 繪製圖片
+        cropCtx.drawImage(img, offsetX, offsetY, displayWidth, displayHeight);
+        
+        // 初始化裁切框（表情符號較小）
+        cropWidth = Math.min(100, displayWidth);
+        cropHeight = Math.min(100, displayHeight);
+        cropX = offsetX + (displayWidth - cropWidth) / 2;
+        cropY = offsetY + (displayHeight - cropHeight) / 2;
+        
+        updateCropBox();
+        updateCropSizeInputs();
+    };
+    img.src = imageData;
+    
+    // 設置遮罩和裁切框大小
+    overlay.style.width = maxSize + 'px';
+    overlay.style.height = maxSize + 'px';
+    
+    // 顯示對話框
+    modal.style.display = 'flex';
+    
+    // 綁定事件
+    bindCropEvents();
+}
+
+// 確認表情圖片裁切
+function confirmEmojiCrop() {
+    if (!cropCanvas || !cropCtx || !cropImageData) return;
+    
+    // 創建臨時canvas進行裁切
+    const tempCanvas = document.createElement('canvas');
+    tempCanvas.width = cropWidth;
+    tempCanvas.height = cropHeight;
+    const tempCtx = tempCanvas.getContext('2d');
+    
+    // 計算原始圖片的裁切區域
+    const img = new Image();
+    img.onload = () => {
+        const maxSize = 400;
+        const scale = Math.min(maxSize / img.width, maxSize / img.height);
+        const displayWidth = img.width * scale;
+        const displayHeight = img.height * scale;
+        const offsetX = (maxSize - displayWidth) / 2;
+        const offsetY = (maxSize - displayHeight) / 2;
+        
+        // 計算原始圖片的裁切區域
+        const sourceX = (cropX - offsetX) / scale;
+        const sourceY = (cropY - offsetY) / scale;
+        const sourceWidth = cropWidth / scale;
+        const sourceHeight = cropHeight / scale;
+        
+        // 裁切圖片
+        tempCtx.drawImage(
+            img,
+            sourceX, sourceY, sourceWidth, sourceHeight,
+            0, 0, cropWidth, cropHeight
+        );
+        
+        // 獲取裁切後的圖片數據
+        const croppedImage = tempCanvas.toDataURL('image/png');
+        
+        // 保存圖片表情
+        const savedEmojis = JSON.parse(localStorage.getItem('imageEmojis') || '[]');
+        const emojiData = {
+            id: Date.now().toString(),
+            url: croppedImage,
+            createdAt: new Date().toISOString()
+        };
+        savedEmojis.push(emojiData);
+        localStorage.setItem('imageEmojis', JSON.stringify(savedEmojis));
+        
+        // 添加到容器
+        if (window.currentEmojiContainer) {
+            const emojiBtn = document.createElement('button');
+            emojiBtn.className = 'emoji-item image-emoji-item';
+            emojiBtn.innerHTML = `<img src="${croppedImage}" alt="表情" class="emoji-preview-image">`;
+            emojiBtn.setAttribute('data-emoji', croppedImage);
+            emojiBtn.setAttribute('data-type', 'image');
+            emojiBtn.addEventListener('click', () => {
+                selectEmoji(croppedImage, 'image');
+            });
+            window.currentEmojiContainer.appendChild(emojiBtn);
+        }
+        
+        // 關閉裁切對話框
+        const modal = document.getElementById('imageCropModal');
+        if (modal) modal.style.display = 'none';
+        
+        // 清理表情容器引用
+        window.currentEmojiContainer = null;
+    };
+    img.src = cropImageData;
+}
+
 // ========== 成員選擇功能 ==========
 
 // 獲取成員列表
@@ -21073,27 +21223,14 @@ function initAccountImageUpload() {
         imageInput.click();
     });
     
-    // 文件選擇 - 直接使用，不裁切
+    // 文件選擇 - 顯示裁切對話框
     imageInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = (event) => {
-                // 直接使用上傳的圖片，不進行裁切
-                const imageData = event.target.result;
-                const previewImg = document.getElementById('accountImagePreviewImg');
-                const placeholder = document.getElementById('accountImagePlaceholder');
-                const removeBtn = document.getElementById('accountImageRemoveBtn');
-                
-                if (previewImg) {
-                    previewImg.src = imageData;
-                    previewImg.style.display = 'block';
-                }
-                if (placeholder) placeholder.style.display = 'none';
-                if (removeBtn) removeBtn.style.display = 'block';
-                
-                // 重置文件輸入，允許重新選擇同一文件
-                imageInput.value = '';
+                // 顯示圖片裁切對話框
+                showImageCropModal(event.target.result);
             };
             reader.readAsDataURL(file);
         }
@@ -21262,6 +21399,12 @@ function updateCropSizeInputs() {
 function confirmCrop() {
     if (!cropCanvas || !cropCtx || !cropImageData) return;
     
+    // 檢查是否為表情圖片裁切
+    if (window.currentEmojiContainer) {
+        confirmEmojiCrop();
+        return;
+    }
+    
     // 創建臨時canvas進行裁切
     const tempCanvas = document.createElement('canvas');
     tempCanvas.width = cropWidth;
@@ -21309,6 +21452,10 @@ function confirmCrop() {
         // 關閉裁切對話框
         const modal = document.getElementById('imageCropModal');
         if (modal) modal.style.display = 'none';
+        
+        // 重置文件輸入，允許重新選擇同一文件
+        const imageInput = document.getElementById('accountImageInput');
+        if (imageInput) imageInput.value = '';
     };
     img.src = cropImageData;
 }
@@ -21323,16 +21470,17 @@ function initImageCropModal() {
     
     if (closeBtn) {
         closeBtn.addEventListener('click', () => {
-            cropper?.destroy();
             modal.style.display = 'none';
+            // 清理表情容器引用
+            window.currentEmojiContainer = null;
         });
     }
     
     if (cancelBtn) {
         cancelBtn.addEventListener('click', () => {
-            cropper?.destroy();
             modal.style.display = 'none';
-            if (modal) modal.style.display = 'none';
+            // 清理表情容器引用
+            window.currentEmojiContainer = null;
         });
     }
     
