@@ -1053,11 +1053,20 @@
     --color-primary-rgba-08: rgba(255, 105, 180, 0.08);
     --color-primary-rgba-10: rgba(255, 105, 180, 0.1);
     --color-primary-rgba-15: rgba(255, 105, 180, 0.15);
+    --color-primary-rgba-16: rgba(255, 105, 180, 0.16);
     --color-primary-rgba-20: rgba(255, 105, 180, 0.2);
     --color-primary-rgba-25: rgba(255, 105, 180, 0.25);
     --color-primary-rgba-30: rgba(255, 105, 180, 0.3);
+    --color-primary-rgba-40: rgba(255, 105, 180, 0.4);
+    --color-primary-rgba-28: rgba(255, 105, 180, 0.28);
     --color-primary-rgba-12: rgba(255, 105, 180, 0.12);
     --color-primary-rgba-18: rgba(255, 105, 180, 0.18);
+    --color-primary-rgba-22: rgba(255, 105, 180, 0.22);
+    --color-primary-rgba-32: rgba(255, 105, 180, 0.32);
+    --color-primary-rgba-35: rgba(255, 105, 180, 0.35);
+    --color-primary-rgba-42: rgba(255, 105, 180, 0.42);
+    --color-primary-rgba-55: rgba(255, 105, 180, 0.55);
+    --color-primary-rgba-60: rgba(255, 105, 180, 0.6);
     --color-primary-light-rgba-08: rgba(255, 158, 199, 0.08);
     --color-primary-light-rgba-10: rgba(255, 158, 199, 0.1);
     --color-primary-light-rgba-15: rgba(255, 158, 199, 0.15);
@@ -2354,7 +2363,7 @@ button:active {
     border-radius: 20px;
     margin: 20px 16px;
     border: 1px solid rgba(255, 158, 199, 0.2);
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.08);
+    box-shadow: 0 4px 12px var(--color-primary-rgba-08);
 }
 
 .empty-state small {
@@ -2477,7 +2486,7 @@ button:active {
 }
 
 .close-btn:active {
-    background: rgba(255, 105, 180, 0.1);
+    background: var(--color-primary-rgba-10);
 }
 
 .header-tabs {
@@ -4180,7 +4189,7 @@ width: 100%;
 .page-ledger {
     min-height: calc(100vh - 60px);
     padding-bottom: 100px;
-    background: linear-gradient(180deg, #fff5f9 0%, #ffffff 100%);
+    background: var(--bg-light-gradient-reverse);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     width: 100%;
@@ -4190,14 +4199,14 @@ width: 100%;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: linear-gradient(180deg, #fff5f9 0%, #ffffff 100%);
+    background: var(--bg-light-gradient-reverse);
 }
 
 .page-next-month-bills {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: linear-gradient(180deg, #fff5f9 0%, #ffffff 100%);
+    background: var(--bg-light-gradient-reverse);
 }
 
 .next-month-bills-page-header {
@@ -4316,9 +4325,9 @@ width: 100%;
     align-items: flex-end;
     margin-left: auto;
     padding: 8px 12px;
-    background: linear-gradient(135deg, rgba(255, 105, 180, 0.1) 0%, rgba(255, 105, 180, 0.05) 100%);
+    background: var(--color-primary-rgba-10);
     border-radius: 12px;
-    border: 1px solid rgba(255, 105, 180, 0.2);
+    border: 1px solid var(--color-primary-rgba-20);
 }
 
 .daily-expense-label {
@@ -5075,9 +5084,9 @@ width: 100%;
     flex-direction: column;
     align-items: center;
     padding: 12px 20px;
-    background: linear-gradient(135deg, rgba(255, 105, 180, 0.1) 0%, rgba(255, 105, 180, 0.05) 100%);
+    background: var(--color-primary-rgba-10);
     border-radius: 12px;
-    border: 1px solid rgba(255, 105, 180, 0.2);
+    border: 1px solid var(--color-primary-rgba-20);
     min-width: 200px;
 }
 
@@ -5355,7 +5364,7 @@ width: 100%;
 
 .nav-item.active .nav-icon {
     transform: scale(1.15);
-    filter: drop-shadow(0 2px 6px rgba(255, 105, 180, 0.4));
+    filter: drop-shadow(0 2px 6px var(--color-primary-rgba-40));
 }
 
 .nav-item.active .nav-text {
@@ -5577,7 +5586,7 @@ width: 100%;
     background: var(--color-primary);
     border-color: var(--color-primary);
     color: #fff;
-    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+    box-shadow: 0 8px 20px var(--color-primary-rgba-20);
 }
 
 .chart-range-btn:active {
@@ -7970,9 +7979,9 @@ width: 100%;
      content: '';
      position: absolute;
      inset: -2px;
-     background: radial-gradient(900px circle at 10% 10%, rgba(255, 105, 180, 0.18), transparent 55%),
-                 radial-gradient(900px circle at 90% 0%, rgba(102, 126, 234, 0.16), transparent 50%),
-                 radial-gradient(900px circle at 50% 100%, rgba(118, 75, 162, 0.12), transparent 55%);
+     background: radial-gradient(900px circle at 10% 10%, var(--color-primary-rgba-18), transparent 55%),
+                 radial-gradient(900px circle at 90% 0%, var(--color-secondary-rgba-16), transparent 50%),
+                 radial-gradient(900px circle at 50% 100%, var(--color-accent-rgba-12), transparent 55%);
      pointer-events: none;
  }
 
@@ -8916,7 +8925,7 @@ width: 100%;
     outline: none;
     border-color: var(--color-primary-lighter);
     background: var(--bg-white);
-    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
+    box-shadow: 0 0 0 3px var(--color-primary-rgba-10), 0 4px 12px var(--color-primary-rgba-15);
 }
 
 .search-close-btn {
@@ -9794,7 +9803,7 @@ width: 100%;
     inset: 0;
     border-radius: 16px;
     padding: 1px;
-    background: linear-gradient(125deg, rgba(255, 105, 180, 0.18), rgba(0, 169, 255, 0.14));
+    background: linear-gradient(125deg, var(--color-primary-rgba-18), var(--color-secondary-rgba-14));
     opacity: 0;
     pointer-events: none;
     transition: opacity 240ms ease;
@@ -9808,7 +9817,7 @@ width: 100%;
 .portfolio-item:hover {
     transform: translateY(-2px);
     box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16), 0 6px 14px rgba(15, 23, 42, 0.08);
-    border-color: rgba(255, 105, 180, 0.25);
+    border-color: var(--color-primary-rgba-25);
 }
 
 .portfolio-item:hover::after {
@@ -9879,7 +9888,7 @@ width: 100%;
     inset: 0;
     border-radius: 16px;
     padding: 1px;
-    background: linear-gradient(125deg, rgba(255, 105, 180, 0.2), rgba(0, 169, 255, 0.2));
+    background: linear-gradient(125deg, var(--color-primary-rgba-20), var(--color-secondary-rgba-20));
     opacity: 0;
     pointer-events: none;
     transition: opacity 240ms ease;
@@ -10279,15 +10288,15 @@ width: 100%;
 }
 
 .summary-card {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.86) 100%);
-    border-radius: 22px;
-    padding: 22px;
+    background: var(--bg-card, var(--bg-white));
+    border-radius: 20px;
+    padding: 20px;
     box-shadow: 0 18px 44px rgba(15, 23, 42, 0.10), 0 6px 16px rgba(15, 23, 42, 0.06);
     display: flex;
     align-items: center;
     gap: 16px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(255, 105, 180, 0.16);
+    border: 1px solid var(--color-primary-rgba-16);
     position: relative;
     overflow: hidden;
 }
@@ -10310,27 +10319,27 @@ width: 100%;
 .summary-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 22px 56px rgba(15, 23, 42, 0.14), 0 10px 26px rgba(15, 23, 42, 0.08);
-    border-color: rgba(255, 105, 180, 0.28);
+    border-color: var(--color-primary-rgba-28);
 }
 
 .summary-card.primary {
-    background: linear-gradient(135deg, rgba(255, 182, 217, 0.22) 0%, rgba(255, 158, 199, 0.12) 100%);
-    border-color: rgba(255, 105, 180, 0.22);
-    box-shadow: 0 18px 44px rgba(255, 105, 180, 0.12), 0 6px 16px rgba(15, 23, 42, 0.06);
+    background: linear-gradient(135deg, var(--color-primary-light-rgba-22) 0%, var(--color-primary-lighter-rgba-12) 100%);
+    border-color: var(--color-primary-rgba-22);
+    box-shadow: 0 18px 44px var(--color-primary-rgba-12), 0 6px 16px rgba(15, 23, 42, 0.06);
 }
 
 .summary-card.primary:hover {
-    box-shadow: 0 26px 66px rgba(255, 105, 180, 0.18), 0 10px 26px rgba(15, 23, 42, 0.08);
+    box-shadow: 0 26px 66px var(--color-primary-rgba-18), 0 10px 26px rgba(15, 23, 42, 0.08);
 }
 
 .summary-card.highlight {
-    background: linear-gradient(135deg, rgba(255, 182, 217, 0.18) 0%, rgba(255, 158, 199, 0.10) 100%);
-    border-color: rgba(255, 105, 180, 0.20);
-    box-shadow: 0 18px 44px rgba(255, 105, 180, 0.10), 0 6px 16px rgba(15, 23, 42, 0.06);
+    background: linear-gradient(135deg, var(--color-primary-light-rgba-18) 0%, var(--color-primary-lighter-rgba-10) 100%);
+    border-color: var(--color-primary-rgba-20);
+    box-shadow: 0 18px 44px var(--color-primary-rgba-10), 0 6px 16px rgba(15, 23, 42, 0.06);
 }
 
 .summary-card.highlight:hover {
-    box-shadow: 0 24px 60px rgba(255, 105, 180, 0.16), 0 10px 26px rgba(15, 23, 42, 0.08);
+    box-shadow: 0 24px 60px var(--color-primary-rgba-16), 0 10px 26px rgba(15, 23, 42, 0.08);
 }
 
 .summary-icon {
@@ -10340,23 +10349,23 @@ width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.75) 0%, rgba(255, 182, 217, 0.28) 40%, rgba(255, 158, 199, 0.18) 100%);
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.75) 0%, var(--color-primary-light-rgba-28) 40%, var(--color-primary-lighter-rgba-18) 100%);
     border-radius: 18px;
     border: 1px solid rgba(255, 255, 255, 0.65);
     font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
-    box-shadow: 0 14px 30px rgba(255, 105, 180, 0.14), 0 8px 16px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 14px 30px var(--color-primary-rgba-14), 0 8px 16px rgba(15, 23, 42, 0.06);
     transition: all 0.3s ease;
     flex-shrink: 0;
 }
 
 .summary-card:hover .summary-icon {
     transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.25);
+    box-shadow: 0 4px 12px var(--color-primary-rgba-25);
 }
 
 .summary-card.primary .summary-icon {
-    background: linear-gradient(135deg, rgba(255, 182, 217, 0.4) 0%, rgba(255, 158, 199, 0.3) 100%);
-    box-shadow: 0 3px 10px rgba(255, 105, 180, 0.2);
+    background: linear-gradient(135deg, var(--color-primary-light-rgba-40) 0%, var(--color-primary-lighter-rgba-30) 100%);
+    box-shadow: 0 3px 10px var(--color-primary-rgba-20);
 }
 
 .summary-content {
@@ -10457,7 +10466,7 @@ width: 100%;
 .stock-search-input:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 4px var(--color-primary-rgba-10), 0 4px 12px rgba(255, 105, 180, 0.15);
+    box-shadow: 0 0 0 4px var(--color-primary-rgba-10), 0 4px 12px var(--color-primary-rgba-15);
     transform: translateY(-1px);
 }
 
@@ -10488,7 +10497,7 @@ width: 100%;
 .stock-search-clear-btn:hover {
     background: linear-gradient(135deg, rgba(255, 182, 217, 0.3) 0%, rgba(255, 158, 199, 0.25) 100%);
     transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 3px 8px rgba(255, 105, 180, 0.2);
+    box-shadow: 0 3px 8px var(--color-primary-rgba-20);
 }
 
 .stock-search-clear-btn:hover {
@@ -11143,7 +11152,7 @@ width: 100%;
 .stock-item-card:active {
     transform: scale(0.98) translateY(-1px);
     border-color: var(--color-primary);
-    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.25);
+    box-shadow: 0 2px 8px var(--color-primary-rgba-25);
 }
 
 .stock-card-header {
@@ -11165,14 +11174,14 @@ width: 100%;
     background: linear-gradient(135deg, rgba(255, 182, 217, 0.3) 0%, rgba(255, 158, 199, 0.25) 100%);
     border-radius: 6px;
     font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
-    box-shadow: 0 1px 5px rgba(255, 105, 180, 0.15);
+    box-shadow: 0 1px 5px var(--color-primary-rgba-15);
     transition: all 0.3s ease;
     flex-shrink: 0;
 }
 
 .stock-item-card:hover .stock-card-icon {
     transform: scale(1.05) rotate(3deg);
-    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.25);
+    box-shadow: 0 2px 8px var(--color-primary-rgba-25);
 }
 
 .stock-card-info {
@@ -11349,7 +11358,7 @@ width: 100%;
     inset: 0;
     border-radius: 16px;
     padding: 1px;
-    background: linear-gradient(125deg, rgba(255, 105, 180, 0.18), rgba(0, 169, 255, 0.14));
+    background: linear-gradient(125deg, var(--color-primary-rgba-18), rgba(0, 169, 255, 0.14));
     opacity: 0;
     pointer-events: none;
     transition: opacity 240ms ease;
@@ -11363,7 +11372,7 @@ width: 100%;
 .allocation-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16), 0 6px 14px rgba(15, 23, 42, 0.08);
-    border-color: rgba(255, 105, 180, 0.25);
+    border-color: var(--color-primary-rgba-25);
 }
 
 .allocation-card:hover::after {
@@ -11890,7 +11899,7 @@ width: 100%;
     background: var(--bg-gradient);
     color: var(--text-white);
     font-weight: 700;
-    box-shadow: 0 4px 16px rgba(255, 105, 180, 0.35), 0 2px 8px rgba(255, 105, 180, 0.2);
+    box-shadow: 0 4px 16px var(--color-primary-rgba-35), 0 2px 8px var(--color-primary-rgba-20);
     border-color: var(--color-primary);
     transform: translateY(-2px);
 }
@@ -12036,7 +12045,7 @@ width: 100%;
 .record-card:active {
     transform: scale(0.98) translateY(-2px);
     border-color: var(--color-primary);
-    box-shadow: 0 4px 16px rgba(255, 105, 180, 0.25);
+    box-shadow: 0 4px 16px var(--color-primary-rgba-25);
 }
 
 .record-card-header {
@@ -12067,52 +12076,52 @@ width: 100%;
 }
 
 .record-card-type.buy {
-    background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
-    color: #ffffff;
-    box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    color: var(--text-white);
+    box-shadow: 0 3px 10px var(--color-primary-rgba-30);
 }
 
 .record-card-type.sell {
-    background: linear-gradient(135deg, #f44336 0%, #e57373 100%);
-    color: #ffffff;
-    box-shadow: 0 3px 10px rgba(244, 67, 54, 0.3);
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
+    color: var(--text-white);
+    box-shadow: 0 3px 10px var(--color-secondary-rgba-30);
 }
 
 .record-card-type.dividend {
-    background: linear-gradient(135deg, #ffb74d 0%, #ffcc80 100%);
-    color: #ffffff;
-    box-shadow: 0 3px 10px rgba(255, 183, 77, 0.3);
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+    color: var(--text-white);
+    box-shadow: 0 3px 10px var(--color-accent-rgba-30);
 }
 
 /* 買入卡片框線 */
 .record-card:has(.record-card-type.buy) {
-    border: 2px solid rgba(76, 175, 80, 0.4);
+    border: 2px solid var(--color-primary-rgba-40);
 }
 
 /* 賣出卡片框線 */
 .record-card:has(.record-card-type.sell) {
-    border: 2px solid rgba(244, 67, 54, 0.4);
+    border: 2px solid var(--color-secondary-rgba-40);
 }
 
 /* 股息卡片框線 */
 .record-card:has(.record-card-type.dividend) {
-    border: 2px solid rgba(255, 183, 77, 0.4);
+    border: 2px solid var(--color-accent-rgba-40);
 }
 
 /* 懸停效果 */
 .record-card:has(.record-card-type.buy):hover {
-    border-color: rgba(76, 175, 80, 0.6);
-    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.2);
+    border-color: var(--color-primary-rgba-60);
+    box-shadow: 0 6px 20px var(--color-primary-rgba-20);
 }
 
 .record-card:has(.record-card-type.sell):hover {
-    border-color: rgba(244, 67, 54, 0.6);
-    box-shadow: 0 6px 20px rgba(244, 67, 54, 0.2);
+    border-color: var(--color-secondary-rgba-60);
+    box-shadow: 0 6px 20px var(--color-secondary-rgba-20);
 }
 
 .record-card:has(.record-card-type.dividend):hover {
-    border-color: rgba(255, 183, 77, 0.6);
-    box-shadow: 0 6px 20px rgba(255, 183, 77, 0.2);
+    border-color: var(--color-accent-rgba-60);
+    box-shadow: 0 6px 20px var(--color-accent-rgba-20);
 }
 
 .record-card-type.dividend-reinvest-badge {
@@ -12356,8 +12365,8 @@ width: 100%;
     color: var(--text-secondary);
     font-weight: 600;
     padding: 6px 12px;
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid var(--border-light);
+    background: color-mix(in srgb, var(--color-primary-rgba-08), var(--bg-card, var(--bg-white)));
+    border: 1px solid var(--color-primary-rgba-15);
     border-radius: 10px;
 }
 
@@ -12693,7 +12702,7 @@ width: 100%;
     justify-content: center;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.35);
+    box-shadow: 0 4px 12px var(--color-primary-rgba-35);
     z-index: 100;
     pointer-events: auto;
 }
@@ -13133,19 +13142,19 @@ width: 100%;
     white-space: nowrap;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     min-width: 80px;
-    box-shadow: 0 2px 6px rgba(255, 105, 180, 0.15);
+    box-shadow: 0 2px 6px var(--color-primary-rgba-15);
 }
 
 .shares-auto-fill-btn:hover {
     background: linear-gradient(135deg, rgba(255, 182, 217, 0.3) 0%, rgba(255, 158, 199, 0.25) 100%);
     border-color: var(--color-primary);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.25);
+    box-shadow: 0 4px 12px var(--color-primary-rgba-25);
 }
 
 .shares-auto-fill-btn:active {
     transform: translateY(0) scale(0.98);
-    box-shadow: 0 2px 6px rgba(255, 105, 180, 0.2);
+    box-shadow: 0 2px 6px var(--color-primary-rgba-20);
 }
 
 @media (max-width: 480px) {
@@ -13275,7 +13284,7 @@ width: 100%;
     transition: all 0.3s ease;
     margin-top: -4px;
     box-sizing: border-box;
-    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.25);
+    box-shadow: 0 2px 8px var(--color-primary-rgba-25);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13616,7 +13625,7 @@ width: 100%;
     z-index: 2001;
     max-width: 100%;
     width: 100%;
-    box-shadow: 0 -2px 12px rgba(255, 105, 180, 0.1);
+    box-shadow: 0 -2px 12px var(--color-primary-rgba-10);
 }
 
 /* 響應式：底部操作區調整 */
@@ -13782,10 +13791,10 @@ width: 100%;
 /* 股票選擇卡片 */
 .stock-select-card {
     margin: 20px;
-    background: linear-gradient(135deg, #ffb6d9 0%, #ff9ec7 50%, #ffb6d9 100%);
+    background: var(--bg-gradient);
     border-radius: 24px;
     padding: 24px;
-    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.3), 0 0 0 3px rgba(255, 255, 255, 0.3) inset;
+    box-shadow: 0 6px 20px var(--color-primary-rgba-30), 0 0 0 3px rgba(255, 255, 255, 0.3) inset;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
@@ -13810,7 +13819,7 @@ width: 100%;
 
 .stock-select-card:hover {
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 8px 24px rgba(255, 105, 180, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.4) inset;
+    box-shadow: 0 8px 24px var(--color-primary-rgba-40), 0 0 0 3px rgba(255, 255, 255, 0.4) inset;
 }
 
 .stock-select-card:active {
@@ -13879,23 +13888,19 @@ width: 100%;
 }
 
 .investment-back-btn {
-    position: absolute;
-    left: 16px;
-    top: 16px;
-    background: rgba(255, 255, 255, 0.95);
-    border: none;
+    background: var(--bg-gradient-light);
+    border: 2px solid var(--color-primary);
     color: var(--color-primary);
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
-    padding: 12px 18px;
     border-radius: 25px;
     z-index: 10;
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);
+    box-shadow: 0 4px 12px var(--color-primary-rgba-20);
     display: flex;
     align-items: center;
     gap: 6px;
+    position: absolute;
+    left: 16px;
+    top: 16px;
 }
 
 .investment-back-btn::before {
@@ -13907,7 +13912,7 @@ width: 100%;
 .investment-back-btn:hover {
     background: var(--bg-white);
     transform: translateX(-4px) scale(1.05);
-    box-shadow: 0 6px 16px rgba(255, 105, 180, 0.3);
+    box-shadow: 0 6px 16px var(--color-primary-rgba-30);
 }
 
 .investment-back-btn:active {
@@ -13928,7 +13933,7 @@ width: 100%;
     background: linear-gradient(135deg, #ffffff 0%, #fff9fc 100%);
     border-radius: 24px;
     padding: 24px;
-    box-shadow: 0 4px 16px rgba(255, 105, 180, 0.15), 0 0 0 2px rgba(255, 182, 217, 0.2) inset;
+    box-shadow: 0 4px 16px var(--color-primary-rgba-15), 0 0 0 2px rgba(255, 182, 217, 0.2) inset;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -13953,7 +13958,7 @@ width: 100%;
 }
 
 .input-field-card:focus-within {
-    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.25), 0 0 0 3px rgba(255, 182, 217, 0.3) inset;
+    box-shadow: 0 6px 20px var(--color-primary-rgba-25), 0 0 0 3px rgba(255, 182, 217, 0.3) inset;
     transform: translateY(-2px);
 }
 
@@ -14009,9 +14014,9 @@ width: 100%;
 .calc-instruction {
     text-align: center;
     padding: 12px;
-    background: linear-gradient(135deg, #ffeef5 0%, #fff5f9 100%);
+    background: var(--bg-gradient-light);
     border-radius: 12px;
-    border: 1px dashed #ff9ec7;
+    border: 1px dashed var(--color-primary-lighter);
 }
 
 .instruction-text {
@@ -14087,14 +14092,14 @@ width: 100%;
     padding: 16px;
     background: var(--bg-white);
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.1);
+    box-shadow: 0 2px 8px var(--color-primary-rgba-10);
     border: 2px solid transparent;
     transition: all 0.3s ease;
 }
 
 .calc-row:hover {
     border-color: #ff9ec7;
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.15);
+    box-shadow: 0 4px 12px var(--color-primary-rgba-15);
 }
 
 .calc-label {
@@ -14180,10 +14185,10 @@ width: 100%;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: linear-gradient(135deg, #ffb6d9 0%, #ff9ec7 100%);
+    background: var(--bg-gradient);
     border-radius: 12px;
     margin-top: 8px;
-    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.25);
+    box-shadow: 0 2px 8px var(--color-primary-rgba-25);
 }
 
 .calc-final-amount {
@@ -14314,7 +14319,7 @@ width: 100%;
 .dividend-calendar-item.current-month {
     border-color: var(--color-primary);
     background: linear-gradient(135deg, rgba(255, 182, 217, 0.1) 0%, rgba(255, 158, 199, 0.05) 100%);
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);
+    box-shadow: 0 4px 12px var(--color-primary-rgba-20);
 }
 
 .dividend-calendar-item.has-dividend {
@@ -14437,7 +14442,7 @@ width: 100%;
     margin-top: 16px;
     text-align: center;
     border: 2px solid var(--color-primary-lighter);
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.15);
+    box-shadow: 0 4px 12px var(--color-primary-rgba-15);
 }
 
 .dividend-year-stat-total-label {
@@ -14523,11 +14528,10 @@ width: 100%;
 .dividend-summary-large {
     text-align: center;
     padding: 32px;
-    background: linear-gradient(135deg, #ffeef5 0%, #fff5f9 100%);
+    background: var(--bg-gradient-light);
     border-radius: 12px;
     margin-bottom: 24px;
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);
-    border: 2px solid var(--color-primary);
+    box-shadow: var(--shadow-primary);
 }
 
 .dividend-label {
@@ -14551,14 +14555,14 @@ width: 100%;
     background: var(--bg-white);
     border-radius: 12px;
     margin-bottom: 24px;
-    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.1);
+    box-shadow: 0 2px 8px var(--color-primary-rgba-10);
     border: 2px solid transparent;
     transition: all 0.3s ease;
 }
 
 .dividend-month-summary:hover {
     border-color: #ff9ec7;
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.15);
+    box-shadow: 0 4px 12px var(--color-primary-rgba-15);
 }
 
 .dividend-amount {
@@ -14572,14 +14576,14 @@ width: 100%;
     background: var(--bg-white);
     border-radius: 12px;
     margin-bottom: 24px;
-    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.1);
+    box-shadow: 0 2px 8px var(--color-primary-rgba-10);
     border: 2px solid transparent;
     transition: all 0.3s ease;
 }
 
 .reinvest-toggle-container:hover {
     border-color: #ff9ec7;
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.15);
+    box-shadow: 0 4px 12px var(--color-primary-rgba-15);
 }
 
 .reinvest-toggle-label {
@@ -14619,7 +14623,7 @@ width: 100%;
 }
 
 .reinvest-toggle:checked + .toggle-slider {
-    background: linear-gradient(135deg, #ffb6d9 0%, #ff9ec7 100%);
+    background: var(--bg-gradient);
 }
 
 .reinvest-toggle:checked + .toggle-slider::after {
@@ -14672,7 +14676,7 @@ width: 100%;
 }
 
 .form-toggle input[type="checkbox"]:checked + .toggle-slider {
-    background: linear-gradient(135deg, #ffb6d9 0%, #ff9ec7 100%);
+    background: var(--bg-gradient);
 }
 
 .form-toggle input[type="checkbox"]:checked + .toggle-slider::after {
@@ -15200,7 +15204,7 @@ width: 100%;
     border: none;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: #ffffff;
-    box-shadow: 0 14px 30px rgba(255, 105, 180, 0.28);
+    box-shadow: 0 14px 30px var(--color-primary-rgba-28);
 }
 
 @media (max-width: 480px) {
@@ -15406,7 +15410,7 @@ width: 100%;
     border: none;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: var(--text-white);
-    box-shadow: 0 10px 24px rgba(255, 105, 180, 0.22);
+    box-shadow: 0 10px 24px var(--color-primary-rgba-22);
 }
 
 .app-modal-pre {
@@ -15441,8 +15445,8 @@ width: 100%;
 }
 
 .app-modal-input:focus {
-    border-color: rgba(255, 105, 180, 0.55);
-    box-shadow: 0 0 0 4px rgba(255, 105, 180, 0.16);
+    border-color: var(--color-primary-rgba-55);
+    box-shadow: 0 0 0 4px var(--color-primary-rgba-16);
 }
 
 /* ========== 問價彈窗（查價連結 + 輸入現價） ========== */
@@ -15516,8 +15520,8 @@ width: 100%;
 
 .price-query-modal__link:hover {
     transform: translateY(-1px);
-    border-color: rgba(255, 105, 180, 0.28);
-    box-shadow: 0 10px 24px rgba(255, 105, 180, 0.16);
+    border-color: var(--color-primary-rgba-28);
+    box-shadow: 0 10px 24px var(--color-primary-rgba-16);
 }
 
 .price-query-modal__label {
@@ -15531,16 +15535,16 @@ width: 100%;
     width: 100%;
     padding: 12px 14px;
     border-radius: 16px;
-    border: 1px solid rgba(255, 105, 180, 0.25);
+    border: 1px solid var(--color-primary-rgba-25);
     background: #fff;
     font-size: 16px;
     outline: none;
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .price-query-modal__input:focus {
-    border-color: rgba(255, 105, 180, 0.6);
-    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.18);
+    border-color: var(--color-primary-rgba-60);
+    box-shadow: 0 0 0 3px var(--color-primary-rgba-18);
 }
 
 .price-query-modal__footer {
@@ -15578,11 +15582,11 @@ transform: scale(0.99);
     border: none;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: #ffffff;
-    box-shadow: 0 12px 28px rgba(255, 105, 180, 0.32);
+    box-shadow: 0 12px 28px var(--color-primary-rgba-32);
 }
 
 .price-query-modal__btn--ok:hover {
-    box-shadow: 0 16px 34px rgba(255, 105, 180, 0.42);
+    box-shadow: 0 16px 34px var(--color-primary-rgba-42);
 }
 
 /* ========== 帳戶選擇對話框 ========== */
@@ -15624,16 +15628,16 @@ transform: scale(0.99);
 }
 
 .account-item:hover {
-    border-color: #ffb6d9;
+    border-color: var(--color-primary-light);
     background: var(--bg-lighter);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.15);
+    box-shadow: 0 4px 8px var(--color-primary-rgba-15);
 }
 
 .account-item.selected {
     border-color: var(--color-primary);
     background: linear-gradient(135deg, var(--bg-light-gradient) 0%, var(--bg-light-gradient) 100%);
-    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.2);
+    box-shadow: 0 2px 8px var(--color-primary-rgba-20);
 }
 
 .account-item-icon {
@@ -15643,7 +15647,7 @@ transform: scale(0.99);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #ffeef5 0%, #fff5f9 100%);
+    background: var(--bg-gradient-light);
     border-radius: 14px;
     flex-shrink: 0;
 }
@@ -15710,7 +15714,7 @@ transform: scale(0.99);
     padding: 14px 24px;
     border: 2px dashed var(--color-primary);
     border-radius: 12px;
-    background: linear-gradient(135deg, #fff5f9 0%, #ffeef5 100%);
+    background: var(--bg-gradient-light);
     color: var(--color-primary);
     font-size: 16px;
     font-weight: 500;
@@ -15723,9 +15727,9 @@ transform: scale(0.99);
 }
 
 .account-add-btn:active {
-    background: linear-gradient(135deg, #ffb6d9 0%, #ff9ec7 100%);
-    color: #ffffff;
-    border-color: #ff69b4;
+    background: var(--bg-gradient);
+    color: var(--text-white);
+    border-color: var(--color-primary);
     transform: scale(0.98);
 }
 
@@ -15774,7 +15778,7 @@ transform: scale(0.99);
     width: 100%;
     min-height: calc(100vh - 60px);
     padding-bottom: 80px;
-    background: linear-gradient(135deg, #ffeef5 0%, #fff5f9 100%);
+    background: var(--bg-gradient-light);
 }
 
 .dca-page-header,
@@ -15819,9 +15823,9 @@ transform: scale(0.99);
 }
 
 .dca-add-btn {
-    background: linear-gradient(135deg, #ffb6d9 0%, #ff9ec7 100%);
+    background: var(--bg-gradient);
     border: none;
-    color: #ffffff;
+    color: var(--text-white);
     font-size: 20px;
     width: 36px;
     height: 36px;
@@ -15831,12 +15835,12 @@ transform: scale(0.99);
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
+    box-shadow: 0 2px 8px var(--color-primary-rgba-30);
 }
 
 .dca-add-btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 10px 22px rgba(255, 105, 180, 0.28);
+    box-shadow: 0 10px 22px var(--color-primary-rgba-28);
 }
 
 .dca-add-btn:active {
@@ -15899,7 +15903,7 @@ transform: scale(0.99);
 .dca-progress-bar {
     width: 100%;
     height: 12px;
-    background: rgba(255, 105, 180, 0.12);
+    background: var(--color-primary-rgba-12);
     border-radius: 999px;
     overflow: hidden;
     position: relative;
@@ -15909,7 +15913,7 @@ transform: scale(0.99);
     height: 100%;
     border-radius: 999px;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-lighter) 45%, var(--color-accent) 100%);
-    box-shadow: 0 2px 10px rgba(255, 105, 180, 0.35);
+    box-shadow: 0 2px 10px var(--color-primary-rgba-35);
     transition: width 0.4s ease;
     position: relative;
 }
@@ -15959,7 +15963,7 @@ transform: scale(0.99);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #ffeef5 0%, #fff5f9 100%);
+    background: var(--bg-gradient-light);
     border-radius: 12px;
 }
 
@@ -16367,7 +16371,7 @@ transform: scale(0.99);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #ffeef5 0%, #fff5f9 100%);
+    background: var(--bg-gradient-light);
     border-radius: 20px;
 }
 
@@ -16387,7 +16391,7 @@ transform: scale(0.99);
 .account-detail-balance {
     text-align: center;
     padding: 20px;
-    background: linear-gradient(135deg, #fff5f9 0%, #ffeef5 100%);
+    background: var(--bg-gradient-light);
     border-radius: 16px;
     margin-bottom: 20px;
 }
@@ -16454,10 +16458,10 @@ transform: scale(0.99);
 .account-detail-edit-btn {
     width: 100%;
     padding: 14px;
-    border: 2px solid #ffb6d9;
+    border: 2px solid var(--color-primary-light);
     border-radius: 12px;
-    background: linear-gradient(135deg, #ffb6d9 0%, #ff9ec7 100%);
-    color: white;
+    background: var(--bg-gradient);
+    color: var(--text-white);
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
@@ -16516,9 +16520,9 @@ transform: scale(0.99);
 .account-image-remove-btn {
     flex: 1;
     padding: 10px 16px;
-    border: 2px solid #ffb6d9;
+    border: 2px solid var(--color-primary-light);
     border-radius: 12px;
-    background: linear-gradient(135deg, #fff5f9 0%, #ffeef5 100%);
+    background: var(--bg-gradient-light);
     color: var(--color-primary);
     font-size: 14px;
     font-weight: 500;
@@ -16528,10 +16532,10 @@ transform: scale(0.99);
 
 .account-image-upload-btn:hover,
 .account-image-remove-btn:hover {
-    background: linear-gradient(135deg, #ffb6d9 0%, #ff9ec7 100%);
-    color: white;
+    background: var(--bg-gradient);
+    color: var(--text-white);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+    box-shadow: 0 4px 12px var(--color-primary-rgba-30);
 }
 
 .account-image-upload-btn:active,
@@ -16687,9 +16691,9 @@ transform: scale(0.99);
 }
 
 .crop-confirm-btn {
-    background: linear-gradient(135deg, #ffb6d9 0%, #ff9ec7 100%);
-    color: white;
-    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
+    background: var(--bg-gradient);
+    color: var(--text-white);
+    box-shadow: 0 2px 8px var(--color-primary-rgba-30);
 }
 
 .crop-confirm-btn:hover {
@@ -17151,7 +17155,7 @@ transform: scale(0.99);
     }
 
     .buy-action-btn-large {
-        box-shadow: 0 3px 10px rgba(255, 105, 180, 0.25);
+        box-shadow: 0 3px 10px var(--color-primary-rgba-25);
     }
 
     .dca-action-btn-large {
@@ -17542,11 +17546,11 @@ transform: scale(0.99);
     }
     
     .key-btn.equal:active {
-        box-shadow: 0 2px 8px rgba(255, 105, 180, 0.25);
+        box-shadow: 0 2px 8px var(--color-primary-rgba-25);
     }
     
     .key-btn.save-btn {
-        box-shadow: 0 4px 14px rgba(255, 105, 180, 0.35);
+        box-shadow: 0 4px 14px var(--color-primary-rgba-35);
     }
     
     .key-btn.save-btn:active {
@@ -19280,8 +19284,8 @@ transform: scale(0.99);
 }
 
 .history-search-input-wrap:focus-within {
-    border-color: rgba(255, 105, 180, 0.55) !important;
-    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.15) !important;
+    border-color: var(--color-primary-rgba-55) !important;
+    box-shadow: 0 0 0 3px var(--color-primary-rgba-15) !important;
 }
 
 .history-search-clear {
@@ -19480,7 +19484,7 @@ transform: scale(0.99);
 }
 
 .advisor-quick-btn {
-    border: 1px solid rgba(255, 105, 180, 0.25) !important;
+    border: 1px solid var(--color-primary-rgba-25) !important;
     background: rgba(255, 255, 255, 0.85) !important;
     color: var(--text-primary) !important;
     padding: 8px 10px !important;
@@ -20222,9 +20226,9 @@ transform: scale(0.99);
 
 .page-tutorial-modal .tutorial-next-btn,
 .page-tutorial-modal .tutorial-complete-btn {
-    background: linear-gradient(135deg, #ffb6d9 0%, #ff9ec7 100%);
-    color: white;
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+    background: var(--bg-gradient);
+    color: var(--text-white);
+    box-shadow: 0 4px 12px var(--color-primary-rgba-30);
 }
 
 .page-tutorial-modal .tutorial-next-btn:hover,
@@ -20945,10 +20949,11 @@ body {
     width: 95%;
     max-width: 600px;
     max-height: 90vh;
-    background: white;
+    background: var(--bg-card, var(--bg-white));
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-primary-lg);
+    color: var(--text-primary);
 }
 
 :root.dark .entry-detail-content {
@@ -20958,7 +20963,7 @@ body {
 
 .entry-detail-info {
     padding: 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-light);
 }
 
 :root.dark .entry-detail-info {
@@ -20968,9 +20973,9 @@ body {
 .entry-detail-category {
     font-size: 18px;
     font-weight: 600;
-    color: #2c3e50;
+    color: var(--color-primary);
     margin-bottom: 8px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 1px 2px var(--color-primary-rgba-20);
 }
 
 :root.dark .entry-detail-category {
@@ -20981,26 +20986,26 @@ body {
 .entry-detail-amount {
     font-size: 24px;
     font-weight: 700;
-    color: #e74c3c;
+    color: var(--color-secondary);
     margin-bottom: 8px;
-    text-shadow: 0 1px 3px rgba(231, 76, 60, 0.3);
+    text-shadow: 0 1px 3px var(--color-secondary-rgba-30);
 }
 
 .entry-detail-amount.income {
-    color: #27ae60;
-    text-shadow: 0 1px 3px rgba(39, 174, 96, 0.3);
+    color: var(--color-accent);
+    text-shadow: 0 1px 3px var(--color-accent-rgba-30);
 }
 
 .entry-detail-amount.transfer {
-    color: #3498db;
-    text-shadow: 0 1px 3px rgba(52, 152, 219, 0.3);
+    color: var(--color-primary-light);
+    text-shadow: 0 1px 3px var(--color-primary-light-rgba-30);
 }
 
 .entry-detail-date {
     font-size: 14px;
-    color: #7f8c8d;
+    color: var(--text-secondary);
     margin-bottom: 8px;
-    text-shadow: 0 1px 2px rgba(127, 140, 141, 0.2);
+    text-shadow: 0 1px 2px var(--text-secondary-rgba-20);
 }
 
 :root.dark .entry-detail-date {
@@ -21010,9 +21015,9 @@ body {
 
 .entry-detail-note {
     font-size: 16px;
-    color: #2c3e50;
+    color: var(--text-primary);
     line-height: 1.5;
-    text-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+    text-shadow: 0 1px 2px var(--text-primary-rgba-10);
 }
 
 :root.dark .entry-detail-note {
@@ -21083,7 +21088,7 @@ body {
 
 .receipt-thumb.entry-detail-info {
     padding: 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .entry-detail-actions {
@@ -21094,8 +21099,8 @@ body {
 
 .entry-detail-edit-btn {
     border: none;
-    background: var(--bg-gradient, linear-gradient(135deg, #ff7eb3, #ff758c));
-    color: #fff;
+    background: var(--bg-gradient);
+    color: var(--text-white);
     font-weight: 600;
     border-radius: 999px;
     padding: 8px 18px;
@@ -21103,13 +21108,13 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    box-shadow: var(--shadow-primary, 0 10px 20px rgba(255, 118, 164, 0.35));
+    box-shadow: var(--shadow-primary);
     transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s;
 }
 
 .entry-detail-edit-btn:hover {
     transform: translateY(-1px);
-    box-shadow: var(--shadow-primary-lg, 0 16px 30px rgba(255, 118, 164, 0.45));
+    box-shadow: var(--shadow-primary-lg);
 }
 
 .entry-detail-edit-btn:active {
@@ -21123,7 +21128,7 @@ body {
 .entry-detail-edit {
     padding: 0 20px 20px;
     margin-top: 8px;
-    border-top: 1px dashed rgba(0,0,0,0.08);
+    border-top: 1px dashed var(--border-light);
 }
 
 .entry-detail-edit .form-field {
@@ -24509,481 +24514,6 @@ body {
     background: var(--color-primary-dark);
 }
 
-/* ========== 華麗古風主題樣式 ========== */
-:root[data-theme="elegant"] {
-    --color-primary: #A52A2A;
-    --color-primary-light: #CD5C5C;
-    --color-primary-lighter: #E9967A;
-    --color-primary-dark: #8B1A1A;
-    --color-secondary: #FFDAB9;
-    --color-secondary-light: #FFE4B5;
-    --color-secondary-dark: #DEB887;
-    --color-accent: #DAA520;
-    --color-accent-light: #F0E68C;
-    --color-accent-dark: #B8860B;
-    
-    /* 背景顏色 */
-    --bg-primary: linear-gradient(135deg, #1A1A1A 0%, #2C1810 45%, #3D2817 100%);
-    --bg-gradient: linear-gradient(135deg, rgba(165, 42, 42, 0.25) 0%, rgba(26, 26, 26, 0.9) 70%);
-    --bg-gradient-light: linear-gradient(135deg, rgba(26, 26, 26, 0.92) 0%, rgba(44, 24, 16, 0.9) 60%, rgba(165, 42, 42, 0.25) 100%);
-    --bg-white: rgba(26, 26, 26, 0.85);
-    --bg-light: rgba(44, 24, 16, 0.75);
-    --bg-lighter: rgba(61, 40, 23, 0.65);
-    --bg-soft: rgba(26, 26, 26, 0.95);
-    --bg-card: rgba(255, 218, 185, 0.15);
-    --bg-overlay: rgba(26, 26, 26, 0.8);
-    
-    /* 文字顏色 */
-    --text-primary: #FFFFFF;
-    --text-secondary: #D3D3D3;
-    --text-muted: #A9A9A9;
-    --text-white: #FFFFFF;
-    --text-dark: #333333;
-    
-    /* 邊框顏色 */
-    --border-primary: #A52A2A;
-    --border-light: rgba(165, 42, 42, 0.3);
-    --border-medium: rgba(165, 42, 42, 0.5);
-    --border-dark: rgba(165, 42, 42, 0.8);
-    
-    /* 陰影效果 */
-    --shadow-primary: 0 12px 32px rgba(165, 42, 42, 0.25);
-    --shadow-primary-lg: 0 18px 40px rgba(165, 42, 42, 0.35);
-    --shadow-card: 0 8px 24px rgba(26, 26, 26, 0.4);
-    
-    /* RGBA 透明度變數 */
-    --color-primary-rgba-08: rgba(165, 42, 42, 0.08);
-    --color-primary-rgba-10: rgba(165, 42, 42, 0.10);
-    --color-primary-rgba-12: rgba(165, 42, 42, 0.12);
-    --color-primary-rgba-15: rgba(165, 42, 42, 0.15);
-    --color-primary-rgba-20: rgba(165, 42, 42, 0.20);
-    --color-primary-rgba-25: rgba(165, 42, 42, 0.25);
-    --color-primary-rgba-30: rgba(165, 42, 42, 0.30);
-    --color-primary-rgba-40: rgba(165, 42, 42, 0.40);
-    --color-primary-light-rgba-08: rgba(205, 92, 92, 0.08);
-    --color-primary-light-rgba-10: rgba(205, 92, 92, 0.10);
-    --color-primary-light-rgba-12: rgba(205, 92, 92, 0.12);
-    --color-primary-light-rgba-15: rgba(205, 92, 92, 0.15);
-    --color-primary-light-rgba-20: rgba(205, 92, 92, 0.20);
-    --color-primary-light-rgba-25: rgba(205, 92, 92, 0.25);
-    --color-primary-light-rgba-30: rgba(205, 92, 92, 0.30);
-    --color-primary-light-rgba-40: rgba(205, 92, 92, 0.40);
-    --color-secondary-rgba-08: rgba(255, 218, 185, 0.08);
-    --color-secondary-rgba-10: rgba(255, 218, 185, 0.10);
-    --color-secondary-rgba-15: rgba(255, 218, 185, 0.15);
-    --color-secondary-rgba-20: rgba(255, 218, 185, 0.20);
-    --color-secondary-rgba-25: rgba(255, 218, 185, 0.25);
-    --color-secondary-rgba-30: rgba(255, 218, 185, 0.30);
-    --color-accent-rgba-08: rgba(218, 165, 32, 0.08);
-    --color-accent-rgba-10: rgba(218, 165, 32, 0.10);
-    --color-accent-rgba-15: rgba(218, 165, 32, 0.15);
-    --color-accent-rgba-20: rgba(218, 165, 32, 0.20);
-    --color-accent-rgba-25: rgba(218, 165, 32, 0.25);
-    --color-accent-rgba-30: rgba(218, 165, 32, 0.30);
-    
-    /* 其他顏色 */
-    --success-color: #28a745;
-    --warning-color: #ffc107;
-    --danger-color: #dc3545;
-    --info-color: #17a2b8;
-    
-    /* 表格顏色 */
-    --table-header-bg: rgba(165, 42, 42, 0.1);
-    --table-row-hover: rgba(165, 42, 42, 0.05);
-    --table-border-color: rgba(165, 42, 42, 0.2);
-    
-    /* 按鈕顏色 */
-    --btn-primary-bg: var(--color-primary);
-    --btn-primary-hover: var(--color-primary-dark);
-    --btn-secondary-bg: var(--color-secondary);
-    --btn-secondary-hover: var(--color-secondary-dark);
-    
-    /* 特殊效果顏色 */
-    --action-side-bg: rgba(165, 42, 42, 0.15);
-    --action-side-text: rgba(255, 255, 255, 0.96);
-}
-
-:root[data-theme="elegant"] body {
-    background: url("https://i.pinimg.com/1200x/26/a9/18/26a9180e011176e4795f5fe21ab761ea.jpg") center/cover no-repeat fixed;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-}
-
-:root[data-theme="elegant"] body::before {
-    display: none;
-}
-
-/* 頁面背景透明化 */
-:root[data-theme="elegant"] .page-ledger,
-:root[data-theme="elegant"] .page-investment,
-:root[data-theme="elegant"] .page-wallet,
-:root[data-theme="elegant"] .page-history,
-:root[data-theme="elegant"] .page-planner {
-    background: transparent !important;
-    backdrop-filter: none !important;
-    box-shadow: none !important;
-}
-
-/* 卡片樣式 */
-:root[data-theme="elegant"] .budget-card,
-:root[data-theme="elegant"] .wallet-card,
-:root[data-theme="elegant"] .chart-card,
-:root[data-theme="elegant"] .investment-card {
-    background: rgba(26, 26, 26, 0.85);
-    border: 2px solid rgba(165, 42, 42, 0.4);
-    border-radius: 16px;
-    box-shadow: 0 12px 32px rgba(165, 42, 42, 0.25);
-    backdrop-filter: blur(10px);
-}
-
-:root[data-theme="elegant"] .investment-card,
-:root[data-theme="elegant"] .stock-item-card {
-    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-light) 25%, var(--color-primary-rgba-20) 50%, var(--bg-lighter) 75%, var(--bg-soft) 100%);
-    border: 2px solid var(--color-primary);
-    border-radius: 20px;
-    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3);
-}
-
-:root[data-theme="elegant"] .investment-card::before,
-:root[data-theme="elegant"] .stock-item-card::before {
-    background: linear-gradient(135deg, var(--color-primary-rgba-40) 0%, var(--color-primary-rgba-30) 55%, var(--color-primary-rgba-20) 100%);
-}
-
-/* 持股卡片文字顏色 */
-:root[data-theme="elegant"] .stock-item-card {
-    color: var(--text-primary) !important;
-}
-
-:root[data-theme="elegant"] .stock-item-card .title,
-:root[data-theme="elegant"] .stock-item-card .header,
-:root[data-theme="elegant"] .stock-item-card .card-title,
-:root[data-theme="elegant"] .stock-item-card .card-subtitle,
-:root[data-theme="elegant"] .stock-item-card .stock-name {
-    color: var(--color-primary) !important;
-}
-
-:root[data-theme="elegant"] .stock-item-card .subtitle,
-:root[data-theme="elegant"] .stock-item-card .card-title,
-:root[data-theme="elegant"] .stock-item-card .card-subtitle,
-:root[data-theme="elegant"] .stock-item-card .stock-name {
-    color: var(--color-primary) !important;
-}
-
-:root[data-theme="elegant"] .stock-item-card .content,
-:root[data-theme="elegant"] .stock-item-card p,
-:root[data-theme="elegant"] .stock-item-card span,
-:root[data-theme="elegant"] .stock-item-card div {
-    color: var(--text-primary) !important;
-}
-
-:root[data-theme="elegant"] .stock-item-card .highlight,
-:root[data-theme="elegant"] .stock-item-card .accent,
-:root[data-theme="elegant"] .stock-item-card .primary-text {
-    color: var(--color-secondary) !important;
-}
-
-:root[data-theme="elegant"] .stock-item-card .secondary-text,
-:root[data-theme="elegant"] .stock-item-card .muted-text,
-:root[data-theme="elegant"] .stock-item-card .stock-code {
-    color: var(--text-secondary) !important;
-}
-
-/* 管理投資卡片頁面樣式 */
-:root[data-theme="elegant"] .page-manage-investment {
-    background: transparent !important;
-}
-
-:root[data-theme="elegant"] .manage-investment-card {
-    background: rgba(26, 26, 26, 0.85);
-    border: 2px solid rgba(165, 42, 42, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3);
-    backdrop-filter: blur(10px);
-}
-
-:root[data-theme="elegant"] .manage-investment-card .title,
-:root[data-theme="elegant"] .manage-investment-card .subtitle,
-:root[data-theme="elegant"] .manage-investment-card .card-title,
-:root[data-theme="elegant"] .manage-investment-card .card-subtitle {
-    color: var(--color-primary) !important;
-}
-
-:root[data-theme="elegant"] .manage-investment-card .content,
-:root[data-theme="elegant"] .manage-investment-card p,
-:root[data-theme="elegant"] .manage-investment-card span,
-:root[data-theme="elegant"] .manage-investment-card div {
-    color: var(--text-primary) !important;
-}
-
-:root[data-theme="elegant"] .manage-investment-card .highlight,
-:root[data-theme="elegant"] .manage-investment-card .accent,
-:root[data-theme="elegant"] .manage-investment-card .primary-text {
-    color: var(--color-secondary) !important;
-}
-
-:root[data-theme="elegant"] .manage-investment-card .secondary-text,
-:root[data-theme="elegant"] .manage-investment-card .muted-text {
-    color: var(--text-secondary) !important;
-}
-
-:root[data-theme="elegant"] .manage-investment-card .label,
-:root[data-theme="elegant"] .manage-investment-card .form-label {
-    color: var(--color-primary) !important;
-}
-
-:root[data-theme="elegant"] .manage-investment-card .value,
-:root[data-theme="elegant"] .manage-investment-card .amount {
-    color: var(--color-accent) !important;
-}
-
-/* 年度報告頁面樣式 */
-:root[data-theme="elegant"] .page-annual-report {
-    background: transparent !important;
-}
-
-:root[data-theme="elegant"] .annual-report-card {
-    background: rgba(26, 26, 26, 0.85);
-    border: 2px solid rgba(165, 42, 42, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3);
-    backdrop-filter: blur(10px);
-}
-
-/* 關於記帳本頁面樣式 */
-:root[data-theme="elegant"] .page-about {
-    background: transparent !important;
-}
-
-:root[data-theme="elegant"] .about-card {
-    background: rgba(26, 26, 26, 0.85);
-    border: 2px solid rgba(165, 42, 42, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3);
-    backdrop-filter: blur(10px);
-}
-
-/* 記帳日記頁面樣式 */
-:root[data-theme="elegant"] .page-diary {
-    background: transparent !important;
-}
-
-:root[data-theme="elegant"] .diary-card {
-    background: rgba(26, 26, 26, 0.85);
-    border: 2px solid rgba(165, 42, 42, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3);
-    backdrop-filter: blur(10px);
-}
-
-/* 分期網頁樣式 */
-:root[data-theme="elegant"] .page-installment {
-    background: transparent !important;
-}
-
-:root[data-theme="elegant"] .installment-card {
-    background: rgba(26, 26, 26, 0.85);
-    border: 2px solid rgba(165, 42, 42, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3);
-    backdrop-filter: blur(10px);
-}
-
-/* 小森對話框主題適配 */
-:root[data-theme="elegant"] .mori-dialog-box {
-    background: rgba(26, 26, 26, 0.9) !important;
-    border: 2px solid rgba(165, 42, 42, 0.4) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3) !important;
-    backdrop-filter: blur(10px) !important;
-}
-
-:root[data-theme="elegant"] .mori-dialog-content {
-    background: transparent !important;
-    color: var(--text-primary) !important;
-}
-
-:root[data-theme="elegant"] .mori-message {
-    color: var(--text-primary) !important;
-}
-
-/* 返回按鈕樣式 */
-:root[data-theme="elegant"] .dca-setup-back-btn,
-:root[data-theme="elegant"] .stock-detail-back-btn,
-:root[data-theme="elegant"] .history-close-btn,
-:root[data-theme="elegant"] .advisor-close-btn {
-    background: var(--color-primary) !important;
-    color: white !important;
-    border: 1px solid var(--color-primary) !important;
-    border-radius: 12px !important;
-    box-shadow: 0 6px 16px rgba(165, 42, 42, 0.3) !important;
-}
-
-:root[data-theme="elegant"] .dca-setup-back-btn:hover,
-:root[data-theme="elegant"] .stock-detail-back-btn:hover,
-:root[data-theme="elegant"] .history-close-btn:hover,
-:root[data-theme="elegant"] .advisor-close-btn:hover {
-    background: var(--color-primary-dark) !important;
-    transform: scale(1.05) !important;
-}
-
-/* 定期定額頁面樣式 */
-:root[data-theme="elegant"] .page-dca-management,
-:root[data-theme="elegant"] .page-dca-setup {
-    background: transparent !important;
-}
-
-:root[data-theme="elegant"] .dca-card,
-:root[data-theme="elegant"] .dca-setup-card {
-    background: rgba(26, 26, 26, 0.85);
-    border: 2px solid rgba(165, 42, 42, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.3);
-    backdrop-filter: blur(10px);
-}
-
-/* 模態框樣式 */
-:root[data-theme="elegant"] .account-modal-content,
-:root[data-theme="elegant"] .emoji-modal-content,
-:root[data-theme="elegant"] .crop-modal-content,
-:root[data-theme="elegant"] .history-modal-content {
-    background: rgba(26, 26, 26, 0.95);
-    border: 2px solid rgba(165, 42, 42, 0.4);
-    border-radius: 16px;
-    box-shadow: 0 20px 48px rgba(165, 42, 42, 0.35);
-}
-
-:root[data-theme="elegant"] .input-section {
-    background: rgba(26, 26, 26, 0.92);
-    border: 2px solid rgba(165, 42, 42, 0.3);
-    border-radius: 16px;
-    box-shadow: 0 -8px 32px rgba(165, 42, 42, 0.25);
-}
-
-:root[data-theme="elegant"] .bottom-nav {
-    background: rgba(26, 26, 26, 0.9) !important;
-    border-top: 2px solid rgba(165, 42, 42, 0.4) !important;
-    backdrop-filter: blur(14px);
-}
-
-:root[data-theme="elegant"] .nav-item.active {
-    background: rgba(165, 42, 42, 0.25);
-    box-shadow: 0 8px 20px rgba(165, 42, 42, 0.3);
-}
-
-/* 表單元素樣式 */
-:root[data-theme="elegant"] .form-input,
-:root[data-theme="elegant"] .form-select,
-:root[data-theme="elegant"] .form-textarea,
-:root[data-theme="elegant"] .note-input {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border: 2px solid rgba(165, 42, 42, 0.3) !important;
-    color: var(--text-primary) !important;
-    border-radius: 12px !important;
-}
-
-:root[data-theme="elegant"] .form-input:focus,
-:root[data-theme="elegant"] .form-select:focus,
-:root[data-theme="elegant"] .form-textarea:focus,
-:root[data-theme="elegant"] .note-input:focus {
-    border-color: var(--color-primary) !important;
-    box-shadow: 0 0 0 3px rgba(165, 42, 42, 0.25) !important;
-    background: rgba(255, 255, 255, 0.15) !important;
-}
-
-:root[data-theme="elegant"] .header-section {
-    background: rgba(26, 26, 26, 0.9) !important;
-    border-bottom: 2px solid rgba(165, 42, 42, 0.3) !important;
-    backdrop-filter: blur(10px);
-}
-
-:root[data-theme="elegant"] .tab-btn {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border: 1px solid rgba(165, 42, 42, 0.3) !important;
-    color: var(--text-primary) !important;
-    border-radius: 12px !important;
-}
-
-:root[data-theme="elegant"] .tab-btn.active {
-    background: rgba(165, 42, 42, 0.3) !important;
-    border: 2px solid var(--color-primary) !important;
-    color: var(--text-primary) !important;
-    box-shadow: 0 6px 16px rgba(165, 42, 42, 0.3) !important;
-}
-
-:root[data-theme="elegant"] .tab-btn:hover {
-    background: rgba(165, 42, 42, 0.2) !important;
-    border-color: rgba(165, 42, 42, 0.4) !important;
-}
-
-/* 計算機按鈕樣式 */
-:root[data-theme="elegant"] .key-btn {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border: 2px solid rgba(165, 42, 42, 0.3) !important;
-    color: var(--text-primary) !important;
-    border-radius: 12px !important;
-    box-shadow: 0 6px 16px rgba(165, 42, 42, 0.2) !important;
-}
-
-:root[data-theme="elegant"] .key-btn:hover {
-    background: rgba(165, 42, 42, 0.3) !important;
-    border-color: rgba(165, 42, 42, 0.4) !important;
-    box-shadow: 0 8px 20px rgba(165, 42, 42, 0.3) !important;
-}
-
-:root[data-theme="elegant"] .key-btn:active {
-    background: rgba(165, 42, 42, 0.4) !important;
-    transform: scale(0.95);
-}
-
-:root[data-theme="elegant"] .key-btn.operator {
-    background: rgba(165, 42, 42, 0.7) !important;
-    color: var(--text-white) !important;
-}
-
-:root[data-theme="elegant"] .key-btn.equal {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
-    color: var(--text-white) !important;
-}
-
-:root[data-theme="elegant"] .key-btn.delete {
-    background: rgba(220, 53, 69, 0.8) !important;
-    color: var(--text-white) !important;
-}
-
-/* FAB按鈕樣式 */
-:root[data-theme="elegant"] .fab-btn {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%) !important;
-    box-shadow: 0 12px 32px rgba(165, 42, 42, 0.4) !important;
-}
-
-:root[data-theme="elegant"] .fab-btn:hover {
-    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%) !important;
-    box-shadow: 0 16px 40px rgba(165, 42, 42, 0.5) !important;
-}
-
-/* 確保所有滾動條都使用主題顏色 */
-:root[data-theme="elegant"] * {
-    scrollbar-color: var(--color-primary) rgba(26, 26, 26, 0.3);
-}
-
-:root[data-theme="elegant"] *::-webkit-scrollbar {
-    width: 8px;
-}
-
-:root[data-theme="elegant"] *::-webkit-scrollbar-track {
-    background: rgba(26, 26, 26, 0.3);
-    border-radius: 4px;
-}
-
-:root[data-theme="elegant"] *::-webkit-scrollbar-thumb {
-    background: var(--color-primary);
-    border-radius: 4px;
-}
-
-:root[data-theme="elegant"] *::-webkit-scrollbar-thumb:hover {
-    background: var(--color-primary-dark);
-}
-
 /* ========== 預算設定卡片文字淺色樣式 ========== */
 /* 為所有主題統一設置預算標籤文字為淺色 */
 .budget-summary-label {
@@ -25106,24 +24636,24 @@ body {
 :root[data-theme="pink"] .account-item-name,
 :root[data-theme="pink"] .account-item-currency,
 :root[data-theme="pink"] .tab-text {
-    color: rgba(255, 105, 180, 0.8) !important;
+    color: var(--color-primary-rgba-80) !important;
 }
 
 :root[data-theme="pink"] .portfolio-shares,
 :root[data-theme="pink"] .stock-grid-card-tag--shares {
     color: var(--color-accent) !important;
-    background: linear-gradient(145deg, rgba(255, 105, 180, 0.15) 0%, rgba(255, 105, 180, 0.25) 50%, rgba(255, 105, 180, 0.15) 100%) !important;
-    border: 2px solid rgba(255, 105, 180, 0.35) !important;
+    background: linear-gradient(145deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-25) 50%, var(--color-primary-rgba-15) 100%) !important;
+    border: 2px solid var(--color-primary-rgba-35) !important;
     box-shadow: 
-        0 4px 15px rgba(255, 105, 180, 0.25),
+        0 4px 15px var(--color-primary-rgba-25),
         inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
 }
 
 :root[data-theme="pink"] .portfolio-shares:hover,
 :root[data-theme="pink"] .stock-grid-card-tag--shares:hover {
-    border-color: rgba(255, 105, 180, 0.5) !important;
+    border-color: var(--color-primary-rgba-50) !important;
     box-shadow: 
-        0 8px 25px rgba(255, 105, 180, 0.35),
+        0 8px 25px var(--color-primary-rgba-35),
         inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
 }
 
@@ -25406,13 +24936,555 @@ body {
     color: rgba(135, 206, 235, 0.7) !important;
 }
 
-:root[data-theme="elegant"] .budget-summary-label,
-:root[data-theme="elegant"] .budget-detail-label,
-:root[data-theme="elegant"] .stat-label,
-:root[data-theme="elegant"] .dividend-stat-label,
-:root[data-theme="elegant"] .account-info,
-:root[data-theme="elegant"] .account-item-name,
-:root[data-theme="elegant"] .account-item-currency,
-:root[data-theme="elegant"] .tab-text {
-    color: rgba(255, 218, 185, 0.8) !important;
+/* ========== 藍玫瑰騎士主題樣式 ========== */
+:root[data-theme="bluerose"] {
+    --color-primary: #007bff;
+    --color-primary-light: #4d94ff;
+    --color-primary-lighter: #80b3ff;
+    --color-primary-dark: #0056b3;
+    --color-secondary: #1e3c72;
+    --color-secondary-light: #2e5a8a;
+    --color-secondary-dark: #152a52;
+    --color-accent: #6610f2;
+    --bg-primary: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(30, 60, 114, 0.8) 50%, rgba(0, 123, 255, 0.6) 100%);
+    --bg-body: rgba(0, 0, 0, 0.85);
+    --bg-body-strong: rgba(30, 60, 114, 0.9);
+    --bg-gradient: linear-gradient(135deg, #000000 0%, #1e3c72 60%, #007bff 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(0, 123, 255, 0.15) 0%, rgba(30, 60, 114, 0.25) 100%);
+    --bg-white: rgba(0, 0, 0, 0.7);
+    --bg-card: rgba(0, 0, 0, 0.75);
+    --bg-light: rgba(30, 60, 114, 0.6);
+    --bg-lighter: rgba(77, 148, 255, 0.5);
+    --bg-soft: rgba(128, 179, 255, 0.4);
+    --bg-soft-strong: rgba(30, 60, 114, 0.7);
+    --text-primary: rgba(255, 255, 255, 0.95);
+    --text-secondary: rgba(173, 216, 230, 0.8);
+    --text-tertiary: rgba(135, 206, 235, 0.6);
+    --text-strong: rgba(255, 255, 255, 0.98);
+    --text-white: rgba(255, 255, 255, 0.98);
+    --border-primary: rgba(0, 123, 255, 0.7);
+    --border-light: rgba(30, 60, 114, 0.4);
+    --border-medium: rgba(77, 148, 255, 0.5);
+    --card-border-color: rgba(0, 123, 255, 0.6);
+    --control-border-color: rgba(30, 60, 114, 0.5);
+    --table-border-color: rgba(30, 60, 114, 0.3);
+    --shadow-primary: 0 20px 60px rgba(0, 0, 0, 0.8);
+    --shadow-primary-lg: 0 30px 80px rgba(0, 0, 0, 0.7);
+    --color-primary-rgba-08: rgba(0, 123, 255, 0.08);
+    --color-primary-rgba-10: rgba(0, 123, 255, 0.1);
+    --color-primary-rgba-15: rgba(0, 123, 255, 0.15);
+    --color-primary-rgba-20: rgba(0, 123, 255, 0.2);
+    --color-primary-rgba-25: rgba(0, 123, 255, 0.25);
+    --color-primary-rgba-30: rgba(0, 123, 255, 0.3);
+    --color-primary-rgba-40: rgba(0, 123, 255, 0.4);
+    --color-primary-light-rgba-08: rgba(77, 148, 255, 0.08);
+    --color-primary-light-rgba-10: rgba(77, 148, 255, 0.1);
+    --color-primary-light-rgba-15: rgba(77, 148, 255, 0.15);
+    --color-primary-light-rgba-20: rgba(77, 148, 255, 0.2);
+    --color-primary-light-rgba-25: rgba(77, 148, 255, 0.25);
+    --color-primary-light-rgba-30: rgba(77, 148, 255, 0.3);
+    --color-primary-light-rgba-40: rgba(77, 148, 255, 0.4);
+    --color-secondary-rgba-08: rgba(30, 60, 114, 0.08);
+    --color-secondary-rgba-10: rgba(30, 60, 114, 0.1);
+    --color-secondary-rgba-15: rgba(30, 60, 114, 0.15);
+    --color-secondary-rgba-20: rgba(30, 60, 114, 0.2);
+    --color-secondary-rgba-25: rgba(30, 60, 114, 0.25);
+    --color-secondary-rgba-30: rgba(30, 60, 114, 0.3);
+    --color-secondary-rgba-40: rgba(30, 60, 114, 0.4);
+    --bg-light-gradient: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(30, 60, 114, 0.6) 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(30, 60, 114, 0.6) 100%);
+    --action-side-bg: color-mix(in srgb, rgba(0, 0, 0, 0.9) 75%, rgba(0, 123, 255, 0.15));
+    --action-side-bg-hover: color-mix(in srgb, rgba(0, 0, 0, 0.9) 65%, rgba(0, 123, 255, 0.25));
+    --action-side-text: rgba(255, 255, 255, 0.95);
+}
+
+:root[data-theme="bluerose"] body {
+    background: url("https://i.pinimg.com/1200x/d5/a1/c1/d5a1c149ab3b2a049576504e83fd21f7.jpg") center/cover no-repeat fixed;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+:root[data-theme="bluerose"] body::before {
+    display: none;
+}
+
+:root[data-theme="bluerose"] .page-ledger {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+:root[data-theme="bluerose"] .page-input,
+:root[data-theme="bluerose"] .page-chart,
+:root[data-theme="bluerose"] .page-budget,
+:root[data-theme="bluerose"] .page-monthly-planner,
+:root[data-theme="bluerose"] .page-daily-budget,
+:root[data-theme="bluerose"] .page-settings,
+:root[data-theme="bluerose"] .page-category-manage,
+:root[data-theme="bluerose"] .page-investment,
+:root[data-theme="bluerose"] .page-wallet,
+:root[data-theme="bluerose"] .page-history,
+:root[data-theme="bluerose"] .page-planner {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+:root[data-theme="bluerose"] .card,
+:root[data-theme="bluerose"] .record-card,
+:root[data-theme="bluerose"] .ledger-card,
+:root[data-theme="bluerose"] .summary-card,
+:root[data-theme="bluerose"] .budget-card,
+:root[data-theme="bluerose"] .wallet-card,
+:root[data-theme="bluerose"] .chart-card,
+:root[data-theme="bluerose"] .investment-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 123, 255, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="bluerose"] .investment-card,
+:root[data-theme="bluerose"] .stock-item-card {
+    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-light) 25%, var(--color-primary-rgba-20) 50%, var(--bg-lighter) 75%, var(--bg-soft) 100%);
+    border: 1px solid var(--color-primary);
+    border-radius: 20px;
+    box-shadow: 
+        0 12px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 0 30px var(--color-primary-rgba-15);
+}
+
+:root[data-theme="bluerose"] .investment-card::before,
+:root[data-theme="bluerose"] .stock-item-card::before {
+    background: linear-gradient(135deg, var(--color-primary-rgba-40) 0%, var(--color-primary-rgba-30) 55%, var(--color-primary-rgba-20) 100%);
+}
+
+/* 藍玫瑰騎士主題持股卡片文字顏色 */
+:root[data-theme="bluerose"] .stock-item-card {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="bluerose"] .stock-item-card h1,
+:root[data-theme="bluerose"] .stock-item-card h2,
+:root[data-theme="bluerose"] .stock-item-card h3,
+:root[data-theme="bluerose"] .stock-item-card h4,
+:root[data-theme="bluerose"] .stock-item-card h5,
+:root[data-theme="bluerose"] .stock-item-card h6,
+:root[data-theme="bluerose"] .stock-item-card .title,
+:root[data-theme="bluerose"] .stock-item-card .subtitle,
+:root[data-theme="bluerose"] .stock-item-card .card-title,
+:root[data-theme="bluerose"] .stock-item-card .card-subtitle,
+:root[data-theme="bluerose"] .stock-item-card .stock-name {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="bluerose"] .stock-item-card .text,
+:root[data-theme="bluerose"] .stock-item-card .description,
+:root[data-theme="bluerose"] .stock-item-card .content,
+:root[data-theme="bluerose"] .stock-item-card p,
+:root[data-theme="bluerose"] .stock-item-card span,
+:root[data-theme="bluerose"] .stock-item-card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="bluerose"] .stock-item-card .highlight,
+:root[data-theme="bluerose"] .stock-item-card .accent,
+:root[data-theme="bluerose"] .stock-item-card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="bluerose"] .stock-item-card .secondary-text,
+:root[data-theme="bluerose"] .stock-item-card .muted-text,
+:root[data-theme="bluerose"] .stock-item-card .stock-code {
+    color: var(--text-secondary) !important;
+}
+
+/* 管理投資卡片頁面樣式 */
+:root[data-theme="bluerose"] .page-manage-investment {
+    background: transparent !important;
+}
+
+:root[data-theme="bluerose"] .manage-investment-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(0, 123, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="bluerose"] .manage-investment-card h1,
+:root[data-theme="bluerose"] .manage-investment-card h2,
+:root[data-theme="bluerose"] .manage-investment-card h3,
+:root[data-theme="bluerose"] .manage-investment-card h4,
+:root[data-theme="bluerose"] .manage-investment-card h5,
+:root[data-theme="bluerose"] .manage-investment-card h6,
+:root[data-theme="bluerose"] .manage-investment-card .title,
+:root[data-theme="bluerose"] .manage-investment-card .subtitle,
+:root[data-theme="bluerose"] .manage-investment-card .card-title,
+:root[data-theme="bluerose"] .manage-investment-card .card-subtitle {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="bluerose"] .manage-investment-card .text,
+:root[data-theme="bluerose"] .manage-investment-card .description,
+:root[data-theme="bluerose"] .manage-investment-card .content,
+:root[data-theme="bluerose"] .manage-investment-card p,
+:root[data-theme="bluerose"] .manage-investment-card span,
+:root[data-theme="bluerose"] .manage-investment-card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="bluerose"] .manage-investment-card .highlight,
+:root[data-theme="bluerose"] .manage-investment-card .accent,
+:root[data-theme="bluerose"] .manage-investment-card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="bluerose"] .manage-investment-card .secondary-text,
+:root[data-theme="bluerose"] .manage-investment-card .muted-text {
+    color: var(--text-secondary) !important;
+}
+
+:root[data-theme="bluerose"] .manage-investment-card .label,
+:root[data-theme="bluerose"] .manage-investment-card .form-label {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="bluerose"] .manage-investment-card .value,
+:root[data-theme="bluerose"] .manage-investment-card .amount {
+    color: var(--color-accent) !important;
+}
+
+/* 年度報告頁面樣式 */
+:root[data-theme="bluerose"] .page-annual-report {
+    background: transparent !important;
+}
+
+:root[data-theme="bluerose"] .annual-report-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(0, 123, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+/* 關於記帳本頁面樣式 */
+:root[data-theme="bluerose"] .page-about {
+    background: transparent !important;
+}
+
+:root[data-theme="bluerose"] .about-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(0, 123, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+/* 記帳日記頁面樣式 */
+:root[data-theme="bluerose"] .page-diary {
+    background: transparent !important;
+}
+
+:root[data-theme="bluerose"] .diary-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(0, 123, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+/* 分期網頁樣式 */
+:root[data-theme="bluerose"] .page-installment {
+    background: transparent !important;
+}
+
+:root[data-theme="bluerose"] .installment-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(0, 123, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+/* 小森對話框樣式 */
+:root[data-theme="bluerose"] .modal-content,
+:root[data-theme="bluerose"] .modal-content-standard,
+:root[data-theme="bluerose"] .dialog-content,
+:root[data-theme="bluerose"] .popup-content {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border: 2px solid rgba(0, 123, 255, 0.5) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(15px) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="bluerose"] .modal-header,
+:root[data-theme="bluerose"] .dialog-header,
+:root[data-theme="bluerose"] .popup-header {
+    background: rgba(0, 123, 255, 0.2) !important;
+    border-bottom: 1px solid rgba(0, 123, 255, 0.3) !important;
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="bluerose"] .modal-title,
+:root[data-theme="bluerose"] .dialog-title,
+:root[data-theme="bluerose"] .popup-title {
+    color: var(--color-primary) !important;
+}
+
+/* 返回按鈕樣式 */
+:root[data-theme="bluerose"] .back-btn,
+:root[data-theme="bluerose"] .return-btn,
+:root[data-theme="bluerose"] .cancel-btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+    border: 1px solid var(--color-primary) !important;
+    color: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3) !important;
+}
+
+:root[data-theme="bluerose"] .back-btn:hover,
+:root[data-theme="bluerose"] .return-btn:hover,
+:root[data-theme="bluerose"] .cancel-btn:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%) !important;
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 歷史記錄備註字體顏色 */
+:root[data-theme="bluerose"] .history-transaction-note {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 選擇帳戶字體顏色 */
+:root[data-theme="bluerose"] .account-info,
+:root[data-theme="bluerose"] .account-item-name,
+:root[data-theme="bluerose"] .account-item-currency,
+:root[data-theme="bluerose"] .tab-text {
+    color: rgba(173, 216, 230, 0.8) !important;
+}
+
+/* 預算設定卡片文字顏色 */
+:root[data-theme="bluerose"] .budget-summary-label,
+:root[data-theme="bluerose"] .budget-detail-label,
+:root[data-theme="bluerose"] .stat-label,
+:root[data-theme="bluerose"] .dividend-stat-label {
+    color: rgba(173, 216, 230, 0.8) !important;
+}
+
+/* 數字鍵盤樣式 */
+:root[data-theme="bluerose"] .keypad-container,
+:root[data-theme="bluerose"] .number-keypad {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border: 2px solid rgba(0, 123, 255, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="bluerose"] .key-btn {
+    background: rgba(0, 123, 255, 0.2) !important;
+    border: 1px solid rgba(0, 123, 255, 0.4) !important;
+    color: var(--text-primary) !important;
+    border-radius: 12px !important;
+}
+
+:root[data-theme="bluerose"] .key-btn:hover {
+    background: rgba(0, 123, 255, 0.3) !important;
+    border-color: var(--color-primary) !important;
+}
+
+:root[data-theme="bluerose"] .key-btn.equal {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+    color: white !important;
+}
+
+/* 投資卡片圖片樣式 */
+:root[data-theme="bluerose"] .investment-card-image,
+:root[data-theme="bluerose"] .card-image {
+    border: 2px solid rgba(0, 123, 255, 0.4) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 記帳卡片圖片樣式 */
+:root[data-theme="bluerose"] .record-card-image,
+:root[data-theme="bluerose"] .ledger-image {
+    border: 2px solid rgba(0, 123, 255, 0.4) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 錢包預算設定卡片圖片 */
+:root[data-theme="bluerose"] .budget-card-image,
+:root[data-theme="bluerose"] .wallet-image {
+    border: 2px solid rgba(0, 123, 255, 0.4) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 每月規劃圖片 */
+:root[data-theme="bluerose"] .planner-image,
+:root[data-theme="bluerose"] .monthly-planner-image {
+    border: 2px solid rgba(0, 123, 255, 0.4) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 投資設定樣式 */
+:root[data-theme="bluerose"] .investment-settings,
+:root[data-theme="bluerose"] .settings-card {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border: 2px solid rgba(0, 123, 255, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 持有中買入卡片圖片 */
+:root[data-theme="bluerose"] .buy-card-image,
+:root[data-theme="bluerose"] .holding-buy-image {
+    border: 2px solid rgba(0, 123, 255, 0.4) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 賣出卡片圖片 */
+:root[data-theme="bluerose"] .sell-card-image,
+:root[data-theme="bluerose"] .holding-sell-image {
+    border: 2px solid rgba(0, 123, 255, 0.4) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 股息卡片圖片 */
+:root[data-theme="bluerose"] .dividend-card-image,
+:root[data-theme="bluerose"] .dividend-image {
+    border: 2px solid rgba(0, 123, 255, 0.4) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 定期定額和管理投資卡片 */
+:root[data-theme="bluerose"] .regular-savings-card,
+:root[data-theme="bluerose"] .investment-management-card {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border: 2px solid rgba(0, 123, 255, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="bluerose"] .regular-savings-card h1,
+:root[data-theme="bluerose"] .regular-savings-card h2,
+:root[data-theme="bluerose"] .regular-savings-card h3,
+:root[data-theme="bluerose"] .regular-savings-card h4,
+:root[data-theme="bluerose"] .regular-savings-card h5,
+:root[data-theme="bluerose"] .regular-savings-card h6,
+:root[data-theme="bluerose"] .investment-management-card h1,
+:root[data-theme="bluerose"] .investment-management-card h2,
+:root[data-theme="bluerose"] .investment-management-card h3,
+:root[data-theme="bluerose"] .investment-management-card h4,
+:root[data-theme="bluerose"] .investment-management-card h5,
+:root[data-theme="bluerose"] .investment-management-card h6,
+:root[data-theme="bluerose"] .regular-savings-card .title,
+:root[data-theme="bluerose"] .regular-savings-card .subtitle,
+:root[data-theme="bluerose"] .regular-savings-card .card-title,
+:root[data-theme="bluerose"] .regular-savings-card .card-subtitle,
+:root[data-theme="bluerose"] .investment-management-card .title,
+:root[data-theme="bluerose"] .investment-management-card .subtitle,
+:root[data-theme="bluerose"] .investment-management-card .card-title,
+:root[data-theme="bluerose"] .investment-management-card .card-subtitle {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="bluerose"] .regular-savings-card .text,
+:root[data-theme="bluerose"] .regular-savings-card .description,
+:root[data-theme="bluerose"] .regular-savings-card .content,
+:root[data-theme="bluerose"] .regular-savings-card p,
+:root[data-theme="bluerose"] .regular-savings-card span,
+:root[data-theme="bluerose"] .regular-savings-card div,
+:root[data-theme="bluerose"] .investment-management-card .text,
+:root[data-theme="bluerose"] .investment-management-card .description,
+:root[data-theme="bluerose"] .investment-management-card .content,
+:root[data-theme="bluerose"] .investment-management-card p,
+:root[data-theme="bluerose"] .investment-management-card span,
+:root[data-theme="bluerose"] .investment-management-card div {
+    color: var(--text-primary) !important;
+}
+
+/* 年度報告、關於記帳本、記帳日記文字顏色 */
+:root[data-theme="bluerose"] .annual-report-card,
+:root[data-theme="bluerose"] .about-card,
+:root[data-theme="bluerose"] .diary-card {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="bluerose"] .annual-report-card h1,
+:root[data-theme="bluerose"] .annual-report-card h2,
+:root[data-theme="bluerose"] .annual-report-card h3,
+:root[data-theme="bluerose"] .annual-report-card h4,
+:root[data-theme="bluerose"] .annual-report-card h5,
+:root[data-theme="bluerose"] .annual-report-card h6,
+:root[data-theme="bluerose"] .about-card h1,
+:root[data-theme="bluerose"] .about-card h2,
+:root[data-theme="bluerose"] .about-card h3,
+:root[data-theme="bluerose"] .about-card h4,
+:root[data-theme="bluerose"] .about-card h5,
+:root[data-theme="bluerose"] .about-card h6,
+:root[data-theme="bluerose"] .diary-card h1,
+:root[data-theme="bluerose"] .diary-card h2,
+:root[data-theme="bluerose"] .diary-card h3,
+:root[data-theme="bluerose"] .diary-card h4,
+:root[data-theme="bluerose"] .diary-card h5,
+:root[data-theme="bluerose"] .diary-card h6,
+:root[data-theme="bluerose"] .annual-report-card .title,
+:root[data-theme="bluerose"] .annual-report-card .subtitle,
+:root[data-theme="bluerose"] .annual-report-card .card-title,
+:root[data-theme="bluerose"] .annual-report-card .card-subtitle,
+:root[data-theme="bluerose"] .about-card .title,
+:root[data-theme="bluerose"] .about-card .subtitle,
+:root[data-theme="bluerose"] .about-card .card-title,
+:root[data-theme="bluerose"] .about-card .card-subtitle,
+:root[data-theme="bluerose"] .diary-card .title,
+:root[data-theme="bluerose"] .diary-card .subtitle,
+:root[data-theme="bluerose"] .diary-card .card-title,
+:root[data-theme="bluerose"] .diary-card .card-subtitle {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="bluerose"] .annual-report-card .text,
+:root[data-theme="bluerose"] .annual-report-card .description,
+:root[data-theme="bluerose"] .annual-report-card .content,
+:root[data-theme="bluerose"] .annual-report-card p,
+:root[data-theme="bluerose"] .annual-report-card span,
+:root[data-theme="bluerose"] .annual-report-card div,
+:root[data-theme="bluerose"] .about-card .text,
+:root[data-theme="bluerose"] .about-card .description,
+:root[data-theme="bluerose"] .about-card .content,
+:root[data-theme="bluerose"] .about-card p,
+:root[data-theme="bluerose"] .about-card span,
+:root[data-theme="bluerose"] .about-card div,
+:root[data-theme="bluerose"] .diary-card .text,
+:root[data-theme="bluerose"] .diary-card .description,
+:root[data-theme="bluerose"] .diary-card .content,
+:root[data-theme="bluerose"] .diary-card p,
+:root[data-theme="bluerose"] .diary-card span,
+:root[data-theme="bluerose"] .diary-card div {
+    color: var(--text-primary) !important;
+}
+
+/* 藍玫瑰騎士主題淺色文字調整 */
+:root[data-theme="bluerose"] .budget-summary-label,
+:root[data-theme="bluerose"] .budget-detail-label,
+:root[data-theme="bluerose"] .stat-label,
+:root[data-theme="bluerose"] .dividend-stat-label,
+:root[data-theme="bluerose"] .account-info,
+:root[data-theme="bluerose"] .account-item-name,
+:root[data-theme="bluerose"] .account-item-currency,
+:root[data-theme="bluerose"] .tab-text {
+    color: rgba(173, 216, 230, 0.8) !important;
 }
