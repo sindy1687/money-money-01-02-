@@ -233,14 +233,14 @@ var themes = window.AppThemes || (window.AppThemes = [
         color: '#87CEEB'
     },
     {
-        id: 'elegant',
-        name: '華麗古風',
-        icon: '🏮',
-        buttonIcon: '🎋',
-        preview: 'linear-gradient(135deg, rgba(165, 42, 42, 0.4) 0%, rgba(255, 218, 185, 0.3) 50%, rgba(218, 165, 32, 0.4) 100%), url("https://i.pinimg.com/1200x/26/a9/18/26a9180e011176e4795f5fe21ab761ea.jpg") center/cover',
-        color: '#A52A2A'
-    }
-]);
+        id: 'bluerose',
+        name: '藍玫瑰騎士',
+        icon: '🌹',
+        buttonIcon: '🗡️',
+        preview: 'linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(30, 60, 114, 0.6) 50%, rgba(0, 123, 255, 0.4) 100%), url("https://i.pinimg.com/1200x/d5/a1/c1/d5a1c149ab3b2a049576504e83fd21f7.jpg") center/cover',
+        color: '#007bff'
+    },
+    ]);
 
 const themeAnimations = {};
 
@@ -504,13 +504,13 @@ function updateThemeButtons(themeId) {
             navChart: '🐹',
             navSettings: '🐰'
         },
-        elegant: {
-            fab: '🏮',
-            navLedger: '🎋',
-            navWallet: '💰',
-            navInvestment: '📈',
-            navChart: '📊',
-            navSettings: '⚙️'
+        bluerose: {
+            fab: '🗡️',
+            navLedger: '📜',
+            navWallet: '💎',
+            navInvestment: '🛡️',
+            navChart: '🏰',
+            navSettings: '⚔️'
         }
     };
 
