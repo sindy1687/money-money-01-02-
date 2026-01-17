@@ -6,6 +6,13 @@
     --color-secondary: #f39c12;
     --color-secondary-light: #f1c40f;
     --color-secondary-dark: #d68910;
+    
+    /* 狀態顏色 */
+    --color-success: #22c55e;
+    --color-danger: #ef4444;
+    --color-warning: #f59e0b;
+    --color-info: #3b82f6;
+    --color-error: var(--color-danger);
     --bg-primary: linear-gradient(135deg, rgba(44, 62, 80, 0.94) 0%, rgba(52, 73, 94, 0.85) 65%, rgba(243, 156, 18, 0.35) 100%);
     --bg-body: rgba(44, 62, 80, 0.96);
     --bg-body-strong: rgba(52, 73, 94, 0.98);
@@ -97,7 +104,7 @@
 :root[data-theme="money"] .wallet-card,
 :root[data-theme="money"] .chart-card,
 :root[data-theme="money"] .investment-card {
-    background: rgba(6, 20, 13, 0.5);
+    background: rgba(6, 20, 13, 0.9);
     border: 1px solid rgba(22, 244, 154, 0.22);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
@@ -138,6 +145,14 @@
     --color-primary-light: #87CEEB;
     --color-primary-lighter: #B0E0E6;
     --color-primary-dark: #36454F;
+    
+    /* 狀態顏色 */
+    --color-success: #22c55e;
+    --color-danger: #ef4444;
+    --color-warning: #f59e0b;
+    --color-info: #3b82f6;
+    --color-error: var(--color-danger);
+    
     --bg-primary: linear-gradient(135deg, #F5F5DC 0%, #E6E6FA 50%, #B0E0E6 100%);
     --bg-gradient: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 50%, #F5F5DC 100%);
     --bg-gradient-light: linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(176, 224, 230, 0.12) 50%, rgba(245, 245, 220, 0.18) 100%);
@@ -422,7 +437,7 @@
 :root[data-theme="noface"] .dividend-stat-card,
 :root[data-theme="noface"] .dca-card,
 :root[data-theme="noface"] .installment-card {
-    background: rgba(14, 12, 18, 0.88);
+    background: rgba(14, 12, 18, 0.98);
     border: 1px solid rgba(246, 195, 67, 0.35);
     box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6);
     color: var(--text-primary);
@@ -676,7 +691,7 @@
 :root[data-theme="demonslayer"] .dividend-stat-card,
 :root[data-theme="demonslayer"] .dca-card,
 :root[data-theme="demonslayer"] .installment-card {
-    background: rgba(5, 12, 20, 0.88);
+    background: rgba(5, 12, 20, 0.98);
     border: 1px solid rgba(0, 194, 209, 0.4);
     box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
     color: var(--text-primary);
@@ -901,6 +916,8 @@
     --bg-hover: #f0f0f0;
     --bg-dark: #000000;
     --bg-toggle: #e0e0e0;
+    --overlay-backdrop: color-mix(in srgb, var(--bg-dark) 70%, transparent);
+    --overlay-backdrop-strong: color-mix(in srgb, var(--bg-dark) 80%, transparent);
     
     /* 文字顏色（預設淺色背景用深色字） */
     --text-primary: #0f172a;
@@ -1411,6 +1428,80 @@
     --color-primary-light-rgba-40: rgba(121, 134, 203, 0.4);
     --bg-light-gradient: linear-gradient(135deg, #ffffff 0%, #f3f4f9 100%);
     --bg-light-gradient-reverse: linear-gradient(180deg, #f3f4f9 0%, #ffffff 100%);
+    
+    /* 文字顏色變數 */
+    --text-primary: rgba(255, 255, 255, 0.95);
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-tertiary: rgba(255, 255, 255, 0.75);
+    --text-white: rgba(255, 255, 255, 0.98);
+    
+    /* 背景顏色變數 */
+    --bg-white: rgba(92, 107, 192, 0.8);
+    --bg-card: rgba(92, 107, 192, 0.7);
+    --bg-light: rgba(121, 134, 203, 0.6);
+    --bg-lighter: rgba(159, 168, 218, 0.5);
+    --bg-soft: rgba(63, 81, 181, 0.4);
+}
+
+/* Indigo 主題記帳記錄條目字體顏色 - 白色 */
+:root[data-theme="indigo"] .transaction-item,
+:root[data-theme="indigo"] .transaction-item .text,
+:root[data-theme="indigo"] .transaction-item .description,
+:root[data-theme="indigo"] .transaction-item .content,
+:root[data-theme="indigo"] .transaction-item p,
+:root[data-theme="indigo"] .transaction-item span,
+:root[data-theme="indigo"] .transaction-item div {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600 !important;
+}
+
+/* Indigo 主題記帳記錄條目標題顏色 - 白色 */
+:root[data-theme="indigo"] .transaction-item h1,
+:root[data-theme="indigo"] .transaction-item h2,
+:root[data-theme="indigo"] .transaction-item h3,
+:root[data-theme="indigo"] .transaction-item h4,
+:root[data-theme="indigo"] .transaction-item h5,
+:root[data-theme="indigo"] .transaction-item h6,
+:root[data-theme="indigo"] .transaction-item .title,
+:root[data-theme="indigo"] .transaction-item .subtitle,
+:root[data-theme="indigo"] .transaction-item .card-title,
+:root[data-theme="indigo"] .transaction-item .card-subtitle {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 700 !important;
+}
+
+/* Indigo 主題記帳記錄條目金額顏色 - 白色 */
+:root[data-theme="indigo"] .transaction-item .amount,
+:root[data-theme="indigo"] .transaction-item .money,
+:root[data-theme="indigo"] .transaction-item .price,
+:root[data-theme="indigo"] .transaction-item .value,
+:root[data-theme="indigo"] .transaction-item .transaction-amount {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 800 !important;
+}
+
+/* Indigo 主題記帳記錄條目日期顏色 - 白色 */
+:root[data-theme="indigo"] .transaction-item .date,
+:root[data-theme="indigo"] .transaction-item .time,
+:root[data-theme="indigo"] .transaction-item .datetime,
+:root[data-theme="indigo"] .group-header {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 600 !important;
+}
+
+/* Indigo 主題記帳記錄條目分類顏色 - 白色 */
+:root[data-theme="indigo"] .transaction-item .transaction-category,
+:root[data-theme="indigo"] .transaction-item .transaction-account,
+:root[data-theme="indigo"] .transaction-item .transaction-member,
+:root[data-theme="indigo"] .transaction-item .transaction-note {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 500 !important;
+}
+
+/* Indigo 主題記帳記錄條目圖標顏色 */
+:root[data-theme="indigo"] .transaction-item .transaction-icon,
+:root[data-theme="indigo"] .transaction-item .transaction-emoji-image {
+    filter: hue-rotate(240deg) saturate(1.2) !important;
 }
 
 /* ========== 新增主題：茶色主題 ========== */
@@ -2507,7 +2598,7 @@ body::before {
 :root[data-theme="space"] .wallet-card,
 :root[data-theme="space"] .chart-card,
 :root[data-theme="space"] .investment-card {
-    background: linear-gradient(145deg, rgba(0, 40, 80, 0.7) 0%, rgba(138, 43, 226, 0.3) 50%, rgba(0, 80, 160, 0.5) 100%);
+    background: linear-gradient(145deg, rgba(0, 40, 80, 0.95) 0%, rgba(138, 43, 226, 0.7) 50%, rgba(0, 80, 160, 0.9) 100%);
     border: 1px solid rgba(255, 107, 53, 0.4);
     box-shadow: 0 12px 32px rgba(0, 20, 40, 0.6), 0 0 20px rgba(0, 212, 255, 0.3);
 }
@@ -5453,7 +5544,7 @@ width: 100%;
     font-size: 13px;
     opacity: 0.9;
     font-weight: 500;
-    background: rgba(255, 255, 255, 0.2);
+    background: color-mix(in srgb, var(--bg-white) 20%, transparent);
     padding: 2px 8px;
     border-radius: 8px;
     margin-left: 4px;
@@ -10370,11 +10461,11 @@ width: 100%;
 }
 
 .summary-value.positive {
-    color: #28a745;
+    color: var(--color-success);
 }
 
 .summary-value.negative {
-    color: #dc3545;
+    color: var(--color-danger);
 }
 
 .investment-type-tabs {
@@ -10506,11 +10597,11 @@ width: 100%;
 }
 
 .pnl-value.positive {
-    color: #28a745;
+    color: var(--color-success);
 }
 
 .pnl-value.negative {
-    color: #dc3545;
+    color: var(--color-danger);
 }
 
 .portfolio-list {
@@ -10920,11 +11011,11 @@ width: 100%;
 }
 
 .summary-toggle__metric-value.positive {
-    color: #22c55e;
+    color: var(--color-success);
 }
 
 .summary-toggle__metric-value.negative {
-    color: #f87171;
+    color: var(--color-danger);
 }
 
 .summary-toggle__metric-value.neutral {
@@ -11155,11 +11246,11 @@ width: 100%;
 }
 
 .summary-value.positive {
-    color: #4caf50;
+    color: var(--color-success);
 }
 
 .summary-value.negative {
-    color: #f44336;
+    color: var(--color-danger);
 }
 
 /* 持股清單區域 */
@@ -11682,11 +11773,11 @@ width: 100%;
 }
 
 .stock-grid-card-price-arrow.up {
-    color: #f44336; /* 紅色表示漲 */
+    color: var(--color-danger); /* 使用主題危險色表示漲 */
 }
 
 .stock-grid-card-price-arrow.down {
-    color: #4caf50; /* 綠色表示跌 */
+    color: var(--color-success); /* 使用主題成功色表示跌 */
 }
 
 .stock-grid-card-price-arrow:empty {
@@ -11712,8 +11803,8 @@ width: 100%;
     margin-top: 8px;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    padding: 4px 10px;
+    justify-content: center;
+    padding: 6px 12px;
     border-radius: 12px;
     font-size: 12px;
     font-weight: 600;
@@ -11727,40 +11818,39 @@ width: 100%;
     user-select: none;
     border: 1px solid transparent;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.85);
-    color: #1b1f2e;
+    /* 移除固定背景和文字顏色，讓positive/negative樣式控制 */
 }
 
 .stock-grid-card-change.positive {
-    color: #ffffff !important;
-    background: linear-gradient(135deg, #f44336 0%, #e53935 100%) !important;
-    border: 1px solid #d32f2f !important;
-    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    color: var(--text-white) !important;
+    background: linear-gradient(135deg, var(--color-danger) 0%, color-mix(in srgb, var(--color-danger) 85%, black) 100%) !important;
+    border: 1px solid var(--color-danger) !important;
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-danger) 40%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
     font-weight: 700 !important;
     letter-spacing: 0.4px !important;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
 .stock-grid-card-change.positive:hover {
-    background: linear-gradient(135deg, #e53935 0%, #d32f2f 100%) !important;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-danger) 85%, black) 0%, color-mix(in srgb, var(--color-danger) 90%, black) 100%) !important;
     transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(244, 67, 54, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--color-danger) 50%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
 }
 
 .stock-grid-card-change.negative {
-    color: #ffffff !important;
-    background: linear-gradient(135deg, #4caf50 0%, #43a047 100%) !important;
-    border: 1px solid #388e3c !important;
-    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    color: var(--text-white) !important;
+    background: linear-gradient(135deg, var(--color-success) 0%, color-mix(in srgb, var(--color-success) 85%, black) 100%) !important;
+    border: 1px solid var(--color-success) !important;
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-success) 30%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
     font-weight: 700 !important;
     letter-spacing: 0.4px !important;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
 .stock-grid-card-change.negative:hover {
-    background: linear-gradient(135deg, #43a047 0%, #388e3c 100%) !important;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-success) 85%, black) 0%, color-mix(in srgb, var(--color-success) 90%, black) 100%) !important;
     transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--color-success) 40%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
 }
 
 .stock-grid-card-change-arrow {
@@ -11819,17 +11909,17 @@ width: 100%;
 }
 
 .stock-grid-card-tag.positive {
-    color: var(--text-strong, #0f172a);
-    background: rgba(239, 68, 68, 0.25);
-    border: 1px solid rgba(239, 68, 68, 0.35);
-    box-shadow: 0 16px 34px rgba(239, 68, 68, 0.24);
+    color: var(--text-white);
+    background: var(--color-danger);
+    border: 1px solid var(--color-danger);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-danger) 25%, transparent);
 }
 
 .stock-grid-card-tag.negative {
-    color: var(--text-strong, #0f172a);
-    background: rgba(16, 185, 129, 0.28);
-    border: 1px solid rgba(16, 185, 129, 0.38);
-    box-shadow: 0 16px 34px rgba(16, 185, 129, 0.24);
+    color: var(--text-white);
+    background: var(--color-success);
+    border: 1px solid var(--color-success);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-success) 25%, transparent);
 }
 
 .stock-item-card::before {
@@ -11985,11 +12075,11 @@ width: 100%;
 }
 
 .stock-card-value.positive {
-    color: #4caf50;
+    color: var(--color-success);
 }
 
 .stock-card-value.negative {
-    color: #f44336;
+    color: var(--color-danger);
 }
 
 .pnl-percent {
@@ -12000,15 +12090,16 @@ width: 100%;
 
 .stock-card-value.positive .pnl-percent {
     opacity: 1;
-    color: #14532d;
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.22) 0%, rgba(16, 185, 129, 0.18) 100%);
-    border: 1px solid rgba(34, 197, 94, 0.28);
+    color: var(--text-white);
+    background: linear-gradient(135deg, var(--color-success) 0%, color-mix(in srgb, var(--color-success) 80%, black) 100%);
     padding: 2px 8px;
-    border-radius: 999px;
-    display: inline-flex;
-    align-items: center;
-    text-shadow: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid var(--color-success);
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--color-success) 30%, transparent);
 }
+
 :root {
   /* ===============================
      交易清單：金額膠囊（跟著主題色）
@@ -12291,11 +12382,11 @@ width: 100%;
 }
 
 .stock-metric-value.positive {
-    color: #28a745;
+    color: var(--color-success);
 }
 
 .stock-metric-value.negative {
-    color: #dc3545;
+    color: var(--color-danger);
 }
 
 /* 個股詳情頁面 */
@@ -12422,11 +12513,11 @@ width: 100%;
 }
 
 .metric-value-large.positive {
-    color: #4caf50;
+    color: var(--color-success);
 }
 
 .metric-value-large.negative {
-    color: #f44336;
+    color: var(--color-danger);
 }
 
 .metric-input-large {
@@ -12549,11 +12640,11 @@ width: 100%;
 }
 
 .metric-value.pnl.positive {
-    color: #28a745;
+    color: var(--color-success);
 }
 
 .metric-value.pnl.negative {
-    color: #dc3545;
+    color: var(--color-danger);
 }
 
 .metric-input {
@@ -15728,11 +15819,11 @@ width: 100%;
 }
 
 .buy-btn {
-    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    background: linear-gradient(135deg, var(--color-success) 0%, color-mix(in srgb, var(--color-success) 85%, black) 100%);
 }
 
 .sell-btn {
-    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+    background: linear-gradient(135deg, var(--color-danger) 0%, color-mix(in srgb, var(--color-danger) 85%, black) 100%);
 }
 
 .dividend-btn {
@@ -19915,7 +20006,7 @@ transform: scale(0.99);
     align-items: center !important;
     justify-content: center !important;
     padding: 0 !important;
-    background: rgba(0, 0, 0, 0.7) !important;
+    background: var(--overlay-backdrop) !important;
     overflow: hidden !important;
     touch-action: pan-y !important;
 }
@@ -19991,7 +20082,7 @@ transform: scale(0.99);
     gap: 8px !important;
     padding: 10px 12px !important;
     border-radius: 14px !important;
-    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid var(--border-medium) !important;
     background: rgba(255, 255, 255, 0.9) !important;
     box-shadow: var(--shadow-sm) !important;
 }
@@ -20021,7 +20112,7 @@ transform: scale(0.99);
 }
 
 .history-search-clear {
-    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid var(--border-medium) !important;
     background: rgba(255, 255, 255, 0.9) !important;
     padding: 10px 12px !important;
     border-radius: 14px !important;
@@ -20530,7 +20621,7 @@ transform: scale(0.99);
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    background: rgba(0, 0, 0, 0.8) !important;
+    background: var(--overlay-backdrop-strong) !important;
 }
 
 .history-background-selector-content {
@@ -20681,7 +20772,7 @@ transform: scale(0.99);
 .history-transaction-note {
     font-size: var(--font-xs) !important;
     margin-top: 4px !important;
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: var(--text-secondary) !important;
     line-height: 1.4 !important;
     word-break: break-word !important;
 }
@@ -23464,7 +23555,7 @@ body {
 :root[data-theme="caitu"] .wallet-card,
 :root[data-theme="caitu"] .chart-card,
 :root[data-theme="caitu"] .investment-card {
-    background: rgba(255, 248, 225, 0.85);
+    background: rgba(255, 248, 225, 0.98);
     border: 1px solid rgba(255, 193, 7, 0.4);
     box-shadow: 0 12px 32px rgba(255, 193, 7, 0.2);
 }
@@ -23601,6 +23692,22 @@ body {
     border-color: var(--color-primary) !important;
 }
 
+/* 財兔滿滿主題記帳日期咖啡色 */
+:root[data-theme="caitu"] .group-header {
+    color: #8B4513 !important;
+    background: rgba(255, 248, 225, 0.8) !important;
+    border: 1px solid rgba(139, 69, 19, 0.3) !important;
+    border-bottom: 1px solid rgba(139, 69, 19, 0.3) !important;
+    padding: 8px 12px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 5 !important;
+    backdrop-filter: blur(10px) !important;
+}
+
 /* 金樹計畫主題樣式 */
 :root[data-theme="goldenTree"] {
     --color-primary: #8B4513;
@@ -23702,7 +23809,7 @@ body {
 :root[data-theme="goldenTree"] .wallet-card,
 :root[data-theme="goldenTree"] .chart-card,
 :root[data-theme="goldenTree"] .investment-card {
-    background: rgba(245, 235, 220, 0.85);
+    background: rgba(245, 235, 220, 0.98);
     border: 1px solid rgba(184, 134, 11, 0.4);
     box-shadow: 0 12px 32px rgba(139, 69, 19, 0.2);
 }
@@ -23940,7 +24047,7 @@ body {
 :root[data-theme="chaonengli"] .wallet-card,
 :root[data-theme="chaonengli"] .chart-card,
 :root[data-theme="chaonengli"] .investment-card {
-    background: rgba(40, 25, 10, 0.85);
+    background: rgba(40, 25, 10, 0.98);
     border: 1px solid rgba(255, 215, 0, 0.4);
     box-shadow: 0 12px 32px rgba(212, 175, 55, 0.2);
 }
@@ -24211,18 +24318,87 @@ body {
 }
 
 :root[data-theme="fruit"] .card,
-:root[data-theme="fruit"] .record-card,
 :root[data-theme="fruit"] .ledger-card,
 :root[data-theme="fruit"] .summary-card,
 :root[data-theme="fruit"] .budget-card,
 :root[data-theme="fruit"] .wallet-card,
 :root[data-theme="fruit"] .chart-card,
 :root[data-theme="fruit"] .investment-card {
-    background: rgba(255, 255, 255, 0.85);
+    background-image: url("https://i.pinimg.com/736x/78/a0/3e/78a03ea3f253f41c6f51ab5ccfe186c2.jpg") !important;
+    background-size: cover;
+    background-position: center;
     border: 1px solid rgba(64, 224, 208, 0.4);
     border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+:root[data-theme="fruit"] .card::before,
+:root[data-theme="fruit"] .ledger-card::before,
+:root[data-theme="fruit"] .summary-card::before,
+:root[data-theme="fruit"] .budget-card::before,
+:root[data-theme="fruit"] .wallet-card::before,
+:root[data-theme="fruit"] .chart-card::before,
+:root[data-theme="fruit"] .investment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.85) 0%, 
+        rgba(255, 255, 255, 0.75) 50%, 
+        rgba(255, 255, 255, 0.65) 100%);
+    z-index: 1;
+}
+
+:root[data-theme="fruit"] .card > *,
+:root[data-theme="fruit"] .ledger-card > *,
+:root[data-theme="fruit"] .summary-card > *,
+:root[data-theme="fruit"] .budget-card > *,
+:root[data-theme="fruit"] .wallet-card > *,
+:root[data-theme="fruit"] .chart-card > *,
+:root[data-theme="fruit"] .investment-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+:root[data-theme="fruit"] .card,
+:root[data-theme="fruit"] .ledger-card,
+:root[data-theme="fruit"] .summary-card,
+:root[data-theme="fruit"] .budget-card,
+:root[data-theme="fruit"] .wallet-card,
+:root[data-theme="fruit"] .chart-card,
+:root[data-theme="fruit"] .investment-card {
     box-shadow: 0 8px 24px rgba(64, 224, 208, 0.15);
     backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="fruit"] .card:hover,
+:root[data-theme="fruit"] .ledger-card:hover,
+:root[data-theme="fruit"] .summary-card:hover,
+:root[data-theme="fruit"] .budget-card:hover,
+:root[data-theme="fruit"] .wallet-card:hover,
+:root[data-theme="fruit"] .chart-card:hover,
+:root[data-theme="fruit"] .investment-card:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 12px 32px rgba(64, 224, 208, 0.25);
+    border-color: rgba(64, 224, 208, 0.6);
+}
+
+:root[data-theme="fruit"] .card:hover::before,
+:root[data-theme="fruit"] .ledger-card:hover::before,
+:root[data-theme="fruit"] .summary-card:hover::before,
+:root[data-theme="fruit"] .budget-card:hover::before,
+:root[data-theme="fruit"] .wallet-card:hover::before,
+:root[data-theme="fruit"] .chart-card:hover::before,
+:root[data-theme="fruit"] .investment-card:hover::before {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.75) 0%, 
+        rgba(255, 255, 255, 0.65) 50%, 
+        rgba(255, 255, 255, 0.55) 100%);
 }
 
 :root[data-theme="fruit"] .investment-card,
@@ -24238,6 +24414,129 @@ body {
 :root[data-theme="fruit"] .investment-card::before,
 :root[data-theme="fruit"] .stock-item-card::before {
     background: linear-gradient(135deg, var(--color-primary-rgba-40) 0%, var(--color-primary-rgba-30) 55%, var(--color-primary-rgba-20) 100%);
+}
+
+/* 水果清爽主題 - 記帳記錄條目專用樣式 */
+:root[data-theme="fruit"] div.record-card,
+:root[data-theme="fruit"] .record-card.record-card {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 193, 0.4) 0%, 
+        rgba(152, 251, 152, 0.5) 25%, 
+        rgba(255, 192, 203, 0.3) 50%, 
+        rgba(127, 255, 212, 0.4) 75%, 
+        rgba(255, 182, 193, 0.35) 100%) !important;
+    border: 3px solid rgba(255, 182, 193, 0.8) !important;
+    border-radius: 20px !important;
+    box-shadow: 
+        0 8px 24px rgba(255, 182, 193, 0.3),
+        0 4px 12px rgba(152, 251, 152, 0.25),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+    transition: all 0.3s ease !important;
+    padding: 20px !important;
+    position: relative !important;
+    margin-bottom: 16px !important;
+    /* 移除調試邊框 */
+}
+
+:root[data-theme="fruit"] div.record-card:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 193, 0.6) 0%, 
+        rgba(152, 251, 152, 0.7) 25%, 
+        rgba(255, 192, 203, 0.5) 50%, 
+        rgba(127, 255, 212, 0.6) 75%, 
+        rgba(255, 182, 193, 0.55) 100%) !important;
+    border: 3px solid rgba(255, 182, 193, 1) !important;
+    box-shadow: 
+        0 12px 32px rgba(255, 182, 193, 0.4),
+        0 6px 16px rgba(152, 251, 152, 0.35),
+        inset 0 2px 6px rgba(255, 255, 255, 0.4) !important;
+    transform: translateY(-3px) scale(1.02) !important;
+}
+
+:root[data-theme="fruit"] div.record-card .record-card-date {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 193, 0.5) 0%, 
+        rgba(152, 251, 152, 0.6) 100%) !important;
+    color: #2E8B57 !important;
+    border: 2px solid rgba(255, 182, 193, 0.7) !important;
+    border-radius: 12px !important;
+    padding: 6px 12px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 8px rgba(255, 182, 193, 0.3) !important;
+}
+
+:root[data-theme="fruit"] div.record-card .record-card-amount {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 193, 0.6) 0%, 
+        rgba(255, 192, 203, 0.5) 50%, 
+        rgba(255, 182, 193, 0.4) 100%) !important;
+    border: 3px solid rgba(255, 182, 193, 0.9) !important;
+    border-radius: 20px !important;
+    padding: 8px 16px !important;
+    color: #DC143C !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    box-shadow: 
+        0 4px 12px rgba(255, 182, 193, 0.4),
+        inset 0 1px 3px rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+:root[data-theme="fruit"] div.record-card .record-card-amount.positive {
+    background: linear-gradient(135deg, 
+        rgba(152, 251, 152, 0.6) 0%, 
+        rgba(144, 238, 144, 0.5) 50%, 
+        rgba(152, 251, 152, 0.4) 100%) !important;
+    border: 3px solid rgba(152, 251, 152, 0.9) !important;
+    color: #2E8B57 !important;
+    box-shadow: 
+        0 4px 12px rgba(152, 251, 152, 0.4),
+        inset 0 1px 3px rgba(255, 255, 255, 0.3) !important;
+}
+
+:root[data-theme="fruit"] div.record-card .record-card-details > div {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.6) 0%, 
+        rgba(255, 182, 193, 0.3) 50%, 
+        rgba(255, 255, 255, 0.4) 100%) !important;
+    border: 2px solid rgba(255, 182, 193, 0.5) !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(6px) !important;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4) !important;
+}
+
+:root[data-theme="fruit"] div.record-card .record-card-category,
+:root[data-theme="fruit"] div.record-card .record-card-account {
+    color: #2E8B57 !important;
+    font-weight: 600 !important;
+}
+
+:root[data-theme="fruit"] div.record-card .record-card-description {
+    color: #666 !important;
+    font-weight: 500 !important;
+}
+
+:root[data-theme="fruit"] div.record-card .record-menu-btn {
+    background: rgba(255, 182, 193, 0.3) !important;
+    border: 1px solid rgba(255, 182, 193, 0.5) !important;
+    color: #DC143C !important;
+}
+
+:root[data-theme="fruit"] div.record-card .record-menu-btn:hover {
+    background: rgba(255, 182, 193, 0.5) !important;
+    border-color: rgba(255, 182, 193, 0.8) !important;
+}
+
+/* 禁用水果主題記帳卡片的偽元素背景 */
+:root[data-theme="fruit"] div.record-card::before {
+    background-image: none !important;
+    background: transparent !important;
+    opacity: 0 !important;
+}
+
+:root[data-theme="fruit"] div.record-card::after {
+    background: transparent !important;
 }
 
 /* 水果主題持股卡片文字顏色 */
@@ -24297,11 +24596,11 @@ body {
 }
 
 :root[data-theme="fruit"] .stock-item-card .profit-loss.positive {
-    color: #f44336 !important; /* 紅色表示漲 */
+    color: var(--color-danger) !important; /* 使用主題危險色表示漲 */
 }
 
 :root[data-theme="fruit"] .stock-item-card .profit-loss.negative {
-    color: #4caf50 !important; /* 綠色表示跌 */
+    color: var(--color-success) !important; /* 使用主題成功色表示跌 */
 }
 
 :root[data-theme="fruit"] .stock-item-card .stock-card-icon {
@@ -24378,11 +24677,11 @@ body {
 }
 
 .stock-item-card .profit-loss.positive {
-    color: #f44336 !important; /* 紅色表示漲 */
+    color: var(--color-danger) !important; /* 使用主題危險色表示漲 */
 }
 
 .stock-item-card .profit-loss.negative {
-    color: #4caf50 !important; /* 綠色表示跌 */
+    color: var(--color-success) !important; /* 使用主題成功色表示跌 */
 }
 
 .stock-item-card .stock-card-icon {
@@ -24414,9 +24713,116 @@ body {
 :root[data-theme="fruit"] .history-modal-content {
     background: rgba(255, 255, 255, 0.95);
     border: 2px solid rgba(64, 224, 208, 0.5);
-    border-radius: 20px;
-    box-shadow: 0 12px 32px rgba(64, 224, 208, 0.25);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+/* 預算設定模態框背景圖片 */
+:root[data-theme="fruit"] .budget-setting-modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("https://i.pinimg.com/736x/78/a0/3e/78a03ea3f253f41c6f51ab5ccfe186c2.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    border-radius: 24px;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+/* 預算分類模態框背景圖片 */
+:root[data-theme="fruit"] .budget-category-modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("https://i.pinimg.com/736x/78/a0/3e/78a03ea3f253f41c6f51ab5ccfe186c2.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    border-radius: 24px;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+/* 預算追蹤項目背景圖片 */
+:root[data-theme="fruit"] .budget-item {
+    background-image: url("https://i.pinimg.com/736x/78/a0/3e/78a03ea3f253f41c6f51ab5ccfe186c2.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    position: relative;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 182, 193, 0.3);
+    box-shadow: 0 4px 12px rgba(255, 182, 193, 0.2);
+}
+
+:root[data-theme="fruit"] .budget-item:hover {
+    transform: translateY(-2px) scale(1.01);
+    border-color: rgba(255, 182, 193, 0.6);
+    box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+}
+
+:root[data-theme="fruit"] .budget-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 193, 0.4) 0%, 
+        rgba(152, 251, 152, 0.3) 50%, 
+        rgba(255, 182, 193, 0.2) 100%);
+    border-radius: 16px;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="fruit"] .budget-item:hover::before {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 193, 0.5) 0%, 
+        rgba(152, 251, 152, 0.4) 50%, 
+        rgba(255, 182, 193, 0.3) 100%);
+}
+
+:root[data-theme="fruit"] .budget-item-icon,
+:root[data-theme="fruit"] .budget-item-info,
+:root[data-theme="fruit"] .budget-item-header,
+:root[data-theme="fruit"] .budget-progress-bar,
+:root[data-theme="fruit"] .budget-item-details {
+    position: relative;
+    z-index: 2;
+}
+
+/* 查看每日追蹤按鈕樣式 */
+:root[data-theme="fruit"] .daily-budget-track-btn {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 193, 0.6) 0%, 
+        rgba(152, 251, 152, 0.5) 100%) !important;
+    border: 2px solid rgba(255, 182, 193, 0.8) !important;
+    border-radius: 12px !important;
+    color: #2E8B57 !important;
+    font-weight: 600 !important;
+    padding: 8px 16px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 12px rgba(255, 182, 193, 0.3) !important;
+    backdrop-filter: blur(4px) !important;
+    position: relative;
+    z-index: 3;
+}
+
+:root[data-theme="fruit"] .daily-budget-track-btn:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 193, 0.8) 0%, 
+        rgba(152, 251, 152, 0.7) 100%) !important;
+    border-color: rgba(255, 182, 193, 1) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 16px rgba(255, 182, 193, 0.4) !important;
 }
 
 :root[data-theme="fruit"] .input-section {
@@ -24576,14 +24982,6 @@ body {
 
 /* 記帳卡片圖片 */
 :root[data-theme="fruit"] .ledger-card-image {
-    background-image: url("https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg") !important;
-    background-size: cover;
-    background-position: center;
-    border-radius: 16px;
-}
-
-/* 錢包預算設定卡片圖片 */
-:root[data-theme="fruit"] .budget-card-image {
     background-image: url("https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -24791,7 +25189,7 @@ body {
 :root[data-theme="meow"] .wallet-card,
 :root[data-theme="meow"] .chart-card,
 :root[data-theme="meow"] .investment-card {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.98);
     border: 1px solid rgba(135, 206, 235, 0.4);
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15);
@@ -25088,13 +25486,125 @@ body {
 }
 
 /* 錢包預算設定卡片樣式 */
+:root[data-theme="cuteCats"] .wallet-budget-card {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(255, 182, 193, 0.3) !important;
+    border: 2px solid rgba(255, 182, 193, 0.4) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="dreamy"] .wallet-budget-card {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.3) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="chick"] .wallet-budget-card {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(152, 251, 152, 0.3) !important;
+    border: 2px solid rgba(152, 251, 152, 0.4) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="dreamyfish"] .wallet-budget-card {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.3) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="emerald"] .wallet-budget-card {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(46, 139, 87, 0.3) !important;
+    border: 2px solid rgba(46, 139, 87, 0.4) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
 :root[data-theme="meow"] .wallet-budget-card {
-    background: url("https://i.pinimg.com/1200x/da/af/29/daaf2933df91dc69201590262a495c01.jpg") center/cover !important;
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
     background-blend-mode: overlay !important;
     background-color: rgba(135, 206, 235, 0.3) !important;
     border: 2px solid rgba(135, 206, 235, 0.4) !important;
     border-radius: 20px !important;
     box-shadow: 0 8px 24px rgba(135, 206, 235, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 預算設定模態框內容背景圖片樣式 - 使用更高優先級選擇器 */
+body[data-theme="cuteCats"] .budget-setting-modal-content,
+:root[data-theme="cuteCats"] .budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(255, 182, 193, 0.9) !important;
+    border: 2px solid rgba(255, 182, 193, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+body[data-theme="dreamy"] .budget-setting-modal-content,
+:root[data-theme="dreamy"] .budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.9) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+body[data-theme="chick"] .budget-setting-modal-content,
+:root[data-theme="chick"] .budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(152, 251, 152, 0.9) !important;
+    border: 2px solid rgba(152, 251, 152, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+body[data-theme="dreamyfish"] .budget-setting-modal-content,
+:root[data-theme="dreamyfish"] .budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.9) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+body[data-theme="emerald"] .budget-setting-modal-content,
+:root[data-theme="emerald"] .budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(46, 139, 87, 0.9) !important;
+    border: 2px solid rgba(46, 139, 87, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+body[data-theme="meow"] .budget-setting-modal-content,
+:root[data-theme="meow"] .budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.9) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 24px !important;
     backdrop-filter: blur(10px) !important;
     color: var(--text-primary) !important;
 }
@@ -25646,8 +26156,6 @@ body {
     color: rgba(212, 175, 55, 0.7) !important;
 }
 
-:root[data-theme="fruit"] .budget-summary-label,
-:root[data-theme="fruit"] .budget-detail-label,
 :root[data-theme="fruit"] .stat-label,
 :root[data-theme="fruit"] .dividend-stat-label,
 :root[data-theme="fruit"] .account-info,
@@ -25770,7 +26278,7 @@ body {
 :root[data-theme="bluerose"] .wallet-card,
 :root[data-theme="bluerose"] .chart-card,
 :root[data-theme="bluerose"] .investment-card {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.95);
     border: 1px solid rgba(0, 123, 255, 0.4);
     border-radius: 16px;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
@@ -26296,7 +26804,7 @@ body {
 :root[data-theme="emeraldPrince"] .annual-report,
 :root[data-theme="emeraldPrince"] .about-ledger,
 :root[data-theme="emeraldPrince"] .ledger-diary {
-    background: rgba(0, 0, 0, 0.7) !important;
+    background: var(--bg-card) !important;
     backdrop-filter: blur(10px);
     border: 1px solid var(--border-light);
     border-radius: 15px;
@@ -26307,7 +26815,7 @@ body {
 :root[data-theme="emeraldPrince"] .btn-primary,
 :root[data-theme="emeraldPrince"] .btn-secondary {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    color: #FFFFFF;
+    color: var(--text-white);
     border: 1px solid var(--border-medium);
     border-radius: 25px;
     box-shadow: 0 4px 15px var(--shadow-medium);
@@ -26326,7 +26834,7 @@ body {
 :root[data-theme="emeraldPrince"] .back-btn,
 :root[data-theme="emeraldPrince"] .return-btn {
     background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
-    color: #2C3E50;
+    color: var(--text-primary);
     border: 2px solid var(--border-dark);
 }
 
@@ -26354,7 +26862,7 @@ body {
 :root[data-theme="emeraldPrince"] .diary-content,
 :root[data-theme="emeraldPrince"] .diary-text {
     color: var(--text-primary) !important;
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--bg-card);
     padding: 10px;
     border-radius: 10px;
     border: 1px solid var(--border-light);
@@ -26376,10 +26884,9 @@ body {
 }
 
 :root[data-theme="emeraldPrince"] .wallet-budget-card {
-    background-image: url("https://i.pinimg.com/1200x/da/af/29/daaf2933df91dc69201590262a495c01.jpg");
-    background-size: cover;
-    background-position: center;
-    border: 2px solid var(--border-medium);
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-medium) !important;
+    box-shadow: var(--shadow-primary) !important;
 }
 
 :root[data-theme="emeraldPrince"] .monthly-planning-card {
@@ -26433,7 +26940,7 @@ body {
 
 /* 翡翠王子主題持股卡片 */
 :root[data-theme="emeraldPrince"] .stock-item-card {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-card);
     border: 1px solid var(--border-light);
     color: var(--text-primary) !important;
 }
@@ -26450,6 +26957,298 @@ body {
     color: var(--color-accent) !important;
 }
 
+:root[data-theme="emeraldPrince"] .record-card {
+    background: linear-gradient(135deg,
+            var(--color-primary-rgba-10) 0%,
+            var(--color-primary-rgba-18) 55%,
+            color-mix(in srgb, var(--color-secondary-rgba-15) 80%, transparent) 100%) !important;
+    border: 2px solid var(--border-medium) !important;
+    box-shadow: 0 10px 28px var(--shadow-light), inset 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+    color: var(--text-primary) !important;
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="emeraldPrince"] .record-card::before {
+    background-image: none !important;
+    background: radial-gradient(circle at 15% 20%,
+            var(--color-accent-rgba-15) 0%,
+            transparent 55%),
+        radial-gradient(circle at 80% 0,
+            var(--color-primary-rgba-15) 0%,
+            transparent 60%);
+    opacity: 0.9 !important;
+}
+
+:root[data-theme="emeraldPrince"] .record-card::after {
+    background: linear-gradient(120deg,
+            transparent,
+            color-mix(in srgb, var(--color-accent-rgba-20) 80%, transparent),
+            transparent) !important;
+}
+
+:root[data-theme="emeraldPrince"] .record-card .record-card-details > div {
+    border: 1px solid color-mix(in srgb, var(--border-light) 80%, transparent) !important;
+    box-shadow: inset 0 0 12px color-mix(in srgb, var(--shadow-light) 70%, transparent) !important;
+}
+
+:root[data-theme="emeraldPrince"] .record-card-amount {
+    color: color-mix(in srgb, var(--color-secondary) 55%, var(--text-primary)) !important;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+:root[data-theme="emeraldPrince"] .record-card-date {
+    background: color-mix(in srgb, var(--bg-white) 70%, transparent);
+    border: 1px solid var(--border-light);
+    color: var(--text-secondary) !important;
+}
+
+:root[data-theme="emeraldPrince"] .record-card-type,
+:root[data-theme="emeraldPrince"] .record-card-type.buy,
+:root[data-theme="emeraldPrince"] .record-card-type.sell,
+:root[data-theme="emeraldPrince"] .record-card-type.dividend {
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15) !important;
+}
+
+:root[data-theme="emeraldPrince"] .record-card-type.buy {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%) !important;
+}
+
+:root[data-theme="emeraldPrince"] .record-card-type.sell {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, color-mix(in srgb, var(--color-secondary) 60%, var(--color-accent)) 100%) !important;
+}
+
+:root[data-theme="emeraldPrince"] .record-card-type.dividend {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-rgba-30) 100%) !important;
+    color: #473600 !important;
+}
+
+:root[data-theme="emeraldPrince"] .record-card:has(.record-card-type.buy) {
+    border-color: var(--color-primary-rgba-40) !important;
+}
+
+:root[data-theme="emeraldPrince"] .record-card:has(.record-card-type.sell) {
+    border-color: var(--color-secondary-rgba-40) !important;
+}
+
+:root[data-theme="emeraldPrince"] .record-card:has(.record-card-type.dividend) {
+    border-color: var(--color-accent-rgba-40) !important;
+}
+
+:root[data-theme="emeraldPrince"] .record-card:hover {
+    box-shadow: 0 14px 36px var(--shadow-medium), 0 4px 16px var(--shadow-light) !important;
+}
+
+/* 翡翠王子主題數字鍵盤樣式 */
+:root[data-theme="emeraldPrince"] .keyboard {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-medium) 100%) !important;
+    border: 2px solid var(--border-medium) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 8px 24px var(--shadow-light), inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+:root[data-theme="emeraldPrince"] .key-btn {
+    background: linear-gradient(135deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-25) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    color: var(--text-primary) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="emeraldPrince"] .key-btn:hover {
+    background: linear-gradient(135deg, var(--color-primary-rgba-25) 0%, var(--color-primary-rgba-35) 100%) !important;
+    border-color: var(--border-medium) !important;
+    box-shadow: 0 6px 16px var(--shadow-medium) !important;
+    transform: translateY(-2px) !important;
+}
+
+:root[data-theme="emeraldPrince"] .key-btn.equal {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%) !important;
+    color: #473600 !important;
+    border: 1px solid var(--border-dark) !important;
+    box-shadow: 0 6px 20px var(--shadow-medium) !important;
+}
+
+:root[data-theme="emeraldPrince"] .key-btn.equal:hover {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%) !important;
+    box-shadow: 0 8px 24px var(--shadow-dark) !important;
+}
+
+:root[data-theme="emeraldPrince"] .key-btn.operator {
+    background: linear-gradient(135deg, var(--color-secondary-rgba-20) 0%, var(--color-secondary-rgba-30) 100%) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] .key-btn.operator:hover {
+    background: linear-gradient(135deg, var(--color-secondary-rgba-30) 0%, var(--color-secondary-rgba-40) 100%) !important;
+    border-color: var(--border-medium) !important;
+}
+
+:root[data-theme="emeraldPrince"] .key-btn.delete {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.2) 0%, rgba(231, 76, 60, 0.3) 100%) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid rgba(231, 76, 60, 0.4) !important;
+}
+
+:root[data-theme="emeraldPrince"] .key-btn.delete:hover {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.3) 0%, rgba(231, 76, 60, 0.4) 100%) !important;
+    border-color: rgba(231, 76, 60, 0.5) !important;
+}
+
+/* 翡翠王子主題記帳版面樣式 */
+:root[data-theme="emeraldPrince"] .page-input {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-medium) 100%) !important;
+}
+
+:root[data-theme="emeraldPrince"] .input-section {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-medium) 100%) !important;
+    border: 2px solid var(--border-medium) !important;
+    box-shadow: 0 -4px 20px var(--shadow-light), inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="emeraldPrince"] .input-section.collapsed {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-medium) 100%) !important;
+    border: 2px solid var(--border-medium) !important;
+    box-shadow: 0 -4px 20px var(--shadow-light), inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+:root[data-theme="emeraldPrince"] .amount-display {
+    background: linear-gradient(135deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-25) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px var(--shadow-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] .amount-display .currency,
+:root[data-theme="emeraldPrince"] .amount-display .amount {
+    color: var(--text-primary) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+:root[data-theme="emeraldPrince"] .input-section-header {
+    background: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-15) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px var(--shadow-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] .input-top-row {
+    background: linear-gradient(135deg, var(--color-primary-rgba-08) 0%, var(--color-primary-rgba-12) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    box-shadow: 0 2px 8px var(--shadow-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] .input-second-row {
+    background: linear-gradient(135deg, var(--color-primary-rgba-08) 0%, var(--color-primary-rgba-12) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    box-shadow: 0 2px 8px var(--shadow-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] .account-info-row {
+    background: linear-gradient(135deg, var(--color-secondary-rgba-15) 0%, var(--color-secondary-rgba-20) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    box-shadow: 0 2px 6px var(--shadow-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] .quick-notes-container {
+    background: linear-gradient(135deg, var(--color-accent-rgba-10) 0%, var(--color-accent-rgba-15) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    box-shadow: 0 2px 8px var(--shadow-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] .next-month-option {
+    background: linear-gradient(135deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-20) 100%) !important;
+    border: 1px solid var(--border-medium) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px var(--shadow-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] .member-display {
+    background: linear-gradient(135deg, var(--color-secondary-rgba-15) 0%, var(--color-secondary-rgba-20) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    box-shadow: 0 2px 6px var(--shadow-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] .image-preview {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-medium) 100%) !important;
+    border: 1px solid var(--border-medium) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px var(--shadow-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] .transfer-accounts-section {
+    background: linear-gradient(135deg, var(--color-accent-rgba-10) 0%, var(--color-accent-rgba-15) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    box-shadow: 0 2px 8px var(--shadow-light) !important;
+}
+
+/* 翡翠王子主題預算設定卡片樣式 */
+:root[data-theme="emeraldPrince"] .budget-card,
+:root[data-theme="emeraldPrince"] .budget-summary-card,
+:root[data-theme="emeraldPrince"] .daily-budget-summary-card,
+:root[data-theme="emeraldPrince"] .next-month-budget-card {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-medium) 100%) !important;
+    border: 2px solid var(--border-medium) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px var(--shadow-light), inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="emeraldPrince"] .budget-summary-item {
+    background: linear-gradient(135deg, var(--color-primary-rgba-08) 0%, var(--color-primary-rgba-12) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 12px !important;
+    padding: 16px 12px !important;
+    box-shadow: 0 4px 12px var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="emeraldPrince"] .budget-summary-item:hover {
+    background: linear-gradient(135deg, var(--color-primary-rgba-12) 0%, var(--color-primary-rgba-18) 100%) !important;
+    box-shadow: 0 6px 16px var(--shadow-medium) !important;
+    transform: translateY(-2px) !important;
+}
+
+:root[data-theme="emeraldPrince"] .budget-item-details {
+    background: linear-gradient(135deg, var(--color-secondary-rgba-08) 0%, var(--color-secondary-rgba-12) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+    box-shadow: 0 4px 12px var(--shadow-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] .budget-detail-item {
+    background: linear-gradient(135deg, var(--color-accent-rgba-05) 0%, var(--color-accent-rgba-08) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    box-shadow: 0 2px 6px var(--shadow-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] .wallet-budget-card {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-medium) 100%) !important;
+    border: 2px solid var(--border-medium) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px var(--shadow-light), inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
 /* 翡翠王子主題淺色文字調整 */
 :root[data-theme="emeraldPrince"] .budget-summary-label,
 :root[data-theme="emeraldPrince"] .budget-detail-label,
@@ -26459,14 +27258,14 @@ body {
 :root[data-theme="emeraldPrince"] .account-item-name,
 :root[data-theme="emeraldPrince"] .account-item-currency,
 :root[data-theme="emeraldPrince"] .tab-text {
-    color: rgba(52, 73, 94, 0.8) !important;
+    color: var(--text-secondary) !important;
 }
 
 /* 翡翠王子主題輸入框樣式 */
 :root[data-theme="emeraldPrince"] input,
 :root[data-theme="emeraldPrince"] textarea,
 :root[data-theme="emeraldPrince"] select {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
     border-radius: 10px;
@@ -26970,7 +27769,7 @@ body {
 :root[data-theme="cuteCats"] .wallet-card,
 :root[data-theme="cuteCats"] .chart-card,
 :root[data-theme="cuteCats"] .investment-card {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.98);
     border: 1px solid rgba(255, 182, 193, 0.4);
     border-radius: 16px;
     backdrop-filter: blur(10px);
@@ -27363,7 +28162,7 @@ body {
 :root[data-theme="dreamy"] .manage-investment-card,
 :root[data-theme="dreamy"] .annual-report-card,
 :root[data-theme="dreamy"] .diary-card {
-    background: rgba(255, 255, 255, 0.85) !important;
+    background: rgba(255, 255, 255, 0.98) !important;
     border: 2px solid rgba(135, 206, 235, 0.4) !important;
     border-radius: 20px !important;
     backdrop-filter: blur(15px) !important;
@@ -27485,7 +28284,7 @@ body {
 
 /* 夢幻境域主題錢包預算設定卡片 */
 :root[data-theme="dreamy"] .budget-card {
-    background: rgba(255, 255, 255, 0.85) !important;
+    background: rgba(255, 255, 255, 0.98) !important;
     border: 2px solid rgba(144, 238, 144, 0.4) !important;
     border-radius: 20px !important;
     backdrop-filter: blur(15px) !important;
@@ -27704,7 +28503,7 @@ body {
 :root[data-theme="chick"] .manage-investment-card,
 :root[data-theme="chick"] .annual-report-card,
 :root[data-theme="chick"] .diary-card {
-    background: rgba(255, 255, 255, 0.85) !important;
+    background: rgba(255, 255, 255, 0.98) !important;
     border: 2px solid rgba(152, 251, 152, 0.4) !important;
     border-radius: 20px !important;
     backdrop-filter: blur(10px) !important;
@@ -27898,4 +28697,2309 @@ body {
 
 :root[data-theme="chick"] ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%);
+}
+
+/* ========== 夢幻魚語主題 ========== */
+:root[data-theme="dreamyfish"] {
+    --color-primary: #87CEEB;
+    --color-primary-light: #ADD8E6;
+    --color-primary-lighter: #B0E0E6;
+    --color-primary-dark: #5F9EA0;
+    --color-secondary: #DDA0DD;
+    --color-secondary-light: #E6B8E6;
+    --color-secondary-lighter: #F0D8F0;
+    --color-secondary-dark: #BA55D3;
+    --color-accent: #90EE90;
+    --color-accent-light: #A8F0A8;
+    --color-accent-lighter: #C0F0C0;
+    --color-accent-dark: #7CB342;
+    
+    /* 狀態顏色 */
+    --color-success: #22c55e;
+    --color-danger: #ef4444;
+    --color-warning: #f59e0b;
+    --color-info: #3b82f6;
+    --color-error: var(--color-danger);
+    
+    /* 背景顏色 */
+    --bg-primary: linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(221, 160, 221, 0.1) 50%, rgba(144, 238, 144, 0.08) 100%);
+    --bg-gradient: linear-gradient(135deg, rgba(135, 206, 235, 0.25) 0%, rgba(221, 160, 221, 0.2) 50%, rgba(144, 238, 144, 0.15) 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(135, 206, 235, 0.08) 0%, rgba(221, 160, 221, 0.06) 50%, rgba(144, 238, 144, 0.05) 100%);
+    --bg-light-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.92) 100%);
+    --bg-white: rgba(255, 255, 255, 0.9);
+    --bg-light: rgba(240, 248, 255, 0.85);
+    --bg-lighter: rgba(245, 255, 250, 0.8);
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --bg-soft: rgba(240, 248, 255, 0.7);
+    --bg-soft-strong: rgba(135, 206, 235, 0.15);
+    --bg-input-focus: rgba(135, 206, 235, 0.1);
+    --bg-hover: rgba(135, 206, 235, 0.12);
+    --bg-dark: rgba(95, 158, 160, 0.9);
+    --bg-toggle: rgba(135, 206, 235, 0.3);
+    
+    /* 文字顏色 */
+    --text-primary: #2F4F4F;
+    --text-secondary: rgba(47, 79, 79, 0.75);
+    --text-tertiary: rgba(47, 79, 79, 0.6);
+    --text-strong: var(--text-primary);
+    --text-white: #FFFFFF;
+    --text-primary-color: var(--color-primary);
+    --text-warning: #8B4513;
+    --text-primary-light: #F0F8FF;
+    --text-primary-lighter: #E6F3FF;
+    --text-primary-lightest: #DCEFFF;
+    
+    /* 邊框與陰影 */
+    --border-light: rgba(135, 206, 235, 0.3);
+    --border-strong: rgba(135, 206, 235, 0.5);
+    --border-medium: rgba(135, 206, 235, 0.2);
+    --card-border-color: rgba(135, 206, 235, 0.4);
+    --card-border-color-strong: rgba(135, 206, 235, 0.6);
+    --border-primary: var(--color-primary);
+    --shadow-xs: 0 4px 10px rgba(135, 206, 235, 0.15);
+    --shadow-sm: 0 8px 16px rgba(135, 206, 235, 0.2);
+    --shadow-md: 0 10px 30px rgba(135, 206, 235, 0.25);
+    --shadow-lg: 0 20px 50px rgba(135, 206, 235, 0.3);
+    --shadow-card: 0 10px 30px rgba(135, 206, 235, 0.2);
+    --shadow-soft: 0 8px 18px rgba(135, 206, 235, 0.15);
+    --shadow-focus: 0 0 0 3px rgba(135, 206, 235, 0.2);
+    
+    /* RGBA 透明度變數 */
+    --color-primary-rgba-08: rgba(135, 206, 235, 0.08);
+    --color-primary-rgba-10: rgba(135, 206, 235, 0.1);
+    --color-primary-rgba-12: rgba(135, 206, 235, 0.12);
+    --color-primary-rgba-15: rgba(135, 206, 235, 0.15);
+    --color-primary-rgba-18: rgba(135, 206, 235, 0.18);
+    --color-primary-rgba-20: rgba(135, 206, 235, 0.2);
+    --color-primary-rgba-25: rgba(135, 206, 235, 0.25);
+    --color-primary-rgba-30: rgba(135, 206, 235, 0.3);
+    --color-primary-rgba-35: rgba(135, 206, 235, 0.35);
+    --color-primary-rgba-40: rgba(135, 206, 235, 0.4);
+    --color-primary-rgba-50: rgba(135, 206, 235, 0.5);
+    --color-primary-rgba-60: rgba(135, 206, 235, 0.6);
+    --color-primary-rgba-70: rgba(135, 206, 235, 0.7);
+    --color-primary-rgba-80: rgba(135, 206, 235, 0.8);
+    
+    /* 動作按鈕 */
+    --action-buy-bg: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-primary-light) 80%, white) 0%,
+        color-mix(in srgb, var(--color-primary) 85%, var(--color-primary-dark)) 100%);
+    --action-buy-bg-hover: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-primary) 85%, white) 0%,
+        color-mix(in srgb, var(--color-primary-dark) 90%, black) 100%);
+    --action-buy-text: #ffffff;
+
+    --action-dca-bg: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-primary-light) 25%, var(--color-accent-light)) 0%,
+        color-mix(in srgb, var(--color-primary) 45%, var(--color-accent)) 100%);
+    --action-dca-bg-hover: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-primary) 30%, var(--color-accent-light)) 0%,
+        color-mix(in srgb, var(--color-primary-dark) 55%, var(--color-accent-dark)) 100%);
+    --action-dca-text: #ffffff;
+
+    --action-side-bg: color-mix(in srgb, var(--bg-white) 75%, rgba(47, 79, 79, 0.08));
+    --action-side-bg-hover: color-mix(in srgb, var(--bg-white) 65%, rgba(47, 79, 79, 0.2));
+    --action-side-text: var(--text-primary);
+}
+
+:root[data-theme="dreamyfish"] body {
+    background: transparent;
+    color: var(--text-primary);
+}
+
+:root[data-theme="dreamyfish"] body::before {
+    display: none;
+}
+
+/* 夢幻魚語主題頁面背景透明化 */
+:root[data-theme="dreamyfish"] .page-ledger,
+:root[data-theme="dreamyfish"] .page-input,
+:root[data-theme="dreamyfish"] .page-chart,
+:root[data-theme="dreamyfish"] .page-budget,
+:root[data-theme="dreamyfish"] .page-monthly-planner,
+:root[data-theme="dreamyfish"] .page-daily-budget,
+:root[data-theme="dreamyfish"] .page-settings,
+:root[data-theme="dreamyfish"] .page-category-manage,
+:root[data-theme="dreamyfish"] .page-investment,
+:root[data-theme="dreamyfish"] .page-wallet,
+:root[data-theme="dreamyfish"] .page-history,
+:root[data-theme="dreamyfish"] .page-planner,
+:root[data-theme="dreamyfish"] .page-manage-investment,
+:root[data-theme="dreamyfish"] .page-annual-report,
+:root[data-theme="dreamyfish"] .page-diary {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+/* 夢幻魚語主題卡片樣式 */
+:root[data-theme="dreamyfish"] .card,
+:root[data-theme="dreamyfish"] .record-card,
+:root[data-theme="dreamyfish"] .ledger-card,
+:root[data-theme="dreamyfish"] .summary-card,
+:root[data-theme="dreamyfish"] .budget-card,
+:root[data-theme="dreamyfish"] .wallet-card,
+:root[data-theme="dreamyfish"] .chart-card,
+:root[data-theme="dreamyfish"] .investment-card,
+:root[data-theme="dreamyfish"] .manage-investment-card,
+:root[data-theme="dreamyfish"] .annual-report-card,
+:root[data-theme="dreamyfish"] .diary-card {
+    background: var(--bg-card) !important;
+    border: 2px solid var(--card-border-color) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: var(--shadow-card) !important;
+}
+
+/* 夢幻魚語主題文字顏色 */
+:root[data-theme="dreamyfish"] .card h1,
+:root[data-theme="dreamyfish"] .card h2,
+:root[data-theme="dreamyfish"] .card h3,
+:root[data-theme="dreamyfish"] .card h4,
+:root[data-theme="dreamyfish"] .card h5,
+:root[data-theme="dreamyfish"] .card h6,
+:root[data-theme="dreamyfish"] .card .title,
+:root[data-theme="dreamyfish"] .card .subtitle,
+:root[data-theme="dreamyfish"] .card .card-title,
+:root[data-theme="dreamyfish"] .card .card-subtitle {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="dreamyfish"] .card .text,
+:root[data-theme="dreamyfish"] .card .description,
+:root[data-theme="dreamyfish"] .card .content,
+:root[data-theme="dreamyfish"] .card p,
+:root[data-theme="dreamyfish"] .card span,
+:root[data-theme="dreamyfish"] .card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="dreamyfish"] .card .highlight,
+:root[data-theme="dreamyfish"] .card .accent,
+:root[data-theme="dreamyfish"] .card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="dreamyfish"] .card .secondary-text,
+:root[data-theme="dreamyfish"] .card .muted-text {
+    color: var(--text-secondary) !important;
+}
+
+/* 夢幻魚語主題數字鍵盤樣式 - 修復可見性問題 */
+:root[data-theme="dreamyfish"] .key-btn {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid var(--color-primary-rgba-40) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 6px 18px var(--color-primary-rgba-15) !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+}
+
+:root[data-theme="dreamyfish"] .key-btn:hover {
+    background: var(--color-primary-rgba-20) !important;
+    border-color: var(--color-primary-rgba-50) !important;
+    box-shadow: 0 10px 24px var(--color-primary-rgba-20) !important;
+    transform: translateY(-2px) !important;
+}
+
+:root[data-theme="dreamyfish"] .key-btn:active {
+    background: var(--color-primary-rgba-30) !important;
+    transform: scale(0.95);
+}
+
+:root[data-theme="dreamyfish"] .key-btn.operator {
+    background: var(--color-primary-rgba-70) !important;
+    color: var(--text-white) !important;
+    border-color: var(--color-primary) !important;
+}
+
+:root[data-theme="dreamyfish"] .key-btn.equal {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+    color: var(--text-white) !important;
+    border-color: var(--color-primary) !important;
+}
+
+:root[data-theme="dreamyfish"] .key-btn.delete {
+    background: rgba(220, 53, 69, 0.9) !important;
+    color: var(--text-white) !important;
+    border-color: rgba(220, 53, 69, 0.8) !important;
+}
+
+/* 夢幻魚語主題日期文字樣式 - 修復可見性問題 */
+:root[data-theme="dreamyfish"] .date-text,
+:root[data-theme="dreamyfish"] .time-text,
+:root[data-theme="dreamyfish"] .record-card-date,
+:root[data-theme="dreamyfish"] .date-input,
+:root[data-theme="dreamyfish"] .date-btn {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    background: var(--bg-white) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+}
+
+:root[data-theme="dreamyfish"] .date-input::-webkit-datetime-edit-text {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="dreamyfish"] .date-input::-webkit-datetime-edit-month-field,
+:root[data-theme="dreamyfish"] .date-input::-webkit-datetime-edit-day-field,
+:root[data-theme="dreamyfish"] .date-input::-webkit-datetime-edit-year-field {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="dreamyfish"] .date-input::-webkit-calendar-picker-indicator {
+    filter: none !important;
+    opacity: 0.8 !important;
+    color: var(--color-primary) !important;
+}
+
+/* 夢幻魚語主題按鈕樣式 */
+:root[data-theme="dreamyfish"] .btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: white !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+:root[data-theme="dreamyfish"] .btn:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px var(--color-primary-rgba-40) !important;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 50%, var(--color-accent-light) 100%) !important;
+}
+
+/* 夢幻魚語主題返回按鈕 */
+:root[data-theme="dreamyfish"] .back-btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: white !important;
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+:root[data-theme="dreamyfish"] .back-btn:hover {
+    transform: scale(1.1) rotate(15deg) !important;
+    box-shadow: 0 8px 20px var(--color-primary-rgba-50) !important;
+}
+
+/* 夢幻魚語主題模態框 */
+:root[data-theme="dreamyfish"] .modal,
+:root[data-theme="dreamyfish"] .dialog,
+:root[data-theme="dreamyfish"] .popup {
+    background: var(--bg-white) !important;
+    border: 2px solid var(--color-primary-rgba-50) !important;
+    border-radius: 25px !important;
+    backdrop-filter: blur(15px) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* 夢幻魚語主題小森對話框 */
+:root[data-theme="dreamyfish"] .xiaosen-dialog {
+    background: var(--bg-white) !important;
+    border: 2px solid var(--color-primary) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+:root[data-theme="dreamyfish"] .xiaosen-dialog .dialog-title {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="dreamyfish"] .xiaosen-dialog .dialog-content {
+    color: var(--text-primary) !important;
+}
+
+/* 夢幻魚語主題統計項目 */
+:root[data-theme="dreamyfish"] .stat-item {
+    background: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-15) 50%, var(--color-primary-rgba-08) 100%) !important;
+    border: 1px solid var(--color-primary-rgba-20) !important;
+    box-shadow: 0 4px 12px var(--color-primary-rgba-15) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="dreamyfish"] .stat-item:hover {
+    background: linear-gradient(135deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-20) 50%, var(--color-primary-rgba-12) 100%) !important;
+    box-shadow: 0 6px 16px var(--color-primary-rgba-20) !important;
+    transform: translateY(-2px) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 夢幻魚語主題滾動條 */
+:root[data-theme="dreamyfish"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+:root[data-theme="dreamyfish"] ::-webkit-scrollbar-track {
+    background: var(--color-primary-rgba-08);
+    border-radius: 4px;
+}
+
+:root[data-theme="dreamyfish"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: 4px;
+}
+
+:root[data-theme="dreamyfish"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%);
+}
+
+/* ========== 持股漲跌標籤優先級樣式（確保覆蓋所有其他樣式） ========== */
+.stock-grid-card-change.positive {
+    color: #ffffff !important;
+    background: var(--color-danger) !important;
+    border: 1px solid var(--color-danger) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.4px !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.stock-grid-card-change.positive:hover {
+    background: color-mix(in srgb, var(--color-danger) 85%, black) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--color-danger) 50%, transparent) !important;
+}
+
+.stock-grid-card-change.negative {
+    color: #ffffff !important;
+    background: var(--color-success) !important;
+    border: 1px solid var(--color-success) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.4px !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.stock-grid-card-change.negative:hover {
+    background: color-mix(in srgb, var(--color-success) 85%, black) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--color-success) 50%, transparent) !important;
+}
+
+/* ========== 翠綠之夢主題 ========== */
+:root[data-theme="emerald"] {
+    --color-primary: #2E8B57;
+    --color-primary-light: #3CB371;
+    --color-primary-lighter: #90EE90;
+    --color-primary-dark: #228B22;
+    --color-secondary: #F4E4C1; /* 原來 #DAA520，調亮30% */
+    --color-secondary-light: #FFED4E; /* 原來 #FFD700，調亮30% */
+    --color-secondary-dark: #E6C88C; /* 原來 #B8860B，調亮30% */
+    --color-accent: #87CEEB;
+    --color-accent-light: #ADD8E6;
+    --color-accent-dark: #4682B4;
+    
+    /* 狀態顏色 */
+    --color-success: #32CD32;
+    --color-danger: #DC143C;
+    --color-warning: #FF8C00;
+    --color-info: #1E90FF;
+    --color-error: var(--color-danger);
+    
+    /* 背景顏色 */
+    --bg-primary: linear-gradient(135deg, rgba(46, 139, 87, 0.95) 0%, rgba(60, 179, 113, 0.85) 50%, rgba(218, 165, 32, 0.3) 100%);
+    --bg-body: rgba(46, 139, 87, 0.92);
+    --bg-body-strong: rgba(34, 139, 34, 0.94);
+    --bg-gradient: linear-gradient(135deg, #228B22 0%, #2E8B57 60%, #DAA520 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(46, 139, 87, 0.08) 0%, rgba(218, 165, 32, 0.2) 100%);
+    --bg-white: rgba(46, 139, 87, 0.75);
+    --bg-card: rgba(34, 139, 34, 0.8);
+    --bg-light: rgba(60, 179, 113, 0.6);
+    --bg-lighter: rgba(144, 238, 144, 0.5);
+    --bg-soft: rgba(218, 165, 32, 0.4);
+    --bg-soft-strong: rgba(60, 179, 113, 0.7);
+    
+    /* 文字顏色 */
+    --text-primary: rgba(255, 255, 255, 0.95);
+    --text-secondary: rgba(244, 228, 193, 0.85); /* 使用新的更亮次要色 */
+    --text-tertiary: rgba(135, 206, 235, 0.75);
+    --text-strong: rgba(255, 255, 255, 0.98);
+    --text-white: rgba(255, 255, 255, 0.98);
+    
+    /* 邊框顏色 */
+    --border-primary: rgba(244, 228, 193, 0.6); /* 使用新的更亮次要色 */
+    --border-light: rgba(46, 139, 87, 0.3);
+    --border-medium: rgba(244, 228, 193, 0.4); /* 使用新的更亮次要色 */
+    --card-border-color: rgba(244, 228, 193, 0.5); /* 使用新的更亮次要色 */
+    --control-border-color: rgba(46, 139, 87, 0.4);
+    --table-border-color: rgba(46, 139, 87, 0.2);
+    
+    /* 陰影顏色 */
+    --shadow-primary: 0 20px 60px rgba(46, 139, 87, 0.7);
+    --shadow-primary-lg: 0 30px 80px rgba(46, 139, 87, 0.6);
+    
+    /* RGBA 透明度變數 */
+    --color-primary-rgba-08: rgba(46, 139, 87, 0.08);
+    --color-primary-rgba-10: rgba(46, 139, 87, 0.1);
+    --color-primary-rgba-15: rgba(46, 139, 87, 0.15);
+    --color-primary-rgba-20: rgba(46, 139, 87, 0.2);
+    --color-primary-rgba-25: rgba(46, 139, 87, 0.25);
+    --color-primary-rgba-30: rgba(46, 139, 87, 0.3);
+    --color-primary-rgba-40: rgba(46, 139, 87, 0.4);
+    --color-primary-rgba-50: rgba(46, 139, 87, 0.5);
+    --color-primary-rgba-60: rgba(46, 139, 87, 0.6);
+    --color-primary-rgba-70: rgba(46, 139, 87, 0.7);
+    --color-primary-rgba-80: rgba(46, 139, 87, 0.8);
+    
+    --color-secondary-rgba-08: rgba(244, 228, 193, 0.08); /* 使用新的更亮次要色 */
+    --color-secondary-rgba-10: rgba(244, 228, 193, 0.1); /* 使用新的更亮次要色 */
+    --color-secondary-rgba-15: rgba(244, 228, 193, 0.15); /* 使用新的更亮次要色 */
+    --color-secondary-rgba-20: rgba(244, 228, 193, 0.2); /* 使用新的更亮次要色 */
+    --color-secondary-rgba-25: rgba(244, 228, 193, 0.25); /* 使用新的更亮次要色 */
+    --color-secondary-rgba-30: rgba(244, 228, 193, 0.3); /* 使用新的更亮次要色 */
+    --color-secondary-rgba-40: rgba(244, 228, 193, 0.4); /* 使用新的更亮次要色 */
+    --color-secondary-rgba-50: rgba(244, 228, 193, 0.5); /* 使用新的更亮次要色 */
+    
+    --color-accent-rgba-08: rgba(135, 206, 235, 0.08);
+    --color-accent-rgba-10: rgba(135, 206, 235, 0.1);
+    --color-accent-rgba-15: rgba(135, 206, 235, 0.15);
+    --color-accent-rgba-20: rgba(135, 206, 235, 0.2);
+    --color-accent-rgba-25: rgba(135, 206, 235, 0.25);
+    --color-accent-rgba-30: rgba(135, 206, 235, 0.3);
+    --color-accent-rgba-40: rgba(135, 206, 235, 0.4);
+    
+    /* 其他樣式變數 */
+    --action-side-bg: var(--bg-card);
+    --action-side-text: var(--text-primary);
+}
+
+:root[data-theme="emerald"] body {
+    background: transparent;
+    color: var(--text-primary);
+}
+
+:root[data-theme="emerald"] body::before {
+    display: none;
+}
+
+/* 翠綠之夢主題頁面背景透明化 */
+:root[data-theme="emerald"] .page-ledger,
+:root[data-theme="emerald"] .page-input,
+:root[data-theme="emerald"] .page-chart,
+:root[data-theme="emerald"] .page-budget,
+:root[data-theme="emerald"] .page-monthly-planner,
+:root[data-theme="emerald"] .page-daily-budget,
+:root[data-theme="emerald"] .page-settings,
+:root[data-theme="emerald"] .page-category-manage,
+:root[data-theme="emerald"] .page-investment,
+:root[data-theme="emerald"] .page-wallet,
+:root[data-theme="emerald"] .page-history,
+:root[data-theme="emerald"] .page-planner,
+:root[data-theme="emerald"] .page-manage-investment,
+:root[data-theme="emerald"] .page-annual-report,
+:root[data-theme="emerald"] .page-diary {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+/* 翠綠之夢主題卡片樣式 */
+:root[data-theme="emerald"] .card,
+:root[data-theme="emerald"] .record-card,
+:root[data-theme="emerald"] .ledger-card,
+:root[data-theme="emerald"] .summary-card,
+:root[data-theme="emerald"] .budget-card,
+:root[data-theme="emerald"] .wallet-card,
+:root[data-theme="emerald"] .chart-card,
+:root[data-theme="emerald"] .investment-card,
+:root[data-theme="emerald"] .manage-investment-card,
+:root[data-theme="emerald"] .annual-report-card,
+:root[data-theme="emerald"] .diary-card {
+    background: var(--bg-card) !important;
+    border: 2px solid var(--card-border-color) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 8px 32px var(--color-primary-rgba-30) !important;
+}
+
+/* 翠綠之夢主題文字顏色 */
+:root[data-theme="emerald"] .card h1,
+:root[data-theme="emerald"] .card h2,
+:root[data-theme="emerald"] .card h3,
+:root[data-theme="emerald"] .card h4,
+:root[data-theme="emerald"] .card h5,
+:root[data-theme="emerald"] .card h6,
+:root[data-theme="emerald"] .card .title,
+:root[data-theme="emerald"] .card .subtitle,
+:root[data-theme="emerald"] .card .card-title,
+:root[data-theme="emerald"] .card .card-subtitle {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="emerald"] .card .text,
+:root[data-theme="emerald"] .card .description,
+:root[data-theme="emerald"] .card .content,
+:root[data-theme="emerald"] .card p,
+:root[data-theme="emerald"] .card span,
+:root[data-theme="emerald"] .card div {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="emerald"] .card .highlight,
+:root[data-theme="emerald"] .card .accent,
+:root[data-theme="emerald"] .card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="emerald"] .card .secondary-text,
+:root[data-theme="emerald"] .card .muted-text {
+    color: var(--text-secondary) !important;
+}
+
+/* 翠綠之夢主題數字鍵盤樣式 */
+:root[data-theme="emerald"] .key-btn {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid var(--color-primary-rgba-40) !important;
+    color: var(--text-primary) !important;
+    border-radius: 15px !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="emerald"] .key-btn:hover {
+    background: var(--color-primary-rgba-20) !important;
+    border-color: var(--color-primary-rgba-50) !important;
+    box-shadow: 0 10px 24px var(--color-primary-rgba-20) !important;
+    transform: translateY(-2px) !important;
+}
+
+:root[data-theme="emerald"] .key-btn:active {
+    background: var(--color-primary-rgba-30) !important;
+    transform: scale(0.95);
+}
+
+:root[data-theme="emerald"] .key-btn.operator {
+    background: var(--color-primary-rgba-70) !important;
+    color: var(--text-white) !important;
+    border-color: var(--color-primary) !important;
+}
+
+:root[data-theme="emerald"] .key-btn.equal {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+    color: var(--text-white) !important;
+    border-color: var(--color-primary) !important;
+}
+
+:root[data-theme="emerald"] .key-btn.delete {
+    background: rgba(220, 53, 69, 0.9) !important;
+    color: var(--text-white) !important;
+    border-color: rgba(220, 53, 69, 0.8) !important;
+}
+
+/* 翠綠之夢主題日期文字樣式 */
+:root[data-theme="emerald"] .date-text,
+:root[data-theme="emerald"] .time-text,
+:root[data-theme="emerald"] .record-card-date,
+:root[data-theme="emerald"] .date-input,
+:root[data-theme="emerald"] .date-btn {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    background: var(--bg-white) !important;
+    border: 1px solid var(--border-primary) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+}
+
+/* 翠綠之夢主題按鈕樣式 */
+:root[data-theme="emerald"] .btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: white !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+:root[data-theme="emerald"] .btn:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px var(--color-primary-rgba-40) !important;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 50%, var(--color-accent-light) 100%) !important;
+}
+
+/* 翠綠之夢主題返回按鈕 */
+:root[data-theme="emerald"] .back-btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: white !important;
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+:root[data-theme="emerald"] .back-btn:hover {
+    transform: scale(1.1) rotate(15deg) !important;
+    box-shadow: 0 8px 20px var(--color-primary-rgba-50) !important;
+}
+
+/* 翠綠之夢主題模態框 */
+:root[data-theme="emerald"] .modal,
+:root[data-theme="emerald"] .dialog,
+:root[data-theme="emerald"] .popup {
+    background: var(--bg-white) !important;
+    border: 2px solid var(--color-primary-rgba-50) !important;
+    border-radius: 25px !important;
+    backdrop-filter: blur(15px) !important;
+    box-shadow: 0 20px 60px var(--color-primary-rgba-40) !important;
+}
+
+/* 翠綠之夢主題小森對話框 */
+:root[data-theme="emerald"] .mori-dialog,
+:root[data-theme="emerald"] .mori-message {
+    background: var(--bg-card) !important;
+    border: 2px solid var(--color-secondary-rgba-50) !important;
+    color: var(--text-primary) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="emerald"] .mori-dialog .mori-avatar,
+:root[data-theme="emerald"] .mori-message .mori-avatar {
+    background: var(--color-secondary) !important;
+    border: 3px solid var(--color-primary) !important;
+}
+
+/* 翠綠之夢主題導航列 */
+:root[data-theme="emerald"] .bottom-nav {
+    background: var(--bg-card) !important;
+    border-top: 2px solid var(--color-primary-rgba-30) !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+:root[data-theme="emerald"] .nav-item {
+    background: transparent !important;
+    border: none !important;
+}
+
+:root[data-theme="emerald"] .nav-item.active {
+    background: var(--color-primary-rgba-20) !important;
+    border-radius: 15px !important;
+}
+
+:root[data-theme="emerald"] .nav-icon {
+    color: var(--text-secondary) !important;
+}
+
+:root[data-theme="emerald"] .nav-item.active .nav-icon {
+    color: var(--color-primary) !important;
+}
+
+/* 翠綠之夢主題FAB按鈕 */
+:root[data-theme="emerald"] #fabBtn {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%) !important;
+    border: 3px solid var(--color-primary) !important;
+    color: white !important;
+    border-radius: 50% !important;
+    box-shadow: 0 10px 30px var(--color-primary-rgba-50) !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="emerald"] #fabBtn:hover {
+    transform: scale(1.1) rotate(15deg) !important;
+    box-shadow: 0 15px 40px var(--color-primary-rgba-60) !important;
+}
+
+/* 翠綠之夢主題記帳記錄條目字體顏色 */
+:root[data-theme="emerald"] .transaction-item,
+:root[data-theme="emerald"] .transaction-item .text,
+:root[data-theme="emerald"] .transaction-item .description,
+:root[data-theme="emerald"] .transaction-item .content,
+:root[data-theme="emerald"] .transaction-item p,
+:root[data-theme="emerald"] .transaction-item span,
+:root[data-theme="emerald"] .transaction-item div {
+    color: #2E8B57 !important;
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題記帳記錄條目標題顏色 */
+:root[data-theme="emerald"] .transaction-item h1,
+:root[data-theme="emerald"] .transaction-item h2,
+:root[data-theme="emerald"] .transaction-item h3,
+:root[data-theme="emerald"] .transaction-item h4,
+:root[data-theme="emerald"] .transaction-item h5,
+:root[data-theme="emerald"] .transaction-item h6,
+:root[data-theme="emerald"] .transaction-item .title,
+:root[data-theme="emerald"] .transaction-item .subtitle,
+:root[data-theme="emerald"] .transaction-item .card-title,
+:root[data-theme="emerald"] .transaction-item .card-subtitle {
+    color: #2E8B57 !important;
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題記帳記錄條目金額顏色 */
+:root[data-theme="emerald"] .transaction-item .amount,
+:root[data-theme="emerald"] .transaction-item .money,
+:root[data-theme="emerald"] .transaction-item .price,
+:root[data-theme="emerald"] .transaction-item .value,
+:root[data-theme="emerald"] .transaction-item .transaction-amount {
+    color: #2E8B57 !important;
+    font-weight: 800 !important;
+}
+
+/* 翠綠之夢主題記帳記錄條目日期顏色 */
+:root[data-theme="emerald"] .transaction-item .date,
+:root[data-theme="emerald"] .transaction-item .time,
+:root[data-theme="emerald"] .transaction-item .datetime,
+:root[data-theme="emerald"] .group-header {
+    color: #2E8B57 !important; /* 翠綠色文字 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題記帳記錄日期位置背景色 - 與帳目條目一模一樣 */
+:root[data-theme="emerald"] .group-header {
+    background: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-15) 50%, var(--color-primary-rgba-08) 100%) !important;
+    border: 1px solid var(--color-primary-rgba-20) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 12px var(--color-primary-rgba-15) !important;
+    margin: 8px 12px 4px 12px !important;
+    padding: 12px 16px !important;
+}
+
+/* 翠綠之夢主題記帳記錄條目分類顏色 */
+:root[data-theme="emerald"] .transaction-item .transaction-category,
+:root[data-theme="emerald"] .transaction-item .transaction-account,
+:root[data-theme="emerald"] .transaction-item .transaction-member {
+    color: #2E8B57 !important;
+    font-weight: 500 !important;
+}
+
+/* 翠綠之夢主題記帳記錄備註文字顏色 - 黑色 */
+:root[data-theme="emerald"] .transaction-item .transaction-note,
+:root[data-theme="emerald"] .transaction-note,
+:root[data-theme="emerald"] .note-text,
+:root[data-theme="emerald"] .note-label,
+:root[data-theme="emerald"] .備註 {
+    color: #000000 !important;
+    font-weight: 500 !important;
+}
+
+/* 翠綠之夢主題備註輸入框樣式 - 黑色文字 */
+:root[data-theme="emerald"] .note-input,
+:root[data-theme="emerald"] input.note-input,
+:root[data-theme="emerald"] #noteInput {
+    color: #000000 !important;
+    font-weight: 500 !important;
+}
+
+/* 翠綠之夢主題備註輸入框placeholder樣式 - 深灰色 */
+:root[data-theme="emerald"] .note-input::placeholder,
+:root[data-theme="emerald"] input.note-input::placeholder,
+:root[data-theme="emerald"] #noteInput::placeholder {
+    color: #666666 !important;
+}
+
+/* 翠綠之夢主題所有備註相關文字黑色 */
+:root[data-theme="emerald"] [class*="note"],
+:root[data-theme="emerald"] [class*="remark"],
+:root[data-theme="emerald"] [class*="備註"],
+:root[data-theme="emerald"] .note,
+:root[data-theme="emerald"] .remark {
+    color: #000000 !important;
+}
+
+/* 翠綠之夢主題備註相關標籤黑色 */
+:root[data-theme="emerald"] .quick-notes-label,
+:root[data-theme="emerald"] .form-label:contains("備註"),
+:root[data-theme="emerald"] label[for*="note"] {
+    color: #000000 !important;
+}
+
+/* 翠綠之夢主題表單輸入框樣式 - 黑色文字 */
+:root[data-theme="emerald"] .form-input,
+:root[data-theme="emerald"] .form-select,
+:root[data-theme="emerald"] .form-textarea,
+:root[data-theme="emerald"] .note-input {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.08) 0%, rgba(60, 179, 113, 0.12) 50%, rgba(144, 238, 144, 0.05) 100%) !important;
+    border: 2px solid rgba(46, 139, 87, 0.25) !important;
+    color: #000000 !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.15) !important;
+}
+
+/* 翠綠之夢主題表單輸入框焦點樣式 */
+:root[data-theme="emerald"] .form-input:focus,
+:root[data-theme="emerald"] .form-select:focus,
+:root[data-theme="emerald"] .form-textarea:focus,
+:root[data-theme="emerald"] .note-input:focus {
+    border-color: rgba(46, 139, 87, 0.6) !important;
+    box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.2) !important;
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.12) 0%, rgba(60, 179, 113, 0.18) 50%, rgba(144, 238, 144, 0.08) 100%) !important;
+    color: #000000 !important;
+}
+
+/* 翠綠之夢主題表單輸入框placeholder樣式 - 深灰色 */
+:root[data-theme="emerald"] .form-input::placeholder,
+:root[data-theme="emerald"] .form-select::placeholder,
+:root[data-theme="emerald"] .form-textarea::placeholder,
+:root[data-theme="emerald"] .note-input::placeholder {
+    color: #666666 !important;
+}
+
+/* 翠綠之夢主題表單標籤樣式 - 黑色 */
+:root[data-theme="emerald"] .form-label {
+    color: #000000 !important;
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題歷史記錄字體顏色 - 白色 */
+:root[data-theme="emerald"] .page-history,
+:root[data-theme="emerald"] .page-history .text,
+:root[data-theme="emerald"] .page-history .description,
+:root[data-theme="emerald"] .page-history .content,
+:root[data-theme="emerald"] .page-history p,
+:root[data-theme="emerald"] .page-history span,
+:root[data-theme="emerald"] .page-history div {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* 翠綠之夢主題歷史記錄標題顏色 - 白色 */
+:root[data-theme="emerald"] .page-history h1,
+:root[data-theme="emerald"] .page-history h2,
+:root[data-theme="emerald"] .page-history h3,
+:root[data-theme="emerald"] .page-history h4,
+:root[data-theme="emerald"] .page-history h5,
+:root[data-theme="emerald"] .page-history h6,
+:root[data-theme="emerald"] .page-history .title,
+:root[data-theme="emerald"] .page-history .subtitle,
+:root[data-theme="emerald"] .page-history .card-title,
+:root[data-theme="emerald"] .page-history .card-subtitle {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題歷史記錄金額顏色 - 白色 */
+:root[data-theme="emerald"] .page-history .amount,
+:root[data-theme="emerald"] .page-history .money,
+:root[data-theme="emerald"] .page-history .price,
+:root[data-theme="emerald"] .page-history .value {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題歷史記錄日期顏色 - 白色 */
+:root[data-theme="emerald"] .page-history .date,
+:root[data-theme="emerald"] .page-history .time,
+:root[data-theme="emerald"] .page-history .datetime {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 500 !important;
+}
+
+/* 翠綠之夢主題歷史記錄分類顏色 - 白色 */
+:root[data-theme="emerald"] .page-history .category,
+:root[data-theme="emerald"] .page-history .account,
+:root[data-theme="emerald"] .page-history .member,
+:root[data-theme="emerald"] .page-history .note {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 500 !important;
+}
+
+/* 翠綠之夢主題記帳記錄條目圖標顏色 */
+:root[data-theme="emerald"] .transaction-item .transaction-icon,
+:root[data-theme="emerald"] .transaction-item .transaction-emoji-image {
+    filter: hue-rotate(120deg) saturate(1.5) !important;
+}
+
+/* 翠綠之夢主題記帳記錄條目背景色 - 主題色 */
+:root[data-theme="emerald"] .transaction-item {
+    background: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-15) 50%, var(--color-primary-rgba-08) 100%) !important;
+    border: 1px solid var(--color-primary-rgba-20) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 12px var(--color-primary-rgba-15) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 翠綠之夢主題記帳記錄條目懸停效果 */
+:root[data-theme="emerald"] .transaction-item:hover {
+    background: linear-gradient(135deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-20) 50%, var(--color-primary-rgba-12) 100%) !important;
+    box-shadow: 0 6px 16px var(--color-primary-rgba-20) !important;
+    transform: translateX(4px) translateY(-2px) !important;
+    border-color: var(--color-primary-rgba-30) !important;
+}
+
+/* 翠綠之夢主題記帳記錄條目點擊效果 */
+:root[data-theme="emerald"] .transaction-item:active {
+    background: linear-gradient(135deg, var(--color-primary-rgba-20) 0%, var(--color-primary-rgba-25) 50%, var(--color-primary-rgba-15) 100%) !important;
+    transform: scale(0.98) !important;
+    box-shadow: 0 2px 8px var(--color-primary-rgba-25) !important;
+}
+
+/* 翠綠之夢主題搜尋歷史記錄字體顏色 - 白色 */
+:root[data-theme="emerald"] .search-history-dropdown {
+    background: var(--bg-card) !important;
+    border: 2px solid var(--color-primary-rgba-50) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px var(--color-primary-rgba-40) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="emerald"] .search-history-header {
+    background: var(--color-primary-rgba-20) !important;
+    border-bottom: 2px solid var(--color-primary-rgba-30) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 600 !important;
+}
+
+:root[data-theme="emerald"] .search-history-header span {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+:root[data-theme="emerald"] .clear-history-btn {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 500 !important;
+}
+
+:root[data-theme="emerald"] .clear-history-btn:hover {
+    color: rgba(255, 255, 255, 0.95) !important;
+    background: var(--color-primary-rgba-30) !important;
+    border-radius: 6px !important;
+}
+
+:root[data-theme="emerald"] .search-history-list li {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+    border-bottom: 1px solid var(--color-primary-rgba-20) !important;
+}
+
+:root[data-theme="emerald"] .search-history-list li:hover {
+    background: var(--color-primary-rgba-30) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+:root[data-theme="emerald"] .search-history-list li:last-child {
+    border-bottom: none !important;
+}
+
+/* 翠綠之夢主題滾動條 */
+:root[data-theme="emerald"] ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+:root[data-theme="emerald"] ::-webkit-scrollbar-track {
+    background: var(--color-primary-rgba-08);
+    border-radius: 4px;
+}
+
+:root[data-theme="emerald"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: 4px;
+}
+
+:root[data-theme="emerald"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%);
+}
+
+/* Indigo 主題歷史記錄備註文字顏色 - 白色 (高優先級) */
+:root[data-theme="indigo"] .history-transaction-note {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* Indigo 主題歷史記錄成員文字顏色 - 白色 (高優先級) */
+:root[data-theme="indigo"] .history-transaction-member {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* Indigo 主題歷史記錄帳戶文字顏色 - 白色 (高優先級) */
+:root[data-theme="indigo"] .history-transaction-account {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* Indigo 主題歷史記錄備註文字顏色 - 白色 (最高優先級) */
+:root[data-theme="indigo"] .card .history-transaction-note,
+:root[data-theme="indigo"] .page-history .history-transaction-note,
+:root[data-theme="indigo"] .transaction-item .history-transaction-note {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* Indigo 主題歷史記錄成員文字顏色 - 白色 (最高優先級) */
+:root[data-theme="indigo"] .card .history-transaction-member,
+:root[data-theme="indigo"] .page-history .history-transaction-member,
+:root[data-theme="indigo"] .transaction-item .history-transaction-member {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* Indigo 主題歷史記錄帳戶文字顏色 - 白色 (最高優先級) */
+:root[data-theme="indigo"] .card .history-transaction-account,
+:root[data-theme="indigo"] .page-history .history-transaction-account,
+:root[data-theme="indigo"] .transaction-item .history-transaction-account {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* Indigo 主題歷史記錄備註文字顏色 - 白色 (所有子元素) */
+:root[data-theme="indigo"] .card .history-transaction-note *,
+:root[data-theme="indigo"] .page-history .history-transaction-note *,
+:root[data-theme="indigo"] .transaction-item .history-transaction-note * {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Indigo 主題歷史記錄成員文字顏色 - 白色 (所有子元素) */
+:root[data-theme="indigo"] .card .history-transaction-member *,
+:root[data-theme="indigo"] .page-history .history-transaction-member *,
+:root[data-theme="indigo"] .transaction-item .history-transaction-member * {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Indigo 主題歷史記錄帳戶文字顏色 - 白色 (所有子元素) */
+:root[data-theme="indigo"] .card .history-transaction-account *,
+:root[data-theme="indigo"] .page-history .history-transaction-account *,
+:root[data-theme="indigo"] .transaction-item .history-transaction-account * {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 翠綠之夢主題歷史記錄成員文字顏色 - 白色 (高優先級) */
+:root[data-theme="emerald"] .history-transaction-member {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* 翠綠之夢主題歷史記錄帳戶文字顏色 - 白色 (高優先級) */
+:root[data-theme="emerald"] .history-transaction-account {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* 翠綠之夢主題歷史記錄備註文字顏色 - 白色 (高優先級) */
+:root[data-theme="emerald"] .history-transaction-note {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* 翠綠之夢主題歷史記錄成員文字顏色 - 白色 (最高優先級) */
+:root[data-theme="emerald"] .card .history-transaction-member,
+:root[data-theme="emerald"] .page-history .history-transaction-member,
+:root[data-theme="emerald"] .transaction-item .history-transaction-member {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* 翠綠之夢主題歷史記錄帳戶文字顏色 - 白色 (最高優先級) */
+:root[data-theme="emerald"] .card .history-transaction-account,
+:root[data-theme="emerald"] .page-history .history-transaction-account,
+:root[data-theme="emerald"] .transaction-item .history-transaction-account {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* 翠綠之夢主題歷史記錄備註文字顏色 - 白色 (最高優先級) */
+:root[data-theme="emerald"] .card .history-transaction-note,
+:root[data-theme="emerald"] .page-history .history-transaction-note,
+:root[data-theme="emerald"] .transaction-item .history-transaction-note {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* 翠綠之夢主題歷史記錄成員文字顏色 - 白色 (所有子元素) */
+:root[data-theme="emerald"] .card .history-transaction-member *,
+:root[data-theme="emerald"] .page-history .history-transaction-member *,
+:root[data-theme="emerald"] .transaction-item .history-transaction-member * {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 翠綠之夢主題歷史記錄帳戶文字顏色 - 白色 (所有子元素) */
+:root[data-theme="emerald"] .card .history-transaction-account *,
+:root[data-theme="emerald"] .page-history .history-transaction-account *,
+:root[data-theme="emerald"] .transaction-item .history-transaction-account * {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 翠綠之夢主題歷史記錄備註文字顏色 - 白色 (所有子元素) */
+:root[data-theme="emerald"] .card .history-transaction-note *,
+:root[data-theme="emerald"] .page-history .history-transaction-note *,
+:root[data-theme="emerald"] .transaction-item .history-transaction-note * {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 翠綠之夢主題預算設定編輯文字顏色 - 調亮80% */
+:root[data-theme="emerald"] .budget-amount-input {
+    color: rgba(255, 255, 255, 0.98) !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 翠綠之夢主題預算設定編輯框文字顏色 - 調亮80% */
+:root[data-theme="emerald"] .budget-setup-cancel-btn,
+:root[data-theme="emerald"] .budget-edit-btn {
+    color: rgba(255, 255, 255, 0.98) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 翠綠之夢主題預算設定所有輸入框文字顏色 - 調亮80% */
+:root[data-theme="emerald"] .page-budget input,
+:root[data-theme="emerald"] .page-budget textarea,
+:root[data-theme="emerald"] .page-budget select,
+:root[data-theme="emerald"] .page-budget .input-field,
+:root[data-theme="emerald"] .page-budget .form-input {
+    color: rgba(255, 255, 255, 0.98) !important;
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題預算設定標籤文字顏色 - 調亮80% */
+:root[data-theme="emerald"] .page-budget label,
+:root[data-theme="emerald"] .page-budget .form-label,
+:root[data-theme="emerald"] .page-budget .budget-label,
+:root[data-theme="emerald"] .page-budget .setup-label {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題預算設定按鈕文字顏色 - 調亮80% */
+:root[data-theme="emerald"] .page-budget button,
+:root[data-theme="emerald"] .page-budget .btn,
+:root[data-theme="emerald"] .page-budget .action-btn {
+    color: rgba(255, 255, 255, 0.98) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 翠綠之夢主題預算設定卡片文字顏色 - 調亮80% */
+:root[data-theme="emerald"] .page-budget .card,
+:root[data-theme="emerald"] .page-budget .budget-card,
+:root[data-theme="emerald"] .page-budget .budget-summary-card {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* 翠綠之夢主題預算設定卡片內所有文字顏色 - 調亮80% */
+:root[data-theme="emerald"] .page-budget .card *,
+:root[data-theme="emerald"] .page-budget .budget-card *,
+:root[data-theme="emerald"] .page-budget .budget-summary-card * {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* 翠綠之夢主題今日支出卡片底色 - 主題色 */
+:root[data-theme="emerald"] .summary-card.expense,
+:root[data-theme="emerald"] .summary-card .expense,
+:root[data-theme="emerald"] .daily-budget-summary-card .expense,
+:root[data-theme="emerald"] .budget-summary-card .expense {
+    background: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-15) 50%, var(--color-primary-rgba-08) 100%) !important;
+    border: 1px solid var(--color-primary-rgba-20) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 12px var(--color-primary-rgba-15) !important;
+    padding: 16px !important;
+}
+
+/* 翠綠之夢主題支出金額顯示區域底色 */
+:root[data-theme="emerald"] .summary-stats .stat-value.expense,
+:root[data-theme="emerald"] .stat-value.expense,
+:root[data-theme="emerald"] .expense-amount {
+    background: linear-gradient(135deg, var(--color-primary-rgba-12) 0%, var(--color-primary-rgba-18) 50%, var(--color-primary-rgba-10) 100%) !important;
+    border: 1px solid var(--color-primary-rgba-25) !important;
+    border-radius: 12px !important;
+    padding: 8px 12px !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題支出標籤底色 */
+:root[data-theme="emerald"] .expense-label,
+:root[data-theme="emerald"] .summary-stats .stat-label.expense {
+    background: linear-gradient(135deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-20) 50%, var(--color-primary-rgba-12) 100%) !important;
+    border: 1px solid var(--color-primary-rgba-25) !important;
+    border-radius: 8px !important;
+    padding: 4px 8px !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題總預算顏色 - 淺黃色 */
+:root[data-theme="emerald"] .budget-summary-value.budget-total,
+:root[data-theme="emerald"] .budget-detail-value.budget-detail-total,
+:root[data-theme="emerald"] .budget-total,
+:root[data-theme="emerald"] .total-budget,
+:root[data-theme="emerald"] .budget-amount.total {
+    color: #FFF8DC !important; /* 淺黃色 */
+    font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 翠綠之夢主題記帳本按鈕樣式 - 與圖片一致 */
+:root[data-theme="emerald"] .tab-btn {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.15) 0%, rgba(60, 179, 113, 0.25) 50%, rgba(144, 238, 144, 0.1) 100%) !important;
+    border: 1px solid rgba(46, 139, 87, 0.3) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(15px) !important;
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.1) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 翠綠之夢主題記帳本支出按鈕 - 實心綠色 */
+:root[data-theme="emerald"] .tab-btn[data-type="expense"],
+:root[data-theme="emerald"] .tab-btn.expense,
+:root[data-theme="emerald"] .tab-btn.active[data-type="expense"] {
+    background: linear-gradient(135deg, #2E8B57 0%, #3CB371 50%, #90EE90 100%) !important;
+    border: 2px solid rgba(46, 139, 87, 0.8) !important;
+    box-shadow: 0 6px 16px rgba(46, 139, 87, 0.3) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 700 !important;
+    transform: scale(1.02) !important;
+}
+
+/* 翠綠之夢主題記帳本收入按鈕 - 毛玻璃效果 */
+:root[data-theme="emerald"] .tab-btn[data-type="income"],
+:root[data-theme="emerald"] .tab-btn.income {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.12) 0%, rgba(60, 179, 113, 0.18) 50%, rgba(144, 238, 144, 0.08) 100%) !important;
+    border: 1px solid rgba(46, 139, 87, 0.25) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.08) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題記帳本轉帳按鈕 - 毛玻璃效果 */
+:root[data-theme="emerald"] .tab-btn[data-type="transfer"],
+:root[data-theme="emerald"] .tab-btn.transfer {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.12) 0%, rgba(60, 179, 113, 0.18) 50%, rgba(144, 238, 144, 0.08) 100%) !important;
+    border: 1px solid rgba(46, 139, 87, 0.25) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.08) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題記帳本按鈕懸停效果 */
+:root[data-theme="emerald"] .tab-btn:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 6px 16px rgba(46, 139, 87, 0.2) !important;
+    border-color: rgba(46, 139, 87, 0.4) !important;
+}
+
+/* 翠綠之夢主題記帳本支出按鈕懸停效果 */
+:root[data-theme="emerald"] .tab-btn[data-type="expense"]:hover,
+:root[data-theme="emerald"] .tab-btn.expense:hover {
+    background: linear-gradient(135deg, #3CB371 0%, #90EE90 50%, #98FB98 100%) !important;
+    box-shadow: 0 8px 20px rgba(46, 139, 87, 0.4) !important;
+    transform: translateY(-3px) scale(1.03) !important;
+}
+
+/* 翠綠之夢主題記帳本收入按鈕懸停效果 */
+:root[data-theme="emerald"] .tab-btn[data-type="income"]:hover,
+:root[data-theme="emerald"] .tab-btn.income:hover {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.18) 0%, rgba(60, 179, 113, 0.25) 50%, rgba(144, 238, 144, 0.15) 100%) !important;
+    border-color: rgba(46, 139, 87, 0.35) !important;
+}
+
+/* 翠綠之夢主題記帳本轉帳按鈕懸停效果 */
+:root[data-theme="emerald"] .tab-btn[data-type="transfer"]:hover,
+:root[data-theme="emerald"] .tab-btn.transfer:hover {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.18) 0%, rgba(60, 179, 113, 0.25) 50%, rgba(144, 238, 144, 0.15) 100%) !important;
+    border-color: rgba(46, 139, 87, 0.35) !important;
+}
+
+/* 翠綠之夢主題記帳本按鈕圖標樣式 */
+:root[data-theme="emerald"] .tab-btn .tab-icon {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%) !important;
+    border-radius: 12px !important;
+    padding: 8px !important;
+    margin-bottom: 8px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 翠綠之夢主題記帳本支出按鈕圖標 */
+:root[data-theme="emerald"] .tab-btn[data-type="expense"] .tab-icon,
+:root[data-theme="emerald"] .tab-btn.expense .tab-icon {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 100%) !important;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* 翠綠之夢主題主要記帳頁面按鈕樣式 - 與圖片一致 */
+:root[data-theme="emerald"] .record-type-tab {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.15) 0%, rgba(60, 179, 113, 0.25) 50%, rgba(144, 238, 144, 0.1) 100%) !important;
+    border: 1px solid rgba(46, 139, 87, 0.3) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(15px) !important;
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.1) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 翠綠之夢主題主要記帳頁面支出按鈕 - 實心綠色 */
+:root[data-theme="emerald"] .record-type-tab[data-type="expense"],
+:root[data-theme="emerald"] .record-type-tab.expense,
+:root[data-theme="emerald"] .record-type-tab.active[data-type="expense"] {
+    background: linear-gradient(135deg, #2E8B57 0%, #3CB371 50%, #90EE90 100%) !important;
+    border: 2px solid rgba(46, 139, 87, 0.8) !important;
+    box-shadow: 0 6px 16px rgba(46, 139, 87, 0.3) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 700 !important;
+    transform: scale(1.02) !important;
+}
+
+/* 翠綠之夢主題主要記帳頁面收入按鈕 - 毛玻璃效果 */
+:root[data-theme="emerald"] .record-type-tab[data-type="income"],
+:root[data-theme="emerald"] .record-type-tab.income {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.12) 0%, rgba(60, 179, 113, 0.18) 50%, rgba(144, 238, 144, 0.08) 100%) !important;
+    border: 1px solid rgba(46, 139, 87, 0.25) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.08) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題主要記帳頁面轉帳按鈕 - 毛玻璃效果 */
+:root[data-theme="emerald"] .record-type-tab[data-type="transfer"],
+:root[data-theme="emerald"] .record-type-tab.transfer {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.12) 0%, rgba(60, 179, 113, 0.18) 50%, rgba(144, 238, 144, 0.08) 100%) !important;
+    border: 1px solid rgba(46, 139, 87, 0.25) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.08) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題主要記帳頁面按鈕懸停效果 */
+:root[data-theme="emerald"] .record-type-tab:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 6px 16px rgba(46, 139, 87, 0.2) !important;
+    border-color: rgba(46, 139, 87, 0.4) !important;
+}
+
+/* 翠綠之夢主題主要記帳頁面支出按鈕懸停效果 */
+:root[data-theme="emerald"] .record-type-tab[data-type="expense"]:hover,
+:root[data-theme="emerald"] .record-type-tab.expense:hover {
+    background: linear-gradient(135deg, #3CB371 0%, #90EE90 50%, #98FB98 100%) !important;
+    box-shadow: 0 8px 20px rgba(46, 139, 87, 0.4) !important;
+    transform: translateY(-3px) scale(1.03) !important;
+}
+
+/* 翠綠之夢主題主要記帳頁面收入按鈕懸停效果 */
+:root[data-theme="emerald"] .record-type-tab[data-type="income"]:hover,
+:root[data-theme="emerald"] .record-type-tab.income:hover {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.18) 0%, rgba(60, 179, 113, 0.25) 50%, rgba(144, 238, 144, 0.15) 100%) !important;
+    border-color: rgba(46, 139, 87, 0.35) !important;
+}
+
+/* 翠綠之夢主題主要記帳頁面轉帳按鈕懸停效果 */
+:root[data-theme="emerald"] .record-type-tab[data-type="transfer"]:hover,
+:root[data-theme="emerald"] .record-type-tab.transfer:hover {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.18) 0%, rgba(60, 179, 113, 0.25) 50%, rgba(144, 238, 144, 0.15) 100%) !important;
+    border-color: rgba(46, 139, 87, 0.35) !important;
+}
+
+/* 翠綠之夢主題主要記帳頁面按鈕圖標樣式 */
+:root[data-theme="emerald"] .record-type-tab .record-type-icon {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%) !important;
+    border-radius: 12px !important;
+    padding: 8px !important;
+    margin-bottom: 8px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 翠綠之夢主題主要記帳頁面支出按鈕圖標 */
+:root[data-theme="emerald"] .record-type-tab[data-type="expense"] .record-type-icon,
+:root[data-theme="emerald"] .record-type-tab.expense .record-type-icon {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 100%) !important;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* 翠綠之夢主題記帳頁面標籤按鈕樣式 */
+:root[data-theme="emerald"] .ledger-type-tab {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.15) 0%, rgba(60, 179, 113, 0.25) 50%, rgba(144, 238, 144, 0.1) 100%) !important;
+    border: 1px solid rgba(46, 139, 87, 0.3) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(15px) !important;
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.1) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 翠綠之夢主題記帳頁面支出標籤按鈕 - 實心綠色 */
+:root[data-theme="emerald"] .ledger-type-tab[data-type="expense"],
+:root[data-theme="emerald"] .ledger-type-tab.expense,
+:root[data-theme="emerald"] .ledger-type-tab.active[data-type="expense"] {
+    background: linear-gradient(135deg, #2E8B57 0%, #3CB371 50%, #90EE90 100%) !important;
+    border: 2px solid rgba(46, 139, 87, 0.8) !important;
+    box-shadow: 0 6px 16px rgba(46, 139, 87, 0.3) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 700 !important;
+    transform: scale(1.02) !important;
+}
+
+/* 翠綠之夢主題記帳頁面收入標籤按鈕 - 毛玻璃效果 */
+:root[data-theme="emerald"] .ledger-type-tab[data-type="income"],
+:root[data-theme="emerald"] .ledger-type-tab.income {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.12) 0%, rgba(60, 179, 113, 0.18) 50%, rgba(144, 238, 144, 0.08) 100%) !important;
+    border: 1px solid rgba(46, 139, 87, 0.25) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.08) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題記帳頁面轉帳標籤按鈕 - 毛玻璃效果 */
+:root[data-theme="emerald"] .ledger-type-tab[data-type="transfer"],
+:root[data-theme="emerald"] .ledger-type-tab.transfer {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.12) 0%, rgba(60, 179, 113, 0.18) 50%, rgba(144, 238, 144, 0.08) 100%) !important;
+    border: 1px solid rgba(46, 139, 87, 0.25) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.08) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題記帳頁面標籤按鈕懸停效果 */
+:root[data-theme="emerald"] .ledger-type-tab:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 6px 16px rgba(46, 139, 87, 0.2) !important;
+    border-color: rgba(46, 139, 87, 0.4) !important;
+}
+
+/* 翠綠之夢主題記帳頁面支出標籤按鈕懸停效果 */
+:root[data-theme="emerald"] .ledger-type-tab[data-type="expense"]:hover,
+:root[data-theme="emerald"] .ledger-type-tab.expense:hover {
+    background: linear-gradient(135deg, #3CB371 0%, #90EE90 50%, #98FB98 100%) !important;
+    box-shadow: 0 8px 20px rgba(46, 139, 87, 0.4) !important;
+    transform: translateY(-3px) scale(1.03) !important;
+}
+
+/* 翠綠之夢主題記帳頁面收入標籤按鈕懸停效果 */
+:root[data-theme="emerald"] .ledger-type-tab[data-type="income"]:hover,
+:root[data-theme="emerald"] .ledger-type-tab.income:hover {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.18) 0%, rgba(60, 179, 113, 0.25) 50%, rgba(144, 238, 144, 0.15) 100%) !important;
+    border-color: rgba(46, 139, 87, 0.35) !important;
+}
+
+/* 翠綠之夢主題記帳頁面轉帳標籤按鈕懸停效果 */
+:root[data-theme="emerald"] .ledger-type-tab[data-type="transfer"]:hover,
+:root[data-theme="emerald"] .ledger-type-tab.transfer:hover {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.18) 0%, rgba(60, 179, 113, 0.25) 50%, rgba(144, 238, 144, 0.15) 100%) !important;
+    border-color: rgba(46, 139, 87, 0.35) !important;
+}
+
+/* 翠綠之夢主題記帳頁面標籤按鈕圖標樣式 */
+:root[data-theme="emerald"] .ledger-type-tab .ledger-tab-icon {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%) !important;
+    border-radius: 12px !important;
+    padding: 8px !important;
+    margin-bottom: 8px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 翠綠之夢主題記帳頁面支出標籤按鈕圖標 */
+:root[data-theme="emerald"] .ledger-type-tab[data-type="expense"] .ledger-tab-icon,
+:root[data-theme="emerald"] .ledger-type-tab.expense .ledger-tab-icon {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 100%) !important;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* 翠綠之夢主題計算機按鈕樣式 - 隨主題改變 */
+:root[data-theme="emerald"] .key-btn {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.08) 0%, rgba(60, 179, 113, 0.12) 50%, rgba(144, 238, 144, 0.05) 100%) !important;
+    border: 2px solid rgba(46, 139, 87, 0.25) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 翠綠之夢主題計算機按鈕懸停效果 */
+:root[data-theme="emerald"] .key-btn:hover {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.12) 0%, rgba(60, 179, 113, 0.18) 50%, rgba(144, 238, 144, 0.08) 100%) !important;
+    border-color: rgba(46, 139, 87, 0.35) !important;
+    box-shadow: 0 6px 16px rgba(46, 139, 87, 0.2) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* 翠綠之夢主題計算機按鈕按下效果 */
+:root[data-theme="emerald"] .key-btn:active {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.15) 0%, rgba(60, 179, 113, 0.22) 50%, rgba(144, 238, 144, 0.12) 100%) !important;
+    transform: scale(0.95) !important;
+    box-shadow: 0 2px 8px rgba(46, 139, 87, 0.15) !important;
+}
+
+/* 翠綠之夢主題計算機運算符按鈕 - 綠色 */
+:root[data-theme="emerald"] .key-btn.operator {
+    background: linear-gradient(135deg, #2E8B57 0%, #3CB371 50%, #90EE90 100%) !important;
+    border: 2px solid rgba(46, 139, 87, 0.6) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 6px 16px rgba(46, 139, 87, 0.3) !important;
+}
+
+/* 翠綠之夢主題計算機運算符按鈕懸停效果 */
+:root[data-theme="emerald"] .key-btn.operator:hover {
+    background: linear-gradient(135deg, #3CB371 0%, #90EE90 50%, #98FB98 100%) !important;
+    border-color: rgba(46, 139, 87, 0.8) !important;
+    box-shadow: 0 8px 20px rgba(46, 139, 87, 0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 翠綠之夢主題計算機等號按鈕 - 深綠色 */
+:root[data-theme="emerald"] .key-btn.equal {
+    background: linear-gradient(135deg, #228B22 0%, #2E8B57 50%, #3CB371 100%) !important;
+    border: 2px solid rgba(34, 139, 34, 0.8) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 700 !important;
+    font-size: var(--font-xl) !important;
+    box-shadow: 0 8px 20px rgba(34, 139, 34, 0.4) !important;
+}
+
+/* 翠綠之夢主題計算機等號按鈕懸停效果 */
+:root[data-theme="emerald"] .key-btn.equal:hover {
+    background: linear-gradient(135deg, #2E8B57 0%, #3CB371 50%, #90EE90 100%) !important;
+    border-color: rgba(46, 139, 87, 0.9) !important;
+    box-shadow: 0 10px 24px rgba(46, 139, 87, 0.5) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 翠綠之夢主題計算機清除按鈕 - 淺色毛玻璃 */
+:root[data-theme="emerald"] .key-btn.clear {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.06) 0%, rgba(60, 179, 113, 0.10) 50%, rgba(144, 238, 144, 0.04) 100%) !important;
+    border: 2px solid rgba(46, 139, 87, 0.2) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.1) !important;
+}
+
+/* 翠綠之夢主題計算機清除按鈕懸停效果 */
+:root[data-theme="emerald"] .key-btn.clear:hover {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.10) 0%, rgba(60, 179, 113, 0.15) 50%, rgba(144, 238, 144, 0.08) 100%) !important;
+    border-color: rgba(46, 139, 87, 0.3) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    box-shadow: 0 6px 16px rgba(46, 139, 87, 0.15) !important;
+}
+
+/* 翠綠之夢主題計算機刪除按鈕 - 紅色調 */
+:root[data-theme="emerald"] .key-btn.delete {
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.8) 0%, rgba(255, 99, 132, 0.7) 50%, rgba(240, 128, 128, 0.6) 100%) !important;
+    border: 2px solid rgba(220, 53, 69, 0.8) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 6px 16px rgba(220, 53, 69, 0.3) !important;
+}
+
+/* 翠綠之夢主題計算機刪除按鈕懸停效果 */
+:root[data-theme="emerald"] .key-btn.delete:hover {
+    background: linear-gradient(135deg, rgba(255, 99, 132, 0.9) 0%, rgba(240, 128, 128, 0.8) 50%, rgba(255, 150, 150, 0.7) 100%) !important;
+    border-color: rgba(255, 99, 132, 0.9) !important;
+    box-shadow: 0 8px 20px rgba(255, 99, 132, 0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 翠綠之夢主題計算機儲存按鈕 - 成功綠色 */
+:root[data-theme="emerald"] .key-btn.save-btn {
+    background: linear-gradient(135deg, #28a745 0%, #32CD32 50%, #90EE90 100%) !important;
+    border: 2px solid rgba(40, 167, 69, 0.8) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4) !important;
+}
+
+/* 翠綠之夢主題計算機儲存按鈕懸停效果 */
+:root[data-theme="emerald"] .key-btn.save-btn:hover {
+    background: linear-gradient(135deg, #32CD32 0%, #90EE90 50%, #98FB98 100%) !important;
+    border-color: rgba(50, 205, 50, 0.9) !important;
+    box-shadow: 0 10px 24px rgba(50, 205, 50, 0.5) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 翠綠之夢主題計算機數字按鈕特殊樣式 */
+:root[data-theme="emerald"] .key-btn[data-key="0"] {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.10) 0%, rgba(60, 179, 113, 0.15) 50%, rgba(144, 238, 144, 0.08) 100%) !important;
+    border: 2px solid rgba(46, 139, 87, 0.3) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 6px 16px rgba(46, 139, 87, 0.2) !important;
+}
+
+/* 翠綠之夢主題計算機數字按鈕懸停效果 */
+:root[data-theme="emerald"] .key-btn[data-key="0"]:hover {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.15) 0%, rgba(60, 179, 113, 0.20) 50%, rgba(144, 238, 144, 0.12) 100%) !important;
+    border-color: rgba(46, 139, 87, 0.4) !important;
+    box-shadow: 0 8px 20px rgba(46, 139, 87, 0.3) !important;
+}
+
+/* 翠綠之夢主題總預算標籤顏色 - 淺黃色 */
+:root[data-theme="emerald"] .budget-summary-label.budget-total,
+:root[data-theme="emerald"] .budget-detail-label.budget-detail-total,
+:root[data-theme="emerald"] .total-budget-label,
+:root[data-theme="emerald"] .budget-total-label {
+    color: #F0E68C !important; /* 卡其色淺黃 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題總預算容器背景 - 淺黃色調 */
+:root[data-theme="emerald"] .budget-summary-item:has(.budget-total),
+:root[data-theme="emerald"] .budget-detail-item:has(.budget-detail-total),
+:root[data-theme="emerald"] .total-budget-container {
+    background: linear-gradient(135deg, rgba(255, 248, 220, 0.6) 0%, rgba(240, 230, 140, 0.4) 100%) !important;
+    border: 1px solid rgba(255, 248, 220, 0.8) !important;
+}
+
+/* 翠綠之夢主題已使用金額 - 與總預算一樣的設定但保持原本顏色 */
+:root[data-theme="emerald"] .budget-summary-value.budget-used,
+:root[data-theme="emerald"] .budget-detail-value.budget-detail-used,
+:root[data-theme="emerald"] .budget-used,
+:root[data-theme="emerald"] .used-budget,
+:root[data-theme="emerald"] .budget-amount.used {
+    color: var(--color-error) !important; /* 保持原本的錯誤色(紅色) */
+    font-weight: 700 !important; /* 與總預算一樣的字體粗細 */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important; /* 與總預算一樣的文字陰影 */
+}
+
+/* 翠綠之夢主題剩餘金額 - 與總預算一樣的設定但保持原本顏色 */
+:root[data-theme="emerald"] .budget-summary-value.budget-remaining,
+:root[data-theme="emerald"] .budget-detail-value.budget-detail-remaining,
+:root[data-theme="emerald"] .budget-remaining,
+:root[data-theme="emerald"] .remaining-budget,
+:root[data-theme="emerald"] .budget-amount.remaining {
+    color: var(--color-success) !important; /* 保持原本的成功色(綠色) */
+    font-weight: 700 !important; /* 與總預算一樣的字體粗細 */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important; /* 與總預算一樣的文字陰影 */
+}
+
+/* 翠綠之夢主題已使用標籤 - 與總預算一樣的設定但保持原本顏色 */
+:root[data-theme="emerald"] .budget-summary-label.budget-used,
+:root[data-theme="emerald"] .budget-detail-label.budget-detail-used,
+:root[data-theme="emerald"] .used-budget-label,
+:root[data-theme="emerald"] .budget-used-label {
+    color: var(--color-error) !important; /* 保持原本的錯誤色(紅色) */
+    font-weight: 600 !important; /* 與總預算一樣的字體粗細 */
+}
+
+/* 翠綠之夢主題剩餘標籤 - 與總預算一樣的設定但保持原本顏色 */
+:root[data-theme="emerald"] .budget-summary-label.budget-remaining,
+:root[data-theme="emerald"] .budget-detail-label.budget-detail-remaining,
+:root[data-theme="emerald"] .remaining-budget-label,
+:root[data-theme="emerald"] .budget-remaining-label {
+    color: var(--color-success) !important; /* 保持原本的成功色(綠色) */
+    font-weight: 600 !important; /* 與總預算一樣的字體粗細 */
+}
+
+/* 翠綠之夢主題已使用容器背景 - 與總預算一樣的背景設定 */
+:root[data-theme="emerald"] .budget-summary-item:has(.budget-used),
+:root[data-theme="emerald"] .budget-detail-item:has(.budget-detail-used),
+:root[data-theme="emerald"] .used-budget-container {
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.6) 0%, rgba(220, 53, 69, 0.4) 100%) !important;
+    border: 1px solid rgba(220, 53, 69, 0.8) !important;
+}
+
+/* 翠綠之夢主題剩餘容器背景 - 與總預算一樣的背景設定 */
+:root[data-theme="emerald"] .budget-summary-item:has(.budget-remaining),
+:root[data-theme="emerald"] .budget-detail-item:has(.budget-detail-remaining),
+:root[data-theme="emerald"] .remaining-budget-container {
+    background: linear-gradient(135deg, rgba(50, 205, 50, 0.6) 0%, rgba(50, 205, 50, 0.4) 100%) !important;
+    border: 1px solid rgba(50, 205, 50, 0.8) !important;
+}
+
+/* 翠綠之夢主題每月花費試算與規劃卡片解釋文字顏色 - 黃色 */
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-hint,
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-label,
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-subtotal-label,
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-result-label {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題每月花費試算與規劃卡片標題顏色 - 黃色 */
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-card .monthly-planner-card-title,
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-title {
+    color: #FFA500 !important; /* 橙黃色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題想買的東西卡片解釋文字顏色 - 黃色 */
+:root[data-theme="emerald"] .wishlist-item .wishlist-info-label,
+:root[data-theme="emerald"] .wishlist-item .wishlist-item-note,
+:root[data-theme="emerald"] .wishlist-item .wishlist-amount-label {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題想買的東西卡片標題顏色 - 黃色 */
+:root[data-theme="emerald"] .wishlist-item .wishlist-item-title,
+:root[data-theme="emerald"] .wishlist-item .wishlist-item-type {
+    color: #FFA500 !important; /* 橙黃色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題存錢目標卡片解釋文字顏色 - 黃色 */
+:root[data-theme="emerald"] .savings-item .savings-item-note,
+:root[data-theme="emerald"] .savings-item .wishlist-info-label,
+:root[data-theme="emerald"] .savings-item .savings-item-meta {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題存錢目標卡片標題顏色 - 黃色 */
+:root[data-theme="emerald"] .savings-item .savings-item-name,
+:root[data-theme="emerald"] .savings-item .savings-item-title {
+    color: #FFA500 !important; /* 橙黃色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題每月規劃目標卡片解釋文字顏色 - 黃色 */
+:root[data-theme="emerald"] .monthly-planner-goal-card .monthly-planner-goal-meta,
+:root[data-theme="emerald"] .monthly-planner-goal-card .monthly-planner-goal-eta,
+:root[data-theme="emerald"] .monthly-planner-goal-card .monthly-planner-goal-progress-text {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題每月規劃目標卡片標題顏色 - 黃色 */
+:root[data-theme="emerald"] .monthly-planner-goal-card .monthly-planner-goal-name {
+    color: #FFA500 !important; /* 橙黃色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題所有規劃卡片通用解釋文字顏色 - 黃色 */
+:root[data-theme="emerald"] .page-monthly-planner .card .description,
+:root[data-theme="emerald"] .page-monthly-planner .card .hint,
+:root[data-theme="emerald"] .page-monthly-planner .card .explanation,
+:root[data-theme="emerald"] .page-monthly-planner .card .note,
+:root[data-theme="emerald"] .page-monthly-planner .card .label {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題所有規劃卡片通用標題顏色 - 橙黃色 */
+:root[data-theme="emerald"] .page-monthly-planner .card .title,
+:root[data-theme="emerald"] .page-monthly-planner .card .card-title,
+:root[data-theme="emerald"] .page-monthly-planner .card .name {
+    color: #FFA500 !important; /* 橙黃色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題每月規劃輸入框文字顏色 - 黃色 */
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-item-name,
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-item-amount,
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-item-note,
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-input {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題每月規劃輸入框佔位符顏色 - 黃色 */
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-item-name::placeholder,
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-item-amount::placeholder,
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-item-note::placeholder,
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-input::placeholder {
+    color: rgba(255, 215, 0, 0.7) !important; /* 黃色70%透明度 */
+}
+
+/* 翠綠之夢主題每月規劃空狀態文字顏色 - 黃色 */
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-empty {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題每月規劃按鈕文字顏色 - 黃色 */
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-btn,
+:root[data-theme="emerald"] .page-monthly-planner .monthly-planner-item-delete {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題想買的東西金額顏色 - 黃色 */
+:root[data-theme="emerald"] .wishlist-item .wishlist-item-amount {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題想買的東西重要性標籤顏色 - 黃色 */
+:root[data-theme="emerald"] .wishlist-item .wishlist-chip {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題想買的東西按鈕文字顏色 - 黃色 */
+:root[data-theme="emerald"] .wishlist-item .wishlist-item-action-btn {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題存錢目標金額顏色 - 黃色 */
+:root[data-theme="emerald"] .savings-item .savings-item-amount {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題存錢目標按鈕文字顏色 - 黃色 */
+:root[data-theme="emerald"] .savings-item .savings-item-action-btn {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題每月規劃想買東西/存錢目標標題顏色 - 橙黃色 */
+:root[data-theme="emerald"] .monthly-planner-card-title {
+    color: #FFA500 !important; /* 橙黃色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題每月規劃目標輸入框文字顏色 - 黃色 */
+:root[data-theme="emerald"] .monthly-planner-goal-input {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題每月規劃目標輸入框佔位符顏色 - 黃色 */
+:root[data-theme="emerald"] .monthly-planner-goal-input::placeholder {
+    color: rgba(255, 215, 0, 0.7) !important; /* 黃色70%透明度 */
+}
+
+/* 翠綠之夢主題想買東西/存錢目標頁面標題顏色 - 橙黃色 */
+:root[data-theme="emerald"] .wishlist-savings-title {
+    color: #FFA500 !important; /* 橙黃色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題想買東西/存錢目標頁面副標題顏色 - 黃色 */
+:root[data-theme="emerald"] .wishlist-savings-eyebrow {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題想買東西表單輸入框文字顏色 - 黃色 */
+:root[data-theme="emerald"] #wishlistItemName,
+:root[data-theme="emerald"] #wishlistItemType,
+:root[data-theme="emerald"] #wishlistItemAmount,
+:root[data-theme="emerald"] #wishlistItemReason,
+:root[data-theme="emerald"] #wishlistItemNote {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題想買東西表單輸入框佔位符顏色 - 黃色 */
+:root[data-theme="emerald"] #wishlistItemName::placeholder,
+:root[data-theme="emerald"] #wishlistItemType::placeholder,
+:root[data-theme="emerald"] #wishlistItemAmount::placeholder,
+:root[data-theme="emerald"] #wishlistItemReason::placeholder,
+:root[data-theme="emerald"] #wishlistItemNote::placeholder {
+    color: rgba(255, 215, 0, 0.7) !important; /* 黃色70%透明度 */
+}
+
+/* 翠綠之夢主題存錢目標表單輸入框文字顏色 - 黃色 */
+:root[data-theme="emerald"] #savingsGoalName,
+:root[data-theme="emerald"] #savingsGoalTarget,
+:root[data-theme="emerald"] #savingsGoalMonthly,
+:root[data-theme="emerald"] #savingsGoalNote {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題存錢目標表單輸入框佔位符顏色 - 黃色 */
+:root[data-theme="emerald"] #savingsGoalName::placeholder,
+:root[data-theme="emerald"] #savingsGoalTarget::placeholder,
+:root[data-theme="emerald"] #savingsGoalMonthly::placeholder,
+:root[data-theme="emerald"] #savingsGoalNote::placeholder {
+    color: rgba(255, 215, 0, 0.7) !important; /* 黃色70%透明度 */
+}
+
+/* 翠綠之夢主題想買東西/存錢目標表單標籤顏色 - 黃色 */
+:root[data-theme="emerald"] .form-label,
+:root[data-theme="emerald"] .input-label {
+    color: #FFD700 !important; /* 黃色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題持有中卡片樣式 - 文字顏色加亮50% */
+:root[data-theme="emerald"] .holdings-card,
+:root[data-theme="emerald"] .holding-card {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.15) 0%, rgba(60, 179, 113, 0.25) 50%, rgba(144, 238, 144, 0.1) 100%) !important;
+    border: 2px solid rgba(46, 139, 87, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.15) !important;
+}
+
+/* 翠綠之夢主題持有中卡片文字顏色 - 加亮50% */
+:root[data-theme="emerald"] .holdings-card *,
+:root[data-theme="emerald"] .holding-card * {
+    color: rgba(255, 255, 255, 0.95) !important; /* 加亮50% */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題買入卡片樣式 - 文字顏色加亮50% */
+:root[data-theme="emerald"] .buy-card,
+:root[data-theme="emerald"] .buying-card {
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.2) 0%, rgba(60, 179, 113, 0.3) 50%, rgba(144, 238, 144, 0.15) 100%) !important;
+    border: 2px solid rgba(46, 139, 87, 0.5) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.2) !important;
+}
+
+/* 翠綠之夢主題買入卡片文字顏色 - 加亮50% */
+:root[data-theme="emerald"] .buy-card *,
+:root[data-theme="emerald"] .buying-card * {
+    color: rgba(255, 255, 255, 0.95) !important; /* 加亮50% */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題持有中卡片標題顏色 - 加亮50% */
+:root[data-theme="emerald"] .holdings-card .card-title,
+:root[data-theme="emerald"] .holding-card .title,
+:root[data-theme="emerald"] .holdings-card h1,
+:root[data-theme="emerald"] .holding-card h1,
+:root[data-theme="emerald"] .holdings-card h2,
+:root[data-theme="emerald"] .holding-card h2,
+:root[data-theme="emerald"] .holdings-card h3,
+:root[data-theme="emerald"] .holding-card h3 {
+    color: rgba(255, 255, 255, 0.98) !important; /* 加亮50% */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題買入卡片標題顏色 - 加亮50% */
+:root[data-theme="emerald"] .buy-card .card-title,
+:root[data-theme="emerald"] .buying-card .title,
+:root[data-theme="emerald"] .buy-card h1,
+:root[data-theme="emerald"] .buying-card h1,
+:root[data-theme="emerald"] .buy-card h2,
+:root[data-theme="emerald"] .buying-card h2,
+:root[data-theme="emerald"] .buy-card h3,
+:root[data-theme="emerald"] .buying-card h3 {
+    color: rgba(255, 255, 255, 0.98) !important; /* 加亮50% */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題持有中卡片數值顏色 - 加亮50% */
+:root[data-theme="emerald"] .holdings-card .amount,
+:root[data-theme="emerald"] .holding-card .amount,
+:root[data-theme="emerald"] .holdings-card .price,
+:root[data-theme="emerald"] .holding-card .price,
+:root[data-theme="emerald"] .holdings-card .value,
+:root[data-theme="emerald"] .holding-card .value {
+    color: rgba(255, 255, 255, 0.98) !important; /* 加亮50% */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題買入卡片數值顏色 - 加亮50% */
+:root[data-theme="emerald"] .buy-card .amount,
+:root[data-theme="emerald"] .buying-card .amount,
+:root[data-theme="emerald"] .buy-card .price,
+:root[data-theme="emerald"] .buying-card .price,
+:root[data-theme="emerald"] .buy-card .value,
+:root[data-theme="emerald"] .buying-card .value {
+    color: rgba(255, 255, 255, 0.98) !important; /* 加亮50% */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題交易記錄詳細信息顏色 - 白色 */
+:root[data-theme="emerald"] .record-details,
+:root[data-theme="emerald"] .record-details *,
+:root[data-theme="emerald"] .record-card-details,
+:root[data-theme="emerald"] .record-card-details * {
+    color: rgba(255, 255, 255, 0.95) !important; /* 白色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題交易記錄價格信息顏色 - 白色 */
+:root[data-theme="emerald"] .record-details div:contains("價格："),
+:root[data-theme="emerald"] .record-card-details div:contains("價格：") {
+    color: rgba(255, 255, 255, 0.98) !important; /* 白色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題交易記錄股數信息顏色 - 白色 */
+:root[data-theme="emerald"] .record-details div:contains("股數："),
+:root[data-theme="emerald"] .record-card-details div:contains("股數：") {
+    color: rgba(255, 255, 255, 0.98) !important; /* 白色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題交易記錄手續費信息顏色 - 白色 */
+:root[data-theme="emerald"] .record-details div:contains("手續費："),
+:root[data-theme="emerald"] .record-card-details div:contains("手續費：") {
+    color: rgba(255, 255, 255, 0.98) !important; /* 白色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題交易記錄證交稅信息顏色 - 白色 */
+:root[data-theme="emerald"] .record-details div:contains("證交稅："),
+:root[data-theme="emerald"] .record-card-details div:contains("證交稅：") {
+    color: rgba(255, 255, 255, 0.98) !important; /* 白色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題股票代碼顏色 - 白色 */
+:root[data-theme="emerald"] .record-stock,
+:root[data-theme="emerald"] .stock-code {
+    color: rgba(255, 255, 255, 0.98) !important; /* 白色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題參考價格顏色 - 白色 */
+:root[data-theme="emerald"] .modal-reference-price,
+:root[data-theme="emerald"] .reference-price {
+    color: rgba(255, 255, 255, 0.95) !important; /* 白色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題當前股價顏色 - 白色 */
+:root[data-theme="emerald"] .current-price,
+:root[data-theme="emerald"] .stock-price {
+    color: rgba(255, 255, 255, 0.98) !important; /* 白色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題投資專區昨收標籤顏色 - 翠綠色 */
+:root[data-theme="emerald"] .stock-grid-card-price-prev-label {
+    color: #2E8B57 !important; /* 翠綠色 */
+    font-weight: 600 !important;
+}
+
+/* 翠綠之夢主題投資專區昨收價格顏色 - 翠綠色 */
+:root[data-theme="emerald"] .stock-grid-card-price-prev {
+    color: #2E8B57 !important; /* 翠綠色 */
+    font-weight: 700 !important;
+}
+
+/* 翠綠之夢主題投資專區昨收區域顏色 - 翠綠色 */
+:root[data-theme="emerald"] .stock-grid-card-price-sub {
+    color: #2E8B57 !important; /* 翠綠色 */
+    font-weight: 600 !important;
+}
+
+/* ========== 水果清爽主題預算標籤黑色文字 - 最終規則 ========== */
+/* 確保水果清爽主題的預算標籤顯示為黑色文字 */
+:root[data-theme="fruit"] .budget-summary-label,
+:root[data-theme="fruit"] .budget-detail-label,
+:root[data-theme="fruit"] .daily-budget-summary-label,
+:root[data-theme="fruit"] .daily-budget-detail-label {
+    color: #000000 !important;
+    font-weight: 500 !important;
+}
+
+/* 水果清爽主題預算標籤懸停效果保持黑色 */
+:root[data-theme="fruit"] .budget-summary-label:hover,
+:root[data-theme="fruit"] .budget-detail-label:hover,
+:root[data-theme="fruit"] .daily-budget-summary-label:hover,
+:root[data-theme="fruit"] .daily-budget-detail-label:hover {
+    color: #000000 !important;
+}
+
+/* 超高優先級規則 - 使用更複雜的選擇器 */
+body[data-theme="fruit"] .budget-summary-label,
+body[data-theme="fruit"] .budget-detail-label,
+body[data-theme="fruit"] .daily-budget-summary-label,
+body[data-theme="fruit"] .daily-budget-detail-label,
+html:has([data-theme="fruit"]) .budget-summary-label,
+html:has([data-theme="fruit"]) .budget-detail-label,
+html:has([data-theme="fruit"]) .daily-budget-summary-label,
+html:has([data-theme="fruit"]) .daily-budget-detail-label {
+    color: #000000 !important;
+    font-weight: 500 !important;
+}
+
+/* 最高優先級預算設定模態框背景圖片規則 - 確保最後載入 */
+html:has([data-theme="cuteCats"]) .budget-setting-modal-content,
+body[data-theme="cuteCats"] .budget-setting-modal-content,
+:root[data-theme="cuteCats"] .budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(255, 182, 193, 0.9) !important;
+    border: 2px solid rgba(255, 182, 193, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+html:has([data-theme="dreamy"]) .budget-setting-modal-content,
+body[data-theme="dreamy"] .budget-setting-modal-content,
+:root[data-theme="dreamy"] .budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.9) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+html:has([data-theme="chick"]) .budget-setting-modal-content,
+body[data-theme="chick"] .budget-setting-modal-content,
+:root[data-theme="chick"] .budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(152, 251, 152, 0.9) !important;
+    border: 2px solid rgba(152, 251, 152, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+html:has([data-theme="dreamyfish"]) .budget-setting-modal-content,
+body[data-theme="dreamyfish"] .budget-setting-modal-content,
+:root[data-theme="dreamyfish"] .budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.9) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+html:has([data-theme="emerald"]) .budget-setting-modal-content,
+body[data-theme="emerald"] .budget-setting-modal-content,
+:root[data-theme="emerald"] .budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(46, 139, 87, 0.9) !important;
+    border: 2px solid rgba(46, 139, 87, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+html:has([data-theme="meow"]) .budget-setting-modal-content,
+body[data-theme="meow"] .budget-setting-modal-content,
+:root[data-theme="meow"] body .budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.9) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 專門修復通用模態框背景覆蓋問題 */
+.modal-content.budget-setting-modal-content,
+.budget-setting-modal-content.modal-content {
+    background: none !important;
+}
+
+/* 終極優先級規則 - 覆蓋所有舊規則和通用規則 */
+html:has([data-theme="cuteCats"]) .budget-setting-modal-content,
+html:has([data-theme="cuteCats"]) body .budget-setting-modal-content,
+html:has([data-theme="cuteCats"]) :root .budget-setting-modal-content,
+html:has([data-theme="cuteCats"]) .modal-content.budget-setting-modal-content,
+body[data-theme="cuteCats"] .budget-setting-modal-content,
+body[data-theme="cuteCats"] :root .budget-setting-modal-content,
+body[data-theme="cuteCats"] .modal-content.budget-setting-modal-content,
+:root[data-theme="cuteCats"] .budget-setting-modal-content,
+:root[data-theme="cuteCats"] body .budget-setting-modal-content,
+:root[data-theme="cuteCats"] .modal-content.budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(255, 182, 193, 0.9) !important;
+    border: 2px solid rgba(255, 182, 193, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+html:has([data-theme="dreamy"]) .budget-setting-modal-content,
+html:has([data-theme="dreamy"]) body .budget-setting-modal-content,
+html:has([data-theme="dreamy"]) :root .budget-setting-modal-content,
+html:has([data-theme="dreamy"]) .modal-content.budget-setting-modal-content,
+body[data-theme="dreamy"] .budget-setting-modal-content,
+body[data-theme="dreamy"] :root .budget-setting-modal-content,
+body[data-theme="dreamy"] .modal-content.budget-setting-modal-content,
+:root[data-theme="dreamy"] .budget-setting-modal-content,
+:root[data-theme="dreamy"] body .budget-setting-modal-content,
+:root[data-theme="dreamy"] .modal-content.budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.9) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+html:has([data-theme="chick"]) .budget-setting-modal-content,
+html:has([data-theme="chick"]) body .budget-setting-modal-content,
+html:has([data-theme="chick"]) :root .budget-setting-modal-content,
+html:has([data-theme="chick"]) .modal-content.budget-setting-modal-content,
+body[data-theme="chick"] .budget-setting-modal-content,
+body[data-theme="chick"] :root .budget-setting-modal-content,
+body[data-theme="chick"] .modal-content.budget-setting-modal-content,
+:root[data-theme="chick"] .budget-setting-modal-content,
+:root[data-theme="chick"] body .budget-setting-modal-content,
+:root[data-theme="chick"] .modal-content.budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(152, 251, 152, 0.9) !important;
+    border: 2px solid rgba(152, 251, 152, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+html:has([data-theme="dreamyfish"]) .budget-setting-modal-content,
+html:has([data-theme="dreamyfish"]) body .budget-setting-modal-content,
+html:has([data-theme="dreamyfish"]) :root .budget-setting-modal-content,
+html:has([data-theme="dreamyfish"]) .modal-content.budget-setting-modal-content,
+body[data-theme="dreamyfish"] .budget-setting-modal-content,
+body[data-theme="dreamyfish"] :root .budget-setting-modal-content,
+body[data-theme="dreamyfish"] .modal-content.budget-setting-modal-content,
+:root[data-theme="dreamyfish"] .budget-setting-modal-content,
+:root[data-theme="dreamyfish"] body .budget-setting-modal-content,
+:root[data-theme="dreamyfish"] .modal-content.budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.9) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+html:has([data-theme="emerald"]) .budget-setting-modal-content,
+html:has([data-theme="emerald"]) body .budget-setting-modal-content,
+html:has([data-theme="emerald"]) :root .budget-setting-modal-content,
+html:has([data-theme="emerald"]) .modal-content.budget-setting-modal-content,
+body[data-theme="emerald"] .budget-setting-modal-content,
+body[data-theme="emerald"] :root .budget-setting-modal-content,
+body[data-theme="emerald"] .modal-content.budget-setting-modal-content,
+:root[data-theme="emerald"] .budget-setting-modal-content,
+:root[data-theme="emerald"] body .budget-setting-modal-content,
+:root[data-theme="emerald"] .modal-content.budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(46, 139, 87, 0.9) !important;
+    border: 2px solid rgba(46, 139, 87, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
+}
+
+html:has([data-theme="meow"]) .budget-setting-modal-content,
+html:has([data-theme="meow"]) body .budget-setting-modal-content,
+html:has([data-theme="meow"]) :root .budget-setting-modal-content,
+html:has([data-theme="meow"]) .modal-content.budget-setting-modal-content,
+body[data-theme="meow"] .budget-setting-modal-content,
+body[data-theme="meow"] :root .budget-setting-modal-content,
+body[data-theme="meow"] .modal-content.budget-setting-modal-content,
+:root[data-theme="meow"] .budget-setting-modal-content,
+:root[data-theme="meow"] body .budget-setting-modal-content,
+:root[data-theme="meow"] .modal-content.budget-setting-modal-content {
+    background: url("https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg") center/cover !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(135, 206, 235, 0.9) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--text-primary) !important;
 }
