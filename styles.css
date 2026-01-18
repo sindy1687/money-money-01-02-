@@ -844,6 +844,414 @@
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65) !important;
 }
 
+/* ========== 蝴蝶忍 (Kochō Shinobu) 主題 ========== */
+:root[data-theme="shinobu"] {
+    --color-primary: #9B59B6;
+    --color-primary-light: #B873D3;
+    --color-primary-lighter: #D8BFD8;
+    --color-primary-dark: #7D3C98;
+    --color-secondary: #FFB6C1;
+    --color-secondary-light: #FFC0CB;
+    --color-secondary-dark: #FF91A4;
+    
+    /* 狀態顏色 */
+    --color-success: #22c55e;
+    --color-danger: #ef4444;
+    --color-warning: #f59e0b;
+    --color-info: #3b82f6;
+    --color-error: var(--color-danger);
+    
+    /* 背景顏色 */
+    --bg-primary: linear-gradient(135deg, rgba(155, 89, 182, 0.92) 0%, rgba(184, 115, 211, 0.85) 65%, rgba(255, 182, 193, 0.35) 100%);
+    --bg-body: rgba(155, 89, 182, 0.96);
+    --bg-body-strong: rgba(184, 115, 211, 0.98);
+    --bg-gradient: linear-gradient(135deg, #7D3C98 0%, #9B59B6 60%, #FFB6C1 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(184, 115, 211, 0.08) 0%, rgba(255, 182, 193, 0.25) 100%);
+    --bg-white: rgba(155, 89, 182, 0.78);
+    --bg-card: rgba(184, 115, 211, 0.8);
+    --bg-light: rgba(216, 191, 216, 0.64);
+    --bg-lighter: rgba(238, 207, 238, 0.52);
+    --bg-soft: rgba(248, 235, 248, 0.55);
+    --bg-soft-strong: rgba(216, 191, 216, 0.68);
+    
+    /* 文字顏色 */
+    --text-primary: rgba(255, 255, 255, 1.0);
+    --text-primary-light: rgba(255, 255, 255, 1.0);
+    --text-primary-lighter: rgba(255, 255, 255, 0.95);
+    --text-primary-lightest: rgba(255, 255, 255, 0.92);
+    --text-secondary: rgba(255, 255, 255, 1.0);
+    --text-tertiary: rgba(255, 255, 255, 1.0);
+    --text-strong: rgba(255, 255, 255, 1.0);
+    --text-white: rgba(255, 255, 255, 1.0);
+    
+    /* 邊框顏色 */
+    --border-primary: rgba(255, 182, 193, 0.65);
+    --border-light: rgba(184, 115, 211, 0.24);
+    --border-medium: rgba(255, 182, 193, 0.4);
+    --card-border-color: rgba(255, 182, 193, 0.45);
+    --control-border-color: rgba(184, 115, 211, 0.32);
+    --table-border-color: rgba(184, 115, 211, 0.22);
+    
+    /* 陰影 */
+    --shadow-primary: 0 20px 60px rgba(155, 89, 182, 0.8);
+    --shadow-primary-lg: 0 30px 80px rgba(155, 89, 182, 0.7);
+    
+    /* RGBA 透明度變數 */
+    --color-primary-rgba-08: rgba(155, 89, 182, 0.08);
+    --color-primary-rgba-10: rgba(155, 89, 182, 0.1);
+    --color-primary-rgba-15: rgba(155, 89, 182, 0.15);
+    --color-primary-rgba-20: rgba(155, 89, 182, 0.2);
+    --color-primary-rgba-25: rgba(155, 89, 182, 0.25);
+    --color-primary-rgba-30: rgba(155, 89, 182, 0.3);
+    --color-primary-rgba-40: rgba(155, 89, 182, 0.4);
+    --color-primary-light-rgba-08: rgba(216, 191, 216, 0.08);
+    --color-primary-light-rgba-10: rgba(216, 191, 216, 0.1);
+    --color-primary-light-rgba-15: rgba(216, 191, 216, 0.15);
+    --color-primary-light-rgba-20: rgba(216, 191, 216, 0.2);
+    --color-primary-light-rgba-25: rgba(216, 191, 216, 0.25);
+    --color-primary-light-rgba-30: rgba(216, 191, 216, 0.3);
+    --color-primary-light-rgba-40: rgba(216, 191, 216, 0.4);
+    --color-secondary-rgba-08: rgba(255, 182, 193, 0.08);
+    --color-secondary-rgba-10: rgba(255, 182, 193, 0.1);
+    --color-secondary-rgba-15: rgba(255, 182, 193, 0.15);
+    --color-secondary-rgba-20: rgba(255, 182, 193, 0.2);
+    --color-secondary-rgba-25: rgba(255, 182, 193, 0.25);
+    --color-secondary-rgba-30: rgba(255, 182, 193, 0.3);
+    --color-secondary-rgba-40: rgba(255, 182, 193, 0.4);
+    
+    /* 其他背景 */
+    --bg-light-gradient: linear-gradient(135deg, rgba(155, 89, 182, 0.85) 0%, rgba(155, 89, 182, 0.65) 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, rgba(155, 89, 182, 0.85) 0%, rgba(155, 89, 182, 0.65) 100%);
+    --action-side-bg: color-mix(in srgb, rgba(184, 115, 211, 0.92) 75%, rgba(255, 182, 193, 0.08));
+    --action-side-bg-hover: color-mix(in srgb, rgba(184, 115, 211, 0.92) 65%, rgba(255, 182, 193, 0.2));
+    --action-side-text: rgba(255, 255, 255, 0.96);
+}
+
+:root[data-theme="shinobu"] body {
+    background: url("https://i.pinimg.com/736x/26/c9/c0/26c9c0297b0cad3dfa8d6d5c41ccfc18.jpg") center/cover no-repeat fixed;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+:root[data-theme="shinobu"] body::before {
+    display: none;
+}
+
+:root[data-theme="shinobu"] .page-input,
+:root[data-theme="shinobu"] .page-ledger,
+:root[data-theme="shinobu"] .page-chart,
+:root[data-theme="shinobu"] .page-budget,
+:root[data-theme="shinobu"] .page-monthly-planner,
+:root[data-theme="shinobu"] .page-daily-budget,
+:root[data-theme="shinobu"] .page-settings,
+:root[data-theme="shinobu"] .page-category-manage,
+:root[data-theme="shinobu"] .page-investment,
+:root[data-theme="shinobu"] .page-wallet,
+:root[data-theme="shinobu"] .page-history,
+:root[data-theme="shinobu"] .page-planner,
+:root[data-theme="shinobu"] .dividend-page,
+:root[data-theme="shinobu"] .dca-management-page,
+:root[data-theme="shinobu"] .dca-setup-page,
+:root[data-theme="shinobu"] .investment-input-page,
+:root[data-theme="shinobu"] .wishlist-content,
+:root[data-theme="shinobu"] .savings-content {
+    background: transparent !important;
+    box-shadow: none;
+}
+
+:root[data-theme="shinobu"] .card,
+:root[data-theme="shinobu"] .record-card,
+:root[data-theme="shinobu"] .ledger-card,
+:root[data-theme="shinobu"] .summary-card,
+:root[data-theme="shinobu"] .budget-card,
+:root[data-theme="shinobu"] .wallet-card,
+:root[data-theme="shinobu"] .chart-card,
+:root[data-theme="shinobu"] .investment-card,
+:root[data-theme="shinobu"] .stock-item-card,
+:root[data-theme="shinobu"] .monthly-planner-card,
+:root[data-theme="shinobu"] .dividend-stat-card,
+:root[data-theme="shinobu"] .dca-card,
+:root[data-theme="shinobu"] .installment-card {
+    background: rgba(155, 89, 182, 0.85);
+    border: 1px solid rgba(255, 182, 193, 0.4);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+    color: var(--text-primary);
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="shinobu"] .card .value,
+:root[data-theme="shinobu"] .summary-value,
+:root[data-theme="shinobu"] .summary-label,
+:root[data-theme="shinobu"] .stock-card-value,
+:root[data-theme="shinobu"] .stock-card-label,
+:root[data-theme="shinobu"] .stock-card-name,
+:root[data-theme="shinobu"] .stat-label,
+:root[data-theme="shinobu"] .stat-value,
+:root[data-theme="shinobu"] .budget-summary-value,
+:root[data-theme="shinobu"] .budget-summary-label,
+:root[data-theme="shinobu"] .budget-amount,
+:root[data-theme="shinobu"] .budget-total,
+:root[data-theme="shinobu"] .total-budget,
+:root[data-theme="shinobu"] .budget-used,
+:root[data-theme="shinobu"] .used-budget,
+:root[data-theme="shinobu"] .budget-remaining,
+:root[data-theme="shinobu"] .remaining-budget,
+:root[data-theme="shinobu"] .transaction-amount,
+:root[data-theme="shinobu"] .transaction-category,
+:root[data-theme="shinobu"] .transaction-note,
+:root[data-theme="shinobu"] .investment-metric-value,
+:root[data-theme="shinobu"] .investment-metric-label {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="shinobu"] .metric-pill,
+:root[data-theme="shinobu"] .stock-chip,
+:root[data-theme="shinobu"] .badge,
+:root[data-theme="shinobu"] .status-pill {
+    background: rgba(155, 89, 182, 0.15) !important;
+    color: var(--text-primary) !important;
+    border-color: rgba(255, 182, 193, 0.35) !important;
+}
+
+:root[data-theme="shinobu"] .investment-card::before,
+:root[data-theme="shinobu"] .stock-item-card::before {
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.22) 0%, rgba(184, 115, 211, 0.45) 65%, rgba(255, 182, 193, 0.25) 100%);
+}
+
+:root[data-theme="shinobu"] .nav-item.active {
+    background: rgba(155, 89, 182, 0.16);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+}
+
+:root[data-theme="shinobu"] .modal-content,
+:root[data-theme="shinobu"] .modal-content-standard,
+:root[data-theme="shinobu"] .budget-category-modal-content,
+:root[data-theme="shinobu"] .budget-setting-modal-content,
+:root[data-theme="shinobu"] .category-modal-content,
+:root[data-theme="shinobu"] .dca-execute-modal .modal-content,
+:root[data-theme="shinobu"] .account-modal-content,
+:root[data-theme="shinobu"] .emoji-modal-content,
+:root[data-theme="shinobu"] .history-modal-content {
+    background: rgba(155, 89, 182, 0.95);
+    border: 1px solid rgba(255, 182, 193, 0.4);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(16px);
+}
+
+:root[data-theme="shinobu"] .input-section {
+    background: rgba(155, 89, 182, 0.92);
+    border-top: 2px solid rgba(255, 182, 193, 0.35);
+    box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(12px);
+}
+
+:root[data-theme="shinobu"] .bottom-nav {
+    background: rgba(155, 89, 182, 0.95) !important;
+    border-top: 1px solid rgba(255, 182, 193, 0.35) !important;
+    backdrop-filter: blur(16px);
+}
+
+:root[data-theme="shinobu"] .form-input,
+:root[data-theme="shinobu"] .form-select,
+:root[data-theme="shinobu"] .form-textarea,
+:root[data-theme="shinobu"] .note-input {
+    background: rgba(184, 115, 211, 0.85) !important;
+    border: 2px solid rgba(255, 182, 193, 0.35) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="shinobu"] .form-input:focus,
+:root[data-theme="shinobu"] .form-select:focus,
+:root[data-theme="shinobu"] .form-textarea:focus,
+:root[data-theme="shinobu"] .note-input:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.25) !important;
+    background: rgba(216, 191, 216, 0.96) !important;
+}
+
+:root[data-theme="shinobu"] .header-section {
+    background: rgba(155, 89, 182, 0.92) !important;
+    border-bottom: 1px solid rgba(255, 182, 193, 0.3) !important;
+    backdrop-filter: blur(12px);
+}
+
+:root[data-theme="shinobu"] .tab-btn {
+    background: rgba(184, 115, 211, 0.85) !important;
+    border: 1px solid rgba(255, 182, 193, 0.25) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="shinobu"] .tab-btn.active {
+    background: rgba(155, 89, 182, 0.2) !important;
+    border: 2px solid #9B59B6 !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45) !important;
+}
+
+:root[data-theme="shinobu"] .tab-btn:hover {
+    background: rgba(155, 89, 182, 0.15) !important;
+    border-color: rgba(255, 182, 193, 0.35) !important;
+}
+
+:root[data-theme="shinobu"] .key-btn {
+    background: rgba(184, 115, 211, 0.85) !important;
+    border: 2px solid rgba(255, 182, 193, 0.35) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+:root[data-theme="shinobu"] .key-btn:hover {
+    background: rgba(155, 89, 182, 0.18) !important;
+    border-color: rgba(255, 182, 193, 0.4) !important;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6) !important;
+}
+
+:root[data-theme="shinobu"] .key-btn:active {
+    background: rgba(155, 89, 182, 0.95) !important;
+    transform: scale(0.95);
+}
+
+:root[data-theme="shinobu"] .key-btn.operator {
+    background: rgba(155, 89, 182, 0.35) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="shinobu"] .key-btn.equal {
+    background: linear-gradient(135deg, var(--color-primary) 0%, color-mix(in srgb, var(--color-primary) 85%, var(--color-primary-dark)) 100%) !important;
+    color: var(--text-white) !important;
+}
+
+:root[data-theme="shinobu"] .key-btn.delete {
+    background: rgba(255, 99, 132, 0.85) !important;
+    border-color: rgba(255, 99, 132, 0.9) !important;
+}
+
+:root[data-theme="shinobu"] .fab-btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, color-mix(in srgb, var(--color-primary) 90%, var(--color-primary-dark)) 100%) !important;
+    color: var(--color-primary-dark) !important;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6) !important;
+}
+
+:root[data-theme="shinobu"] .fab-btn:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%) !important;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65) !important;
+}
+
+:root[data-theme="shinobu"] .mori-dialog {
+    background: rgba(155, 89, 182, 0.95) !important;
+    border: 1px solid rgba(255, 182, 193, 0.4) !important;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.65) !important;
+    backdrop-filter: blur(16px);
+}
+
+:root[data-theme="shinobu"] .mori-dialog .mori-content {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="shinobu"] .mori-dialog .mori-title {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="shinobu"] .return-btn {
+    background: rgba(155, 89, 182, 0.85) !important;
+    border: 1px solid rgba(255, 182, 193, 0.4) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="shinobu"] .return-btn:hover {
+    background: rgba(155, 89, 182, 0.95) !important;
+    border-color: rgba(255, 182, 193, 0.6) !important;
+}
+
+/* 蝴蝶忍主題 - 卡費文字白色 */
+:root[data-theme="shinobu"] .diary-card-fee,
+:root[data-theme="shinobu"] .diary-card .fee-label,
+:root[data-theme="shinobu"] .diary-card .fee-amount,
+:root[data-theme="shinobu"] .account-diary .card-fee,
+:root[data-theme="shinobu"] .account-diary .fee-text,
+:root[data-theme="shinobu"] .account-diary .fee-display,
+:root[data-theme="shinobu"] .diary-page .fee-info,
+:root[data-theme="shinobu"] .diary-page .card-fee-text,
+:root[data-theme="shinobu"] .fee-section .fee-value,
+:root[data-theme="shinobu"] .fee-item .fee-amount-text,
+:root[data-theme="shinobu"] .card .diary-card-fee,
+:root[data-theme="shinobu"] .card .fee-label,
+:root[data-theme="shinobu"] .card .fee-amount,
+:root[data-theme="shinobu"] .card .fee-text,
+:root[data-theme="shinobu"] .card .fee-display,
+:root[data-theme="shinobu"] .card .fee-info,
+:root[data-theme="shinobu"] .card .card-fee-text,
+:root[data-theme="shinobu"] .card .fee-value,
+:root[data-theme="shinobu"] .card .fee-amount-text,
+:root[data-theme="shinobu"] .fee-text,
+:root[data-theme="shinobu"] .card-fee-text,
+:root[data-theme="shinobu"] .transaction-fee,
+:root[data-theme="shinobu"] .payment-fee,
+:root[data-theme="shinobu"] *[class*="fee"],
+:root[data-theme="shinobu"] *[class*="card-fee"],
+:root[data-theme="shinobu"] *[class*="diary-fee"] {
+    color: var(--text-primary) !important;
+}
+
+/* 超高優先級 - 蝴蝶忍主題卡費文字強制白色 */
+:root[data-theme="shinobu"] .diary-card-fee,
+:root[data-theme="shinobu"] .diary-card-fee *,
+:root[data-theme="shinobu"] .fee-label,
+:root[data-theme="shinobu"] .fee-label *,
+:root[data-theme="shinobu"] .fee-amount,
+:root[data-theme="shinobu"] .fee-amount *,
+:root[data-theme="shinobu"] .fee-text,
+:root[data-theme="shinobu"] .fee-text *,
+:root[data-theme="shinobu"] .card-fee-text,
+:root[data-theme="shinobu"] .card-fee-text *,
+:root[data-theme="shinobu"] .transaction-fee,
+:root[data-theme="shinobu"] .transaction-fee *,
+:root[data-theme="shinobu"] .payment-fee,
+:root[data-theme="shinobu"] .payment-fee * {
+    color: rgba(255, 255, 255, 1.0) !important;
+}
+
+/* 最終強制覆蓋 - 所有包含fee的元素 */
+:root[data-theme="shinobu"] [class*="fee"],
+:root[data-theme="shinobu"] [class*="fee"] *,
+:root[data-theme="shinobu"] [id*="fee"],
+:root[data-theme="shinobu"] [id*="fee"] * {
+    color: rgba(255, 255, 255, 1.0) !important;
+}
+
+/* 每月花費試算與規劃 - 收入解釋文字白色 */
+:root[data-theme="shinobu"] .monthly-planner-income-explanation,
+:root[data-theme="shinobu"] .income-explanation-text,
+:root[data-theme="shinobu"] .planner-income-note {
+    color: var(--text-primary) !important;
+}
+
+/* 想買的東西 / 存錢目標 - 解釋文字白色 */
+:root[data-theme="shinobu"] .wishlist-explanation,
+:root[data-theme="shinobu"] .savings-goal-explanation,
+:root[data-theme="shinobu"] .goal-description-text,
+:root[data-theme="shinobu"] .wishlist-note-text {
+    color: var(--text-primary) !important;
+}
+
+/* 定期定額管理 - 編輯按鈕文字白色 */
+:root[data-theme="shinobu"] .dca-edit-btn,
+:root[data-theme="shinobu"] .dca-management-edit-btn,
+:root[data-theme="shinobu"] .edit-dca-btn {
+    color: var(--text-primary) !important;
+}
+
+/* 定期定額 - 累積期數紫色底色 */
+:root[data-theme="shinobu"] .dca-period-info,
+:root[data-theme="shinobu"] .period-counter,
+:root[data-theme="shinobu"] .accumulation-period {
+    background: rgba(155, 89, 182, 0.3) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid rgba(255, 182, 193, 0.3) !important;
+    padding: 4px 8px !important;
+    border-radius: 6px !important;
+}
+
 
 :root[data-theme="pink"].dark,
 :root[data-theme="blue"].dark,
@@ -31505,4 +31913,497 @@ html:has([data-theme="graffiti"]) .tertiary-text,
 body[data-theme="graffiti"] .text-tertiary,
 body[data-theme="graffiti"] .tertiary-text {
     color: var(--text-tertiary) !important;
+}
+
+/* 超級強制覆蓋 - 蝴蝶忍主題卡費文字白色 (最後規則) */
+:root[data-theme="shinobu"] [class*="fee"],
+:root[data-theme="shinobu"] [class*="fee"] *,
+:root[data-theme="shinobu"] [id*="fee"],
+:root[data-theme="shinobu"] [id*="fee"] *,
+:root[data-theme="shinobu"] .diary-card-fee,
+:root[data-theme="shinobu"] .diary-card-fee *,
+:root[data-theme="shinobu"] .fee-label,
+:root[data-theme="shinobu"] .fee-label *,
+:root[data-theme="shinobu"] .fee-amount,
+:root[data-theme="shinobu"] .fee-amount *,
+:root[data-theme="shinobu"] .fee-text,
+:root[data-theme="shinobu"] .fee-text *,
+:root[data-theme="shinobu"] .card-fee-text,
+:root[data-theme="shinobu"] .card-fee-text *,
+:root[data-theme="shinobu"] .transaction-fee,
+:root[data-theme="shinobu"] .transaction-fee *,
+:root[data-theme="shinobu"] .payment-fee,
+:root[data-theme="shinobu"] .payment-fee * {
+    color: rgba(255, 255, 255, 1.0) !important;
+}
+
+/* JavaScript 動態樣式覆蓋 */
+:root[data-theme="shinobu"] *[style*="color"] {
+    color: rgba(255, 255, 255, 1.0) !important;
+}
+
+/* 終極強制覆蓋 - 蝴蝶忍主題所有費用文字白色 */
+html[data-theme="shinobu"] [class*="fee"],
+html[data-theme="shinobu"] [class*="fee"] *,
+html[data-theme="shinobu"] [id*="fee"],
+html[data-theme="shinobu"] [id*="fee"] *,
+html[data-theme="shinobu"] .diary-card-fee,
+html[data-theme="shinobu"] .diary-card-fee *,
+html[data-theme="shinobu"] .fee-label,
+html[data-theme="shinobu"] .fee-label *,
+html[data-theme="shinobu"] .fee-amount,
+html[data-theme="shinobu"] .fee-amount *,
+html[data-theme="shinobu"] .fee-text,
+html[data-theme="shinobu"] .fee-text *,
+html[data-theme="shinobu"] .card-fee-text,
+html[data-theme="shinobu"] .card-fee-text *,
+html[data-theme="shinobu"] .transaction-fee,
+html[data-theme="shinobu"] .transaction-fee *,
+html[data-theme="shinobu"] .payment-fee,
+html[data-theme="shinobu"] .payment-fee *,
+body[data-theme="shinobu"] [class*="fee"],
+body[data-theme="shinobu"] [class*="fee"] *,
+body[data-theme="shinobu"] [id*="fee"],
+body[data-theme="shinobu"] [id*="fee"] *,
+body[data-theme="shinobu"] .diary-card-fee,
+body[data-theme="shinobu"] .diary-card-fee *,
+body[data-theme="shinobu"] .fee-label,
+body[data-theme="shinobu"] .fee-label *,
+body[data-theme="shinobu"] .fee-amount,
+body[data-theme="shinobu"] .fee-amount *,
+body[data-theme="shinobu"] .fee-text,
+body[data-theme="shinobu"] .fee-text *,
+body[data-theme="shinobu"] .card-fee-text,
+body[data-theme="shinobu"] .card-fee-text *,
+body[data-theme="shinobu"] .transaction-fee,
+body[data-theme="shinobu"] .transaction-fee *,
+body[data-theme="shinobu"] .payment-fee,
+body[data-theme="shinobu"] .payment-fee * {
+    color: rgba(255, 255, 255, 1.0) !important;
+}
+
+/* 超級終極覆蓋 - 使用更高優先級選擇器 */
+html:has([data-theme="shinobu"]) [class*="fee"],
+html:has([data-theme="shinobu"]) [class*="fee"] *,
+html:has([data-theme="shinobu"]) [id*="fee"],
+html:has([data-theme="shinobu"]) [id*="fee"] *,
+html:has([data-theme="shinobu"]) .diary-card-fee,
+html:has([data-theme="shinobu"]) .diary-card-fee *,
+html:has([data-theme="shinobu"]) .fee-label,
+html:has([data-theme="shinobu"]) .fee-label *,
+html:has([data-theme="shinobu"]) .fee-amount,
+html:has([data-theme="shinobu"]) .fee-amount *,
+html:has([data-theme="shinobu"]) .fee-text,
+html:has([data-theme="shinobu"]) .fee-text *,
+html:has([data-theme="shinobu"]) .card-fee-text,
+html:has([data-theme="shinobu"]) .card-fee-text *,
+html:has([data-theme="shinobu"]) .transaction-fee,
+html:has([data-theme="shinobu"]) .transaction-fee *,
+html:has([data-theme="shinobu"]) .payment-fee,
+html:has([data-theme="shinobu"]) .payment-fee * {
+    color: rgba(255, 255, 255, 1.0) !important;
+}
+
+/* 蝴蝶忍主題預算金額文字白色 */
+:root[data-theme="shinobu"] .budget-amount,
+:root[data-theme="shinobu"] .budget-total,
+:root[data-theme="shinobu"] .total-budget,
+:root[data-theme="shinobu"] .budget-used,
+:root[data-theme="shinobu"] .used-budget,
+:root[data-theme="shinobu"] .budget-remaining,
+:root[data-theme="shinobu"] .remaining-budget,
+:root[data-theme="shinobu"] .budget-amount-input,
+:root[data-theme="shinobu"] .budget-detail-value,
+:root[data-theme="shinobu"] .budget-detail-total,
+:root[data-theme="shinobu"] .budget-detail-used,
+:root[data-theme="shinobu"] .budget-detail-remaining,
+:root[data-theme="shinobu"] *[class*="budget-amount"],
+:root[data-theme="shinobu"] *[class*="budget-total"],
+:root[data-theme="shinobu"] *[class*="budget-used"],
+:root[data-theme="shinobu"] *[class*="budget-remaining"] {
+    color: rgba(255, 255, 255, 1.0) !important;
+}
+
+/* 超級強制覆蓋 - 蝴蝶忍主題預算文字 */
+html[data-theme="shinobu"] .budget-amount,
+html[data-theme="shinobu"] .budget-total,
+html[data-theme="shinobu"] .total-budget,
+html[data-theme="shinobu"] .budget-used,
+html[data-theme="shinobu"] .used-budget,
+html[data-theme="shinobu"] .budget-remaining,
+html[data-theme="shinobu"] .remaining-budget,
+html[data-theme="shinobu"] .budget-amount-input,
+html[data-theme="shinobu"] .budget-detail-value,
+html[data-theme="shinobu"] .budget-detail-total,
+html[data-theme="shinobu"] .budget-detail-used,
+html[data-theme="shinobu"] .budget-detail-remaining,
+html[data-theme="shinobu"] *[class*="budget-amount"],
+html[data-theme="shinobu"] *[class*="budget-total"],
+html[data-theme="shinobu"] *[class*="budget-used"],
+html[data-theme="shinobu"] *[class*="budget-remaining"],
+body[data-theme="shinobu"] .budget-amount,
+body[data-theme="shinobu"] .budget-total,
+body[data-theme="shinobu"] .total-budget,
+body[data-theme="shinobu"] .budget-used,
+body[data-theme="shinobu"] .used-budget,
+body[data-theme="shinobu"] .budget-remaining,
+body[data-theme="shinobu"] .remaining-budget,
+body[data-theme="shinobu"] .budget-amount-input,
+body[data-theme="shinobu"] .budget-detail-value,
+body[data-theme="shinobu"] .budget-detail-total,
+body[data-theme="shinobu"] .budget-detail-used,
+body[data-theme="shinobu"] .budget-detail-remaining,
+body[data-theme="shinobu"] *[class*="budget-amount"],
+body[data-theme="shinobu"] *[class*="budget-total"],
+body[data-theme="shinobu"] *[class*="budget-used"],
+body[data-theme="shinobu"] *[class*="budget-remaining"] {
+    color: rgba(255, 255, 255, 1.0) !important;
+}
+
+/* 終極強制覆蓋 - 蝴蝶忍主題預算文字 */
+html:has([data-theme="shinobu"]) .budget-amount,
+html:has([data-theme="shinobu"]) .budget-total,
+html:has([data-theme="shinobu"]) .total-budget,
+html:has([data-theme="shinobu"]) .budget-used,
+html:has([data-theme="shinobu"]) .used-budget,
+html:has([data-theme="shinobu"]) .budget-remaining,
+html:has([data-theme="shinobu"]) .remaining-budget,
+html:has([data-theme="shinobu"]) .budget-amount-input,
+html:has([data-theme="shinobu"]) .budget-detail-value,
+html:has([data-theme="shinobu"]) .budget-detail-total,
+html:has([data-theme="shinobu"]) .budget-detail-used,
+html:has([data-theme="shinobu"]) .budget-detail-remaining,
+html:has([data-theme="shinobu"]) *[class*="budget-amount"],
+html:has([data-theme="shinobu"]) *[class*="budget-total"],
+html:has([data-theme="shinobu"]) *[class*="budget-used"],
+html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
+    color: rgba(255, 255, 255, 1.0) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.5) !important;
+    font-weight: 600 !important;
+}
+
+/* 蝴蝶忍主題所有文字增加陰影提高可讀性 */
+:root[data-theme="shinobu"] body,
+:root[data-theme="shinobu"] .card,
+:root[data-theme="shinobu"] .modal-content,
+:root[data-theme="shinobu"] .budget-card,
+:root[data-theme="shinobu"] .wallet-card,
+:root[data-theme="shinobu"] .investment-card {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* 蝴蝶忍主題重要文字增強陰影 */
+:root[data-theme="shinobu"] h1,
+:root[data-theme="shinobu"] h2,
+:root[data-theme="shinobu"] h3,
+:root[data-theme="shinobu"] .value,
+:root[data-theme="shinobu"] .amount,
+:root[data-theme="shinobu"] .price,
+:root[data-theme="shinobu"] .budget-amount,
+:root[data-theme="shinobu"] .transaction-amount,
+:root[data-theme="shinobu"] .stat-value {
+    color: rgba(255, 255, 255, 1.0) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.7) !important;
+    font-weight: 700 !important;
+}
+
+/* 蝴蝶忍主題輸入框文字增強 */
+:root[data-theme="shinobu"] input,
+:root[data-theme="shinobu"] .budget-amount-input,
+:root[data-theme="shinobu"] .form-input,
+:root[data-theme="shinobu"] .form-select,
+:root[data-theme="shinobu"] .form-textarea {
+    color: rgba(255, 255, 255, 1.0) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 600 !important;
+}
+
+/* 蝴蝶忍主題按鈕文字增強 */
+:root[data-theme="shinobu"] button,
+:root[data-theme="shinobu"] .btn,
+:root[data-theme="shinobu"] .tab-btn,
+:root[data-theme="shinobu"] .key-btn {
+    color: rgba(255, 255, 255, 1.0) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 600 !important;
+}
+
+/* 蝴蝶忍主題 - 住房物業分類名稱黑色 */
+:root[data-theme="shinobu"] .category-name:contains("住房物業"),
+:root[data-theme="shinobu"] .category-item[data-category*="housing"] .category-name,
+:root[data-theme="shinobu"] .category-item[data-category*="住房"] .category-name,
+:root[data-theme="shinobu"] .category-item[data-category*="物業"] .category-name {
+    color: rgba(0, 0, 0, 1.0) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+/* 蝴蝶忍主題 - 住房物業相關元素黑色 */
+:root[data-theme="shinobu"] *[data-category*="housing"],
+:root[data-theme="shinobu"] *[data-category*="住房"],
+:root[data-theme="shinobu"] *[data-category*="物業"] {
+    color: rgba(0, 0, 0, 1.0) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 蝴蝶忍主題 - 住房物業分類項目特定樣式 */
+:root[data-theme="shinobu"] .category-item:has(.category-name:contains("住房物業")) .category-name,
+:root[data-theme="shinobu"] .category-item:has(.category-name:contains("住房")) .category-name,
+:root[data-theme="shinobu"] .category-item:has(.category-name:contains("物業")) .category-name {
+    color: rgba(0, 0, 0, 1.0) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+/* 蝴蝶忍主題 - 編輯記帳模態框主文字黑色 */
+:root[data-theme="shinobu"] .modal-content h1,
+:root[data-theme="shinobu"] .modal-content h2,
+:root[data-theme="shinobu"] .modal-content h3,
+:root[data-theme="shinobu"] .modal-content h4,
+:root[data-theme="shinobu"] .modal-content h5,
+:root[data-theme="shinobu"] .modal-content h6,
+:root[data-theme="shinobu"] .modal-content .modal-title,
+:root[data-theme="shinobu"] .modal-content .modal-header,
+:root[data-theme="shinobu"] .modal-content .modal-body,
+:root[data-theme="shinobu"] .modal-content .modal-footer,
+:root[data-theme="shinobu"] .modal-content .form-group,
+:root[data-theme="shinobu"] .modal-content .form-label,
+:root[data-theme="shinobu"] .modal-content .form-control,
+:root[data-theme="shinobu"] .modal-content .form-input,
+:root[data-theme="shinobu"] .modal-content .form-select,
+:root[data-theme="shinobu"] .modal-content .form-textarea,
+:root[data-theme="shinobu"] .modal-content label,
+:root[data-theme="shinobu"] .modal-content .label,
+:root[data-theme="shinobu"] .modal-content .input-label,
+:root[data-theme="shinobu"] .modal-content .select-label,
+:root[data-theme="shinobu"] .modal-content textarea,
+:root[data-theme="shinobu"] .modal-content input,
+:root[data-theme="shinobu"] .modal-content select {
+    color: rgba(0, 0, 0, 1.0) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6) !important;
+    font-weight: 600 !important;
+}
+
+/* 蝴蝶忍主題 - 編輯記帳模態框所有文字黑色 */
+:root[data-theme="shinobu"] .modal-content,
+:root[data-theme="shinobu"] .modal-content *,
+:root[data-theme="shinobu"] .modal-content-standard,
+:root[data-theme="shinobu"] .modal-content-standard *,
+:root[data-theme="shinobu"] .category-modal-content,
+:root[data-theme="shinobu"] .category-modal-content *,
+:root[data-theme="shinobu"] .account-modal-content,
+:root[data-theme="shinobu"] .account-modal-content * {
+    color: rgba(0, 0, 0, 1.0) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6) !important;
+}
+
+/* 蝴蝶忍主題 - 編輯記帳模態框按鈕文字例外（保持白色） */
+:root[data-theme="shinobu"] .modal-content button,
+:root[data-theme="shinobu"] .modal-content .btn,
+:root[data-theme="shinobu"] .modal-content .btn-primary,
+:root[data-theme="shinobu"] .modal-content .btn-secondary,
+:root[data-theme="shinobu"] .modal-content .modal-close-btn,
+:root[data-theme="shinobu"] .modal-content-standard button,
+:root[data-theme="shinobu"] .modal-content-standard .btn,
+:root[data-theme="shinobu"] .category-modal-content button,
+:root[data-theme="shinobu"] .category-modal-content .btn,
+:root[data-theme="shinobu"] .account-modal-content button,
+:root[data-theme="shinobu"] .account-modal-content .btn {
+    color: rgba(255, 255, 255, 1.0) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* 蝴蝶忍主題 - 錢相關文字淺黃色 */
+:root[data-theme="shinobu"] .amount,
+:root[data-theme="shinobu"] .money,
+:root[data-theme="shinobu"] .price,
+:root[data-theme="shinobu"] .cost,
+:root[data-theme="shinobu"] .fee,
+:root[data-theme="shinobu"] .currency,
+:root[data-theme="shinobu"] .balance,
+:root[data-theme="shinobu"] .wallet,
+:root[data-theme="shinobu"] .transaction-amount,
+:root[data-theme="shinobu"] .budget-amount,
+:root[data-theme="shinobu"] .account-balance,
+:root[data-theme="shinobu"] .total-amount,
+:root[data-theme="shinobu"] .remaining-amount,
+:root[data-theme="shinobu"] *[class*="amount"],
+:root[data-theme="shinobu"] *[class*="money"],
+:root[data-theme="shinobu"] *[class*="price"],
+:root[data-theme="shinobu"] *[class*="currency"],
+:root[data-theme="shinobu"] *[class*="balance"],
+:root[data-theme="shinobu"] *[class*="wallet"] {
+    color: rgba(255, 255, 224, 1.0) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+/* 蝴蝶忍主題 - 錢符號和金額文字淺黃色 */
+:root[data-theme="shinobu"] .currency-symbol,
+:root[data-theme="shinobu"] .money-symbol,
+:root[data-theme="shinobu"] .amount-symbol,
+:root[data-theme="shinobu"] .price-symbol,
+:root[data-theme="shinobu"] *[data-currency],
+:root[data-theme="shinobu"] *[data-amount],
+:root[data-theme="shinobu"] *[data-money] {
+    color: rgba(255, 255, 224, 1.0) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+/* 蝴蝶忍主題 - 包含錢字元的文字淺黃色 */
+:root[data-theme="shinobu"] *:contains("NT$"),
+:root[data-theme="shinobu"] *:contains("$"),
+:root[data-theme="shinobu"] *:contains("¥"),
+:root[data-theme="shinobu"] *:contains("€"),
+:root[data-theme="shinobu"] *:contains("£"),
+:root[data-theme="shinobu"] *:contains("元"),
+:root[data-theme="shinobu"] *:contains("塊"),
+:root[data-theme="shinobu"] *:contains("錢") {
+    color: rgba(255, 255, 224, 1.0) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+/* 蝴蝶忍主題 - 模態框中的錢文字淺黃色 */
+:root[data-theme="shinobu"] .modal-content .amount,
+:root[data-theme="shinobu"] .modal-content .money,
+:root[data-theme="shinobu"] .modal-content .price,
+:root[data-theme="shinobu"] .modal-content .currency,
+:root[data-theme="shinobu"] .modal-content .balance,
+:root[data-theme="shinobu"] .modal-content .transaction-amount,
+:root[data-theme="shinobu"] .modal-content .budget-amount,
+:root[data-theme="shinobu"] .modal-content *[class*="amount"],
+:root[data-theme="shinobu"] .modal-content *[class*="money"],
+:root[data-theme="shinobu"] .modal-content *[class*="currency"] {
+    color: rgba(255, 255, 224, 1.0) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+/* 蝴蝶忍主題 - 圖表文字淺黃色 */
+:root[data-theme="shinobu"] .chart-container,
+:root[data-theme="shinobu"] .chart-wrapper,
+:root[data-theme="shinobu"] .chart-canvas,
+:root[data-theme="shinobu"] canvas,
+:root[data-theme="shinobu"] .chart-legend,
+:root[data-theme="shinobu"] .chart-label,
+:root[data-theme="shinobu"] .chart-title,
+:root[data-theme="shinobu"] .chart-axis,
+:root[data-theme="shinobu"] .chart-grid,
+:root[data-theme="shinobu"] .chart-tooltip,
+:root[data-theme="shinobu"] .chart-data-label,
+:root[data-theme="shinobu"] .chart-segment,
+:root[data-theme="shinobu"] .chart-value,
+:root[data-theme="shinobu"] .chart-percentage,
+:root[data-theme="shinobu"] .pie-chart,
+:root[data-theme="shinobu"] .bar-chart,
+:root[data-theme="shinobu"] .line-chart,
+:root[data-theme="shinobu"] .doughnut-chart {
+    color: rgba(255, 220, 120, 1.0) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95), 0 0 12px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+/* 蝴蝶忍主題 - 圖表數據和標籤淺黃色 */
+:root[data-theme="shinobu"] *[data-chart],
+:root[data-theme="shinobu"] *[data-legend],
+:root[data-theme="shinobu"] *[data-label],
+:root[data-theme="shinobu"] *[data-value],
+:root[data-theme="shinobu"] *[data-percentage],
+:root[data-theme="shinobu"] .chart-text,
+:root[data-theme="shinobu"] .chart-number,
+:root[data-theme="shinobu"] .chart-amount,
+:root[data-theme="shinobu"] .chart-money,
+:root[data-theme="shinobu"] .chart-currency {
+    color: rgba(255, 200, 80, 1.0) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95), 0 0 12px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+/* 蝴蝶忍主題 - 圖表頁面所有文字淺黃色 */
+:root[data-theme="shinobu"] .page-chart,
+:root[data-theme="shinobu"] .page-chart *,
+:root[data-theme="shinobu"] #pageChart,
+:root[data-theme="shinobu"] #pageChart *,
+:root[data-theme="shinobu"] .chart-section,
+:root[data-theme="shinobu"] .chart-section * {
+    color: rgba(255, 210, 100, 1.0) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95), 0 0 12px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* 蝴蝶忍主題 - 圖表按鈕和控件例外（保持白色） */
+:root[data-theme="shinobu"] .chart-button,
+:root[data-theme="shinobu"] .chart-control,
+:root[data-theme="shinobu"] .chart-nav,
+:root[data-theme="shinobu"] .chart-tab,
+:root[data-theme="shinobu"] .chart-filter {
+    color: rgba(255, 255, 255, 1.0) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* 蝴蝶忍主題 - 每月總支出趨勢數字日期白色 */
+:root[data-theme="shinobu"] .chart-date,
+:root[data-theme="shinobu"] .chart-datetime,
+:root[data-theme="shinobu"] .chart-month,
+:root[data-theme="shinobu"] .chart-year,
+:root[data-theme="shinobu"] .chart-day,
+:root[data-theme="shinobu"] .chart-time,
+:root[data-theme="shinobu"] .date-text,
+:root[data-theme="shinobu"] .time-text,
+:root[data-theme="shinobu"] .datetime-text,
+:root[data-theme="shinobu"] .month-text,
+:root[data-theme="shinobu"] .year-text,
+:root[data-theme="shinobu"] .day-text,
+:root[data-theme="shinobu"] *[data-date],
+:root[data-theme="shinobu"] *[data-time],
+:root[data-theme="shinobu"] *[data-datetime],
+:root[data-theme="shinobu"] *[data-month],
+:root[data-theme="shinobu"] *[data-year],
+:root[data-theme="shinobu"] *[data-day] {
+    color: rgba(255, 255, 255, 1.0) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 600 !important;
+}
+
+/* 蝴蝶忍主題 - 趨勢圖表日期軸白色 */
+:root[data-theme="shinobu"] .trend-chart .chart-date,
+:root[data-theme="shinobu"] .trend-chart .chart-month,
+:root[data-theme="shinobu"] .trend-chart .chart-year,
+:root[data-theme="shinobu"] .trend-chart .date-text,
+:root[data-theme="shinobu"] .trend-chart .month-text,
+:root[data-theme="shinobu"] .trend-chart .year-text,
+:root[data-theme="shinobu"] .trend-chart *[data-date],
+:root[data-theme="shinobu"] .trend-chart *[data-month],
+:root[data-theme="shinobu"] .trend-chart *[data-year] {
+    color: rgba(255, 255, 255, 1.0) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 600 !important;
+}
+
+/* 蝴蝶忍主題 - 每月總支出趨勢專門處理 */
+:root[data-theme="shinobu"] .monthly-expense-trend,
+:root[data-theme="shinobu"] .monthly-expense-trend *,
+:root[data-theme="shinobu"] .expense-trend-chart,
+:root[data-theme="shinobu"] .expense-trend-chart *,
+:root[data-theme="shinobu"] *[id*="expense-trend"],
+:root[data-theme="shinobu"] *[id*="monthly-expense"],
+:root[data-theme="shinobu"] *[class*="expense-trend"],
+:root[data-theme="shinobu"] *[class*="monthly-expense"] {
+    color: rgba(255, 255, 255, 1.0) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* 蝴蝶忍主題 - 趨勢圖表中的日期元素白色 */
+:root[data-theme="shinobu"] .trend-chart .x-axis .tick,
+:root[data-theme="shinobu"] .trend-chart .x-axis .label,
+:root[data-theme="shinobu"] .trend-chart .date-axis,
+:root[data-theme="shinobu"] .trend-chart .time-axis,
+:root[data-theme="shinobu"] .line-chart .x-axis .tick,
+:root[data-theme="shinobu"] .line-chart .x-axis .label,
+:root[data-theme="shinobu"] .line-chart .date-axis,
+:root[data-theme="shinobu"] .line-chart .time-axis {
+    color: rgba(255, 255, 255, 1.0) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 600 !important;
 }
