@@ -5,10 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>記帳 - 主輸入畫面</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="alternate icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23ff69b4'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>💰</text></svg>">
+    <link rel="alternate icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23ff69b4'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>\1F4B0</text></svg>">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="emerald-dream-theme.css">
     <link rel="stylesheet" href="flame-theme.css">
+    <link rel="stylesheet" href="shinchan-theme.css">
+    <link rel="stylesheet" href="shinchan-pool-theme.css">
+    <link rel="stylesheet" href="festive-theme.css">
+    <link rel="stylesheet" href="dreamy-galaxy-theme.css">
+    <link rel="stylesheet" href="whimsical-starry-theme.css">
+    <link rel="stylesheet" href="anime-elegance-theme.css">
+    <link rel="stylesheet" href="dreamy-dynamic-theme.css">
     <link rel="stylesheet" href="searchHistory.css">
+    <link rel="stylesheet" href="css/smart-accounting.css">
+    <link rel="stylesheet" href="css/smart-reminders.css">
+    <link rel="stylesheet" href="css/smart-analysis-panel.css">
+    <link rel="stylesheet" href="emoji-font-fix.css">
+    <link rel="stylesheet" href="current-price-black.css">
+    <link rel="stylesheet" href="emergency-icon-fix.css">
+    <link rel="stylesheet" href="clean-garbage-icons.css">
     
     <!-- Google Fonts - 美觀字體系統 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +31,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&family=Clash+Display:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="unified-icon-fix.js"></script>
 </head>
 <body>
     <div class="theme-video-background" aria-hidden="true">
@@ -24,6 +40,15 @@
         </video>
         <video id="spaceThemeVideo" class="theme-video" autoplay loop muted playsinline preload="auto">
             <source src="https://v1.pinimg.com/videos/iht/720p/4e/00/d1/4e00d1999152ab007ebe4aef36d5e2c9.mp4" type="video/mp4">
+        </video>
+        <video id="shinchanPoolThemeVideo" class="theme-video" autoplay loop muted playsinline preload="auto">
+            <source src="https://v1.pinimg.com/videos/iht/expMp4/76/35/eb/7635eb2cc1d1c08a867742f7144faf11_720w.mp4" type="video/mp4">
+        </video>
+        <video id="festiveThemeVideo" class="theme-video" autoplay loop muted playsinline preload="auto">
+            <source src="https://v1.pinimg.com/videos/iht/expMp4/4f/eb/42/4feb42e38cce1f3ab5505cf0cee1d2e3_720w.mp4" type="video/mp4">
+        </video>
+        <video id="dreamyDynamicThemeVideo" class="theme-video" autoplay loop muted playsinline preload="auto">
+            <source src="https://v1.pinimg.com/videos/iht/expMp4/c7/39/73/c739737a7c0471e01fa4e606507d0a48_720w.mp4" type="video/mp4">
         </video>
         <div class="theme-video-gradient"></div>
     </div>
@@ -405,6 +430,8 @@
         <div class="ledger-header">
             <button class="search-btn" id="searchBtn">🔍</button>
             <h2 class="ledger-title">默認帳本</h2>
+            <button class="smart-analysis-btn" id="smartAnalysisBtn" title="智慧分析">🧠 智慧分析</button>
+            <button class="smart-reminders-btn" id="smartRemindersBtn" title="智慧提醒">🔔 智慧提醒</button>
         </div>
 
         <!-- 搜索框 -->
@@ -500,7 +527,7 @@
         </div>
 
         <!-- 浮動添加按鈕 -->
-        <button class="fab-btn" id="fabBtn">💰</button>
+        <button class="fab-btn" id="fabBtn">🧧</button>
     </div>
 
     <!-- 圖表分析頁面 -->
@@ -1221,6 +1248,7 @@
                     <div class="metric-label">現價</div>
                     <div class="metric-price-wrapper metric-price-wrapper--simple">
                         <input type="number" class="metric-input-large" id="metricCurrentPrice" placeholder="輸入現價" step="0.01">
+                        <button type="button" class="metric-clear-btn" id="metricClearPrice" title="清除手動輸入的價格">✕</button>
                         <a href="#" class="metric-quote-btn" id="metricQuoteLink" data-site="cnyes" target="_blank" rel="noopener noreferrer">
                             鉅亨網查價
                         </a>
@@ -1996,26 +2024,145 @@
         </div>
     </div>
 
+    <!-- 更新提示彈窗 -->
+    <div class="update-notification-modal" id="updateNotificationModal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content update-modal-content">
+            <div class="modal-header">
+                <div class="update-notification-header">
+                    <div class="update-icon">🎉</div>
+                    <div>
+                        <h3 class="modal-title">發現新更新！</h3>
+                        <p class="update-subtitle" id="updateSubtitle">精彩新功能等你來體驗</p>
+                    </div>
+                </div>
+                <button class="modal-close-btn" id="updateNotificationClose">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="update-content" id="updateContent">
+                    <!-- 更新內容將由 JavaScript 動態生成 -->
+                </div>
+                <div class="update-features" id="updateFeatures">
+                    <!-- 新功能列表將由 JavaScript 動態生成 -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="update-btn secondary" id="updateSkipBtn">稍後查看</button>
+                <button class="update-btn primary" id="updateExploreBtn">立即探索</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 更新提示系統 -->
+    <script src="js/update-notifications.js"></script>
     <!-- 模組化腳本 -->
     <script src="js/categories.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/advisor.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/autoTransfer.js"></script>
-    <!-- 強制蝴蝶忍主題卡費文字白色 -->
-    <script src="force_fee_white.js"></script>
+    <!-- 智慧記帳功能 -->
+    <script src="js/smart-accounting.js"></script>
+    <!-- 智慧記帳整合功能 -->
+    <script src="js/smart-accounting-integration.js"></script>
+    <!-- 智慧提醒系統 -->
+    <script src="js/smart-reminders.js"></script>
+    <!-- 性能優化器 -->
+    <script src="js/performance-optimizer-simple.js"></script>
     <!-- 住房物業分類顏色修復 -->
     <script src="housing_category_fix.js"></script>
     <!-- 錢文字淺黃色修復 -->
     <script src="money_color_fix.js"></script>
     <!-- 圖表文字淺黃色修復 -->
     <script src="chart_color_fix.js"></script>
-    <!-- 強制日期文字白色 -->
-    <script src="force_date_white.js"></script>
     <!-- 極端日期白色修復 -->
     <script src="extreme_date_fix.js"></script>
     <!-- 主腳本（保留其他功能） -->
     <script src="script.js?v=20251227_1"></script>
     <script src="searchHistoryInit.js" type="module"></script>
+    
+    <!-- 自動修復投資卡片背景圖片 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 等待主題系統載入
+            setTimeout(function() {
+                // 檢查是否為節日慶典主題
+                const currentTheme = localStorage.getItem('selectedTheme') || localStorage.getItem('theme') || 'blue';
+                
+                if (currentTheme === 'festive') {
+                    console.log('檢測到節日慶典主題，應用投資卡片背景圖片...');
+                    applyFestiveTheme();
+                }
+                
+                // 監聽主題變化
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+                            const newTheme = document.documentElement.getAttribute('data-theme');
+                            if (newTheme === 'festive') {
+                                console.log('切換到節日慶典主題，應用投資卡片背景圖片...');
+                                applyFestiveTheme();
+                            }
+                        }
+                    });
+                });
+                
+                observer.observe(document.documentElement, { attributes: true });
+                
+                function applyFestiveTheme() {
+                    const cards = document.querySelectorAll('.summary-card');
+                    cards.forEach((card, index) => {
+                        // 應用背景圖片
+                        card.style.setProperty('background-image', 'url("https://i.pinimg.com/1200x/ba/24/9a/ba249a3cc3f9f317683f78c240ff0686.jpg")', 'important');
+                        card.style.setProperty('background-size', 'cover', 'important');
+                        card.style.setProperty('background-position', 'center', 'important');
+                        card.style.setProperty('background-color', 'rgba(230, 57, 70, 0.3)', 'important');
+                        card.style.setProperty('background-blend-mode', 'overlay', 'important');
+                        card.style.setProperty('border', '2px solid rgba(252, 163, 17, 0.72)', 'important');
+                        card.style.setProperty('border-radius', '20px', 'important');
+                        card.style.setProperty('backdrop-filter', 'blur(15px)', 'important');
+                        
+                        // 確保圖示可見
+                        const icon = card.querySelector('.summary-icon');
+                        if (icon) {
+                            icon.style.setProperty('color', 'white', 'important');
+                            icon.style.setProperty('font-size', '24px', 'important');
+                            icon.style.setProperty('text-shadow', '0 2px 4px rgba(0,0,0,0.5)', 'important');
+                            icon.style.setProperty('z-index', '10', 'important');
+                            icon.style.setProperty('position', 'relative', 'important');
+                        }
+                        
+                        // 確保文字可見
+                        const content = card.querySelector('.summary-content');
+                        if (content) {
+                            content.style.setProperty('color', 'white', 'important');
+                            content.style.setProperty('text-shadow', '0 2px 4px rgba(0,0,0,0.5)', 'important');
+                            content.style.setProperty('z-index', '10', 'important');
+                            content.style.setProperty('position', 'relative', 'important');
+                        }
+                        
+                        const label = card.querySelector('.summary-label');
+                        if (label) {
+                            label.style.setProperty('color', 'white', 'important');
+                            label.style.setProperty('font-size', '14px', 'important');
+                            label.style.setProperty('text-shadow', '0 2px 4px rgba(0,0,0,0.5)', 'important');
+                        }
+                        
+                        const value = card.querySelector('.summary-value');
+                        if (value) {
+                            value.style.setProperty('color', 'white', 'important');
+                            value.style.setProperty('font-size', '18px', 'important');
+                            value.style.setProperty('font-weight', 'bold', 'important');
+                            value.style.setProperty('text-shadow', '0 2px 4px rgba(0,0,0,0.5)', 'important');
+                        }
+                        
+                        console.log(`投資卡片 ${index + 1} 已應用節日慶典主題`);
+                    });
+                    
+                    console.log('節日慶典主題應用完成！');
+                }
+            }, 1000);
+        });
+    </script>
 </body>
 </html>

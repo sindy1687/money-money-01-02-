@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投資分析報告測試</title>
+    <link rel="stylesheet" href="css/investment-analysis.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .test-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-button {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            transition: all 0.2s;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+        }
+        .example-section {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #3b82f6;
+        }
+        .example-title {
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+        .example-content {
+            font-family: monospace;
+            white-space: pre-line;
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+        }
+        .result {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #22c55e;
+            background: #f0fdf4;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>📊 投資分析報告測試</h1>
+            <p>測試投資組合分析和目標追蹤報告格式</p>
+        </div>
+        
+        <div class="example-section">
+            <div class="example-title">用戶期望的報告範例：</div>
+            <div class="example-content">投資組合分析報告：
+💰 總市值：NT$1,250,000
+📊 總損益：+NT$125,000 (+11.1%)
+⚠️ 風險等級：中等風險 (45分)
+🌍 分散度分數：72分 (良好)
+📈 夏普比率：1.85
+
+目標追蹤報告：
+🎯 退休基金：進度 35% (軌道上)
+🎓 教育基金：進度 28% (軌道上)
+🏠 購屋基金：進度 15% (需要加強)</div>
+        </div>
+        
+        <div class="test-section">
+            <h2>功能測試</h2>
+            <button class="test-button" onclick="testPortfolioAnalysis()">測試投資組合分析</button>
+            <button class="test-button" onclick="testGoalTracking()">測試目標追蹤</button>
+            <button class="test-button" onclick="testFullReport()">測試完整報告</button>
+            <div id="testResults"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>格式驗證</h2>
+            <button class="test-button" onclick="verifyRiskDisplay()">驗證風險等級顯示</button>
+            <button class="test-button" onclick="verifyDiversificationDisplay()">驗證分散度分數顯示</button>
+            <button class="test-button" onclick="verifyGoalDisplay()">驗證目標追蹤顯示</button>
+            <div id="formatResults"></div>
+        </div>
+    </div>
+
+    <!-- 載入投資分析系統 -->
+    <script src="js/investment-analysis.js"></script>
+    <script src="js/investment-analysis-integration.js"></script>
+    
+    <script>
+        // 測試投資組合數據
+        const testHoldings = [
+            {
+                symbol: '2330',
+                name: '台積電',
+                quantity: 1000,
+                currentPrice: 600,
+                avgCost: 500,
+                sector: '半導體',
+                region: '台灣'
+            },
+            {
+                symbol: '2317',
+                name: '鴻海',
+                quantity: 2000,
+                currentPrice: 120,
+                avgCost: 100,
+                sector: '電子製造',
+                region: '台灣'
+            },
+            {
+                symbol: '0056',
+                name: '高股息ETF',
+                quantity: 5000,
+                currentPrice: 30,
+                avgCost: 28,
+                sector: 'ETF',
+                region: '台灣'
+            }
+        ];
+        
+        // 測試目標數據
+        const testGoals = [
+            {
+                id: 'retirement_default',
+                name: '退休基金',
+                type: 'retirement',
+                targetAmount: 10000000,
+                targetDate: '2045-01-01',
+                priority: 'high'
+            },
+            {
+                id: 'education_default',
+                name: '教育基金',
+                type: 'education',
+                targetAmount: 2000000,
+                targetDate: '2030-01-01',
+                priority: 'medium'
+            },
+            {
+                id: 'house_default',
+                name: '購屋基金',
+                type: 'house',
+                targetAmount: 5000000,
+                targetDate: '2028-01-01',
+                priority: 'medium'
+            }
+        ];
+        
+        // 顯示結果
+        function showResult(elementId, message, type = 'success') {
+            const element = document.getElementById(elementId);
+            const bgColors = {
+                success: '#f0fdf4',
+                error: '#fef2f2',
+                info: '#f0f9ff'
+            };
+            const borderColors = {
+                success: '#22c55e',
+                error: '#ef4444',
+                info: '#3b82f6'
+            };
+            
+            element.innerHTML = `
+                <div style="padding: 15px; border-radius: 8px; margin: 10px 0; border-left: 4px solid ${borderColors[type]}; background: ${bgColors[type]};">
+                    ${message}
+                </div>
+            `;
+        }
+        
+        // 測試投資組合分析
+        function testPortfolioAnalysis() {
+            if (typeof InvestmentAnalysis !== 'undefined') {
+                const analysis = InvestmentAnalysis.analyzePortfolio(testHoldings);
+                
+                if (analysis) {
+                    const report = `
+                        <strong>投資組合分析報告：</strong><br>
+                        💰 總市值：NT$${analysis.summary.totalValue.toLocaleString()}<br>
+                        📊 總損益：${analysis.summary.totalGain >= 0 ? '+' : ''}NT$${analysis.summary.totalGain.toLocaleString()} (${analysis.summary.totalGainPercent.toFixed(1)}%)<br>
+                        ⚠️ 風險等級：${investmentAnalysisManager.getRiskLevelDescription(analysis.risk.riskScore)} (${Math.round(analysis.risk.riskScore)}分)<br>
+                        🌍 分散度分數：${Math.round(analysis.diversification.diversificationScore)}分 (${investmentAnalysisManager.getScoreLevelText(analysis.diversification.diversificationScore)})<br>
+                        📈 夏普比率：${analysis.performance.sharpeRatio.toFixed(2)}
+                    `;
+                    
+                    showResult('testResults', report, 'success');
+                } else {
+                    showResult('testResults', '分析失敗：無法生成投資組合分析', 'error');
+                }
+            } else {
+                showResult('testResults', '錯誤：InvestmentAnalysis 模組未載入', 'error');
+            }
+        }
+        
+        // 測試目標追蹤
+        function testGoalTracking() {
+            if (typeof InvestmentAnalysis !== 'undefined') {
+                const portfolioAnalysis = InvestmentAnalysis.analyzePortfolio(testHoldings);
+                const goalTracking = InvestmentAnalysis.trackInvestmentGoals(testGoals, portfolioAnalysis);
+                
+                if (goalTracking) {
+                    const report = goalTracking.goals.map(goal => 
+                        `🎯 ${goal.name}：進度 ${Math.round(goal.progress)}% (${investmentAnalysisManager.getGoalStatusDescription(goal.progress, goal.status)})`
+                    ).join('<br>');
+                    
+                    showResult('testResults', `<strong>目標追蹤報告：</strong><br>${report}`, 'success');
+                } else {
+                    showResult('testResults', '分析失敗：無法生成目標追蹤', 'error');
+                }
+            } else {
+                showResult('testResults', '錯誤：InvestmentAnalysis 模組未載入', 'error');
+            }
+        }
+        
+        // 測試完整報告
+        function testFullReport() {
+            if (typeof investmentAnalysisManager !== 'undefined') {
+                // 設置測試數據
+                investmentAnalysisManager.portfolioAnalysis = InvestmentAnalysis.analyzePortfolio(testHoldings);
+                investmentAnalysisManager.goalTracking = InvestmentAnalysis.trackInvestmentGoals(testGoals, investmentAnalysisManager.portfolioAnalysis);
+                
+                if (investmentAnalysisManager.portfolioAnalysis && investmentAnalysisManager.goalTracking) {
+                    const analysis = investmentAnalysisManager.portfolioAnalysis;
+                    const tracking = investmentAnalysisManager.goalTracking;
+                    
+                    const portfolioReport = `
+                        <strong>投資組合分析報告：</strong><br>
+                        💰 總市值：NT$${analysis.summary.totalValue.toLocaleString()}<br>
+                        📊 總損益：${analysis.summary.totalGain >= 0 ? '+' : ''}NT$${analysis.summary.totalGain.toLocaleString()} (${analysis.summary.totalGainPercent.toFixed(1)}%)<br>
+                        ⚠️ 風險等級：${investmentAnalysisManager.getRiskLevelDescription(analysis.risk.riskScore)} (${Math.round(analysis.risk.riskScore)}分)<br>
+                        🌍 分散度分數：${Math.round(analysis.diversification.diversificationScore)}分 (${investmentAnalysisManager.getScoreLevelText(analysis.diversification.diversificationScore)})<br>
+                        📈 夏普比率：${analysis.performance.sharpeRatio.toFixed(2)}
+                    `;
+                    
+                    const goalReport = tracking.goals.map(goal => 
+                        `🎯 ${goal.name}：進度 ${Math.round(goal.progress)}% (${investmentAnalysisManager.getGoalStatusDescription(goal.progress, goal.status)})`
+                    ).join('<br>');
+                    
+                    showResult('testResults', `${portfolioReport}<br><br><strong>目標追蹤報告：</strong><br>${goalReport}`, 'success');
+                } else {
+                    showResult('testResults', '分析失敗：無法生成完整報告', 'error');
+                }
+            } else {
+                showResult('testResults', '錯誤：investmentAnalysisManager 未載入', 'error');
+            }
+        }
+        
+        // 驗證風險等級顯示
+        function verifyRiskDisplay() {
+            if (typeof investmentAnalysisManager !== 'undefined') {
+                const testScores = [15, 35, 45, 65, 85];
+                const results = testScores.map(score => {
+                    const description = investmentAnalysisManager.getRiskLevelDescription(score);
+                    return `${score}分 → ${description}`;
+                }).join('<br>');
+                
+                showResult('formatResults', `<strong>風險等級測試：</strong><br>${results}`, 'info');
+            } else {
+                showResult('formatResults', '錯誤：investmentAnalysisManager 未載入', 'error');
+            }
+        }
+        
+        // 驗證分散度分數顯示
+        function verifyDiversificationDisplay() {
+            if (typeof investmentAnalysisManager !== 'undefined') {
+                const testScores = [25, 45, 72, 85, 95];
+                const results = testScores.map(score => {
+                    const levelText = investmentAnalysisManager.getScoreLevelText(score);
+                    return `${score}分 → ${levelText}`;
+                }).join('<br>');
+                
+                showResult('formatResults', `<strong>分散度分數測試：</strong><br>${results}`, 'info');
+            } else {
+                showResult('formatResults', '錯誤：investmentAnalysisManager 未載入', 'error');
+            }
+        }
+        
+        // 驗證目標追蹤顯示
+        function verifyGoalDisplay() {
+            if (typeof investmentAnalysisManager !== 'undefined') {
+                const testProgress = [15, 28, 35, 80, 95];
+                const results = testProgress.map(progress => {
+                    const description = investmentAnalysisManager.getGoalStatusDescription(progress, 'in_progress');
+                    return `進度 ${progress}% → ${description}`;
+                }).join('<br>');
+                
+                showResult('formatResults', `<strong>目標狀態測試：</strong><br>${results}`, 'info');
+            } else {
+                showResult('formatResults', '錯誤：investmentAnalysisManager 未載入', 'error');
+            }
+        }
+        
+        // 頁面載入時自動測試
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                testFullReport();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

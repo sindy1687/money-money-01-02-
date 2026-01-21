@@ -1,0 +1,17 @@
+/* 現價標籤黑色文字 */
+.current-price-label,
+.price-label,
+.stock-current-price-label,
+.stock-price-section > div:first-child {
+    color: black !important;
+    font-weight: 600 !important;
+}
+
+/* 確保所有主題下的現價文字都是黑色 */
+[data-theme] .current-price-label,
+[data-theme] .price-label,
+[data-theme] .stock-current-price-label,
+[data-theme] .stock-price-section > div:first-child {
+    color: black !important;
+    font-weight: 600 !important;
+}

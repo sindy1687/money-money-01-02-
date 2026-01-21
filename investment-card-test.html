@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>投資卡片文字顏色測試</title>
+    <link rel="stylesheet" href="dreamy-dynamic-theme.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #ffc371 100%);
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        .test-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F59E0B 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">切換主題</button>
+    
+    <div class="test-container">
+        <h1>投資卡片文字顏色測試</h1>
+        
+        <!-- 台積電投資卡片 -->
+        <div class="investment-card" style="margin: 20px 0; padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <div class="stock-name">台積電</div>
+                    <div class="stock-code">2330</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="current-price">1,775.00</div>
+                </div>
+            </div>
+            
+            <div style="margin: 15px 0;">
+                <div class="yesterday-close">昨收 1,760.00</div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="share-count">24 股</div>
+                <div class="price-change">
+                    <span class="arrow">▲</span>+15.00 (+0.85%)
+                </div>
+            </div>
+        </div>
+        
+        <!-- 另一個投資卡片範例 -->
+        <div class="investment-card" style="margin: 20px 0; padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <div class="stock-name">鴻海精密</div>
+                    <div class="stock-code">2317</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="current-price">142.50</div>
+                </div>
+            </div>
+            
+            <div style="margin: 15px 0;">
+                <div class="yesterday-close">昨收 140.00</div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="share-count">100 股</div>
+                <div class="price-change positive">
+                    <span class="arrow">▲</span>+2.50 (+1.79%)
+                </div>
+            </div>
+        </div>
+        
+        <!-- 下跌的投資卡片 -->
+        <div class="investment-card" style="margin: 20px 0; padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <div class="stock-name">聯發科</div>
+                    <div class="stock-code">2454</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="current-price">680.00</div>
+                </div>
+            </div>
+            
+            <div style="margin: 15px 0;">
+                <div class="yesterday-close">昨收 690.00</div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="share-count">50 股</div>
+                <div class="price-change">
+                    <span class="arrow">▼</span>-10.00 (-1.45%)
+                </div>
+            </div>
+        </div>
+        
+        <!-- 額外的投資卡片範例 -->
+        <div class="investment-card" style="margin: 20px 0; padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <div class="stock-name">台達電</div>
+                    <div class="stock-code">2382</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="current-price">285.50</div>
+                </div>
+            </div>
+            
+            <div style="margin: 15px 0;">
+                <div class="yesterday-close">昨收 282.00</div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="share-count">200 股</div>
+                <div class="price-change positive">
+                    <span class="arrow">▲</span>+3.50 (+1.24%)
+                </div>
+            </div>
+        </div>
+        
+        <!-- 大漲的投資卡片 -->
+        <div class="investment-card" style="margin: 20px 0; padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <div class="stock-name">聯電</div>
+                    <div class="stock-code">2303</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="current-price">520.00</div>
+                </div>
+            </div>
+            
+            <div style="margin: 15px 0;">
+                <div class="yesterday-close">昨收 500.00</div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="share-count">80 股</div>
+                <div class="price-change positive">
+                    <span class="arrow">▲</span>+20.00 (+4.00%)
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let isDreamyDynamic = false;
+        
+        function toggleTheme() {
+            isDreamyDynamic = !isDreamyDynamic;
+            if (isDreamyDynamic) {
+                document.documentElement.setAttribute('data-theme', 'dreamy-dynamic');
+                document.querySelector('.theme-toggle').textContent = '關閉主題';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                document.querySelector('.theme-toggle').textContent = '切換主題';
+            }
+        }
+        
+        // 自動應用主題
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleTheme();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>專業投資卡片設計測試</title>
+    <link rel="stylesheet" href="dreamy-dynamic-theme.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #ffc371 100%);
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F59E0B 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .comparison-section {
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+        }
+        
+        .comparison-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">切換主題</button>
+    
+    <div class="test-container">
+        <h1 style="color: white; text-align: center; margin-bottom: 30px;">專業投資卡片設計展示</h1>
+        
+        <div class="cards-grid">
+            <!-- 台積電投資卡片 -->
+            <div class="investment-card" style="padding: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <div class="stock-name">台積電</div>
+                        <div class="stock-code">2330</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="current-price">1,775.00</div>
+                    </div>
+                </div>
+                
+                <div style="margin: 16px 0;">
+                    <div class="yesterday-close">昨收 1,760.00</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="share-count">24 股</div>
+                    <div class="price-change">
+                        <span class="arrow">▲</span>+15.00 (+0.85%)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 鴻海精密投資卡片 -->
+            <div class="investment-card" style="padding: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <div class="stock-name">鴻海精密</div>
+                        <div class="stock-code">2317</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="current-price">142.50</div>
+                    </div>
+                </div>
+                
+                <div style="margin: 16px 0;">
+                    <div class="yesterday-close">昨收 140.00</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="share-count">100 股</div>
+                    <div class="price-change positive">
+                        <span class="arrow">▲</span>+2.50 (+1.79%)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 聯發科投資卡片 -->
+            <div class="investment-card" style="padding: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <div class="stock-name">聯發科</div>
+                        <div class="stock-code">2454</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="current-price">680.00</div>
+                    </div>
+                </div>
+                
+                <div style="margin: 16px 0;">
+                    <div class="yesterday-close">昨收 690.00</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="share-count">50 股</div>
+                    <div class="price-change">
+                        <span class="arrow">▼</span>-10.00 (-1.45%)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 台達電投資卡片 -->
+            <div class="investment-card" style="padding: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <div class="stock-name">台達電</div>
+                        <div class="stock-code">2382</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="current-price">285.50</div>
+                    </div>
+                </div>
+                
+                <div style="margin: 16px 0;">
+                    <div class="yesterday-close">昨收 282.00</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="share-count">200 股</div>
+                    <div class="price-change positive">
+                        <span class="arrow">▲</span>+3.50 (+1.24%)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 聯電投資卡片 -->
+            <div class="investment-card" style="padding: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <div class="stock-name">聯電</div>
+                        <div class="stock-code">2303</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="current-price">520.00</div>
+                    </div>
+                </div>
+                
+                <div style="margin: 16px 0;">
+                    <div class="yesterday-close">昨收 500.00</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="share-count">80 股</div>
+                    <div class="price-change positive">
+                        <span class="arrow">▲</span>+20.00 (+4.00%)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 大立投資卡片 -->
+            <div class="investment-card" style="padding: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <div class="stock-name">大立</div>
+                        <div class="stock-code">2367</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="current-price">325.00</div>
+                    </div>
+                </div>
+                
+                <div style="margin: 16px 0;">
+                    <div class="yesterday-close">昨收 320.00</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="share-count">150 股</div>
+                    <div class="price-change positive">
+                        <span class="arrow">▲</span>+5.00 (+1.56%)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison-section">
+            <div class="comparison-title">設計特色說明</div>
+            <ul style="color: white; line-height: 1.6;">
+                <li><strong>專業深色背景</strong>：採用 145° 漸層，從深灰到藍灰色調</li>
+                <li><strong>精緻陰影系統</strong>：多層陰影創造深度感，包含內發光效果</li>
+                <li><strong>優雅邊框設計</strong>：紫色邊框搭配半透明效果</li>
+                <li><strong>專業漲跌幅按鈕</strong>：更小的圓角和精確的色彩搭配</li>
+                <li><strong>懸停微動畫</strong>：輕微上浮效果，不過於誇張</li>
+                <li><strong>清晰文字層次</strong>：主要、次要、淺色文字的明確區分</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        let isDreamyDynamic = false;
+        
+        function toggleTheme() {
+            isDreamyDynamic = !isDreamyDynamic;
+            if (isDreamyDynamic) {
+                document.documentElement.setAttribute('data-theme', 'dreamy-dynamic');
+                document.querySelector('.theme-toggle').textContent = '關閉主題';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                document.querySelector('.theme-toggle').textContent = '切換主題';
+            }
+        }
+        
+        // 自動應用主題
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleTheme();
+        });
+    </script>
+</body>
+</html>

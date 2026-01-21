@@ -1,0 +1,697 @@
+/* ========== 夢幻動態主題樣式 - 修復版 ========== */
+
+/* 主題色彩變數 */
+:root[data-theme="dreamy-dynamic"] {
+    --primary-color: #8B5CF6;
+    --secondary-color: #EC4899;
+    --accent-color: #F59E0B;
+    --background-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #ffc371 100%);
+    --card-gradient: linear-gradient(135deg, rgba(139, 92, 246, 0.9) 0%, rgba(236, 72, 153, 0.9) 50%, rgba(245, 158, 11, 0.9) 100%);
+    --button-gradient: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F59E0B 100%);
+    --text-primary: #FFFFFF;
+    --text-secondary: #F3F4F6;
+    --text-muted: #E5E7EB;
+    --text-dark: #1F2937;
+    --text-dark-secondary: #374151;
+    --text-dark-muted: #6B7280;
+    --border-color: rgba(255, 255, 255, 0.2);
+    --shadow-color: rgba(139, 92, 246, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+/* 字體美化 */
+:root[data-theme="dreamy-dynamic"] {
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme="dreamy-dynamic"] h1,
+:root[data-theme="dreamy-dynamic"] h2,
+:root[data-theme="dreamy-dynamic"] h3,
+:root[data-theme="dreamy-dynamic"] h4,
+:root[data-theme="dreamy-dynamic"] h5,
+:root[data-theme="dreamy-dynamic"] h6 {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="dreamy-dynamic"] .card-title,
+:root[data-theme="dreamy-dynamic"] .modal-title,
+:root[data-theme="dreamy-dynamic"] .button-text {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* 背景樣式 */
+:root[data-theme="dreamy-dynamic"] body {
+    background: var(--background-gradient);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+:root[data-theme="dreamy-dynamic"] body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(139, 92, 246, 0.1) 0%, 
+        rgba(236, 72, 153, 0.1) 25%, 
+        rgba(245, 158, 11, 0.1) 50%, 
+        rgba(139, 92, 246, 0.1) 75%, 
+        rgba(236, 72, 153, 0.1) 100%);
+    pointer-events: none;
+    z-index: 1;
+    animation: dreamyBackground 15s ease-in-out infinite;
+}
+
+@keyframes dreamyBackground {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+/* 卡片樣式 */
+:root[data-theme="dreamy-dynamic"] .card,
+:root[data-theme="dreamy-dynamic"] .accounting-card,
+:root[data-theme="dreamy-dynamic"] .monthly-planning-card,
+:root[data-theme="dreamy-dynamic"] .investment-settings-card,
+:root[data-theme="dreamy-dynamic"] .buying-card,
+:root[data-theme="dreamy-dynamic"] .selling-card,
+:root[data-theme="dreamy-dynamic"] .dividend-card,
+:root[data-theme="dreamy-dynamic"] .wallet-budget-card,
+:root[data-theme="dreamy-dynamic"] .recurring-management-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px var(--shadow-color);
+    color: var(--text-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 投資卡片和持有卡片專用樣式 - 強制專業深色背景 */
+:root[data-theme="dreamy-dynamic"] .investment-card,
+:root[data-theme="dreamy-dynamic"] .holding-card {
+    /* 強制專業深色背景 */
+    background: linear-gradient(145deg, #1a1f2e 0%, #2d3748 50%, #1a202c 100%) !important;
+    background-image: linear-gradient(145deg, #1a1f2e 0%, #2d3748 50%, #1a202c 100%) !important;
+    background-color: #1a1f2e !important;
+    
+    /* 專業視覺效果 */
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(139, 92, 246, 0.3) !important;
+    border-radius: 16px !important;
+    
+    /* 專業陰影系統 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important,
+                0 1px 3px rgba(0, 0, 0, 0.3) !important,
+                inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    
+    /* 強制文字顏色 */
+    color: var(--text-primary) !important;
+    
+    /* 其他屬性 */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 防止任何背景覆蓋 - 超級強制 */
+:root[data-theme="dreamy-dynamic"] .investment-card,
+:root[data-theme="dreamy-dynamic"] .holding-card {
+    background-image: none !important;
+    background-color: #1a1f2e !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    background-clip: border-box !important;
+    background-origin: padding-box !important;
+}
+
+/* 確保懸停時也強制使用專業深色背景 */
+:root[data-theme="dreamy-dynamic"] .investment-card:hover,
+:root[data-theme="dreamy-dynamic"] .holding-card:hover {
+    background: linear-gradient(145deg, #1e2433 0%, #2d3748 50%, #1a202c 100%) !important;
+    background-image: none !important;
+    background-color: #1e2433 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2) !important,
+                0 2px 6px rgba(0, 0, 0, 0.4) !important,
+                inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(139, 92, 246, 0.5) !important;
+}
+
+/* 防止偽元素覆蓋背景 */
+:root[data-theme="dreamy-dynamic"] .investment-card::before,
+:root[data-theme="dreamy-dynamic"] .holding-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(139, 92, 246, 0.05) 0%, 
+        rgba(236, 72, 153, 0.03) 50%, 
+        rgba(245, 158, 11, 0.05) 100%) !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+:root[data-theme="dreamy-dynamic"] .investment-card:hover::before,
+:root[data-theme="dreamy-dynamic"] .holding-card:hover::before {
+    opacity: 1 !important;
+}
+
+/* 投資卡片和持有卡片文字樣式 */
+:root[data-theme="dreamy-dynamic"] .investment-card h3,
+:root[data-theme="dreamy-dynamic"] .investment-card h4,
+:root[data-theme="dreamy-dynamic"] .investment-card .stock-name,
+:root[data-theme="dreamy-dynamic"] .investment-card .stock-code,
+:root[data-theme="dreamy-dynamic"] .investment-card .current-price,
+:root[data-theme="dreamy-dynamic"] .investment-card .yesterday-close,
+:root[data-theme="dreamy-dynamic"] .investment-card .share-count,
+:root[data-theme="dreamy-dynamic"] .holding-card h3,
+:root[data-theme="dreamy-dynamic"] .holding-card h4,
+:root[data-theme="dreamy-dynamic"] .holding-card .stock-name,
+:root[data-theme="dreamy-dynamic"] .holding-card .stock-code,
+:root[data-theme="dreamy-dynamic"] .holding-card .current-price,
+:root[data-theme="dreamy-dynamic"] .holding-card .yesterday-close,
+:root[data-theme="dreamy-dynamic"] .holding-card .share-count {
+    color: var(--text-primary) !important;
+    font-weight: 600;
+}
+
+:root[data-theme="dreamy-dynamic"] .investment-card .stock-name,
+:root[data-theme="dreamy-dynamic"] .holding-card .stock-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+:root[data-theme="dreamy-dynamic"] .investment-card .stock-code,
+:root[data-theme="dreamy-dynamic"] .holding-card .stock-code {
+    font-size: 0.9rem;
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+}
+
+:root[data-theme="dreamy-dynamic"] .investment-card .current-price,
+:root[data-theme="dreamy-dynamic"] .holding-card .current-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="dreamy-dynamic"] .investment-card .yesterday-close,
+:root[data-theme="dreamy-dynamic"] .holding-card .yesterday-close {
+    font-size: 0.85rem;
+    color: var(--text-muted) !important;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-weight: 500;
+}
+
+:root[data-theme="dreamy-dynamic"] .investment-card .share-count,
+:root[data-theme="dreamy-dynamic"] .holding-card .share-count {
+    font-size: 0.9rem;
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+}
+
+:root[data-theme="dreamy-dynamic"] .investment-card .price-change {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: #FFFFFF !important;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: inline-block;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+:root[data-theme="dreamy-dynamic"] .investment-card .price-change.positive {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    box-shadow: 0 2px 4px rgba(5, 150, 105, 0.2);
+    border: 1px solid rgba(5, 150, 105, 0.3);
+}
+
+:root[data-theme="dreamy-dynamic"] .investment-card .price-change .arrow {
+    display: inline-block;
+    margin-right: 4px;
+    font-size: 0.8rem;
+}
+
+/* 卡片懸停效果 */
+:root[data-theme="dreamy-dynamic"] .card::before,
+:root[data-theme="dreamy-dynamic"] .accounting-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--card-gradient);
+    opacity: 0.1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+:root[data-theme="dreamy-dynamic"] .card:hover::before,
+:root[data-theme="dreamy-dynamic"] .accounting-card:hover::before {
+    opacity: 0.2;
+}
+
+:root[data-theme="dreamy-dynamic"] .card:hover,
+:root[data-theme="dreamy-dynamic"] .accounting-card:hover,
+:root[data-theme="dreamy-dynamic"] .monthly-planning-card:hover,
+:root[data-theme="dreamy-dynamic"] .investment-settings-card:hover,
+:root[data-theme="dreamy-dynamic"] .buying-card:hover,
+:root[data-theme="dreamy-dynamic"] .selling-card:hover,
+:root[data-theme="dreamy-dynamic"] .dividend-card:hover,
+:root[data-theme="dreamy-dynamic"] .wallet-budget-card:hover,
+:root[data-theme="dreamy-dynamic"] .recurring-management-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px var(--shadow-color);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 按鈕樣式 */
+:root[data-theme="dreamy-dynamic"] .btn,
+:root[data-theme="dreamy-dynamic"] .btn-primary,
+:root[data-theme="dreamy-dynamic"] .btn-secondary,
+:root[data-theme="dreamy-dynamic"] .fab-button,
+:root[data-theme="dreamy-dynamic"] .buy-button,
+:root[data-theme="dreamy-dynamic"] .sell-button,
+:root[data-theme="dreamy-dynamic"] .recurring-button {
+    background: var(--button-gradient);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="dreamy-dynamic"] .btn::before,
+:root[data-theme="dreamy-dynamic"] .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+:root[data-theme="dreamy-dynamic"] .btn:hover::before,
+:root[data-theme="dreamy-dynamic"] .btn-primary:hover::before {
+    left: 100%;
+}
+
+:root[data-theme="dreamy-dynamic"] .btn:hover,
+:root[data-theme="dreamy-dynamic"] .btn-primary:hover,
+:root[data-theme="dreamy-dynamic"] .fab-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--shadow-color);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+:root[data-theme="dreamy-dynamic"] .btn:active,
+:root[data-theme="dreamy-dynamic"] .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+/* 導航欄樣式 */
+:root[data-theme="dreamy-dynamic"] .navbar,
+:root[data-theme="dreamy-dynamic"] .nav-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+:root[data-theme="dreamy-dynamic"] .nav-button {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="dreamy-dynamic"] .nav-button:hover,
+:root[data-theme="dreamy-dynamic"] .nav-button.active {
+    background: var(--button-gradient);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* 模態框樣式 */
+:root[data-theme="dreamy-dynamic"] .modal,
+:root[data-theme="dreamy-dynamic"] .modal-content,
+:root[data-theme="dreamy-dynamic"] .dialog-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px var(--shadow-color);
+    color: var(--text-primary);
+}
+
+:root[data-theme="dreamy-dynamic"] .modal-header,
+:root[data-theme="dreamy-dynamic"] .modal-title {
+    background: var(--button-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+}
+
+/* 表單元素樣式 */
+:root[data-theme="dreamy-dynamic"] input,
+:root[data-theme="dreamy-dynamic"] select,
+:root[data-theme="dreamy-dynamic"] textarea {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: var(--text-primary);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="dreamy-dynamic"] input:focus,
+:root[data-theme="dreamy-dynamic"] select:focus,
+:root[data-theme="dreamy-dynamic"] textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+    outline: none;
+}
+
+:root[data-theme="dreamy-dynamic"] input::placeholder,
+:root[data-theme="dreamy-dynamic"] textarea::placeholder {
+    color: var(--text-muted);
+}
+
+/* 智慧分析面板 */
+:root[data-theme="dreamy-dynamic"] .smart-analysis-panel,
+:root[data-theme="dreamy-dynamic"] .smart-reminders-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 12px 40px var(--shadow-color);
+}
+
+:root[data-theme="dreamy-dynamic"] .analysis-card,
+:root[data-theme="dreamy-dynamic"] .reminder-card {
+    background: var(--card-gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease-in-out infinite;
+    border-radius: 15px;
+    padding: 20px;
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 小森對話框 */
+:root[data-theme="dreamy-dynamic"] .advisor-dialog,
+:root[data-theme="dreamy-dynamic"] .chat-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 15px 50px var(--shadow-color);
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow: auto;
+}
+
+:root[data-theme="dreamy-dynamic"] .chat-message {
+    background: var(--card-gradient);
+    border-radius: 15px;
+    padding: 12px 16px;
+    margin: 8px;
+    color: var(--text-primary);
+    animation: messageSlide 0.3s ease-out;
+}
+
+@keyframes messageSlide {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 圖表樣式 */
+:root[data-theme="dreamy-dynamic"] .chart-container,
+:root[data-theme="dreamy-dynamic"] .chart-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 10px 35px var(--shadow-color);
+    padding: 20px;
+}
+
+:root[data-theme="dreamy-dynamic"] .chart-title {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* 列表項目樣式 */
+:root[data-theme="dreamy-dynamic"] .list-item,
+:root[data-theme="dreamy-dynamic"] .transaction-item,
+:root[data-theme="dreamy-dynamic"] .ledger-item {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 15px;
+    margin: 8px 0;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+}
+
+:root[data-theme="dreamy-dynamic"] .list-item:hover,
+:root[data-theme="dreamy-dynamic"] .transaction-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px var(--shadow-color);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 標籤和徽章 */
+:root[data-theme="dreamy-dynamic"] .badge,
+:root[data-theme="dreamy-dynamic"] .tag {
+    background: var(--button-gradient);
+    color: var(--text-primary);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--glass-border);
+}
+
+/* 進度條 */
+:root[data-theme="dreamy-dynamic"] .progress-bar,
+:root[data-theme="dreamy-dynamic"] .progress {
+    background: var(--glass-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
+:root[data-theme="dreamy-dynamic"] .progress-fill {
+    background: var(--button-gradient);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+:root[data-theme="dreamy-dynamic"] .progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: progressShine 2s linear infinite;
+}
+
+@keyframes progressShine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    :root[data-theme="dreamy-dynamic"] .card,
+    :root[data-theme="dreamy-dynamic"] .accounting-card,
+    :root[data-theme="dreamy-dynamic"] .monthly-planning-card {
+        border-radius: 15px;
+        margin: 10px 5px;
+        padding: 15px;
+    }
+    
+    :root[data-theme="dreamy-dynamic"] .btn,
+    :root[data-theme="dreamy-dynamic"] .fab-button {
+        border-radius: 12px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    :root[data-theme="dreamy-dynamic"] .advisor-dialog {
+        border-radius: 15px;
+        margin: 10px;
+        max-width: calc(100vw - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="dreamy-dynamic"] .card,
+    :root[data-theme="dreamy-dynamic"] .accounting-card {
+        border-radius: 12px;
+        margin: 8px 4px;
+        padding: 12px;
+    }
+    
+    :root[data-theme="dreamy-dynamic"] .btn {
+        border-radius: 10px;
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+    
+    :root[data-theme="dreamy-dynamic"] h1,
+    :root[data-theme="dreamy-dynamic"] h2 {
+        font-size: 1.5rem;
+    }
+    
+    :root[data-theme="dreamy-dynamic"] h3,
+    :root[data-theme="dreamy-dynamic"] h4 {
+        font-size: 1.2rem;
+    }
+}
+
+/* 動畫效果 */
+:root[data-theme="dreamy-dynamic"] .fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+:root[data-theme="dreamy-dynamic"] .slide-in {
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+:root[data-theme="dreamy-dynamic"] .scale-in {
+    animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* 滾動條樣式 */
+:root[data-theme="dreamy-dynamic"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+:root[data-theme="dreamy-dynamic"] ::-webkit-scrollbar-track {
+    background: var(--glass-bg);
+    border-radius: 4px;
+}
+
+:root[data-theme="dreamy-dynamic"] ::-webkit-scrollbar-thumb {
+    background: var(--button-gradient);
+    border-radius: 4px;
+    border: 1px solid var(--glass-border);
+}
+
+:root[data-theme="dreamy-dynamic"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #9333EA 0%, #DB2777 50%, #D97706 100%);
+}
+
+/* 特殊效果 */
+:root[data-theme="dreamy-dynamic"] .glow {
+    box-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--secondary-color);
+    animation: glowPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+    from { box-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--secondary-color); }
+    to { box-shadow: 0 0 30px var(--primary-color), 0 0 60px var(--secondary-color); }
+}
+
+:root[data-theme="dreamy-dynamic"] .shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+:root[data-theme="dreamy-dynamic"] .shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}

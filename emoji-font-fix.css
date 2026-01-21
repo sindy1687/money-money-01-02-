@@ -1,0 +1,142 @@
+/* 修復 Emoji 圖示字體問題 */
+
+/* 確保所有元素都能正確顯示 emoji */
+* {
+    font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif, 
+                 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Emoji';
+}
+
+/* 特別針對圖示元素 */
+.summary-icon,
+.record-type-icon,
+.ledger-tab-icon,
+.type-icon,
+.dividend-stat-icon,
+.title-icon,
+.stock-icon-large,
+.form-header-icon,
+.back-btn-icon,
+.tab-icon,
+.fab-btn,
+[class*="icon"] {
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Emoji',
+                 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* 確保 emoji 不被其他字體屬性影響 */
+.summary-icon,
+.record-type-icon,
+.ledger-tab-icon,
+.type-icon,
+.dividend-stat-icon,
+.title-icon,
+.stock-icon-large,
+.form-header-icon,
+.back-btn-icon,
+.tab-icon,
+.fab-btn {
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    line-height: 1 !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 針對不同主題的 emoji 修復 */
+:root[data-theme*=""] .summary-icon,
+:root[data-theme*=""] .record-type-icon,
+:root[data-theme*=""] .ledger-tab-icon,
+:root[data-theme*=""] .type-icon,
+:root[data-theme*=""] .dividend-stat-icon,
+:root[data-theme*=""] .title-icon,
+:root[data-theme*=""] .stock-icon-large,
+:root[data-theme*=""] .form-header-icon,
+:root[data-theme*=""] .back-btn-icon,
+:root[data-theme*=""] .tab-icon,
+:root[data-theme*=""] .fab-btn {
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Emoji' !important;
+}
+
+/* 確保 emoji 在所有主題中都正常顯示 */
+[data-theme] .summary-icon,
+[data-theme] .record-type-icon,
+[data-theme] .ledger-tab-icon,
+[data-theme] .type-icon,
+[data-theme] .dividend-stat-icon,
+[data-theme] .title-icon,
+[data-theme] .stock-icon-large,
+[data-theme] .form-header-icon,
+[data-theme] .back-btn-icon,
+[data-theme] .tab-icon,
+[data-theme] .fab-btn {
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Emoji' !important;
+}
+
+/* 修復可能的 emoji 大小問題 */
+.summary-icon,
+.record-type-icon,
+.ledger-tab-icon,
+.type-icon,
+.dividend-stat-icon,
+.title-icon,
+.stock-icon-large,
+.form-header-icon,
+.back-btn-icon,
+.tab-icon,
+.fab-btn {
+    font-size: inherit !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+}
+
+/* 針對特定大小的 emoji */
+.summary-icon { font-size: 24px !important; }
+.record-type-icon { font-size: 20px !important; }
+.ledger-tab-icon { font-size: 18px !important; }
+.type-icon { font-size: 16px !important; }
+.dividend-stat-icon { font-size: 20px !important; }
+.title-icon { font-size: 18px !important; }
+.stock-icon-large { font-size: 32px !important; }
+.form-header-icon { font-size: 24px !important; }
+.back-btn-icon { font-size: 16px !important; }
+.tab-icon { font-size: 20px !important; }
+.fab-btn { font-size: 24px !important; }
+
+/* 額外的按鈕圖示修復 */
+.back-btn,
+.input-back-btn,
+.modal-back-btn,
+.dca-back-btn,
+.dca-setup-back-btn,
+.detail-back-btn,
+.investment-back-btn,
+.investment-form-back-btn,
+.daily-budget-back-btn,
+.nav-back-btn {
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Emoji' !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    line-height: 1 !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 修復所有包含 emoji 的按鈕 */
+button[class*="btn"],
+.btn,
+[class*="button"] {
+    font-family: 'SF Pro Display', 'Helvetica Neue', 'Arial', -apple-system, BlinkMacSystemFont, 'PingFang TC', 'PingFang SC', 'Microsoft JhengHei', 'Microsoft YaHei', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Emoji';
+}
+
+/* 確保所有 emoji 字符正確顯示 */
+[class*="icon"],
+[class*="Icon"],
+button,
+.btn {
+    unicode-bidi: isolate;
+    text-orientation: mixed;
+}

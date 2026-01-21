@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>專業深色背景檢查程式</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dreamy-dynamic-theme.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #ffc371 100%);
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F59E0B 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+        }
+        
+        .check-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            color: white;
+        }
+        
+        .check-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .console-output {
+            background: rgba(0, 0, 0, 0.8);
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            padding: 15px;
+            border-radius: 8px;
+            height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            margin: 15px 0;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .action-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F59E0B 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+        
+        .status-indicator {
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+        
+        .status-success {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+        }
+        
+        .status-error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+        }
+        
+        .status-warning {
+            background: rgba(245, 158, 11, 0.2);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #f59e0b;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">切換主題</button>
+    
+    <div class="test-container">
+        <h1 style="color: white; text-align: center; margin-bottom: 20px;">專業深色背景檢查程式</h1>
+        
+        <div class="check-panel">
+            <h2 class="check-title">🔍 檢查控制面板</h2>
+            <div class="action-buttons">
+                <button class="action-btn" onclick="runCheck()">🚀 運行完整檢查</button>
+                <button class="action-btn" onclick="runBackgroundCheck()">🎯 檢查背景設定</button>
+                <button class="action-btn" onclick="forceApplyBackground()">🔧 強制應用背景</button>
+                <button class="action-btn" onclick="clearConsole()">🗑️ 清除控制台</button>
+            </div>
+            
+            <div id="statusPanel">
+                <div class="status-indicator status-warning">
+                    📝 點擊上方按鈕開始檢查
+                </div>
+            </div>
+            
+            <div class="console-output" id="consoleOutput">
+                控制台輸出將顯示在這裡...
+            </div>
+        </div>
+        
+        <!-- 測試卡片 -->
+        <div class="cards-grid">
+            <!-- 台積電投資卡片 -->
+            <div class="investment-card" style="padding: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <div class="stock-name">台積電</div>
+                        <div class="stock-code">2330</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="current-price">1,775.00</div>
+                    </div>
+                </div>
+                
+                <div style="margin: 16px 0;">
+                    <div class="yesterday-close">昨收 1,760.00</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="share-count">24 股</div>
+                    <div class="price-change">
+                        <span class="arrow">▲</span>+15.00 (+0.85%)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 鴻海精密投資卡片 -->
+            <div class="investment-card" style="padding: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <div class="stock-name">鴻海精密</div>
+                        <div class="stock-code">2317</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="current-price">142.50</div>
+                    </div>
+                </div>
+                
+                <div style="margin: 16px 0;">
+                    <div class="yesterday-close">昨收 140.00</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="share-count">100 股</div>
+                    <div class="price-change positive">
+                        <span class="arrow">▲</span>+2.50 (+1.79%)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 台積電持有卡片 -->
+            <div class="holding-card" style="padding: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <div class="stock-name">台積電</div>
+                        <div class="stock-code">2330</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="current-price">1,775.00</div>
+                    </div>
+                </div>
+                
+                <div style="margin: 16px 0;">
+                    <div class="yesterday-close">昨收 1,760.00</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="share-count">持有 24 股</div>
+                    <div class="price-change positive">
+                        <span class="arrow">▲</span>+15.00 (+0.85%)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 鴻海精密持有卡片 -->
+            <div class="holding-card" style="padding: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <div class="stock-name">鴻海精密</div>
+                        <div class="stock-code">2317</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="current-price">142.50</div>
+                    </div>
+                </div>
+                
+                <div style="margin: 16px 0;">
+                    <div class="yesterday-close">昨收 140.00</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="share-count">持有 100 股</div>
+                    <div class="price-change positive">
+                        <span class="arrow">▲</span>+2.50 (+1.79%)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="background-check.js"></script>
+    <script>
+        let isDreamyDynamic = false;
+        
+        function toggleTheme() {
+            isDreamyDynamic = !isDreamyDynamic;
+            if (isDreamyDynamic) {
+                document.documentElement.setAttribute('data-theme', 'dreamy-dynamic');
+                document.querySelector('.theme-toggle').textContent = '關閉主題';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                document.querySelector('.theme-toggle').textContent = '切換主題';
+            }
+        }
+        
+        function runCheck() {
+            clearConsole();
+            updateStatus('info', '🚀 正在運行完整檢查...');
+            
+            setTimeout(() => {
+                if (window.runFullCheck) {
+                    const success = window.runFullCheck();
+                    updateStatus(success ? 'success' : 'error', 
+                        success ? '✅ 檢查完成 - 專業深色背景正常工作' : '❌ 檢查失敗 - 請查看控制台輸出');
+                } else {
+                    updateStatus('error', '❌ 檢查程式未載入');
+                }
+            }, 100);
+        }
+        
+        function runBackgroundCheck() {
+            clearConsole();
+            updateStatus('info', '🎯 正在檢查背景設定...');
+            
+            setTimeout(() => {
+                if (window.checkProfessionalDarkBackground) {
+                    const success = window.checkProfessionalDarkBackground();
+                    updateStatus(success ? 'success' : 'error', 
+                        success ? '✅ 背景檢查完成' : '❌ 背景檢查失敗');
+                } else {
+                    updateStatus('error', '❌ 背景檢查程式未載入');
+                }
+            }, 100);
+        }
+        
+        function forceApplyBackground() {
+            clearConsole();
+            updateStatus('info', '🔧 正在強制應用深色背景...');
+            
+            setTimeout(() => {
+                if (window.forceApplyDarkBackground) {
+                    window.forceApplyDarkBackground();
+                    updateStatus('success', '✅ 強制應用完成');
+                    
+                    // 重新檢查
+                    setTimeout(() => {
+                        runBackgroundCheck();
+                    }, 500);
+                } else {
+                    updateStatus('error', '❌ 強制應用程式未載入');
+                }
+            }, 100);
+        }
+        
+        function clearConsole() {
+            const consoleOutput = document.getElementById('consoleOutput');
+            consoleOutput.textContent = '控制台輸出將顯示在這裡...\n';
+        }
+        
+        function updateStatus(type, message) {
+            const statusPanel = document.getElementById('statusPanel');
+            const statusDiv = document.createElement('div');
+            statusDiv.className = `status-indicator status-${type}`;
+            statusDiv.textContent = message;
+            
+            statusPanel.innerHTML = '';
+            statusPanel.appendChild(statusDiv);
+        }
+        
+        // 重定向控制台輸出
+        const originalLog = console.log;
+        const originalWarn = console.warn;
+        const originalError = console.error;
+        
+        function setupConsoleRedirect() {
+            const consoleOutput = document.getElementById('consoleOutput');
+            
+            console.log = function(...args) {
+                originalLog.apply(console, args);
+                const message = args.join(' ');
+                const timestamp = new Date().toLocaleTimeString();
+                consoleOutput.textContent += `[${timestamp}] ${message}\n`;
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            };
+            
+            console.warn = function(...args) {
+                originalWarn.apply(console, args);
+                const message = args.join(' ');
+                const timestamp = new Date().toLocaleTimeString();
+                consoleOutput.textContent += `[${timestamp}] ⚠️ ${message}\n`;
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            };
+            
+            console.error = function(...args) {
+                originalError.apply(console, args);
+                const message = args.join(' ');
+                const timestamp = new Date().toLocaleTimeString();
+                consoleOutput.textContent += `[${timestamp}] ❌ ${message}\n`;
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            };
+        }
+        
+        // 自動應用主題並設置控制台重定向
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleTheme();
+            setupConsoleRedirect();
+            
+            // 自動運行檢查
+            setTimeout(() => {
+                runCheck();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

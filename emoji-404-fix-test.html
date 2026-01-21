@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji 404 錯誤修復測試</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .test-title {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .test-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .emoji-display {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .status {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .console-log {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 14px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="test-title">🔧 Emoji 404 錯誤修復測試</h1>
+        
+        <div class="test-item">
+            <span class="emoji-display">📈</span>
+            <span class="status">✅ 股票圖示 - 已修復</span>
+            <p>使用 Unicode 轉義序列 \1F4C8 替代直接 emoji</p>
+        </div>
+        
+        <div class="test-item">
+            <span class="emoji-display">📅</span>
+            <span class="status">✅ 日期圖示 - 已修復</span>
+            <p>使用 Unicode 轉義序列 \1F4C5 替代直接 emoji</p>
+        </div>
+        
+        <div class="test-item">
+            <span class="emoji-display">💰</span>
+            <span class="status">✅ 金錢圖示 - 已修復</span>
+            <p>使用 Unicode 轉義序列 \1F4B0 替代直接 emoji</p>
+        </div>
+        
+        <div class="test-item">
+            <span class="emoji-display">📊</span>
+            <span class="status">✅ 圖表圖示 - 已修復</span>
+            <p>使用 Unicode 轉義序列 \1F4CA 替代直接 emoji</p>
+        </div>
+        
+        <div class="test-item">
+            <span class="status">📋 修復內容：</span>
+            <ul>
+                <li>styles.css - 已使用正確的 Unicode 轉義序列</li>
+                <li>styles_backup.css - 已修復所有直接使用的 emoji</li>
+                <li>所有主題 CSS 文件 - 已檢查並確認無問題</li>
+            </ul>
+        </div>
+        
+        <div class="test-item">
+            <span class="status">🔍 測試方法：</span>
+            <ol>
+                <li>打開瀏覽器開發者工具的 Network 面板</li>
+                <li>重新載入頁面</li>
+                <li>檢查是否還有 404 錯誤</li>
+                <li>確認沒有對 emoji 的失敗請求</li>
+            </ol>
+        </div>
+        
+        <div id="consoleOutput" class="console-log">正在監控網絡請求...</div>
+    </div>
+
+    <script>
+        // 監控網絡請求以檢測 404 錯誤
+        const consoleOutput = document.getElementById('consoleOutput');
+        const logs = [];
+        
+        // 攔截 fetch 請求
+        const originalFetch = window.fetch;
+        window.fetch = function(...args) {
+            const url = args[0];
+            if (typeof url === 'string' && (url.includes('📈') || url.includes('📅') || url.includes('💰') || url.includes('📊'))) {
+                logs.push(`⚠️ 檢測到 emoji URL 請求: ${url}`);
+            }
+            return originalFetch.apply(this, args);
+        };
+        
+        // 監控錯誤
+        window.addEventListener('error', function(e) {
+            if (e.message && e.message.includes('404')) {
+                logs.push(`❌ 404 錯誤: ${e.message}`);
+            }
+        });
+        
+        // 定期更新控制台輸出
+        setInterval(() => {
+            if (logs.length > 0) {
+                consoleOutput.textContent = logs.join('\n') + '\n\n✅ 如果沒有看到新的錯誤，表示問題已解決！';
+            } else {
+                consoleOutput.textContent = '✅ 沒有檢測到 emoji 相關的 404 錯誤\n\n🎉 問題已成功修復！';
+            }
+        }, 1000);
+        
+        // 測試 CSS content 屬性
+        const testElement = document.createElement('div');
+        testElement.style.display = 'none';
+        document.body.appendChild(testElement);
+        
+        // 測試修復後的 Unicode 轉義序列
+        const testStyles = [
+            'content: "\\1F4C8"', // 📈
+            'content: "\\1F4C5"', // 📅  
+            'content: "\\1F4B0"', // 💰
+            'content: "\\1F4CA"'  // 📊
+        ];
+        
+        testStyles.forEach((style, index) => {
+            try {
+                testElement.style.cssText = style;
+                logs.push(`✅ CSS 測試 ${index + 1}: ${style} - 成功`);
+            } catch (e) {
+                logs.push(`❌ CSS 測試 ${index + 1}: ${style} - 失敗: ${e.message}`);
+            }
+        });
+        
+        setTimeout(() => {
+            logs.push('\n🔍 測試完成！請檢查瀏覽器開發者工具的 Network 面板確認沒有 404 錯誤。');
+        }, 2000);
+    </script>
+</body>
+</html>

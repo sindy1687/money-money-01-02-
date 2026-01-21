@@ -50,7 +50,7 @@
 
 /* 翡翠王子主題導航欄 */
 ::root[data-theme="emeraldPrince"] .bottom-nav {
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--bg-white);
     border-top: 1px solid var(--border-light);
 }
 
@@ -70,7 +70,7 @@
 
 /* 翡翠王子主題卡片 */
 ::root[data-theme="emeraldPrince"] .card {
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
 }
@@ -91,7 +91,7 @@
 ::root[data-theme="emeraldPrince"] input,
 ::root[data-theme="emeraldPrince"] textarea,
 ::root[data-theme="emeraldPrince"] select {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
 }
@@ -105,7 +105,7 @@
 
 /* 翡翠王子主題表格 */
 ::root[data-theme="emeraldPrince"] table {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
 }
 
@@ -115,7 +115,7 @@
 }
 
 ::root[data-theme="emeraldPrince"] td {
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--bg-white);
     color: var(--text-secondary);
     border-color: var(--border-light);
 }
@@ -131,19 +131,19 @@
 /* 翡翠王子主題警告和提示 */
 ::root[data-theme="emeraldPrince"] .alert,
 ::root[data-theme="emeraldPrince"] .warning {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid var(--color-secondary);
     color: var(--text-secondary);
 }
 
 ::root[data-theme="emeraldPrince"] .success {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid var(--color-primary);
     color: var(--text-primary);
 }
 
 ::root[data-theme="emeraldPrince"] .error {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid #ff0000;
     color: #8B0000;
 }
@@ -190,7 +190,7 @@
 
 /* 翡翠王子主題持股卡片 */
 ::root[data-theme="emeraldPrince"] .stock-item-card {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     color: var(--text-primary) !important;
 }
@@ -278,12 +278,12 @@
 }
 
 ::root[data-theme="emeraldPrince"] .progress-track {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--bg-white);
 }
 
 /* 翡翠王子主題圖表容器 */
 ::root[data-theme="emeraldPrince"] .chart-container {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
 }
 
@@ -297,7 +297,7 @@
 
 /* 翡翠王子主題統計卡片 */
 ::root[data-theme="emeraldPrince"] .stat-card {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
 }
@@ -312,7 +312,7 @@
 
 /* 翡翠王子主題預算卡片 */
 ::root[data-theme="emeraldPrince"] .budget-card {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
 }
@@ -327,7 +327,7 @@
 
 /* 翡翠王子主題股息卡片 */
 ::root[data-theme="emeraldPrince"] .dividend-card {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
 }
@@ -342,7 +342,7 @@
 
 /* 翡翠王子主題帳戶卡片 */
 ::root[data-theme="emeraldPrince"] .account-card {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
 }
@@ -357,7 +357,7 @@
 
 /* 翡翠王子主題交易列表 */
 ::root[data-theme="emeraldPrince"] .transaction-item {
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
 }
@@ -376,7 +376,7 @@
 
 /* 翡翠王子主題設定頁面 */
 ::root[data-theme="emeraldPrince"] .setting-item {
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
 }
@@ -391,7 +391,7 @@
 
 /* 翡翠王子主題表單 */
 ::root[data-theme="emeraldPrince"] .form-group {
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
 }
@@ -401,7 +401,7 @@
 }
 
 ::root[data-theme="emeraldPrince"] .form-input {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
 }
@@ -413,13 +413,13 @@
 
 /* 翡翠王子主題下拉選單 */
 ::root[data-theme="emeraldPrince"] .dropdown {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
 }
 
 ::root[data-theme="emeraldPrince"] .dropdown-item {
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--bg-white);
     color: var(--text-primary);
 }
 
@@ -430,7 +430,7 @@
 
 /* 翡翠王子主題選項卡 */
 ::root[data-theme="emeraldPrince"] .tab {
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
 }
@@ -458,7 +458,7 @@
 
 /* 翡翠王子主題載入動畫 */
 ::root[data-theme="emeraldPrince"] .loading {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
 }
 
@@ -473,7 +473,7 @@
 }
 
 ::root[data-theme="emeraldPrince"] ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--bg-white);
 }
 
 ::root[data-theme="emeraldPrince"] ::-webkit-scrollbar-thumb {
@@ -488,29 +488,29 @@
 /* 翡翠王子主題響應式設計 */
 @media (max-width: 768px) {
     ::root[data-theme="emeraldPrince"] .card {
-        background: rgba(255, 255, 255, 0.85);
+        background: var(--bg-white);
     }
     
     ::root[data-theme="emeraldPrince"] .modal-content {
-        background: rgba(255, 255, 255, 0.9);
+        background: var(--bg-white);
     }
     
     ::root[data-theme="emeraldPrince"] .bottom-nav {
-        background: rgba(255, 255, 255, 0.85);
+        background: var(--bg-white);
     }
 }
 
 @media (max-width: 480px) {
     ::root[data-theme="emeraldPrince"] .card {
-        background: rgba(255, 255, 255, 0.8);
+        background: var(--bg-white);
     }
     
     ::root[data-theme="emeraldPrince"] .modal-content {
-        background: rgba(255, 255, 255, 0.85);
+        background: var(--bg-white);
     }
     
     ::root[data-theme="emeraldPrince"] .bottom-nav {
-        background: rgba(255, 255, 255, 0.8);
+        background: var(--bg-white);
     }
 }
 
@@ -589,7 +589,7 @@
 ::root[data-theme="flame"] .wallet-card,
 ::root[data-theme="flame"] .chart-card,
 ::root[data-theme="flame"] .investment-card {
-    background: rgba(255, 255, 255, 0.92) !important;
+    background: var(--bg-white) !important;
     border: 1px solid rgba(220, 38, 38, 0.4) !important;
     border-radius: 16px !important;
     box-shadow: 0 14px 34px rgba(220, 38, 38, 0.15) !important;
@@ -645,7 +645,7 @@
 
 /* Manage investment card */
 ::root[data-theme="flame"] .manage-investment-card {
-    background: rgba(255, 255, 255, 0.92) !important;
+    background: var(--bg-white) !important;
     border: 2px solid rgba(220, 38, 38, 0.4) !important;
     border-radius: 20px !important;
     box-shadow: 0 16px 38px rgba(220, 38, 38, 0.2) !important;
@@ -699,16 +699,44 @@
 /* Annual report, about, diary cards */
 ::root[data-theme="flame"] .annual-report-card,
 ::root[data-theme="flame"] .about-card,
-::root[data-theme="flame"] .diary-card {
-    background: rgba(255, 255, 255, 0.92) !important;
-    border: 2px solid rgba(220, 38, 38, 0.4) !important;
-    border-radius: 20px !important;
-    box-shadow: 0 16px 38px rgba(220, 38, 38, 0.2) !important;
-    color: var(--text-primary) !important;
-    backdrop-filter: blur(12px) !important;
+::root[data-theme="flame"] .diary-card,
+::root[data-theme="flame"] .mori-dialog-box {
+    background: var(--bg-white) !important;
+    border: 2px solid var(--border-medium) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px var(--color-primary-rgba-20) !important;
+    backdrop-filter: blur(10px) !important;
 }
 
-/* Card backgrounds with theme image */
+::root[data-theme="flame"] .mori-dialog-content {
+    background: transparent !important;
+    color: var(--text-primary) !important;
+}
+
+::root[data-theme="flame"] .mori-message {
+    color: var(--text-primary) !important;
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+}
+
+::root[data-theme="flame"] .mori-avatar {
+    background: var(--color-primary) !important;
+    border: 3px solid var(--color-primary-dark) !important;
+}
+
+::root[data-theme="flame"] .mori-close {
+    background: var(--color-secondary) !important;
+    color: var(--text-white) !important;
+    border: 2px solid var(--color-secondary-dark) !important;
+}
+
+::root[data-theme="flame"] .mori-close:hover {
+    background: var(--color-secondary-dark) !important;
+    transform: scale(1.1) !important;
+}
+
+/* Card backgrounds with theme variables */
 ::root[data-theme="flame"] .investment-card,
 ::root[data-theme="flame"] .record-card,
 ::root[data-theme="flame"] .ledger-card,
@@ -720,38 +748,20 @@
 ::root[data-theme="flame"] .buy-card,
 ::root[data-theme="flame"] .sell-card,
 ::root[data-theme="flame"] .dividend-card {
-    background-image: url("https://i.pinimg.com/736x/cb/07/77/cb07777a12e39d0811d7de7bb705680b.jpg") !important;
-    background-size: cover !important;
-    background-position: center !important;
+    background: var(--bg-white) !important;
+    border: 2px solid var(--border-medium) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 16px 38px var(--color-primary-rgba-20) !important;
+    color: var(--text-primary) !important;
+    backdrop-filter: blur(12px) !important;
     position: relative !important;
 }
 
-::root[data-theme="flame"] .investment-card::before,
-::root[data-theme="flame"] .record-card::before,
-::root[data-theme="flame"] .ledger-card::before,
-::root[data-theme="flame"] .budget-card::before,
-::root[data-theme="flame"] .wallet-card::before,
-::root[data-theme="flame"] .monthly-planner-card::before,
-::root[data-theme="flame"] .investment-settings-card::before,
-::root[data-theme="flame"] .holdings-card::before,
-::root[data-theme="flame"] .buy-card::before,
-::root[data-theme="flame"] .sell-card::before,
-::root[data-theme="flame"] .dividend-card::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    background: rgba(255, 255, 255, 0.85) !important;
-    border-radius: inherit !important;
-    z-index: -1 !important;
-}
 
 /* Back button */
 ::root[data-theme="flame"] .back-btn {
     background: var(--color-primary) !important;
-    color: white !important;
+    color: var(--text-white) !important;
     border: 2px solid var(--color-primary) !important;
 }
 
@@ -763,7 +773,7 @@
 /* DCA cards */
 ::root[data-theme="flame"] .dca-management-card,
 ::root[data-theme="flame"] .dca-card {
-    background: rgba(255, 255, 255, 0.92) !important;
+    background: var(--bg-white) !important;
     border: 2px solid rgba(220, 38, 38, 0.4) !important;
     border-radius: 20px !important;
     box-shadow: 0 16px 38px rgba(220, 38, 38, 0.2) !important;
@@ -782,7 +792,7 @@
 ::root[data-theme="flame"] .emoji-modal-content,
 ::root[data-theme="flame"] .crop-modal-content,
 ::root[data-theme="flame"] .history-modal-content {
-    background: rgba(255, 255, 255, 0.95) !important;
+    background: var(--bg-white) !important;
     border: 1px solid rgba(220, 38, 38, 0.4) !important;
     box-shadow: 0 18px 44px rgba(220, 38, 38, 0.2) !important;
     color: var(--text-primary) !important;
@@ -790,7 +800,7 @@
 
 /* Komori dialog */
 ::root[data-theme="flame"] .komori-dialog {
-    background: rgba(255, 255, 255, 0.95) !important;
+    background: var(--bg-white) !important;
     border: 2px solid rgba(220, 38, 38, 0.4) !important;
     box-shadow: 0 18px 44px rgba(220, 38, 38, 0.2) !important;
     color: var(--text-primary) !important;
@@ -820,13 +830,13 @@
 ::root[data-theme="flame"] .note-input:focus {
     border-color: var(--color-primary) !important;
     box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.25) !important;
-    background: rgba(255, 255, 255, 0.95) !important;
+    background: var(--bg-white) !important;
 }
 
 /* Buttons */
 ::root[data-theme="flame"] .btn-primary {
     background: var(--color-primary) !important;
-    color: white !important;
+    color: var(--text-white) !important;
     border: 2px solid var(--color-primary) !important;
 }
 
@@ -837,7 +847,7 @@
 
 ::root[data-theme="flame"] .btn-secondary {
     background: var(--color-secondary) !important;
-    color: white !important;
+    color: var(--text-white) !important;
     border: 2px solid var(--color-secondary) !important;
 }
 

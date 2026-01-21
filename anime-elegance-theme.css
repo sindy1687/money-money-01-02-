@@ -1,0 +1,556 @@
+/* 動漫優雅主題 - 基於用戶提供的圖片風格 */
+:root[data-theme="anime-elegance"] {
+    /* 主要色彩 - 從圖片提取的柔和藍色調 */
+    --color-primary: #7da8c7;
+    --color-primary-light: #a8c5d8;
+    --color-primary-lighter: #c4dae8;
+    --color-primary-dark: #5b8db3;
+    --color-secondary: #f4e4d4;
+    --color-secondary-light: #f8eddf;
+    --color-secondary-dark: #e8d4c0;
+    
+    /* 功能色彩 */
+    --color-success: #6fa870;
+    --color-danger: #e8747b;
+    --color-warning: #f0b27a;
+    --color-info: #85c1e9;
+    --color-error: var(--color-danger);
+    
+    /* 背景漸層 - 柔和的藍白色調 */
+    --bg-primary: linear-gradient(135deg, rgba(125, 168, 199, 0.95) 0%, rgba(168, 197, 216, 0.85) 35%, rgba(244, 228, 212, 0.75) 100%);
+    --bg-body: rgba(196, 218, 232, 0.92);
+    --bg-body-strong: rgba(168, 197, 216, 0.94);
+    --bg-gradient: linear-gradient(135deg, #91bad6 0%, #7da8c7 40%, #f4e4d4 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(196, 218, 232, 0.15) 0%, rgba(244, 228, 212, 0.25) 100%);
+    --bg-white: rgba(244, 248, 250, 0.88);
+    --bg-card: linear-gradient(135deg, rgba(244, 248, 250, 0.85) 0%, rgba(196, 218, 232, 0.75) 100%);
+    --bg-light: rgba(168, 197, 216, 0.6);
+    --bg-lighter: rgba(196, 218, 232, 0.5);
+    --bg-soft: rgba(244, 228, 212, 0.55);
+    --bg-soft-strong: rgba(244, 228, 212, 0.7);
+    
+    /* 文字色彩 - 確保可讀性 */
+    --text-primary: #2c3e50;
+    --text-secondary: #5a6c7d;
+    --text-tertiary: #7f8c8d;
+    --text-strong: #1a252f;
+    --text-white: #ffffff;
+    
+    /* 邊框色彩 */
+    --border-primary: rgba(125, 168, 199, 0.6);
+    --border-light: rgba(168, 197, 216, 0.3);
+    --border-medium: rgba(125, 168, 199, 0.4);
+    --card-border-color: rgba(125, 168, 199, 0.5);
+    --control-border-color: rgba(168, 197, 216, 0.4);
+    --table-border-color: rgba(196, 218, 232, 0.3);
+    
+    /* 陰影效果 */
+    --shadow-primary: 0 15px 45px rgba(125, 168, 199, 0.3);
+    --shadow-primary-lg: 0 25px 65px rgba(125, 168, 199, 0.25);
+    --shadow-card: 0 8px 25px rgba(125, 168, 199, 0.2);
+    --shadow-button: 0 4px 15px rgba(125, 168, 199, 0.25);
+    
+    /* 按鈕漸層 */
+    --btn-primary-gradient: linear-gradient(135deg, #7da8c7 0%, #5b8db3 100%);
+    --btn-secondary-gradient: linear-gradient(135deg, #f4e4d4 0%, #e8d4c0 100%);
+    --btn-success-gradient: linear-gradient(135deg, #6fa870 0%, #5a8b5b 100%);
+    --btn-danger-gradient: linear-gradient(135deg, #e8747b 0%, #d65a63 100%);
+    
+    /* 卡片漸層 */
+    --card-gradient-1: linear-gradient(135deg, rgba(244, 248, 250, 0.9) 0%, rgba(196, 218, 232, 0.8) 100%);
+    --card-gradient-2: linear-gradient(135deg, rgba(244, 228, 212, 0.9) 0%, rgba(244, 248, 250, 0.8) 100%);
+    --card-gradient-3: linear-gradient(135deg, rgba(168, 197, 216, 0.9) 0%, rgba(125, 168, 199, 0.8) 100%);
+    
+    /* 投資卡片特殊漸層 */
+    --investment-card-gradient: linear-gradient(135deg, rgba(244, 228, 212, 0.95) 0%, rgba(232, 212, 192, 0.85) 50%, rgba(196, 218, 232, 0.75) 100%);
+    
+    /* 小森對話框 */
+    --xiaosen-bg: linear-gradient(135deg, rgba(244, 248, 250, 0.95) 0%, rgba(196, 218, 232, 0.9) 100%);
+    --xiaosen-border: rgba(125, 168, 199, 0.6);
+    --xiaosen-text: #2c3e50;
+    
+    /* 智慧分析和提醒 */
+    --smart-bg: linear-gradient(135deg, rgba(244, 248, 250, 0.85) 0%, rgba(168, 197, 216, 0.75) 100%);
+    --smart-border: rgba(125, 168, 199, 0.5);
+    
+    /* 背景圖片 */
+    --bg-image-url: url('https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg');
+    --investment-bg-url: url('https://i.pinimg.com/736x/d5/9c/15/d59c15a48547bc1cb02c23d607eaf875.jpg');
+    
+    /* 字體設定 */
+    --font-primary: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-secondary: 'Space Grotesk', 'Clash Display', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+}
+
+/* 背景設定 */
+:root[data-theme="anime-elegance"] body {
+    background-image: var(--bg-image-url);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    min-height: 100vh;
+}
+
+:root[data-theme="anime-elegance"] body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(125, 168, 199, 0.3) 0%, rgba(244, 228, 212, 0.2) 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* 頁面背景 */
+:root[data-theme="anime-elegance"] .page-ledger,
+:root[data-theme="anime-elegance"] .page-input,
+:root[data-theme="anime-elegance"] .page-chart,
+:root[data-theme="anime-elegance"] .page-budget,
+:root[data-theme="anime-elegance"] .page-monthly-planner,
+:root[data-theme="anime-elegance"] .page-daily-budget,
+:root[data-theme="anime-elegance"] .page-settings,
+:root[data-theme="anime-elegance"] .page-category-manage,
+:root[data-theme="anime-elegance"] .page-investment,
+:root[data-theme="anime-elegance"] .page-wallet,
+:root[data-theme="anime-elegance"] .page-history,
+:root[data-theme="anime-elegance"] .page-planner {
+    background: transparent !important;
+    backdrop-filter: blur(8px);
+    box-shadow: none !important;
+}
+
+/* 卡片樣式 */
+:root[data-theme="anime-elegance"] .card,
+:root[data-theme="anime-elegance"] .record-card,
+:root[data-theme="anime-elegance"] .budget-card,
+:root[data-theme="anime-elegance"] .investment-card,
+:root[data-theme="anime-elegance"] .wallet-card,
+:root[data-theme="anime-elegance"] .planning-card {
+    background: var(--card-gradient-1);
+    border: 1px solid var(--card-border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    font-family: var(--font-primary);
+}
+
+:root[data-theme="anime-elegance"] .card:hover,
+:root[data-theme="anime-elegance"] .record-card:hover,
+:root[data-theme="anime-elegance"] .budget-card:hover,
+:root[data-theme="anime-elegance"] .investment-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
+    background: var(--card-gradient-2);
+}
+
+/* 投資卡片特殊樣式 */
+:root[data-theme="anime-elegance"] .investment-card {
+    background: var(--investment-card-gradient);
+    border: 1px solid var(--border-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+:root[data-theme="anime-elegance"] .investment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--investment-bg-url);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+/* 按鈕樣式 */
+:root[data-theme="anime-elegance"] .btn,
+:root[data-theme="anime-elegance"] .btn-primary,
+:root[data-theme="anime-elegance"] .btn-secondary,
+:root[data-theme="anime-elegance"] .btn-success,
+:root[data-theme="anime-elegance"] .btn-danger,
+:root[data-theme="anime-elegance"] .btn-warning,
+:root[data-theme="anime-elegance"] .btn-info {
+    background: var(--btn-primary-gradient);
+    color: var(--text-white);
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: var(--shadow-button);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+:root[data-theme="anime-elegance"] .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(125, 168, 199, 0.35);
+}
+
+:root[data-theme="anime-elegance"] .btn-success {
+    background: var(--btn-success-gradient);
+}
+
+:root[data-theme="anime-elegance"] .btn-danger {
+    background: var(--btn-danger-gradient);
+}
+
+:root[data-theme="anime-elegance"] .btn-secondary {
+    background: var(--btn-secondary-gradient);
+    color: var(--text-primary);
+}
+
+/* 買入和定期定額按鈕特殊樣式 */
+:root[data-theme="anime-elegance"] .buy-btn,
+:root[data-theme="anime-elegance"] .recurring-btn {
+    background: linear-gradient(135deg, #6fa870 0%, #5a8b5b 100%);
+    color: var(--text-white);
+    border: 1px solid rgba(111, 168, 112, 0.3);
+    border-radius: 14px;
+    padding: 14px 28px;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 0 4px 15px rgba(111, 168, 112, 0.3);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="anime-elegance"] .buy-btn:hover,
+:root[data-theme="anime-elegance"] .recurring-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(111, 168, 112, 0.4);
+    background: linear-gradient(135deg, #7fb880 0%, #6a9b6b 100%);
+}
+
+/* 彈窗樣式 */
+:root[data-theme="anime-elegance"] .modal,
+:root[data-theme="anime-elegance"] .modal-content,
+:root[data-theme="anime-elegance"] .popup,
+:root[data-theme="anime-elegance"] .dialog {
+    background: var(--card-gradient-1);
+    border: 1px solid var(--card-border-color);
+    border-radius: 20px;
+    box-shadow: var(--shadow-primary-lg);
+    backdrop-filter: blur(15px);
+    font-family: var(--font-primary);
+}
+
+:root[data-theme="anime-elegance"] .modal-header,
+:root[data-theme="anime-elegance"] .popup-header {
+    background: var(--bg-gradient-light);
+    border-bottom: 1px solid var(--border-light);
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+}
+
+/* 小森對話框 */
+:root[data-theme="anime-elegance"] .xiaosen-dialog,
+:root[data-theme="anime-elegance"] .advisor-dialog,
+:root[data-theme="anime-elegance"] .chat-dialog {
+    background: var(--xiaosen-bg);
+    border: 2px solid var(--xiaosen-border);
+    border-radius: 24px;
+    box-shadow: var(--shadow-primary);
+    backdrop-filter: blur(12px);
+    font-family: var(--font-secondary);
+    color: var(--xiaosen-text);
+    max-width: 90vw;
+    width: auto;
+    min-width: 280px;
+    max-height: 80vh;
+    overflow-y: auto;
+    resize: both;
+}
+
+:root[data-theme="anime-elegance"] .xiaosen-dialog .dialog-content {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* 智慧分析和提醒 */
+:root[data-theme="anime-elegance"] .smart-analysis,
+:root[data-theme="anime-elegance"] .smart-reminders,
+:root[data-theme="anime-elegance"] .analysis-card,
+:root[data-theme="anime-elegance"] .reminder-card {
+    background: var(--smart-bg);
+    border: 1px solid var(--smart-border);
+    border-radius: 18px;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(10px);
+    font-family: var(--font-primary);
+}
+
+/* 標題樣式 */
+:root[data-theme="anime-elegance"] h1,
+:root[data-theme="anime-elegance"] h2,
+:root[data-theme="anime-elegance"] h3,
+:root[data-theme="anime-elegance"] h4,
+:root[data-theme="anime-elegance"] h5,
+:root[data-theme="anime-elegance"] h6 {
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+:root[data-theme="anime-elegance"] h1 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+:root[data-theme="anime-elegance"] h2 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+:root[data-theme="anime-elegance"] h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* 輸入框樣式 */
+:root[data-theme="anime-elegance"] input,
+:root[data-theme="anime-elegance"] textarea,
+:root[data-theme="anime-elegance"] select {
+    background: rgba(244, 248, 250, 0.8);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="anime-elegance"] input:focus,
+:root[data-theme="anime-elegance"] textarea:focus,
+:root[data-theme="anime-elegance"] select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(125, 168, 199, 0.2);
+    background: rgba(244, 248, 250, 0.95);
+}
+
+/* 標籤樣式 */
+:root[data-theme="anime-elegance"] .label,
+:root[data-theme="anime-elegance"] .form-label {
+    font-family: var(--font-primary);
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+/* 表格樣式 */
+:root[data-theme="anime-elegance"] table {
+    background: var(--card-gradient-1);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+:root[data-theme="anime-elegance"] th,
+:root[data-theme="anime-elegance"] td {
+    border-bottom: 1px solid var(--table-border-color);
+    padding: 12px 16px;
+    font-family: var(--font-primary);
+}
+
+:root[data-theme="anime-elegance"] th {
+    background: var(--bg-gradient-light);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* 預算設定卡片 */
+:root[data-theme="anime-elegance"] .budget-settings-card,
+:root[data-theme="anime-elegance"] .monthly-planning-card,
+:root[data-theme="anime-elegance"] .investment-settings-card {
+    background: var(--card-gradient-2);
+    border: 1px solid var(--border-primary);
+    border-radius: 18px;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(12px);
+}
+
+/* 持有中、賣出、股息卡片 */
+:root[data-theme="anime-elegance"] .holding-card,
+:root[data-theme="anime-elegance"] .sell-card,
+:root[data-theme="anime-elegance"] .dividend-card {
+    background: var(--card-gradient-3);
+    border: 1px solid var(--border-primary);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="anime-elegance"] .holding-card:hover,
+:root[data-theme="anime-elegance"] .sell-card:hover,
+:root[data-theme="anime-elegance"] .dividend-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
+}
+
+/* 返回按鈕 */
+:root[data-theme="anime-elegance"] .back-btn,
+:root[data-theme="anime-elegance"] .return-btn {
+    background: var(--btn-secondary-gradient);
+    color: var(--text-primary);
+    border: 1px solid var(--border-medium);
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: var(--shadow-button);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="anime-elegance"] .back-btn:hover,
+:root[data-theme="anime-elegance"] .return-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(244, 228, 212, 0.4);
+}
+
+/* 定期定額管理投資卡片 */
+:root[data-theme="anime-elegance"] .recurring-management-card {
+    background: var(--investment-card-gradient);
+    border: 1px solid var(--border-primary);
+    border-radius: 18px;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+}
+
+:root[data-theme="anime-elegance"] .recurring-management-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--investment-bg-url);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+/* FAB 按鈕 */
+:root[data-theme="anime-elegance"] .fab,
+:root[data-theme="anime-elegance"] .floating-action-btn {
+    background: var(--btn-primary-gradient);
+    color: var(--text-white);
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    box-shadow: var(--shadow-primary);
+    font-size: 24px;
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="anime-elegance"] .fab:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-primary-lg);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    :root[data-theme="anime-elegance"] .xiaosen-dialog,
+    :root[data-theme="anime-elegance"] .advisor-dialog,
+    :root[data-theme="anime-elegance"] .chat-dialog {
+        max-width: 95vw;
+        margin: 10px;
+        border-radius: 16px;
+    }
+    
+    :root[data-theme="anime-elegance"] .card,
+    :root[data-theme="anime-elegance"] .record-card,
+    :root[data-theme="anime-elegance"] .budget-card,
+    :root[data-theme="anime-elegance"] .investment-card {
+        border-radius: 12px;
+        margin: 8px;
+    }
+    
+    :root[data-theme="anime-elegance"] .btn,
+    :root[data-theme="anime-elegance"] .buy-btn,
+    :root[data-theme="anime-elegance"] .recurring-btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="anime-elegance"] h1 {
+        font-size: 24px;
+    }
+    
+    :root[data-theme="anime-elegance"] h2 {
+        font-size: 20px;
+    }
+    
+    :root[data-theme="anime-elegance"] h3 {
+        font-size: 18px;
+    }
+    
+    :root[data-theme="anime-elegance"] .xiaosen-dialog {
+        max-width: 98vw;
+        margin: 5px;
+        border-radius: 12px;
+    }
+}
+
+/* 動畫效果 */
+:root[data-theme="anime-elegance"] .card,
+:root[data-theme="anime-elegance"] .btn,
+:root[data-theme="anime-elegance"] .modal {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 滾動條樣式 */
+:root[data-theme="anime-elegance"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+:root[data-theme="anime-elegance"] ::-webkit-scrollbar-track {
+    background: rgba(196, 218, 232, 0.3);
+    border-radius: 4px;
+}
+
+:root[data-theme="anime-elegance"] ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+}
+
+:root[data-theme="anime-elegance"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-dark);
+}

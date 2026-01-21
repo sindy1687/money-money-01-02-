@@ -1,0 +1,40 @@
+/* 批量清理亂碼圖示 CSS */
+
+/* 清理所有亂碼 content 屬性 */
+.metric-quote-btn::before { content: none !important; }
+.metric-quick-link::before { content: none !important; }
+.theme-item-preview--image.error::after { content: '⚠️' !important; }
+.record-card.dividend-reinvest::after { content: '🔄' !important; }
+.investment-form-back-btn::before { content: '←' !important; }
+.form-query-btn::before { content: '❓' !important; }
+.quick-title::before { content: '⚡' !important; }
+.input-page-header::after { content: none !important; }
+.investment-back-btn::before { content: '←' !important; }
+.input-field-label::before { content: '📝' !important; }
+
+/* 清理 fruit 主題的亂碼 */
+:root[data-theme="fruit"] .card::after { content: none !important; }
+:root[data-theme="fruit"] .investment-card::after { content: none !important; }
+:root[data-theme="fruit"] .budget-card::after { content: none !important; }
+:root[data-theme="fruit"] .wallet-card::after { content: none !important; }
+:root[data-theme="fruit"] .chart-card::after { content: none !important; }
+
+/* 清理其他亂碼 */
+.stock-grid-card-tag--shares::before { content: none !important; }
+:root[data-theme="emeraldPrince"] .komori-dialog::before { content: none !important; }
+
+/* 全局清理：隱藏所有可能的亂碼偽元素 */
+[class*="btn"]::before,
+[class*="btn"]::after,
+[class*="icon"]::before,
+[class*="icon"]::after,
+[class*="card"]::before,
+[class*="card"]::after {
+    content: none !important;
+}
+
+/* 特殊情況：保留有用的圖示 */
+.fab-btn::before { content: none !important; }
+.back-btn::before { content: none !important; }
+.tab-icon::before { content: none !important; }
+.record-type-icon::before { content: none !important; }

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>投資和持有卡片深色背景測試</title>
+    <link rel="stylesheet" href="dreamy-dynamic-theme.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #ffc371 100%);
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F59E0B 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: white;
+            margin: 40px 0 20px 0;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .comparison-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .comparison-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .feature-list {
+            color: white;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .feature-list li {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #8B5CF6;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">切換主題</button>
+    
+    <div class="test-container">
+        <h1 style="color: white; text-align: center; margin-bottom: 20px;">投資和持有卡片深色背景展示</h1>
+        <p class="section-subtitle">專業深色背景設計 - 投資卡片 & 持有卡片</p>
+        
+        <!-- 投資卡片區域 -->
+        <div>
+            <h2 class="section-title">投資卡片</h2>
+            <div class="cards-grid">
+                <!-- 台積電投資卡片 -->
+                <div class="investment-card" style="padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                        <div>
+                            <div class="stock-name">台積電</div>
+                            <div class="stock-code">2330</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div class="current-price">1,775.00</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 16px 0;">
+                        <div class="yesterday-close">昨收 1,760.00</div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="share-count">24 股</div>
+                        <div class="price-change">
+                            <span class="arrow">▲</span>+15.00 (+0.85%)
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 鴻海精密投資卡片 -->
+                <div class="investment-card" style="padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                        <div>
+                            <div class="stock-name">鴻海精密</div>
+                            <div class="stock-code">2317</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div class="current-price">142.50</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 16px 0;">
+                        <div class="yesterday-close">昨收 140.00</div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="share-count">100 股</div>
+                        <div class="price-change positive">
+                            <span class="arrow">▲</span>+2.50 (+1.79%)
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 聯發科投資卡片 -->
+                <div class="investment-card" style="padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                        <div>
+                            <div class="stock-name">聯發科</div>
+                            <div class="stock-code">2454</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div class="current-price">680.00</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 16px 0;">
+                        <div class="yesterday-close">昨收 690.00</div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="share-count">50 股</div>
+                        <div class="price-change">
+                            <span class="arrow">▼</span>-10.00 (-1.45%)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 持有卡片區域 -->
+        <div>
+            <h2 class="section-title">持有卡片</h2>
+            <div class="cards-grid">
+                <!-- 台積電持有卡片 -->
+                <div class="holding-card" style="padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                        <div>
+                            <div class="stock-name">台積電</div>
+                            <div class="stock-code">2330</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div class="current-price">1,775.00</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 16px 0;">
+                        <div class="yesterday-close">昨收 1,760.00</div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="share-count">持有 24 股</div>
+                        <div class="price-change positive">
+                            <span class="arrow">▲</span>+15.00 (+0.85%)
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 鴻海精密持有卡片 -->
+                <div class="holding-card" style="padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                        <div>
+                            <div class="stock-name">鴻海精密</div>
+                            <div class="stock-code">2317</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div class="current-price">142.50</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 16px 0;">
+                        <div class="yesterday-close">昨收 140.00</div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="share-count">持有 100 股</div>
+                        <div class="price-change positive">
+                            <span class="arrow">▲</span>+2.50 (+1.79%)
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 聯發科持有卡片 -->
+                <div class="holding-card" style="padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                        <div>
+                            <div class="stock-name">聯發科</div>
+                            <div class="stock-code">2454</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div class="current-price">680.00</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 16px 0;">
+                        <div class="yesterday-close">昨收 690.00</div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="share-count">持有 50 股</div>
+                        <div class="price-change">
+                            <span class="arrow">▼</span>-10.00 (-1.45%)
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 台達電持有卡片 -->
+                <div class="holding-card" style="padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                        <div>
+                            <div class="stock-name">台達電</div>
+                            <div class="stock-code">2382</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div class="current-price">285.50</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 16px 0;">
+                        <div class="yesterday-close">昨收 282.00</div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="share-count">持有 200 股</div>
+                        <div class="price-change positive">
+                            <span class="arrow">▲</span>+3.50 (+1.24%)
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 聯電持有卡片 -->
+                <div class="holding-card" style="padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                        <div>
+                            <div class="stock-name">聯電</div>
+                            <div class="stock-code">2303</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div class="current-price">520.00</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 16px 0;">
+                        <div class="yesterday-close">昨收 500.00</div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="share-count">持有 80 股</div>
+                        <div class="price-change positive">
+                            <span class="arrow">▲</span>+20.00 (+4.00%)
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 大立持有卡片 -->
+                <div class="holding-card" style="padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                        <div>
+                            <div class="stock-name">大立</div>
+                            <div class="stock-code">2367</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div class="current-price">325.00</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 16px 0;">
+                        <div class="yesterday-close">昨收 320.00</div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="share-count">持有 150 股</div>
+                        <div class="price-change positive">
+                            <span class="arrow">▲</span>+5.00 (+1.56%)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 設計特色說明 -->
+        <div class="comparison-section">
+            <div class="comparison-title">強制深色背景設計特色</div>
+            <ul class="feature-list">
+                <li><strong>統一深色背景</strong>：投資卡片和持有卡片都使用專業深色背景</li>
+                <li><strong>145° 漸層設計</strong>：從深灰到藍灰色的專業漸層</li>
+                <li><strong>精緻陰影系統</strong>：多層陰影創造深度感和立體效果</li>
+                <li><strong>紫色邊框</strong>：專業的紫色發光邊框設計</li>
+                <li><strong>內發光效果</strong>：頂部微光增加質感和高級感</li>
+                <li><strong>統一文字樣式</strong>：白色主要文字，淺灰色次要文字</li>
+                <li><strong>專業漲跌幅按鈕</strong>：精確的紅綠色配色彩和邊框</li>
+                <li><strong>微動畫懸停</strong>：輕微上浮效果，不過於誇張</li>
+                <li><strong>一致性設計</strong>：投資和持有卡片完全統一的視覺風格</li>
+                <li><strong>金融級專業感</strong>：符合專業金融應用的設計標準</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        let isDreamyDynamic = false;
+        
+        function toggleTheme() {
+            isDreamyDynamic = !isDreamyDynamic;
+            if (isDreamyDynamic) {
+                document.documentElement.setAttribute('data-theme', 'dreamy-dynamic');
+                document.querySelector('.theme-toggle').textContent = '關閉主題';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                document.querySelector('.theme-toggle').textContent = '切換主題';
+            }
+        }
+        
+        // 自動應用主題
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleTheme();
+        });
+    </script>
+</body>
+</html>

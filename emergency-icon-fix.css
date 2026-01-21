@@ -1,0 +1,204 @@
+/* 緊急圖示修復 - 強制 emoji 字體載入 */
+
+/* 1. 首先重置所有字體設置 */
+* {
+    font-family: unset !important;
+}
+
+/* 2. 然後設置基礎字體 */
+body, html {
+    font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+/* 3. 強制設置 emoji 字體給所有圖示相關元素 */
+.summary-icon,
+.record-type-icon,
+.ledger-tab-icon,
+.type-icon,
+.dividend-stat-icon,
+.title-icon,
+.stock-icon-large,
+.form-header-icon,
+.back-btn-icon,
+.tab-icon,
+.fab-btn,
+.back-btn,
+.input-back-btn,
+.modal-back-btn,
+.dca-back-btn,
+.dca-setup-back-btn,
+.detail-back-btn,
+.investment-back-btn,
+.investment-form-back-btn,
+.daily-budget-back-btn,
+.nav-back-btn,
+[class*="icon"],
+[class*="Icon"],
+button,
+.btn,
+[class*="btn"] {
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Emoji', 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    line-height: 1 !important;
+    unicode-bidi: isolate !important;
+    text-orientation: mixed !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* 4. 特定大小設置 */
+.summary-icon { font-size: 24px !important; }
+.record-type-icon { font-size: 20px !important; }
+.ledger-tab-icon { font-size: 18px !important; }
+.type-icon { font-size: 16px !important; }
+.dividend-stat-icon { font-size: 20px !important; }
+.title-icon { font-size: 18px !important; }
+.stock-icon-large { font-size: 32px !important; }
+.form-header-icon { font-size: 24px !important; }
+.back-btn-icon { font-size: 16px !important; }
+.tab-icon { font-size: 20px !important; }
+.fab-btn { font-size: 24px !important; }
+
+.back-btn,
+.input-back-btn,
+.modal-back-btn,
+.dca-back-btn,
+.dca-setup-back-btn,
+.detail-back-btn,
+.investment-back-btn,
+.investment-form-back-btn,
+.daily-budget-back-btn,
+.nav-back-btn {
+    font-size: 18px !important;
+}
+
+/* 5. 確保 emoji 可見性 */
+.record-type-icon::before,
+.tab-icon::before,
+.fab-btn::before,
+.back-btn::before {
+    content: attr(data-emoji) !important;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Emoji' !important;
+}
+
+/* 6. 強制顯示修復 */
+.record-type-icon,
+.tab-icon,
+.fab-btn,
+.back-btn {
+    display: inline-block !important;
+    text-align: center !important;
+    min-width: 1em !important;
+}
+
+/* 7. 針對特定主題的強制修復 */
+[data-theme] .summary-icon,
+[data-theme] .record-type-icon,
+[data-theme] .ledger-tab-icon,
+[data-theme] .type-icon,
+[data-theme] .dividend-stat-icon,
+[data-theme] .title-icon,
+[data-theme] .stock-icon-large,
+[data-theme] .form-header-icon,
+[data-theme] .back-btn-icon,
+[data-theme] .tab-icon,
+[data-theme] .fab-btn,
+[data-theme] .back-btn,
+[data-theme] .input-back-btn,
+[data-theme] .modal-back-btn {
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Emoji' !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    line-height: 1 !important;
+}
+
+/* 8. 特別針對 getrich 主題的修復 */
+:root[data-theme="getrich"] .summary-icon,
+:root[data-theme="getrich"] .record-type-icon,
+:root[data-theme="getrich"] .ledger-tab-icon,
+:root[data-theme="getrich"] .type-icon,
+:root[data-theme="getrich"] .dividend-stat-icon,
+:root[data-theme="getrich"] .title-icon,
+:root[data-theme="getrich"] .stock-icon-large,
+:root[data-theme="getrich"] .form-header-icon,
+:root[data-theme="getrich"] .back-btn-icon,
+:root[data-theme="getrich"] .tab-icon,
+:root[data-theme="getrich"] .fab-btn,
+:root[data-theme="getrich"] .back-btn,
+:root[data-theme="getrich"] .input-back-btn,
+:root[data-theme="getrich"] .modal-back-btn,
+:root[data-theme="getrich"] button,
+:root[data-theme="getrich"] .btn,
+:root[data-theme="getrich"] [class*="btn"] {
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Emoji', 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    line-height: 1 !important;
+}
+
+/* 9. 特別針對 dreamyGalaxy 主題的修復 */
+:root[data-theme="dreamyGalaxy"] .summary-icon,
+:root[data-theme="dreamyGalaxy"] .record-type-icon,
+:root[data-theme="dreamyGalaxy"] .ledger-tab-icon,
+:root[data-theme="dreamyGalaxy"] .type-icon,
+:root[data-theme="dreamyGalaxy"] .dividend-stat-icon,
+:root[data-theme="dreamyGalaxy"] .title-icon,
+:root[data-theme="dreamyGalaxy"] .stock-icon-large,
+:root[data-theme="dreamyGalaxy"] .form-header-icon,
+:root[data-theme="dreamyGalaxy"] .back-btn-icon,
+:root[data-theme="dreamyGalaxy"] .tab-icon,
+:root[data-theme="dreamyGalaxy"] .fab-btn,
+:root[data-theme="dreamyGalaxy"] .back-btn,
+:root[data-theme="dreamyGalaxy"] .input-back-btn,
+:root[data-theme="dreamyGalaxy"] .modal-back-btn,
+:root[data-theme="dreamyGalaxy"] button,
+:root[data-theme="dreamyGalaxy"] .btn,
+:root[data-theme="dreamyGalaxy"] [class*="btn"] {
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Emoji', 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    line-height: 1 !important;
+}
+
+/* 10. 最終強制覆蓋所有可能的衝突 */
+* {
+    font-family: inherit !important;
+}
+
+.summary-icon,
+.record-type-icon,
+.ledger-tab-icon,
+.type-icon,
+.dividend-stat-icon,
+.title-icon,
+.stock-icon-large,
+.form-header-icon,
+.back-btn-icon,
+.tab-icon,
+.fab-btn,
+.back-btn,
+.input-back-btn,
+.modal-back-btn,
+.dca-back-btn,
+.dca-setup-back-btn,
+.detail-back-btn,
+.investment-back-btn,
+.investment-form-back-btn,
+.daily-budget-back-btn,
+.nav-back-btn,
+[class*="icon"],
+[class*="Icon"],
+button,
+.btn,
+[class*="btn"] {
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Emoji', 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif !important;
+}
