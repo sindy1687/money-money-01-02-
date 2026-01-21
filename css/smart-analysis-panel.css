@@ -1,0 +1,306 @@
+/* 智慧分析面板樣式 */
+.smart-analysis-panel {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    margin: 20px 0;
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
+    overflow: hidden;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.panel-header h3 {
+    margin: 0;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.panel-toggle {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.panel-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.panel-content {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.suggestions-list {
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.loading-suggestions,
+.no-suggestions {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    font-style: italic;
+}
+
+.suggestion-item {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #667eea;
+    transition: all 0.3s ease;
+}
+
+.suggestion-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.suggestion-item.suggestion-warning {
+    border-left-color: #ff6b6b;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+}
+
+.suggestion-item.suggestion-info {
+    border-left-color: #4ecdc4;
+    background: linear-gradient(135deg, #f0ffff 0%, #ffffff 100%);
+}
+
+.suggestion-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.suggestion-icon {
+    font-size: 16px;
+}
+
+.suggestion-title {
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.suggestion-content {
+    color: #666;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.suggestion-action {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.suggestion-action:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.quick-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.smart-action-btn {
+    background: white;
+    border: 2px solid #e0e0e0;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    flex: 1;
+    min-width: 120px;
+    justify-content: center;
+}
+
+.smart-action-btn:hover {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.smart-action-btn:active {
+    transform: translateY(0);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .smart-analysis-panel {
+        margin: 10px;
+        border-radius: 12px;
+    }
+    
+    .panel-header {
+        padding: 12px 16px;
+    }
+    
+    .panel-header h3 {
+        font-size: 16px;
+    }
+    
+    .panel-content {
+        padding: 16px;
+    }
+    
+    .quick-actions {
+        flex-direction: column;
+    }
+    
+    .smart-action-btn {
+        min-width: auto;
+    }
+    
+    .suggestion-item {
+        padding: 12px;
+    }
+}
+
+/* 主題適配 */
+:root[data-theme="dark"] .smart-analysis-panel {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+}
+
+:root[data-theme="dark"] .panel-header h3 {
+    color: #e2e8f0;
+}
+
+:root[data-theme="dark"] .panel-content {
+    background: rgba(45, 55, 72, 0.95);
+}
+
+:root[data-theme="dark"] .suggestion-item {
+    background: #2d3748;
+    border-left-color: #4299e1;
+}
+
+:root[data-theme="dark"] .suggestion-item.suggestion-warning {
+    background: #2d1b1b;
+    border-left-color: #fc8181;
+}
+
+:root[data-theme="dark"] .suggestion-item.suggestion-info {
+    background: #1b2d2d;
+    border-left-color: #4fd1c5;
+}
+
+:root[data-theme="dark"] .suggestion-title {
+    color: #e2e8f0;
+}
+
+:root[data-theme="dark"] .suggestion-content {
+    color: #a0aec0;
+}
+
+:root[data-theme="dark"] .smart-action-btn {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #e2e8f0;
+}
+
+:root[data-theme="dark"] .smart-action-btn:hover {
+    border-color: #4299e1;
+    background: linear-gradient(135deg, #4299e1 0%, #2b6cb0 100%);
+    color: white;
+}
+
+/* 動畫效果 */
+.suggestion-item {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 滾動條樣式 */
+.suggestions-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.suggestions-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.suggestions-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.suggestions-list::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+:root[data-theme="dark"] .suggestions-list::-webkit-scrollbar-track {
+    background: #2d3748;
+}
+
+:root[data-theme="dark"] .suggestions-list::-webkit-scrollbar-thumb {
+    background: #4a5568;
+}
+
+:root[data-theme="dark"] .suggestions-list::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+}

@@ -1,5 +1,5 @@
 // ========== 主題顏色功能 ==========
-var themes = window.AppThemes || [
+var themes = window.AppThemes || (window.AppThemes = [
     {
         id: 'pink',
         name: '粉色主題',
@@ -21,9 +21,10 @@ var themes = window.AppThemes || [
     {
         id: 'green',
         name: '綠色主題',
-        icon: '💚',
-        buttonIcon: '💚',
-        preview: 'linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%)',
+        icon: '🌿',
+        buttonIcon: '🌱',
+        preview: 'linear-gradient(135deg, #c6efce 0%, #e5f8e8 100%)',
+        color: '#34c759',
         color: '#4caf50',
         category: 'basic'
     },
@@ -109,25 +110,6 @@ var themes = window.AppThemes || [
         category: 'nature'
     },
     {
-        id: 'dreamyGalaxy',
-        name: '夢幻星河',
-        icon: '🌌',
-        buttonIcon: '✨',
-        preview: 'url("https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg") center/cover',
-        color: '#B19CD9',
-        category: 'cosmic',
-        backgroundImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
-        investmentCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
-        accountingCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
-        holdingCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
-        buyingCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
-        sellingCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
-        dividendCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg'
-    },
-    {
         id: 'star',
         name: '星空主題',
         icon: '✨',
@@ -179,8 +161,7 @@ var themes = window.AppThemes || [
         buttonIcon: '🛸',
         preview: 'linear-gradient(135deg, #001428 0%, #002850 60%, #8a2be2 100%)',
         color: '#00d4ff',
-        category: 'dynamic',
-        backgroundVideo: 'https://v1.pinimg.com/videos/iht/720p/4e/00/d1/4e00d1999152ab007ebe4aef36d5e2c9.mp4'
+        category: 'cosmic'
     },
     {
         id: 'totoro',
@@ -213,25 +194,14 @@ var themes = window.AppThemes || [
         backgroundImage: 'https://i.pinimg.com/736x/73/3c/b0/733cb0696372d66f16702dd385a5aa5b.jpg'
     },
     {
-        id: 'shinchan',
-        name: '蠟筆小新主題',
-        icon: '🌻',
-        buttonIcon: '🌻',
-        preview: 'url("https://i.pinimg.com/1200x/c3/66/a8/c366a88a9b62dee30d8628ddae89afa9.jpg") center/cover',
-        color: '#FFD700',
-        category: 'anime',
-        backgroundImage: 'https://i.pinimg.com/1200x/c3/66/a8/c366a88a9b62dee30d8628ddae89afa9.jpg'
-    },
-    {
         id: 'money',
         name: '金錢滿滿',
         icon: '💸',
         buttonIcon: '💸',
         preview: 'url("https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg") center/cover',
         color: '#16f49a',
-        category: 'dynamic',
-        backgroundImage: 'https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg',
-        backgroundVideo: 'https://v1.pinimg.com/videos/iht/expMp4/a4/53/29/a45329a21920d8db7a7f778daa592453_720w.mp4'
+        category: 'wealth',
+        backgroundImage: 'https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg'
     },
     {
         id: 'caitu',
@@ -422,141 +392,25 @@ var themes = window.AppThemes || [
         dividendCardImage: 'https://i.pinimg.com/736x/26/c9/c0/26c9c0297b0cad3dfa8d6d5c41ccfc18.jpg'
     },
     {
-        id: 'cutecreatures',
-        name: '可愛生物',
-        icon: '🌿',
-        buttonIcon: '🐾',
-        preview: 'url("https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg") center/cover',
-        color: '#90EE90',
-        category: 'cute',
-        backgroundImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
-        investmentCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
-        accountingCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/736x/85/74/68/857468da4307fa5dc160ad691a91203b.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/1200x/12/9a/54/129a54dd2352298e7e8d4630eacc6b76.jpg',
-        holdingCardImage: 'https://i.pinimg.com/736x/47/8e/82/478e82dd1e2a82bc5d4d2914aa8be731.jpg',
-        buyingCardImage: 'https://i.pinimg.com/1200x/12/9a/54/129a54dd2352298e7e8d4630eacc6b76.jpg',
-        sellingCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
-        dividendCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg'
-    },
-    {
-        id: 'spacegold',
-        name: '太空金彩',
-        icon: '🚀',
-        buttonIcon: '🪐',
-        preview: 'url("https://i.pinimg.com/736x/eb/33/27/eb3327b7caa47a87c1f4cee99344892e.jpg") center/cover',
-        color: '#FFD700',
-        category: 'cosmic',
-        backgroundImage: 'https://i.pinimg.com/736x/eb/33/27/eb3327b7caa47a87c1f4cee99344892e.jpg',
-        investmentCardImage: 'https://i.pinimg.com/736x/85/74/68/857468da4307fa5dc160ad691a91203b.jpg',
-        accountingCardImage: 'https://i.pinimg.com/736x/eb/33/27/eb3327b7caa47a87c1f4cee99344892e.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/736x/eb/33/27/eb3327b7caa47a87c1f4cee99344892e.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/85/74/68/857468da4307fa5dc160ad691a91203b.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/736x/eb/33/27/eb3327b7caa47a87c1f4cee99344892e.jpg',
-        holdingCardImage: 'https://i.pinimg.com/736x/eb/33/27/eb3327b7caa47a87c1f4cee99344892e.jpg',
-        buyingCardImage: 'https://i.pinimg.com/736x/eb/33/27/eb3327b7caa47a87c1f4cee99344892e.jpg',
-        sellingCardImage: 'https://i.pinimg.com/736x/eb/33/27/eb3327b7caa47a87c1f4cee99344892e.jpg',
-        dividendCardImage: 'https://i.pinimg.com/736x/eb/33/27/eb3327b7caa47a87c1f4cee99344892e.jpg'
-    },
-    {
-        id: 'getrich',
-        name: '恭喜發財',
-        icon: '🧧',
-        buttonIcon: '💰',
-        preview: 'url("https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg") center/cover',
-        color: '#D42C2C',
-        category: 'wealth',
-        backgroundImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        investmentCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        accountingCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        holdingCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        buyingCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        sellingCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        dividendCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg'
-    },
-    {
-        id: 'festive',
-        name: '小新美日',
-        icon: '🎊',
-        buttonIcon: '🎉',
-        preview: 'url("https://i.pinimg.com/736x/c8/57/a1/c857a19b3f5bd274ba864e54dc27f550.jpg") center/cover',
-        color: '#E63946',
-        category: 'dynamic',
-        backgroundImage: 'https://i.pinimg.com/736x/c8/57/a1/c857a19b3f5bd274ba864e54dc27f550.jpg',
-        investmentCardImage: 'https://i.pinimg.com/1200x/ba/24/9a/ba249a3cc3f9f317683f78c240ff0686.jpg',
-        accountingCardImage: 'https://i.pinimg.com/736x/c8/57/a1/c857a19b3f5bd274ba864e54dc27f550.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/736x/6f/49/9a/6f499af434927a2eff91221a60393ae5.jpg',
-        monthlyPlanningdynamicCardImage: 'https://i.pinimg.com/736x/c8/57/a1/c857a19b3f5bd274ba864e54dc27f550.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/1200x/ba/24/9a/ba249a3cc3f9f317683f78c240ff0686.jpg',
-        holdingCardImage: 'https://i.pinimg.com/1200x/ba/24/9a/ba249a3cc3f9f317683f78c240ff0686.jpg',
-        buyingCardImage: 'https://i.pinimg.com/1200x/ba/24/9a/ba249a3cc3f9f317683f78c240ff0686.jpg',
-        sellingCardImage: 'https://i.pinimg.com/1200x/ba/24/9a/ba249a3cc3f9f317683f78c240ff0686.jpg',
-        dividendCardImage: 'https://i.pinimg.com/1200x/ba/24/9a/ba249a3cc3f9f317683f78c240ff0686.jpg'
-    },
-    {
-        id: 'foxfire',
-        name: '狐火',
-        icon: '🦊',
-        buttonIcon: '🔥',
-        preview: 'url("https://i.pinimg.com/1200x/a8/4e/3e/a84e3e0d444e9a3ffd39f6859b8fe278.jpg") center/cover',
-        color: '#FF4500',
+        id: 'dreamyBlue',
+        name: '夢幻藍夜',
+        icon: '🌙',
+        buttonIcon: '🐰',
+        preview: 'linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e8ba3 100%)',
+        color: '#1e3c72',
         category: 'fantasy',
-        backgroundImage: 'https://i.pinimg.com/1200x/a8/4e/3e/a84e3e0d444e9a3ffd39f6859b8fe278.jpg',
-        investmentCardImage: 'https://i.pinimg.com/736x/d5/9c/15/d59c15a48547bc1cb02c23d607eaf875.jpg',
-        accountingCardImage: 'https://i.pinimg.com/1200x/a8/4e/3e/a84e3e0d444e9a3ffd39f6859b8fe278.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/1200x/a8/4e/3e/a84e3e0d444e9a3ffd39f6859b8fe278.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/1200x/a8/4e/3e/a84e3e0d444e9a3ffd39f6859b8fe278.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/1200x/a8/4e/3e/a84e3e0d444e9a3ffd39f6859b8fe278.jpg',
-        holdingCardImage: 'https://i.pinimg.com/1200x/a8/4e/3e/a84e3e0d444e9a3ffd39f6859b8fe278.jpg',
-        buyingCardImage: 'https://i.pinimg.com/1200x/a8/4e/3e/a84e3e0d444e9a3ffd39f6859b8fe278.jpg',
-        sellingCardImage: 'https://i.pinimg.com/1200x/a8/4e/3e/a84e3e0d444e9a3ffd39f6859b8fe278.jpg',
-        dividendCardImage: 'https://i.pinimg.com/1200x/a8/4e/3e/a84e3e0d444e9a3ffd39f6859b8fe278.jpg'
-    },
-    {
-        id: 'anime-elegance',
-        name: '動漫優雅',
-        icon: '🌸',
-        buttonIcon: '🌸',
-        preview: 'url("https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg") center/cover',
-        color: '#7da8c7',
-        category: 'fantasy',
-        backgroundImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        investmentCardImage: 'https://i.pinimg.com/736x/d5/9c/15/d59c15a48547bc1cb02c23d607eaf875.jpg',
-        accountingCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        holdingCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        buyingCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        sellingCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        dividendCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        recurringManagementCardImage: 'https://i.pinimg.com/736x/d5/9c/15/d59c15a48547bc1cb02c23d607eaf875.jpg'
-    },
-    {
-        id: 'dreamy-dynamic',
-        name: '夢幻動態',
-        icon: '✨',
-        buttonIcon: '🌟',
-        preview: 'url("https://v1.pinimg.com/videos/iht/expMp4/c7/39/73/c739737a7c0471e01fa4e606507d0a48_720w.mp4") center/cover',
-        color: '#8B5CF6',
-        category: 'dynamic',
-        backgroundVideo: 'https://v1.pinimg.com/videos/iht/expMp4/c7/39/73/c739737a7c0471e01fa4e606507d0a48_720w.mp4',
-        investmentCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        accountingCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        holdingCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        buyingCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        sellingCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        dividendCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        recurringManagementCardImage: 'https://i.pinimg.com/736x/d5/9c/15/d59c15a48547bc1cb02c23d607eaf875.jpg'
+        backgroundImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg'
     }
-];
+]);
 
 // 主題分類定義
 const themeCategories = {
@@ -564,6 +418,11 @@ const themeCategories = {
         name: '經典色彩',
         icon: '🎨',
         description: '純色經典主題'
+    },
+    nature: {
+        name: '自然風光',
+        icon: '🌿',
+        description: '森林、雪景等自然主題'
     },
     cosmic: {
         name: '宇宙星空',
@@ -588,35 +447,20 @@ const themeCategories = {
     cute: {
         name: '可愛風格',
         icon: '🐾',
-        description: '可愛、萌系主題',
-        animation: 'cuteAnimation'
+        description: '可愛、萌系主題'
     },
     fantasy: {
         name: '奇幻風格',
         icon: '🗡️',
-        description: '騎士、奇幻主題',
-        animation: 'fantasyAnimation'
-    },
-    dynamic: {
-        name: '動態背景',
-        icon: '🎬',
-        description: '影片動態背景主題',
-        animation: 'dynamicAnimation'
-    },
-    celebration: {
-        name: '節日慶典',
-        icon: '🎊',
-        description: '節日、慶典、派對主題'
+        description: '騎士、奇幻主題'
     }
 };
 
 const themeAnimations = {};
+
 const themeVideoController = (() => {
     let moneyVideoEl = null;
     let spaceVideoEl = null;
-    let shinchanPoolVideoEl = null;
-    let festiveVideoEl = null;
-    let dreamyDynamicVideoEl = null;
     let containerEl = null;
 
     const ensureElements = () => {
@@ -626,60 +470,30 @@ const themeVideoController = (() => {
         if (!spaceVideoEl) {
             spaceVideoEl = document.getElementById('spaceThemeVideo');
         }
-        if (!shinchanPoolVideoEl) {
-            shinchanPoolVideoEl = document.getElementById('shinchanPoolThemeVideo');
-        }
-        if (!festiveVideoEl) {
-            festiveVideoEl = document.getElementById('festiveThemeVideo');
-        }
-        if (!dreamyDynamicVideoEl) {
-            dreamyDynamicVideoEl = document.getElementById('dreamyDynamicThemeVideo');
-        }
         if (!containerEl) {
             containerEl = document.querySelector('.theme-video-background');
         }
-        return (moneyVideoEl && spaceVideoEl && shinchanPoolVideoEl && festiveVideoEl && dreamyDynamicVideoEl && containerEl) || 
-               (moneyVideoEl && spaceVideoEl && festiveVideoEl && dreamyDynamicVideoEl && containerEl);
+        return moneyVideoEl && spaceVideoEl && containerEl;
     };
 
     const setActive = (themeId) => {
         if (!ensureElements()) return;
-        
-        // Pause all videos
-        if (moneyVideoEl) moneyVideoEl.pause();
-        if (spaceVideoEl) spaceVideoEl.pause();
-        if (shinchanPoolVideoEl) shinchanPoolVideoEl.pause();
-        if (festiveVideoEl) festiveVideoEl.pause();
-        if (dreamyDynamicVideoEl) dreamyDynamicVideoEl.pause();
+        moneyVideoEl.pause();
+        spaceVideoEl.pause();
 
-        const isActive = themeId === 'money' || themeId === 'space' || themeId === 'shinchanPool' || themeId === 'festive' || themeId === 'dreamy-dynamic';
+        const isActive = themeId === 'money' || themeId === 'space';
         containerEl.classList.toggle('active', isActive);
 
         if (isActive) {
             let activeVideo = null;
-            
-            // Hide all videos first
-            if (moneyVideoEl) moneyVideoEl.style.display = 'none';
-            if (spaceVideoEl) spaceVideoEl.style.display = 'none';
-            if (shinchanPoolVideoEl) shinchanPoolVideoEl.style.display = 'none';
-            if (festiveVideoEl) festiveVideoEl.style.display = 'none';
-            if (dreamyDynamicVideoEl) dreamyDynamicVideoEl.style.display = 'none';
-            
             if (themeId === 'money') {
                 activeVideo = moneyVideoEl;
-                if (moneyVideoEl) moneyVideoEl.style.display = 'block';
+                moneyVideoEl.style.display = 'block';
+                spaceVideoEl.style.display = 'none';
             } else if (themeId === 'space') {
                 activeVideo = spaceVideoEl;
-                if (spaceVideoEl) spaceVideoEl.style.display = 'block';
-            } else if (themeId === 'shinchanPool') {
-                activeVideo = shinchanPoolVideoEl;
-                if (shinchanPoolVideoEl) shinchanPoolVideoEl.style.display = 'block';
-            } else if (themeId === 'festive') {
-                activeVideo = festiveVideoEl;
-                if (festiveVideoEl) festiveVideoEl.style.display = 'block';
-            } else if (themeId === 'dreamy-dynamic') {
-                activeVideo = dreamyDynamicVideoEl;
-                if (dreamyDynamicVideoEl) dreamyDynamicVideoEl.style.display = 'block';
+                spaceVideoEl.style.display = 'block';
+                moneyVideoEl.style.display = 'none';
             }
 
             if (activeVideo) {
@@ -690,12 +504,8 @@ const themeVideoController = (() => {
                 }
             }
         } else {
-            // Hide all videos when inactive
-            if (moneyVideoEl) moneyVideoEl.style.display = 'none';
-            if (spaceVideoEl) spaceVideoEl.style.display = 'none';
-            if (shinchanPoolVideoEl) shinchanPoolVideoEl.style.display = 'none';
-            if (festiveVideoEl) festiveVideoEl.style.display = 'none';
-            if (dreamyDynamicVideoEl) dreamyDynamicVideoEl.style.display = 'none';
+            moneyVideoEl.style.display = 'none';
+            spaceVideoEl.style.display = 'none';
         }
     };
 
@@ -726,9 +536,6 @@ function applyTheme(themeId) {
         document.body.style.backgroundRepeat = '';
     }
     
-    // 應用卡片背景圖片
-    applyThemeCardImages(theme);
-    
     updateThemeButtons(themeId);
     themeVideoController.setActive(themeId);
 
@@ -738,59 +545,6 @@ function applyTheme(themeId) {
             updateAllCharts();
         }
     }
-}
-
-function applyThemeCardImages(theme) {
-    if (!theme) return;
-    
-    // 應用其他卡片背景圖片（不包括預算設定頁面）
-    const cardMappings = [
-        { selector: '.investment-card', image: theme.investmentCardImage },
-        { selector: '.accounting-card', image: theme.accountingCardImage },
-        { selector: '.monthly-planning-card', image: theme.monthlyPlanningCardImage },
-        { selector: '.investment-settings-card', image: theme.investmentSettingsCardImage },
-        { selector: '.holding-card', image: theme.holdingCardImage },
-        { selector: '.buying-card', image: theme.buyingCardImage },
-        { selector: '.selling-card', image: theme.sellingCardImage },
-        { selector: '.dividend-card', image: theme.dividendCardImage }
-    ];
-    
-    cardMappings.forEach(mapping => {
-        if (mapping.image) {
-            applyCardBackgroundImage(mapping.selector, mapping.image);
-        }
-    });
-}
-
-function applyCardBackgroundImage(selector, imageUrl) {
-    if (!imageUrl) return;
-    
-    const elements = document.querySelectorAll(selector);
-    elements.forEach(element => {
-        // 檢查圖片是否可以載入
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
-        img.onload = function() {
-            // 圖片載入成功，應用背景
-            element.style.backgroundImage = `url(${imageUrl})`;
-            element.style.backgroundSize = 'cover';
-            element.style.backgroundPosition = 'center';
-            element.style.backgroundRepeat = 'no-repeat';
-            console.log(`✅ 卡片背景圖片載入成功: ${selector} - ${imageUrl}`);
-        };
-        
-        img.onerror = function() {
-            // 圖片載入失敗，清除背景
-            element.style.backgroundImage = '';
-            element.style.backgroundSize = '';
-            element.style.backgroundPosition = '';
-            element.style.backgroundRepeat = '';
-            console.warn(`⚠️ 卡片背景圖片載入失敗: ${selector} - ${imageUrl}`);
-        };
-        
-        // 開始載入圖片
-        img.src = imageUrl;
-    });
 }
 
 function applyThemeBackgroundImage(imageUrl) {
@@ -1050,7 +804,6 @@ function updateThemeButtons(themeId) {
             navChart: '🦋',
             navSettings: '✨'
         },
-        
         dreamyfish: {
             fab: '🐠',
             navLedger: '🐟',
@@ -1079,87 +832,18 @@ function updateThemeButtons(themeId) {
             fab: '🦋',
             navLedger: '🗡️',
             navWallet: '💜',
-            navInvestment: '📈',
+            navInvestment: '🌸',
             navChart: '🦋',
             navSettings: '⚡'
         },
-        
-       cutecreatures: {
-    fab: '🌿',
-    navLedger: '🐾',
-    navWallet: '🌱',
-    navInvestment: '📈',
-    navChart: '🌿',
-    navSettings: '🌿'
-},
-spacegold: {
-    fab: '🚀',
-    navLedger: '🪐',
-    navWallet: '✨',
-    navInvestment: '',
-    navChart: '🌟',
-    navSettings: '🚀'
-},
-getrich: {
-    fab: '🧧',
-    navLedger: '🐱',
-    navWallet: '💰',
-    navInvestment: '📈',
-    navChart: '🎯',
-    navSettings: '🎊'
-},
-festive: {
-    fab: '🎉',
-    navLedger: '🎊',
-    navWallet: '💰',
-    navInvestment: '🎈',
-    navChart: '🎆',
-    navSettings: '🎇'
-},
-whimsicalStarry: {
-    fab: '🌟',
-    navLedger: '✨',
-    navWallet: '💫',
-    navInvestment: '🌌',
-    navChart: '🔭',
-    navSettings: '🌠'
-},
-shinchanPool: {
-    fab: '🏊',
-    navLedger: '🦆',
-    navWallet: '💧',
-    navInvestment: '🌊',
-    navChart: '🏖️',
-    navSettings: '⛱️'
-},
-dreamyGalaxy: {
-    fab: '🌌',
-    navLedger: '✨',
-    navWallet: '💫',
-    navInvestment: '🌟',
-    navChart: '🔭',
-    navSettings: '🌠'
-},
-dreamyRealm: {
-    fab: '🌸',
-    navLedger: '✨',
-},
-foxfire: {
-    fab: '🦊',
-    navLedger: '🔥',
-    navWallet: '🦊',
-    navInvestment: '📈',
-    navChart: '⚡',
-    navSettings: '⚙️'
-},
-'anime-elegance': {
-    fab: '🌸',
-    navLedger: '📖',
-    navWallet: '💎',
-    navInvestment: '🌺',
-    navChart: '🕊️',
-    navSettings: '✨'
-}
+        dreamyBlue: {
+            fab: '🌙',
+            navLedger: '🐰',
+            navWallet: '🌟',
+            navInvestment: '⭐',
+            navChart: '🌌',
+            navSettings: '✨'
+        }
     };
 
     const iconAssetsCute = {
@@ -1455,361 +1139,214 @@ function applyCustomTheme() {
     }
 }
 
-function showThemeNotification(theme) {
-    if (!theme) return;
-    
-    const notification = document.createElement('div');
-    notification.className = 'theme-notification';
-    notification.innerHTML = `
-        <div class="theme-notification-content">
-            <div class="theme-notification-icon">${theme.icon || '🎨'}</div>
-            <div class="theme-notification-text">
-                <div class="theme-notification-title">主題已切換</div>
-                <div class="theme-notification-name">${theme.name}</div>
+function showThemeSelector() {
+    const modal = document.createElement('div');
+    modal.className = 'theme-modal-v2';
+    modal.innerHTML = `
+        <div class="theme-modal-overlay"></div>
+        <div class="theme-modal-container">
+            <div class="theme-modal-header-v2">
+                <h2 class="theme-modal-title-v2">🎨 選擇主題</h2>
+                <button class="theme-modal-close-v2">✕</button>
             </div>
-            <div class="theme-notification-close">✕</div>
+            <div class="theme-modal-content-v2">
+                <div class="theme-view-controls">
+                    <div class="theme-view-toggle">
+                        <button class="view-btn active" data-view="all">全部主題</button>
+                        <button class="view-btn" data-view="category">分類檢視</button>
+                    </div>
+                </div>
+                <div class="theme-cards-container" id="themeCardsContainer"></div>
+            </div>
         </div>
     `;
     
-    document.body.appendChild(notification);
+    document.body.appendChild(modal);
     
-    // 添加關閉事件
-    const closeBtn = notification.querySelector('.theme-notification-close');
-    closeBtn.addEventListener('click', () => {
-        removeNotification();
-    });
+    // 渲染主題卡片
+    renderThemeCards(modal, 'all');
     
-    // 自動移除
-    const removeNotification = () => {
-        notification.classList.add('theme-notification--fadeout');
-        setTimeout(() => {
-            if (document.body.contains(notification)) {
-                document.body.removeChild(notification);
-            }
-        }, 300);
-    };
+    // 添加事件監聽器
+    setupModalEvents(modal);
+    setupViewToggle(modal);
     
-    // 3秒後自動移除
-    setTimeout(removeNotification, 3000);
+    // 顯示動畫
+    setTimeout(() => {
+        modal.classList.add('show');
+    }, 10);
+}
+
+function setupViewToggle(modal) {
+    const viewButtons = modal.querySelectorAll('.view-btn');
+    const container = modal.querySelector('#themeCardsContainer');
     
-    // 點擊外部關閉
-    notification.addEventListener('click', (e) => {
-        if (e.target === notification) {
-            removeNotification();
-        }
+    viewButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // 更新按鈕狀態
+            viewButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // 重新渲染卡片
+            const view = btn.dataset.view;
+            renderThemeCards(modal, view);
+        });
     });
 }
 
-function showThemeSelector() {
-    console.log('showThemeSelector called');
-    const modal = document.createElement('div');
-    modal.className = 'theme-select-modal';
-    console.log('Modal element created');
-
+function renderThemeCards(modal, view = 'all') {
+    const container = modal.querySelector('#themeCardsContainer');
     const currentTheme = getCurrentTheme();
-    const customTheme = getCustomTheme();
-    console.log('Current theme:', currentTheme);
-    console.log('Custom theme:', customTheme);
-
-    modal.innerHTML = `
-        <div class="theme-custom-content modal-content-standard">
-            <div class="theme-modal-header">
-                <div class="theme-modal-title">🎨 主題</div>
-                <button class="theme-close-btn" type="button" aria-label="Close">✕</button>
-            </div>
-
-            <div class="theme-section">
-                <div class="theme-section-title">主題分類</div>
-                <div class="theme-toolbar">
-                    <input id="themeSearchInput" class="theme-search-input" type="text" placeholder="搜尋主題..." autocomplete="off" />
-                    <div id="categoryTabs" class="theme-category-tabs"></div>
-                </div>
-                <div id="themeGrid" class="theme-grid theme-grid--categorized"></div>
-            </div>
-
+    
+    let html = '';
+    
+    if (view === 'all') {
+        // 全部主題檢視 - 直式卡片
+        container.className = 'theme-cards-container theme-cards-vertical';
+        themes.forEach(theme => {
+            const isActive = theme.id === currentTheme;
+            const hasBackgroundImage = theme.backgroundImage;
             
-            <div class="theme-section theme-section--divider">
-                <div class="theme-section-title">背景圖片</div>
-                <input type="file" id="backgroundImageInput" accept="image/*" style="display: none;">
-                <button id="uploadImageBtn" class="theme-primary-btn" type="button">📷 上傳背景圖片</button>
-                ${customTheme.backgroundImage ? `
-                    <div id="imagePreviewContainer" class="theme-image-preview">
-                        <img src="${customTheme.backgroundImage}" alt="背景預覽" class="theme-image-preview-img">
-                        <button id="removeImageBtn" class="theme-image-remove-btn" type="button">✕</button>
+            html += `
+                <div class="theme-card-vertical ${isActive ? 'active' : ''}" data-theme="${theme.id}">
+                    <div class="theme-card-vertical-preview ${hasBackgroundImage ? 'has-background' : ''}" style="background: ${hasBackgroundImage ? `url('${theme.backgroundImage}') center/cover` : theme.preview}">
+                        <div class="theme-card-vertical-icon">${theme.icon}</div>
+                        ${isActive ? '<div class="theme-card-vertical-badge">✓</div>' : ''}
+                        ${hasBackgroundImage ? '<div class="theme-card-vertical-image-indicator">🖼️</div>' : ''}
                     </div>
-                ` : '<div id="imagePreviewContainer"></div>'}
-            </div>
-
-            <div class="theme-actions">
-                <button id="resetThemeBtn" class="theme-secondary-btn" type="button">重置</button>
-                <button id="saveThemeBtn" class="theme-primary-btn" type="button">儲存設定</button>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-
-    // 初始化分類標籤
-    const initCategoryTabs = () => {
-        const categoryTabs = document.getElementById('categoryTabs');
-        if (!categoryTabs) return;
-
-        // 添加「全部」選項
-        let tabsHTML = `
-            <button class="category-tab active" data-category="all">
-                <span class="category-tab-icon">🎨</span>
-                <span class="category-tab-name">全部</span>
-                <span class="category-tab-count">${themes.length}</span>
-            </button>
-        `;
-
-        // 添加各個分類
-        Object.entries(themeCategories).forEach(([categoryId, categoryInfo]) => {
-            const categoryThemes = themes.filter(t => t.category === categoryId);
-            if (categoryThemes.length > 0) {
-                tabsHTML += `
-                    <button class="category-tab" data-category="${categoryId}">
-                        <span class="category-tab-icon">${categoryInfo.icon}</span>
-                        <span class="category-tab-name">${categoryInfo.name}</span>
-                        <span class="category-tab-count">${categoryThemes.length}</span>
-                    </button>
-                `;
-            }
+                    <div class="theme-card-vertical-info">
+                        <div class="theme-card-vertical-name">${theme.name}</div>
+                        <div class="theme-card-vertical-category">${themeCategories[theme.category]?.icon} ${themeCategories[theme.category]?.name || '其他'}</div>
+                        <button class="theme-card-vertical-apply-btn" data-theme="${theme.id}">套用</button>
+                    </div>
+                </div>
+            `;
         });
-
-        categoryTabs.innerHTML = tabsHTML;
-
-        // 添加點擊事件
-        categoryTabs.querySelectorAll('.category-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                categoryTabs.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                renderThemeGrid('', tab.dataset.category);
-            });
-        });
-    };
-
-    const renderThemeGrid = (query = '', selectedCategory = 'all') => {
-        const q = (query || '').trim().toLowerCase();
-        const grid = document.getElementById('themeGrid');
-        if (!grid) return;
-
-        let list = themes.filter(t => {
-            if (!q) return true;
-            return (t.name || '').toLowerCase().includes(q) || (t.id || '').toLowerCase().includes(q);
-        });
-
-        // 按分類篩選
-        if (selectedCategory !== 'all') {
-            list = list.filter(t => t.category === selectedCategory);
-        }
-
+    } else {
+        // 分類檢視 - 按分類組織
+        container.className = 'theme-cards-container theme-cards-category';
+        
         // 按分類分組
         const groupedThemes = {};
-        list.forEach(theme => {
+        themes.forEach(theme => {
             const category = theme.category || 'basic';
             if (!groupedThemes[category]) {
                 groupedThemes[category] = [];
             }
             groupedThemes[category].push(theme);
         });
-
-        let gridHTML = '';
         
         Object.entries(groupedThemes).forEach(([categoryId, categoryThemes]) => {
             const categoryInfo = themeCategories[categoryId] || { name: '其他', icon: '📁', description: '' };
             
-            gridHTML += `
-                <div class="theme-category-section">
-                    <div class="theme-category-header">
-                        <span class="theme-category-icon">${categoryInfo.icon}</span>
-                        <span class="theme-category-name">${categoryInfo.name}</span>
-                        <span class="theme-category-description">${categoryInfo.description}</span>
+            html += `
+                <div class="theme-category-section-v2">
+                    <div class="theme-category-header-v2">
+                        <div class="theme-category-icon-v2">${categoryInfo.icon}</div>
+                        <div class="theme-category-info-v2">
+                            <h3 class="theme-category-name-v2">${categoryInfo.name}</h3>
+                            <p class="theme-category-description-v2">${categoryInfo.description || '精選主題'}</p>
+                        </div>
+                        <div class="theme-category-count-v2">${categoryThemes.length} 個主題</div>
                     </div>
-                    <div class="theme-category-grid">
-                        ${categoryThemes.map(theme => {
-                            const isSelected = theme.id === currentTheme && !customTheme.primaryColor;
-                            const hasBackgroundImage = theme.backgroundImage;
-                            return `
-                                <div class="theme-item ${isSelected ? 'selected' : ''}" data-theme-id="${theme.id}">
-                                    <div class="theme-item-preview ${hasBackgroundImage ? 'theme-item-preview--image' : ''}" ${hasBackgroundImage ? `style="background-image: url('${theme.backgroundImage}');"` : `style="background: ${theme.preview};"`}></div>
-                                    <div class="theme-item-content theme-item-content--compact">
-                                        <div class="theme-item-icon">${theme.icon}</div>
-                                        <div class="theme-item-name">${theme.name}</div>
-                                        ${isSelected ? '<div class="theme-item-check">✓</div>' : '<div class="theme-item-check theme-item-check--placeholder"></div>'}
-                                    </div>
-                                </div>
-                            `;
-                        }).join('')}
+                    <div class="theme-category-cards-v2">
+            `;
+            
+            categoryThemes.forEach(theme => {
+                const isActive = theme.id === currentTheme;
+                const hasBackgroundImage = theme.backgroundImage;
+                
+                html += `
+                    <div class="theme-card-vertical ${isActive ? 'active' : ''}" data-theme="${theme.id}">
+                        <div class="theme-card-vertical-preview ${hasBackgroundImage ? 'has-background' : ''}" style="background: ${hasBackgroundImage ? `url('${theme.backgroundImage}') center/cover` : theme.preview}">
+                            <div class="theme-card-vertical-icon">${theme.icon}</div>
+                            ${isActive ? '<div class="theme-card-vertical-badge">✓</div>' : ''}
+                            ${hasBackgroundImage ? '<div class="theme-card-vertical-image-indicator">🖼️</div>' : ''}
+                        </div>
+                        <div class="theme-card-vertical-info">
+                            <div class="theme-card-vertical-name">${theme.name}</div>
+                            <button class="theme-card-vertical-apply-btn" data-theme="${theme.id}">套用</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `
                     </div>
                 </div>
             `;
         });
-
-        grid.innerHTML = gridHTML;
-
-        grid.querySelectorAll('.theme-item').forEach(item => {
-            item.addEventListener('click', () => {
-                console.log('Theme item clicked:', item.dataset.themeId);
-                const themeId = item.dataset.themeId;
-                const theme = themes.find(t => t.id === themeId);
-                
-                if (!theme) {
-                    console.error('Theme not found:', themeId);
-                    return;
-                }
-                
-                console.log('Applying theme:', theme.name);
-                
-                // 清除自訂主題設定，應用預設主題
-                saveCustomTheme({});
-                applyTheme(themeId);
-                
-                // 如果主題有背景圖片，會自動在applyTheme中處理
-                if (theme && theme.backgroundImage) {
-                    console.log(` 切換到主題 "${theme.name}" 並載入背景圖片`);
-                }
-
-                grid.querySelectorAll('.theme-item').forEach(t => t.classList.remove('selected'));
-                item.classList.add('selected');
-
-                setTimeout(() => {
-                    if (document.body.contains(modal)) {
-                        document.body.removeChild(modal);
-                    }
-                    showThemeNotification(theme);
-                }, 300);
-            });
-        });
-    };
-
-    // 初始化
-    initCategoryTabs();
-    renderThemeGrid('');
-
-    const themeSearchInput = document.getElementById('themeSearchInput');
-    if (themeSearchInput) {
-        themeSearchInput.addEventListener('input', (e) => {
-            const activeTab = document.querySelector('.category-tab.active');
-            const selectedCategory = activeTab ? activeTab.dataset.category : 'all';
-            renderThemeGrid(e.target.value, selectedCategory);
-        });
     }
-
     
-    const uploadBtn = document.getElementById('uploadImageBtn');
-    const imageInput = document.getElementById('backgroundImageInput');
-    const removeImageBtn = document.getElementById('removeImageBtn');
-
-    if (uploadBtn && imageInput) {
-        uploadBtn.addEventListener('click', () => imageInput.click());
-        imageInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    const imageUrl = event.target.result;
-                    const previewContainer = document.getElementById('imagePreviewContainer');
-                    previewContainer.innerHTML = `
-                        <img src="${imageUrl}" alt="背景預覽" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px;">
-                        <button id="removeImageBtn" style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; font-size: 18px;">✕</button>
-                    `;
-                    previewContainer.style.position = 'relative';
-                    previewContainer.style.marginTop = '12px';
-
-                    const newRemoveBtn = document.getElementById('removeImageBtn');
-                    if (newRemoveBtn) {
-                        newRemoveBtn.addEventListener('click', () => {
-                            imageInput.value = '';
-                            previewContainer.innerHTML = '';
-                            previewContainer.style.marginTop = '0';
-                        });
-                    }
-                };
-                reader.readAsDataURL(file);
+    container.innerHTML = html;
+    
+    // 添加卡片點擊事件
+    container.querySelectorAll('.theme-card-vertical').forEach(card => {
+        card.addEventListener('click', (e) => {
+            // 如果點擊的是套用按鈕，直接套用
+            if (e.target.classList.contains('theme-card-vertical-apply-btn')) {
+                e.stopPropagation();
+                const themeId = e.target.dataset.theme;
+                applyTheme(themeId);
+                closeModal(modal);
+                return;
             }
+            
+            // 點擊卡片其他地方，直接套用主題
+            const themeId = card.dataset.theme;
+            applyTheme(themeId);
+            
+            // 更新活躍狀態
+            container.querySelectorAll('.theme-card-vertical').forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+            
+            // 關閉模態框
+            setTimeout(() => {
+                closeModal(modal);
+            }, 300);
         });
-    }
-
-    if (removeImageBtn) {
-        removeImageBtn.addEventListener('click', () => {
-            imageInput.value = '';
-            const previewContainer = document.getElementById('imagePreviewContainer');
-            previewContainer.innerHTML = '';
-            previewContainer.style.marginTop = '0';
-        });
-    }
-
-    const saveBtn = document.getElementById('saveThemeBtn');
-    if (saveBtn) {
-        saveBtn.addEventListener('click', () => {
-            playClickSound();
-            const theme = {};
-
-            const imagePreview = document.querySelector('#imagePreviewContainer img');
-            if (imagePreview) {
-                theme.backgroundImage = imagePreview.src;
-            }
-
-            saveCustomTheme(theme);
-            applyCustomTheme();
-
-            if (typeof updateAllCharts === 'function') {
-                updateAllCharts();
-            }
-
-            // 觸發新主題更新提示
-            if (window.updateNotificationSystem && theme.name) {
-                window.showUpdateNotification({
-                    type: 'theme',
-                    title: '新主題已創建！',
-                    subtitle: `您的自訂主題「${theme.name || '自訂主題'}」已儲存`,
-                    content: '您已成功創建並應用了新的自訂主題設定。',
-                    features: [
-                        { icon: '🎨', title: '自訂主題', desc: '您的個人化主題設定已生效' },
-                        { icon: '✨', title: '即時預覽', desc: '主題效果已立即應用到整個應用' }
-                    ]
-                });
-            }
-
-            alert('主題設定已儲存！');
-            if (document.body.contains(modal)) {
-                document.body.removeChild(modal);
-            }
-        });
-    }
-
-    const resetBtn = document.getElementById('resetThemeBtn');
-    if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-            if (confirm('確定要重置所有自訂設定嗎？')) {
-                saveCustomTheme({});
-                applyTheme('blue');
-                applyCustomTheme();
-                if (document.body.contains(modal)) {
-                    document.body.removeChild(modal);
-                }
-                showThemeSelector();
-            }
-        });
-    }
-
-    const closeBtn = modal.querySelector('.theme-close-btn');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            if (document.body.contains(modal)) {
-                document.body.removeChild(modal);
-            }
-        });
-    }
-
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            if (document.body.contains(modal)) {
-                document.body.removeChild(modal);
-            }
-        }
     });
+    
+    // 添加套用按鈕事件
+    container.querySelectorAll('.theme-card-vertical-apply-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const themeId = btn.dataset.theme;
+            applyTheme(themeId);
+            closeModal(modal);
+        });
+    });
+}
+
+function setupModalEvents(modal) {
+    // 關閉按鈕
+    const closeBtn = modal.querySelector('.theme-modal-close-v2');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => closeModal(modal));
+    }
+    
+    // 背景點擊關閉
+    const overlay = modal.querySelector('.theme-modal-overlay');
+    if (overlay) {
+        overlay.addEventListener('click', () => closeModal(modal));
+    }
+    
+    // ESC鍵關閉
+    const handleEscape = (e) => {
+        if (e.key === 'Escape') {
+            closeModal(modal);
+            document.removeEventListener('keydown', handleEscape);
+        }
+    };
+    document.addEventListener('keydown', handleEscape);
+}
+
+function closeModal(modal) {
+    modal.classList.remove('show');
+    setTimeout(() => {
+        if (document.body.contains(modal)) {
+            document.body.removeChild(modal);
+        }
+    }, 300);
 }
 
 function initTheme() {
