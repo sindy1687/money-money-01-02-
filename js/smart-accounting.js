@@ -1,48 +1,44 @@
 // 智慧記帳功能模組
 // 自動分類建議和支出模式分析
 
-// 分類規則配置 - 增強版
+// 分類規則配置
 const CATEGORY_RULES = {
     // 飲食類
     '飲食': {
-        keywords: ['餐廳', '小吃', '咖啡', '飲料', '午餐', '晚餐', '早餐', '外送', 'Uber Eats', 'Foodpanda', '麥當勞', '肯德基', '星巴克', '85度C', '超商', '7-11', '全家', '便當', '拉麵', '火鍋', '燒肉', '甜品', '蛋糕', '冰淇淋'],
+        keywords: ['餐廳', '小吃', '咖啡', '飲料', '午餐', '晚餐', '早餐', '外送', 'Uber Eats', 'Foodpanda', '麥當勞', '肯德基', '星巴克', '85度C', '超商', '7-11', '全家'],
         amountRanges: [
             { min: 0, max: 200, weight: 0.8 },  // 小額飲食
-            { min: 200, max: 1000, weight: 0.9 }, // 中等金額飲食
-            { min: 1000, max: 3000, weight: 0.7 }  // 大額飲食
+            { min: 200, max: 1000, weight: 0.9 } // 中等金額飲食
         ],
         timePatterns: {
             morning: { start: 6, end: 10, weight: 0.7 },
             noon: { start: 11, end: 14, weight: 0.9 },
-            evening: { start: 17, end: 21, weight: 0.8 },
-            night: { start: 21, end: 24, weight: 0.6 }
+            evening: { start: 17, end: 21, weight: 0.8 }
         }
     },
     
     // 交通類
     '交通': {
-        keywords: ['捷運', '公車', '計程車', 'Uber', 'Grab', '油錢', '停車', '高鐵', '台鐵', '機票', '船票', '共享單車', 'YouBike', 'WeGo', 'GoShare', '高速公路', '過路費'],
+        keywords: ['捷運', '公車', '計程車', 'Uber', 'Grab', '油錢', '停車', '高鐵', '台鐵', '機票', '船票', '共享單車', 'YouBike'],
         amountRanges: [
             { min: 0, max: 100, weight: 0.8 },  // 大眾運輸
             { min: 100, max: 500, weight: 0.7 }, // 短程交通
-            { min: 500, max: 5000, weight: 0.9 }, // 長程交通
-            { min: 5000, max: 20000, weight: 0.8 } // 國際交通
+            { min: 500, max: 5000, weight: 0.9 }  // 長程交通
         ]
     },
     
     // 娛樂類
     '娛樂': {
-        keywords: ['電影', 'KTV', '遊戲', '音樂', '演唱會', '展覽', '書籍', 'Netflix', 'Spotify', 'Steam', 'PlayStation', 'Nintendo', 'Disney+', 'YouTube', '桌遊', '密室逃脫'],
+        keywords: ['電影', 'KTV', '遊戲', '音樂', '演唱會', '展覽', '書籍', 'Netflix', 'Spotify', 'Steam', 'PlayStation', 'Nintendo'],
         amountRanges: [
             { min: 0, max: 300, weight: 0.7 },
-            { min: 300, max: 2000, weight: 0.8 },
-            { min: 2000, max: 10000, weight: 0.6 }
+            { min: 300, max: 2000, weight: 0.8 }
         ]
     },
     
     // 購物類
     '購物': {
-        keywords: ['衣服', '鞋子', '包包', '化妝品', '3C', '電腦', '手機', '家具', '日用品', '寵物', '運動用品', '美妝', '保養品', '飾品', '手錶', '眼鏡'],
+        keywords: ['衣服', '鞋子', '包包', '化妝品', '3C', '電腦', '手機', '家具', '日用品', '寵物', '運動用品'],
         amountRanges: [
             { min: 0, max: 500, weight: 0.6 },
             { min: 500, max: 5000, weight: 0.8 },
@@ -52,51 +48,28 @@ const CATEGORY_RULES = {
     
     // 醫療類
     '醫療': {
-        keywords: ['醫生', '醫院', '診所', '藥局', '健保', '看診', '藥品', '保健品', '疫苗', '檢查', '手術', '牙醫', '眼科', '皮膚科'],
+        keywords: ['醫院', '診所', '藥局', '看醫生', '掛號', '藥品', '健保', '牙醫', '眼科', '身體檢查'],
         amountRanges: [
-            { min: 0, max: 500, weight: 0.7 },  // 藥品
-            { min: 500, max: 5000, weight: 0.8 }, // 看診
-            { min: 5000, max: 50000, weight: 0.9 } // 手術/重大治療
+            { min: 0, max: 1000, weight: 0.8 },
+            { min: 1000, max: 10000, weight: 0.9 }
         ]
     },
     
     // 教育類
     '教育': {
-        keywords: ['書籍', '課程', '學費', '補習', '文具', '線上課程', '證照', '研習', '訓練', '學習', '教材'],
+        keywords: ['學費', '補習', '書本', '課程', '學習', '證照', '工作坊', '線上課程', 'Coursera', 'Udemy'],
         amountRanges: [
-            { min: 0, max: 1000, weight: 0.8 },
-            { min: 1000, max: 10000, weight: 0.9 },
-            { min: 10000, max: 100000, weight: 0.7 }
+            { min: 0, max: 2000, weight: 0.7 },
+            { min: 2000, max: 50000, weight: 0.9 }
         ]
     },
     
-    // 居家類
-    '居家': {
-        keywords: ['房租', '水費', '電費', '瓦斯', '網路', '電話費', '家具', '家電', '裝潢', '維修', '清潔用品', '衛生紙', '洗衣精'],
+    // 帳費類
+    '帳費': {
+        keywords: ['電費', '水費', '瓦斯費', '網路費', '手機費', '房租', '管理費', '保險', '稅金', '信用卡費'],
         amountRanges: [
-            { min: 0, max: 1000, weight: 0.7 },  // 日用品
-            { min: 1000, max: 10000, weight: 0.8 }, // 家電/家具
-            { min: 10000, max: 50000, weight: 0.9 } // 裝潢/租金
-        ]
-    },
-    
-    // 投資理財類
-    '投資理財': {
-        keywords: ['股票', '基金', '保險', '儲蓄', '投資', '理財', '銀行', '手續費', '稅金', '保費'],
-        amountRanges: [
-            { min: 0, max: 1000, weight: 0.6 },  // 手續費
-            { min: 1000, max: 10000, weight: 0.8 }, // 保費/小額投資
-            { min: 10000, max: 1000000, weight: 0.9 } // 大額投資
-        ]
-    },
-    
-    // 人際社交類
-    '人際社交': {
-        keywords: ['禮物', '聚餐', '約會', '婚禮', '派對', '紅包', '請客', '聚餐', '朋友', '家人'],
-        amountRanges: [
-            { min: 0, max: 1000, weight: 0.7 },
-            { min: 1000, max: 10000, weight: 0.8 },
-            { min: 10000, max: 50000, weight: 0.6 }
+            { min: 0, max: 2000, weight: 0.8 },
+            { min: 2000, max: 100000, weight: 0.9 }
         ]
     }
 };
@@ -595,188 +568,11 @@ function updateCategoryRules(preferences) {
     });
 }
 
-// 新增智慧建議功能
-function generateSmartSuggestions(records) {
-    if (!Array.isArray(records) || records.length === 0) {
-        return [];
-    }
-    
-    const suggestions = [];
-    const now = new Date();
-    const currentMonth = now.getMonth();
-    const currentYear = now.getFullYear();
-    
-    // 本月支出分析
-    const monthlyExpenses = records.filter(r => {
-        const date = new Date(r.date);
-        return (r.type === 'expense' || !r.type) && 
-               date.getMonth() === currentMonth && 
-               date.getFullYear() === currentYear;
-    });
-    
-    const totalMonthlyExpense = monthlyExpenses.reduce((sum, r) => sum + (r.amount || 0), 0);
-    
-    // 1. 高額支出提醒
-    const largeExpenses = monthlyExpenses.filter(r => r.amount > 5000);
-    if (largeExpenses.length > 0) {
-        suggestions.push({
-            type: 'large_expense',
-            title: '大額支出提醒',
-            content: `本月有 ${largeExpenses.length} 筆超過 NT$5,000 的支出，總計 NT$ ${largeExpenses.reduce((sum, r) => sum + r.amount, 0).toLocaleString()}`,
-            level: 'warning',
-            action: 'review_large_expenses'
-        });
-    }
-    
-    // 2. 重複支出檢測
-    const categoryGroups = {};
-    monthlyExpenses.forEach(r => {
-        const cat = r.category || '未分類';
-        if (!categoryGroups[cat]) categoryGroups[cat] = [];
-        categoryGroups[cat].push(r);
-    });
-    
-    Object.entries(categoryGroups).forEach(([category, items]) => {
-        if (items.length > 10) {
-            suggestions.push({
-                type: 'frequent_category',
-                title: '頻繁支出類別',
-                content: `「${category}」本月已有 ${items.length} 筆記錄，總計 NT$ ${items.reduce((sum, r) => sum + r.amount, 0).toLocaleString()}`,
-                level: 'info',
-                action: 'review_category',
-                category: category
-            });
-        }
-    });
-    
-    // 3. 異常支出檢測
-    const avgExpense = totalMonthlyExpense / Math.max(monthlyExpenses.length, 1);
-    const unusualExpenses = monthlyExpenses.filter(r => r.amount > avgExpense * 3);
-    if (unusualExpenses.length > 0) {
-        suggestions.push({
-            type: 'unusual_expense',
-            title: '異常支出檢測',
-            content: `發現 ${unusualExpenses.length} 筆異常高額支出（超過平均3倍）`,
-            level: 'warning',
-            action: 'review_unusual',
-            expenses: unusualExpenses
-        });
-    }
-    
-    // 4. 預算建議
-    if (totalMonthlyExpense > 0) {
-        const dailyAverage = totalMonthlyExpense / now.getDate();
-        const projectedMonthly = dailyAverage * 30;
-        
-        if (projectedMonthly > totalMonthlyExpense * 1.2) {
-            suggestions.push({
-                type: 'budget_projection',
-                title: '預算預警',
-                content: `按目前消費速度，預計本月支出將達 NT$ ${Math.round(projectedMonthly).toLocaleString()}`,
-                level: 'warning',
-                action: 'adjust_budget'
-            });
-        }
-    }
-    
-    // 5. 儲蓄建議
-    const monthlyIncome = records.filter(r => {
-        const date = new Date(r.date);
-        return r.type === 'income' && 
-               date.getMonth() === currentMonth && 
-               date.getFullYear() === currentYear;
-    }).reduce((sum, r) => sum + (r.amount || 0), 0);
-    
-    if (monthlyIncome > 0) {
-        const savingsRate = ((monthlyIncome - totalMonthlyExpense) / monthlyIncome) * 100;
-        if (savingsRate < 20) {
-            suggestions.push({
-                type: 'savings_advice',
-                title: '儲蓄建議',
-                content: `本月儲蓄率為 ${Math.round(savingsRate)}%，建議至少維持 20% 的儲蓄率`,
-                level: 'info',
-                action: 'improve_savings'
-            });
-        }
-    }
-    
-    return suggestions.sort((a, b) => {
-        const levelOrder = { warning: 0, info: 1 };
-        return levelOrder[a.level] - levelOrder[b.level];
-    });
-}
-
-// 智慧分類建議增強版
-function suggestCategoryEnhanced(amount, description = '', timeOfDay = null, userHistory = []) {
-    const baseSuggestion = suggestCategory(amount, description, timeOfDay);
-    
-    if (!baseSuggestion) {
-        // 基於用戶歷史的建議
-        if (userHistory.length > 0) {
-            const similarRecords = userHistory.filter(r => 
-                Math.abs(r.amount - amount) < amount * 0.3 && // 金額相近
-                r.note && r.note.toLowerCase().includes(description.toLowerCase())
-            );
-            
-            if (similarRecords.length > 0) {
-                const categoryCounts = {};
-                similarRecords.forEach(r => {
-                    categoryCounts[r.category] = (categoryCounts[r.category] || 0) + 1;
-                });
-                
-                const mostCommon = Object.entries(categoryCounts)
-                    .sort(([,a], [,b]) => b - a)[0];
-                
-                if (mostCommon && mostCommon[1] >= 2) {
-                    return {
-                        primary: mostCommon[0],
-                        confidence: Math.min(90, 60 + mostCommon[1] * 10),
-                        factors: ['歷史記錄匹配'],
-                        alternatives: [],
-                        source: 'user_history'
-                    };
-                }
-            }
-        }
-        
-        // 基於金額的簡單建議
-        if (amount < 100) {
-            return {
-                primary: '交通',
-                confidence: 50,
-                factors: ['小額支出'],
-                alternatives: ['飲食', '購物'],
-                source: 'amount_based'
-            };
-        } else if (amount < 500) {
-            return {
-                primary: '飲食',
-                confidence: 60,
-                factors: ['中額支出'],
-                alternatives: ['購物', '娛樂'],
-                source: 'amount_based'
-            };
-        } else {
-            return {
-                primary: '購物',
-                confidence: 55,
-                factors: ['大額支出'],
-                alternatives: ['居家', '教育'],
-                source: 'amount_based'
-            };
-        }
-    }
-    
-    return baseSuggestion;
-}
-
 // 導出功能（供其他模組使用）
 window.SmartAccounting = {
     suggestCategory,
-    suggestCategoryEnhanced,
     analyzeSpendingPattern,
     learnUserPreferences,
     updateCategoryRules,
-    generateSmartSuggestions,
     CATEGORY_RULES
 };

@@ -296,26 +296,6 @@ var themes = window.AppThemes || (window.AppThemes = [
         buyingCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg',
         sellingCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg',
         dividendCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg'
-    },
-    {
-        id: 'anime-elegance',
-        name: '動漫優雅',
-        icon: '🌸',
-        buttonIcon: '🌸',
-        preview: 'url("https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg") center/cover',
-        color: '#7da8c7',
-        category: 'anime',
-        backgroundImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        investmentCardImage: 'https://i.pinimg.com/736x/d5/9c/15/d59c15a48547bc1cb02c23d607eaf875.jpg',
-        accountingCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        holdingCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        buyingCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        sellingCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        dividendCardImage: 'https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg',
-        recurringManagementCardImage: 'https://i.pinimg.com/736x/d5/9c/15/d59c15a48547bc1cb02c23d607eaf875.jpg'
     }
 ]);
 

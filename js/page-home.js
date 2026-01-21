@@ -10,14 +10,6 @@ function initHomePage() {
     renderRecords();
     updateSummary();
     bindHomeEvents();
-    
-    // 初始化智慧分析面板
-    if (window.smartAccountingManager && !window.smartAccountingManager.isInitialized) {
-        window.smartAccountingManager.init();
-    } else if (window.smartAccountingManager) {
-        // 更新智慧建議
-        window.smartAccountingManager.loadSmartSuggestions();
-    }
 }
 
 // 更新當前月份
@@ -131,13 +123,6 @@ function updateSummary() {
     if (expenseEl) expenseEl.textContent = `NT$${totalExpense.toLocaleString('zh-TW')}`;
     if (balanceEl) {
         balanceEl.textContent = `收入:NT$${totalIncome.toLocaleString('zh-TW')} 支出:NT$${totalExpense.toLocaleString('zh-TW')}`;
-    }
-}
-
-// 更新智慧建議（在記錄變更後調用）
-function updateSmartSuggestions() {
-    if (window.smartAccountingManager) {
-        window.smartAccountingManager.loadSmartSuggestions();
     }
 }
 
@@ -326,9 +311,6 @@ function saveRecord(data) {
     renderRecords();
     updateSummary();
     
-    // 更新智慧建議
-    updateSmartSuggestions();
-    
     // 播放音效
     if (record.type === 'income') {
         playIncomeSound();
@@ -430,9 +412,6 @@ function updateRecord(recordId, data) {
     renderRecords();
     updateSummary();
     
-    // 更新智慧建議
-    updateSmartSuggestions();
-    
     showNotification('記錄已更新', 'success');
 }
 
@@ -457,9 +436,6 @@ function deleteRecord(recordId) {
     // 重新渲染
     renderRecords();
     updateSummary();
-    
-    // 更新智慧建議
-    updateSmartSuggestions();
     
     showNotification('記錄已刪除', 'success');
 }

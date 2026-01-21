@@ -273,14 +273,6 @@ const buttonIcons = {
         navInvestment: '📈',
         navChart: '📊',
         navSettings: '⚙️'
-    },
-    'anime-elegance': {
-        fab: '🌸',
-        navLedger: '📖',
-        navWallet: '💎',
-        navInvestment: '🌺',
-        navChart: '🕊️',
-        navSettings: '✨'
     }
 };
 

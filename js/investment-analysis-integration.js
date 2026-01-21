@@ -323,11 +323,11 @@ class InvestmentAnalysisManager {
             <h4>⚠️ 風險評估</h4>
             <div class="analysis-metric">
                 <span class="analysis-metric-label">風險評分</span>
-                <div class="score-circle score-${analysis.risk.riskLevel}">${Math.round(analysis.risk.riskScore)}</div>
+                <div class="score-circle score-${analysis.risk.riskLevel}">${analysis.risk.riskScore}</div>
             </div>
             <div class="analysis-metric">
                 <span class="analysis-metric-label">風險等級</span>
-                <span class="analysis-metric-value risk-${analysis.risk.riskLevel}">${this.getRiskLevelDescription(analysis.risk.riskScore)} (${Math.round(analysis.risk.riskScore)}分)</span>
+                <span class="analysis-metric-value risk-${analysis.risk.riskLevel}">${this.getRiskLevelText(analysis.risk.riskLevel)}</span>
             </div>
             <div class="analysis-metric">
                 <span class="analysis-metric-label">集中度風險</span>
@@ -344,11 +344,7 @@ class InvestmentAnalysisManager {
             <h4>🌍 分散度分析</h4>
             <div class="analysis-metric">
                 <span class="analysis-metric-label">分散度分數</span>
-                <div class="score-circle score-${this.getScoreLevel(analysis.diversification.diversificationScore)}">${Math.round(analysis.diversification.diversificationScore)}</div>
-            </div>
-            <div class="analysis-metric">
-                <span class="analysis-metric-label">分散度評價</span>
-                <span class="analysis-metric-value score-${this.getScoreLevel(analysis.diversification.diversificationScore)}">${this.getScoreLevelText(analysis.diversification.diversificationScore)} (${Math.round(analysis.diversification.diversificationScore)}分)</span>
+                <div class="score-circle score-${this.getScoreLevel(analysis.diversification.diversificationScore)}">${analysis.diversification.diversificationScore}</div>
             </div>
             ${this.renderAllocation(analysis.diversification.sectorAllocation, '產業分配', analysis.summary.totalValue)}
             ${this.renderAllocation(analysis.diversification.geographicAllocation, '地域分配', analysis.summary.totalValue)}
@@ -444,12 +440,12 @@ class InvestmentAnalysisManager {
         
         // 個別目標
         this.renderSection('goalList', `
-            <h4>🎯 目標追蹤報告</h4>
+            <h4>🎯 個別目標進度</h4>
             ${tracking.goals.map(goal => `
                 <div class="goal-card">
                     <div class="goal-card-header">
-                        <div class="goal-name">🎯 ${goal.name}</div>
-                        <div class="goal-status ${goal.status}">進度 ${Math.round(goal.progress)}% (${this.getGoalStatusDescription(goal.progress, goal.status)})</div>
+                        <div class="goal-name">${goal.name}</div>
+                        <div class="goal-status ${goal.status}">${this.getStatusText(goal.status)}</div>
                     </div>
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: ${goal.progress}%"></div>
@@ -460,7 +456,7 @@ class InvestmentAnalysisManager {
                             <span class="goal-progress-value">NT$${goal.targetAmount.toLocaleString()}</span>
                         </div>
                         <div class="goal-progress-item">
-                            <span class="goal-progress-label">當前金額</span>
+                            <span class="goal-progress-label">當前進度</span>
                             <span class="goal-progress-value">NT$${goal.currentAmount.toLocaleString()}</span>
                         </div>
                         <div class="goal-progress-item">
@@ -559,32 +555,11 @@ class InvestmentAnalysisManager {
         return texts[level] || level;
     }
     
-    // 取得風險等級描述
-    getRiskLevelDescription(score) {
-        if (score < 20) return '極低風險';
-        if (score < 30) return '低風險';
-        if (score < 45) return '中等偏低風險';
-        if (score < 60) return '中等風險';
-        if (score < 75) return '中等偏高風險';
-        return '高風險';
-    }
-    
     // 取得分數等級
     getScoreLevel(score) {
-        if (score >= 80) return 'excellent';
         if (score >= 70) return 'high';
-        if (score >= 50) return 'medium';
-        if (score >= 30) return 'low';
-        return 'poor';
-    }
-    
-    // 取得分數等級文字
-    getScoreLevelText(score) {
-        if (score >= 80) return '優秀';
-        if (score >= 70) return '良好';
-        if (score >= 50) return '中等';
-        if (score >= 30) return '偏低';
-        return '較差';
+        if (score >= 40) return 'medium';
+        return 'low';
     }
     
     // 取得狀態文字
@@ -595,16 +570,6 @@ class InvestmentAnalysisManager {
             'not_started': '未開始'
         };
         return texts[status] || status;
-    }
-    
-    // 取得目標狀態描述
-    getGoalStatusDescription(progress, status) {
-        if (status === 'completed') return '已完成';
-        if (progress >= 80) return '即將完成';
-        if (progress >= 50) return '軌道上';
-        if (progress >= 30) return '需要加強';
-        if (progress >= 10) return '需要努力';
-        return '需要加強';
     }
     
     // 顯示新增目標表單
