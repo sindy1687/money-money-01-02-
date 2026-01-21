@@ -78,9 +78,35 @@ async function loadAdvisorDialogs() {
 
 // 獲取今天已使用的對話 key
 function getTodayUsedDialogKeys() {
-    const today = new Date().toISOString().split('T')[0];
-    const key = `advisor_dialogs_${today}`;
-    return JSON.parse(localStorage.getItem(key) || '[]');
+    try {
+        const today = new Date().toISOString().split('T')[0];
+        const key = `advisor_dialogs_${today}`;
+        const storedValue = localStorage.getItem(key);
+        
+        // 如果沒有存儲值，返回空數組
+        if (!storedValue || storedValue === null || storedValue === undefined) {
+            return [];
+        }
+        
+        const result = JSON.parse(storedValue);
+        
+        // 確保返回的是數組
+        if (!Array.isArray(result)) {
+            console.warn('getTodayUsedDialogKeys: parsed result is not an array:', result);
+            return [];
+        }
+        
+        // 確保不是 null 或 undefined
+        if (!result || result === null || result === undefined) {
+            console.warn('getTodayUsedDialogKeys: result is null or undefined');
+            return [];
+        }
+        
+        return result;
+    } catch (error) {
+        console.warn('Error in getTodayUsedDialogKeys:', error);
+        return [];
+    }
 }
 
 // 標記對話 key 為已使用
@@ -156,7 +182,26 @@ function checkAndTriggerMoriDialog(record) {
     // 從 localStorage 獲取所有記錄
     const allRecords = JSON.parse(localStorage.getItem('accountingRecords') || '[]');
     
+    // 確保 allRecords 是一個數組
+    if (!Array.isArray(allRecords)) {
+        console.warn('checkAndTriggerMoriDialog: allRecords is not an array:', allRecords);
+        return;
+    }
+    
+    // 額外的安全檢查 - 確保不是 null 或 undefined
+    if (!allRecords || allRecords === null || allRecords === undefined) {
+        console.warn('checkAndTriggerMoriDialog: allRecords is null or undefined');
+        return;
+    }
+    
     const usedKeys = getTodayUsedDialogKeys();
+    
+    // 確保 usedKeys 是一個數組
+    if (!Array.isArray(usedKeys)) {
+        console.warn('checkAndTriggerMoriDialog: usedKeys is not an array:', usedKeys);
+        return;
+    }
+    
     const now = new Date();
     const today = now.toISOString().split('T')[0];
     
@@ -513,7 +558,26 @@ function checkOverspendReasonDialog() {
     // 從 localStorage 獲取所有記錄
     const allRecords = JSON.parse(localStorage.getItem('accountingRecords') || '[]');
     
+    // 確保 allRecords 是一個數組
+    if (!Array.isArray(allRecords)) {
+        console.warn('allRecords is not an array:', allRecords);
+        return;
+    }
+    
+    // 額外的安全檢查 - 確保不是 null 或 undefined
+    if (!allRecords || allRecords === null || allRecords === undefined) {
+        console.warn('allRecords is null or undefined');
+        return;
+    }
+    
     const usedKeys = getTodayUsedDialogKeys();
+    
+    // 確保 usedKeys 是一個數組
+    if (!Array.isArray(usedKeys)) {
+        console.warn('usedKeys is not an array:', usedKeys);
+        return;
+    }
+    
     const now = new Date();
     const currentMonth = now.getMonth();
     const currentYear = now.getFullYear();

@@ -294,6 +294,25 @@ var themes = window.AppThemes || [
         backgroundImage: 'image/BMG.jpg'
     },
     {
+        id: 'cutePastel',
+        name: '可愛粉彩',
+        icon: '🌸',
+        buttonIcon: '🐰',
+        preview: 'linear-gradient(135deg, #ffeef8 0%, #fff5f5 25%, #f0f8ff 50%, #fffaf0 75%, #f5fff5 100%)',
+        color: '#ff69b4',
+        category: 'cute',
+        backgroundImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
+        investmentCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
+        accountingCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
+        holdingCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
+        buyingCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
+        sellingCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
+        dividendCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg'
+    },
+    {
         id: 'bluerose',
         name: '藍玫瑰騎士',
         icon: '🌹',
@@ -501,12 +520,21 @@ var themes = window.AppThemes || [
         id: 'shinchanPool',
         name: '小新泳池派對',
         icon: '🏊',
-        buttonIcon: '🦆',
-        preview: 'url("image/79793c93271b2231adefb28841972eec.jpg") center/cover',
+        preview: 'url("https://sindy1687.github.io/money-money0103/image/79793c93271b2231adefb28841972eec.jpg") center/cover',
         color: '#00CED1',
         category: 'dynamic',
-        backgroundImage: 'image/79793c93271b2231adefb28841972eec.jpg',
-        backgroundVideo: 'https://v1.pinimg.com/videos/iht/expMp4/76/35/eb/7635eb2cc1d1c08a867742f7144faf11_720w.mp4',
+        backgroundImage: 'https://sindy1687.github.io/money-money0103/image/79793c93271b2231adefb28841972eec.jpg',
+        backgroundVideo: 'https://v1.pinimg.com/videos/iht/expMp4/76/35/eb/7635eb2cc1d1c08a867742f7144faf11_720w.mp4'
+    },
+    {
+        id: 'nightglowSeasons',
+        name: '夜光四季',
+        icon: '🌃',
+        buttonIcon: '✨',
+        preview: 'linear-gradient(135deg, #0a1929 0%, #1e3a5f 25%, #2e5266 50%, #1a365d 75%, #0f172a 100%)',
+        color: '#64ffda',
+        category: 'dynamic',
+        backgroundVideo: 'https://v1.pinimg.com/videos/iht/expMp4/c7/39/73/c739737a7c0471e01fa4e606507d0a48_720w.mp4'
     }
 ];
 
@@ -567,6 +595,7 @@ const themeVideoController = (() => {
     let moneyVideoEl = null;
     let spaceVideoEl = null;
     let shinchanPoolVideoEl = null;
+    let nightglowSeasonsVideoEl = null;
     let containerEl = null;
 
     const ensureElements = () => {
@@ -579,10 +608,13 @@ const themeVideoController = (() => {
         if (!shinchanPoolVideoEl) {
             shinchanPoolVideoEl = document.getElementById('shinchanPoolThemeVideo');
         }
+        if (!nightglowSeasonsVideoEl) {
+            nightglowSeasonsVideoEl = document.getElementById('nightglowSeasonsThemeVideo');
+        }
         if (!containerEl) {
             containerEl = document.querySelector('.theme-video-background');
         }
-        return (moneyVideoEl && spaceVideoEl && shinchanPoolVideoEl && containerEl) || 
+        return (moneyVideoEl && spaceVideoEl && shinchanPoolVideoEl && nightglowSeasonsVideoEl && containerEl) || 
                (moneyVideoEl && spaceVideoEl && containerEl);
     };
 
@@ -593,8 +625,9 @@ const themeVideoController = (() => {
         if (moneyVideoEl) moneyVideoEl.pause();
         if (spaceVideoEl) spaceVideoEl.pause();
         if (shinchanPoolVideoEl) shinchanPoolVideoEl.pause();
+        if (nightglowSeasonsVideoEl) nightglowSeasonsVideoEl.pause();
 
-        const isActive = themeId === 'money' || themeId === 'space' || themeId === 'shinchanPool';
+        const isActive = themeId === 'money' || themeId === 'space' || themeId === 'shinchanPool' || themeId === 'nightglowSeasons';
         containerEl.classList.toggle('active', isActive);
 
         if (isActive) {
@@ -604,6 +637,7 @@ const themeVideoController = (() => {
             if (moneyVideoEl) moneyVideoEl.style.display = 'none';
             if (spaceVideoEl) spaceVideoEl.style.display = 'none';
             if (shinchanPoolVideoEl) shinchanPoolVideoEl.style.display = 'none';
+            if (nightglowSeasonsVideoEl) nightglowSeasonsVideoEl.style.display = 'none';
             
             if (themeId === 'money') {
                 activeVideo = moneyVideoEl;
@@ -614,6 +648,9 @@ const themeVideoController = (() => {
             } else if (themeId === 'shinchanPool') {
                 activeVideo = shinchanPoolVideoEl;
                 if (shinchanPoolVideoEl) shinchanPoolVideoEl.style.display = 'block';
+            } else if (themeId === 'nightglowSeasons') {
+                activeVideo = nightglowSeasonsVideoEl;
+                if (nightglowSeasonsVideoEl) nightglowSeasonsVideoEl.style.display = 'block';
             }
 
             if (activeVideo) {
@@ -628,6 +665,7 @@ const themeVideoController = (() => {
             if (moneyVideoEl) moneyVideoEl.style.display = 'none';
             if (spaceVideoEl) spaceVideoEl.style.display = 'none';
             if (shinchanPoolVideoEl) shinchanPoolVideoEl.style.display = 'none';
+            if (nightglowSeasonsVideoEl) nightglowSeasonsVideoEl.style.display = 'none';
         }
     };
 
@@ -1008,7 +1046,7 @@ function updateThemeButtons(themeId) {
             navSettings: '⚙️'
         },
         shinobu: {
-            fab: '🦋',
+            fab: '🍪',
             navLedger: '🗡️',
             navWallet: '💜',
             navInvestment: '🌸',
@@ -1734,6 +1772,3 @@ function initTheme() {
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
 });
-
-// Make showThemeSelector globally accessible
-window.showThemeSelector = showThemeSelector;

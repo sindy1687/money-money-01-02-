@@ -318,6 +318,11 @@ function saveRecord(data) {
         playClickSound();
     }
     
+    // 重整頁面回到首頁
+    setTimeout(() => {
+        window.location.reload();
+    }, 500);
+    
     showNotification('記錄已儲存', 'success');
 }
 
