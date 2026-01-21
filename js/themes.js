@@ -158,9 +158,9 @@ var themes = window.AppThemes || (window.AppThemes = [
         name: '星際宇航',
         icon: '🚀',
         buttonIcon: '🛸',
-        preview: 'linear-gradient(135deg, #001428 0%, #002850 60%, #8a2be2 100%)',
+        preview: 'url("https://i.pinimg.com/736x/39/af/a0/39afa04f827145ecea8f671b55a4ab20.jpg") center/cover',
         color: '#00d4ff',
-        category: 'cosmic'
+        category: 'dynamic'
     },
     {
         id: 'totoro',
