@@ -6228,18 +6228,18 @@ async function fetchStockPrice(stockCode, options = {}) {
                         if (proxyResponse.status === 200 && proxyResponse.ok) {
                             const responseText = await proxyResponse.text();
                             try {
-                            const data = JSON.parse(responseText);
-                            
-                            if (data && data.chart && data.chart.result && data.chart.result.length > 0) {
-                                const result = data.chart.result[0];
-                                if (result && result.meta) {
-                                    const currentPrice = result.meta.regularMarketPrice || result.meta.previousClose || null;
-                                    if (currentPrice && currentPrice > 0) {
-                                        saveStockCurrentPrice(stockCode, currentPrice, false); // false = 自動獲取
+                                const data = JSON.parse(responseText);
+                                
+                                if (data && data.chart && data.chart.result && data.chart.result.length > 0) {
+                                    const result = data.chart.result[0];
+                                    if (result && result.meta) {
+                                        const currentPrice = result.meta.regularMarketPrice || result.meta.previousClose || null;
+                                        if (currentPrice && currentPrice > 0) {
+                                            saveStockCurrentPrice(stockCode, currentPrice, false); // false = 自動獲取
                                             console.log(`✓ 通過備用格式成功獲取 ${stockCode} 價格: ${currentPrice}`);
-                                        return currentPrice;
+                                            return currentPrice;
+                                        }
                                     }
-                                }
                                 }
                             } catch (parseError) {
                                 continue; // 解析失敗，嘗試下一個
@@ -6259,28 +6259,8 @@ async function fetchStockPrice(stockCode, options = {}) {
                 console.log(`使用已保存的 ${stockCode} 價格: ${savedPrice}`);
                 return savedPrice;
             }
-            
-            // 如果都沒有，提示用戶手動輸入
 
-                const manualPrice = await showStockPriceQueryModal({
-                    stockCode,
-                    stockName,
-                    isBondETF,
-                    defaultPrice: savedPrice
-                });
-
-                if (manualPrice && !isNaN(manualPrice) && manualPrice > 0) {
-                    saveStockCurrentPrice(stockCode, manualPrice, true);
-                    console.log(`✓ 已保存手動輸入的 ${stockCode} 價格: ${manualPrice}`);
-                    if (typeof updateInvestmentSummary === 'function') {
-                        updateInvestmentSummary();
-                    }
-                    if (typeof updateStockList === 'function') {
-                        updateStockList();
-                    }
-                    return manualPrice;
-                }
-            }
+            // 如果都沒有，返回 null 交由通用流程處理
         }
         
         // 記錄警告信息
@@ -6302,7 +6282,8 @@ async function fetchStockPrice(stockCode, options = {}) {
     } catch (error) {
         const errorMsg = error.message || '未知錯誤';
         console.error(`獲取 ${stockCode} 股價失敗:`, errorMsg);
-        
+        const savedPrice = getStockCurrentPrice(stockCode);
+
         // 顯示友好的提示框（保持手動輸入管道）
         if (allowPrompt) {
             const stockName = findStockName(stockCode) || stockCode;
@@ -6312,7 +6293,7 @@ async function fetchStockPrice(stockCode, options = {}) {
                 stockCode,
                 stockName,
                 isBondETF,
-                defaultPrice: getStockCurrentPrice(stockCode)
+                defaultPrice: savedPrice
             });
 
             if (manualPrice && !isNaN(manualPrice) && manualPrice > 0) {
