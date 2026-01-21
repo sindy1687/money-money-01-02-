@@ -177,11 +177,10 @@ var themes = window.AppThemes || [
         name: '星際宇航',
         icon: '🚀',
         buttonIcon: '🛸',
-        preview: 'url("https://i.pinimg.com/736x/39/af/a0/39afa04f827145ecea8f671b55a4ab20.jpg") center/cover',
+        preview: 'linear-gradient(135deg, #001428 0%, #002850 60%, #8a2be2 100%)',
         color: '#00d4ff',
         category: 'dynamic',
-        backgroundVideo: 'https://v1.pinimg.com/videos/iht/720p/4e/00/d1/4e00d1999152ab007ebe4aef36d5e2c9.mp4',
-        thumbnail: 'https://i.pinimg.com/736x/39/af/a0/39afa04f827145ecea8f671b55a4ab20.jpg'
+        backgroundVideo: 'https://v1.pinimg.com/videos/iht/720p/4e/00/d1/4e00d1999152ab007ebe4aef36d5e2c9.mp4'
     },
     {
         id: 'totoro',
@@ -521,10 +520,10 @@ var themes = window.AppThemes || [
         id: 'shinchanPool',
         name: '小新泳池派對',
         icon: '🏊',
-        preview: 'url("https://i.pinimg.com/736x/f8/d0/62/f8d062732df3aa04ac61e7837e59b91c.jpg") center/cover',
+        preview: 'url("image/79793c93271b2231adefb28841972eec.jpg") center/cover',
         color: '#00CED1',
         category: 'dynamic',
-        backgroundImage: 'https://i.pinimg.com/736x/f8/d0/62/f8d062732df3aa04ac61e7837e59b91c.jpg',
+        backgroundImage: 'image/79793c93271b2231adefb28841972eec.jpg',
         backgroundVideo: 'https://v1.pinimg.com/videos/iht/expMp4/76/35/eb/7635eb2cc1d1c08a867742f7144faf11_720w.mp4'
     },
     {
@@ -535,75 +534,59 @@ var themes = window.AppThemes || [
         preview: 'linear-gradient(135deg, #0a1929 0%, #1e3a5f 25%, #2e5266 50%, #1a365d 75%, #0f172a 100%)',
         color: '#64ffda',
         category: 'dynamic',
-        thumbnail: 'https://i.pinimg.com/736x/86/13/a2/8613a266e986569c1c81361cbb1e2cde.jpg',
         backgroundVideo: 'https://v1.pinimg.com/videos/iht/expMp4/c7/39/73/c739737a7c0471e01fa4e606507d0a48_720w.mp4'
-    },
-    {
-        id: 'cyberpunkCity',
-        name: '賽博龐克 City',
-        icon: '🌆',
-        buttonIcon: '🧠',
-        preview: 'linear-gradient(135deg, #050014 0%, #220045 45%, #ff3f81 100%)',
-        thumbnail: 'https://i.pinimg.com/736x/ab/23/69/ab2369bb1455e66b7bb1e845c4c5c297.jpg',
-        color: '#ff3f81',
-        category: 'dynamic',
-        backgroundVideo: 'https://v1.pinimg.com/videos/iht/expMp4/f0/38/aa/f038aad8dd17f765f1c3c975a4e869f0_720w.mp4'
     }
 ];
 
+// 主題分類定義
 const themeCategories = {
     basic: {
         name: '經典色彩',
         icon: '🎨',
-        description: '純色及柔和漸層主題'
-    },
-    nature: {
-        name: '自然風光',
-        icon: '🌿',
-        description: '森林、花卉、雪景等自然風格'
+        description: '純色經典主題'
     },
     cosmic: {
         name: '宇宙星空',
         icon: '🌌',
-        description: '星空、極光與未來感背景'
+        description: '星空、極光等宇宙主題'
     },
     dark: {
         name: '深色主題',
         icon: '🌙',
-        description: '護眼深色搭配'
+        description: '深色護眼主題'
     },
     anime: {
         name: '動漫風格',
         icon: '🎌',
-        description: '吉卜力、鬼滅等動畫氛圍'
+        description: '吉卜力、鬼滅等動漫主題'
     },
     wealth: {
         name: '財富金錢',
         icon: '💰',
-        description: '金錢、資產相關主題'
+        description: '金錢、財富相關主題'
     },
     cute: {
         name: '可愛風格',
         icon: '🐾',
-        description: '療癒、萌系風格',
+        description: '可愛、萌系主題',
         animation: 'cuteAnimation'
     },
     fantasy: {
         name: '奇幻風格',
         icon: '🗡️',
-        description: '騎士、魔法與奇幻場景',
+        description: '騎士、奇幻主題',
         animation: 'fantasyAnimation'
     },
     dynamic: {
         name: '動態背景',
         icon: '🎬',
-        description: '影片或霓虹動態主題',
+        description: '影片動態背景主題',
         animation: 'dynamicAnimation'
     },
     celebration: {
         name: '節日慶典',
         icon: '🎊',
-        description: '節慶、派對氣氛'
+        description: '節日、慶典、派對主題'
     }
 };
 
@@ -613,7 +596,6 @@ const themeVideoController = (() => {
     let spaceVideoEl = null;
     let shinchanPoolVideoEl = null;
     let nightglowSeasonsVideoEl = null;
-    let cyberpunkCityVideoEl = null;
     let containerEl = null;
 
     const ensureElements = () => {
@@ -629,45 +611,62 @@ const themeVideoController = (() => {
         if (!nightglowSeasonsVideoEl) {
             nightglowSeasonsVideoEl = document.getElementById('nightglowSeasonsThemeVideo');
         }
-        if (!cyberpunkCityVideoEl) {
-            cyberpunkCityVideoEl = document.getElementById('cyberpunkCityThemeVideo');
-        }
         if (!containerEl) {
             containerEl = document.querySelector('.theme-video-background');
         }
-        return !!(containerEl && moneyVideoEl && spaceVideoEl);
-    };
-
-    const hideAllVideos = () => {
-        [moneyVideoEl, spaceVideoEl, shinchanPoolVideoEl, nightglowSeasonsVideoEl, cyberpunkCityVideoEl].forEach(video => {
-            if (video) video.style.display = 'none';
-        });
-    };
-
-    const showVideo = (videoEl) => {
-        if (videoEl) {
-            videoEl.style.display = 'block';
-            videoEl.currentTime = 0;
-            const playPromise = videoEl.play();
-            if (playPromise && typeof playPromise.catch === 'function') {
-                playPromise.catch(() => {});
-            }
-        }
+        return (moneyVideoEl && spaceVideoEl && shinchanPoolVideoEl && nightglowSeasonsVideoEl && containerEl) || 
+               (moneyVideoEl && spaceVideoEl && containerEl);
     };
 
     const setActive = (themeId) => {
         if (!ensureElements()) return;
-        hideAllVideos();
-        const dynamicThemes = {
-            money: moneyVideoEl,
-            space: spaceVideoEl,
-            shinchanPool: shinchanPoolVideoEl,
-            nightglowSeasons: nightglowSeasonsVideoEl,
-            cyberpunkCity: cyberpunkCityVideoEl
-        };
-        const activeVideo = dynamicThemes[themeId];
-        showVideo(activeVideo);
-        containerEl.classList.toggle('active', Boolean(activeVideo));
+        
+        // Pause all videos
+        if (moneyVideoEl) moneyVideoEl.pause();
+        if (spaceVideoEl) spaceVideoEl.pause();
+        if (shinchanPoolVideoEl) shinchanPoolVideoEl.pause();
+        if (nightglowSeasonsVideoEl) nightglowSeasonsVideoEl.pause();
+
+        const isActive = themeId === 'money' || themeId === 'space' || themeId === 'shinchanPool' || themeId === 'nightglowSeasons';
+        containerEl.classList.toggle('active', isActive);
+
+        if (isActive) {
+            let activeVideo = null;
+            
+            // Hide all videos first
+            if (moneyVideoEl) moneyVideoEl.style.display = 'none';
+            if (spaceVideoEl) spaceVideoEl.style.display = 'none';
+            if (shinchanPoolVideoEl) shinchanPoolVideoEl.style.display = 'none';
+            if (nightglowSeasonsVideoEl) nightglowSeasonsVideoEl.style.display = 'none';
+            
+            if (themeId === 'money') {
+                activeVideo = moneyVideoEl;
+                if (moneyVideoEl) moneyVideoEl.style.display = 'block';
+            } else if (themeId === 'space') {
+                activeVideo = spaceVideoEl;
+                if (spaceVideoEl) spaceVideoEl.style.display = 'block';
+            } else if (themeId === 'shinchanPool') {
+                activeVideo = shinchanPoolVideoEl;
+                if (shinchanPoolVideoEl) shinchanPoolVideoEl.style.display = 'block';
+            } else if (themeId === 'nightglowSeasons') {
+                activeVideo = nightglowSeasonsVideoEl;
+                if (nightglowSeasonsVideoEl) nightglowSeasonsVideoEl.style.display = 'block';
+            }
+
+            if (activeVideo) {
+                activeVideo.currentTime = 0;
+                const playPromise = activeVideo.play();
+                if (playPromise && typeof playPromise.catch === 'function') {
+                    playPromise.catch(() => {});
+                }
+            }
+        } else {
+            // Hide all videos when inactive
+            if (moneyVideoEl) moneyVideoEl.style.display = 'none';
+            if (spaceVideoEl) spaceVideoEl.style.display = 'none';
+            if (shinchanPoolVideoEl) shinchanPoolVideoEl.style.display = 'none';
+            if (nightglowSeasonsVideoEl) nightglowSeasonsVideoEl.style.display = 'none';
+        }
     };
 
     return { setActive };
@@ -1579,8 +1578,7 @@ function showThemeSelector() {
             const categoryInfo = themeCategories[categoryId] || { name: '其他', icon: '📁', description: '' };
             
             gridHTML += `
-                <div class="theme-category-section" data-category="${categoryId}">
-
+                <div class="theme-category-section">
                     <div class="theme-category-header">
                         <span class="theme-category-icon">${categoryInfo.icon}</span>
                         <span class="theme-category-name">${categoryInfo.name}</span>
@@ -1590,15 +1588,9 @@ function showThemeSelector() {
                         ${categoryThemes.map(theme => {
                             const isSelected = theme.id === currentTheme && !customTheme.primaryColor;
                             const hasBackgroundImage = theme.backgroundImage;
-                            const previewStyle = theme.thumbnail
-                                ? `background-image: url('${theme.thumbnail}');`
-                                : hasBackgroundImage
-                                    ? `background-image: url('${theme.backgroundImage}');`
-                                    : `background: ${theme.preview};`;
-                            const previewClass = theme.thumbnail || hasBackgroundImage ? 'theme-item-preview--image' : '';
                             return `
                                 <div class="theme-item ${isSelected ? 'selected' : ''}" data-theme-id="${theme.id}">
-                                    <div class="theme-item-preview ${previewClass}" style="${previewStyle}"></div>
+                                    <div class="theme-item-preview ${hasBackgroundImage ? 'theme-item-preview--image' : ''}" ${hasBackgroundImage ? `style="background-image: url('${theme.backgroundImage}');"` : `style="background: ${theme.preview};"`}></div>
                                     <div class="theme-item-content theme-item-content--compact">
                                         <div class="theme-item-icon">${theme.icon}</div>
                                         <div class="theme-item-name">${theme.name}</div>
