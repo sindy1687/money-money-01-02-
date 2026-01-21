@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圖示修復測試</title>
+    <link rel="stylesheet" href="emoji-font-fix.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        .icon-item {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .icon-display {
+            font-size: 32px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .icon-name {
+            font-size: 14px;
+            color: #666;
+        }
+        .fab-test {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(255, 105, 180, 0.3);
+            transition: all 0.3s ease;
+        }
+        .fab-test:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+        }
+        .btn-test {
+            padding: 10px 20px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-test:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>圖示修復測試頁面</h1>
+    
+    <div class="test-section">
+        <h2 class="test-title">主要應用圖示</h2>
+        <div class="icon-grid">
+            <div class="icon-item">
+                <span class="icon-display record-type-icon">👤</span>
+                <div class="icon-name">支出圖示</div>
+            </div>
+            <div class="icon-item">
+                <span class="icon-display record-type-icon">💰</span>
+                <div class="icon-name">收入圖示</div>
+            </div>
+            <div class="icon-item">
+                <span class="icon-display record-type-icon">💳</span>
+                <div class="icon-name">轉帳圖示</div>
+            </div>
+            <div class="icon-item">
+                <span class="icon-display tab-icon">✨</span>
+                <div class="icon-name">推薦圖示</div>
+            </div>
+            <div class="icon-item">
+                <span class="icon-display tab-icon">📂</span>
+                <div class="icon-name">全部圖示</div>
+            </div>
+            <div class="icon-item">
+                <span class="icon-display tab-icon">➕</span>
+                <div class="icon-name">更多圖示</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2 class="test-title">按鈕圖示測試</h2>
+        <div>
+            <button class="btn-test back-btn">← 返回</button>
+            <button class="btn-test">💳 帳戶</button>
+            <button class="btn-test">😊 表情</button>
+            <button class="btn-test">👤 成員</button>
+            <button class="btn-test">📷 圖片</button>
+            <button class="btn-test">✓ 保存</button>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2 class="test-title">FAB 按鈕測試</h2>
+        <p>右下角的紅包按鈕應該顯示 🧧</p>
+    </div>
+
+    <!-- FAB 按鈕 -->
+    <button class="fab-test fab-btn">🧧</button>
+
+    <script src="fix-icon-encoding.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('圖示修復測試頁面載入完成');
+            
+            // 檢查圖示字體
+            setTimeout(() => {
+                const icons = document.querySelectorAll('.icon-display, .btn-test, .fab-test');
+                icons.forEach((icon, index) => {
+                    const computedStyle = window.getComputedStyle(icon);
+                    const fontFamily = computedStyle.fontFamily;
+                    console.log(`圖示 ${index + 1}:`, icon.textContent, '字體:', fontFamily);
+                });
+                
+                // 手動觸發修復
+                if (window.fixIconEncoding) {
+                    window.fixIconEncoding();
+                    console.log('圖示修復腳本已執行');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

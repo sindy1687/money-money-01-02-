@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股票投資分頁系統測試</title>
+    <link rel="stylesheet" href="css/stock-investment-tabs.css">
+    <style>
+        .test-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .test-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+        }
+        .test-button {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            transition: all 0.2s;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+        }
+        .test-result {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #22c55e;
+            background: #f0fdf4;
+        }
+        .test-result.error {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+        .test-result.info {
+            border-left-color: #3b82f6;
+            background: #f0f9ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🧪 股票投資分頁系統測試</h1>
+            <p>測試分頁功能和數據顯示</p>
+        </div>
+        
+        <div class="test-section">
+            <h2>分頁功能測試</h2>
+            <button class="test-button" onclick="testTabSwitching()">測試分頁切換</button>
+            <button class="test-button" onclick="testKeyboardNavigation()">測試鍵盤導航</button>
+            <button class="test-button" onclick="testDataLoading()">測試數據載入</button>
+            <div id="tabTestResults"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>數據格式驗證</h2>
+            <button class="test-button" onclick="verifyPortfolioData()">驗證投資組合數據</button>
+            <button class="test-button" onclick="verifyHoldingsData()">驗證持股數據</button>
+            <button class="test-button" onclick="verifyGoalsData()">驗證目標數據</button>
+            <div id="dataTestResults"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>響應式測試</h2>
+            <button class="test-button" onclick="testMobileLayout()">測試移動端布局</button>
+            <button class="test-button" onclick="testTabletLayout()">測試平板布局</button>
+            <button class="test-button" onclick="testDesktopLayout()">測試桌面布局</button>
+            <div id="responsiveTestResults"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>性能測試</h2>
+            <button class="test-button" onclick="testRenderingSpeed()">測試渲染速度</button>
+            <button class="test-button" onclick="testMemoryUsage()">測試記憶體使用</button>
+            <div id="performanceTestResults"></div>
+        </div>
+    </div>
+
+    <!-- 載入分頁系統 -->
+    <script src="js/stock-investment-tabs.js"></script>
+    
+    <script>
+        // 顯示測試結果
+        function showTestResult(elementId, message, type = 'success') {
+            const element = document.getElementById(elementId);
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${type}`;
+            resultDiv.innerHTML = message;
+            element.appendChild(resultDiv);
+        }
+        
+        // 清除測試結果
+        function clearTestResults(elementId) {
+            document.getElementById(elementId).innerHTML = '';
+        }
+        
+        // 測試分頁切換
+        function testTabSwitching() {
+            clearTestResults('tabTestResults');
+            
+            if (!window.stockInvestmentTabs) {
+                showTestResult('tabTestResults', '❌ 錯誤：分頁系統未初始化', 'error');
+                return;
+            }
+            
+            const tabs = ['portfolio', 'holdings', 'goals', 'analysis'];
+            let successCount = 0;
+            
+            tabs.forEach(tab => {
+                try {
+                    window.stockInvestmentTabs.switchTab(tab);
+                    const currentTab = window.stockInvestmentTabs.getCurrentTab();
+                    if (currentTab === tab) {
+                        successCount++;
+                        showTestResult('tabTestResults', `✅ 成功切換到 ${tab} 分頁`, 'success');
+                    } else {
+                        showTestResult('tabTestResults', `❌ 切換到 ${tab} 分頁失敗`, 'error');
+                    }
+                } catch (error) {
+                    showTestResult('tabTestResults', `❌ 切換到 ${tab} 分頁時發生錯誤: ${error.message}`, 'error');
+                }
+            });
+            
+            if (successCount === tabs.length) {
+                showTestResult('tabTestResults', `🎉 所有分頁切換測試通過 (${successCount}/${tabs.length})`, 'success');
+            }
+        }
+        
+        // 測試鍵盤導航
+        function testKeyboardNavigation() {
+            clearTestResults('tabTestResults');
+            
+            if (!window.stockInvestmentTabs) {
+                showTestResult('tabTestResults', '❌ 錯誤：分頁系統未初始化', 'error');
+                return;
+            }
+            
+            // 模擬鍵盤事件
+            const leftEvent = new KeyboardEvent('keydown', { key: 'ArrowLeft' });
+            const rightEvent = new KeyboardEvent('keydown', { key: 'ArrowRight' });
+            
+            try {
+                // 設置初始分頁
+                window.stockInvestmentTabs.switchTab('holdings');
+                
+                // 測試向左導航
+                document.dispatchEvent(leftEvent);
+                const currentTab1 = window.stockInvestmentTabs.getCurrentTab();
+                showTestResult('tabTestResults', `⬅️ 向左導航：當前分頁 ${currentTab1}`, 'info');
+                
+                // 測試向右導航
+                document.dispatchEvent(rightEvent);
+                const currentTab2 = window.stockInvestmentTabs.getCurrentTab();
+                showTestResult('tabTestResults', `➡️ 向右導航：當前分頁 ${currentTab2}`, 'info');
+                
+                showTestResult('tabTestResults', '✅ 鍵盤導航測試完成', 'success');
+            } catch (error) {
+                showTestResult('tabTestResults', `❌ 鍵盤導航測試失敗: ${error.message}`, 'error');
+            }
+        }
+        
+        // 測試數據載入
+        function testDataLoading() {
+            clearTestResults('tabTestResults');
+            
+            if (!window.stockInvestmentTabs) {
+                showTestResult('tabTestResults', '❌ 錯誤：分頁系統未初始化', 'error');
+                return;
+            }
+            
+            try {
+                // 測試數據刷新
+                window.stockInvestmentTabs.refreshData();
+                showTestResult('tabTestResults', '✅ 數據刷新測試通過', 'success');
+                
+                // 測試數據設置
+                const testData = {
+                    totalValue: 2000000,
+                    totalGain: 200000,
+                    totalGainPercent: 11.1
+                };
+                
+                window.stockInvestmentTabs.setData('portfolio', testData);
+                showTestResult('tabTestResults', '✅ 數據設置測試通過', 'success');
+                
+                showTestResult('tabTestResults', '🎉 所有數據載入測試通過', 'success');
+            } catch (error) {
+                showTestResult('tabTestResults', `❌ 數據載入測試失敗: ${error.message}`, 'error');
+            }
+        }
+        
+        // 驗證投資組合數據
+        function verifyPortfolioData() {
+            clearTestResults('dataTestResults');
+            
+            if (!window.stockInvestmentTabs || !window.stockInvestmentTabs.data.portfolio) {
+                showTestResult('dataTestResults', '❌ 投資組合數據不存在', 'error');
+                return;
+            }
+            
+            const portfolio = window.stockInvestmentTabs.data.portfolio;
+            const requiredFields = ['totalValue', 'totalGain', 'totalGainPercent', 'riskLevel', 'riskScore', 'diversificationScore', 'sharpeRatio'];
+            
+            let missingFields = [];
+            requiredFields.forEach(field => {
+                if (!(field in portfolio)) {
+                    missingFields.push(field);
+                }
+            });
+            
+            if (missingFields.length === 0) {
+                showTestResult('dataTestResults', '✅ 投資組合數據格式正確', 'success');
+                showTestResult('dataTestResults', `💰 總市值: NT$${portfolio.totalValue.toLocaleString()}`, 'info');
+                showTestResult('dataTestResults', `📊 總損益: ${portfolio.totalGain >= 0 ? '+' : ''}NT$${portfolio.totalGain.toLocaleString()}`, 'info');
+                showTestResult('dataTestResults', `⚠️ 風險等級: ${portfolio.riskLevel} (${portfolio.riskScore}分)`, 'info');
+                showTestResult('dataTestResults', `🌍 分散度分數: ${portfolio.diversificationScore}分`, 'info');
+                showTestResult('dataTestResults', `📈 夏普比率: ${portfolio.sharpeRatio}`, 'info');
+            } else {
+                showTestResult('dataTestResults', `❌ 投資組合數據缺少字段: ${missingFields.join(', ')}`, 'error');
+            }
+        }
+        
+        // 驗證持股數據
+        function verifyHoldingsData() {
+            clearTestResults('dataTestResults');
+            
+            if (!window.stockInvestmentTabs || !window.stockInvestmentTabs.data.holdings) {
+                showTestResult('dataTestResults', '❌ 持股數據不存在', 'error');
+                return;
+            }
+            
+            const holdings = window.stockInvestmentTabs.data.holdings;
+            
+            if (!Array.isArray(holdings)) {
+                showTestResult('dataTestResults', '❌ 持股數據不是數組格式', 'error');
+                return;
+            }
+            
+            if (holdings.length === 0) {
+                showTestResult('dataTestResults', '⚠️ 持股數據為空', 'info');
+                return;
+            }
+            
+            const requiredFields = ['symbol', 'name', 'quantity', 'costPrice', 'currentPrice', 'gain', 'gainPercent'];
+            let validHoldings = 0;
+            
+            holdings.forEach((holding, index) => {
+                const missingFields = requiredFields.filter(field => !(field in holding));
+                if (missingFields.length === 0) {
+                    validHoldings++;
+                } else {
+                    showTestResult('dataTestResults', `❌ 持股 ${index} 缺少字段: ${missingFields.join(', ')}`, 'error');
+                }
+            });
+            
+            if (validHoldings === holdings.length) {
+                showTestResult('dataTestResults', `✅ 所有持股數據格式正確 (${validHoldings}筆)`, 'success');
+                holdings.forEach(holding => {
+                    showTestResult('dataTestResults', `📈 ${holding.symbol} ${holding.name}: ${holding.gain >= 0 ? '+' : ''}${holding.gainPercent.toFixed(1)}%`, 'info');
+                });
+            }
+        }
+        
+        // 驗證目標數據
+        function verifyGoalsData() {
+            clearTestResults('dataTestResults');
+            
+            if (!window.stockInvestmentTabs || !window.stockInvestmentTabs.data.goals) {
+                showTestResult('dataTestResults', '❌ 目標數據不存在', 'error');
+                return;
+            }
+            
+            const goals = window.stockInvestmentTabs.data.goals;
+            
+            if (!Array.isArray(goals)) {
+                showTestResult('dataTestResults', '❌ 目標數據不是數組格式', 'error');
+                return;
+            }
+            
+            if (goals.length === 0) {
+                showTestResult('dataTestResults', '⚠️ 目標數據為空', 'info');
+                return;
+            }
+            
+            const requiredFields = ['id', 'name', 'icon', 'targetAmount', 'currentAmount', 'progress', 'status', 'statusText'];
+            let validGoals = 0;
+            
+            goals.forEach((goal, index) => {
+                const missingFields = requiredFields.filter(field => !(field in goal));
+                if (missingFields.length === 0) {
+                    validGoals++;
+                } else {
+                    showTestResult('dataTestResults', `❌ 目標 ${index} 缺少字段: ${missingFields.join(', ')}`, 'error');
+                }
+            });
+            
+            if (validGoals === goals.length) {
+                showTestResult('dataTestResults', `✅ 所有目標數據格式正確 (${validGoals}筆)`, 'success');
+                goals.forEach(goal => {
+                    showTestResult('dataTestResults', `🎯 ${goal.icon} ${goal.name}: ${goal.progress}% (${goal.statusText})`, 'info');
+                });
+            }
+        }
+        
+        // 測試移動端布局
+        function testMobileLayout() {
+            clearTestResults('responsiveTestResults');
+            
+            // 模擬移動端視窗大小
+            const originalWidth = window.innerWidth;
+            
+            // 調整視窗大小（模擬）
+            showTestResult('responsiveTestResults', '📱 模擬移動端布局 (寬度 < 768px)', 'info');
+            
+            // 檢查分頁導航是否為垂直布局
+            const tabNavigation = document.querySelector('.tab-navigation');
+            if (tabNavigation) {
+                const computedStyle = window.getComputedStyle(tabNavigation);
+                const flexDirection = computedStyle.flexDirection;
+                
+                if (flexDirection === 'column') {
+                    showTestResult('responsiveTestResults', '✅ 分頁導航正確切換為垂直布局', 'success');
+                } else {
+                    showTestResult('responsiveTestResults', '⚠️ 分頁導航仍為水平布局', 'info');
+                }
+            }
+            
+            showTestResult('responsiveTestResults', '📱 移動端布局測試完成', 'success');
+        }
+        
+        // 測試平板布局
+        function testTabletLayout() {
+            clearTestResults('responsiveTestResults');
+            
+            showTestResult('responsiveTestResults', '📱 模擬平板布局 (寬度 768px - 1024px)', 'info');
+            
+            // 檢查指標卡片網格
+            const metricsGrid = document.querySelector('.report-metrics');
+            if (metricsGrid) {
+                const computedStyle = window.getComputedStyle(metricsGrid);
+                const gridColumns = computedStyle.gridTemplateColumns;
+                
+                showTestResult('responsiveTestResults', `📊 指標網格布局: ${gridColumns}`, 'info');
+            }
+            
+            showTestResult('responsiveTestResults', '📱 平板布局測試完成', 'success');
+        }
+        
+        // 測試桌面布局
+        function testDesktopLayout() {
+            clearTestResults('responsiveTestResults');
+            
+            showTestResult('responsiveTestResults', '🖥️ 模擬桌面布局 (寬度 > 1024px)', 'info');
+            
+            // 檢查容器最大寬度
+            const container = document.querySelector('.container');
+            if (container) {
+                const computedStyle = window.getComputedStyle(container);
+                const maxWidth = computedStyle.maxWidth;
+                
+                showTestResult('responsiveTestResults', `🖥️ 容器最大寬度: ${maxWidth}`, 'info');
+            }
+            
+            showTestResult('responsiveTestResults', '🖥️ 桌面布局測試完成', 'success');
+        }
+        
+        // 測試渲染速度
+        function testRenderingSpeed() {
+            clearTestResults('performanceTestResults');
+            
+            const startTime = performance.now();
+            
+            // 測試分頁切換速度
+            const tabs = ['portfolio', 'holdings', 'goals', 'analysis'];
+            tabs.forEach(tab => {
+                window.stockInvestmentTabs.switchTab(tab);
+            });
+            
+            const endTime = performance.now();
+            const duration = endTime - startTime;
+            
+            showTestResult('performanceTestResults', `⏱️ 分頁切換耗時: ${duration.toFixed(2)}ms`, 'info');
+            
+            if (duration < 100) {
+                showTestResult('performanceTestResults', '✅ 渲染速度優秀', 'success');
+            } else if (duration < 300) {
+                showTestResult('performanceTestResults', '✅ 渲染速度良好', 'success');
+            } else {
+                showTestResult('performanceTestResults', '⚠️ 渲染速度需要優化', 'info');
+            }
+        }
+        
+        // 測試記憶體使用
+        function testMemoryUsage() {
+            clearTestResults('performanceTestResults');
+            
+            if (performance.memory) {
+                const memoryInfo = performance.memory;
+                const usedMemory = memoryInfo.usedJSHeapSize;
+                const totalMemory = memoryInfo.totalJSHeapSize;
+                const memoryUsage = (usedMemory / totalMemory * 100).toFixed(2);
+                
+                showTestResult('performanceTestResults', `💾 記憶體使用: ${memoryUsage}%`, 'info');
+                showTestResult('performanceTestResults', `💾 已使用: ${(usedMemory / 1024 / 1024).toFixed(2)}MB`, 'info');
+                showTestResult('performanceTestResults', `💾 總記憶體: ${(totalMemory / 1024 / 1024).toFixed(2)}MB`, 'info');
+                
+                if (memoryUsage < 50) {
+                    showTestResult('performanceTestResults', '✅ 記憶體使用正常', 'success');
+                } else {
+                    showTestResult('performanceTestResults', '⚠️ 記憶體使用較高', 'info');
+                }
+            } else {
+                showTestResult('performanceTestResults', '⚠️ 瀏覽器不支援記憶體監控', 'info');
+            }
+        }
+        
+        // 頁面載入時自動運行基本測試
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                showTestResult('tabTestResults', '🚀 開始自動測試...', 'info');
+                testTabSwitching();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

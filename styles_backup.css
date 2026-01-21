@@ -269,7 +269,7 @@
 :root[data-theme="totoro"] .form-select,
 :root[data-theme="totoro"] .form-textarea,
 :root[data-theme="totoro"] .note-input {
-    background: var(--bg-card) !important;
+    background: rgba(255, 255, 255, 0.8) !important;
     border: 2px solid rgba(135, 206, 235, 0.3) !important;
     color: var(--text-primary) !important;
 }
@@ -290,7 +290,7 @@
 }
 
 :root[data-theme="totoro"] .tab-btn {
-    background: var(--bg-card) !important;
+    background: rgba(255, 255, 255, 0.7) !important;
     border: 1px solid rgba(135, 206, 235, 0.3) !important;
     color: var(--text-primary) !important;
 }
@@ -308,7 +308,7 @@
 }
 
 :root[data-theme="totoro"] .key-btn {
-    background: var(--bg-card) !important;
+    background: rgba(255, 255, 255, 0.8) !important;
     border: 2px solid rgba(135, 206, 235, 0.3) !important;
     color: var(--text-primary) !important;
     box-shadow: 0 4px 12px rgba(70, 130, 180, 0.1) !important;
@@ -1280,7 +1280,7 @@
 :root[data-theme="shinobu"] .key-btn.delete {
     background: var(--color-danger) !important;
     border-color: var(--color-danger) !important;
-    color: var(--text-white) !important;
+    color: white !important;
 }
 
 :root[data-theme="shinobu"] .key-btn.delete:hover {
@@ -1290,7 +1290,7 @@
 :root[data-theme="shinobu"] .key-btn.equal {
     background: var(--color-success) !important;
     border-color: var(--color-success) !important;
-    color: var(--text-white) !important;
+    color: white !important;
 }
 
 :root[data-theme="shinobu"] .key-btn.equal:hover {
@@ -1302,7 +1302,7 @@
 :root[data-theme="shinobu"] button {
     background: var(--color-primary);
     border: 1px solid var(--color-primary);
-    color: var(--text-white);
+    color: white;
     border-radius: 12px;
     transition: all 0.3s ease;
 }
@@ -1369,12 +1369,12 @@
 
 :root[data-theme="shinobu"] .record-menu-item.delete:hover {
     background: var(--color-danger);
-    color: var(--text-white);
+    color: white;
 }
 
 :root[data-theme="shinobu"] .thumbnail-remove {
     background: var(--color-danger);
-    color: var(--text-white);
+    color: white;
 }
 
 /* ========== 瘛梯𠧧璅∪��拚� ========== */
@@ -1834,7 +1834,7 @@
 }
 
 :root[data-theme="cutecreatures"] .bottom-nav {
-    background: var(--bg-card) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
     border-top: 2px solid rgba(144, 238, 144, 0.4) !important;
     backdrop-filter: blur(16px);
 }
@@ -1859,23 +1859,19 @@
 }
 
 :root[data-theme="cutecreatures"] .header-section {
-    background: var(--bg-card) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
     border-bottom: 2px solid rgba(144, 238, 144, 0.3) !important;
     backdrop-filter: blur(12px);
 }
 
 :root[data-theme="cutecreatures"] .tab-btn {
-    background: var(--bg-card) !important;
+    background: rgba(240, 255, 240, 0.7) !important;
     border: 2px solid rgba(144, 238, 144, 0.3) !important;
     color: var(--text-primary) !important;
     border-radius: 12px;
     font-family: var(--font-family-primary);
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(144, 238, 144, 0.1);
-}
-
-:root[data-theme="cutecreatures"] .tab-btn {
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
     letter-spacing: var(--letter-spacing-wide);
     text-transform: uppercase;
     padding: 8px 16px;
@@ -1908,7 +1904,7 @@
 }
 
 :root[data-theme="cutecreatures"] .key-btn {
-    background: var(--bg-card) !important;
+    background: rgba(240, 255, 240, 0.8) !important;
     border: 2px solid rgba(144, 238, 144, 0.3) !important;
     color: var(--text-primary) !important;
     box-shadow: 0 4px 12px rgba(144, 238, 144, 0.1) !important;
@@ -2023,22 +2019,20 @@
     font-family: var(--font-family-heading);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-xl);
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--letter-spacing-tight);
+    text-shadow: var(--text-shadow-soft);
 }
 
 :root[data-theme="cutecreatures"] .return-btn {
-background: rgba(144, 238, 144, 0.3) !important;
-border: 2px solid rgba(144, 238, 144, 0.4) !important;
-color: var(--text-primary) !important;
-border-radius: 12px;
-font-family: var(--font-family-primary);
-font-weight: var(--font-weight-semibold);
-font-size: var(--font-size-sm);
-letter-spacing: var(--letter-spacing-wide);
-text-transform: uppercase;
-padding: 8px 16px;
-transition: all 0.3s ease;
-position: relative;
-overflow: hidden;
+    background: rgba(144, 238, 144, 0.3) !important;
+    border: 2px solid rgba(144, 238, 144, 0.4) !important;
+    color: var(--text-primary) !important;
+    border-radius: 12px;
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    letter-spacing: var(--letter-spacing-wide);
     text-transform: uppercase;
     padding: 8px 16px;
     transition: all 0.3s ease;
@@ -5115,7 +5109,7 @@ width: 100%;
 }
 
 .metric-quote-btn::before {
-    content: '';
+    content: '��';
     font-size: 12px;
     opacity: 0.8;
 }
@@ -5125,38 +5119,6 @@ width: 100%;
     background: rgba(102, 126, 234, 0.18);
     transform: translateY(-1px);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
-}
-
-.metric-clear-btn {
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 24px;
-    height: 24px;
-    border: none;
-    background: rgba(255, 59, 48, 0.1);
-    color: #ff3b30;
-    border-radius: 50%;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    z-index: 10;
-    opacity: 0.7;
-}
-
-.metric-clear-btn:hover {
-    background: rgba(255, 59, 48, 0.2);
-    opacity: 1;
-    transform: translateY(-50%) scale(1.1);
-}
-
-.metric-clear-btn:active {
-    transform: translateY(-50%) scale(0.95);
 }
 
 .metric-quote-btn:active {
@@ -5216,7 +5178,7 @@ width: 100%;
 }
 
 .metric-quick-link::before {
-    content: '';
+    content: '��';
     font-size: 11px;
     opacity: 0.75;
 }
@@ -11047,7 +11009,7 @@ width: 100%;
 }
 
 .theme-item-preview--image.error::after {
-    content: '⚠️';
+    content: '�麱';
     position: absolute;
     top: 50%;
     left: 50%;
@@ -14899,7 +14861,7 @@ width: 100%;
 .stock-grid-card-tag--shares::before {
     content: '\1F4CA';
     font-size: 12px;
-    color: #4a90e2;
+    color: rgba(15, 23, 42, 0.6);
 }
 
 .stock-grid-card-tag.positive {
@@ -27815,10 +27777,9 @@ body {
 }
 
 .portfolio-shares::before {
-    content: '\1F4C8';
+    content: '\1F4CA';
     margin-right: 8px;
     font-size: 16px;
-    color: #4a90e2;
     opacity: 0.8;
     transition: all 0.3s ease;
 }
@@ -27849,6 +27810,12 @@ body {
     -webkit-backdrop-filter: blur(8px) !important;
     transform: translateY(0) !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.stock-grid-card-tag--shares::before {
+    content: '\1F4CA';
+    font-size: 14px !important;
+    opacity: 0.8 !important;
 }
 
 .stock-grid-card-tag--shares:hover {
@@ -31682,7 +31649,7 @@ body {
 :root[data-theme="starry"] select:focus {
     background: rgba(255, 255, 255, 0.12) !important;
     border-color: var(--color-secondary) !important;
-    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3), inset 0 0 10px rgba(107, 70, 193, 0.1) !important;
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3) !important, inset 0 0 10px rgba(107, 70, 193, 0.1) !important;
     transform: translateY(-1px) !important;
 }
 
@@ -35638,8 +35605,8 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     background: linear-gradient(135deg, var(--color-secondary) 0%, color-mix(in srgb, var(--color-secondary) 90%, var(--color-primary)) 100%) !important;
     color: var(--text-white) !important;
     box-shadow: 0 8px 24px rgba(255, 215, 0, 0.4) !important;
-    border: 2px solid rgba(255, 215, 0, 0.3) !important;
-    transform: translateY(-120px) !important;
+    bottom: 220px !important;
+    right: 16px !important;
     border: 2px solid var(--color-secondary-rgba-30) !important;
     font-family: var(--font-primary) !important;
     font-weight: var(--font-weight-black) !important;
@@ -35662,7 +35629,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
         width: 48px !important;
         height: 48px !important;
         font-size: 20px !important;
-        bottom: 250px !important;
+        bottom: 130px !important;
         right: 16px !important;
     }
 }
@@ -35670,7 +35637,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 :root[data-theme="getrich"] .fab-btn:hover {
     background: linear-gradient(135deg, color-mix(in srgb, var(--color-secondary) 90%, var(--color-primary)) 0%, var(--color-primary) 100%) !important;
     box-shadow: 0 12px 32px rgba(255, 215, 0, 0.5) !important;
-    transform: translateY(-122px) scale(1.05) !important;
+    transform: translateY(-2px) scale(1.05) !important;
 }
 
 /* 撠舘⏛�� */
@@ -36749,13 +36716,13 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 [data-theme="festive"] .stock-change-positive,
 [data-theme="festive"] .price-up {
     background: #f44336 !important;
-    color: var(--text-white) !important;
+    color: white !important;
 }
 
 [data-theme="festive"] .stock-change-negative,
 [data-theme="festive"] .price-down {
     background: #4caf50 !important;
-    color: var(--text-white) !important;
+    color: white !important;
 }
 
 /* �寞��閧𧞄��� */
@@ -36992,7 +36959,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 
 /* 蝣箔��𣇉內�函��交��訾蜓憿䔶葉�航� */
 [data-theme="festive"] .summary-card .summary-icon {
-    color: var(--text-white) !important;
+    color: white !important;
     font-size: 24px !important;
     margin-bottom: 10px !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
@@ -37001,21 +36968,21 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 }
 
 [data-theme="festive"] .summary-card .summary-content {
-    color: var(--text-white) !important;
+    color: white !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
     z-index: 2 !important;
     position: relative !important;
 }
 
 [data-theme="festive"] .summary-card .summary-label {
-    color: var(--text-white) !important;
+    color: white !important;
     font-size: 14px !important;
     opacity: 0.9 !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
 
 [data-theme="festive"] .summary-card .summary-value {
-    color: var(--text-white) !important;
+    color: white !important;
     font-size: 18px !important;
     font-weight: bold !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
@@ -37738,7 +37705,6 @@ body[data-theme="foxfire"] .stock-grid-card-tag--shares::before {
     content: '\1F4CA' !important;
     font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif !important;
     font-size: 16px !important;
-    color: #4a90e2 !important;
     color: var(--text-primary) !important;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
     opacity: 1 !important;
@@ -37757,7 +37723,7 @@ body[data-theme="foxfire"] .price-label,
 body[data-theme="foxfire"] .stock-current-price-label,
 body[data-theme="foxfire"] .stock-price-section .current-price-label,
 html:has([data-theme="foxfire"]) .stock-price-section .current-price-label {
-    color: black !important;
+    color: #8B4513 !important;
     font-weight: 600 !important;
     text-shadow: 0 1px 2px rgba(139, 69, 19, 0.3) !important;
 }
@@ -37765,7 +37731,7 @@ html:has([data-theme="foxfire"]) .stock-price-section .current-price-label {
 /* 狐火主題所有現價相關文字 */
 [data-theme="foxfire"] .current-price-label,
 [data-theme="foxfire"] .stock-price-section > div:first-child {
-    color: black !important;
+    color: #8B4513 !important;
     font-weight: 600 !important;
 }
 
@@ -37836,385 +37802,4 @@ body[data-theme="foxfire"] .form-label::before {
 :root[data-theme] .form-field:focus-within .form-label,
 :root[data-theme] .form-checkbox-label:has(.form-checkbox:checked) .form-checkbox-text {
     color: var(--color-primary) !important;
-}
-
-/* ========== 投資組合卡片主題色背景 ========== */
-
-/* 通用投資組合卡片樣式 */
-.portfolio-card {
-    background: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-15) 50%, var(--color-primary-rgba-08) 100%) !important;
-    border: 1px solid var(--color-primary-rgba-30) !important;
-    border-radius: 12px !important;
-    padding: 20px !important;
-    box-shadow: 0 4px 12px var(--color-primary-rgba-15) !important;
-    transition: all 0.3s ease !important;
-    backdrop-filter: blur(10px) !important;
-}
-
-.portfolio-card:hover {
-    background: linear-gradient(135deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-20) 50%, var(--color-primary-rgba-12) 100%) !important;
-    box-shadow: 0 6px 16px var(--color-primary-rgba-20) !important;
-    transform: translateY(-2px) !important;
-    border-color: var(--color-primary-rgba-40) !important;
-}
-
-/* 投資組合卡片標題 */
-.portfolio-card-title {
-    font-size: 16px !important;
-    font-weight: 600 !important;
-    color: var(--text-secondary) !important;
-    margin-bottom: 10px !important;
-    letter-spacing: 0.5px !important;
-}
-
-/* 投資組合卡片數值 */
-.portfolio-card-value {
-    font-size: 24px !important;
-    font-weight: bold !important;
-    color: var(--text-primary) !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* 現價輸入框 */
-.current-price-input {
-    width: 100% !important;
-    padding: 12px !important;
-    border: 2px solid var(--color-primary-rgba-30) !important;
-    border-radius: 8px !important;
-    background: rgba(255, 255, 255, 0.9) !important;
-    color: var(--text-primary) !important;
-    font-size: 18px !important;
-    font-weight: 600 !important;
-    margin-bottom: 15px !important;
-    transition: all 0.3s ease !important;
-    backdrop-filter: blur(5px) !important;
-}
-
-.current-price-input:focus {
-    border-color: var(--color-primary) !important;
-    box-shadow: 0 0 0 3px var(--color-primary-rgba-20) !important;
-    outline: none !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-}
-
-/* 鉅亨網查價按鈕 */
-.lookup-button {
-    width: 100% !important;
-    padding: 12px !important;
-    border: none !important;
-    border-radius: 8px !important;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
-    color: var(--text-white) !important;
-    font-size: 16px !important;
-    font-weight: bold !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 4px 12px var(--color-primary-rgba-30) !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
-}
-
-.lookup-button:hover {
-    opacity: 0.9 !important;
-    box-shadow: 0 6px 16px var(--color-primary-rgba-40) !important;
-    transform: translateY(-1px) !important;
-}
-
-.lookup-button:active {
-    transform: translateY(0) !important;
-    box-shadow: 0 2px 8px var(--color-primary-rgba-30) !important;
-}
-
-/* 未實現損益樣式 */
-.unrealized-pnl {
-    font-size: 28px !important;
-    font-weight: bold !important;
-    color: var(--color-success) !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
-}
-
-.unrealized-pnl.negative {
-    color: var(--color-danger) !important;
-}
-
-/* 特定主題的投資組合卡片覆蓋樣式 */
-:root[data-theme="pink"] .portfolio-card {
-    background: linear-gradient(135deg, rgba(255, 105, 180, 0.1) 0%, rgba(255, 105, 180, 0.15) 50%, rgba(255, 105, 180, 0.08) 100%) !important;
-    border-color: rgba(255, 105, 180, 0.3) !important;
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.15) !important;
-}
-
-:root[data-theme="pink"] .portfolio-card:hover {
-    background: linear-gradient(135deg, rgba(255, 105, 180, 0.15) 0%, rgba(255, 105, 180, 0.2) 50%, rgba(255, 105, 180, 0.12) 100%) !important;
-    border-color: rgba(255, 105, 180, 0.4) !important;
-    box-shadow: 0 6px 16px rgba(255, 105, 180, 0.2) !important;
-}
-
-:root[data-theme="blue"] .portfolio-card {
-    background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(74, 144, 226, 0.15) 50%, rgba(74, 144, 226, 0.08) 100%) !important;
-    border-color: rgba(74, 144, 226, 0.3) !important;
-    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.15) !important;
-}
-
-:root[data-theme="blue"] .portfolio-card:hover {
-    background: linear-gradient(135deg, rgba(74, 144, 226, 0.15) 0%, rgba(74, 144, 226, 0.2) 50%, rgba(74, 144, 226, 0.12) 100%) !important;
-    border-color: rgba(74, 144, 226, 0.4) !important;
-    box-shadow: 0 6px 16px rgba(74, 144, 226, 0.2) !important;
-}
-
-:root[data-theme="green"] .portfolio-card {
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.15) 50%, rgba(76, 175, 80, 0.08) 100%) !important;
-    border-color: rgba(76, 175, 80, 0.3) !important;
-    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.15) !important;
-}
-
-:root[data-theme="green"] .portfolio-card:hover {
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.15) 0%, rgba(76, 175, 80, 0.2) 50%, rgba(76, 175, 80, 0.12) 100%) !important;
-    border-color: rgba(76, 175, 80, 0.4) !important;
-    box-shadow: 0 6px 16px rgba(76, 175, 80, 0.2) !important;
-}
-
-/* 確保在深色主題下文字可讀性 */
-:root[data-theme*="dark"] .portfolio-card-title,
-:root[data-theme*="dark"] .portfolio-card-value {
-    color: var(--text-primary) !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-}
-
-:root[data-theme*="dark"] .current-price-input {
-    background: rgba(255, 255, 255, 0.1) !important;
-    color: var(--text-primary) !important;
-    border-color: var(--color-primary-rgba-50) !important;
-}
-
-:root[data-theme*="dark"] .current-price-input:focus {
-    background: rgba(255, 255, 255, 0.15) !important;
-    border-color: var(--color-primary) !important;
-}
-
-/* ========== 更新提示彈窗樣式 ========== */
-.update-notification-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 0.3s ease-out;
-}
-
-.update-modal-content {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
-    border-radius: 24px;
-    max-width: 480px;
-    width: 90%;
-    max-height: 80vh;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    animation: slideUp 0.4s ease-out;
-    position: relative;
-}
-
-.update-notification-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex: 1;
-}
-
-.update-icon {
-    font-size: 48px;
-    animation: bounce 2s infinite;
-}
-
-.update-subtitle {
-    color: #666;
-    font-size: 14px;
-    margin: 4px 0 0 0;
-    font-weight: 400;
-}
-
-.update-content {
-    padding: 20px 0;
-    text-align: center;
-}
-
-.update-content h4 {
-    color: #333;
-    font-size: 18px;
-    margin: 0 0 12px 0;
-    font-weight: 600;
-}
-
-.update-content p {
-    color: #666;
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 0;
-}
-
-.update-features {
-    margin-top: 20px;
-}
-
-.update-feature-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px;
-    background: rgba(79, 70, 229, 0.05);
-    border-radius: 12px;
-    margin-bottom: 8px;
-    transition: all 0.3s ease;
-}
-
-.update-feature-item:hover {
-    background: rgba(79, 70, 229, 0.1);
-    transform: translateX(4px);
-}
-
-.update-feature-icon {
-    font-size: 20px;
-    min-width: 24px;
-}
-
-.update-feature-text {
-    flex: 1;
-}
-
-.update-feature-title {
-    font-weight: 600;
-    color: #333;
-    font-size: 14px;
-    margin: 0 0 4px 0;
-}
-
-.update-feature-desc {
-    color: #666;
-    font-size: 12px;
-    margin: 0;
-    line-height: 1.4;
-}
-
-.update-btn {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: none;
-    letter-spacing: 0.5px;
-}
-
-.update-btn.primary {
-    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-    color: white;
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
-}
-
-.update-btn.primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
-}
-
-.update-btn.secondary {
-    background: rgba(0, 0, 0, 0.05);
-    color: #666;
-}
-
-.update-btn.secondary:hover {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-/* 動畫效果 */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideUp {
-    from { 
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to { 
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
-}
-
-/* 深色主題適配 */
-:root[data-theme*="dark"] .update-modal-content {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    color: #ffffff;
-}
-
-:root[data-theme*="dark"] .update-subtitle {
-    color: #a0a0a0;
-}
-
-:root[data-theme*="dark"] .update-content h4 {
-    color: #ffffff;
-}
-
-:root[data-theme*="dark"] .update-content p {
-    color: #a0a0a0;
-}
-
-:root[data-theme*="dark"] .update-feature-item {
-    background: rgba(79, 70, 229, 0.2);
-}
-
-:root[data-theme*="dark"] .update-feature-item:hover {
-    background: rgba(79, 70, 229, 0.3);
-}
-
-:root[data-theme*="dark"] .update-feature-title {
-    color: #ffffff;
-}
-
-:root[data-theme*="dark"] .update-feature-desc {
-    color: #a0a0a0;
-}
-
-:root[data-theme*="dark"] .update-btn.secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: #a0a0a0;
-}
-
-:root[data-theme*="dark"] .update-btn.secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-/* 響應式設計 */
-@media (max-width: 480px) {
-    .update-modal-content {
-        width: 95%;
-        margin: 20px;
-    }
-    
-    .update-notification-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
-    }
-    
-    .update-icon {
-        font-size: 36px;
-    }
-    
-    .update-btn {
-        padding: 10px 20px;
-        font-size: 13px;
-    }
 }

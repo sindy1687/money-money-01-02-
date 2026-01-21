@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>狐火主題測試</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 20px;
+        }
+        .theme-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .theme-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .card-demo {
+            background: var(--bg-card);
+            backdrop-filter: blur(15px);
+            border: 2px solid var(--border-medium);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 10px 0;
+            box-shadow: var(--shadow-medium);
+        }
+        .btn-demo {
+            background: var(--gradient-fire);
+            border: 2px solid var(--border-dark);
+            border-radius: 12px;
+            color: var(--text-inverse);
+            padding: 12px 24px;
+            margin: 5px;
+            font-weight: var(--font-weight-semibold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-demo:hover {
+            background: var(--gradient-fire-hover);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: var(--shadow-heavy);
+        }
+        .stat-demo {
+            background: var(--gradient-primary);
+            border: 2px solid var(--border-medium);
+            border-radius: 16px;
+            padding: 15px;
+            margin: 10px 0;
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+        .stat-demo:hover {
+            background: var(--gradient-secondary);
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-3px);
+        }
+        h1, h2, h3 {
+            color: var(--text-primary);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        p {
+            color: var(--text-secondary);
+        }
+        .amount {
+            font-family: var(--font-mono);
+            font-weight: var(--font-weight-bold);
+            letter-spacing: var(--letter-spacing-wide);
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🦊 狐火主題測試</h1>
+        
+        <div class="theme-buttons">
+            <button class="theme-btn" onclick="applyTheme('pink')">💖 粉色</button>
+            <button class="theme-btn" onclick="applyTheme('blue')">💙 藍色</button>
+            <button class="theme-btn" onclick="applyTheme('green')">💚 綠色</button>
+            <button class="theme-btn" onclick="applyTheme('foxfire')">🦊 狐火</button>
+            <button class="theme-btn" onclick="applyTheme('neon')">🟣 霓虹</button>
+            <button class="theme-btn" onclick="applyTheme('dreamyfish')">🐠 夢幻魚語</button>
+        </div>
+
+        <div class="test-section card-demo">
+            <h2>卡片測試</h2>
+            <p>這是一個測試卡片，展示狐火主題的毛玻璃效果和邊框樣式。</p>
+            <div class="amount">NT$ 12,345.67</div>
+        </div>
+
+        <div class="test-section">
+            <h2>按鈕測試</h2>
+            <button class="btn-demo">🔥 火焰按鈕</button>
+            <button class="btn-demo">💰 金錢按鈕</button>
+            <button class="btn-demo">⚡ 閃電按鈕</button>
+        </div>
+
+        <div class="test-section">
+            <h2>統計項目測試</h2>
+            <div class="stat-demo">
+                <h3>今日支出</h3>
+                <p class="amount">NT$ 2,450</p>
+            </div>
+            <div class="stat-demo">
+                <h3>本月收入</h3>
+                <p class="amount">NT$ 45,000</p>
+            </div>
+            <div class="stat-demo">
+                <h3>投資回報</h3>
+                <p class="amount">+12.5%</p>
+            </div>
+        </div>
+
+        <div class="test-section card-demo">
+            <h2>智慧分析卡片 (不透明)</h2>
+            <p>這是一個智慧分析卡片，展示不透明的背景效果。</p>
+            <div class="amount">分析結果: 優秀</div>
+        </div>
+
+        <div class="test-section card-demo">
+            <h2>投資卡片</h2>
+            <p>投資組合總值</p>
+            <p class="amount">NT$ 125,678.90</p>
+            <button class="btn-demo">買入</button>
+            <button class="btn-demo">定期定額</button>
+        </div>
+    </div>
+
+    <script>
+        function applyTheme(themeId) {
+            document.documentElement.setAttribute('data-theme', themeId);
+            localStorage.setItem('selectedTheme', themeId);
+        }
+
+        // 載入時應用保存的主題
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'foxfire';
+            applyTheme(savedTheme);
+        });
+    </script>
+</body>
+</html>

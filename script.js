@@ -1162,13 +1162,12 @@ const prevCloseAttemptAt = {};
 const PREV_CLOSE_COOLDOWN_MS = 5 * 60 * 1000;
 
 const publicQuoteProxies = [
-    // Put Jina first: raw fetch (least likely to 404)
-    'https://r.jina.ai/http://',
-    // Returns JSON wrapper: { contents: "..." }
-    'https://api.allorigins.win/raw?url=',
-    // Usually returns raw proxied content
-    'https://api.codetabs.com/v1/proxy/?quest='
-    // 2025/01: corsproxy.io frequently 404，暫時移除以降低噪音
+    // 新的可用代理服務
+    'https://api.codetabs.com/v1/proxy/?quest=',
+    'https://corsproxy.io/?',
+    // cors-anywhere.herokuapp.com 已經不可用，完全移除
+    // 暫時移除 r.jina.ai (503 錯誤)
+    // 'https://r.jina.ai/http://',
 ];
 
 function isProxyInCooldown(proxyBase) {
@@ -1198,10 +1197,10 @@ async function fetchPrevCloseFromTwseOtc(stockCode) {
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 8000);
                 let finalUrl;
-                if (proxyBase.includes('r.jina.ai')) {
-                    const cleaned = url.replace(/^https?:\/\//, '');
-                    finalUrl = `${proxyBase}${cleaned}`;
+                if (proxyBase.includes('corsproxy.io')) {
+                    finalUrl = `${proxyBase}${encodeURIComponent(url)}`;
                 } else {
+                    // codetabs.com 和其他代理
                     finalUrl = `${proxyBase}${encodeURIComponent(url)}`;
                 }
                 const resp = await fetch(finalUrl, { signal: controller.signal });
@@ -1275,10 +1274,10 @@ async function fetchPreviousCloseOnly(stockCode) {
                     const controller = new AbortController();
                     const timeoutId = setTimeout(() => controller.abort(), 8000);
                     let finalUrl;
-                    if (proxyBase.includes('r.jina.ai')) {
-                        const cleaned = yahooChartUrl.replace(/^https?:\/\//, '');
-                        finalUrl = `${proxyBase}${cleaned}`;
+                    if (proxyBase.includes('corsproxy.io')) {
+                        finalUrl = `${proxyBase}${encodeURIComponent(yahooChartUrl)}`;
                     } else {
+                        // codetabs.com 和其他代理
                         finalUrl = `${proxyBase}${encodeURIComponent(yahooChartUrl)}`;
                     }
                     const resp = await fetch(finalUrl, { signal: controller.signal });
@@ -1319,10 +1318,10 @@ async function fetchPreviousCloseOnly(stockCode) {
                     const controller = new AbortController();
                     const timeoutId = setTimeout(() => controller.abort(), 8000);
                     let finalUrl;
-                    if (proxyBase.includes('r.jina.ai')) {
-                        const cleaned = yahooQuoteUrl.replace(/^https?:\/\//, '');
-                        finalUrl = `${proxyBase}${cleaned}`;
+                    if (proxyBase.includes('corsproxy.io')) {
+                        finalUrl = `${proxyBase}${encodeURIComponent(yahooQuoteUrl)}`;
                     } else {
+                        // codetabs.com 和其他代理
                         finalUrl = `${proxyBase}${encodeURIComponent(yahooQuoteUrl)}`;
                     }
                     const resp = await fetch(finalUrl, { signal: controller.signal });
@@ -1384,10 +1383,10 @@ async function fetchYahooChartViaPublicProxies(yahooUrl, stockCode) {
             const timeoutId = setTimeout(() => controller.abort(), 10000);
             try {
                 let finalUrl;
-                if (proxyBase.includes('r.jina.ai')) {
-                    const cleaned = yahooUrl.replace(/^https?:\/\//, '');
-                    finalUrl = `${proxyBase}${cleaned}`;
+                if (proxyBase.includes('corsproxy.io')) {
+                    finalUrl = `${proxyBase}${encodeURIComponent(yahooUrl)}`;
                 } else {
+                    // codetabs.com 和其他代理
                     finalUrl = `${proxyBase}${encodeURIComponent(yahooUrl)}`;
                 }
 
@@ -1405,7 +1404,7 @@ async function fetchYahooChartViaPublicProxies(yahooUrl, stockCode) {
                     }
                 } catch (_) {}
 
-                // r.jina.ai returns HTML-ish wrapper; try to extract JSON by finding first '{'
+                // 
                 const firstBrace = raw.indexOf('{');
                 if (firstBrace > 0) raw = raw.slice(firstBrace);
 
@@ -9150,70 +9149,99 @@ function showHistoryBackgroundSelector(modalContent) {
     fileInput.addEventListener('change', async (e) => {
         const file = e.target.files[0];
         if (file) {
-            // 檢查文件大小（限制為 10MB）
-            if (file.size > 10 * 1024 * 1024) {
-                alert('圖片太大！請選擇小於 10MB 的圖片。');
+            // 檢查文件大小（手機放寬限制到 20MB）
+            const maxSize = 20 * 1024 * 1024; // 20MB
+            if (file.size > maxSize) {
+                alert(`圖片太大！請選擇小於 ${Math.round(maxSize / 1024 / 1024)}MB 的圖片。\n目前檔案大小：${Math.round(file.size / 1024 / 1024)}MB`);
                 fileInput.value = '';
                 return;
             }
             
-            const reader = new FileReader();
-            reader.onload = async (event) => {
-                let imageData = event.target.result;
-                
-                // 壓縮圖片（背景圖片使用較大尺寸和較高質量）
-                if (typeof compressImage === 'function') {
-                    try {
-                        imageData = await compressImage(imageData, 1920, 1080, 0.8);
-                        console.log('背景圖片已壓縮');
-                    } catch (error) {
-                        console.error('圖片壓縮失敗:', error);
+            // 顯示上傳進度提示
+            const progressMsg = document.createElement('div');
+            progressMsg.textContent = '正在處理圖片，請稍候...';
+            progressMsg.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); color: white; padding: 15px 25px; border-radius: 8px; z-index: 10000;';
+            document.body.appendChild(progressMsg);
+            
+            try {
+                const reader = new FileReader();
+                reader.onload = async (event) => {
+                    let imageData = event.target.result;
+                    
+                    // 壓縮圖片（針對手機優化：更小尺寸，適中品質）
+                    if (typeof compressImage === 'function') {
+                        try {
+                            // 手機使用更激進的壓縮
+                            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                            const maxWidth = isMobile ? 1280 : 1920;
+                            const maxHeight = isMobile ? 720 : 1080;
+                            const quality = isMobile ? 0.6 : 0.8;
+                            
+                            imageData = await compressImage(imageData, maxWidth, maxHeight, quality);
+                            console.log('背景圖片已壓縮（手機優化）');
+                        } catch (error) {
+                            console.error('圖片壓縮失敗:', error);
+                            // 壓縮失敗時使用原始圖片
+                        }
                     }
-                }
-                
-                // 保存到自訂背景列表
-                const customBackgrounds = JSON.parse(localStorage.getItem('customHistoryBackgrounds') || '[]');
-                const newBackground = {
-                    id: 'custom-' + Date.now(),
-                    url: imageData,
-                    name: file.name || '自訂背景',
-                    date: new Date().toISOString()
+                    
+                    // 保存到自訂背景列表
+                    const customBackgrounds = JSON.parse(localStorage.getItem('customHistoryBackgrounds') || '[]');
+                    const newBackground = {
+                        id: 'custom-' + Date.now(),
+                        url: imageData,
+                        name: file.name || '自訂背景',
+                        date: new Date().toISOString(),
+                        originalSize: file.size,
+                        compressed: imageData !== event.target.result
+                    };
+                    customBackgrounds.push(newBackground);
+                    localStorage.setItem('customHistoryBackgrounds', JSON.stringify(customBackgrounds));
+                    
+                    // 移除進度提示
+                    document.body.removeChild(progressMsg);
+                    
+                    // 重新渲染背景選項
+                    const grid = backgroundModal.querySelector('.background-options-grid');
+                    if (grid) {
+                        const savedBackground = localStorage.getItem('historyBackground') || '';
+                        const allOptions = [
+                            ...backgroundOptions.filter(opt => !opt.isCustom),
+                            ...customBackgrounds.map((bg, index) => ({ url: bg.url, name: bg.name || `自訂背景 ${index + 1}`, isCustom: true, id: bg.id || `custom-${index}` }))
+                        ];
+                        grid.innerHTML = allOptions.map((option, index) => {
+                            const isSelected = (option.url === savedBackground) || (option.url === '' && savedBackground === '');
+                            return `
+                                <div class="background-option ${isSelected ? 'selected' : ''}" data-url="${option.url}" data-custom="${option.isCustom ? 'true' : 'false'}" data-id="${option.id || ''}" style="position: relative; cursor: pointer; border-radius: 12px; overflow: hidden; border: 3px solid ${isSelected ? 'var(--color-primary)' : 'transparent'}; transition: all 0.2s;">
+                                    ${option.url ? `
+                                        <img src="${option.url}" alt="${option.name}" style="width: 100%; height: 120px; object-fit: cover; display: block;">
+                                    ` : `
+                                        <div style="width: 100%; height: 120px; background: var(--bg-light); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 14px;">無背景</div>
+                                    `}
+                                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; padding: 6px; font-size: 12px; text-align: center;">${option.name}</div>
+                                    ${isSelected ? '<div style="position: absolute; top: 8px; right: 8px; background: var(--color-primary); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">✓</div>' : ''}
+                                    ${option.isCustom ? '<button class="delete-custom-background-btn" data-id="' + (option.id || '') + '" style="position: absolute; top: 8px; left: 8px; background: rgba(255,0,0,0.8); color: white; border: none; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; cursor: pointer; z-index: 10;" title="刪除">×</button>' : ''}
+                                </div>
+                            `;
+                        }).join('');
+                        bindBackgroundEvents();
+                    }
+
+                    fileInput.value = '';
                 };
-                customBackgrounds.push(newBackground);
-                localStorage.setItem('customHistoryBackgrounds', JSON.stringify(customBackgrounds));
-                
-                // 重新渲染背景選項
-                const grid = backgroundModal.querySelector('.background-options-grid');
-                if (grid) {
-                    const savedBackground = localStorage.getItem('historyBackground') || '';
-                    const allOptions = [
-                        ...backgroundOptions.filter(opt => !opt.isCustom),
-                        ...customBackgrounds.map((bg, index) => ({ url: bg.url, name: bg.name || `自訂背景 ${index + 1}`, isCustom: true, id: bg.id || `custom-${index}` }))
-                    ];
-                    grid.innerHTML = allOptions.map((option, index) => {
-                        const isSelected = (option.url === savedBackground) || (option.url === '' && savedBackground === '');
-                        return `
-                            <div class="background-option ${isSelected ? 'selected' : ''}" data-url="${option.url}" data-custom="${option.isCustom ? 'true' : 'false'}" data-id="${option.id || ''}" style="position: relative; cursor: pointer; border-radius: 12px; overflow: hidden; border: 3px solid ${isSelected ? 'var(--color-primary)' : 'transparent'}; transition: all 0.2s;">
-                                ${option.url ? `
-                                    <img src="${option.url}" alt="${option.name}" style="width: 100%; height: 120px; object-fit: cover; display: block;">
-                                ` : `
-                                    <div style="width: 100%; height: 120px; background: var(--bg-light); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 14px;">無背景</div>
-                                `}
-                                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; padding: 6px; font-size: 12px; text-align: center;">${option.name}</div>
-                                ${isSelected ? '<div style="position: absolute; top: 8px; right: 8px; background: var(--color-primary); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">✓</div>' : ''}
-                                ${option.isCustom ? '<button class="delete-custom-background-btn" data-id="' + (option.id || '') + '" style="position: absolute; top: 8px; left: 8px; background: rgba(255,0,0,0.8); color: white; border: none; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; cursor: pointer; z-index: 10;" title="刪除">×</button>' : ''}
-                            </div>
-                        `;
-                    }).join('');
-                    bindBackgroundEvents();
+                reader.readAsDataURL(file);
+            } catch (error) {
+                console.error('圖片處理失敗:', error);
+                // 移除進度提示
+                if (document.body.contains(progressMsg)) {
+                    document.body.removeChild(progressMsg);
                 }
-                
+                alert('圖片處理失敗，請重試');
                 fileInput.value = '';
-            };
-            reader.readAsDataURL(file);
+            }
         }
     });
-    
+
     // 綁定背景選擇和刪除事件
     const bindBackgroundEvents = () => {
         // 綁定選擇事件
@@ -10222,7 +10250,7 @@ function updateMonthCompareChart() {
                     }
                 },
                 tooltip: {
-                    backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--bg-white').trim() || 'rgba(255, 255, 255, 0.95)',
+                    backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--bg-white').trim() || 'var(--bg-white)',
                     titleColor: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() || '#333',
                     bodyColor: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() || '#333',
                     borderColor: borderLight,
@@ -10332,7 +10360,7 @@ function updatePieChart() {
                     display: false
                 },
                 tooltip: {
-                    backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--bg-white').trim() || 'rgba(255, 255, 255, 0.95)',
+                    backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--bg-white').trim() || 'var(--bg-white)',
                     titleColor: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() || '#333',
                     bodyColor: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() || '#333',
                     borderColor: getComputedStyle(document.documentElement).getPropertyValue('--border-light').trim() || '#f0f0f0',
@@ -10429,7 +10457,7 @@ function updateBarChart() {
                     display: false
                 },
                 tooltip: {
-                    backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--bg-white').trim() || 'rgba(255, 255, 255, 0.95)',
+                    backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--bg-white').trim() || 'var(--bg-white)',
                     titleColor: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() || '#333',
                     bodyColor: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() || '#333',
                     borderColor: getComputedStyle(document.documentElement).getPropertyValue('--border-light').trim() || '#f0f0f0',
@@ -14631,6 +14659,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // 初始化下月計入選項
     initNextMonthOption();
     
+    // 初始化主題系統
+    if (typeof getCurrentTheme === 'function' && typeof applyTheme === 'function') {
+        const savedTheme = getCurrentTheme();
+        applyTheme(savedTheme);
+        console.log('✅ 主題系統已初始化，當前主題:', savedTheme);
+    } else {
+        console.warn('⚠️ 主題系統函數未找到');
+    }
+    
     // 防止所有輸入框focus時自動滾動（手機適配，防止數字鍵盤移位）
     setTimeout(() => {
         const allInputs = document.querySelectorAll('input[type="text"], input[type="number"], input[type="date"], textarea');
@@ -14747,6 +14784,33 @@ document.addEventListener('DOMContentLoaded', () => {
     if (settingsBackBtn) {
         settingsBackBtn.addEventListener('click', () => {
             goBackToLedger();
+        });
+    }
+    
+    // 初始化智慧提醒按鈕
+    const smartRemindersBtn = document.getElementById('smartRemindersBtn');
+    if (smartRemindersBtn) {
+        smartRemindersBtn.addEventListener('click', () => {
+            // 檢查智慧提醒系統是否已載入
+            if (window.smartReminderSystem && typeof window.smartReminderSystem.showReminderPanel === 'function') {
+                window.smartReminderSystem.showReminderPanel();
+            } else if (window.SmartReminderSystem && window.SmartReminderSystem.prototype.showReminderPanel) {
+                // 如果系統類別存在但實例不存在，創建實例
+                const instance = new window.SmartReminderSystem();
+                instance.init();
+                window.smartReminderSystem = instance;
+                instance.showReminderPanel();
+            } else {
+                console.warn('智慧提醒系統未載入，嘗試手動初始化...');
+                // 嘗試手動載入和初始化
+                setTimeout(() => {
+                    if (window.smartReminderSystem) {
+                        window.smartReminderSystem.showReminderPanel();
+                    } else {
+                        alert('智慧提醒系統載入失敗，請重新整理頁面');
+                    }
+                }, 1000);
+            }
         });
     }
     
@@ -16115,12 +16179,14 @@ function showStockDetailPage(stockCode) {
             currentPriceInput.parentNode.replaceChild(newInput, currentPriceInput);
             currentPriceInput = newInput;
             
-            newInput.addEventListener('input', () => {
+            // 添加多個事件監聽器確保更新
+            const handlePriceUpdate = () => {
                 if (typeof applyAutoWidth === 'function') {
                     applyAutoWidth(newInput);
                 } else if (typeof window !== 'undefined' && typeof window.applyAutoWidth === 'function') {
                     window.applyAutoWidth(newInput);
                 }
+                
                 const currentPrice = parseFloat(newInput.value) || stockAvgCost;
                 const unrealizedPnl = (currentPrice - stockAvgCost) * stockShares;
                 const pnlEl = document.getElementById('metricUnrealizedPnl');
@@ -16132,10 +16198,61 @@ function showStockDetailPage(stockCode) {
                 // 保存當前價格到 localStorage（標記為手動輸入）
                 if (currentPrice && currentPrice > 0) {
                     saveStockCurrentPrice(stockCode, currentPrice, true); // true = 手動輸入
+                    console.log(`💾 已保存手動輸入的價格: ${stockCode} = NT$${currentPrice}`);
                     // 更新投資總覽
                     updateInvestmentSummary();
+                    // 更新投資組合顯示
+                    updatePortfolioList();
+                    updateStockList();
                 }
-            });
+            };
+            
+            // 添加多種事件監聽器
+            newInput.addEventListener('input', handlePriceUpdate);
+            newInput.addEventListener('change', handlePriceUpdate);
+            newInput.addEventListener('blur', handlePriceUpdate);
+            
+            // 確保輸入框可以編輯
+            newInput.removeAttribute('readonly');
+            newInput.removeAttribute('disabled');
+            newInput.style.pointerEvents = 'auto';
+            newInput.style.userSelect = 'auto';
+            newInput.style.webkitUserSelect = 'auto';
+        }
+        
+        // 添加清除按鈕事件監聽器
+        const clearBtn = document.getElementById('metricClearPrice');
+        if (clearBtn) {
+            clearBtn.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // 清除手動輸入的價格標記
+                const stockPrices = JSON.parse(localStorage.getItem('stockCurrentPrices') || '{}');
+                if (stockPrices[stockCode]) {
+                    delete stockPrices[stockCode];
+                    localStorage.setItem('stockCurrentPrices', JSON.stringify(stockPrices));
+                    console.log(`🗑️ 已清除 ${stockCode} 的手動輸入價格`);
+                }
+                
+                // 重新獲取自動價格
+                fetchStockPrice(stockCode).then(price => {
+                    if (price && currentPriceInput) {
+                        currentPriceInput.value = price.toFixed(2);
+                        applyAutoWidth(currentPriceInput);
+                        // 觸發 input 事件以更新未實現損益
+                        currentPriceInput.dispatchEvent(new Event('input'));
+                        console.log(`🔄 已重新獲取 ${stockCode} 的自動價格: NT$${price}`);
+                    }
+                }).catch(err => {
+                    console.log('重新獲取價格失敗，使用平均成本');
+                    if (currentPriceInput) {
+                        currentPriceInput.value = stockAvgCost.toFixed(2);
+                        applyAutoWidth(currentPriceInput);
+                        currentPriceInput.dispatchEvent(new Event('input'));
+                    }
+                });
+            };
         }
         
         // 初始計算未實現損益
@@ -21051,7 +21168,7 @@ function showReceiptImageModal(imageUrl) {
     modal.innerHTML = `
         <div style="position: relative; max-width: 90%; max-height: 90%; display: flex; align-items: center; justify-content: center;">
             <img src="${imageUrl}" alt="收據" style="max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
-            <button class="receipt-image-close-btn" style="position: absolute; top: -40px; right: 0; background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #333; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">✕</button>
+            <button class="receipt-image-close-btn" style="position: absolute; top: -40px; right: 0; background: getComputedStyle(document.documentElement).getPropertyValue('--bg-white').trim() || 'var(--bg-white)'; border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #333; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">✕</button>
         </div>
     `;
     

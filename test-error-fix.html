@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>錯誤修復驗證</title>
+    <link rel="stylesheet" href="emergency-icon-fix.css">
+    <link rel="stylesheet" href="clean-garbage-icons.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .status.warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+        .test-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .icon-test {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+        }
+        .icon-display {
+            font-size: 24px;
+            min-width: 30px;
+            text-align: center;
+        }
+        .icon-label {
+            font-size: 14px;
+            color: #666;
+        }
+        .console-output {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin: 10px 0;
+        }
+        .console-line {
+            margin: 2px 0;
+        }
+        .console-line.error { color: #ff6b6b; }
+        .console-line.warning { color: #ffa726; }
+        .console-line.success { color: #66bb6a; }
+        .console-line.info { color: #42a5f5; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔧 錯誤修復驗證</h1>
+        
+        <div class="status info">
+            此頁面用於驗證所有圖示和錯誤修復是否正常工作
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">圖示顯示測試</h2>
+            
+            <div class="icon-test">
+                <span class="icon-display record-type-icon">👤</span>
+                <span class="icon-label">支出圖示</span>
+                <span id="test1">檢測中...</span>
+            </div>
+            
+            <div class="icon-test">
+                <span class="icon-display record-type-icon">💰</span>
+                <span class="icon-label">收入圖示</span>
+                <span id="test2">檢測中...</span>
+            </div>
+            
+            <div class="icon-test">
+                <span class="icon-display record-type-icon">💳</span>
+                <span class="icon-label">轉帳圖示</span>
+                <span id="test3">檢測中...</span>
+            </div>
+            
+            <div class="icon-test">
+                <span class="icon-display tab-icon">✨</span>
+                <span class="icon-label">推薦圖示</span>
+                <span id="test4">檢測中...</span>
+            </div>
+            
+            <div class="icon-test">
+                <span class="icon-display fab-btn">🧧</span>
+                <span class="icon-label">FAB 按鈕</span>
+                <span id="test5">檢測中...</span>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">控制台輸出</h2>
+            <div id="console-output" class="console-output">
+                <div class="console-line info">等待控制台輸出...</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">錯誤檢測</h2>
+            <div id="error-detection">
+                <div class="status info">正在檢測錯誤...</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">手動測試</h2>
+            <button onclick="testIconFix()">測試圖示修復</button>
+            <button onclick="testUrlInterception()">測試 URL 攔截</button>
+            <button onclick="clearConsole()">清空控制台</button>
+        </div>
+    </div>
+
+    <script src="unified-icon-fix.js"></script>
+    <script>
+        // 控制台輸出捕獲
+        const originalLog = console.log;
+        const originalWarn = console.warn;
+        const originalError = console.error;
+        
+        function addConsoleMessage(message, type = 'info') {
+            const output = document.getElementById('console-output');
+            const line = document.createElement('div');
+            line.className = `console-line ${type}`;
+            line.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            output.appendChild(line);
+            output.scrollTop = output.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addConsoleMessage(args.join(' '), 'info');
+        };
+        
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            addConsoleMessage(args.join(' '), 'warning');
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addConsoleMessage(args.join(' '), 'error');
+        };
+        
+        // 測試函數
+        function testIconFix() {
+            console.log('🧪 手動測試圖示修復...');
+            if (window.forceIconFix) {
+                window.forceIconFix();
+                updateIconTests();
+            } else {
+                console.error('forceIconFix 函數不存在');
+            }
+        }
+        
+        function testUrlInterception() {
+            console.log('🧪 測試 URL 攔截...');
+            fetch('📈').then(() => {
+                console.log('URL 攔截失敗');
+            }).catch(() => {
+                console.log('✅ URL 攔截正常工作');
+            });
+        }
+        
+        function clearConsole() {
+            document.getElementById('console-output').innerHTML = '<div class="console-line info">控制台已清空</div>';
+        }
+        
+        function updateIconTests() {
+            const tests = [
+                { selector: '.record-type-icon', id: 'test1', index: 0 },
+                { selector: '.record-type-icon', id: 'test2', index: 1 },
+                { selector: '.record-type-icon', id: 'test3', index: 2 },
+                { selector: '.tab-icon', id: 'test4', index: 0 },
+                { selector: '.fab-btn', id: 'test5', index: 0 }
+            ];
+            
+            tests.forEach(test => {
+                const elements = document.querySelectorAll(test.selector);
+                if (elements.length > test.index) {
+                    const element = elements[test.index];
+                    const computedStyle = window.getComputedStyle(element);
+                    const fontFamily = computedStyle.fontFamily;
+                    
+                    const hasEmojiFont = fontFamily.includes('Apple Color Emoji') || 
+                                      fontFamily.includes('Segoe UI Emoji') || 
+                                      fontFamily.includes('Noto Color Emoji');
+                    
+                    const resultElement = document.getElementById(test.id);
+                    if (resultElement) {
+                        if (hasEmojiFont) {
+                            resultElement.textContent = '✅ 正常';
+                            resultElement.style.color = '#28a745';
+                        } else {
+                            resultElement.textContent = '❌ 字體問題';
+                            resultElement.style.color = '#dc3545';
+                        }
+                    }
+                }
+            });
+        }
+        
+        function detectErrors() {
+            const errors = [];
+            
+            // 檢查語法錯誤
+            try {
+                eval('const test = () => {};');
+            } catch (e) {
+                errors.push('語法錯誤: ' + e.message);
+            }
+            
+            // 檢查全域變數衝突
+            if (typeof observer !== 'undefined') {
+                errors.push('發現全域 observer 變數');
+            }
+            
+            // 檢查圖示字體
+            const iconElements = document.querySelectorAll('.record-type-icon, .tab-icon, .fab-btn');
+            iconElements.forEach((element, index) => {
+                const computedStyle = window.getComputedStyle(element);
+                const fontFamily = computedStyle.fontFamily;
+                if (!fontFamily.includes('Apple Color Emoji') && 
+                    !fontFamily.includes('Segoe UI Emoji') && 
+                    !fontFamily.includes('Noto Color Emoji')) {
+                    errors.push(`圖示 ${index + 1} 字體設置不正確`);
+                }
+            });
+            
+            const errorDiv = document.getElementById('error-detection');
+            if (errors.length === 0) {
+                errorDiv.innerHTML = '<div class="status success">✅ 未發現錯誤</div>';
+            } else {
+                errorDiv.innerHTML = `
+                    <div class="status error">
+                        ❌ 發現 ${errors.length} 個錯誤：
+                        <ul>${errors.map(e => `<li>${e}</li>`).join('')}</ul>
+                    </div>
+                `;
+            }
+        }
+        
+        // 頁面載入完成後執行測試
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                updateIconTests();
+                detectErrors();
+                console.log('🔧 錯誤修復驗證頁面載入完成');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

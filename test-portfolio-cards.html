@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投資組合卡片主題色測試</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            padding: 20px;
+            background: #f5f5f5;
+            font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .theme-selector {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .theme-btn {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .theme-btn.pink { background: linear-gradient(135deg, #ff69b4, #ff1493); }
+        .theme-btn.blue { background: linear-gradient(135deg, #4a90e2, #357abd); }
+        .theme-btn.green { background: linear-gradient(135deg, #4caf50, #388e3c); }
+        .theme-btn.purple { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .test-section {
+            margin: 40px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .test-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .current-price-section {
+            margin-top: 15px;
+        }
+        
+        .price-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>投資組合卡片主題色測試</h1>
+        
+        <div class="theme-selector">
+            <h3>選擇主題測試效果：</h3>
+            <button class="theme-btn pink" onclick="setTheme('pink')">粉色主題</button>
+            <button class="theme-btn blue" onclick="setTheme('blue')">藍色主題</button>
+            <button class="theme-btn green" onclick="setTheme('green')">綠色主題</button>
+            <button class="theme-btn purple" onclick="setTheme('purple')">紫色主題</button>
+        </div>
+        
+        <div class="test-section">
+            <h2 class="test-title">投資組合卡片展示</h2>
+            
+            <div class="portfolio-grid">
+                <!-- 持股數卡片 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-card-title">持股數</div>
+                    <div class="portfolio-card-value">1,000</div>
+                </div>
+                
+                <!-- 平均成本卡片 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-card-title">平均成本</div>
+                    <div class="portfolio-card-value">NT$150.50</div>
+                </div>
+                
+                <!-- 現價卡片 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-card-title">現價</div>
+                    <div class="current-price-section">
+                        <div class="price-label">輸入現價：</div>
+                        <input type="number" class="current-price-input" placeholder="請輸入現價" value="158.75">
+                        <button class="lookup-button">鉅亨網查價</button>
+                    </div>
+                </div>
+                
+                <!-- 未實現損益卡片 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-card-title">未實現損益</div>
+                    <div class="portfolio-card-value unrealized-pnl">+NT$8,250</div>
+                </div>
+                
+                <!-- 更多測試卡片 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-card-title">總投入金額</div>
+                    <div class="portfolio-card-value">NT$150,500</div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <div class="portfolio-card-title">總市值</div>
+                    <div class="portfolio-card-value">NT$158,750</div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <div class="portfolio-card-title">報酬率</div>
+                    <div class="portfolio-card-value">+5.48%</div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <div class="portfolio-card-title">未實現損益（虧損）</div>
+                    <div class="portfolio-card-value unrealized-pnl negative">-NT$2,150</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2 class="test-title">懸停效果測試</h2>
+            <p>將鼠標懸停在卡片上查看懸停效果，包括背景漸層加深、陰影增強和輕微上浮。</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-card-title">懸停測試卡片 1</div>
+                    <div class="portfolio-card-value">測試內容</div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <div class="portfolio-card-title">懸停測試卡片 2</div>
+                    <div class="portfolio-card-value">測試內容</div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <div class="portfolio-card-title">懸停測試卡片 3</div>
+                    <div class="portfolio-card-value">測試內容</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function setTheme(themeName) {
+            document.documentElement.setAttribute('data-theme', themeName);
+            console.log('主題已切換為:', themeName);
+        }
+        
+        // 頁面載入時設置預設主題
+        document.addEventListener('DOMContentLoaded', function() {
+            setTheme('blue');
+        });
+        
+        // 為輸入框添加事件監聽
+        document.querySelectorAll('.current-price-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                console.log('輸入框聚焦');
+            });
+            
+            input.addEventListener('blur', function() {
+                console.log('輸入框失焦');
+            });
+        });
+        
+        // 為查價按鈕添加事件監聽
+        document.querySelectorAll('.lookup-button').forEach(button => {
+            button.addEventListener('click', function() {
+                console.log('查價按鈕被點擊');
+                // 模擬查價效果
+                const input = this.previousElementSibling;
+                if (input && input.value) {
+                    this.textContent = '查價中...';
+                    this.style.opacity = '0.7';
+                    
+                    setTimeout(() => {
+                        this.textContent = '鉅亨網查價';
+                        this.style.opacity = '1';
+                        console.log('查價完成，價格:', input.value);
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

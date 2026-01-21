@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>狐火主題股票資訊測試</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .test-container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .stock-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 10px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .stock-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .stock-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .stock-price-section {
+            text-align: right;
+        }
+        .current-price-label {
+            font-size: 12px;
+            margin-bottom: 4px;
+            color: #8B4513;
+            font-weight: 600;
+        }
+        .stock-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+        .portfolio-shares {
+            display: inline-flex;
+            align-items: center;
+            background: var(--gradient-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: var(--text-primary);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        .yesterday-close-btn {
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+            background: var(--gradient-primary);
+            color: #8B4513;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        .theme-selector {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .theme-btn {
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            background: var(--gradient-primary);
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body data-theme="foxfire">
+    <div class="test-container">
+        <div class="theme-selector">
+            <h2 style="color: var(--text-primary); margin-bottom: 15px;">🦊 狐火主題股票資訊測試</h2>
+            <button class="theme-btn" onclick="setTheme('foxfire')">🦊 狐火</button>
+            <button class="theme-btn" onclick="setTheme('default')">💎 預設</button>
+        </div>
+
+        <div class="stock-card">
+            <div class="stock-header">
+                <div class="stock-info">
+                    <span class="stock-icon">📊</span>
+                    <div>
+                        <div class="stock-name">台積電</div>
+                        <div class="stock-code">2330</div>
+                    </div>
+                </div>
+                <div class="stock-price-section">
+                    <div class="current-price-label">現價</div>
+                    <div class="current-price">1,760.00</div>
+                    <div class="stock-change stock-change-percent">+20.00 (+1.15%)</div>
+                </div>
+            </div>
+            
+            <div class="stock-details">
+                <div class="portfolio-shares">24 股</div>
+                <button class="yesterday-close-btn">昨收</button>
+            </div>
+        </div>
+
+        <div class="stock-card">
+            <div class="stock-header">
+                <div class="stock-info">
+                    <span class="stock-icon">📊</span>
+                    <div>
+                        <div class="stock-name">聯發科</div>
+                        <div class="stock-code">2454</div>
+                    </div>
+                </div>
+                <div class="stock-price-section">
+                    <div class="current-price-label">現價</div>
+                    <div class="current-price">680.50</div>
+                    <div class="stock-change stock-change-percent">-5.50 (-0.80%)</div>
+                </div>
+            </div>
+            
+            <div class="stock-details">
+                <div class="portfolio-shares">100 股</div>
+                <button class="yesterday-close-btn">昨收</button>
+            </div>
+        </div>
+
+        <div class="stock-card">
+            <div class="stock-header">
+                <div class="stock-info">
+                    <span class="stock-icon">📊</span>
+                    <div>
+                        <div class="stock-name">鴻海</div>
+                        <div class="stock-code">2317</div>
+                    </div>
+                </div>
+                <div class="stock-price-section">
+                    <div class="current-price-label">現價</div>
+                    <div class="current-price">125.00</div>
+                    <div class="stock-change stock-change-percent">+2.00 (+1.63%)</div>
+                </div>
+            </div>
+            
+            <div class="stock-details">
+                <div class="portfolio-shares">500 股</div>
+                <button class="yesterday-close-btn">昨收</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setTheme(themeName) {
+            document.body.setAttribute('data-theme', themeName);
+            localStorage.setItem('selectedTheme', themeName);
+        }
+
+        // 載入儲存的主題
+        const savedTheme = localStorage.getItem('selectedTheme') || 'foxfire';
+        setTheme(savedTheme);
+    </script>
+</body>
+</html>

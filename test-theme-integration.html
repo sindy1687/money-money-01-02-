@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動漫優雅主題集成測試</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="anime-elegance-theme.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .theme-status {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            border: 1px solid #4a90e2;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .success {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        
+        .error {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .theme-info {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .test-button {
+            background: linear-gradient(135deg, #7da8c7 0%, #5b8db3 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(125, 168, 199, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🌸 動漫優雅主題集成測試</h1>
+        
+        <div class="theme-status">
+            <h2>主題狀態檢查</h2>
+            <div id="themeStatus">正在檢查...</div>
+        </div>
+        
+        <div class="theme-info">
+            <h3>主題信息</h3>
+            <div id="themeInfo">正在載入...</div>
+        </div>
+        
+        <div class="theme-info">
+            <h3>測試操作</h3>
+            <button class="test-button" onclick="applyAnimeEleganceTheme()">應用動漫優雅主題</button>
+            <button class="test-button" onclick="applyBlueTheme()">應用藍色主題</button>
+            <button class="test-button" onclick="checkThemeData()">檢查主題數據</button>
+            <button class="test-button" onclick="checkThemeIcons()">檢查按鈕圖標</button>
+        </div>
+        
+        <div class="theme-info">
+            <h3>測試結果</h3>
+            <div id="testResults">等待測試...</div>
+        </div>
+    </div>
+    
+    <script>
+        // 檢查主題狀態
+        function checkThemeStatus() {
+            const statusDiv = document.getElementById('themeStatus');
+            const currentTheme = getCurrentTheme();
+            
+            let html = `<p>當前主題: <strong>${currentTheme}</strong></p>`;
+            
+            // 檢查CSS文件
+            const cssLink = document.querySelector('link[href="anime-elegance-theme.css"]');
+            if (cssLink) {
+                html += `<p class="success">✅ 動漫優雅主題CSS文件已載入</p>`;
+            } else {
+                html += `<p class="error">❌ 動漫優雅主題CSS文件未載入</p>`;
+            }
+            
+            // 檢查主題屬性
+            const rootTheme = document.documentElement.getAttribute('data-theme');
+            if (rootTheme === 'anime-elegance') {
+                html += `<p class="success">✅ 動漫優雅主題已應用</p>`;
+            } else {
+                html += `<p>⚪ 動漫優雅主題未應用 (當前: ${rootTheme})</p>`;
+            }
+            
+            statusDiv.innerHTML = html;
+        }
+        
+        // 獲取當前主題
+        function getCurrentTheme() {
+            return localStorage.getItem('selectedTheme') || 'blue';
+        }
+        
+        // 應用動漫優雅主題
+        function applyAnimeEleganceTheme() {
+            const root = document.documentElement;
+            root.setAttribute('data-theme', 'anime-elegance');
+            localStorage.setItem('selectedTheme', 'anime-elegance');
+            
+            // 應用背景圖片
+            document.body.style.backgroundImage = 'url(https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg)';
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundAttachment = 'fixed';
+            
+            updateTestResults('動漫優雅主題已應用', 'success');
+            checkThemeStatus();
+        }
+        
+        // 應用藍色主題
+        function applyBlueTheme() {
+            const root = document.documentElement;
+            root.setAttribute('data-theme', 'blue');
+            localStorage.setItem('selectedTheme', 'blue');
+            
+            // 清除背景圖片
+            document.body.style.backgroundImage = '';
+            
+            updateTestResults('藍色主題已應用', 'success');
+            checkThemeStatus();
+        }
+        
+        // 檢查主題數據
+        function checkThemeData() {
+            const results = [];
+            
+            // 檢查themes數組
+            if (typeof themes !== 'undefined') {
+                const animeTheme = themes.find(t => t.id === 'anime-elegance');
+                if (animeTheme) {
+                    results.push('✅ 動漫優雅主題在themes數組中找到');
+                    results.push(`📛 主題名稱: ${animeTheme.name}`);
+                    results.push(`🎨 主題圖標: ${animeTheme.icon}`);
+                    results.push(`📂 主題分類: ${animeTheme.category}`);
+                    results.push(`🖼️ 背景圖片: ${animeTheme.backgroundImage ? '已設定' : '未設定'}`);
+                } else {
+                    results.push('❌ 動漫優雅主題在themes數組中未找到');
+                }
+            } else {
+                results.push('❌ themes數組未定義');
+            }
+            
+            updateTestResults(results.join('<br>'), 'info');
+        }
+        
+        // 檢查按鈕圖標
+        function checkThemeIcons() {
+            const results = [];
+            
+            // 檢查buttonIcons對象
+            if (typeof buttonIcons !== 'undefined') {
+                const animeIcons = buttonIcons['anime-elegance'];
+                if (animeIcons) {
+                    results.push('✅ 動漫優雅主題按鈕圖標已設定');
+                    results.push(`🌸 FAB按鈕: ${animeIcons.fab}`);
+                    results.push(`🦋 記帳導航: ${animeIcons.navLedger}`);
+                    results.push(`💎 錢包導航: ${animeIcons.navWallet}`);
+                    results.push(`🌺 投資導航: ${animeIcons.navInvestment}`);
+                    results.push(`🕊️ 圖表導航: ${animeIcons.navChart}`);
+                    results.push(`✨ 設置導航: ${animeIcons.navSettings}`);
+                } else {
+                    results.push('❌ 動漫優雅主題按鈕圖標未設定');
+                }
+            } else {
+                results.push('❌ buttonIcons對象未定義');
+            }
+            
+            updateTestResults(results.join('<br>'), 'info');
+        }
+        
+        // 更新測試結果
+        function updateTestResults(message, type = 'info') {
+            const resultsDiv = document.getElementById('testResults');
+            const className = type === 'success' ? 'success' : type === 'error' ? 'error' : '';
+            resultsDiv.innerHTML = `<p class="${className}">${message}</p>`;
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            checkThemeStatus();
+            
+            // 顯示主題信息
+            const infoDiv = document.getElementById('themeInfo');
+            infoDiv.innerHTML = `
+                <p><strong>主題ID:</strong> anime-elegance</p>
+                <p><strong>主題名稱:</strong> 動漫優雅</p>
+                <p><strong>主題圖標:</strong> 🌸</p>
+                <p><strong>主題分類:</strong> anime</p>
+                <p><strong>主要色彩:</strong> #7da8c7</p>
+                <p><strong>背景圖片:</strong> <a href="https://i.pinimg.com/736x/62/ae/43/62ae43241893a8a0bb1bc79055d78cfe.jpg" target="_blank">查看圖片</a></p>
+                <p><strong>投資卡片圖片:</strong> <a href="https://i.pinimg.com/736x/d5/9c/15/d59c15a48547bc1cb02c23d607eaf875.jpg" target="_blank">查看圖片</a></p>
+            `;
+        });
+    </script>
+</body>
+</html>

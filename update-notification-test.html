@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新提示系統測試</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .test-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .test-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .test-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .test-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .test-btn {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: none;
+            letter-spacing: 0.5px;
+        }
+        
+        .test-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+        }
+        
+        .test-btn.secondary {
+            background: rgba(0, 0, 0, 0.05);
+            color: #666;
+        }
+        
+        .test-btn.secondary:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .info-box {
+            background: rgba(79, 70, 229, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .info-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .info-list li {
+            padding: 5px 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .info-list li:before {
+            content: "✨ ";
+            color: #4f46e5;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="test-title">🎉 更新提示系統測試</h1>
+        <p class="test-description">
+            這是一個專門用於測試更新提示系統功能的頁面。您可以透過下面的按鈕來測試各種更新通知的效果。
+        </p>
+        
+        <div class="test-buttons">
+            <button class="test-btn" onclick="testVersionUpdate()">
+                🚀 測試版本更新通知
+            </button>
+            <button class="test-btn" onclick="testNewTheme()">
+                🎨 測試新主題通知
+            </button>
+            <button class="test-btn" onclick="testNewFeature()">
+                ✨ 測試新功能通知
+            </button>
+            <button class="test-btn secondary" onclick="testCustomUpdate()">
+                📝 測試自定義通知
+            </button>
+            <button class="test-btn secondary" onclick="clearUpdateHistory()">
+                🗑️ 清除更新歷史
+            </button>
+        </div>
+        
+        <div class="info-box">
+            <div class="info-title">📋 功能說明</div>
+            <ul class="info-list">
+                <li>版本更新：檢測應用程式版本變化並顯示新功能</li>
+                <li>新主題通知：當有新主題可用時自動提示</li>
+                <li>新功能通知：介紹應用程式的新增功能</li>
+                <li>自定義通知：開發者可手動觸發的專用通知</li>
+                <li>自動檢測：系統會在載入時自動檢查更新</li>
+                <li>深色主題：支援深色主題模式自動適配</li>
+                <li>響應式設計：在手機和桌面都有最佳體驗</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 更新提示彈窗 -->
+    <div class="update-notification-modal" id="updateNotificationModal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content update-modal-content">
+            <div class="modal-header">
+                <div class="update-notification-header">
+                    <div class="update-icon">🎉</div>
+                    <div>
+                        <h3 class="modal-title">發現新更新！</h3>
+                        <p class="update-subtitle" id="updateSubtitle">精彩新功能等你來體驗</p>
+                    </div>
+                </div>
+                <button class="modal-close-btn" id="updateNotificationClose">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="update-content" id="updateContent">
+                    <!-- 更新內容將由 JavaScript 動態生成 -->
+                </div>
+                <div class="update-features" id="updateFeatures">
+                    <!-- 新功能列表將由 JavaScript 動態生成 -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="update-btn secondary" id="updateSkipBtn">稍後查看</button>
+                <button class="update-btn primary" id="updateExploreBtn">立即探索</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/update-notifications.js"></script>
+    <script>
+        // 測試函數
+        function testVersionUpdate() {
+            localStorage.setItem('appLastVersion', '1.0.0');
+            localStorage.setItem('appVersion', '2.1.0');
+            window.updateNotificationSystem.forceCheckUpdates();
+        }
+        
+        function testNewTheme() {
+            window.showUpdateNotification({
+                type: 'theme',
+                title: '新主題上線！',
+                subtitle: '發現 3 個精美新主題',
+                content: '設計師為您準備了全新的主題風格，快來體驗吧！',
+                features: [
+                    { icon: '🌸', title: '櫻花主題', desc: '溫馨浪漫的櫻花粉色風格' },
+                    { icon: '🌙', title: '夜空主題', desc: '深邃神秘的星空藍色調' },
+                    { icon: '🏖️', title: '海灘主題', desc: '清新舒適的海洋風情' }
+                ]
+            });
+        }
+        
+        function testNewFeature() {
+            window.showUpdateNotification({
+                type: 'feature',
+                title: '新功能推出！',
+                subtitle: '2 個實用新功能等您探索',
+                content: '我們新增了多項實用功能，讓記帳更加便捷高效。',
+                features: [
+                    { icon: '🤖', title: 'AI智慧分析', desc: '自動分析支出模式並提供個人化建議' },
+                    { icon: '📊', title: '進階圖表', desc: '更多樣化的圖表類型和互動功能' }
+                ]
+            });
+        }
+        
+        function testCustomUpdate() {
+            window.showUpdateNotification({
+                type: 'custom',
+                title: '系統維護通知',
+                subtitle: '系統已完成優化升級',
+                content: '我們對系統進行了全面的性能優化，現在應用運行更加流暢。',
+                features: [
+                    { icon: '⚡', title: '性能提升', desc: '應用啟動速度提升 50%' },
+                    { icon: '🔒', title: '安全加強', desc: '增強資料保護和隱私安全' },
+                    { icon: '🐛', title: '問題修復', desc: '修復了已知的用戶反饋問題' }
+                ]
+            });
+        }
+        
+        function clearUpdateHistory() {
+            localStorage.removeItem('appLastVersion');
+            localStorage.removeItem('knownThemes');
+            localStorage.removeItem('knownFeatures');
+            localStorage.removeItem('viewedUpdates');
+            alert('更新歷史已清除！請重新載入頁面測試自動檢測功能。');
+        }
+        
+        // 頁面載入完成後顯示歡迎信息
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                window.showUpdateNotification({
+                    type: 'welcome',
+                    title: '歡迎測試更新系統！',
+                    subtitle: '所有功能已準備就緒',
+                    content: '更新提示系統已成功載入，您可以開始測試各種功能了。',
+                    features: [
+                        { icon: '🎯', title: '自動檢測', desc: '系統會自動檢測版本、主題和功能更新' },
+                        { icon: '🎨', title: '美觀介面', desc: '精心設計的彈窗介面，支援深色主題' },
+                        { icon: '📱', title: '響應式設計', desc: '完美適配各種螢幕尺寸' }
+                    ]
+                });
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股票投資分頁系統</title>
+    <link rel="stylesheet" href="css/stock-investment-tabs.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📈 股票投資管理系統</h1>
+            <p>全方位的投資組合分析與目標追蹤</p>
+        </header>
+
+        <nav class="tab-navigation">
+            <button class="tab-button active" onclick="switchTab('portfolio')">
+                <span class="tab-icon">📊</span>
+                <span>投資組合</span>
+            </button>
+            <button class="tab-button" onclick="switchTab('holdings')">
+                <span class="tab-icon">💼</span>
+                <span>持股明細</span>
+            </button>
+            <button class="tab-button" onclick="switchTab('goals')">
+                <span class="tab-icon">🎯</span>
+                <span>目標追蹤</span>
+            </button>
+            <button class="tab-button" onclick="switchTab('analysis')">
+                <span class="tab-icon">📈</span>
+                <span>投資分析</span>
+            </button>
+        </nav>
+
+        <!-- 投資組合分頁 -->
+        <div id="portfolio" class="tab-content active">
+            <div class="report-section">
+                <h2 class="report-title">投資組合分析報告</h2>
+                <div class="report-metrics">
+                    <div class="metric-card">
+                        <div class="metric-icon">💰</div>
+                        <div class="metric-label">總市值</div>
+                        <div class="metric-value">NT$1,250,000</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">📊</div>
+                        <div class="metric-label">總損益</div>
+                        <div class="metric-value positive">+NT$125,000 (+11.1%)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">⚠️</div>
+                        <div class="metric-label">風險等級</div>
+                        <div class="metric-value">中等風險 (45分)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">🌍</div>
+                        <div class="metric-label">分散度分數</div>
+                        <div class="metric-value">72分 (良好)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">📈</div>
+                        <div class="metric-label">夏普比率</div>
+                        <div class="metric-value">1.85</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-section">
+                <h2 class="report-title">目標追蹤報告</h2>
+                <div class="goal-list">
+                    <div class="goal-item">
+                        <div class="goal-icon">🎯</div>
+                        <div class="goal-content">
+                            <div class="goal-name">退休基金</div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 35%"></div>
+                                </div>
+                                <span class="progress-text">35%</span>
+                            </div>
+                            <span class="goal-status status-on-track">軌道上</span>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">🎓</div>
+                        <div class="goal-content">
+                            <div class="goal-name">教育基金</div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 28%"></div>
+                                </div>
+                                <span class="progress-text">28%</span>
+                            </div>
+                            <span class="goal-status status-on-track">軌道上</span>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">🏠</div>
+                        <div class="goal-content">
+                            <div class="goal-name">購屋基金</div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 15%"></div>
+                                </div>
+                                <span class="progress-text">15%</span>
+                            </div>
+                            <span class="goal-status status-need-improvement">需要加強</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 持股明細分頁 -->
+        <div id="holdings" class="tab-content">
+            <div class="report-section">
+                <h2 class="report-title">持股明細</h2>
+                <table class="holdings-table">
+                    <thead>
+                        <tr>
+                            <th>股票代號</th>
+                            <th>股票名稱</th>
+                            <th>持有數量</th>
+                            <th>成本價</th>
+                            <th>現價</th>
+                            <th>損益</th>
+                            <th>損益率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="stock-symbol">2330</td>
+                            <td class="stock-name">台積電</td>
+                            <td>1,000</td>
+                            <td>NT$500</td>
+                            <td>NT$600</td>
+                            <td class="gain-positive">+NT$100,000</td>
+                            <td class="gain-positive">+20.0%</td>
+                        </tr>
+                        <tr>
+                            <td class="stock-symbol">2317</td>
+                            <td class="stock-name">鴻海</td>
+                            <td>2,000</td>
+                            <td>NT$100</td>
+                            <td>NT$120</td>
+                            <td class="gain-positive">+NT$40,000</td>
+                            <td class="gain-positive">+20.0%</td>
+                        </tr>
+                        <tr>
+                            <td class="stock-symbol">0056</td>
+                            <td class="stock-name">高股息ETF</td>
+                            <td>5,000</td>
+                            <td>NT$28</td>
+                            <td>NT$30</td>
+                            <td class="gain-positive">+NT$10,000</td>
+                            <td class="gain-positive">+7.1%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 目標追蹤分頁 -->
+        <div id="goals" class="tab-content">
+            <div class="report-section">
+                <h2 class="report-title">目標詳細追蹤</h2>
+                <div class="goal-list">
+                    <div class="goal-item">
+                        <div class="goal-icon">🎯</div>
+                        <div class="goal-content">
+                            <div class="goal-name">退休基金</div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 35%"></div>
+                                </div>
+                                <span class="progress-text">35%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                                <span style="color: #6b7280;">目標: NT$10,000,000</span>
+                                <span style="color: #059669; font-weight: 500;">當前: NT$3,500,000</span>
+                            </div>
+                            <span class="goal-status status-on-track">軌道上</span>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">🎓</div>
+                        <div class="goal-content">
+                            <div class="goal-name">教育基金</div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 28%"></div>
+                                </div>
+                                <span class="progress-text">28%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                                <span style="color: #6b7280;">目標: NT$2,000,000</span>
+                                <span style="color: #059669; font-weight: 500;">當前: NT$560,000</span>
+                            </div>
+                            <span class="goal-status status-on-track">軌道上</span>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">🏠</div>
+                        <div class="goal-content">
+                            <div class="goal-name">購屋基金</div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 15%"></div>
+                                </div>
+                                <span class="progress-text">15%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                                <span style="color: #6b7280;">目標: NT$5,000,000</span>
+                                <span style="color: #d97706; font-weight: 500;">當前: NT$750,000</span>
+                            </div>
+                            <span class="goal-status status-need-improvement">需要加強</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 投資分析分頁 -->
+        <div id="analysis" class="tab-content">
+            <div class="report-section">
+                <h2 class="report-title">投資組合分析報告</h2>
+                <div class="report-metrics">
+                    <div class="metric-card">
+                        <div class="metric-icon">💰</div>
+                        <div class="metric-label">總市值</div>
+                        <div class="metric-value">NT$1,250,000</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">📊</div>
+                        <div class="metric-label">總損益</div>
+                        <div class="metric-value positive">+NT$125,000 (+11.1%)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">⚠️</div>
+                        <div class="metric-label">風險等級</div>
+                        <div class="metric-value">中等風險 (45分)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">🌍</div>
+                        <div class="metric-label">分散度分數</div>
+                        <div class="metric-value">72分 (良好)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">📈</div>
+                        <div class="metric-label">夏普比率</div>
+                        <div class="metric-value">1.85</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-section">
+                <h2 class="report-title">目標追蹤報告</h2>
+                <div class="goal-list">
+                    <div class="goal-item">
+                        <div class="goal-icon">🎯</div>
+                        <div class="goal-content">
+                            <div class="goal-name">退休基金</div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 35%"></div>
+                                </div>
+                                <span class="progress-text">35%</span>
+                            </div>
+                            <span class="goal-status status-on-track">軌道上</span>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">🎓</div>
+                        <div class="goal-content">
+                            <div class="goal-name">教育基金</div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 28%"></div>
+                                </div>
+                                <span class="progress-text">28%</span>
+                            </div>
+                            <span class="goal-status status-on-track">軌道上</span>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">🏠</div>
+                        <div class="goal-content">
+                            <div class="goal-name">購屋基金</div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 15%"></div>
+                                </div>
+                                <span class="progress-text">15%</span>
+                            </div>
+                            <span class="goal-status status-need-improvement">需要加強</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/stock-investment-tabs.js"></script>
+</body>
+</html>

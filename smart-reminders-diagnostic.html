@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧提醒系統診斷</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #5a67d8;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 4px solid #5a67d8;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #5a67d8;
+            margin-bottom: 15px;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .status-item:last-child {
+            border-bottom: none;
+        }
+        
+        .status-label {
+            font-weight: 500;
+            color: #4a5568;
+        }
+        
+        .status-value {
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .status-ok {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        
+        .status-error {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+        
+        .status-warning {
+            background: #feebc8;
+            color: #7c2d12;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+        
+        .log-container {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+        
+        .controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .test-result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        .test-success {
+            background: #c6f6d5;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+        
+        .test-error {
+            background: #fed7d7;
+            color: #742a2a;
+            border: 1px solid #fc8181;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">🔔 智慧提醒系統診斷</div>
+            <div class="subtitle">檢查智慧提醒系統的載入狀態和功能</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">📋 系統狀態檢查</div>
+            <div id="systemStatus">
+                <div class="status-item">
+                    <span class="status-label">智慧提醒系統類別</span>
+                    <span class="status-value" id="classStatus">檢查中...</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">智慧提醒系統實例</span>
+                    <span class="status-value" id="instanceStatus">檢查中...</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">showReminderPanel 方法</span>
+                    <span class="status-value" id="methodStatus">檢查中...</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">系統初始化狀態</span>
+                    <span class="status-value" id="initStatus">檢查中...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-primary" onclick="testSmartReminders()">🧪 測試智慧提醒</button>
+            <button class="btn btn-secondary" onclick="forceInit()">🔄 強制初始化</button>
+            <button class="btn btn-secondary" onclick="clearLogs()">🗑️ 清除日誌</button>
+        </div>
+
+        <div id="testResult"></div>
+
+        <div class="section">
+            <div class="section-title">📝 診斷日誌</div>
+            <div class="log-container" id="logContainer">
+                開始診斷智慧提醒系統...\n
+            </div>
+        </div>
+    </div>
+
+    <!-- 載入智慧提醒系統 -->
+    <script src="js/smart-reminders.js"></script>
+    
+    <script>
+        let logContainer = document.getElementById('logContainer');
+        
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const prefix = type === 'error' ? '❌' : type === 'success' ? '✅' : type === 'warning' ? '⚠️' : 'ℹ️';
+            logContainer.textContent += `[${timestamp}] ${prefix} ${message}\n`;
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+        
+        function updateStatus(elementId, status, text) {
+            const element = document.getElementById(elementId);
+            element.className = `status-value status-${status}`;
+            element.textContent = text;
+        }
+        
+        function checkSystemStatus() {
+            log('開始檢查系統狀態...');
+            
+            // 檢查類別
+            if (typeof SmartReminderSystem !== 'undefined') {
+                updateStatus('classStatus', 'ok', '已載入');
+                log('SmartReminderSystem 類別已載入', 'success');
+            } else {
+                updateStatus('classStatus', 'error', '未載入');
+                log('SmartReminderSystem 類別未載入', 'error');
+            }
+            
+            // 檢查實例
+            if (window.smartReminderSystem) {
+                updateStatus('instanceStatus', 'ok', '已創建');
+                log('smartReminderSystem 實例已存在', 'success');
+            } else {
+                updateStatus('instanceStatus', 'error', '未創建');
+                log('smartReminderSystem 實例不存在', 'error');
+            }
+            
+            // 檢查方法
+            if (window.smartReminderSystem && typeof window.smartReminderSystem.showReminderPanel === 'function') {
+                updateStatus('methodStatus', 'ok', '可用');
+                log('showReminderPanel 方法可用', 'success');
+            } else {
+                updateStatus('methodStatus', 'error', '不可用');
+                log('showReminderPanel 方法不可用', 'error');
+            }
+            
+            // 檢查初始化狀態
+            if (window.smartReminderSystem && window.smartReminderSystem.isInitialized) {
+                updateStatus('initStatus', 'ok', '已初始化');
+                log('系統已初始化', 'success');
+            } else {
+                updateStatus('initStatus', 'warning', '未初始化');
+                log('系統未初始化', 'warning');
+            }
+        }
+        
+        function testSmartReminders() {
+            log('開始測試智慧提醒功能...');
+            const testResult = document.getElementById('testResult');
+            
+            try {
+                if (window.smartReminderSystem && typeof window.smartReminderSystem.showReminderPanel === 'function') {
+                    log('調用 showReminderPanel 方法...');
+                    window.smartReminderSystem.showReminderPanel();
+                    
+                    testResult.className = 'test-result test-success';
+                    testResult.textContent = '✅ 智慧提醒面板成功顯示！請檢查頁面中是否出現提醒面板。';
+                    log('智慧提醒面板測試成功', 'success');
+                } else {
+                    throw new Error('智慧提醒系統未正確載入');
+                }
+            } catch (error) {
+                testResult.className = 'test-result test-error';
+                testResult.textContent = `❌ 測試失敗: ${error.message}`;
+                log(`測試失敗: ${error.message}`, 'error');
+            }
+        }
+        
+        function forceInit() {
+            log('開始強制初始化...');
+            
+            try {
+                if (typeof SmartReminderSystem !== 'undefined') {
+                    if (!window.smartReminderSystem) {
+                        window.smartReminderSystem = new SmartReminderSystem();
+                        log('創建新的智慧提醒系統實例', 'success');
+                    }
+                    
+                    if (!window.smartReminderSystem.isInitialized) {
+                        window.smartReminderSystem.init();
+                        log('初始化智慧提醒系統', 'success');
+                    }
+                    
+                    // 重新檢查狀態
+                    setTimeout(checkSystemStatus, 500);
+                } else {
+                    log('SmartReminderSystem 類別未載入，無法初始化', 'error');
+                }
+            } catch (error) {
+                log(`強制初始化失敗: ${error.message}`, 'error');
+            }
+        }
+        
+        function clearLogs() {
+            logContainer.textContent = '日誌已清除...\n';
+        }
+        
+        // 頁面載入完成時自動檢查
+        document.addEventListener('DOMContentLoaded', function() {
+            log('智慧提醒系統診斷頁面已載入');
+            
+            // 等待一段時間讓智慧提醒系統載入
+            setTimeout(() => {
+                checkSystemStatus();
+            }, 1000);
+        });
+        
+        // 監聽智慧提醒系統的載入
+        setTimeout(() => {
+            if (window.smartReminderSystem) {
+                log('檢測到智慧提醒系統已載入', 'success');
+                checkSystemStatus();
+            } else {
+                log('智慧提醒系統載入超時', 'warning');
+            }
+        }, 3000);
+    </script>
+</body>
+</html>

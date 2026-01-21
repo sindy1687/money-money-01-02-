@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亂碼圖示清理測試</title>
+    <link rel="stylesheet" href="clean-garbage-icons.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+        .test-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .test-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+        }
+        .test-label {
+            font-size: 14px;
+            color: #666;
+            min-width: 150px;
+        }
+        .test-result {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .status {
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        /* 測試樣式 */
+        .metric-quote-btn {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+        }
+        .metric-quick-link {
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .theme-item-preview--image.error {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .record-card.dividend-reinvest {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            position: relative;
+            margin: 10px 0;
+        }
+        .investment-form-back-btn {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+        }
+        .form-query-btn {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+        }
+        .quick-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .input-page-header {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            position: relative;
+        }
+        .investment-back-btn {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+        }
+        .input-field-label {
+            font-size: 14px;
+            color: #666;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧹 亂碼圖示清理測試</h1>
+        
+        <div class="status info">
+            此頁面用於測試亂碼圖示是否已被成功清理
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">按鈕圖示測試</h2>
+            
+            <div class="test-item">
+                <span class="test-label">metric-quote-btn:</span>
+                <button class="metric-quote-btn">引用按鈕</button>
+                <span class="test-result" id="result1">檢測中...</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="test-label">metric-quick-link:</span>
+                <button class="metric-quick-link">快速連結</button>
+                <span class="test-result" id="result2">檢測中...</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="test-label">investment-form-back-btn:</span>
+                <button class="investment-form-back-btn">返回</button>
+                <span class="test-result" id="result3">檢測中...</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="test-label">form-query-btn:</span>
+                <button class="form-query-btn">查詢</button>
+                <span class="test-result" id="result4">檢測中...</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="test-label">investment-back-btn:</span>
+                <button class="investment-back-btn">投資返回</button>
+                <span class="test-result" id="result5">檢測中...</span>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">其他元素測試</h2>
+            
+            <div class="test-item">
+                <span class="test-label">quick-title:</span>
+                <div class="quick-title">快速標題</div>
+                <span class="test-result" id="result6">檢測中...</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="test-label">input-field-label:</span>
+                <div class="input-field-label">輸入欄位標籤</div>
+                <span class="test-result" id="result7">檢測中...</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="test-label">theme-item-preview--image.error:</span>
+                <div class="theme-item-preview--image.error">錯誤圖片</div>
+                <span class="test-result" id="result8">檢測中...</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="test-label">record-card.dividend-reinvest:</span>
+                <div class="record-card.dividend-reinvest">股息再投資卡片</div>
+                <span class="test-result" id="result9">檢測中...</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="test-label">input-page-header:</span>
+                <div class="input-page-header">輸入頁面標題</div>
+                <span class="test-result" id="result10">檢測中...</span>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">檢測結果</h2>
+            <div id="detection-results"></div>
+        </div>
+    </div>
+
+    <script src="clean-garbage-icons.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🧹 亂碼圖示清理測試頁面載入完成');
+            
+            // 檢測函數
+            function detectGarbageIcons() {
+                const testElements = [
+                    { selector: '.metric-quote-btn', id: 'result1' },
+                    { selector: '.metric-quick-link', id: 'result2' },
+                    { selector: '.investment-form-back-btn', id: 'result3' },
+                    { selector: '.form-query-btn', id: 'result4' },
+                    { selector: '.investment-back-btn', id: 'result5' },
+                    { selector: '.quick-title', id: 'result6' },
+                    { selector: '.input-field-label', id: 'result7' },
+                    { selector: '.theme-item-preview--image.error', id: 'result8' },
+                    { selector: '.record-card.dividend-reinvest', id: 'result9' },
+                    { selector: '.input-page-header', id: 'result10' }
+                ];
+                
+                let cleanCount = 0;
+                let garbageCount = 0;
+                let results = [];
+                
+                testElements.forEach(test => {
+                    const element = document.querySelector(test.selector);
+                    if (element) {
+                        const beforeStyle = window.getComputedStyle(element, '::before');
+                        const afterStyle = window.getComputedStyle(element, '::after');
+                        
+                        const beforeContent = beforeStyle.content;
+                        const afterContent = afterStyle.content;
+                        
+                        const hasGarbage = (beforeContent && beforeContent.includes('')) || 
+                                        (afterContent && afterContent.includes(''));
+                        
+                        const resultElement = document.getElementById(test.id);
+                        if (resultElement) {
+                            if (hasGarbage) {
+                                resultElement.textContent = '❌ 仍有亂碼';
+                                resultElement.className = 'test-result error';
+                                garbageCount++;
+                            } else {
+                                resultElement.textContent = '✅ 已清理';
+                                resultElement.className = 'test-result success';
+                                cleanCount++;
+                            }
+                        }
+                        
+                        results.push({
+                            selector: test.selector,
+                            beforeContent: beforeContent,
+                            afterContent: afterContent,
+                            clean: !hasGarbage
+                        });
+                    }
+                });
+                
+                return { cleanCount, garbageCount, results };
+            }
+            
+            // 顯示檢測結果
+            function showResults() {
+                const { cleanCount, garbageCount, results } = detectGarbageIcons();
+                const resultsDiv = document.getElementById('detection-results');
+                
+                let html = `
+                    <div class="status ${garbageCount === 0 ? 'success' : 'error'}">
+                        <strong>檢測完成：</strong> 
+                        ✅ 已清理: ${cleanCount} 個元素 | 
+                        ${garbageCount > 0 ? `❌ 仍有亂碼: ${garbageCount} 個元素` : '🎉 所有亂碼已清理！'}
+                    </div>
+                    <h3>詳細結果：</h3>
+                `;
+                
+                results.forEach(result => {
+                    html += `
+                        <div class="test-item">
+                            <span class="test-label">${result.selector}:</span>
+                            <span class="test-result ${result.clean ? 'success' : 'error'}">
+                                ${result.clean ? '✅ 已清理' : '❌ 仍有亂碼'}
+                            </span>
+                            <br>
+                            <small style="color: #666;">
+                                before: "${result.beforeContent}" | after: "${result.afterContent}"
+                            </small>
+                        </div>
+                    `;
+                });
+                
+                resultsDiv.innerHTML = html;
+                
+                // 執行清理腳本
+                if (window.cleanGarbageIcons) {
+                    setTimeout(() => {
+                        console.log('🧹 執行清理腳本...');
+                        window.cleanGarbageIcons();
+                        
+                        // 再次檢測
+                        setTimeout(() => {
+                            showResults();
+                        }, 1000);
+                    }, 2000);
+                }
+            }
+            
+            // 延遲檢測以確保樣式已應用
+            setTimeout(() => {
+                showResults();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

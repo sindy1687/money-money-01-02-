@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主題亂碼修復測試</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .test-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .test-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+        .test-button {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            transition: all 0.2s;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+        }
+        .test-result {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #22c55e;
+            background: #f0fdf4;
+        }
+        .test-result.error {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+        .test-result.info {
+            border-left-color: #3b82f6;
+            background: #f0f9ff;
+        }
+        .test-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .test-icon {
+            font-size: 24px;
+        }
+        .test-text {
+            font-size: 16px;
+        }
+        .theme-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .theme-card {
+            padding: 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .theme-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .theme-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .theme-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .theme-id {
+            font-size: 12px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🔧 主題亂碼修復測試</h1>
+            <p>檢查所有主題的中文字符顯示是否正常</p>
+        </div>
+        
+        <div class="test-section">
+            <h2>CSS 內容屬性測試</h2>
+            <button class="test-button" onclick="testCssContent()">測試CSS內容屬性</button>
+            <div id="cssTestResults"></div>
+            
+            <div class="test-item">
+                <div class="test-icon">🔍</div>
+                <div class="test-text">快速選擇測試：<span class="quick-title">這裡應該顯示 🔍 或快速選擇：</span></div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon">📊</div>
+                <div class="test-text">代碼欄位測試：<span class="form-label" style="display: flex; align-items: center;">股票代碼</span></div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon">📈</div>
+                <div class="test-text">股票名稱測試：<span class="form-label" style="display: flex; align-items: center;">股票名稱</span></div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon">📅</div>
+                <div class="test-text">日期欄位測試：<span class="form-label" style="display: flex; align-items: center;">日期</span></div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon">💰</div>
+                <div class="test-text">價格欄位測試：<span class="form-label" style="display: flex; align-items: center;">價格</span></div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon">🔙</div>
+                <div class="test-text">返回按鈕測試：<button class="investment-back-btn" style="position: relative; padding: 8px 16px; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 6px;">返回</button></div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>主題名稱顯示測試</h2>
+            <button class="test-button" onclick="testThemeNames()">測試主題名稱</button>
+            <div id="themeTestResults"></div>
+            <div class="theme-preview" id="themePreview"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>水果主題圖標測試</h2>
+            <button class="test-button" onclick="testFruitTheme()">測試水果主題</button>
+            <div id="fruitTestResults"></div>
+            <div style="margin-top: 20px;">
+                <div class="card" style="position: relative; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px;">
+                    <h4>普通卡片</h4>
+                    <p>這是一個測試卡片，在水果主題下應該顯示水果圖標</p>
+                </div>
+                <div class="investment-card" style="position: relative; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px; margin-top: 10px;">
+                    <h4>投資卡片</h4>
+                    <p>這是一個投資卡片，在水果主題下應該顯示🍊圖標</p>
+                </div>
+                <div class="budget-card" style="position: relative; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px; margin-top: 10px;">
+                    <h4>預算卡片</h4>
+                    <p>這是一個預算卡片，在水果主題下應該顯示🍋圖標</p>
+                </div>
+                <div class="wallet-card" style="position: relative; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px; margin-top: 10px;">
+                    <h4>錢包卡片</h4>
+                    <p>這是一個錢包卡片，在水果主題下應該顯示🍇圖標</p>
+                </div>
+                <div class="chart-card" style="position: relative; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px; margin-top: 10px;">
+                    <h4>圖表卡片</h4>
+                    <p>這是一個圖表卡片，在水果主題下應該顯示🍒圖標</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>翡翠王子主題測試</h2>
+            <button class="test-button" onclick="testEmeraldPrinceTheme()">測試翡翠王子主題</button>
+            <div id="emeraldTestResults"></div>
+            <div class="komori-dialog" style="position: relative; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px; margin-top: 10px;">
+                <h4>Komori 對話框</h4>
+                <p>這是一個測試對話框，在翡翠王子主題下應該顯示👑圖標</p>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>編碼檢測</h2>
+            <button class="test-button" onclick="testEncoding()">檢測文件編碼</button>
+            <div id="encodingTestResults"></div>
+        </div>
+    </div>
+
+    <script src="js/theme.js"></script>
+    
+    <script>
+        // 顯示測試結果
+        function showTestResult(elementId, message, type = 'success') {
+            const element = document.getElementById(elementId);
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${type}`;
+            resultDiv.innerHTML = message;
+            element.appendChild(resultDiv);
+        }
+        
+        // 清除測試結果
+        function clearTestResults(elementId) {
+            document.getElementById(elementId).innerHTML = '';
+        }
+        
+        // 測試CSS內容屬性
+        function testCssContent() {
+            clearTestResults('cssTestResults');
+            
+            const tests = [
+                { selector: '.quick-title::before', expected: '🔍 或快速選擇：', description: '快速選擇圖標' },
+                { selector: '.form-field:has(#calcStockCodeInput) .form-label::before', expected: '📊', description: '代碼欄位圖標' },
+                { selector: '.form-field:has(#calcStockNameInput) .form-label::before', expected: '📈', description: '股票名稱圖標' },
+                { selector: '.form-field:has(#calcDateInput) .form-label::before', expected: '📅', description: '日期欄位圖標' },
+                { selector: '.form-field:has(#calcPriceInput) .form-label::before', expected: '💰', description: '價格欄位圖標' },
+                { selector: '.form-field:has(#calcSharesInput) .form-label::before', expected: '📊', description: '股數欄位圖標' },
+                { selector: '.investment-back-btn::before', expected: '🔙', description: '返回按鈕圖標' },
+                { selector: '.input-field-label::before', expected: '📝', description: '輸入欄位圖標' }
+            ];
+            
+            let passedTests = 0;
+            let totalTests = tests.length;
+            
+            tests.forEach(test => {
+                try {
+                    const element = document.querySelector(test.selector);
+                    if (element) {
+                        const styles = window.getComputedStyle(element, '::before');
+                        const content = styles.getPropertyValue('content').replace(/['"]/g, '');
+                        
+                        if (content === test.expected) {
+                            showTestResult('cssTestResults', `✅ ${test.description}: 正確顯示 "${content}"`, 'success');
+                            passedTests++;
+                        } else {
+                            showTestResult('cssTestResults', `❌ ${test.description}: 期望 "${test.expected}"，實際 "${content}"`, 'error');
+                        }
+                    } else {
+                        showTestResult('cssTestResults', `⚠️ ${test.description}: 找不到元素`, 'info');
+                    }
+                } catch (error) {
+                    showTestResult('cssTestResults', `❌ ${test.description}: 測試失敗 - ${error.message}`, 'error');
+                }
+            });
+            
+            showTestResult('cssTestResults', `🎯 CSS內容屬性測試完成: ${passedTests}/${totalTests} 通過`, passedTests === totalTests ? 'success' : 'error');
+        }
+        
+        // 測試主題名稱
+        function testThemeNames() {
+            clearTestResults('themeTestResults');
+            const preview = document.getElementById('themePreview');
+            preview.innerHTML = '';
+            
+            if (typeof themes !== 'undefined' && Array.isArray(themes)) {
+                const chineseThemes = themes.filter(theme => /[\u4e00-\u9fff]/.test(theme.name));
+                
+                if (chineseThemes.length > 0) {
+                    showTestResult('themeTestResults', `📊 找到 ${chineseThemes.length} 個中文主題`, 'info');
+                    
+                    chineseThemes.forEach(theme => {
+                        const card = document.createElement('div');
+                        card.className = 'theme-card';
+                        card.innerHTML = `
+                            <div class="theme-icon">${theme.icon}</div>
+                            <div class="theme-name">${theme.name}</div>
+                            <div class="theme-id">${theme.id}</div>
+                        `;
+                        preview.appendChild(card);
+                        
+                        // 檢查是否有亂碼
+                        if (theme.name.includes('??') || theme.name.includes('')) {
+                            showTestResult('themeTestResults', `❌ 主題 "${theme.id}" 名稱包含亂碼: "${theme.name}"`, 'error');
+                        } else {
+                            showTestResult('themeTestResults', `✅ 主題 "${theme.id}" 名稱正常: "${theme.name}"`, 'success');
+                        }
+                    });
+                } else {
+                    showTestResult('themeTestResults', '⚠️ 沒有找到中文主題', 'info');
+                }
+            } else {
+                showTestResult('themeTestResults', '❌ 無法載入主題數據', 'error');
+            }
+        }
+        
+        // 測試水果主題
+        function testFruitTheme() {
+            clearTestResults('fruitTestResults');
+            
+            // 切換到水果主題
+            document.documentElement.setAttribute('data-theme', 'fruit');
+            
+            setTimeout(() => {
+                const tests = [
+                    { selector: '.card::after', expected: '🍓', description: '普通卡片水果圖標' },
+                    { selector: '.investment-card::after', expected: '🍊', description: '投資卡片水果圖標' },
+                    { selector: '.budget-card::after', expected: '🍋', description: '預算卡片水果圖標' },
+                    { selector: '.wallet-card::after', expected: '🍇', description: '錢包卡片水果圖標' },
+                    { selector: '.chart-card::after', expected: '🍒', description: '圖表卡片水果圖標' }
+                ];
+                
+                let passedTests = 0;
+                let totalTests = tests.length;
+                
+                tests.forEach(test => {
+                    try {
+                        const element = document.querySelector(test.selector);
+                        if (element) {
+                            const styles = window.getComputedStyle(element, '::after');
+                            const content = styles.getPropertyValue('content').replace(/['"]/g, '');
+                            
+                            if (content === test.expected) {
+                                showTestResult('fruitTestResults', `✅ ${test.description}: 正確顯示 "${content}"`, 'success');
+                                passedTests++;
+                            } else {
+                                showTestResult('fruitTestResults', `❌ ${test.description}: 期望 "${test.expected}"，實際 "${content}"`, 'error');
+                            }
+                        } else {
+                            showTestResult('fruitTestResults', `⚠️ ${test.description}: 找不到元素`, 'info');
+                        }
+                    } catch (error) {
+                        showTestResult('fruitTestResults', `❌ ${test.description}: 測試失敗 - ${error.message}`, 'error');
+                    }
+                });
+                
+                showTestResult('fruitTestResults', `🍓 水果主題測試完成: ${passedTests}/${totalTests} 通過`, passedTests === totalTests ? 'success' : 'error');
+                
+                // 恢復默認主題
+                document.documentElement.removeAttribute('data-theme');
+            }, 100);
+        }
+        
+        // 測試翡翠王子主題
+        function testEmeraldPrinceTheme() {
+            clearTestResults('emeraldTestResults');
+            
+            // 切換到翡翠王子主題
+            document.documentElement.setAttribute('data-theme', 'emeraldPrince');
+            
+            setTimeout(() => {
+                try {
+                    const element = document.querySelector('.komori-dialog::before');
+                    if (element) {
+                        const styles = window.getComputedStyle(element, '::before');
+                        const content = styles.getPropertyValue('content').replace(/['"]/g, '');
+                        
+                        if (content === '👑') {
+                            showTestResult('emeraldTestResults', `✅ 翡翠王子主題圖標: 正確顯示 "${content}"`, 'success');
+                        } else {
+                            showTestResult('emeraldTestResults', `❌ 翡翠王子主題圖標: 期望 "👑"，實際 "${content}"`, 'error');
+                        }
+                    } else {
+                        showTestResult('emeraldTestResults', `⚠️ 找不到 komori-dialog 元素`, 'info');
+                    }
+                } catch (error) {
+                    showTestResult('emeraldTestResults', `❌ 翡翠王子主題測試失敗 - ${error.message}`, 'error');
+                }
+                
+                // 恢復默認主題
+                document.documentElement.removeAttribute('data-theme');
+            }, 100);
+        }
+        
+        // 測試編碼
+        function testEncoding() {
+            clearTestResults('encodingTestResults');
+            
+            // 檢測頁面編碼
+            const pageEncoding = document.characterSet || document.charset;
+            showTestResult('encodingTestResults', `📄 頁面編碼: ${pageEncoding}`, 'info');
+            
+            // 檢測常用中文字符
+            const testChars = ['主題', '設定', '分析', '投資', '預算', '報表', '圖表', '統計'];
+            const encodedChars = testChars.map(char => {
+                const encoded = encodeURIComponent(char);
+                return `${char} -> ${encoded}`;
+            });
+            
+            showTestResult('encodingTestResults', `🔤 中文字符編碼測試:<br>${encodedChars.join('<br>')}`, 'info');
+            
+            // 檢測是否有亂碼字符
+            const hasGarbled = document.body.innerText.includes('??') || document.body.innerText.includes('');
+            if (hasGarbled) {
+                showTestResult('encodingTestResults', '❌ 檢測到可能的亂碼字符', 'error');
+            } else {
+                showTestResult('encodingTestResults', '✅ 沒有檢測到亂碼字符', 'success');
+            }
+        }
+        
+        // 頁面載入時自動運行基本測試
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                showTestResult('cssTestResults', '🚀 開始自動測試...', 'info');
+                testCssContent();
+                testThemeNames();
+                testEncoding();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
