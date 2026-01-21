@@ -22,36 +22,39 @@
     --color-danger: #ffb6c1;
     --color-warning: #ffd700;
     --color-info: #87ceeb;
+    --color-error: var(--color-danger);
     
-    /* 背景顏色 */
-    --bg-white: #ffffff;
-    --bg-primary: #fff5f5;
-    --bg-secondary: #f0f8ff;
-    --bg-light: #fffaf0;
-    --bg-gradient-light: linear-gradient(135deg, #ffeef8 0%, #fff5f5 100%);
-    --bg-gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 245, 245, 0.9) 100%);
+    /* 背景顏色系統 - 使用漸層色彩 */
+    --bg-primary: linear-gradient(135deg, rgba(255, 238, 248, 0.95) 0%, rgba(255, 245, 245, 0.92) 25%, rgba(240, 248, 255, 0.92) 50%, rgba(255, 250, 240, 0.92) 75%, rgba(245, 255, 245, 0.92) 100%);
+    --bg-body: rgba(255, 238, 248, 0.88);
+    --bg-body-strong: rgba(255, 238, 248, 0.94);
+    --bg-gradient: linear-gradient(135deg, #ffeef8 0%, #fff5f5 25%, #f0f8ff 50%, #fffaf0 75%, #f5fff5 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(255, 105, 180, 0.08) 0%, rgba(135, 206, 235, 0.15) 100%);
+    --bg-white: rgba(255, 255, 255, 0.85);
+    --bg-card: rgba(255, 238, 248, 0.88);
+    --bg-light: rgba(255, 245, 245, 0.75);
+    --bg-lighter: rgba(240, 248, 255, 0.65);
+    --bg-soft: rgba(255, 250, 240, 0.55);
+    --bg-soft-strong: rgba(255, 245, 245, 0.78);
     
-    /* 文字顏色 */
+    /* 文字顏色系統 - 使用對比色確保可讀性 */
     --text-primary: rgba(64, 64, 64, 0.95);
-    --text-secondary: rgba(88, 88, 88, 0.85);
-    --text-muted: rgba(120, 120, 120, 0.75);
-    --text-white: #ffffff;
-    --text-accent: var(--color-primary);
+    --text-secondary: rgba(89, 89, 89, 0.78);
+    --text-tertiary: rgba(128, 128, 128, 0.62);
+    --text-strong: rgba(32, 32, 32, 0.98);
+    --text-white: rgba(255, 255, 255, 0.96);
     
-    /* 邊框顏色 */
-    --border-primary: rgba(255, 105, 180, 0.3);
-    --border-secondary: rgba(135, 206, 235, 0.3);
-    --border-light: rgba(255, 182, 193, 0.2);
-    --control-border-color: rgba(255, 105, 180, 0.25);
+    /* 邊框顏色系統 */
+    --border-primary: rgba(255, 105, 180, 0.65);
+    --border-light: rgba(255, 238, 248, 0.24);
+    --border-medium: rgba(255, 105, 180, 0.4);
+    --card-border-color: rgba(255, 105, 180, 0.45);
+    --control-border-color: rgba(255, 238, 248, 0.32);
+    --table-border-color: rgba(255, 238, 248, 0.22);
     
-    /* 陰影效果 */
-    --shadow-primary: 0 8px 32px rgba(255, 105, 180, 0.15);
-    --shadow-secondary: 0 4px 16px rgba(135, 206, 235, 0.1);
-    --shadow-card: 0 4px 20px rgba(255, 182, 193, 0.08);
-    
-    /* 字體 - 添加 emoji 支援 */
-    --font-family-primary: 'Segoe UI Emoji', 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
-    --font-family-heading: 'Segoe UI Emoji', 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+    /* 陰影系統 */
+    --shadow-primary: 0 20px 60px rgba(255, 105, 180, 0.3);
+    --shadow-primary-lg: 0 30px 80px rgba(255, 105, 180, 0.25);
     
     /* RGBA 透明度變體 */
     --color-primary-rgba-08: rgba(255, 105, 180, 0.08);
