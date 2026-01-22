@@ -1,0 +1,394 @@
+/* ========== 可愛發財貓主題 - 基於桃色背景和紅色麻將牌 ========== */
+
+:root[data-theme="getrichCats"] {
+    /* 主要顏色系統 - 基於桃色背景 */
+    --color-primary: #FF69B4;
+    --color-primary-light: #FF91C7;
+    --color-primary-lighter: #FFB3D9;
+    --color-primary-dark: #E05A9C;
+    --color-primary-darker: #D1477A;
+    
+    /* 次要顏色 - 紅色系（麻將牌） */
+    --color-secondary: #DC143C;
+    --color-secondary-light: #FF1744;
+    --color-secondary-lighter: #FF5252;
+    --color-secondary-dark: #B22222;
+    --color-secondary-darker: #8B0000;
+    
+    /* 強調色 - 金黃色（財富感） */
+    --color-accent: #FFD700;
+    --color-accent-light: #FFECB3;
+    --color-accent-lighter: #FFF59D;
+    --color-accent-dark: #FFC107;
+    --color-accent-darker: #FF9800;
+    
+    /* 狀態顏色 */
+    --color-success: #4CAF50;
+    --color-danger: #F44336;
+    --color-warning: #FF9800;
+    --color-info: #2196F3;
+    --color-error: var(--color-danger);
+    
+    /* 背景顏色系統 - 使用桃色漸層 */
+    --bg-primary: linear-gradient(135deg, rgba(255, 228, 225, 0.95) 0%, rgba(255, 218, 185, 0.92) 50%, rgba(255, 182, 193, 0.92) 100%);
+    --bg-body: rgba(255, 228, 225, 0.88);
+    --bg-body-strong: rgba(255, 228, 225, 0.94);
+    --bg-gradient: linear-gradient(135deg, #FFE4E1 0%, #FFDAB9 50%, #FFB6C1 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(255, 105, 180, 0.08) 0%, rgba(220, 20, 60, 0.15) 100%);
+    --bg-white: rgba(255, 255, 255, 0.92);
+    --bg-card: rgba(255, 255, 255, 0.95);
+    --bg-light: rgba(255, 245, 245, 0.85);
+    --bg-lighter: rgba(255, 228, 225, 0.75);
+    --bg-soft: rgba(255, 218, 185, 0.65);
+    --bg-soft-strong: rgba(255, 245, 245, 0.88);
+    
+    /* 文字顏色系統 - 使用深色確保可讀性 */
+    --text-primary: rgba(64, 64, 64, 0.95);
+    --text-secondary: rgba(89, 89, 89, 0.78);
+    --text-tertiary: rgba(128, 128, 128, 0.62);
+    --text-strong: rgba(32, 32, 32, 0.98);
+    --text-white: rgba(255, 255, 255, 0.96);
+    
+    /* 邊框顏色系統 */
+    --border-primary: rgba(220, 20, 60, 0.65);
+    --border-light: rgba(255, 105, 180, 0.24);
+    --border-medium: rgba(220, 20, 60, 0.4);
+    --card-border-color: rgba(255, 105, 180, 0.45);
+    --control-border-color: rgba(255, 182, 193, 0.32);
+    --table-border-color: rgba(255, 228, 225, 0.22);
+    
+    /* 陰影系統 */
+    --shadow-primary: 0 20px 60px rgba(255, 105, 180, 0.3);
+    --shadow-primary-lg: 0 30px 80px rgba(255, 105, 180, 0.25);
+    
+    /* RGBA 透明度變數 */
+    --color-primary-rgba-08: rgba(255, 105, 180, 0.08);
+    --color-primary-rgba-10: rgba(255, 105, 180, 0.1);
+    --color-primary-rgba-15: rgba(255, 105, 180, 0.15);
+    --color-primary-rgba-20: rgba(255, 105, 180, 0.2);
+    --color-primary-rgba-25: rgba(255, 105, 180, 0.25);
+    --color-primary-rgba-30: rgba(255, 105, 180, 0.3);
+    --color-primary-rgba-40: rgba(255, 105, 180, 0.4);
+    --color-primary-light-rgba-08: rgba(255, 145, 199, 0.08);
+    --color-primary-light-rgba-10: rgba(255, 145, 199, 0.1);
+    --color-primary-light-rgba-15: rgba(255, 145, 199, 0.15);
+    --color-primary-light-rgba-20: rgba(255, 145, 199, 0.2);
+    --color-primary-light-rgba-25: rgba(255, 145, 199, 0.25);
+    --color-primary-light-rgba-30: rgba(255, 145, 199, 0.3);
+    --color-primary-light-rgba-40: rgba(255, 145, 199, 0.4);
+    --color-secondary-rgba-08: rgba(220, 20, 60, 0.08);
+    --color-secondary-rgba-10: rgba(220, 20, 60, 0.1);
+    --color-secondary-rgba-15: rgba(220, 20, 60, 0.15);
+    --color-secondary-rgba-20: rgba(220, 20, 60, 0.2);
+    --color-secondary-rgba-25: rgba(220, 20, 60, 0.25);
+    --color-secondary-rgba-30: rgba(220, 20, 60, 0.3);
+    --color-secondary-rgba-40: rgba(220, 20, 60, 0.4);
+    
+    /* 漸層背景 */
+    --bg-light-gradient: linear-gradient(135deg, rgba(255, 228, 225, 0.85) 0%, rgba(255, 218, 185, 0.65) 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, rgba(255, 228, 225, 0.85) 0%, rgba(255, 218, 185, 0.65) 100%);
+    --action-side-bg: color-mix(in srgb, rgba(255, 255, 255, 0.92) 75%, rgba(255, 105, 180, 0.08));
+    --action-side-bg-hover: color-mix(in srgb, rgba(255, 255, 255, 0.92) 65%, rgba(255, 105, 180, 0.2));
+    --action-side-text: rgba(64, 64, 64, 0.96);
+}
+
+/* 背景圖片設置 */
+:root[data-theme="getrichCats"] body {
+    background-image: url('https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: var(--text-primary);
+}
+
+:root[data-theme="getrichCats"] body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 228, 225, 0.15) 0%, rgba(255, 218, 185, 0.1) 50%, rgba(255, 182, 193, 0.1) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 頁面背景透明化 */
+:root[data-theme="getrichCats"] .page-ledger,
+:root[data-theme="getrichCats"] .page-input,
+:root[data-theme="getrichCats"] .page-chart,
+:root[data-theme="getrichCats"] .page-budget,
+:root[data-theme="getrichCats"] .page-monthly-planner,
+:root[data-theme="getrichCats"] .page-daily-budget,
+:root[data-theme="getrichCats"] .page-settings,
+:root[data-theme="getrichCats"] .page-category-manage,
+:root[data-theme="getrichCats"] .page-investment,
+:root[data-theme="getrichCats"] .page-wallet,
+:root[data-theme="getrichCats"] .page-history,
+:root[data-theme="getrichCats"] .page-planner {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+/* 卡片樣式 - 不透明 */
+:root[data-theme="getrichCats"] .card,
+:root[data-theme="getrichCats"] .record-card,
+:root[data-theme="getrichCats"] .budget-card,
+:root[data-theme="getrichCats"] .investment-card,
+:root[data-theme="getrichCats"] .wallet-card,
+:root[data-theme="getrichCats"] .planning-card,
+:root[data-theme="getrichCats"] .holding-card,
+:root[data-theme="getrichCats"] .sell-card,
+:root[data-theme="getrichCats"] .dividend-card,
+:root[data-theme="getrichCats"] .smart-analysis-card,
+:root[data-theme="getrichCats"] .smart-reminder-card {
+    background: var(--bg-card) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-primary);
+    opacity: 0.95;
+}
+
+/* 按鈕樣式 - 買入和定期定額 */
+:root[data-theme="getrichCats"] .btn-buy,
+:root[data-theme="getrichCats"] .btn-regular-savings,
+:root[data-theme="getrichCats"] .btn-primary,
+:root[data-theme="getrichCats"] .btn-success {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
+    color: var(--text-white);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 12px 24px;
+    box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="getrichCats"] .btn-buy:hover,
+:root[data-theme="getrichCats"] .btn-regular-savings:hover,
+:root[data-theme="getrichCats"] .btn-primary:hover,
+:root[data-theme="getrichCats"] .btn-success:hover {
+    background: linear-gradient(135deg, var(--color-secondary-light) 0%, var(--color-secondary-lighter) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
+}
+
+/* 小森對話框樣式 */
+:root[data-theme="getrichCats"] .xiaosen-dialog,
+:root[data-theme="getrichCats"] .advisor-dialog,
+:root[data-theme="getrichCats"] .modal-dialog {
+    background: var(--bg-card);
+    border: 2px solid var(--card-border-color);
+    border-radius: 20px;
+    box-shadow: var(--shadow-primary-lg);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: auto;
+}
+
+:root[data-theme="getrichCats"] .xiaosen-dialog .dialog-header,
+:root[data-theme="getrichCats"] .advisor-dialog .dialog-header,
+:root[data-theme="getrichCats"] .modal-dialog .modal-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    color: var(--text-white);
+    border-radius: 18px 18px 0 0;
+    padding: 16px 20px;
+}
+
+/* 彈窗和模態框 */
+:root[data-theme="getrichCats"] .modal,
+:root[data-theme="getrichCats"] .popup,
+:root[data-theme="getrichCats"] .overlay {
+    background: rgba(255, 228, 225, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+:root[data-theme="getrichCats"] .modal-content,
+:root[data-theme="getrichCats"] .popup-content {
+    background: var(--bg-card);
+    border: 1px solid var(--card-border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-primary);
+}
+
+/* 字體美化 */
+:root[data-theme="getrichCats"] {
+    --font-family: 'SF Pro Display', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+}
+
+:root[data-theme="getrichCats"] body,
+:root[data-theme="getrichCats"] .card,
+:root[data-theme="getrichCats"] .btn,
+:root[data-theme="getrichCats"] .dialog {
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.5px;
+}
+
+/* 返回按鈕樣式 */
+:root[data-theme="getrichCats"] .btn-back,
+:root[data-theme="getrichCats"] .btn-return {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* 智慧分析和智慧提醒卡片 */
+:root[data-theme="getrichCats"] .analysis-card,
+:root[data-theme="getrichCats"] .reminder-card,
+:root[data-theme="getrichCats"] .insight-card {
+    background: var(--bg-card);
+    border: 1px solid var(--card-border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-primary);
+    opacity: 0.95;
+}
+
+/* 投資管理卡片 */
+:root[data-theme="getrichCats"] .investment-management-card,
+:root[data-theme="getrichCats"] .regular-savings-card {
+    background: var(--bg-card);
+    border: 1px solid var(--card-border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-primary);
+    opacity: 0.95;
+}
+
+/* 響應式設計 - 小森對話框 */
+@media (max-width: 768px) {
+    :root[data-theme="getrichCats"] .xiaosen-dialog,
+    :root[data-theme="getrichCats"] .advisor-dialog,
+    :root[data-theme="getrichCats"] .modal-dialog {
+        max-width: 95vw;
+        max-height: 95vh;
+        border-radius: 16px;
+    }
+    
+    :root[data-theme="getrichCats"] .xiaosen-dialog .dialog-header,
+    :root[data-theme="getrichCats"] .advisor-dialog .dialog-header,
+    :root[data-theme="getrichCats"] .modal-dialog .modal-header {
+        padding: 12px 16px;
+        border-radius: 14px 14px 0 0;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="getrichCats"] .xiaosen-dialog,
+    :root[data-theme="getrichCats"] .advisor-dialog,
+    :root[data-theme="getrichCats"] .modal-dialog {
+        max-width: 98vw;
+        max-height: 98vh;
+        border-radius: 12px;
+    }
+}
+
+/* 滾動條美化 */
+:root[data-theme="getrichCats"] ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+:root[data-theme="getrichCats"] ::-webkit-scrollbar-track {
+    background: rgba(255, 228, 225, 0.3);
+    border-radius: 4px;
+}
+
+:root[data-theme="getrichCats"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: 4px;
+}
+
+:root[data-theme="getrichCats"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%);
+}
+
+/* 特殊元素樣式 */
+:root[data-theme="getrichCats"] .highlight,
+:root[data-theme="getrichCats"] .accent-text {
+    color: var(--color-secondary);
+    font-weight: var(--font-weight-semibold);
+}
+
+:root[data-theme="getrichCats"] .success-text {
+    color: var(--color-success);
+    font-weight: var(--font-weight-medium);
+}
+
+:root[data-theme="getrichCats"] .warning-text {
+    color: var(--color-warning);
+    font-weight: var(--font-weight-medium);
+}
+
+:root[data-theme="getrichCats"] .error-text {
+    color: var(--color-danger);
+    font-weight: var(--font-weight-medium);
+}
+
+/* 動畫效果 */
+:root[data-theme="getrichCats"] .card,
+:root[data-theme="getrichCats"] .btn,
+:root[data-theme="getrichCats"] .dialog {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root[data-theme="getrichCats"] .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 70px rgba(255, 105, 180, 0.35);
+}
+
+:root[data-theme="getrichCats"] .btn:hover {
+    transform: translateY(-2px);
+}
+
+/* 輸入框樣式 */
+:root[data-theme="getrichCats"] input,
+:root[data-theme="getrichCats"] textarea,
+:root[data-theme="getrichCats"] select {
+    background: var(--bg-white);
+    border: 1px solid var(--border-medium);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: var(--font-family);
+}
+
+:root[data-theme="getrichCats"] input:focus,
+:root[data-theme="getrichCats"] textarea:focus,
+:root[data-theme="getrichCats"] select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.2);
+    outline: none;
+}
+
+/* 表格樣式 */
+:root[data-theme="getrichCats"] table {
+    background: var(--bg-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-primary);
+}
+
+:root[data-theme="getrichCats"] th {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    color: var(--text-white);
+    font-weight: var(--font-weight-semibold);
+}
+
+:root[data-theme="getrichCats"] td {
+    border-bottom: 1px solid var(--table-border-color);
+    color: var(--text-primary);
+}
+
+:root[data-theme="getrichCats"] tr:hover td {
+    background: var(--bg-light);
+}

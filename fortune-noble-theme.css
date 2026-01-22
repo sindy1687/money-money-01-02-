@@ -1,0 +1,470 @@
+/* ========== 發財貴族主題 - 基於淺藍色背景和錢包設計 ========== */
+
+:root[data-theme="fortuneNoble"] {
+    /* 主要顏色系統 - 基於淺藍色背景 */
+    --color-primary: #87CEEB;
+    --color-primary-light: #ADD8E6;
+    --color-primary-lighter: #B0E0E6;
+    --color-primary-dark: #5F9EA0;
+    --color-primary-darker: #4682B4;
+    
+    /* 次要顏色 - 淺橙色系（錢包邊框） */
+    --color-secondary: #FFB347;
+    --color-secondary-light: #FFCC80;
+    --color-secondary-lighter: #FFD4A3;
+    --color-secondary-dark: #FF9800;
+    --color-secondary-darker: #F57C00;
+    
+    /* 強調色 - 金色（財富感） */
+    --color-accent: #FFD700;
+    --color-accent-light: #FFECB3;
+    --color-accent-lighter: #FFF59D;
+    --color-accent-dark: #FFC107;
+    --color-accent-darker: #FF9800;
+    
+    /* 狀態顏色 */
+    --color-success: #4CAF50;
+    --color-danger: #F44336;
+    --color-warning: #FF9800;
+    --color-info: #2196F3;
+    --color-error: var(--color-danger);
+    
+    /* 背景顏色系統 - 使用淺藍色漸層 */
+    --bg-primary: linear-gradient(135deg, rgba(135, 206, 235, 0.95) 0%, rgba(173, 216, 230, 0.92) 50%, rgba(176, 224, 230, 0.92) 100%);
+    --bg-body: rgba(135, 206, 235, 0.88);
+    --bg-body-strong: rgba(135, 206, 235, 0.94);
+    --bg-gradient: linear-gradient(135deg, #87CEEB 0%, #ADD8E6 50%, #B0E0E6 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(135, 206, 235, 0.08) 0%, rgba(255, 179, 71, 0.15) 100%);
+    --bg-white: rgba(255, 255, 255, 0.95);
+    --bg-card: rgba(255, 255, 255, 0.98);
+    --bg-light: rgba(240, 248, 255, 0.85);
+    --bg-lighter: rgba(135, 206, 235, 0.75);
+    --bg-soft: rgba(176, 224, 230, 0.65);
+    --bg-soft-strong: rgba(240, 248, 255, 0.88);
+    
+    /* 文字顏色系統 - 使用深色確保可讀性 */
+    --text-primary: rgba(25, 25, 112, 0.95);
+    --text-secondary: rgba(70, 130, 180, 0.78);
+    --text-tertiary: rgba(95, 158, 160, 0.62);
+    --text-strong: rgba(0, 0, 139, 0.98);
+    --text-white: rgba(255, 255, 255, 0.96);
+    
+    /* 邊框顏色系統 */
+    --border-primary: rgba(255, 179, 71, 0.65);
+    --border-light: rgba(135, 206, 235, 0.24);
+    --border-medium: rgba(255, 179, 71, 0.4);
+    --card-border-color: rgba(255, 179, 71, 0.45);
+    --control-border-color: rgba(135, 206, 235, 0.32);
+    --table-border-color: rgba(135, 206, 235, 0.22);
+    
+    /* 陰影系統 */
+    --shadow-primary: 0 20px 60px rgba(135, 206, 235, 0.3);
+    --shadow-primary-lg: 0 30px 80px rgba(135, 206, 235, 0.25);
+    
+    /* 透明度變體 */
+    --color-primary-rgba-08: rgba(135, 206, 235, 0.08);
+    --color-primary-rgba-10: rgba(135, 206, 235, 0.1);
+    --color-primary-rgba-15: rgba(135, 206, 235, 0.15);
+    --color-primary-rgba-20: rgba(135, 206, 235, 0.2);
+    --color-primary-rgba-25: rgba(135, 206, 235, 0.25);
+    --color-primary-rgba-30: rgba(135, 206, 235, 0.3);
+    --color-primary-rgba-40: rgba(135, 206, 235, 0.4);
+    --color-primary-light-rgba-08: rgba(173, 216, 230, 0.08);
+    --color-primary-light-rgba-10: rgba(173, 216, 230, 0.1);
+    --color-primary-light-rgba-15: rgba(173, 216, 230, 0.15);
+    --color-primary-light-rgba-20: rgba(173, 216, 230, 0.2);
+    --color-primary-light-rgba-25: rgba(173, 216, 230, 0.25);
+    --color-primary-light-rgba-30: rgba(173, 216, 230, 0.3);
+    --color-primary-light-rgba-40: rgba(173, 216, 230, 0.4);
+    --color-secondary-rgba-08: rgba(255, 179, 71, 0.08);
+    --color-secondary-rgba-10: rgba(255, 179, 71, 0.1);
+    --color-secondary-rgba-15: rgba(255, 179, 71, 0.15);
+    --color-secondary-rgba-20: rgba(255, 179, 71, 0.2);
+    --color-secondary-rgba-25: rgba(255, 179, 71, 0.25);
+    --color-secondary-rgba-30: rgba(255, 179, 71, 0.3);
+    --color-secondary-rgba-40: rgba(255, 179, 71, 0.4);
+    
+    /* 漸層背景 */
+    --bg-light-gradient: linear-gradient(135deg, rgba(135, 206, 235, 0.85) 0%, rgba(135, 206, 235, 0.65) 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, rgba(135, 206, 235, 0.85) 0%, rgba(135, 206, 235, 0.65) 100%);
+    
+    /* 側邊欄操作區域 */
+    --action-side-bg: color-mix(in srgb, rgba(135, 206, 235, 0.92) 75%, rgba(255, 179, 71, 0.08));
+    --action-side-bg-hover: color-mix(in srgb, rgba(135, 206, 235, 0.92) 65%, rgba(255, 179, 71, 0.2));
+    --action-side-text: rgba(25, 25, 112, 0.96);
+}
+
+/* 背景設定 */
+:root[data-theme="fortuneNoble"] body {
+    background: url('https://i.pinimg.com/1200x/33/c8/23/33c82303e35bc243d36e87d78aa09c9d.jpg') center/cover fixed;
+    color: var(--text-primary);
+    font-family: 'Microsoft JhengHei', 'PingFang TC', 'Helvetica Neue', sans-serif;
+}
+
+:root[data-theme="fortuneNoble"] body::before {
+    display: none;
+}
+
+/* 頁面背景透明化 */
+:root[data-theme="fortuneNoble"] .page-ledger,
+:root[data-theme="fortuneNoble"] .page-input,
+:root[data-theme="fortuneNoble"] .page-chart,
+:root[data-theme="fortuneNoble"] .page-budget,
+:root[data-theme="fortuneNoble"] .page-monthly-planner,
+:root[data-theme="fortuneNoble"] .page-daily-budget,
+:root[data-theme="fortuneNoble"] .page-settings,
+:root[data-theme="fortuneNoble"] .page-category-manage,
+:root[data-theme="fortuneNoble"] .page-investment,
+:root[data-theme="fortuneNoble"] .page-wallet,
+:root[data-theme="fortuneNoble"] .page-history,
+:root[data-theme="fortuneNoble"] .page-planner {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+/* 卡片樣式 - 不透明 */
+:root[data-theme="fortuneNoble"] .card,
+:root[data-theme="fortuneNoble"] .record-card,
+:root[data-theme="fortuneNoble"] .investment-card,
+:root[data-theme="fortuneNoble"] .accounting-card,
+:root[data-theme="fortuneNoble"] .budget-card,
+:root[data-theme="fortuneNoble"] .wallet-card,
+:root[data-theme="fortuneNoble"] .planning-card,
+:root[data-theme="fortuneNoble"] .settings-card,
+:root[data-theme="fortuneNoble"] .holding-card,
+:root[data-theme="fortuneNoble"] .buying-card,
+:root[data-theme="fortuneNoble"] .selling-card,
+:root[data-theme="fortuneNoble"] .dividend-card,
+:root[data-theme="fortuneNoble"] .regular-investment-card {
+    background: var(--bg-card) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-primary);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="fortuneNoble"] .card:hover,
+:root[data-theme="fortuneNoble"] .record-card:hover,
+:root[data-theme="fortuneNoble"] .investment-card:hover,
+:root[data-theme="fortuneNoble"] .accounting-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary-lg);
+    border-color: var(--border-primary);
+}
+
+/* 按鈕樣式 */
+:root[data-theme="fortuneNoble"] .btn-primary,
+:root[data-theme="fortuneNoble"] .btn-buy,
+:root[data-theme="fortuneNoble"] .btn-regular-investment {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
+}
+
+:root[data-theme="fortuneNoble"] .btn-primary:hover,
+:root[data-theme="fortuneNoble"] .btn-buy:hover,
+:root[data-theme="fortuneNoble"] .btn-regular-investment:hover {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-secondary-dark) 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(135, 206, 235, 0.4);
+}
+
+:root[data-theme="fortuneNoble"] .btn-secondary {
+    background: var(--bg-white);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="fortuneNoble"] .btn-secondary:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+/* 返回按鈕 */
+:root[data-theme="fortuneNoble"] .btn-back,
+:root[data-theme="fortuneNoble"] .btn-return {
+    background: var(--color-accent);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="fortuneNoble"] .btn-back:hover,
+:root[data-theme="fortuneNoble"] .btn-return:hover {
+    background: var(--color-accent-dark);
+    transform: translateX(-2px);
+}
+
+/* 小森對話框 */
+:root[data-theme="fortuneNoble"] .xiaosen-dialog,
+:root[data-theme="fortuneNoble"] .advisor-dialog {
+    background: var(--bg-card);
+    border: 2px solid var(--card-border-color);
+    border-radius: 20px;
+    box-shadow: var(--shadow-primary-lg);
+    max-width: 90vw;
+    width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    resize: both;
+}
+
+:root[data-theme="fortuneNoble"] .xiaosen-dialog .dialog-header,
+:root[data-theme="fortuneNoble"] .advisor-dialog .dialog-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    padding: 16px 20px;
+    border-radius: 18px 18px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+:root[data-theme="fortuneNoble"] .xiaosen-dialog .dialog-content,
+:root[data-theme="fortuneNoble"] .advisor-dialog .dialog-content {
+    padding: 20px;
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* 智慧分析和智慧提醒卡片 */
+:root[data-theme="fortuneNoble"] .smart-analysis-card,
+:root[data-theme="fortuneNoble"] .smart-reminder-card {
+    background: var(--bg-card);
+    border: 1px solid var(--card-border-color);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: var(--shadow-primary);
+}
+
+:root[data-theme="fortuneNoble"] .smart-analysis-card h3,
+:root[data-theme="fortuneNoble"] .smart-reminder-card h3 {
+    color: var(--color-primary);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+:root[data-theme="fortuneNoble"] .smart-analysis-card p,
+:root[data-theme="fortuneNoble"] .smart-reminder-card p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* 彈窗樣式 */
+:root[data-theme="fortuneNoble"] .modal,
+:root[data-theme="fortuneNoble"] .popup,
+:root[data-theme="fortuneNoble"] .dialog {
+    background: var(--bg-card);
+    border: 2px solid var(--card-border-color);
+    border-radius: 20px;
+    box-shadow: var(--shadow-primary-lg);
+    backdrop-filter: blur(15px);
+}
+
+:root[data-theme="fortuneNoble"] .modal-header,
+:root[data-theme="fortuneNoble"] .popup-header,
+:root[data-theme="fortuneNoble"] .dialog-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    border-radius: 18px 18px 0 0;
+}
+
+/* 表格樣式 */
+:root[data-theme="fortuneNoble"] table {
+    background: var(--bg-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-primary);
+}
+
+:root[data-theme="fortuneNoble"] th {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+}
+
+:root[data-theme="fortuneNoble"] td {
+    border-bottom: 1px solid var(--table-border-color);
+    padding: 12px;
+    color: var(--text-primary);
+}
+
+:root[data-theme="fortuneNoble"] tr:hover td {
+    background: var(--bg-light);
+}
+
+/* 表單元素 */
+:root[data-theme="fortuneNoble"] input,
+:root[data-theme="fortuneNoble"] select,
+:root[data-theme="fortuneNoble"] textarea {
+    background: var(--bg-white);
+    border: 2px solid var(--control-border-color);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="fortuneNoble"] input:focus,
+:root[data-theme="fortuneNoble"] select:focus,
+:root[data-theme="fortuneNoble"] textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-rgba-20);
+    outline: none;
+}
+
+/* 導航欄 */
+:root[data-theme="fortuneNoble"] .navbar,
+:root[data-theme="fortuneNoble"] .nav-header {
+    background: var(--bg-card);
+    border-bottom: 2px solid var(--card-border-color);
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="fortuneNoble"] .nav-item {
+    color: var(--text-primary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="fortuneNoble"] .nav-item:hover,
+:root[data-theme="fortuneNoble"] .nav-item.active {
+    color: var(--color-primary);
+    background: var(--bg-light);
+    border-radius: 8px;
+}
+
+/* 側邊欄 */
+:root[data-theme="fortuneNoble"] .sidebar,
+:root[data-theme="fortuneNoble"] .action-side {
+    background: var(--action-side-bg);
+    border-right: 2px solid var(--card-border-color);
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="fortuneNoble"] .sidebar-item {
+    color: var(--action-side-text);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="fortuneNoble"] .sidebar-item:hover {
+    background: var(--action-side-bg-hover);
+    border-radius: 8px;
+}
+
+/* 字體美化 */
+:root[data-theme="fortuneNoble"] {
+    --font-family-primary: 'Microsoft JhengHei', 'PingFang TC', 'Helvetica Neue', sans-serif;
+    --font-family-secondary: 'Noto Sans CJK TC', 'Source Han Sans TC', sans-serif;
+    --font-family-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+:root[data-theme="fortuneNoble"] body,
+:root[data-theme="fortuneNoble"] .card,
+:root[data-theme="fortuneNoble"] .btn,
+:root[data-theme="fortuneNoble"] input,
+:root[data-theme="fortuneNoble"] select,
+:root[data-theme="fortuneNoble"] textarea {
+    font-family: var(--font-family-primary);
+}
+
+:root[data-theme="fortuneNoble"] h1,
+:root[data-theme="fortuneNoble"] h2,
+:root[data-theme="fortuneNoble"] h3,
+:root[data-theme="fortuneNoble"] h4,
+:root[data-theme="fortuneNoble"] h5,
+:root[data-theme="fortuneNoble"] h6 {
+    font-family: var(--font-family-secondary);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    :root[data-theme="fortuneNoble"] .xiaosen-dialog,
+    :root[data-theme="fortuneNoble"] .advisor-dialog {
+        width: 95vw;
+        max-width: none;
+        margin: 10px;
+    }
+    
+    :root[data-theme="fortuneNoble"] .card {
+        margin: 8px;
+        padding: 16px;
+    }
+    
+    :root[data-theme="fortuneNoble"] .btn-primary,
+    :root[data-theme="fortuneNoble"] .btn-buy,
+    :root[data-theme="fortuneNoble"] .btn-regular-investment {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="fortuneNoble"] .xiaosen-dialog,
+    :root[data-theme="fortuneNoble"] .advisor-dialog {
+        width: 98vw;
+        margin: 5px;
+        border-radius: 12px;
+    }
+    
+    :root[data-theme="fortuneNoble"] .card {
+        padding: 12px;
+        border-radius: 12px;
+    }
+}
+
+/* 動畫效果 */
+@keyframes fortuneNobleGlow {
+    0% { box-shadow: 0 0 20px rgba(135, 206, 235, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(255, 179, 71, 0.4); }
+    100% { box-shadow: 0 0 20px rgba(135, 206, 235, 0.3); }
+}
+
+:root[data-theme="fortuneNoble"] .card:hover {
+    animation: fortuneNobleGlow 2s ease-in-out infinite;
+}
+
+/* 滾動條樣式 */
+:root[data-theme="fortuneNoble"] ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+:root[data-theme="fortuneNoble"] ::-webkit-scrollbar-track {
+    background: var(--bg-light);
+    border-radius: 4px;
+}
+
+:root[data-theme="fortuneNoble"] ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+}
+
+:root[data-theme="fortuneNoble"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-dark);
+}

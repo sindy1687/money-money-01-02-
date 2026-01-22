@@ -25,7 +25,7 @@
 }
 
 :root[data-theme="cyberpunkCity"] body {
-    background: #01020a;
+    background: var(--bg-gradient);
     color: var(--text-primary);
     font-family: 'Space Grotesk', 'Poppins', 'Inter', sans-serif;
     min-height: 100vh;
@@ -41,7 +41,7 @@
 }
 
 :root[data-theme="cyberpunkCity"] .theme-video-gradient {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.95));
+    background: linear-gradient(180deg, rgba(5, 0, 20, 0.4), rgba(5, 0, 20, 0.85));
 }
 
 :root[data-theme="cyberpunkCity"] .page-input,
@@ -62,7 +62,7 @@
 :root[data-theme="cyberpunkCity"] .installment-setup-page,
 :root[data-theme="cyberpunkCity"] .smart-accounting,
 :root[data-theme="cyberpunkCity"] .smart-reminders {
-    background: rgba(5, 5, 15, 0.95) !important;
+    background: var(--bg-panel) !important;
     border: 1px solid rgba(0, 242, 255, 0.5) !important;
     border-radius: 22px !important;
     box-shadow: var(--shadow-primary) !important;
@@ -97,23 +97,6 @@
     color: var(--text-primary) !important;
 }
 
-/* 投資頁面：現價與昨收改為黑色文字以確保對比度 */
-:root[data-theme="cyberpunkCity"] .stock-grid-card-price-number,
-:root[data-theme="cyberpunkCity"] .stock-grid-card-price-unit,
-:root[data-theme="cyberpunkCity"] .stock-grid-card-price-arrow,
-:root[data-theme="cyberpunkCity"] .stock-grid-card-price-prev-label,
-:root[data-theme="cyberpunkCity"] .stock-grid-card-price-prev {
-    color: #000 !important;
-}
-
-:root[data-theme="cyberpunkCity"] .investment-card {
-    background: var(--bg-card-strong) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 20px !important;
-    box-shadow: var(--shadow-secondary) !important;
-}
-
-
 :root[data-theme="cyberpunkCity"] .card h1,
 :root[data-theme="cyberpunkCity"] .card h2,
 :root[data-theme="cyberpunkCity"] .card h3,
@@ -130,20 +113,33 @@
 :root[data-theme="cyberpunkCity"] .card p,
 :root[data-theme="cyberpunkCity"] .card span,
 :root[data-theme="cyberpunkCity"] .card .text {
+    color: var(--text-secondary) !important;
+}
+
+/* 投資卡片文字與徽章對比度加強 */
+:root[data-theme="cyberpunkCity"] .investment-card .stock-name,
+:root[data-theme="cyberpunkCity"] .investment-card .stock-symbol,
+:root[data-theme="cyberpunkCity"] .investment-card .stock-price,
+:root[data-theme="cyberpunkCity"] .investment-card .price,
+:root[data-theme="cyberpunkCity"] .investment-card .price-value,
+:root[data-theme="cyberpunkCity"] .investment-card .holding-amount,
+:root[data-theme="cyberpunkCity"] .investment-card .quantity,
+:root[data-theme="cyberpunkCity"] .investment-card .meta,
+:root[data-theme="cyberpunkCity"] .investment-card .meta span,
+:root[data-theme="cyberpunkCity"] .investment-card .meta label {
     color: var(--text-strong) !important;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
-:root[data-theme="cyberpunkCity"] .card .muted-text,
-:root[data-theme="cyberpunkCity"] .card small {
-    color: rgba(255, 255, 255, 0.75) !important;
-}
-
-:root[data-theme="cyberpunkCity"] .card .highlight,
-:root[data-theme="cyberpunkCity"] .card .accent,
-:root[data-theme="cyberpunkCity"] .card .primary-text {
-    color: var(--color-secondary) !important;
+:root[data-theme="cyberpunkCity"] .investment-card .tag,
+:root[data-theme="cyberpunkCity"] .investment-card .badge,
+:root[data-theme="cyberpunkCity"] .investment-card .chip,
+:root[data-theme="cyberpunkCity"] .investment-card .code,
+:root[data-theme="cyberpunkCity"] .investment-card .ticker {
+    background: rgba(0, 0, 0, 0.25) !important;
+    color: var(--text-strong) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35) !important;
 }
 
 :root[data-theme="cyberpunkCity"] .btn,

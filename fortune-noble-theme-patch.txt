@@ -1,0 +1,20 @@
+// Add this theme to the themes array in js/theme.js
+{
+    id: 'fortuneNoble',
+    name: '發財貴族',
+    icon: '💎',
+    buttonIcon: '🈵',
+    preview: 'url("https://i.pinimg.com/1200x/33/c8/23/33c82303e35bc243d36e87d78aa09c9d.jpg") center/cover',
+    color: '#87CEEB',
+    category: 'wealth',
+    backgroundImage: 'https://i.pinimg.com/1200x/33/c8/23/33c82303e35bc243d36e87d78aa09c9d.jpg',
+    investmentCardImage: 'https://i.pinimg.com/1200x/33/c8/23/33c82303e35bc243d36e87d78aa09c9d.jpg',
+    accountingCardImage: 'https://i.pinimg.com/1200x/33/c8/23/33c82303e35bc243d36e87d78aa09c9d.jpg',
+    walletBudgetCardImage: 'https://i.pinimg.com/1200x/33/c8/23/33c82303e35bc243d36e87d78aa09c9d.jpg',
+    monthlyPlanningCardImage: 'https://i.pinimg.com/1200x/33/c8/23/33c82303e35bc243d36e87d78aa09c9d.jpg',
+    investmentSettingsCardImage: 'https://i.pinimg.com/1200x/33/c8/23/33c82303e35bc243d36e87d78aa09c9d.jpg',
+    holdingCardImage: 'https://i.pinimg.com/1200x/33/c8/23/33c82303e35bc243d36e87d78aa09c9d.jpg',
+    buyingCardImage: 'https://i.pinimg.com/1200x/33/c8/23/33c82303e35bc243d36e87d78aa09c9d.jpg',
+    sellingCardImage: 'https://i.pinimg.com/1200x/33/c8/23/33c82303e35bc243d36e87d78aa09c9d.jpg',
+    dividendCardImage: 'https://i.pinimg.com/1200x/33/c8/23/33c82303e35bc243d36e87d78aa09c9d.jpg'
+},

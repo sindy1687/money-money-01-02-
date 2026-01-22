@@ -1,0 +1,651 @@
+/* ========== 金元寶主題 - 基於金元寶圖片的財富主題 ========== */
+
+:root[data-theme="goldIngot"] {
+    /* 主要顏色系統 - 基於圖片中的金元寶顏色 */
+    --color-primary: #FFDF6B;
+    --color-primary-light: #FFE4A3;
+    --color-primary-lighter: #FFEBD6;
+    --color-primary-dark: #F0BE50;
+    --color-primary-darker: #E6A83D;
+    
+    /* 次要顏色 - 寶石藍色系 */
+    --color-secondary: #5AA0DC;
+    --color-secondary-light: #7BB5E3;
+    --color-secondary-lighter: #9CC9EA;
+    --color-secondary-dark: #4A8BC8;
+    --color-secondary-darker: #3A76B4;
+    
+    /* 強調色 - 深金色和寶石黃色 */
+    --color-accent: #FFC947;
+    --color-accent-light: #FFD470;
+    --color-accent-lighter: #FFE099;
+    --color-accent-dark: #E6B339;
+    --color-accent-darker: #CC9E2B;
+    
+    /* 背景顏色系統 - 基於圖片的淺藍色背景 */
+    --bg-primary: linear-gradient(135deg, rgba(169, 215, 242, 0.95) 0%, rgba(185, 225, 248, 0.92) 50%, rgba(201, 235, 255, 0.92) 100%);
+    --bg-body: rgba(169, 215, 242, 0.88);
+    --bg-body-strong: rgba(169, 215, 242, 0.94);
+    --bg-gradient: linear-gradient(135deg, #A9D7F2 0%, #B9E1F8 50%, #C9EBFF 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(255, 223, 107, 0.08) 0%, rgba(90, 160, 220, 0.15) 100%);
+    --bg-white: rgba(255, 255, 255, 0.96);
+    --bg-card: rgba(255, 255, 255, 0.98);
+    --bg-light: rgba(240, 248, 255, 0.85);
+    --bg-lighter: rgba(169, 215, 242, 0.75);
+    --bg-soft: rgba(201, 235, 255, 0.65);
+    --bg-soft-strong: rgba(240, 248, 255, 0.88);
+    
+    /* 文字顏色系統 - 使用深色確保在淺色背景上的可讀性 */
+    --text-primary: rgba(51, 51, 51, 0.95);
+    --text-secondary: rgba(74, 74, 74, 0.78);
+    --text-tertiary: rgba(102, 102, 102, 0.62);
+    --text-strong: rgba(25, 25, 25, 0.98);
+    --text-white: rgba(255, 255, 255, 0.96);
+    
+    /* 邊框顏色系統 - 使用金色和藍色 */
+    --border-primary: rgba(255, 223, 107, 0.65);
+    --border-light: rgba(169, 215, 242, 0.24);
+    --border-medium: rgba(255, 223, 107, 0.4);
+    --card-border-color: rgba(255, 223, 107, 0.45);
+    --control-border-color: rgba(169, 215, 242, 0.32);
+    --table-border-color: rgba(169, 215, 242, 0.22);
+    
+    /* 陰影系統 - 金色光暈效果 */
+    --shadow-primary: 0 20px 60px rgba(255, 223, 107, 0.25);
+    --shadow-primary-lg: 0 30px 80px rgba(255, 223, 107, 0.35);
+    
+    /* 透明度變體 */
+    --color-primary-rgba-08: rgba(255, 223, 107, 0.08);
+    --color-primary-rgba-10: rgba(255, 223, 107, 0.1);
+    --color-primary-rgba-15: rgba(255, 223, 107, 0.15);
+    --color-primary-rgba-20: rgba(255, 223, 107, 0.2);
+    --color-primary-rgba-25: rgba(255, 223, 107, 0.25);
+    --color-primary-rgba-30: rgba(255, 223, 107, 0.3);
+    --color-primary-rgba-40: rgba(255, 223, 107, 0.4);
+    --color-primary-light-rgba-08: rgba(255, 228, 163, 0.08);
+    --color-primary-light-rgba-10: rgba(255, 228, 163, 0.1);
+    --color-primary-light-rgba-15: rgba(255, 228, 163, 0.15);
+    --color-primary-light-rgba-20: rgba(255, 228, 163, 0.2);
+    --color-primary-light-rgba-25: rgba(255, 228, 163, 0.25);
+    --color-primary-light-rgba-30: rgba(255, 228, 163, 0.3);
+    --color-primary-light-rgba-40: rgba(255, 228, 163, 0.4);
+    --color-secondary-rgba-08: rgba(90, 160, 220, 0.08);
+    --color-secondary-rgba-10: rgba(90, 160, 220, 0.1);
+    --color-secondary-rgba-15: rgba(90, 160, 220, 0.15);
+    --color-secondary-rgba-20: rgba(90, 160, 220, 0.2);
+    --color-secondary-rgba-25: rgba(90, 160, 220, 0.25);
+    --color-secondary-rgba-30: rgba(90, 160, 220, 0.3);
+    --color-secondary-rgba-40: rgba(90, 160, 220, 0.4);
+    
+    /* 漸層背景 */
+    --bg-light-gradient: linear-gradient(135deg, rgba(169, 215, 242, 0.85) 0%, rgba(169, 215, 242, 0.65) 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, rgba(169, 215, 242, 0.85) 0%, rgba(169, 215, 242, 0.65) 100%);
+    
+    /* 側邊欄操作區域 */
+    --action-side-bg: color-mix(in srgb, rgba(169, 215, 242, 0.92) 75%, rgba(255, 223, 107, 0.08));
+    --action-side-bg-hover: color-mix(in srgb, rgba(169, 215, 242, 0.92) 65%, rgba(255, 223, 107, 0.2));
+    --action-side-text: rgba(51, 51, 51, 0.96);
+    
+    /* 狀態顏色 */
+    --color-success: #4CAF50;
+    --color-danger: #F44336;
+    --color-warning: #FF9800;
+    --color-info: #2196F3;
+    --color-error: var(--color-danger);
+}
+
+/* 背景設定 - 使用金元寶圖片 */
+:root[data-theme="goldIngot"] body {
+    background: url('https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg') center/cover fixed;
+    color: var(--text-primary);
+    font-family: 'Microsoft JhengHei', 'PingFang TC', 'Helvetica Neue', sans-serif;
+}
+
+:root[data-theme="goldIngot"] body::before {
+    display: none;
+}
+
+/* 頁面背景透明化 */
+:root[data-theme="goldIngot"] .page-ledger,
+:root[data-theme="goldIngot"] .page-input,
+:root[data-theme="goldIngot"] .page-chart,
+:root[data-theme="goldIngot"] .page-budget,
+:root[data-theme="goldIngot"] .page-monthly-planner,
+:root[data-theme="goldIngot"] .page-daily-budget,
+:root[data-theme="goldIngot"] .page-settings,
+:root[data-theme="goldIngot"] .page-category-manage,
+:root[data-theme="goldIngot"] .page-investment,
+:root[data-theme="goldIngot"] .page-wallet,
+:root[data-theme="goldIngot"] .page-history,
+:root[data-theme="goldIngot"] .page-planner {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+/* 卡片樣式 - 不透明設計，金色邊框 */
+:root[data-theme="goldIngot"] .card,
+:root[data-theme="goldIngot"] .record-card,
+:root[data-theme="goldIngot"] .investment-card,
+:root[data-theme="goldIngot"] .accounting-card,
+:root[data-theme="goldIngot"] .budget-card,
+:root[data-theme="goldIngot"] .wallet-card,
+:root[data-theme="goldIngot"] .planning-card,
+:root[data-theme="goldIngot"] .settings-card,
+:root[data-theme="goldIngot"] .holding-card,
+:root[data-theme="goldIngot"] .buying-card,
+:root[data-theme="goldIngot"] .selling-card,
+:root[data-theme="goldIngot"] .dividend-card,
+:root[data-theme="goldIngot"] .regular-investment-card {
+    background: var(--bg-card) !important;
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--card-border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-primary);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 卡片金色光暈效果 */
+:root[data-theme="goldIngot"] .card::before,
+:root[data-theme="goldIngot"] .investment-card::before,
+:root[data-theme="goldIngot"] .accounting-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+    border-radius: 16px;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+:root[data-theme="goldIngot"] .card:hover,
+:root[data-theme="goldIngot"] .record-card:hover,
+:root[data-theme="goldIngot"] .investment-card:hover,
+:root[data-theme="goldIngot"] .accounting-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary-lg);
+    border-color: var(--color-primary);
+}
+
+/* 按鈕樣式 - 金色豪華風格 */
+:root[data-theme="goldIngot"] .btn-primary,
+:root[data-theme="goldIngot"] .btn-buy,
+:root[data-theme="goldIngot"] .btn-regular-investment {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-primary-dark) 100%);
+    color: var(--text-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 223, 107, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 按鈕金色光澤動畫 */
+:root[data-theme="goldIngot"] .btn-primary::before,
+:root[data-theme="goldIngot"] .btn-buy::before,
+:root[data-theme="goldIngot"] .btn-regular-investment::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+:root[data-theme="goldIngot"] .btn-primary:hover::before,
+:root[data-theme="goldIngot"] .btn-buy:hover::before,
+:root[data-theme="goldIngot"] .btn-regular-investment:hover::before {
+    left: 100%;
+}
+
+:root[data-theme="goldIngot"] .btn-primary:hover,
+:root[data-theme="goldIngot"] .btn-buy:hover,
+:root[data-theme="goldIngot"] .btn-regular-investment:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent-light) 50%, var(--color-primary) 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(255, 223, 107, 0.5);
+    border-color: var(--color-accent);
+}
+
+:root[data-theme="goldIngot"] .btn-secondary {
+    background: var(--bg-white);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="goldIngot"] .btn-secondary:hover {
+    background: var(--color-primary);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(255, 223, 107, 0.3);
+}
+
+/* 返回按鈕 - 藍色寶石風格 */
+:root[data-theme="goldIngot"] .btn-back,
+:root[data-theme="goldIngot"] .btn-return {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(90, 160, 220, 0.3);
+}
+
+:root[data-theme="goldIngot"] .btn-back:hover,
+:root[data-theme="goldIngot"] .btn-return:hover {
+    background: linear-gradient(135deg, var(--color-secondary-dark) 0%, var(--color-secondary) 100%);
+    transform: translateX(-2px);
+    box-shadow: 0 6px 20px rgba(90, 160, 220, 0.4);
+}
+
+/* 小森對話框 - 豪華風格 */
+:root[data-theme="goldIngot"] .xiaosen-dialog,
+:root[data-theme="goldIngot"] .advisor-dialog {
+    background: var(--bg-card);
+    border: 3px solid var(--card-border-color);
+    border-radius: 20px;
+    box-shadow: var(--shadow-primary-lg);
+    max-width: 90vw;
+    width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    resize: both;
+    position: relative;
+}
+
+/* 對話框金色裝飾邊框 */
+:root[data-theme="goldIngot"] .xiaosen-dialog::before,
+:root[data-theme="goldIngot"] .advisor-dialog::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, var(--color-primary), var(--color-accent), var(--color-secondary), var(--color-primary));
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+:root[data-theme="goldIngot"] .xiaosen-dialog .dialog-header,
+:root[data-theme="goldIngot"] .advisor-dialog .dialog-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-secondary) 100%);
+    color: var(--text-primary);
+    padding: 16px 20px;
+    border-radius: 17px 17px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    border-bottom: 2px solid var(--card-border-color);
+}
+
+:root[data-theme="goldIngot"] .xiaosen-dialog .dialog-content,
+:root[data-theme="goldIngot"] .advisor-dialog .dialog-content {
+    padding: 20px;
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* 智慧分析和智慧提醒卡片 - 金色豪華版 */
+:root[data-theme="goldIngot"] .smart-analysis-card,
+:root[data-theme="goldIngot"] .smart-reminder-card {
+    background: var(--bg-card);
+    border: 2px solid var(--card-border-color);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: var(--shadow-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 智慧卡片金色裝飾 */
+:root[data-theme="goldIngot"] .smart-analysis-card::after,
+:root[data-theme="goldIngot"] .smart-reminder-card::after {
+    content: '💰';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    opacity: 0.3;
+}
+
+:root[data-theme="goldIngot"] .smart-analysis-card h3,
+:root[data-theme="goldIngot"] .smart-reminder-card h3 {
+    color: var(--color-primary);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+:root[data-theme="goldIngot"] .smart-analysis-card h3::before,
+:root[data-theme="goldIngot"] .smart-reminder-card h3::before {
+    content: '🏆';
+    font-size: 20px;
+}
+
+:root[data-theme="goldIngot"] .smart-analysis-card p,
+:root[data-theme="goldIngot"] .smart-reminder-card p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* 彈窗樣式 - 豪華版 */
+:root[data-theme="goldIngot"] .modal,
+:root[data-theme="goldIngot"] .popup,
+:root[data-theme="goldIngot"] .dialog {
+    background: var(--bg-card);
+    border: 3px solid var(--card-border-color);
+    border-radius: 20px;
+    box-shadow: var(--shadow-primary-lg);
+    backdrop-filter: blur(15px);
+}
+
+:root[data-theme="goldIngot"] .modal-header,
+:root[data-theme="goldIngot"] .popup-header,
+:root[data-theme="goldIngot"] .dialog-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-secondary) 100%);
+    color: var(--text-primary);
+    border-radius: 17px 17px 0 0;
+    font-weight: 700;
+}
+
+/* 表格樣式 - 金色邊框 */
+:root[data-theme="goldIngot"] table {
+    background: var(--bg-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-primary);
+    border: 2px solid var(--card-border-color);
+}
+
+:root[data-theme="goldIngot"] th {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    color: var(--text-primary);
+    font-weight: 700;
+    padding: 12px;
+    border-bottom: 2px solid var(--card-border-color);
+}
+
+:root[data-theme="goldIngot"] td {
+    border-bottom: 1px solid var(--table-border-color);
+    padding: 12px;
+    color: var(--text-primary);
+}
+
+:root[data-theme="goldIngot"] tr:hover td {
+    background: var(--bg-light);
+}
+
+/* 表單元素 - 金色邊框 */
+:root[data-theme="goldIngot"] input,
+:root[data-theme="goldIngot"] select,
+:root[data-theme="goldIngot"] textarea {
+    background: var(--bg-white);
+    border: 2px solid var(--control-border-color);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="goldIngot"] input:focus,
+:root[data-theme="goldIngot"] select:focus,
+:root[data-theme="goldIngot"] textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-rgba-20);
+    outline: none;
+}
+
+/* 導航欄 - 金色裝飾 */
+:root[data-theme="goldIngot"] .navbar,
+:root[data-theme="goldIngot"] .nav-header {
+    background: var(--bg-card);
+    border-bottom: 3px solid var(--card-border-color);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+:root[data-theme="goldIngot"] .navbar::after,
+:root[data-theme="goldIngot"] .nav-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-secondary));
+}
+
+:root[data-theme="goldIngot"] .nav-item {
+    color: var(--text-primary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+:root[data-theme="goldIngot"] .nav-item:hover,
+:root[data-theme="goldIngot"] .nav-item.active {
+    color: var(--color-primary);
+    background: var(--bg-light);
+    border: 1px solid var(--card-border-color);
+}
+
+/* 側邊欄 - 金色點綴 */
+:root[data-theme="goldIngot"] .sidebar,
+:root[data-theme="goldIngot"] .action-side {
+    background: var(--action-side-bg);
+    border-right: 3px solid var(--card-border-color);
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="goldIngot"] .sidebar-item {
+    color: var(--action-side-text);
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin: 4px 8px;
+    padding: 8px 12px;
+}
+
+:root[data-theme="goldIngot"] .sidebar-item:hover {
+    background: var(--action-side-bg-hover);
+    border: 1px solid var(--card-border-color);
+}
+
+/* 字體美化 - 豪華字體系統 */
+:root[data-theme="goldIngot"] {
+    --font-family-primary: 'Microsoft JhengHei', 'PingFang TC', 'Helvetica Neue', sans-serif;
+    --font-family-secondary: 'Noto Sans CJK TC', 'Source Han Sans TC', sans-serif;
+    --font-family-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+    --font-family-luxury: 'Georgia', 'Times New Roman', serif;
+}
+
+:root[data-theme="goldIngot"] body,
+:root[data-theme="goldIngot"] .card,
+:root[data-theme="goldIngot"] .btn,
+:root[data-theme="goldIngot"] input,
+:root[data-theme="goldIngot"] select,
+:root[data-theme="goldIngot"] textarea {
+    font-family: var(--font-family-primary);
+}
+
+:root[data-theme="goldIngot"] h1,
+:root[data-theme="goldIngot"] h2,
+:root[data-theme="goldIngot"] h3,
+:root[data-theme="goldIngot"] h4,
+:root[data-theme="goldIngot"] h5,
+:root[data-theme="goldIngot"] h6 {
+    font-family: var(--font-family-secondary);
+    font-weight: 700;
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(255, 223, 107, 0.2);
+}
+
+/* 特殊標題豪華效果 */
+:root[data-theme="goldIngot"] .xiaosen-dialog .dialog-header,
+:root[data-theme="goldIngot"] .modal-header,
+:root[data-theme="goldIngot"] .popup-header,
+:root[data-theme="goldIngot"] .dialog-header {
+    font-family: var(--font-family-luxury);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    :root[data-theme="goldIngot"] .xiaosen-dialog,
+    :root[data-theme="goldIngot"] .advisor-dialog {
+        width: 95vw;
+        max-width: none;
+        margin: 10px;
+        border-radius: 12px;
+    }
+    
+    :root[data-theme="goldIngot"] .card {
+        margin: 8px;
+        padding: 16px;
+        border-radius: 12px;
+    }
+    
+    :root[data-theme="goldIngot"] .btn-primary,
+    :root[data-theme="goldIngot"] .btn-buy,
+    :root[data-theme="goldIngot"] .btn-regular-investment {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="goldIngot"] .xiaosen-dialog,
+    :root[data-theme="goldIngot"] .advisor-dialog {
+        width: 98vw;
+        margin: 5px;
+        border-radius: 8px;
+    }
+    
+    :root[data-theme="goldIngot"] .card {
+        padding: 12px;
+        border-radius: 8px;
+        border-width: 1px;
+    }
+    
+    :root[data-theme="goldIngot"] .btn-primary,
+    :root[data-theme="goldIngot"] .btn-buy,
+    :root[data-theme="goldIngot"] .btn-regular-investment {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}
+
+/* 動畫效果 - 金色閃爍 */
+@keyframes goldIngotGlow {
+    0% { 
+        box-shadow: 0 0 20px rgba(255, 223, 107, 0.3);
+        border-color: var(--color-primary);
+    }
+    50% { 
+        box-shadow: 0 0 30px rgba(255, 223, 107, 0.6);
+        border-color: var(--color-accent);
+    }
+    100% { 
+        box-shadow: 0 0 20px rgba(255, 223, 107, 0.3);
+        border-color: var(--color-primary);
+    }
+}
+
+:root[data-theme="goldIngot"] .card:hover {
+    animation: goldIngotGlow 2s ease-in-out infinite;
+}
+
+/* 按鈕脈動效果 */
+@keyframes goldIngotPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+:root[data-theme="goldIngot"] .btn-primary:hover,
+:root[data-theme="goldIngot"] .btn-buy:hover,
+:root[data-theme="goldIngot"] .btn-regular-investment:hover {
+    animation: goldIngotPulse 1s ease-in-out infinite;
+}
+
+/* 滾動條樣式 - 金色主題 */
+:root[data-theme="goldIngot"] ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+:root[data-theme="goldIngot"] ::-webkit-scrollbar-track {
+    background: var(--bg-light);
+    border-radius: 4px;
+}
+
+:root[data-theme="goldIngot"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    border-radius: 4px;
+}
+
+:root[data-theme="goldIngot"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-accent-dark));
+}
+
+/* 特殊裝飾元素 */
+:root[data-theme="goldIngot"] .card::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, var(--color-primary), var(--color-accent));
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+/* 元寶圖標裝飾 */
+:root[data-theme="goldIngot"] .investment-card::before {
+    content: '🏆';
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    font-size: 16px;
+    opacity: 0.6;
+    z-index: 1;
+}
+
+:root[data-theme="goldIngot"] .accounting-card::before {
+    content: '💰';
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    font-size: 16px;
+    opacity: 0.6;
+    z-index: 1;
+}
