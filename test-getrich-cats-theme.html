@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可愛發財貓主題測試</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="getrich-cats-theme.css">
+    <script src="js/theme.js"></script>
+</head>
+<body data-theme="getrichCats">
+    <div class="test-container">
+        <h1>可愛發財貓主題測試</h1>
+        
+        <!-- 測試卡片 -->
+        <div class="card">
+            <h2>投資卡片</h2>
+            <p>這是一個投資管理卡片測試</p>
+            <button class="btn-buy">買入</button>
+            <button class="btn-regular-savings">定期定額</button>
+        </div>
+        
+        <div class="card">
+            <h2>記帳卡片</h2>
+            <p>這是一個記帳卡片測試</p>
+            <button class="btn-primary">新增記錄</button>
+        </div>
+        
+        <div class="card">
+            <h2>智慧分析卡片</h2>
+            <p>這是一個智慧分析卡片測試</p>
+        </div>
+        
+        <div class="card">
+            <h2>智慧提醒卡片</h2>
+            <p>這是一個智慧提醒卡片測試</p>
+        </div>
+        
+        <!-- 測試小森對話框 -->
+        <div class="xiaosen-dialog">
+            <div class="dialog-header">
+                <h3>小森對話框</h3>
+            </div>
+            <div class="dialog-content">
+                <p>這是小森對話框的測試內容</p>
+                <button class="btn-back">返回</button>
+            </div>
+        </div>
+        
+        <!-- 測試輸入框 -->
+        <div class="input-test">
+            <input type="text" placeholder="測試輸入框">
+            <textarea placeholder="測試文字區域"></textarea>
+            <select>
+                <option>選項1</option>
+                <option>選項2</option>
+            </select>
+        </div>
+        
+        <!-- 測試表格 -->
+        <table>
+            <thead>
+                <tr>
+                    <th>項目</th>
+                    <th>金額</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>投資收益</td>
+                    <td>$1,000</td>
+                    <td><button class="btn-success">查看</button></td>
+                </tr>
+                <tr>
+                    <td>定期儲蓄</td>
+                    <td>$500</td>
+                    <td><button class="btn-warning">編輯</button></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- 主題切換按鈕 -->
+        <div class="theme-switcher">
+            <button onclick="switchTheme('getrichCats')">可愛發財貓</button>
+            <button onclick="switchTheme('blue')">藍色主題</button>
+            <button onclick="switchTheme('pink')">粉色主題</button>
+        </div>
+    </div>
+    
+    <style>
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .card {
+            margin: 20px 0;
+            padding: 20px;
+        }
+        
+        .xiaosen-dialog {
+            margin: 20px 0;
+            padding: 20px;
+        }
+        
+        .input-test {
+            margin: 20px 0;
+            padding: 20px;
+        }
+        
+        .input-test input,
+        .input-test textarea,
+        .input-test select {
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+        }
+        
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .theme-switcher button {
+            margin: 5px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+    
+    <script>
+        function switchTheme(themeId) {
+            document.body.setAttribute('data-theme', themeId);
+            localStorage.setItem('selectedTheme', themeId);
+        }
+        
+        // 初始化主題
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentTheme = localStorage.getItem('selectedTheme') || 'getrichCats';
+            switchTheme(currentTheme);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>測試可愛發財貓主題</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="getrich-cats-theme.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .theme-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .theme-buttons button {
+            display: block;
+            margin: 5px 0;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-buttons button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-buy {
+            background: #dc143c;
+            color: white;
+        }
+        
+        .btn-regular-savings {
+            background: #dc143c;
+            color: white;
+        }
+        
+        .btn-primary {
+            background: #ff69b4;
+            color: white;
+        }
+        
+        .btn-back {
+            background: #ffd700;
+            color: #333;
+        }
+        
+        input, textarea, select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .xiaosen-dialog {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .dialog-header {
+            background: linear-gradient(135deg, #ff69b4 0%, #dc143c 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body data-theme="blue">
+    <div class="theme-buttons">
+        <h4>主題選擇器</h4>
+        <button onclick="switchTheme('getrichCats')">🐱 可愛發財貓</button>
+        <button onclick="switchTheme('blue')">💙 藍色主題</button>
+        <button onclick="switchTheme('pink')">💖 粉色主題</button>
+        <button onclick="switchTheme('money')">💸 金錢滿滿</button>
+        <button onclick="switchTheme('cutePastel')">🌸 可愛粉彩</button>
+    </div>
+
+    <div class="test-container">
+        <h1>🐱 可愛發財貓主題測試</h1>
+        <p>這是一個測試頁面，用於驗證「可愛發財貓」主題是否正確顯示。</p>
+        
+        <!-- 測試卡片 -->
+        <div class="card">
+            <h2>📊 投資卡片</h2>
+            <p>這是一個投資管理卡片，測試主題是否正確應用。</p>
+            <button class="btn btn-buy">買入</button>
+            <button class="btn btn-regular-savings">定期定額</button>
+        </div>
+        
+        <div class="card">
+            <h2>💰 記帳卡片</h2>
+            <p>這是一個記帳卡片，測試主題樣式。</p>
+            <button class="btn btn-primary">新增記錄</button>
+        </div>
+        
+        <div class="card">
+            <h2>🧠 智慧分析卡片</h2>
+            <p>這是一個智慧分析卡片測試。</p>
+        </div>
+        
+        <div class="card">
+            <h2>🔔 智慧提醒卡片</h2>
+            <p>這是一個智慧提醒卡片測試。</p>
+        </div>
+        
+        <!-- 測試小森對話框 -->
+        <div class="xiaosen-dialog">
+            <div class="dialog-header">
+                <h3>🐱 小森對話框</h3>
+            </div>
+            <div class="dialog-content">
+                <p>這是小森對話框的測試內容，主題應該會讓它變成可愛的桃色風格。</p>
+                <button class="btn btn-back">返回</button>
+            </div>
+        </div>
+        
+        <!-- 測試輸入框 -->
+        <div class="card">
+            <h3>輸入框測試</h3>
+            <input type="text" placeholder="測試輸入框">
+            <textarea placeholder="測試文字區域"></textarea>
+            <select>
+                <option>選項1</option>
+                <option>選項2</option>
+            </select>
+        </div>
+        
+        <!-- 測試表格 -->
+        <div class="card">
+            <h3>表格測試</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>金額</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>投資收益</td>
+                        <td>$1,000</td>
+                        <td><button class="btn btn-primary">查看</button></td>
+                    </tr>
+                    <tr>
+                        <td>定期儲蓄</td>
+                        <td>$500</td>
+                        <td><button class="btn btn-primary">編輯</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>🎯 測試說明</h2>
+            <ul>
+                <li>✅ 點擊右上角的主題按鈕切換不同主題</li>
+                <li>✅ 「可愛發財貓」主題應該顯示桃色背景和貓咪圖片</li>
+                <li>✅ 卡片應該變成不透明的白色背景</li>
+                <li>✅ 按鈕應該有紅色漸層效果</li>
+                <li>✅ 小森對話框應該有桃色標題欄</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        function switchTheme(themeId) {
+            document.body.setAttribute('data-theme', themeId);
+            localStorage.setItem('selectedTheme', themeId);
+            console.log('切換到主題:', themeId);
+            
+            // 顯示主題信息
+            const themeNames = {
+                'getrichCats': '可愛發財貓',
+                'blue': '藍色主題',
+                'pink': '粉色主題',
+                'money': '金錢滿滿',
+                'cutePastel': '可愛粉彩'
+            };
+            
+            console.log(`✅ 已切換到 ${themeNames[themeId]} 主題`);
+        }
+        
+        // 初始化主題
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentTheme = localStorage.getItem('selectedTheme') || 'blue';
+            switchTheme(currentTheme);
+            
+            console.log('🎨 主題測試頁面已載入');
+            console.log('可用的主題按鈕：');
+            console.log('- 🐱 可愛發財貓');
+            console.log('- 💙 藍色主題');
+            console.log('- 💖 粉色主題');
+            console.log('- 💸 金錢滿滿');
+            console.log('- 🌸 可愛粉彩');
+        });
+    </script>
+</body>
+</html>

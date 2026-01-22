@@ -6078,26 +6078,20 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
     });
 }
 
- // 從 API 獲取股票現價
+// 從 API 獲取股票現價
 async function fetchStockPrice(stockCode, options = {}) {
     const { allowPrompt = true, maxAgeMs = 6 * 60 * 60 * 1000 } = options;
-   
-   try {
+    let savedPrice = null;
+
+    try {
         // 處理債券 ETF 和特殊格式
-        // 台灣股票/ETF 格式：2330.TW 或 00751B.TW
-        // 注意：債券 ETF 代碼如 00751B 需要保持 B 後綴
         let yahooSymbol;
-        
-        // 檢查是否為債券 ETF（以 B 結尾）或其他特殊格式
         if (stockCode.endsWith('B') || stockCode.endsWith('L') || stockCode.endsWith('R') || stockCode.endsWith('U') || stockCode.endsWith('K')) {
-            // 債券 ETF 或特殊 ETF，保持原格式
             yahooSymbol = `${stockCode}.TWO`;
         } else if (stockCode.startsWith('A0')) {
-            // 政府債券代碼（如 A04109），Yahoo Finance 可能不支持，返回 null
             console.log(`債券代碼 ${stockCode} 無法從 Yahoo Finance 獲取價格`);
             return null;
         } else {
-            // 一般股票或 ETF
             yahooSymbol = `${stockCode}.TW`;
         }
 
@@ -6105,7 +6099,7 @@ async function fetchStockPrice(stockCode, options = {}) {
             ? [`${stockCode}.TWO`, `${stockCode}.TW`]
             : [yahooSymbol];
 
-        // 1) Try local proxy (opt-in)
+        // 1) 本機代理（可選）
         const proxyEndpoint = 'http://localhost:5000/api/quote?symbols=';
         const enableLocalQuoteProxy = String(localStorage.getItem('useLocalQuoteProxy') || '').toLowerCase() === 'true';
         if (enableLocalQuoteProxy && !isLocalQuoteProxyInCooldown()) {
@@ -6116,27 +6110,23 @@ async function fetchStockPrice(stockCode, options = {}) {
                     const proxyUrl = `${proxyEndpoint}${encodeURIComponent(candidateSymbol)}`;
                     const proxyResponse = await fetch(proxyUrl, {
                         method: 'GET',
-                        headers: {
-                            'Accept': 'application/json'
-                        },
+                        headers: { 'Accept': 'application/json' },
                         signal: controller.signal
                     });
 
-                    if (!proxyResponse || !proxyResponse.ok) {
-                        continue;
-                    }
+                    if (!proxyResponse || !proxyResponse.ok) continue;
 
                     const responseText = await proxyResponse.text();
                     let data;
                     try {
                         data = JSON.parse(responseText);
-                    } catch (parseError) {
+                    } catch (_) {
                         continue;
                     }
 
-                    if (data && data.quoteResponse && data.quoteResponse.result && data.quoteResponse.result.length > 0) {
+                    if (data?.quoteResponse?.result?.length) {
                         const q = data.quoteResponse.result[0];
-                        const previousClose = q.regularMarketPreviousClose || q.regularMarketPreviousClosePrice || q.regularMarketPreviousClose || null;
+                        const previousClose = q.regularMarketPreviousClose || q.regularMarketPreviousClosePrice || null;
                         if (previousClose && previousClose > 0) {
                             saveStockPreviousClosePrice(stockCode, previousClose);
                         }
@@ -6149,13 +6139,9 @@ async function fetchStockPrice(stockCode, options = {}) {
                         }
                     }
 
-                    if (data && data.chart && data.chart.result) {
-                        if (data.chart.result.length === 0) {
-                            continue;
-                        }
-
+                    if (data?.chart?.result?.length) {
                         const result = data.chart.result[0];
-                        if (result && result.meta && !result.error) {
+                        if (result?.meta && !result.error) {
                             const previousClose = result.meta.previousClose || result.meta.regularMarketPreviousClose || null;
                             if (previousClose && previousClose > 0) {
                                 saveStockPreviousClosePrice(stockCode, previousClose);
@@ -6170,9 +6156,7 @@ async function fetchStockPrice(stockCode, options = {}) {
                         }
                     }
                 } catch (proxyError) {
-                    if (proxyError.name === 'AbortError') {
-                        continue;
-                    }
+                    if (proxyError.name === 'AbortError') continue;
                     markQuoteProxyFailed();
                     maybeAlertQuoteProxyDown();
                     break;
@@ -6182,7 +6166,7 @@ async function fetchStockPrice(stockCode, options = {}) {
             }
         }
 
-        // 2) Public proxy fallback for ALL symbols，附加輕量重試
+        // 2) 公開代理重試
         for (let attempt = 0; attempt < 2; attempt++) {
             for (const candidateSymbol of symbolCandidates) {
                 const yahooChartUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${candidateSymbol}?interval=1d&range=1d`;
@@ -6195,99 +6179,59 @@ async function fetchStockPrice(stockCode, options = {}) {
             }
         }
 
-        // 如果所有代理都失敗，嘗試使用備用方案（僅針對債券 ETF）
-        // 注意：瀏覽器控制台可能仍會顯示 404 等錯誤，這是正常的，代碼會正確處理
+        // 3) 債券 ETF 備援流程
         if (stockCode.endsWith('B')) {
             console.log(`債券 ETF ${stockCode} 無法從 Yahoo Finance 獲取價格，嘗試備用方法...`);
-            
-            // 嘗試方案1：使用不同的 Yahoo Finance 格式（移除 .TW 後綴）
+
             try {
-                const alternativeSymbol = `${stockCode}.TWO`; // 不帶 .TW
+                const alternativeSymbol = `${stockCode}.TWO`;
                 const testUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${alternativeSymbol}?interval=1d&range=1d`;
-                
-                // 嘗試通過代理訪問
+
                 for (const proxyUrl of publicQuoteProxies) {
                     try {
                         let proxyResponse;
                         if (proxyUrl.includes('allorigins')) {
-                            const yahooUrl = encodeURIComponent(testUrl);
-                            proxyResponse = await fetch(proxyUrl + yahooUrl);
-                        } else if (proxyUrl.includes('codetabs')) {
                             proxyResponse = await fetch(proxyUrl + encodeURIComponent(testUrl));
-                        } else if (proxyUrl.includes('corsproxy.io')) {
+                        } else if (proxyUrl.includes('codetabs') || proxyUrl.includes('corsproxy.io')) {
                             proxyResponse = await fetch(proxyUrl + encodeURIComponent(testUrl));
                         } else {
                             proxyResponse = await fetch(proxyUrl + testUrl);
                         }
-                        
-                        // 檢查響應狀態
-                        if (!proxyResponse || proxyResponse.status === 404) {
-                            continue; // 靜默跳過 404 或無響應
-                        }
-                        
+
+                        if (!proxyResponse || proxyResponse.status === 404) continue;
+
                         if (proxyResponse.status === 200 && proxyResponse.ok) {
                             const responseText = await proxyResponse.text();
                             try {
                                 const data = JSON.parse(responseText);
-                                
-                                if (data && data.chart && data.chart.result && data.chart.result.length > 0) {
+                                if (data?.chart?.result?.length) {
                                     const result = data.chart.result[0];
-                                    if (result && result.meta) {
+                                    if (result?.meta) {
                                         const currentPrice = result.meta.regularMarketPrice || result.meta.previousClose || null;
                                         if (currentPrice && currentPrice > 0) {
-                                            saveStockCurrentPrice(stockCode, currentPrice, false); // false = 自動獲取
+                                            saveStockCurrentPrice(stockCode, currentPrice, false);
                                             console.log(`✓ 通過備用格式成功獲取 ${stockCode} 價格: ${currentPrice}`);
                                             return currentPrice;
                                         }
                                     }
                                 }
-                            } catch (parseError) {
-                                continue; // 解析失敗，嘗試下一個
+                            } catch (_) {
+                                continue;
                             }
                         }
-                    } catch (altError) {
-                        continue; // 靜默跳過所有錯誤
+                    } catch (_) {
+                        continue;
                     }
                 }
             } catch (backupError) {
                 console.log('備用格式嘗試失敗:', backupError);
             }
-            
-            // 嘗試方案2：檢查是否有已保存的價格
-            const savedPrice = getStockCurrentPrice(stockCode);
+
+            savedPrice = getStockCurrentPrice(stockCode);
             if (savedPrice && savedPrice > 0) {
                 console.log(`使用已保存的 ${stockCode} 價格: ${savedPrice}`);
                 return savedPrice;
             }
-
-            // 如果都沒有，返回 null 交由通用流程處理
-        }
-        
-        // 記錄警告信息
-        if (stockCode.endsWith('B')) {
-            console.warn(`債券 ETF ${stockCode} 無法自動獲取價格`);
-            console.info(`可能原因：該債券 ETF 不在 Yahoo Finance 數據庫中，或代碼格式不同`);
-        } else {
-            console.warn(`代碼 ${stockCode} 無法獲取價格`);
-            console.info(`請在個股詳情頁面手動輸入價格`);
-        }
-        
-        // 如果有已保存的價格，返回它（即使不是今天的）
-        const savedPrice = getStockCurrentPrice(stockCode);
-        if (savedPrice) {
-            return savedPrice;
-        }
-        
-        throw new Error('所有代理服務都無法獲取價格');
-    } catch (error) {
-        const errorMsg = error.message || '未知錯誤';
-        console.error(`獲取 ${stockCode} 股價失敗:`, errorMsg);
-        const savedPrice = getStockCurrentPrice(stockCode);
-
-        // 顯示友好的提示框（保持手動輸入管道）
-        if (allowPrompt) {
-            const stockName = findStockName(stockCode) || stockCode;
-            const isBondETF = stockCode.endsWith('B');
 
             const manualPrice = await showStockPriceQueryModal({
                 stockCode,
@@ -6299,39 +6243,70 @@ async function fetchStockPrice(stockCode, options = {}) {
             if (manualPrice && !isNaN(manualPrice) && manualPrice > 0) {
                 saveStockCurrentPrice(stockCode, manualPrice, true);
                 console.log(`✓ 已保存手動輸入的 ${stockCode} 價格: ${manualPrice}`);
-                if (typeof updateInvestmentSummary === 'function') {
-                    updateInvestmentSummary();
-                }
-                if (typeof updateStockList === 'function') {
-                    updateStockList();
-                }
+                if (typeof updateInvestmentSummary === 'function') updateInvestmentSummary();
+                if (typeof updateStockList === 'function') updateStockList();
                 return manualPrice;
             }
         }
-        
-        // 如果是債券 ETF 或代碼不存在，給出更友好的提示
+
+        // 記錄警告信息
+        if (stockCode.endsWith('B')) {
+            console.warn(`債券 ETF ${stockCode} 無法自動獲取價格`);
+            console.info('可能原因：該債券 ETF 不在 Yahoo Finance 數據庫中，或代碼格式不同');
+        } else {
+            console.warn(`代碼 ${stockCode} 無法獲取價格`);
+            console.info('請在個股詳情頁面手動輸入價格');
+        }
+
+        savedPrice = getStockCurrentPrice(stockCode);
+        if (savedPrice) return savedPrice;
+
+        throw new Error('所有代理服務都無法獲取價格');
+    } catch (error) {
+        const errorMsg = error.message || '未知錯誤';
+        console.error(`獲取 ${stockCode} 股價失敗:`, errorMsg);
+
+        if (allowPrompt) {
+            const stockName = findStockName(stockCode) || stockCode;
+            const isBondETF = stockCode.endsWith('B');
+
+            const manualPrice = await showStockPriceQueryModal({
+                stockCode,
+                stockName,
+                isBondETF,
+                defaultPrice: getStockCurrentPrice(stockCode)
+            });
+
+            if (manualPrice && !isNaN(manualPrice) && manualPrice > 0) {
+                saveStockCurrentPrice(stockCode, manualPrice, true);
+                console.log(`✓ 已保存手動輸入的 ${stockCode} 價格: ${manualPrice}`);
+                if (typeof updateInvestmentSummary === 'function') updateInvestmentSummary();
+                if (typeof updateStockList === 'function') updateStockList();
+                return manualPrice;
+            }
+        }
+
         if (stockCode.endsWith('B')) {
             console.info(`💡 提示：債券 ETF ${stockCode} 無法自動獲取價格`);
-            console.info(`   請點擊該持股卡片，在「現價」欄位中手動輸入當前價格`);
+            console.info('   請點擊該持股卡片，在「現價」欄位中手動輸入當前價格');
         } else if (errorMsg.includes('不存在') || errorMsg.includes('404')) {
             console.info(`💡 提示：代碼 ${stockCode} 在 Yahoo Finance 中不存在`);
-            console.info(`   請在個股詳情頁面手動輸入價格`);
+            console.info('   請在個股詳情頁面手動輸入價格');
         }
-        
-        // 返回已保存的價格（如果有的話），否則返回 null
+
         return savedPrice || null;
     }
 }
 
 // 批量獲取多支股票的現價
 async function fetchMultipleStockPrices(stockCodes) {
-    const promises = stockCodes.map(code => 
+    const promises = stockCodes.map(code =>
         fetchStockPrice(code).catch(err => {
             console.error(`獲取 ${code} 股價失敗:`, err);
             return null;
         })
     );
-    
+
     const results = await Promise.all(promises);
     return results;
 }
