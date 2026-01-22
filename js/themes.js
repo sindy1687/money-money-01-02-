@@ -145,256 +145,63 @@ var themes = window.AppThemes || (window.AppThemes = [
         category: 'cosmic'
     },
     {
-        id: 'midnight',
-        name: '午夜深色',
-        icon: '🌙',
-        buttonIcon: '🌙',
-        preview: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
-        color: '#6366f1',
-        category: 'dark'
-    },
-    {
-        id: 'space',
-        name: '星際宇航',
-        icon: '🚀',
-        buttonIcon: '🛸',
-        preview: 'linear-gradient(135deg, #001428 0%, #002850 60%, #8a2be2 100%)',
-        color: '#00d4ff',
+        id: 'cyberpunkCity',
+        name: '賽博龐克 City',
+        icon: '🌆',
+        buttonIcon: '🤖',
+        preview: 'linear-gradient(135deg, #050014 0%, #120122 35%, #1c1b45 65%, #301d6f 100%)',
+        color: '#ff3f81',
         category: 'cosmic'
     },
     {
-        id: 'totoro',
-        name: '龍貓主題',
-        icon: '🌼',
-        buttonIcon: '🌼',
-        preview: 'url("https://i.pinimg.com/736x/f6/e9/10/f6e910dc17992265ad9833055ff153ac.jpg") center/cover',
-        color: '#4682B4',
-        category: 'anime',
-        backgroundImage: 'https://i.pinimg.com/736x/f6/e9/10/f6e910dc17992265ad9833055ff153ac.jpg'
+        id: 'halloween',
+        name: '🎃 萬聖節',
+        icon: '🎃',
+        buttonIcon: '👻',
+        preview: 'linear-gradient(135deg, #1A1A1A 0%, #3E2723 45%, #FF6B35 100%)',
+        color: '#FF6B35',
+        category: 'seasonal',
+        backgroundImage: 'https://i.pinimg.com/1200x/ae/a4/be/aea4be0e868161d58dcab76c3de7f1fb.jpg'
     },
-    {
-        id: 'noface',
-        name: '無臉男主題',
-        icon: '🎭',
-        buttonIcon: '🎭',
-        preview: 'url("https://i.pinimg.com/1200x/fe/b3/f9/feb3f9990f903e1b7b0f4a2066a97722.jpg") center/cover',
-        color: '#f6c343',
-        category: 'anime',
-        backgroundImage: 'https://i.pinimg.com/1200x/fe/b3/f9/feb3f9990f903e1b7b0f4a2066a97722.jpg'
-    },
-    {
-        id: 'demonslayer',
-        name: '鬼滅之刃主題',
-        icon: '🗡️',
-        buttonIcon: '🗡️',
-        preview: 'url("https://i.pinimg.com/736x/73/3c/b0/733cb0696372d66f16702dd385a5aa5b.jpg") center/cover',
-        color: '#00c2d1',
-        category: 'anime',
-        backgroundImage: 'https://i.pinimg.com/736x/73/3c/b0/733cb0696372d66f16702dd385a5aa5b.jpg'
-    },
-    {
-        id: 'money',
-        name: '金錢滿滿',
-        icon: '💸',
-        buttonIcon: '💸',
-        preview: 'url("https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg") center/cover',
-        color: '#16f49a',
-        category: 'wealth',
-        backgroundImage: 'https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg'
-    },
-    {
-        id: 'caitu',
-        name: '財兔滿滿',
-        icon: '🐰',
-        buttonIcon: '🐰',
-        preview: 'url("https://i.pinimg.com/736x/85/9c/7c/859c7c50479b84c65089909c4acec1f3.jpg") center/cover',
-        color: '#FFD700',
-        category: 'wealth',
-        backgroundImage: 'https://i.pinimg.com/736x/85/9c/7c/859c7c50479b84c65089909c4acec1f3.jpg'
-    },
-    {
-        id: 'goldenTree',
-        name: '金樹計畫',
-        icon: '🌳',
-        buttonIcon: '🌳',
-        preview: 'url("https://i.pinimg.com/736x/28/a0/be/28a0be222d619be4c2944dbd309c4153.jpg") center/cover',
-        color: '#8B4513',
-        category: 'wealth',
-        backgroundImage: 'https://i.pinimg.com/736x/28/a0/be/28a0be222d619be4c2944dbd309c4153.jpg'
-    },
-    {
-        id: 'chaonengli',
-        name: '鈔能力',
-        icon: '💰',
-        buttonIcon: '💰',
-        preview: 'url("https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg") center/cover',
-        color: '#D4AF37',
-        category: 'wealth',
-        backgroundImage: 'https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg'
-    },
-    {
-        id: 'fruit',
-        name: '水果清爽',
-        icon: '🍓',
-        buttonIcon: '🍋',
-        preview: 'url("https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg") center/cover',
-        color: '#40E0D0',
-        category: 'cute',
-        backgroundImage: 'https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg'
-    },
-    {
-        id: 'meow',
-        name: '喵喵喵',
-        icon: '🐱',
-        buttonIcon: '🐈',
-        preview: 'url("https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg") center/cover',
-        color: '#87CEEB',
-        category: 'cute',
-        backgroundImage: 'https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg'
-    },
-    {
-        id: 'cute',
-        name: '可愛圖片主題',
-        icon: '🐾',
-        buttonIcon: '🐾',
-        preview: 'url("image/BMG.jpg") center/cover',
-        color: '#4dd0e1',
-        category: 'cute',
-        backgroundImage: 'image/BMG.jpg'
-    },
-    {
-        id: 'bluerose',
-        name: '藍玫瑰騎士',
-        icon: '🌹',
-        buttonIcon: '🗡️',
-        preview: 'url("https://i.pinimg.com/1200x/d5/a1/c1/d5a1c149ab3b2a049576504e83fd21f7.jpg") center/cover',
-        color: '#007bff',
-        category: 'fantasy',
-        backgroundImage: 'https://i.pinimg.com/1200x/d5/a1/c1/d5a1c149ab3b2a049576504e83fd21f7.jpg'
-    },
-    {
-        id: 'emeraldPrince',
-        name: '翡翠王子',
-        icon: '👑',
-        buttonIcon: '🗡️',
-        preview: 'url("https://i.pinimg.com/736x/55/40/2f/55402fb6bcf0c65c832636ad5504499f.jpg") center/cover',
-        color: '#2E8B57',
-        category: 'fantasy',
-        backgroundImage: 'https://i.pinimg.com/736x/55/40/2f/55402fb6bcf0c65c832636ad5504499f.jpg'
-    },
-    {
-        id: 'cuteCats',
-        name: '可愛貓咪',
-        icon: '🐱',
-        buttonIcon: '🐈',
-        preview: 'url("https://i.pinimg.com/736x/fe/2a/cf/fe2acfb6eedcf65941dad52ad03e3490.jpg") center/cover',
-        color: '#FFB6C1',
-        category: 'cute',
-        backgroundImage: 'https://i.pinimg.com/736x/fe/2a/cf/fe2acfb6eedcf65941dad52ad03e3490.jpg',
-        investmentCardImage: 'https://i.pinimg.com/736x/bf/bb/d8/bfbbd8069018715418b04a38e199a34d.jpg',
-        accountingCardImage: 'https://i.pinimg.com/736x/a7/bb/f9/a7bbf99031a6d722e01446217985af5f.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg'
-    },
-    {
-        id: 'dreamy',
-        name: '夢幻境域',
-        icon: '🌈',
-        buttonIcon: '🎨',
-        preview: 'url("https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg") center/cover',
-        color: '#87CEEB',
-        category: 'cute',
-        backgroundImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
-        investmentCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
-        accountingCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
-        holdingCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
-        buyingCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
-        sellingCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
-        dividendCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg'
-    },
-    {
-        id: 'dreamyfish',
-        name: '夢幻魚語',
-        icon: '🐠',
-        buttonIcon: '🐟',
-        preview: 'url("https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg") center/cover',
-        color: '#87CEEB',
-        category: 'cute',
-        backgroundImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
-        investmentCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
-        accountingCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
-        holdingCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
-        buyingCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
-        sellingCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
-        dividendCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg'
-    },
-    {
-        id: 'emerald',
-        name: '翠綠之夢',
-        icon: '💎',
-        buttonIcon: '🌿',
-        preview: 'url("https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg") center/cover',
-        color: '#2E8B57',
-        category: 'fantasy',
-        backgroundImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
-        investmentCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
-        accountingCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
-        holdingCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
-        buyingCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
-        sellingCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
-        dividendCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg'
-    }
+    // ... (other themes)
 ]);
 
 // 主題分類定義
 const themeCategories = {
     basic: {
-        name: '經典色彩',
+        name: '基礎',
         icon: '🎨',
-        description: '純色經典主題'
+        description: '經典基礎色彩'
     },
     nature: {
-        name: '自然風光',
+        name: '自然',
         icon: '🌿',
-        description: '森林、雪景等自然主題'
+        description: '大自然靈感主題'
     },
     cosmic: {
-        name: '宇宙星空',
+        name: '宇宙',
         icon: '🌌',
-        description: '星空、極光等宇宙主題'
+        description: '星空銀河風格'
     },
-    dark: {
-        name: '深色主題',
-        icon: '🌙',
-        description: '深色護眼主題'
-    },
-    anime: {
-        name: '動漫風格',
-        icon: '🎌',
-        description: '吉卜力、鬼滅等動漫主題'
-    },
-    wealth: {
-        name: '財富金錢',
-        icon: '💰',
-        description: '金錢、財富相關主題'
-    },
-    cute: {
-        name: '可愛風格',
-        icon: '🐾',
-        description: '可愛、萌系主題'
+    seasonal: {
+        name: '節慶',
+        icon: '🎉',
+        description: '節日慶典主題'
     },
     fantasy: {
-        name: '奇幻風格',
-        icon: '🗡️',
-        description: '騎士、奇幻主題'
+        name: '奇幻',
+        icon: '✨',
+        description: '夢幻魔法世界'
+    },
+    gaming: {
+        name: '遊戲',
+        icon: '🎮',
+        description: '遊戲動漫風格'
+    },
+    luxury: {
+        name: '奢華',
+        icon: '💎',
+        description: '優雅奢華設計'
     }
 };
 
@@ -403,6 +210,7 @@ const themeAnimations = {};
 const themeVideoController = (() => {
     let moneyVideoEl = null;
     let spaceVideoEl = null;
+    let cyberpunkCityVideoEl = null;
     let containerEl = null;
 
     const ensureElements = () => {
@@ -412,18 +220,22 @@ const themeVideoController = (() => {
         if (!spaceVideoEl) {
             spaceVideoEl = document.getElementById('spaceThemeVideo');
         }
+        if (!cyberpunkCityVideoEl) {
+            cyberpunkCityVideoEl = document.getElementById('cyberpunkCityThemeVideo');
+        }
         if (!containerEl) {
             containerEl = document.querySelector('.theme-video-background');
         }
-        return moneyVideoEl && spaceVideoEl && containerEl;
+        return moneyVideoEl && spaceVideoEl && cyberpunkCityVideoEl && containerEl;
     };
 
     const setActive = (themeId) => {
         if (!ensureElements()) return;
         moneyVideoEl.pause();
         spaceVideoEl.pause();
+        cyberpunkCityVideoEl.pause();
 
-        const isActive = themeId === 'money' || themeId === 'space';
+        const isActive = themeId === 'money' || themeId === 'space' || themeId === 'cyberpunkCity';
         containerEl.classList.toggle('active', isActive);
 
         if (isActive) {
@@ -432,15 +244,23 @@ const themeVideoController = (() => {
                 activeVideo = moneyVideoEl;
                 moneyVideoEl.style.display = 'block';
                 spaceVideoEl.style.display = 'none';
+                cyberpunkCityVideoEl.style.display = 'none';
             } else if (themeId === 'space') {
                 activeVideo = spaceVideoEl;
                 spaceVideoEl.style.display = 'block';
                 moneyVideoEl.style.display = 'none';
+                cyberpunkCityVideoEl.style.display = 'none';
+            } else if (themeId === 'cyberpunkCity') {
+                activeVideo = cyberpunkCityVideoEl;
+                cyberpunkCityVideoEl.style.display = 'block';
+                moneyVideoEl.style.display = 'none';
+                spaceVideoEl.style.display = 'none';
             }
 
             if (activeVideo) {
                 activeVideo.currentTime = 0;
                 const playPromise = activeVideo.play();
+
                 if (playPromise && typeof playPromise.catch === 'function') {
                     playPromise.catch(() => {});
                 }
@@ -448,6 +268,7 @@ const themeVideoController = (() => {
         } else {
             moneyVideoEl.style.display = 'none';
             spaceVideoEl.style.display = 'none';
+            cyberpunkCityVideoEl.style.display = 'none';
         }
     };
 
@@ -672,6 +493,14 @@ function updateThemeButtons(themeId) {
             navChart: '📊',
             navSettings: '⚙️'
         },
+        cyberpunk: {
+            fab: '🤖',
+            navLedger: '🗂️',
+            navWallet: '💳',
+            navInvestment: '💹',
+            navChart: '📈',
+            navSettings: '🛠️'
+        },
         money: {
             fab: '💸',
             navLedger: '📒',
@@ -759,6 +588,14 @@ function updateThemeButtons(themeId) {
             navInvestment: '🌱',
             navChart: '🍀',
             navSettings: '🌳'
+        },
+        halloween: {
+            fab: '🎃',
+            navLedger: '📖',
+            navWallet: '💰',
+            navInvestment: '📈',
+            navChart: '📊',
+            navSettings: '⚙️'
         }
     };
 

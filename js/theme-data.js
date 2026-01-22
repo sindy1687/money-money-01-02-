@@ -279,6 +279,25 @@ var themes = window.AppThemes || (window.AppThemes = [
         dividendCardImage: 'https://i.pinimg.com/736x/26/c9/c0/26c9c0297b0cad3dfa8d6d5c41ccfc18.jpg'
     },
     {
+        id: 'cyberpunkCity',
+        name: '賽博龐克 City',
+        icon: '🌆',
+        buttonIcon: '🤖',
+        preview: 'url("https://i.pinimg.com/736x/3b/90/48/3b90488a1815b544a78493213c747ee0.jpg") center/cover',
+        color: '#ff3f81',
+        category: 'dynamic'
+    },
+    {
+        id: 'space',
+        name: '星際宇航',
+        icon: '🚀',
+        buttonIcon: '🛸',
+        preview: 'url("https://i.pinimg.com/1200x/d6/33/35/d63335d42debcc743999b03ce2edb23f.jpg") center/cover',
+        color: '#00d4ff',
+        category: 'cosmic',
+        backgroundVideo: 'https://v1.pinimg.com/videos/iht/720p/4e/00/d1/4e00d1999152ab007ebe4aef36d5e2c9.mp4'
+    },
+    {
         id: 'dreamyBlue',
         name: '夢幻藍夜',
         icon: '🌙',
@@ -296,6 +315,199 @@ var themes = window.AppThemes || (window.AppThemes = [
         buyingCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg',
         sellingCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg',
         dividendCardImage: 'https://i.pinimg.com/736x/6f/af/e2/6fafe2a9d450965373f9829a386805d1.jpg'
+    },
+    {
+        id: 'forest',
+        name: '森林清風',
+        icon: '🌿',
+        buttonIcon: '🌲',
+        preview: 'linear-gradient(135deg, #03130d 0%, #103524 45%, #2f855a 100%)',
+        color: '#2f855a',
+        category: 'nature'
+    },
+    {
+        id: 'snow',
+        name: '飄雪主題',
+        icon: '❄️',
+        buttonIcon: '❄️',
+        preview: 'linear-gradient(135deg, #e8f1ff 0%, #ffffff 100%)',
+        color: '#93c5fd',
+        category: 'nature'
+    },
+    {
+        id: 'dreamyGalaxy',
+        name: '夢幻星河',
+        icon: '🌌',
+        buttonIcon: '✨',
+        preview: 'url("https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg") center/cover',
+        color: '#B19CD9',
+        category: 'cosmic',
+        backgroundImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg'
+    },
+    {
+        id: 'firefly',
+        name: '螢火蟲主題',
+        icon: '✨',
+        buttonIcon: '✨',
+        preview: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+        color: '#ffd700',
+        category: 'cosmic'
+    },
+    {
+        id: 'neon',
+        name: '霓虹波動',
+        icon: '🟣',
+        buttonIcon: '🟣',
+        preview: 'linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%)',
+        color: '#ff006e',
+        category: 'cosmic'
+    },
+    {
+        id: 'halloween',
+        name: '🎃 萬聖節',
+        icon: '🎃',
+        buttonIcon: '👻',
+        preview: 'linear-gradient(135deg, #1a1a1a 0%, #ff6b35 100%)',
+        color: '#ff6b35',
+        category: 'dynamic',
+        backgroundImage: 'https://i.pinimg.com/1200x/ae/a4/be/aea4be0e868161d58dcab76c3de7f1fb.jpg'
+    },
+    {
+        id: 'midnight',
+        name: '午夜深色',
+        icon: '🌙',
+        buttonIcon: '🌙',
+        preview: 'linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%)',
+        color: '#ffffff',
+        category: 'dark'
+    },
+    {
+        id: 'totoro',
+        name: '龍貓主題',
+        icon: '🌼',
+        buttonIcon: '🌼',
+        preview: 'url("https://i.pinimg.com/736x/f6/e9/10/f6e910dc17992265ad9833055ff153ac.jpg") center/cover',
+        color: '#8fbc8f',
+        category: 'anime',
+        backgroundImage: 'https://i.pinimg.com/736x/f6/e9/10/f6e910dc17992265ad9833055ff153ac.jpg'
+    },
+    {
+        id: 'shinchan',
+        name: '蠟筆小新主題',
+        icon: '🌻',
+        buttonIcon: '🌻',
+        preview: 'url("https://i.pinimg.com/1200x/c3/66/a8/c366a88a9b62dee30d8628ddae89afa9.jpg") center/cover',
+        color: '#ffeb3b',
+        category: 'anime',
+        backgroundImage: 'https://i.pinimg.com/1200x/c3/66/a8/c366a88a9b62dee30d8628ddae89afa9.jpg'
+    },
+    {
+        id: 'cutePastel',
+        name: '可愛粉彩',
+        icon: '🌸',
+        buttonIcon: '🐰',
+        preview: 'linear-gradient(135deg, #ffeaa7 0%, #dfe6e9 50%, #a29bfe 100%)',
+        color: '#fd79a8',
+        category: 'cute',
+        backgroundImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg'
+    },
+    {
+        id: 'cuteCats',
+        name: '可愛貓咪',
+        icon: '🐱',
+        buttonIcon: '🐈',
+        preview: 'url("https://i.pinimg.com/736x/fe/2a/cf/fe2acfb6eedcf65941dad52ad03e3490.jpg") center/cover',
+        color: '#FFB6C1',
+        category: 'cute',
+        backgroundImage: 'https://i.pinimg.com/736x/fe/2a/cf/fe2acfb6eedcf65941dad52ad03e3490.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/bf/bb/d8/bfbbd8069018715418b04a38e199a34d.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/a7/bb/f9/a7bbf99031a6d722e01446217985af5f.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg'
+    },
+    {
+        id: 'dreamy',
+        name: '夢幻境域',
+        icon: '🌈',
+        buttonIcon: '🎨',
+        preview: 'url("https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg") center/cover',
+        color: '#87CEEB',
+        category: 'cute',
+        backgroundImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg'
+    },
+    {
+        id: 'dreamyfish',
+        name: '夢幻魚語',
+        icon: '🐠',
+        buttonIcon: '🐟',
+        preview: 'url("https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg") center/cover',
+        color: '#87CEEB',
+        category: 'cute',
+        backgroundImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/1200x/95/64/99/956499812b93c3c5bf8226051c7e627f.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg'
+    },
+    {
+        id: 'nightglowSeasons',
+        name: '夜光四季',
+        icon: '🌃',
+        buttonIcon: '✨',
+        preview: 'linear-gradient(135deg, #0a1929 0%, #1e3a5f 25%, #2e5266 50%, #1a365d 75%, #0f172a 100%)',
+        color: '#64ffda',
+        category: 'dynamic',
+        backgroundVideo: 'https://v1.pinimg.com/videos/iht/expMp4/c7/39/73/c739737a7c0471e01fa4e606507d0a48_720w.mp4'
+    },
+    {
+        id: 'goldIngot',
+        name: '金元寶',
+        icon: '🏆',
+        buttonIcon: '💰',
+        preview: 'url("https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg") center/cover',
+        color: '#FFDF6B',
+        category: 'wealth',
+        backgroundImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg'
     }
 ]);
 
@@ -340,6 +552,11 @@ const themeCategories = {
         name: '奇幻風格',
         icon: '🗡️',
         description: '騎士、奇幻主題'
+    },
+    dynamic: {
+        name: '動態背景',
+        icon: '🎬',
+        description: '影片動態背景主題'
     }
 };
 

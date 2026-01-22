@@ -154,6 +154,14 @@ const buttonIcons = {
         navChart: '📊',
         navSettings: '⚙️'
     },
+    cyberpunk: {
+        fab: '🤖',
+        navLedger: '🗂️',
+        navWallet: '💳',
+        navInvestment: '💹',
+        navChart: '📈',
+        navSettings: '🛠️'
+    },
     money: {
         fab: '💸',
         navLedger: '📒',

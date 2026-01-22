@@ -164,6 +164,25 @@ var themes = window.AppThemes || [
         category: 'cosmic'
     },
     {
+        id: 'cyberpunkCity',
+        name: '賽博龐克 City',
+        icon: '🌆',
+        buttonIcon: '🤖',
+        preview: 'url("https://i.pinimg.com/736x/3b/90/48/3b90488a1815b544a78493213c747ee0.jpg") center/cover',
+        color: '#ff3f81',
+        category: 'dynamic'
+    },
+    {
+        id: 'halloween',
+        name: '🎃 萬聖節',
+        icon: '🎃',
+        buttonIcon: '👻',
+        preview: 'linear-gradient(135deg, #1A1A1A 0%, #3E2723 45%, #FF6B35 100%)',
+        color: '#FF6B35',
+        category: 'celebration',
+        backgroundImage: 'https://i.pinimg.com/1200x/ae/a4/be/aea4be0e868161d58dcab76c3de7f1fb.jpg'
+    },
+    {
         id: 'midnight',
         name: '午夜深色',
         icon: '🌙',
@@ -177,7 +196,7 @@ var themes = window.AppThemes || [
         name: '星際宇航',
         icon: '🚀',
         buttonIcon: '🛸',
-        preview: 'linear-gradient(135deg, #001428 0%, #002850 60%, #8a2be2 100%)',
+        preview: 'url("https://i.pinimg.com/1200x/d6/33/35/d63335d42debcc743999b03ce2edb23f.jpg") center/cover',
         color: '#00d4ff',
         category: 'dynamic',
         backgroundVideo: 'https://v1.pinimg.com/videos/iht/720p/4e/00/d1/4e00d1999152ab007ebe4aef36d5e2c9.mp4'
@@ -460,6 +479,25 @@ var themes = window.AppThemes || [
         dividendCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg'
     },
     {
+        id: 'getrichCats',
+        name: '可愛發財貓',
+        icon: '🐱',
+        buttonIcon: '🈵',
+        preview: 'url("https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg") center/cover',
+        color: '#FF69B4',
+        category: 'wealth',
+        backgroundImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
+        investmentCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
+        accountingCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
+        holdingCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
+        buyingCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
+        sellingCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
+        dividendCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg'
+    },
+    {
         id: 'spacegold',
         name: '太空金彩',
         icon: '🚀',
@@ -477,25 +515,6 @@ var themes = window.AppThemes || [
         buyingCardImage: 'https://i.pinimg.com/736x/eb/33/27/eb3327b7caa47a87c1f4cee99344892e.jpg',
         sellingCardImage: 'https://i.pinimg.com/736x/eb/33/27/eb3327b7caa47a87c1f4cee99344892e.jpg',
         dividendCardImage: 'https://i.pinimg.com/736x/eb/33/27/eb3327b7caa47a87c1f4cee99344892e.jpg'
-    },
-    {
-        id: 'getrich',
-        name: '恭喜發財',
-        icon: '🧧',
-        buttonIcon: '💰',
-        preview: 'url("https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg") center/cover',
-        color: '#D42C2C',
-        category: 'wealth',
-        backgroundImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        investmentCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        accountingCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        holdingCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        buyingCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        sellingCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg',
-        dividendCardImage: 'https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg'
     },
     {
         id: 'festive',
@@ -535,8 +554,26 @@ var themes = window.AppThemes || [
         color: '#64ffda',
         category: 'dynamic',
         backgroundVideo: 'https://v1.pinimg.com/videos/iht/expMp4/c7/39/73/c739737a7c0471e01fa4e606507d0a48_720w.mp4'
-    }
-];
+    },
+    {
+        id: 'goldIngot',
+        name: '金元寶',
+        icon: '🏆',
+        buttonIcon: '💰',
+        preview: 'url("https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg") center/cover',
+        color: '#FFDF6B',
+        category: 'wealth',
+        backgroundImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg'
+    }];
 
 // 主題分類定義
 const themeCategories = {
@@ -590,7 +627,6 @@ const themeCategories = {
     }
 };
 
-const themeAnimations = {};
 const themeVideoController = (() => {
     let moneyVideoEl = null;
     let spaceVideoEl = null;
@@ -1070,14 +1106,6 @@ spacegold: {
     navChart: '🌟',
     navSettings: '🚀'
 },
-getrich: {
-    fab: '🧧',
-    navLedger: '🐱',
-    navWallet: '💰',
-    navInvestment: '📈',
-    navChart: '🎯',
-    navSettings: '🎊'
-},
 festive: {
     fab: '🎉',
     navLedger: '🎊',
@@ -1460,6 +1488,9 @@ function showThemeNotification(theme) {
 
 function showThemeSelector() {
     console.log('showThemeSelector called');
+    console.log('Total themes available:', themes.length);
+    console.log('Themes:', themes.map(t => ({ id: t.id, name: t.name, category: t.category })));
+    
     const modal = document.createElement('div');
     modal.className = 'theme-select-modal';
     console.log('Modal element created');
