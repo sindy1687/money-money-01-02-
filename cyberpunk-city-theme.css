@@ -30,7 +30,10 @@
     font-family: 'Space Grotesk', 'Poppins', 'Inter', sans-serif;
     min-height: 100vh;
 }
-
+:root[data-theme="cyberpunkCity"] .investment-card .stock-name,
+:root[data-theme="cyberpunkCity"] .stock-item-card .stock-name {
+    color: #ec82a7 !important;
+}
 :root[data-theme="cyberpunkCity"] body::before,
 :root[data-theme="cyberpunkCity"] body::after {
     display: none;
@@ -116,6 +119,12 @@
     color: var(--text-secondary) !important;
 }
 
+:root[data-theme="cyberpunkCity"] .investment-card .stock-name,
+:root[data-theme="cyberpunkCity"] .stock-item-card .stock-name,
+:root[data-theme="cyberpunkCity"] .stock-name {
+    color: #ec82a7 !important;
+}
+
 /* 投資卡片文字與徽章對比度加強 */
 :root[data-theme="cyberpunkCity"] .investment-card .stock-name,
 :root[data-theme="cyberpunkCity"] .investment-card .stock-symbol,
@@ -131,6 +140,10 @@
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
+:root[data-theme="cyberpunkCity"] .investment-card .stock-name {
+    color: #ec82a7 !important;
+}
+
 :root[data-theme="cyberpunkCity"] .investment-card .tag,
 :root[data-theme="cyberpunkCity"] .investment-card .badge,
 :root[data-theme="cyberpunkCity"] .investment-card .chip,
@@ -140,6 +153,28 @@
     color: var(--text-strong) !important;
     border: 1px solid rgba(255, 255, 255, 0.22) !important;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35) !important;
+}
+
+:root[data-theme="cyberpunkCity"] .investment-card,
+:root[data-theme="cyberpunkCity"] .stock-item-card {
+    background: linear-gradient(145deg, #080019 0%, #12012b 45%, #1b0d41 80%) !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+:root[data-theme="cyberpunkCity"] .investment-card::before,
+:root[data-theme="cyberpunkCity"] .stock-item-card::before {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 65%, rgba(0, 0, 0, 0.4) 100%) !important;
+}
+
+:root[data-theme="cyberpunkCity"] .investment-card::after,
+:root[data-theme="cyberpunkCity"] .stock-item-card::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border-radius: inherit;
+    background: url('https://i.pinimg.com/1200x/43/2d/39/432d3995313fe6fb9c8242377aa8a6fb.jpg') center/cover;
+    opacity: 0.35;
+    pointer-events: none;
 }
 
 :root[data-theme="cyberpunkCity"] .btn,

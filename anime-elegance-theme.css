@@ -282,10 +282,8 @@
     line-height: 1.6;
 }
 
-/* 智慧分析和提醒 */
-:root[data-theme="anime-elegance"] .smart-analysis,
+/* 智慧提醒 */
 :root[data-theme="anime-elegance"] .smart-reminders,
-:root[data-theme="anime-elegance"] .analysis-card,
 :root[data-theme="anime-elegance"] .reminder-card {
     background: var(--smart-bg);
     border: 1px solid var(--smart-border);

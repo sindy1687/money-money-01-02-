@@ -198,7 +198,7 @@
     
     // 增強智慧分析和提醒卡片
     function enhanceSmartCards() {
-        const smartCards = document.querySelectorAll('.smart-analysis, .smart-reminders, .analysis-card, .reminder-card');
+        const smartCards = document.querySelectorAll('.analysis-card, .reminder-card');
         smartCards.forEach(card => {
             if (!card.classList.contains('anime-elegance-enhanced')) {
                 card.classList.add('anime-elegance-enhanced');

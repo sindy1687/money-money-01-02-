@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投資追蹤儀表板</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dashboard-header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .dashboard-subtitle {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .stat-change {
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .positive {
+            color: #10b981;
+        }
+
+        .negative {
+            color: #ef4444;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .chart-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-table {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-header {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .portfolio-table th {
+            background: #f9fafb;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #374151;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .portfolio-table td {
+            padding: 12px;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 14px;
+        }
+
+        .portfolio-table tr:hover {
+            background: #f9fafb;
+        }
+
+        .stock-name {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .stock-code {
+            color: #6b7280;
+            font-size: 12px;
+        }
+
+        .recommendations {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .recommendation-item {
+            padding: 16px;
+            border-left: 4px solid #e5e7eb;
+            margin-bottom: 16px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+
+        .recommendation-item.high {
+            border-left-color: #ef4444;
+        }
+
+        .recommendation-item.medium {
+            border-left-color: #f59e0b;
+        }
+
+        .recommendation-item.low {
+            border-left-color: #10b981;
+        }
+
+        .recommendation-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .recommendation-description {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .recommendation-action {
+            color: #374151;
+            font-size: 13px;
+            font-style: italic;
+        }
+
+        .targets-progress {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .target-item {
+            margin-bottom: 20px;
+        }
+
+        .target-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .target-name {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .target-progress {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, #059669);
+            transition: width 0.3s ease;
+        }
+
+        .progress-fill.completed {
+            background: linear-gradient(90deg, #10b981, #059669);
+        }
+
+        .progress-fill.on_track {
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+        }
+
+        .progress-fill.behind {
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+        }
+
+        .progress-fill.critical {
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">📈 投資追蹤儀表板</h1>
+            <p class="dashboard-subtitle">全面掌握您的投資組合表現與進度</p>
+        </div>
+
+        <div class="stats-grid" id="statsGrid">
+            <!-- 統計卡片將由 JavaScript 動態生成 -->
+        </div>
+
+        <div class="main-content">
+            <div class="chart-container">
+                <h2 class="chart-title">投資組合配置</h2>
+                <canvas id="portfolioChart" width="400" height="300"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <h2 class="chart-title">損益表現</h2>
+                <canvas id="performanceChart" width="400" height="300"></canvas>
+            </div>
+        </div>
+
+        <div class="portfolio-table">
+            <h2 class="table-header">持股明細</h2>
+            <table id="portfolioTable">
+                <thead>
+                    <tr>
+                        <th>股票</th>
+                        <th>持股數</th>
+                        <th>成本價</th>
+                        <th>現價</th>
+                        <th>損益</th>
+                        <th>損益%</th>
+                        <th>股利收入</th>
+                    </tr>
+                </thead>
+                <tbody id="portfolioTableBody">
+                    <!-- 持股數據將由 JavaScript 動態生成 -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="main-content">
+            <div class="recommendations">
+                <h2 class="chart-title">投資建議</h2>
+                <div id="recommendationsList">
+                    <!-- 建議項目將由 JavaScript 動態生成 -->
+                </div>
+            </div>
+            
+            <div class="targets-progress">
+                <h2 class="chart-title">投資目標進度</h2>
+                <div id="targetsList">
+                    <!-- 目標進度將由 JavaScript 動態生成 -->
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="refreshDashboard()">🔄 重新整理</button>
+            <button class="btn btn-secondary" onclick="exportData()">📊 匯出報告</button>
+            <button class="btn btn-secondary" onclick="window.close()">關閉</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="enhanced-investment-tracker.js"></script>
+    <script>
+        let portfolioChart = null;
+        let performanceChart = null;
+
+        // 初始化儀表板
+        function initDashboard() {
+            console.log('🚀 初始化投資儀表板...');
+            
+            loadStatistics();
+            loadPortfolioTable();
+            loadRecommendations();
+            loadTargets();
+            loadCharts();
+        }
+
+        // 載入統計數據
+        function loadStatistics() {
+            const analysis = getEnhancedPortfolioAnalysis();
+            const stats = getInvestmentStatistics();
+            
+            if (!analysis) {
+                document.getElementById('statsGrid').innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📊</div>
+                        <p>尚無投資數據</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const statsGrid = document.getElementById('statsGrid');
+            statsGrid.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-label">投資組合價值</div>
+                    <div class="stat-value">NT$ ${formatNumber(analysis.summary.totalValue)}</div>
+                    <div class="stat-change ${analysis.summary.totalPnL >= 0 ? 'positive' : 'negative'}">
+                        ${analysis.summary.totalPnL >= 0 ? '📈' : '📉'} 
+                        ${analysis.summary.totalPnLPercent.toFixed(2)}%
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">總投資成本</div>
+                    <div class="stat-value">NT$ ${formatNumber(analysis.summary.totalCost)}</div>
+                    <div class="stat-change">累積投資</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">總損益</div>
+                    <div class="stat-value ${analysis.summary.totalPnL >= 0 ? 'positive' : 'negative'}">
+                        NT$ ${formatNumber(analysis.summary.totalPnL)}
+                    </div>
+                    <div class="stat-change ${analysis.summary.totalPnL >= 0 ? 'positive' : 'negative'}">
+                        ${analysis.summary.totalPnL >= 0 ? '獲利' : '虧損'}
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">股利收入</div>
+                    <div class="stat-value">NT$ ${formatNumber(analysis.summary.totalDividend)}</div>
+                    <div class="stat-change">
+                        股利率 ${analysis.summary.dividendYield.toFixed(2)}%
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">持股數量</div>
+                    <div class="stat-value">${analysis.summary.totalStocks}</div>
+                    <div class="stat-change">投資標的</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">投資年資</div>
+                    <div class="stat-value">${stats.investmentYears ? stats.investmentYears.toFixed(1) : '0'} 年</div>
+                    <div class="stat-change">經驗累積</div>
+                </div>
+            `;
+        }
+
+        // 載入持股表格
+        function loadPortfolioTable() {
+            const portfolio = investmentTracker.portfolio;
+            const tbody = document.getElementById('portfolioTableBody');
+            
+            if (portfolio.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align: center; padding: 40px; color: #6b7280;">
+                            尚無持股數據
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = portfolio.map(stock => `
+                <tr>
+                    <td>
+                        <div class="stock-name">${stock.stockName}</div>
+                        <div class="stock-code">${stock.stockCode}</div>
+                    </td>
+                    <td>${stock.shares.toLocaleString()}</td>
+                    <td>NT$ ${stock.avgCost.toFixed(2)}</td>
+                    <td>NT$ ${stock.currentPrice.toFixed(2)}</td>
+                    <td class="${stock.unrealizedPnL >= 0 ? 'positive' : 'negative'}">
+                        NT$ ${formatNumber(stock.unrealizedPnL)}
+                    </td>
+                    <td class="${stock.unrealizedPnLPercent >= 0 ? 'positive' : 'negative'}">
+                        ${stock.unrealizedPnLPercent.toFixed(2)}%
+                    </td>
+                    <td>NT$ ${formatNumber(stock.dividendIncome)}</td>
+                </tr>
+            `).join('');
+        }
+
+        // 載入建議
+        function loadRecommendations() {
+            const analysis = getEnhancedPortfolioAnalysis();
+            const recommendationsList = document.getElementById('recommendationsList');
+            
+            if (!analysis || !analysis.recommendations || analysis.recommendations.length === 0) {
+                recommendationsList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">💡</div>
+                        <p>目前沒有特別建議</p>
+                    </div>
+                `;
+                return;
+            }
+
+            recommendationsList.innerHTML = analysis.recommendations.map(rec => `
+                <div class="recommendation-item ${rec.priority}">
+                    <div class="recommendation-title">${rec.title}</div>
+                    <div class="recommendation-description">${rec.description}</div>
+                    <div class="recommendation-action">建議：${rec.action}</div>
+                </div>
+            `).join('');
+        }
+
+        // 載入目標進度
+        function loadTargets() {
+            const targets = getInvestmentTargets();
+            const targetsList = document.getElementById('targetsList');
+            
+            if (targets.length === 0) {
+                targetsList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🎯</div>
+                        <p>尚未設定投資目標</p>
+                    </div>
+                `;
+                return;
+            }
+
+            targetsList.innerHTML = targets.map(target => `
+                <div class="target-item">
+                    <div class="target-header">
+                        <span class="target-name">${target.name}</span>
+                        <span class="target-progress">${target.progressPercent.toFixed(1)}%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill ${target.status}" style="width: ${Math.min(target.progressPercent, 100)}%"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 載入圖表
+        function loadCharts() {
+            loadPortfolioChart();
+            loadPerformanceChart();
+        }
+
+        // 載入投資組合圖表
+        function loadPortfolioChart() {
+            const ctx = document.getElementById('portfolioChart').getContext('2d');
+            const portfolio = investmentTracker.portfolio;
+            
+            if (portfolioChart) {
+                portfolioChart.destroy();
+            }
+
+            const data = {
+                labels: portfolio.map(stock => stock.stockName || stock.stockCode),
+                datasets: [{
+                    data: portfolio.map(stock => stock.currentValue),
+                    backgroundColor: [
+                        '#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe',
+                        '#00f2fe', '#43e97b', '#38f9d7', '#fa709a', '#fee140'
+                    ],
+                    borderWidth: 0
+                }]
+            };
+
+            portfolioChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.parsed;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${context.label}: NT$ ${formatNumber(value)} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // 載入損益表現圖表
+        function loadPerformanceChart() {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            const portfolio = investmentTracker.portfolio;
+            
+            if (performanceChart) {
+                performanceChart.destroy();
+            }
+
+            const data = {
+                labels: portfolio.map(stock => stock.stockName || stock.stockCode),
+                datasets: [{
+                    label: '損益 (%)',
+                    data: portfolio.map(stock => stock.totalPnLPercent),
+                    backgroundColor: portfolio.map(stock => 
+                        stock.totalPnLPercent >= 0 ? '#10b981' : '#ef4444'
+                    ),
+                    borderWidth: 0
+                }]
+            };
+
+            performanceChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.parsed.y;
+                                    return `${context.label}: ${value.toFixed(2)}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // 重新整理儀表板
+        function refreshDashboard() {
+            console.log('🔄 重新整理儀表板...');
+            investmentTracker.records = JSON.parse(localStorage.getItem('investmentRecords') || '[]');
+            investmentTracker.portfolio = investmentTracker.calculatePortfolio();
+            initDashboard();
+        }
+
+        // 匯出數據
+        function exportData() {
+            const analysis = getEnhancedPortfolioAnalysis();
+            const stats = getInvestmentStatistics();
+            
+            const report = {
+                generatedAt: new Date().toISOString(),
+                summary: analysis?.summary || {},
+                statistics: stats,
+                portfolio: investmentTracker.portfolio,
+                recommendations: analysis?.recommendations || [],
+                targets: getInvestmentTargets()
+            };
+            
+            const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `investment-report-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // 格式化數字
+        function formatNumber(num) {
+            return Math.round(num).toLocaleString('zh-TW');
+        }
+
+        // 頁面載入時初始化
+        document.addEventListener('DOMContentLoaded', initDashboard);
+    </script>
+</body>
+</html>

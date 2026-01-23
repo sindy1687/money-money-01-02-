@@ -1,0 +1,272 @@
+/* 動態財富主題 */
+:root[data-theme="dynamicWealth"] {
+    /* 主要色彩 - 財富色調 */
+    --color-primary: #FFD700;
+    --color-primary-light: #FFED4E;
+    --color-primary-lighter: #FFF59D;
+    --color-primary-dark: #FFC107;
+    --color-secondary: #FF6B35;
+    --color-secondary-light: #FF8A65;
+    --color-secondary-dark: #E65100;
+    
+    /* 功能色彩 */
+    --color-success: #4CAF50;
+    --color-danger: #F44336;
+    --color-warning: #FF9800;
+    --color-info: #2196F3;
+    --color-error: var(--color-danger);
+    
+    /* 背景漸層 - 財富效果 */
+    --bg-primary: linear-gradient(135deg, #FFD700 0%, #FF6B35 35%, #FF8A65 100%);
+    --bg-body: rgba(255, 215, 0, 0.92);
+    --bg-body-strong: rgba(255, 107, 53, 0.94);
+    --bg-gradient: linear-gradient(135deg, #FFD700 0%, #FF6B35 40%, #FF8A65 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 107, 53, 0.25) 100%);
+    --bg-white: rgba(255, 255, 255, 0.88);
+    --bg-card: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 215, 0, 0.75) 100%);
+    --bg-light: rgba(255, 107, 53, 0.6);
+    --bg-lighter: rgba(255, 215, 0, 0.5);
+    --bg-soft: rgba(255, 255, 255, 0.55);
+    --bg-soft-strong: rgba(255, 255, 255, 0.7);
+    
+    /* 文字色彩 */
+    --text-primary: #1A1A1A;
+    --text-secondary: #333333;
+    --text-tertiary: #666666;
+    --text-strong: #000000;
+    --text-white: #FFFFFF;
+    
+    /* 邊框色彩 */
+    --border-primary: rgba(255, 215, 0, 0.6);
+    --border-light: rgba(255, 107, 53, 0.3);
+    --border-medium: rgba(255, 215, 0, 0.4);
+    --card-border-color: rgba(255, 215, 0, 0.5);
+    --control-border-color: rgba(255, 107, 53, 0.4);
+    --table-border-color: rgba(255, 255, 255, 0.3);
+    
+    /* 陰影效果 */
+    --shadow-primary: 0 15px 45px rgba(255, 215, 0, 0.3);
+    --shadow-primary-lg: 0 25px 65px rgba(255, 215, 0, 0.25);
+    --shadow-card: 0 8px 25px rgba(255, 215, 0, 0.2);
+    --shadow-button: 0 4px 15px rgba(255, 215, 0, 0.25);
+    
+    /* 按鈕漸層 */
+    --btn-primary-gradient: linear-gradient(135deg, #FFD700 0%, #FFC107 100%);
+    --btn-secondary-gradient: linear-gradient(135deg, #FF6B35 0%, #E65100 100%);
+    --btn-success-gradient: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+    --btn-danger-gradient: linear-gradient(135deg, #F44336 0%, #D32F2F 100%);
+    
+    /* 卡片漸層 */
+    --card-gradient-1: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 215, 0, 0.8) 100%);
+    --card-gradient-2: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 107, 53, 0.8) 100%);
+    --card-gradient-3: linear-gradient(135deg, rgba(255, 215, 0, 0.9) 0%, rgba(255, 107, 53, 0.8) 100%);
+    
+    /* 小森對話框 */
+    --xiaosen-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 215, 0, 0.9) 100%);
+    --xiaosen-border: rgba(255, 215, 0, 0.6);
+    --xiaosen-text: #1A1A1A;
+    
+    /* 智慧分析和提醒 */
+    --smart-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 107, 53, 0.75) 100%);
+    --smart-border: rgba(255, 215, 0, 0.5);
+    
+    /* 字體設定 */
+    --font-primary: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-secondary: 'Space Grotesk', 'Clash Display', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+}
+
+/* 背景設定 */
+:root[data-theme="dynamicWealth"] body {
+    background: linear-gradient(135deg, #FFD700, #FF6B35, #FF8A65);
+    background-size: 400% 400%;
+    animation: wealthGradient 15s ease infinite;
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    min-height: 100vh;
+}
+
+@keyframes wealthGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 金幣效果 */
+:root[data-theme="dynamicWealth"] body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 138, 101, 0.2) 0%, transparent 50%);
+    animation: coins 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes coins {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(90deg); }
+    50% { transform: translateY(-10px) rotate(180deg); }
+    75% { transform: translateY(-30px) rotate(270deg); }
+}
+
+/* 頁面背景 */
+:root[data-theme="dynamicWealth"] .page-ledger,
+:root[data-theme="dynamicWealth"] .page-input,
+:root[data-theme="dynamicWealth"] .page-chart,
+:root[data-theme="dynamicWealth"] .page-budget,
+:root[data-theme="dynamicWealth"] .page-monthly-planner,
+:root[data-theme="dynamicWealth"] .page-daily-budget,
+:root[data-theme="dynamicWealth"] .page-settings,
+:root[data-theme="dynamicWealth"] .page-category-manage,
+:root[data-theme="dynamicWealth"] .page-investment,
+:root[data-theme="dynamicWealth"] .page-wallet,
+:root[data-theme="dynamicWealth"] .page-history,
+:root[data-theme="dynamicWealth"] .page-planner {
+    background: transparent !important;
+    backdrop-filter: blur(8px);
+    box-shadow: none !important;
+}
+
+/* 卡片樣式 */
+:root[data-theme="dynamicWealth"] .card,
+:root[data-theme="dynamicWealth"] .record-card,
+:root[data-theme="dynamicWealth"] .budget-card,
+:root[data-theme="dynamicWealth"] .investment-card,
+:root[data-theme="dynamicWealth"] .wallet-card,
+:root[data-theme="dynamicWealth"] .planning-card {
+    background: var(--card-gradient-1);
+    border: 1px solid var(--card-border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    font-family: var(--font-primary);
+}
+
+:root[data-theme="dynamicWealth"] .card:hover,
+:root[data-theme="dynamicWealth"] .record-card:hover,
+:root[data-theme="dynamicWealth"] .budget-card:hover,
+:root[data-theme="dynamicWealth"] .investment-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
+    background: var(--card-gradient-2);
+}
+
+/* 按鈕樣式 */
+:root[data-theme="dynamicWealth"] .btn,
+:root[data-theme="dynamicWealth"] .btn-primary,
+:root[data-theme="dynamicWealth"] .btn-secondary,
+:root[data-theme="dynamicWealth"] .btn-success,
+:root[data-theme="dynamicWealth"] .btn-danger,
+:root[data-theme="dynamicWealth"] .btn-warning,
+:root[data-theme="dynamicWealth"] .btn-info {
+    background: var(--btn-primary-gradient);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: var(--shadow-button);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+:root[data-theme="dynamicWealth"] .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.35);
+}
+
+:root[data-theme="dynamicWealth"] .btn-success {
+    background: var(--btn-success-gradient);
+    color: var(--text-white);
+}
+
+:root[data-theme="dynamicWealth"] .btn-danger {
+    background: var(--btn-danger-gradient);
+    color: var(--text-white);
+}
+
+:root[data-theme="dynamicWealth"] .btn-secondary {
+    background: var(--btn-secondary-gradient);
+    color: var(--text-white);
+}
+
+/* FAB 按鈕 */
+:root[data-theme="dynamicWealth"] .fab,
+:root[data-theme="dynamicWealth"] .floating-action-btn {
+    background: var(--btn-primary-gradient);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    box-shadow: var(--shadow-primary);
+    font-size: 24px;
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="dynamicWealth"] .fab:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-primary-lg);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    :root[data-theme="dynamicWealth"] .card,
+    :root[data-theme="dynamicWealth"] .record-card,
+    :root[data-theme="dynamicWealth"] .budget-card,
+    :root[data-theme="dynamicWealth"] .investment-card {
+        border-radius: 12px;
+        margin: 8px;
+    }
+    
+    :root[data-theme="dynamicWealth"] .btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="dynamicWealth"] h1 {
+        font-size: 24px;
+    }
+    
+    :root[data-theme="dynamicWealth"] h2 {
+        font-size: 20px;
+    }
+    
+    :root[data-theme="dynamicWealth"] h3 {
+        font-size: 18px;
+    }
+}
+
+/* 動畫效果 */
+:root[data-theme="dynamicWealth"] .card,
+:root[data-theme="dynamicWealth"] .btn,
+:root[data-theme="dynamicWealth"] .modal {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
