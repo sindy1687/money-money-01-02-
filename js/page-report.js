@@ -124,6 +124,14 @@ function showAnnualReport() {
                         <div class="annual-report-top-percent" style="font-size: 14px; color: #999; margin-top: 8px;">佔總支出 ${((topExpenseCategory.amount / totalExpense) * 100).toFixed(1)}%</div>
                     </div>
                 ` : ''}
+                
+                <!-- 年度建議 -->
+                <div class="annual-report-suggestions" style="background: linear-gradient(135deg, #e3f2fd 0%, #f3f9ff 100%); padding: 20px; border-radius: 16px; border: 2px solid #bbdefb;">
+                    <h3 class="annual-report-section-title" style="margin: 0 0 16px 0; font-size: 18px; font-weight: 600; color: #1976d2;">💡 年度建議</h3>
+                    <div class="annual-report-suggestions-list" style="display: flex; flex-direction: column; gap: 12px;">
+                        ${generateAnnualSuggestions(totalExpense, expenseRanking, totalInvestment, totalDividend, topExpenseCategory)}
+                    </div>
+                </div>
             </div>
             
             <div class="annual-report-footer" style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #f0f0f0; text-align: center;">
@@ -196,7 +204,7 @@ function exportAnnualReport(year, data) {
     reportText += `\n═══════════════════════════════════\n`;
     reportText += `由記帳本 App 自動生成`;
     
-    // 創建下載連結
+    // 下載文字檔
     const blob = new Blob([reportText], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -208,4 +216,82 @@ function exportAnnualReport(year, data) {
     URL.revokeObjectURL(url);
     
     alert('年度報告已匯出！');
+}
+
+// 生成年度建議
+function generateAnnualSuggestions(totalExpense, expenseRanking, totalInvestment, totalDividend, topExpenseCategory) {
+    let suggestions = [];
+    
+    // 支出控制建議
+    if (totalExpense > 500000) {
+        suggestions.push({
+            icon: '💰',
+            title: '支出偏高提醒',
+            content: `您的年度總支出 NT$${totalExpense.toLocaleString()} 相對較高，建議檢視非必要支出，制定月度預算計畫。`
+        });
+    }
+    
+    // 最燒錢分類建議
+    if (topExpenseCategory && topExpenseCategory.amount / totalExpense > 0.3) {
+        suggestions.push({
+            icon: '🎯',
+            title: '控制主要支出',
+            content: `${topExpenseCategory.category} 佔總支出 ${((topExpenseCategory.amount / totalExpense) * 100).toFixed(1)}%，建議設定此分類的月度上限。`
+        });
+    }
+    
+    // 投資建議
+    if (totalInvestment > 0) {
+        const dividendYield = totalDividend / totalInvestment * 100;
+        if (dividendYield < 2) {
+            suggestions.push({
+                icon: '📈',
+                title: '投資組合優化',
+                content: `您的股息收益率為 ${dividendYield.toFixed(2)}%，考慮增加高股息股票或ETF配置以提高被動收入。`
+            });
+        } else {
+            suggestions.push({
+                icon: '🌟',
+                title: '投資表現良好',
+                content: `您的股息收益率達 ${dividendYield.toFixed(2)}%，繼續保持當前的投資策略，可考慮定期再投資。`
+            });
+        }
+    } else {
+        suggestions.push({
+            icon: '🚀',
+            title: '開始投資理財',
+            content: '建議開始定期定額投資，利用時間複利效果，為未來財務自由做準備。'
+        });
+    }
+    
+    // 儲蓄建議
+    const monthlyAverage = totalExpense / 12;
+    if (monthlyAverage < 20000) {
+        suggestions.push({
+            icon: '🏦',
+            title: '增加儲蓄',
+            content: '您的月均支出較低，建議將多餘資金用於定期儲蓄或投資，建立緊急預備金。'
+        });
+    }
+    
+    // 分類多樣化建議
+    const uniqueCategories = expenseRanking.length;
+    if (uniqueCategories < 5) {
+        suggestions.push({
+            icon: '🎨',
+            title: '豐富記帳分類',
+            content: `您目前只有 ${uniqueCategories} 個支出分類，建議細化分類以更好地掌握資金流向。`
+        });
+    }
+    
+    // 生成HTML
+    return suggestions.map(suggestion => `
+        <div class="annual-report-suggestion-item" style="background: white; padding: 16px; border-radius: 12px; border-left: 4px solid #1976d2; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <div class="suggestion-header" style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <span class="suggestion-icon" style="font-size: 20px;">${suggestion.icon}</span>
+                <span class="suggestion-title" style="font-weight: 600; color: #1976d2; font-size: 16px;">${suggestion.title}</span>
+            </div>
+            <div class="suggestion-content" style="color: #666; font-size: 14px; line-height: 1.5;">${suggestion.content}</div>
+        </div>
+    `).join('');
 }

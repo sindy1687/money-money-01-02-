@@ -195,11 +195,9 @@ class UpdateNotificationSystem {
     // 獲取當前功能列表
     getCurrentFeatures() {
         return [
-            { id: 'smart-accounting', name: '智慧記帳', description: 'AI自動分類和建議' },
             { id: 'investment-analysis', name: '投資分析', description: '專業的投資組合分析' },
             { id: 'budget-tracking', name: '預算追蹤', description: '實時預算監控和提醒' },
-            { id: 'goal-management', name: '目標管理', description: '設定和追蹤財務目標' },
-            { id: 'smart-reminders', name: '智慧提醒', description: '個人化的記帳提醒' }
+            { id: 'goal-management', name: '目標管理', description: '設定和追蹤財務目標' }
         ];
     }
 

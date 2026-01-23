@@ -573,7 +573,27 @@ var themes = window.AppThemes || [
         buyingCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
         sellingCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg',
         dividendCardImage: 'https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg'
-    }];
+    },
+    {
+        id: 'animeGoldenBlue',
+        name: '金藍動漫',
+        icon: '🎧',
+        buttonIcon: '👦',
+        preview: 'url("https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg") center/cover',
+        color: '#D4AF37',
+        category: 'fantasy',
+        backgroundImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
+        investmentCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
+        accountingCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
+        holdingCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
+        buyingCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
+        sellingCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
+        dividendCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg'
+    }
+];
 
 // 主題分類定義
 const themeCategories = {

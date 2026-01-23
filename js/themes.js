@@ -4,7 +4,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'pink',
         name: '粉色主題',
         icon: '💖',
-        buttonIcon: '💗',
+        buttonIcon: '🌸',
         preview: 'linear-gradient(135deg, #ffeef5 0%, #fff5f9 100%)',
         color: '#ff69b4',
         category: 'basic'
@@ -13,7 +13,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'blue',
         name: '藍色主題',
         icon: '💙',
-        buttonIcon: '💙',
+        buttonIcon: '🌊',
         preview: 'linear-gradient(135deg, #e8f4fd 0%, #f0f8ff 100%)',
         color: '#4a90e2',
         category: 'basic'
@@ -22,7 +22,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'green',
         name: '綠色主題',
         icon: '💚',
-        buttonIcon: '💚',
+        buttonIcon: '🍃',
         preview: 'linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%)',
         color: '#4caf50',
         category: 'basic'
@@ -31,7 +31,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'purple',
         name: '紫色主題',
         icon: '💜',
-        buttonIcon: '💜',
+        buttonIcon: '🦋',
         preview: 'linear-gradient(135deg, #f3e5f5 0%, #fce4ec 100%)',
         color: '#9c27b0',
         category: 'basic'
@@ -40,7 +40,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'orange',
         name: '橙色主題',
         icon: '🧡',
-        buttonIcon: '🧡',
+        buttonIcon: '🔥',
         preview: 'linear-gradient(135deg, #fff3e0 0%, #fff8f0 100%)',
         color: '#ff9800',
         category: 'basic'
@@ -49,7 +49,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'cyan',
         name: '青色主題',
         icon: '🩵',
-        buttonIcon: '🩵',
+        buttonIcon: '💧',
         preview: 'linear-gradient(135deg, #e0f7fa 0%, #f0fdfe 100%)',
         color: '#00bcd4',
         category: 'basic'
@@ -58,7 +58,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'red',
         name: '紅色主題',
         icon: '❤️',
-        buttonIcon: '❤️',
+        buttonIcon: '🌹',
         preview: 'linear-gradient(135deg, #ffebee 0%, #fce4ec 100%)',
         color: '#e53935',
         category: 'basic'
@@ -67,7 +67,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'yellow',
         name: '黃色主題',
         icon: '💛',
-        buttonIcon: '💛',
+        buttonIcon: '☀️',
         preview: 'linear-gradient(135deg, #fffde7 0%, #fffef5 100%)',
         color: '#fbc02d',
         category: 'basic'
@@ -76,7 +76,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'indigo',
         name: '靛藍主題',
         icon: '🔵',
-        buttonIcon: '🔵',
+        buttonIcon: '🌙',
         preview: 'linear-gradient(135deg, #e8eaf6 0%, #f3f4f9 100%)',
         color: '#5c6bc0',
         category: 'basic'
@@ -85,7 +85,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'teal',
         name: '茶色主題',
         icon: '💚',
-        buttonIcon: '💚',
+        buttonIcon: '🐢',
         preview: 'linear-gradient(135deg, #e0f2f1 0%, #f0f9f8 100%)',
         color: '#26a69a',
         category: 'basic'
@@ -94,7 +94,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'forest',
         name: '森林清風',
         icon: '🌿',
-        buttonIcon: '🌲',
+        buttonIcon: '🌳',
         preview: 'linear-gradient(135deg, #03130d 0%, #103524 45%, #2f855a 100%)',
         color: '#2f855a',
         category: 'nature'
@@ -103,7 +103,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'snow',
         name: '飄雪主題',
         icon: '❄️',
-        buttonIcon: '❄️',
+        buttonIcon: '⛄',
         preview: 'linear-gradient(135deg, #e8f1ff 0%, #ffffff 100%)',
         color: '#93c5fd',
         category: 'nature'
@@ -112,7 +112,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'star',
         name: '星空主題',
         icon: '✨',
-        buttonIcon: '✨',
+        buttonIcon: '⭐',
         preview: 'linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%)',
         color: '#8b7cf6',
         category: 'cosmic'
@@ -121,7 +121,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'aurora',
         name: '極光主題',
         icon: '🌈',
-        buttonIcon: '🌈',
+        buttonIcon: '🌌',
         preview: 'linear-gradient(135deg, #071a52 0%, #0b8457 50%, #7c3aed 100%)',
         color: '#00d4ff',
         category: 'cosmic'
@@ -130,7 +130,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'firefly',
         name: '螢火蟲主題',
         icon: '✨',
-        buttonIcon: '✨',
+        buttonIcon: '🔦',
         preview: 'linear-gradient(135deg, #0b1020 0%, #1a2b3f 100%)',
         color: '#facc15',
         category: 'cosmic'
@@ -139,7 +139,7 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'neon',
         name: '霓虹波動',
         icon: '🟣',
-        buttonIcon: '🟣',
+        buttonIcon: '💫',
         preview: 'linear-gradient(135deg, #0b1020 0%, #1f1147 50%, #00d4ff 100%)',
         color: '#7c3aed',
         category: 'cosmic'
@@ -148,10 +148,11 @@ var themes = window.AppThemes || (window.AppThemes = [
         id: 'cyberpunkCity',
         name: '賽博龐克 City',
         icon: '🌆',
-        buttonIcon: '🤖',
+        buttonIcon: '🌃',
         preview: 'linear-gradient(135deg, #050014 0%, #120122 35%, #1c1b45 65%, #301d6f 100%)',
         color: '#ff3f81',
-        category: 'cosmic'
+        category: 'cosmic',
+        backgroundImage: 'https://i.pinimg.com/1200x/5f/a6/ab/5fa6ab63037b1ec5381ac02bcc0a4963.jpg'
     },
     {
         id: 'halloween',
@@ -295,6 +296,13 @@ function applyTheme(themeId) {
         document.body.style.backgroundSize = '';
         document.body.style.backgroundPosition = '';
         document.body.style.backgroundRepeat = '';
+    }
+    
+    // 更新FAB圖示
+    const fabBtn = document.getElementById('fabBtn');
+    if (fabBtn && theme && theme.buttonIcon) {
+        fabBtn.textContent = theme.buttonIcon;
+        console.log(`🎨 FAB圖示已更新為: ${theme.buttonIcon} (主題: ${theme.name})`);
     }
     
     updateThemeButtons(themeId);
@@ -993,47 +1001,26 @@ function showThemeSelector() {
             list = list.filter(t => t.category === selectedCategory);
         }
 
-        // 按分類分組
-        const groupedThemes = {};
-        list.forEach(theme => {
-            const category = theme.category || 'basic';
-            if (!groupedThemes[category]) {
-                groupedThemes[category] = [];
-            }
-            groupedThemes[category].push(theme);
-        });
-
         let gridHTML = '';
         
-        Object.entries(groupedThemes).forEach(([categoryId, categoryThemes]) => {
-            const categoryInfo = themeCategories[categoryId] || { name: '其他', icon: '📁', description: '' };
-            
-            gridHTML += `
-                <div class="theme-category-section">
-                    <div class="theme-category-header">
-                        <span class="theme-category-icon">${categoryInfo.icon}</span>
-                        <span class="theme-category-name">${categoryInfo.name}</span>
-                        <span class="theme-category-description">${categoryInfo.description}</span>
-                    </div>
-                    <div class="theme-category-grid">
-                        ${categoryThemes.map(theme => {
-                            const isSelected = theme.id === currentTheme && !customTheme.primaryColor;
-                            const hasBackgroundImage = theme.backgroundImage;
-                            return `
-                                <div class="theme-item ${isSelected ? 'selected' : ''}" data-theme-id="${theme.id}">
-                                    <div class="theme-item-preview ${hasBackgroundImage ? 'theme-item-preview--image' : ''}" ${hasBackgroundImage ? `style="background-image: url('${theme.backgroundImage}');"` : `style="background: ${theme.preview};"`}></div>
-                                    <div class="theme-item-content theme-item-content--compact">
-                                        <div class="theme-item-icon">${theme.icon}</div>
-                                        <div class="theme-item-name">${theme.name}</div>
-                                        ${isSelected ? '<div class="theme-item-check">✓</div>' : '<div class="theme-item-check theme-item-check--placeholder"></div>'}
-                                    </div>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
+        // 顯示所有主題在同一排
+        gridHTML += `
+            <div class="theme-category-section">
+                <div class="theme-category-grid">
+                    ${list.map(theme => {
+                        const isSelected = theme.id === currentTheme && !customTheme.primaryColor;
+                        const hasBackgroundImage = theme.backgroundImage;
+                        return `
+                            <div class="theme-item ${isSelected ? 'selected' : ''}" data-theme-id="${theme.id}">
+                                <div class="theme-item-preview ${hasBackgroundImage ? 'theme-item-preview--image' : ''}" ${hasBackgroundImage ? `style="background-image: url('${theme.backgroundImage}');"` : `style="background: ${theme.preview};"`}></div>
+                                <div class="theme-item-name">${theme.name}</div>
+                                ${isSelected ? '<div class="theme-item-check">✓</div>' : ''}
+                            </div>
+                        `;
+                    }).join('')}
                 </div>
-            `;
-        });
+            </div>
+        `;
 
         grid.innerHTML = gridHTML;
 

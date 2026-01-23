@@ -281,6 +281,14 @@ const buttonIcons = {
         navInvestment: '📈',
         navChart: '📊',
         navSettings: '⚙️'
+    },
+    animeGoldenBlue: {
+        fab: '🎧',
+        navLedger: '🎧',
+        navWallet: '🎧',
+        navInvestment: '🎧',
+        navChart: '🎧',
+        navSettings: '🎧'
     }
 };
 
