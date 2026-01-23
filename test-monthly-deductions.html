@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每月固定扣款測試</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+        }
+        .test-btn {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.2s ease;
+        }
+        .test-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+        .instructions {
+            margin: 20px 0;
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔄 每月固定扣款測試</h1>
+        <div class="instructions">
+            <p>如果無法在主應用的設置頁面找到「每月固定扣款」選項，請使用以下方法：</p>
+        </div>
+        
+        <button class="test-btn" onclick="openMonthlyDeductions()">
+            🚀 打開每月固定扣款
+        </button>
+        
+        <button class="test-btn" onclick="checkSettings()">
+            🔍 檢查設置頁面
+        </button>
+        
+        <div class="instructions">
+            <p><strong>說明：</strong></p>
+            <ul style="text-align: left;">
+                <li>點擊「打開每月固定扣款」直接開啟功能</li>
+                <li>或回到主應用，在設置 → 分析工具中尋找</li>
+                <li>功能包含：新增、編輯、刪除固定扣款項目</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 載入主應用的功能
+        function loadMainAppFunctions() {
+            const script = document.createElement('script');
+            script.src = './script.js';
+            script.onload = function() {
+                console.log('主應用功能已載入');
+            };
+            document.head.appendChild(script);
+
+            const bridge = document.createElement('script');
+            bridge.src = './js/monthly-deductions-bridge.js';
+            bridge.onload = function() {
+                console.log('每月固定扣款 Bridge 已載入');
+            };
+            document.head.appendChild(bridge);
+        }
+
+        function openMonthlyDeductions() {
+            // 檢查是否已載入主應用功能
+            if (typeof showMonthlyDeductionsPage === 'function') {
+                showMonthlyDeductionsPage();
+            } else {
+                alert('正在載入功能，請稍後再試...');
+                loadMainAppFunctions();
+                setTimeout(() => {
+                    if (typeof showMonthlyDeductionsPage === 'function') {
+                        showMonthlyDeductionsPage();
+                    } else {
+                        alert('功能載入失敗，請直接在主應用中使用');
+                    }
+                }, 1000);
+            }
+        }
+
+        function checkSettings() {
+            const message = `
+設置頁面檢查清單：
+
+1. 打開主應用
+2. 進入設置頁面
+3. 找到「📊 分析工具」區塊
+4. 應該包含以下選項：
+   - 📈 年報
+   - 📑 分期
+   - 🔄 每月固定扣款 ← 這個
+
+如果找不到，請使用上方按鈕直接打開功能。
+            `;
+            alert(message);
+        }
+
+        // 自動載入主應用功能
+        loadMainAppFunctions();
+    </script>
+</body>
+</html>

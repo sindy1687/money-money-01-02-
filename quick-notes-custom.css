@@ -1,0 +1,253 @@
+/* 常用備註自訂樣式 */
+
+/* 常用備註標題區域 */
+.quick-notes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.quick-notes-label {
+    font-weight: 600;
+    color: var(--color-primary, #333);
+    font-size: 14px;
+}
+
+/* 新增按鈕 */
+.add-quick-note-btn {
+    background: var(--color-primary, #ff69b4);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.add-quick-note-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.add-quick-note-btn:active {
+    transform: scale(0.95);
+}
+
+/* 自訂備註按鈕樣式 */
+.quick-note-btn.custom-note {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px solid var(--color-primary, #ff69b4);
+    color: var(--color-primary, #333);
+}
+
+.quick-note-btn.custom-note:hover {
+    background: linear-gradient(135deg, var(--color-primary-light, #ffb6d9) 0%, var(--color-primary, #ff69b4) 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* 現有備註列表樣式 */
+.existing-notes-list {
+    scrollbar-width: thin;
+    scrollbar-color: #ddd #f8f9fa;
+}
+
+.existing-notes-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.existing-notes-list::-webkit-scrollbar-track {
+    background: #f8f9fa;
+    border-radius: 3px;
+}
+
+.existing-notes-list::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 3px;
+}
+
+.existing-notes-list::-webkit-scrollbar-thumb:hover {
+    background: #ccc;
+}
+
+.existing-note-item {
+    transition: all 0.2s ease;
+}
+
+.existing-note-item:hover {
+    background: #e9ecef !important;
+    transform: translateX(2px);
+}
+
+/* 刪除按鈕樣式 */
+.delete-note-btn {
+    transition: all 0.2s ease;
+}
+
+.delete-note-btn:hover {
+    background: #cc0000 !important;
+    transform: scale(1.05);
+}
+
+.delete-note-btn:active {
+    transform: scale(0.95);
+}
+
+/* 自訂圖示輸入框樣式 */
+#customIconInput {
+    transition: all 0.2s ease;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+}
+
+#customIconInput:focus {
+    outline: none;
+    border-color: var(--color-primary, #ff69b4) !important;
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
+}
+
+#customIconInput::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* 使用自訂圖示按鈕樣式 */
+#useCustomIconBtn {
+    transition: all 0.2s ease;
+    font-weight: 600;
+}
+
+#useCustomIconBtn:hover {
+    background: #28a745 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+}
+
+#useCustomIconBtn:active {
+    transform: translateY(0);
+}
+
+/* 圖示選擇器樣式 */
+.icon-selector {
+    scrollbar-width: thin;
+    scrollbar-color: #ddd #f8f9fa;
+}
+
+.icon-selector::-webkit-scrollbar {
+    width: 6px;
+}
+
+.icon-selector::-webkit-scrollbar-track {
+    background: #f8f9fa;
+    border-radius: 3px;
+}
+
+.icon-selector::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 3px;
+}
+
+.icon-selector::-webkit-scrollbar-thumb:hover {
+    background: #ccc;
+}
+
+.icon-option {
+    transition: all 0.2s ease;
+}
+
+.icon-option:hover {
+    border-color: var(--color-primary, #ff69b4) !important;
+    transform: scale(1.1);
+}
+
+.icon-option.selected {
+    border-color: var(--color-primary, #ff69b4) !important;
+    background: var(--color-primary-light, #ffb6d9) !important;
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
+}
+
+/* 模態框樣式優化 */
+.modal-overlay {
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 輸入框樣式 */
+.modal-content input[type="text"] {
+    transition: all 0.2s ease;
+}
+
+.modal-content input[type="text"]:focus {
+    outline: none;
+    border-color: var(--color-primary, #ff69b4) !important;
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
+}
+
+/* 按鈕樣式 */
+.modal-footer button {
+    transition: all 0.2s ease;
+}
+
+.modal-footer button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.modal-footer button:active {
+    transform: translateY(0);
+}
+
+/* 響應式設計 */
+@media (max-width: 480px) {
+    .quick-notes-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .add-quick-note-btn {
+        align-self: flex-end;
+    }
+    
+    .icon-selector {
+        grid-template-columns: repeat(5, 1fr) !important;
+    }
+    
+    .modal-content {
+        margin: 10px;
+        max-width: calc(100% - 20px);
+    }
+    
+    .existing-note-item {
+        padding: 6px !important;
+        font-size: 14px;
+    }
+    
+    .delete-note-btn {
+        padding: 3px 6px !important;
+        font-size: 11px !important;
+    }
+}

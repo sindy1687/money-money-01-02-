@@ -15316,7 +15316,7 @@ width: 100%;
 .stock-name {
     font-size: 28px;
     font-weight: 700;
-    color: var(--text-primary);
+    color: inherit;
     text-shadow: var(--text-shadow-strong);
     margin-bottom: 4px;
 }
@@ -16321,7 +16321,7 @@ width: 100%;
 }
 
 .investment-form-back-btn::before {
-    content: '??';
+    content: '🔙';
     font-size: 16px;
     margin-right: 2px;
 }
@@ -16717,35 +16717,35 @@ width: 100%;
 /* 為不同標籤添加可愛圖標 */
 /* 代碼欄位 */
 .form-field:has(#calcStockCodeInput) .form-label::before {
-    content: '??';
+    content: '💹';
     font-size: 16px;
     margin-right: 2px;
 }
 
 /* 股票名稱欄位 */
 .form-field:has(#calcStockNameInput) .form-label::before {
-    content: '??';
+    content: '🏷️';
     font-size: 16px;
     margin-right: 2px;
 }
 
 /* 日期欄位 */
 .form-field:has(#calcDateInput) .form-label::before {
-    content: '??';
+    content: '📅';
     font-size: 16px;
     margin-right: 2px;
 }
 
 /* 價格欄位 */
 .form-field:has(#calcPriceInput) .form-label::before {
-    content: '??';
+    content: '💲';
     font-size: 16px;
     margin-right: 2px;
 }
 
 /* 股數欄位 */
 .form-field:has(#calcSharesInput) .form-label::before {
-    content: '??';
+    content: '🔢';
     font-size: 16px;
     margin-right: 2px;
 }
@@ -16981,7 +16981,7 @@ width: 100%;
 }
 
 .form-query-btn::before {
-    content: '??';
+    content: '🔍';
     font-size: 18px;
 }
 
@@ -17168,7 +17168,7 @@ width: 100%;
 }
 
 .quick-title::before {
-    content: '?? 或快速選擇：';
+    content: '⚡ 或快速選擇：';
     margin-right: 4px;
 }
 
