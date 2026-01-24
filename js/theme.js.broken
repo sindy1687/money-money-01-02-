@@ -1,208 +1,254 @@
-// ========== ä¸»é¡Œé¡è‰²åŠŸèƒ½ ==========
+// ========== ä¸»é?é¡è‰²?Ÿèƒ½ ==========
 var themeCategories = window.AppThemeCategories || {
     basic: {
-        name: 'åŸºæœ¬ä¸»é¡Œ',
-        icon: 'ğŸ¨',
-        description: 'ç´”è‰²ç¶“å…¸ä¸»é¡Œ'
+        name: '?ºæœ¬ä¸»é?',
+        icon: '?¨',
+        description: 'ç´”è‰²ç¶“å…¸ä¸»é?'
     },
     nature: {
-        name: 'è‡ªç„¶ä¸»é¡Œ',
-        icon: 'ğŸŒ¿',
-        description: 'è‡ªç„¶é¢¨æ ¼ä¸»é¡Œ'
+        name: '?ªç„¶ä¸»é?',
+        icon: '?Œ¿',
+        description: '?ªç„¶é¢¨æ ¼ä¸»é?'
     },
     cosmic: {
-        name: 'å®‡å®™ä¸»é¡Œ',
-        icon: 'ğŸŒŒ',
-        description: 'æ˜Ÿç©ºå®‡å®™ä¸»é¡Œ'
+        name: 'å®‡å?ä¸»é?',
+        icon: '??',
+        description: '?Ÿç©ºå®‡å?ä¸»é?'
     },
     dynamic: {
-        name: 'å‹•æ…‹ä¸»é¡Œ',
-        icon: 'âœ¨',
-        description: 'å‹•æ…‹æ•ˆæœä¸»é¡Œ'
+        name: '?•æ?ä¸»é?',
+        icon: '??,
+        description: '?•æ??ˆæ?ä¸»é?'
     },
     celebration: {
-        name: 'æ…¶ç¥ä¸»é¡Œ',
-        icon: 'ğŸ‰',
-        description: 'ç¯€æ—¥æ…¶å…¸ä¸»é¡Œ'
+        name: '?¶ç?ä¸»é?',
+        icon: '??',
+        description: 'ç¯€?¥æ…¶?¸ä¸»é¡?
     },
     dark: {
-        name: 'æ·±è‰²ä¸»é¡Œ',
-        icon: 'ğŸŒ™',
-        description: 'æ·±è‰²è­·çœ¼ä¸»é¡Œ'
+        name: 'æ·±è‰²ä¸»é?',
+        icon: '??',
+        description: 'æ·±è‰²è­·çœ¼ä¸»é?'
     },
     anime: {
-        name: 'å‹•æ¼«ä¸»é¡Œ',
-        icon: 'ğŸŒ',
-        description: 'å‹•æ¼«é¢¨æ ¼ä¸»é¡Œ'
+        name: '?•æ¼«ä¸»é?',
+        icon: '??',
+        description: '?•æ¼«é¢¨æ ¼ä¸»é?'
     },
     cute: {
-        name: 'å¯æ„›ä¸»é¡Œ',
-        icon: 'ğŸ°',
-        description: 'å¯æ„›é¢¨æ ¼ä¸»é¡Œ'
+        name: '?¯æ?ä¸»é?',
+        icon: '?°',
+        description: '?¯æ?é¢¨æ ¼ä¸»é?'
     },
     wealth: {
-        name: 'è²¡å¯Œä¸»é¡Œ',
-        icon: 'ğŸ’°',
-        description: 'è²¡å¯Œå¯“æ„ä¸»é¡Œ'
+        name: 'è²¡å?ä¸»é?',
+        icon: '?’°',
+        description: 'è²¡å?å¯“æ?ä¸»é?'
     },
     fantasy: {
-        name: 'å¥‡å¹»ä¸»é¡Œ',
-        icon: 'ğŸ¦„',
-        description: 'å¥‡å¹»é­”æ³•ä¸»é¡Œ'
+        name: 'å¥‡å¹»ä¸»é?',
+        icon: '??',
+        description: 'å¥‡å¹»é­”æ?ä¸»é?'
     }
 };
 
 var themes = window.AppThemes || [
     {
         id: 'pink',
-        name: 'ç²‰è‰²ä¸»é¡Œ',
-        icon: 'ğŸ’–',
-        buttonIcon: 'ğŸ’—',
+        name: 'ç²‰è‰²ä¸»é?',
+        icon: '??',
+        buttonIcon: '??',
         preview: 'linear-gradient(135deg, #ffeef5 0%, #fff5f9 100%)',
         color: '#ff69b4',
         category: 'basic'
     },
     {
         id: 'blue',
-        name: 'è—è‰²ä¸»é¡Œ',
-        icon: 'ğŸ’™',
-        buttonIcon: 'ğŸ’™',
+        name: '?è‰²ä¸»é?',
+        icon: '??',
+        buttonIcon: '??',
         preview: 'linear-gradient(135deg, #e8f4fd 0%, #f0f8ff 100%)',
         color: '#4a90e2',
         category: 'basic'
     },
     {
         id: 'green',
-        name: 'ç¶ è‰²ä¸»é¡Œ',
-        icon: 'ğŸ’š',
-        buttonIcon: 'ğŸ’š',
+        name: 'ç¶ è‰²ä¸»é?',
+        icon: '??',
+        buttonIcon: '??',
         preview: 'linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%)',
         color: '#4caf50',
         category: 'basic'
     },
     {
         id: 'purple',
-        name: 'ç´«è‰²ä¸»é¡Œ',
-        icon: 'ğŸ’œ',
-        buttonIcon: 'ğŸ’œ',
+        name: 'ç´«è‰²ä¸»é?',
+        icon: '??',
+        buttonIcon: '??',
         preview: 'linear-gradient(135deg, #f3e5f5 0%, #fce4ec 100%)',
         color: '#9c27b0',
         category: 'basic'
     },
     {
         id: 'orange',
-        name: 'æ©™è‰²ä¸»é¡Œ',
-        icon: 'ğŸ§¡',
-        buttonIcon: 'ğŸ§¡',
+        name: 'æ©™è‰²ä¸»é?',
+        icon: '?§¡',
+        buttonIcon: '?§¡',
         preview: 'linear-gradient(135deg, #fff3e0 0%, #fff8f0 100%)',
         color: '#ff9800',
         category: 'basic'
     },
     {
         id: 'cyan',
-        name: 'é’è‰²ä¸»é¡Œ',
-        icon: 'ğŸ©µ',
-        buttonIcon: 'ğŸ©µ',
+        name: '?’è‰²ä¸»é?',
+        icon: '?©µ',
+        buttonIcon: '?©µ',
         preview: 'linear-gradient(135deg, #e0f7fa 0%, #f0fdfe 100%)',
         color: '#00bcd4',
         category: 'basic'
     },
     {
         id: 'red',
-        name: 'ç´…è‰²ä¸»é¡Œ',
-        icon: 'â¤ï¸',
-        buttonIcon: 'â¤ï¸',
+        name: 'ç´…è‰²ä¸»é?',
+        icon: '?¤ï?',
+        buttonIcon: '?¤ï?',
         preview: 'linear-gradient(135deg, #ffebee 0%, #fce4ec 100%)',
         color: '#e53935',
         category: 'basic'
     },
     {
         id: 'yellow',
-        name: 'é»ƒè‰²ä¸»é¡Œ',
-        icon: 'ğŸ’›',
-        buttonIcon: 'ğŸ’›',
+        name: 'é»ƒè‰²ä¸»é?',
+        icon: '??',
+        buttonIcon: '??',
         preview: 'linear-gradient(135deg, #fffde7 0%, #fffef5 100%)',
         color: '#fbc02d',
         category: 'basic'
     },
     {
         id: 'indigo',
-        name: 'é›è—ä¸»é¡Œ',
-        icon: 'ğŸ”µ',
-        buttonIcon: 'ğŸ”µ',
+        name: '?›è?ä¸»é?',
+        icon: '?”µ',
+        buttonIcon: '?”µ',
         preview: 'linear-gradient(135deg, #e8eaf6 0%, #f3f4f9 100%)',
         color: '#5c6bc0',
         category: 'basic'
     },
     {
         id: 'teal',
-        name: 'èŒ¶è‰²ä¸»é¡Œ',
-        icon: 'ğŸ’š',
-        buttonIcon: 'ğŸ’š',
+        name: '?¶è‰²ä¸»é?',
+        icon: '??',
+        buttonIcon: '??',
         preview: 'linear-gradient(135deg, #e0f2f1 0%, #f0f9f8 100%)',
         color: '#26a69a',
         category: 'basic'
     },
     {
+        id: 'forest',
+        name: 'æ£®æ?æ¸…é¢¨',
+        icon: '?Œ¿',
+        buttonIcon: '?Œ²',
+        preview: 'linear-gradient(135deg, #03130d 0%, #103524 45%, #2f855a 100%)',
+        color: '#2f855a',
+        category: 'nature'
+    },
+    {
+        id: 'snow',
+        name: 'é£„é›ªä¸»é?',
+        icon: '?„ï?',
+        buttonIcon: '?„ï?',
+        preview: 'linear-gradient(135deg, #e8f1ff 0%, #ffffff 100%)',
+        color: '#93c5fd',
+        category: 'nature'
+    },
+    {
+        id: 'dreamyGalaxy',
+        name: 'å¤¢å¹»?Ÿæ²³',
+        icon: '??',
+        buttonIcon: '??,
+        preview: 'url("https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg") center/cover',
+        color: '#B19CD9',
+        category: 'cosmic',
+        backgroundImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/2a/20/38/2a2038686a48d048cc0b21e4f2ba44a5.jpg'
+    },
+    {
         id: 'star',
-        name: 'æ˜Ÿç©ºä¸»é¡Œ',
-        icon: 'âœ¨',
-        buttonIcon: 'âœ¨',
+        name: '?Ÿç©ºä¸»é?',
+        icon: '??,
+        buttonIcon: '??,
         preview: 'linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%)',
         color: '#8b7cf6',
         category: 'cosmic'
     },
     {
         id: 'aurora',
-        name: 'æ¥µå…‰ä¸»é¡Œ',
-        icon: 'ğŸŒˆ',
-        buttonIcon: 'ğŸŒˆ',
+        name: 'æ¥µå?ä¸»é?',
+        icon: '??',
+        buttonIcon: '??',
         preview: 'linear-gradient(135deg, #071a52 0%, #0b8457 50%, #7c3aed 100%)',
         color: '#00d4ff',
         category: 'cosmic'
     },
     {
         id: 'firefly',
-        name: 'è¢ç«èŸ²ä¸»é¡Œ',
-        icon: 'âœ¨',
-        buttonIcon: 'âœ¨',
+        name: '?¢ç«?²ä¸»é¡?,
+        icon: '??,
+        buttonIcon: '??,
         preview: 'linear-gradient(135deg, #0b1020 0%, #1a2b3f 100%)',
         color: '#facc15',
         category: 'cosmic'
     },
     {
         id: 'neon',
-        name: 'éœ“è™¹æ³¢å‹•',
-        icon: 'ğŸŸ£',
-        buttonIcon: 'ğŸŸ£',
+        name: '?“è™¹æ³¢å?',
+        icon: '?Ÿ£',
+        buttonIcon: '?Ÿ£',
         preview: 'linear-gradient(135deg, #0b1020 0%, #1f1147 50%, #00d4ff 100%)',
         color: '#7c3aed',
         category: 'cosmic'
     },
     {
         id: 'cyberpunkCity',
-        name: 'è³½åšé¾å…‹ City',
-        icon: 'ğŸŒ†',
-        buttonIcon: 'ğŸ¤–',
+        name: 'è³½å?é¾å? City',
+        icon: '??',
+        buttonIcon: '??',
         preview: 'url("https://i.pinimg.com/736x/3b/90/48/3b90488a1815b544a78493213c747ee0.jpg") center/cover',
         color: '#ff3f81',
         category: 'dynamic'
     },
     {
         id: 'halloween',
-        name: 'ğŸƒ è¬è–ç¯€',
-        icon: 'ğŸƒ',
-        buttonIcon: 'ğŸ‘»',
+        name: '?? ?¬è?ç¯€',
+        icon: '??',
+        buttonIcon: '?‘»',
         preview: 'linear-gradient(135deg, #1A1A1A 0%, #3E2723 45%, #FF6B35 100%)',
         color: '#FF6B35',
         category: 'celebration',
         backgroundImage: 'https://i.pinimg.com/1200x/ae/a4/be/aea4be0e868161d58dcab76c3de7f1fb.jpg'
     },
     {
+        id: 'midnight',
+        name: '?ˆå?æ·±è‰²',
+        icon: '??',
+        buttonIcon: '??',
+        preview: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
+        color: '#6366f1',
+        category: 'dark'
+    },
+    {
         id: 'space',
-        name: 'æ˜Ÿéš›å®‡èˆª',
-        icon: 'ğŸš€',
-        buttonIcon: 'ğŸ›¸',
+        name: '?Ÿé?å®‡èˆª',
+        icon: '??',
+        buttonIcon: '?›¸',
         preview: 'url("https://i.pinimg.com/1200x/d6/33/35/d63335d42debcc743999b03ce2edb23f.jpg") center/cover',
         color: '#00d4ff',
         category: 'dynamic',
@@ -210,9 +256,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'totoro',
-        name: 'é¾è²“ä¸»é¡Œ',
-        icon: 'ğŸŒ¼',
-        buttonIcon: 'ğŸŒ¼',
+        name: 'é¾è?ä¸»é?',
+        icon: '?Œ¼',
+        buttonIcon: '?Œ¼',
         preview: 'url("https://i.pinimg.com/736x/f6/e9/10/f6e910dc17992265ad9833055ff153ac.jpg") center/cover',
         color: '#4682B4',
         category: 'anime',
@@ -220,9 +266,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'noface',
-        name: 'ç„¡è‡‰ç”·ä¸»é¡Œ',
-        icon: 'ğŸ­',
-        buttonIcon: 'ğŸ­',
+        name: '?¡è??·ä¸»é¡?,
+        icon: '?­',
+        buttonIcon: '?­',
         preview: 'url("https://i.pinimg.com/1200x/fe/b3/f9/feb3f9990f903e1b7b0f4a2066a97722.jpg") center/cover',
         color: '#f6c343',
         category: 'anime',
@@ -230,9 +276,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'demonslayer',
-        name: 'é¬¼æ»…ä¹‹åˆƒä¸»é¡Œ',
-        icon: 'ğŸ—¡ï¸',
-        buttonIcon: 'ğŸ—¡ï¸',
+        name: 'é¬¼æ?ä¹‹å?ä¸»é?',
+        icon: '?—¡ï¸?,
+        buttonIcon: '?—¡ï¸?,
         preview: 'url("https://i.pinimg.com/736x/73/3c/b0/733cb0696372d66f16702dd385a5aa5b.jpg") center/cover',
         color: '#00c2d1',
         category: 'anime',
@@ -240,9 +286,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'shinchan',
-        name: 'è Ÿç­†å°æ–°ä¸»é¡Œ',
-        icon: 'ğŸŒ»',
-        buttonIcon: 'ğŸŒ»',
+        name: '?Ÿç?å°æ–°ä¸»é?',
+        icon: '?Œ»',
+        buttonIcon: '?Œ»',
         preview: 'url("https://i.pinimg.com/1200x/c3/66/a8/c366a88a9b62dee30d8628ddae89afa9.jpg") center/cover',
         color: '#FFD700',
         category: 'anime',
@@ -250,9 +296,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'money',
-        name: 'é‡‘éŒ¢æ»¿æ»¿',
-        icon: 'ğŸ’¸',
-        buttonIcon: 'ğŸ’¸',
+        name: '?‘éŒ¢æ»¿æ»¿',
+        icon: '?’¸',
+        buttonIcon: '?’¸',
         preview: 'url("https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg") center/cover',
         color: '#16f49a',
         category: 'dynamic',
@@ -261,9 +307,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'caitu',
-        name: 'è²¡å…”æ»¿æ»¿',
-        icon: 'ğŸ°',
-        buttonIcon: 'ğŸ°',
+        name: 'è²¡å?æ»¿æ»¿',
+        icon: '?°',
+        buttonIcon: '?°',
         preview: 'url("https://i.pinimg.com/736x/85/9c/7c/859c7c50479b84c65089909c4acec1f3.jpg") center/cover',
         color: '#FFD700',
         category: 'wealth',
@@ -271,9 +317,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'goldenTree',
-        name: 'é‡‘æ¨¹è¨ˆç•«',
-        icon: 'ğŸŒ³',
-        buttonIcon: 'ğŸŒ³',
+        name: '?‘æ¨¹è¨ˆç•«',
+        icon: '?Œ³',
+        buttonIcon: '?Œ³',
         preview: 'url("https://i.pinimg.com/736x/28/a0/be/28a0be222d619be4c2944dbd309c4153.jpg") center/cover',
         color: '#8B4513',
         category: 'wealth',
@@ -281,9 +327,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'chaonengli',
-        name: 'éˆ”èƒ½åŠ›',
-        icon: 'ğŸ’°',
-        buttonIcon: 'ğŸ’°',
+        name: '?”èƒ½??,
+        icon: '?’°',
+        buttonIcon: '?’°',
         preview: 'url("https://i.pinimg.com/736x/cc/56/8d/cc568d4109c2c92d507f597ba0ece7be.jpg") center/cover',
         color: '#D4AF37',
         category: 'wealth',
@@ -291,9 +337,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'fruit',
-        name: 'æ°´æœæ¸…çˆ½',
-        icon: 'ğŸ“',
-        buttonIcon: 'ğŸ‹',
+        name: 'æ°´æ?æ¸…çˆ½',
+        icon: '??',
+        buttonIcon: '??',
         preview: 'url("https://i.pinimg.com/736x/3a/57/69/3a576934dcdf3bb2ba06b3d2964ab296.jpg") center/cover',
         color: '#40E0D0',
         category: 'cute',
@@ -301,9 +347,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'meow',
-        name: 'å–µå–µå–µ',
-        icon: 'ğŸ±',
-        buttonIcon: 'ğŸˆ',
+        name: '?µå–µ??,
+        icon: '?±',
+        buttonIcon: '??',
         preview: 'url("https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg") center/cover',
         color: '#87CEEB',
         category: 'cute',
@@ -311,9 +357,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'cute',
-        name: 'å¯æ„›åœ–ç‰‡ä¸»é¡Œ',
-        icon: 'ğŸ¾',
-        buttonIcon: 'ğŸ¾',
+        name: '?¯æ??–ç?ä¸»é?',
+        icon: '?¾',
+        buttonIcon: '?¾',
         preview: 'url("image/BMG.jpg") center/cover',
         color: '#4dd0e1',
         category: 'cute',
@@ -321,9 +367,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'cutePastel',
-        name: 'å¯æ„›ç²‰å½©',
-        icon: 'ğŸŒ¸',
-        buttonIcon: 'ğŸ°',
+        name: '?¯æ?ç²‰å½©',
+        icon: '?Œ¸',
+        buttonIcon: '?°',
         preview: 'linear-gradient(135deg, #ffeef8 0%, #fff5f5 25%, #f0f8ff 50%, #fffaf0 75%, #f5fff5 100%)',
         color: '#ff69b4',
         category: 'cute',
@@ -340,9 +386,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'bluerose',
-        name: 'è—ç«ç‘°é¨å£«',
-        icon: 'ğŸŒ¹',
-        buttonIcon: 'ğŸ—¡ï¸',
+        name: '?ç«?°é?å£?,
+        icon: '?Œ¹',
+        buttonIcon: '?—¡ï¸?,
         preview: 'url("https://i.pinimg.com/1200x/d5/a1/c1/d5a1c149ab3b2a049576504e83fd21f7.jpg") center/cover',
         color: '#007bff',
         category: 'fantasy',
@@ -350,9 +396,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'emeraldPrince',
-        name: 'ç¿¡ç¿ ç‹å­',
-        icon: 'ğŸ‘‘',
-        buttonIcon: 'ğŸ—¡ï¸',
+        name: 'ç¿¡ç??‹å?',
+        icon: '??',
+        buttonIcon: '?—¡ï¸?,
         preview: 'url("https://i.pinimg.com/736x/55/40/2f/55402fb6bcf0c65c832636ad5504499f.jpg") center/cover',
         color: '#2E8B57',
         category: 'fantasy',
@@ -360,9 +406,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'cuteCats',
-        name: 'å¯æ„›è²“å’ª',
-        icon: 'ğŸ±',
-        buttonIcon: 'ğŸˆ',
+        name: '?¯æ?è²“å’ª',
+        icon: '?±',
+        buttonIcon: '??',
         preview: 'url("https://i.pinimg.com/736x/fe/2a/cf/fe2acfb6eedcf65941dad52ad03e3490.jpg") center/cover',
         color: '#FFB6C1',
         category: 'cute',
@@ -373,9 +419,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'dreamy',
-        name: 'å¤¢å¹»å¢ƒåŸŸ',
-        icon: 'ğŸŒˆ',
-        buttonIcon: 'ğŸ¨',
+        name: 'å¤¢å¹»å¢ƒå?',
+        icon: '??',
+        buttonIcon: '?¨',
         preview: 'url("https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg") center/cover',
         color: '#87CEEB',
         category: 'cute',
@@ -392,9 +438,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'dreamyfish',
-        name: 'å¤¢å¹»é­šèª',
-        icon: 'ğŸ ',
-        buttonIcon: 'ğŸŸ',
+        name: 'å¤¢å¹»é­šè?',
+        icon: '??',
+        buttonIcon: '??',
         preview: 'url("https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg") center/cover',
         color: '#87CEEB',
         category: 'cute',
@@ -411,9 +457,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'emerald',
-        name: 'ç¿ ç¶ ä¹‹å¤¢',
-        icon: 'ğŸ’',
-        buttonIcon: 'ğŸŒ¿',
+        name: 'ç¿ ç?ä¹‹å¤¢',
+        icon: '??',
+        buttonIcon: '?Œ¿',
         preview: 'url("https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg") center/cover',
         color: '#2E8B57',
         category: 'fantasy',
@@ -430,9 +476,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'graffiti',
-        name: 'å¡—é´‰é¢¨æ ¼',
-        icon: 'ğŸ¨',
-        buttonIcon: 'ğŸ­',
+        name: 'å¡—é?é¢¨æ ¼',
+        icon: '?¨',
+        buttonIcon: '?­',
         preview: 'url("https://i.pinimg.com/1200x/fa/a1/0c/faa10cd0b7816efb3ac74d940bc4bda4.jpg") center/cover',
         color: '#1E90FF',
         category: 'fantasy',
@@ -449,9 +495,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'anime-elegant-blue',
-        name: 'å‹•æ¼«å„ªé›…è—é‡‘',
-        icon: 'ğŸ‘¤',
-        buttonIcon: 'ğŸ’',
+        name: '?•æ¼«?ªé??é?',
+        icon: '?‘¤',
+        buttonIcon: '??',
         preview: 'url("https://i.pinimg.com/1200x/ca/78/a1/ca78a1863f5bd408cf202406e6c8d346.jpg") center/cover',
         color: '#5b8db3',
         category: 'anime',
@@ -471,9 +517,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'shinobu',
-        name: 'è´è¶å¿',
-        icon: 'ğŸ¦‹',
-        buttonIcon: 'ğŸ—¡ï¸',
+        name: '?´è¶å¿?,
+        icon: '??',
+        buttonIcon: '?—¡ï¸?,
         preview: 'url("https://i.pinimg.com/736x/26/c9/c0/26c9c0297b0cad3dfa8d6d5c41ccfc18.jpg") center/cover',
         color: '#9B59B6',
         category: 'anime',
@@ -489,10 +535,29 @@ var themes = window.AppThemes || [
         dividendCardImage: 'https://i.pinimg.com/736x/26/c9/c0/26c9c0297b0cad3dfa8d6d5c41ccfc18.jpg'
     },
     {
+        id: 'cutecreatures',
+        name: '?¯æ??Ÿç‰©',
+        icon: '?Œ¿',
+        buttonIcon: '?¾',
+        preview: 'url("https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg") center/cover',
+        color: '#90EE90',
+        category: 'cute',
+        backgroundImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/736x/85/74/68/857468da4307fa5dc160ad691a91203b.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/1200x/12/9a/54/129a54dd2352298e7e8d4630eacc6b76.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/47/8e/82/478e82dd1e2a82bc5d4d2914aa8be731.jpg',
+        buyingCardImage: 'https://i.pinimg.com/1200x/12/9a/54/129a54dd2352298e7e8d4630eacc6b76.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg'
+    },
+    {
         id: 'getrichCats',
-        name: 'å¯æ„›ç™¼è²¡è²“',
-        icon: 'ğŸ±',
-        buttonIcon: 'ğŸˆµ',
+        name: '?¯æ??¼è²¡è²?,
+        icon: '?±',
+        buttonIcon: '?ˆµ',
         preview: 'url("https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg") center/cover',
         color: '#FF69B4',
         category: 'wealth',
@@ -509,9 +574,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'spacegold',
-        name: 'å¤ªç©ºé‡‘å½©',
-        icon: 'ğŸš€',
-        buttonIcon: 'ğŸª',
+        name: 'å¤ªç©º?‘å½©',
+        icon: '??',
+        buttonIcon: '??',
         preview: 'url("https://i.pinimg.com/736x/eb/33/27/eb3327b7caa47a87c1f4cee99344892e.jpg") center/cover',
         color: '#FFD700',
         category: 'cosmic',
@@ -528,9 +593,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'festive',
-        name: 'ç¯€æ—¥æ…¶å…¸',
-        icon: 'ğŸŠ',
-        buttonIcon: 'ğŸ‰',
+        name: 'ç¯€?¥æ…¶??,
+        icon: '??',
+        buttonIcon: '??',
         preview: 'url("https://i.pinimg.com/736x/c8/57/a1/c857a19b3f5bd274ba864e54dc27f550.jpg") center/cover',
         color: '#E63946',
         category: 'celebration',
@@ -547,8 +612,8 @@ var themes = window.AppThemes || [
     },
     {
         id: 'shinchanPool',
-        name: 'å°æ–°æ³³æ± æ´¾å°',
-        icon: 'ğŸŠ',
+        name: 'å°æ–°æ³³æ?æ´¾å?',
+        icon: '??',
         preview: 'url("image/79793c93271b2231adefb28841972eec.jpg") center/cover',
         color: '#00CED1',
         category: 'dynamic',
@@ -557,9 +622,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'nightglowSeasons',
-        name: 'å¤œå…‰å››å­£',
-        icon: 'ğŸŒƒ',
-        buttonIcon: 'âœ¨',
+        name: 'å¤œå??›å­£',
+        icon: '??',
+        buttonIcon: '??,
         preview: 'linear-gradient(135deg, #0a1929 0%, #1e3a5f 25%, #2e5266 50%, #1a365d 75%, #0f172a 100%)',
         color: '#64ffda',
         category: 'dynamic',
@@ -567,9 +632,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'goldIngot',
-        name: 'é‡‘å…ƒå¯¶',
-        icon: 'ğŸ†',
-        buttonIcon: 'ğŸ’°',
+        name: '?‘å?å¯?,
+        icon: '??',
+        buttonIcon: '?’°',
         preview: 'url("https://i.pinimg.com/736x/af/1e/51/af1e51dcb0a0763d836d2d2e51f4daad.jpg") center/cover',
         color: '#FFDF6B',
         category: 'wealth',
@@ -586,9 +651,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'animeGoldenBlue',
-        name: 'é‡‘è—å‹•æ¼«',
-        icon: 'ğŸ§',
-        buttonIcon: 'ğŸ‘¦',
+        name: '?‘è??•æ¼«',
+        icon: '?§',
+        buttonIcon: '?‘¦',
         preview: 'url("https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg") center/cover',
         color: '#D4AF37',
         category: 'fantasy',
@@ -604,9 +669,9 @@ var themes = window.AppThemes || [
     },
     {
         id: 'everythingGoesWell',
-        name: 'è«¸äº‹çš†é †',
-        icon: 'ğŸ°',
-        buttonIcon: 'ğŸ’°',
+        name: 'è«¸ä??†é?',
+        icon: '?°',
+        buttonIcon: '?’°',
         preview: 'url("https://i.pinimg.com/736x/b8/cb/78/b8cb7858857324b13abc8b7957dd832e.jpg") center/cover',
         color: '#D32F2F',
         category: 'wealth',
@@ -623,242 +688,385 @@ var themes = window.AppThemes || [
         smartAnalysisCardImage: 'https://i.pinimg.com/736x/b8/cb/78/b8cb7858857324b13abc8b7957dd832e.jpg',
         smartReminderCardImage: 'https://i.pinimg.com/736x/b8/cb/78/b8cb7858857324b13abc8b7957dd832e.jpg',
         regularInvestmentCardImage: 'https://i.pinimg.com/736x/b8/cb/78/b8cb7858857324b13abc8b7957dd832e.jpg',
-        description: 'æ·±è‰²è­·çœ¼ä¸»é¡Œ'
+        description: 'æ·±è‰²è­·çœ¼ä¸»é?'
     },
     {
         id: 'bunnyBubbleTea',
-        name: 'å…”å­æ³¡æ³¡èŒ¶',
-        icon: 'ğŸ°',
-        buttonIcon: 'ğŸ§‹',
+        name: '?”å?æ³¡æ³¡??,
+        icon: '?°',
+        buttonIcon: '??',
         preview: 'url("https://i.pinimg.com/736x/7b/91/62/7b9162124b29ec7ba01ddf685efbdfc8.jpg") center/cover',
         color: '#87CEEB',
         category: 'cute',
         backgroundImage: 'https://i.pinimg.com/736x/7b/91/62/7b9162124b29ec7ba01ddf685efbdfc8.jpg',
         investmentCardImage: 'https://i.pinimg.com/736x/7b/91/62/7b9162124b29ec7ba01ddf685efbdfc8.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/7b/91/62/7b9162124b29ec7ba01ddf685efbdfc8.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/736x/7b/91/62/7b9162124b29ec7ba01ddf685efbdfc8.jpg',
         monthlyPlanningCardImage: 'https://i.pinimg.com/736x/7b/91/62/7b9162124b29ec7ba01ddf685efbdfc8.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/7b/91/62/7b9162124b29ec7ba01ddf685efbdfc8.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/7b/91/62/7b9162124b29ec7ba01ddf685efbdfc8.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/7b/91/62/7b9162124b29ec7ba01ddf685efbdfc8.jpg',
         sellingCardImage: 'https://i.pinimg.com/736x/7b/91/62/7b9162124b29ec7ba01ddf685efbdfc8.jpg',
         dividendCardImage: 'https://i.pinimg.com/736x/7b/91/62/7b9162124b29ec7ba01ddf685efbdfc8.jpg'
     },
     {
-        id: 'littlePrinceGlow',
-        name: 'å°ç‹å­æ˜Ÿç©º',
-        icon: 'ğŸ‘‘',
-        buttonIcon: 'â­',
-        preview: 'linear-gradient(135deg, #F4E4C1 0%, #E8D5B7 50%, #D4AF37 100%)',
-        color: '#F4E4C1',
+        name: 'å°ç?å­ä¸»é¡?,
+        icon: '??',
+        buttonIcon: '?Œ¹',
+        color: '#3949ab',
         category: 'fantasy',
-        backgroundImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
-        investmentCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
-        accountingCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
-        holdingCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
-        buyingCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
-        sellingCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
-        dividendCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
-        smartAnalysisCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
-        smartReminderCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
-        regularInvestmentCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg'
-    },
+        backgroundImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        investmentCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        accountingCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        dailyExpenseDisplayImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        dailyExpenseInHistoryImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        smartAnalysisCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        smartReminderCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        regularInvestmentCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        holdingCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        buyingCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        sellingCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg',
+        dividendCardImage: 'https://i.pinimg.com/1200x/70/81/ba/7081bada7810c803506d1a08d29892c1.jpg'
+    }
     ];
 
-    // æŒ‰éˆ•åœ–æ¨™å®šç¾©
+    // ?‰é??–æ?å®šç¾©
     const buttonIcons = {
         pink: {
-            fab: '',
-            fab: 'ğŸŒ¸',
-            description: 'ç´”è‰²ç¶“å…¸ä¸»é¡Œ',
-            fab: 'âœï¸',
-            navLedger: 'ğŸ“–',
-            navWallet: 'ğŸ’°',
-            navInvestment: 'ğŸ“ˆ',
-            navChart: 'ğŸ“Š',
-            navSettings: 'âš™ï¸'
+            fab: '?Œ¸',
+            description: 'ç´”è‰²ç¶“å…¸ä¸»é?',
+            fab: '?ï?',
+            navLedger: '??',
+            navWallet: '?’°',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?™ï?'
         },
         blue: {
-            fab: 'âœï¸',
-            navLedger: 'ğŸ“˜',
-            navWallet: 'ğŸ’µ',
-            navInvestment: 'ğŸ“‰',
-            navChart: 'ğŸ“‹',
-            navSettings: 'ğŸ”§'
+            fab: '?ï?',
+            navLedger: '??',
+            navWallet: '?’µ',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?”§'
         },
         green: {
-            fab: 'ğŸ“',
-            navLedger: 'ğŸ“—',
-            navWallet: 'ğŸ’´',
-            navInvestment: 'ğŸ“Š',
-            navChart: 'ğŸ“ˆ',
-            navSettings: 'âš™ï¸'
+            fab: '??',
+            navLedger: '??',
+            navWallet: '?’´',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?™ï?'
         },
         purple: {
-            fab: 'ğŸ–Šï¸',
-            navLedger: 'ğŸ“•',
-            navWallet: 'ğŸ’¶',
-            navInvestment: 'ğŸ’¹',
-            navChart: 'ğŸ“‰',
-            navSettings: 'ğŸ›ï¸'
+            fab: '??ï¸?,
+            navLedger: '??',
+            navWallet: '?’¶',
+            navInvestment: '?’¹',
+            navChart: '??',
+            navSettings: '??ï¸?
         },
         orange: {
-            fab: 'âœ',
-            navLedger: 'ğŸ““',
-            navWallet: 'ğŸ’·',
-            navInvestment: 'ğŸ“Œ',
-            navChart: 'ğŸ“‘',
-            navSettings: 'ğŸ”©'
+            fab: '??,
+            navLedger: '??',
+            navWallet: '?’·',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?”©'
         },
         cyan: {
-            fab: 'âœ',
-            navLedger: 'ğŸ“™',
-            navWallet: 'ğŸ’¸',
-            navInvestment: 'ğŸ“',
-            navChart: 'ğŸ“„',
-            navSettings: 'ğŸ› ï¸'
+            fab: '??,
+            navLedger: '??',
+            navWallet: '?’¸',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '??ï¸?
         },
         star: {
-            fab: 'â­',
-            navLedger: 'ğŸŒŒ',
-            navWallet: 'ğŸ’«',
-            navInvestment: 'ğŸŒŸ',
-            navChart: 'ğŸ”­',
-            navSettings: 'ğŸŒ '
+            fab: 'â­?,
+            navLedger: '??',
+            navWallet: '?’«',
+            navInvestment: '??',
+            navChart: '?”­',
+            navSettings: '??'
         },
         red: {
-            fab: 'â¤ï¸',
-            navLedger: 'ğŸ“•',
-            navWallet: 'ğŸ’´',
-            navInvestment: 'ğŸ“Š',
-            navChart: 'ğŸ“ˆ',
-            navSettings: 'âš™ï¸'
+            fab: '?¤ï?',
+            navLedger: '??',
+            navWallet: '?’´',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?™ï?'
         },
         yellow: {
-            fab: 'ğŸ’›',
-            navLedger: 'ğŸ“’',
-            navWallet: 'ğŸ’°',
-            navInvestment: 'ğŸ“ˆ',
-            navChart: 'ğŸ“Š',
-            navSettings: 'ğŸ”§'
+            fab: '??',
+            navLedger: '??',
+            navWallet: '?’°',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?”§'
         },
         indigo: {
-            fab: 'ğŸ’™',
-            navLedger: 'ğŸ“˜',
-            navWallet: 'ğŸ’µ',
-            navInvestment: 'ğŸ“‰',
-            navChart: 'ğŸ“‹',
-            navSettings: 'ğŸ”§'
+            fab: '??',
+            navLedger: '??',
+            navWallet: '?’µ',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?”§'
         },
         teal: {
-            fab: 'ğŸ’š',
-            navLedger: 'ğŸ“—',
-            navWallet: 'ğŸ’¶',
-            navInvestment: 'ğŸ’¹',
-            navChart: 'ğŸ“‰',
-            navSettings: 'ğŸ›ï¸'
+            fab: '??',
+            navLedger: '??',
+            navWallet: '?’¶',
+            navInvestment: '?’¹',
+            navChart: '??',
+            navSettings: '??ï¸?
         },
                 aurora: {
-            fab: 'ğŸŒˆ',
-            navLedger: 'ğŸŒˆ',
-            navWallet: 'ğŸ’',
-            navInvestment: 'ğŸ“ˆ',
-            navChart: 'ğŸ“Š',
-            navSettings: 'âš™ï¸'
+            fab: '??',
+            navLedger: '??',
+            navWallet: '??',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?™ï?'
         },
                 noface: {
-            fab: 'ğŸª™',
-            navLedger: 'ğŸ“œ',
-            navWallet: 'ğŸ’°',
-            navInvestment: 'ğŸ“ˆ',
-            navChart: 'ğŸ“Š',
-            navSettings: 'âš™ï¸'
+            fab: '??',
+            navLedger: '??',
+            navWallet: '?’°',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?™ï?'
         },
         demonslayer: {
-            fab: 'ğŸ—¡ï¸',
-            navLedger: 'ğŸ““',
-            navWallet: 'ğŸ’ ',
-            navInvestment: 'ğŸ“ˆ',
-            navChart: 'ğŸ“Š',
-            navSettings: 'âš™ï¸'
+            fab: '?—¡ï¸?,
+            navLedger: '??',
+            navWallet: '??',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?™ï?'
         },
         totoro: {
-            fab: 'ğŸŒ±',
-            navLedger: 'ğŸ“—',
-            navWallet: 'ğŸ’°',
-            navInvestment: 'ğŸ“ˆ',
-            navChart: 'ğŸ“Š',
-            navSettings: 'âš™ï¸'
+            fab: '?Œ±',
+            navLedger: '??',
+            navWallet: '?’°',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?™ï?'
         },
         firefly: {
-            fab: 'âœ¨',
-            navLedger: 'âœ¨',
-    navChart: 'ğŸŒŸ',
-    navSettings: 'ğŸš€'
+            fab: '??,
+            navLedger: '??,
+            navWallet: '?’«',
+            navInvestment: '??',
+            navChart: '?”­',
+            navSettings: '??'
+        },
+        snow: {
+            fab: '?„ï?',
+            navLedger: '?„ï?',
+            navWallet: '??',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?™ï?'
+        },
+        cute: {
+            fab: '?¾',
+            navLedger: '?¾',
+            navWallet: '?’°',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?™ï?'
+        },
+        neon: {
+            fab: '?Ÿ£',
+            navLedger: '?Ÿ£',
+            navWallet: '??',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?™ï?'
+        },
+        money: {
+            fab: '?’¸',
+            navLedger: '??',
+            navWallet: '?’°',
+            navInvestment: '?’¹',
+            navChart: '??',
+            navSettings: '?™ï?'
+        },
+        space: {
+            fab: '??',
+            navLedger: '?›¸',
+            navWallet: '??',
+            navInvestment: '?›°ï¸?,
+            navChart: '?”­',
+            navSettings: '?™ï?'
+        },
+        fruit: {
+            fab: '??',
+            navLedger: '??',
+            navWallet: '??',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '??'
+        },
+        meow: {
+            fab: '?±',
+            navLedger: '??',
+            navWallet: '?¾',
+            navInvestment: '?­',
+            navChart: '?¹',
+            navSettings: '?°'
+        },
+        bluerose: {
+            fab: '?—¡ï¸?,
+            navLedger: '??',
+            navWallet: '??',
+            navInvestment: '?›¡ï¸?,
+            navChart: '?°',
+            navSettings: '?”ï?'
+        },
+        emeraldPrince: {
+            fab: '??',
+            navLedger: '??',
+            navWallet: '??',
+            navInvestment: '?—¡ï¸?,
+            navChart: '?°',
+            navSettings: '?”ï?'
+        },
+        goldenElegance: {
+            fab: '??',
+            navLedger: '??',
+            navWallet: '??',
+            navInvestment: '?—¡ï¸?,
+            navChart: '?°',
+            navSettings: '?”ï?'
+        },
+        cuteCats: {
+            fab: '?±',
+            navLedger: '??',
+            navWallet: '?¾',
+            navInvestment: '?­',
+            navChart: '?¹',
+            navSettings: '?°'
+        },
+        dreamy: {
+            fab: '??',
+            navLedger: '?¨',
+            navWallet: '??',
+            navInvestment: '?Œ¸',
+            navChart: '??',
+            navSettings: '??
+        },
+        
+        dreamyfish: {
+            fab: '??',
+            navLedger: '??',
+            navWallet: '?¡',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '??'
+        },
+        emerald: {
+            fab: '??',
+            navLedger: '?Œ¿',
+            navWallet: '??',
+            navInvestment: '?Œ±',
+            navChart: '??',
+            navSettings: '?Œ³'
+        },
+        graffiti: {
+            fab: '?¨',
+            navLedger: '?­',
+            navWallet: '?’°',
+            navInvestment: '??',
+            navChart: '??',
+            navSettings: '?™ï?'
+        },
+        shinobu: {
+            fab: '?ª',
+            navLedger: '?—¡ï¸?,
+            navWallet: '??',
+            navInvestment: '?Œ¸',
+            navChart: '??',
+            navSettings: '??
+        },
+        
+       cutecreatures: {
+    fab: '?Œ¿',
+    navLedger: '?¾',
+    navWallet: '?Œ±',
+    navInvestment: '??',
+    navChart: '?Œ¿',
+    navSettings: '?Œ¿'
+},
+spacegold: {
+    fab: '??',
+    navLedger: '??',
+    navWallet: '??,
+    navInvestment: '?’«',
+    navChart: '??',
+    navSettings: '??'
 },
 festive: {
-    fab: 'ğŸ‰',
-    navLedger: 'ğŸŠ',
-    navWallet: 'ğŸ’°',
-    navInvestment: 'ğŸˆ',
-    navChart: 'ğŸ†',
-    navSettings: 'ğŸ‡'
+    fab: '??',
+    navLedger: '??',
+    navWallet: '?’°',
+    navInvestment: '??',
+    navChart: '??',
+    navSettings: '??'
 },
 whimsicalStarry: {
-    fab: 'ğŸŒŸ',
-    navLedger: 'âœ¨',
-    navWallet: 'ğŸ’«',
-    navInvestment: 'ğŸŒŒ',
-    navChart: 'ğŸ”­',
-    navSettings: 'ğŸŒ '
+    fab: '??',
+    navLedger: '??,
+    navWallet: '?’«',
+    navInvestment: '??',
+    navChart: '?”­',
+    navSettings: '??'
 },
 shinchanPool: {
-    fab: 'ğŸŠ',
-    navLedger: 'ğŸ¦†',
-    navWallet: 'ğŸ’§',
-    navInvestment: 'ğŸŒŠ',
-    navChart: 'ğŸ–ï¸',
-    navSettings: 'â›±ï¸'
+    fab: '??',
+    navLedger: '??',
+    navWallet: '?’§',
+    navInvestment: '??',
+    navChart: '??ï¸?,
+    navSettings: '?±ï?'
 },
 dreamyGalaxy: {
-    fab: 'ğŸŒŒ',
-    navLedger: 'âœ¨',
-    navWallet: 'ğŸ’«',
-    navInvestment: 'ğŸŒŸ',
-    navChart: 'ğŸ”­',
-    navSettings: 'ğŸŒ '
+    fab: '??',
+    navLedger: '??,
+    navWallet: '?’«',
+    navInvestment: '??',
+    navChart: '?”­',
+    navSettings: '??'
 },
 dreamyRealm: {
-    fab: 'ğŸŒ¸',
-    navLedger: 'âœ¨',
-    navWallet: 'ğŸ’–',
-    navInvestment: 'ğŸŒˆ',
-    navChart: 'ğŸ¦‹',
-    navSettings: 'ğŸ¨'
+    fab: '?Œ¸',
+    navLedger: '??,
+    navWallet: '??',
+    navInvestment: '??',
+    navChart: '??',
+    navSettings: '?¨'
 },
 bunnyBubbleTea: {
-    fab: 'ğŸ°',
-    navLedger: 'ğŸ¥¤',
-    navWallet: 'ğŸ’–',
-    navInvestment: 'ğŸŒˆ',
-    navChart: 'ğŸ¦‹',
-    navSettings: 'ğŸ¨'
-},
-littlePrinceGlow: {
-    fab: 'ğŸ‘‘',
-    navLedger: 'ğŸ“–',
-    navWallet: 'ğŸ’°',
-    navInvestment: 'ğŸŒŸ',
-    navChart: 'â­',
-    navSettings: 'ğŸŒ™'
+    fab: '?°',
+    navLedger: '?¥¤',
+    navWallet: '??',
+    navInvestment: '??',
+    navChart: '??',
+    navSettings: '?¨'
 }
 };
 
 function applyTheme(themeId) {
     const theme = themes.find(t => t.id === themeId);
     if (!theme) return;
-    
-    // è¨­ç½® data-theme å±¬æ€§ä»¥å•Ÿç”¨ CSS é¸æ“‡å™¨
-    document.documentElement.setAttribute('data-theme', themeId);
-    document.body.setAttribute('data-theme', themeId);
     
     const root = document.documentElement;
     
@@ -888,17 +1096,11 @@ function applyTheme(themeId) {
     }
     
     if (theme.backgroundImage) {
-        // æª¢æŸ¥æ˜¯å¦ç‚ºèŠ±æµ·æ˜Ÿèªä¸»é¡Œï¼Œè©²ä¸»é¡Œä½¿ç”¨ CSS è¨­å®šèƒŒæ™¯
-        if (themeId === 'flowerSeaStar') {
-            // ä¸è¨­å®š JavaScript èƒŒæ™¯ï¼Œè®“ CSS è™•ç†
-            console.log(' èŠ±æµ·æ˜Ÿèªä¸»é¡Œä½¿ç”¨ CSS èƒŒæ™¯è¨­å®š');
-        } else {
-            document.body.style.backgroundImage = `url(${theme.backgroundImage})`;
-            document.body.style.backgroundSize = 'cover';
-            document.body.style.backgroundPosition = 'center';
-            document.body.style.backgroundRepeat = 'no-repeat';
-            document.body.style.backgroundAttachment = 'fixed';
-        }
+        document.body.style.backgroundImage = `url(${theme.backgroundImage})`;
+        document.body.style.backgroundSize = 'cover';
+        document.body.style.backgroundPosition = 'center';
+        document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundAttachment = 'fixed';
     } else if (theme.backgroundColor) {
         document.body.style.background = theme.backgroundColor;
         document.body.style.backgroundImage = '';
@@ -1002,7 +1204,7 @@ function applyTheme(themeId) {
         try {
             console.log('Applying card images for theme:', themeId);
             
-            // å˜—è©¦å¸¸è¦‹çš„å¡ç‰‡é¸æ“‡å™¨
+            // ?—è©¦å¸¸è??„å¡?‡é¸?‡å™¨
             const selectors = [
                 '.investment-card', '.accounting-card', '.daily-expense-display', 
                 '.daily-expense-in-history', '.wallet-budget-card', '.monthly-planning-card',
@@ -1018,43 +1220,13 @@ function applyTheme(themeId) {
                     if (elements.length > 0) {
                         console.log(`Found ${elements.length} elements for: ${selector}`);
                         elements.forEach(element => {
-                            // å¦‚æœæ˜¯å°ç‹å­ä¸»é¡Œï¼Œæ‡‰ç”¨èƒŒæ™¯åœ–ç‰‡
-                            if (themeId === 'littlePrinceGlow') {
-                                if (selector.includes('investment-card')) {
-                                    element.style.setProperty('background-image', `url(${theme.investmentCardImage})`, 'important');
-                                    element.style.setProperty('background-size', 'cover', 'important');
-                                    element.style.setProperty('background-position', 'center', 'important');
-                                    element.style.setProperty('background-repeat', 'no-repeat', 'important');
-                                } else if (selector.includes('accounting-card')) {
-                                    element.style.setProperty('background-image', `url(${theme.accountingCardImage})`, 'important');
-                                    element.style.setProperty('background-size', 'cover', 'important');
-                                    element.style.setProperty('background-position', 'center', 'important');
-                                    element.style.setProperty('background-repeat', 'no-repeat', 'important');
-                                } else if (selector.includes('wallet-budget-card')) {
-                                    element.style.setProperty('background-image', `url(${theme.walletBudgetCardImage})`, 'important');
-                                    element.style.setProperty('background-size', 'cover', 'important');
-                                    element.style.setProperty('background-position', 'center', 'important');
-                                    element.style.setProperty('background-repeat', 'no-repeat', 'important');
-                                } else if (selector.includes('monthly-planning-card')) {
-                                    element.style.setProperty('background-image', `url(${theme.monthlyPlanningCardImage})`, 'important');
-                                    element.style.setProperty('background-size', 'cover', 'important');
-                                    element.style.setProperty('background-position', 'center', 'important');
-                                    element.style.setProperty('background-repeat', 'no-repeat', 'important');
-                                } else {
-                                    // å…¶ä»–å¡ç‰‡ä¿æŒåŠé€æ˜ç™½è‰²èƒŒæ™¯
-                                    element.style.setProperty('background-color', 'rgba(255, 255, 255, 0.95)', 'important');
-                                    element.style.setProperty('background-image', 'none', 'important');
-                                }
-                            } else {
-                                // å…¶ä»–ä¸»é¡Œä¿æŒåŸæœ‰é‚è¼¯
-                                element.style.setProperty('background-color', 'rgba(255, 255, 255, 0.85)', 'important');
-                                element.style.setProperty('background-image', 'none', 'important');
-                            }
-                            
+                            // å¼·åˆ¶è¨­ç½®?Œæ™¯ï¼Œè??‹CSSä¸­ç?!importantè¦å?
+                            element.style.setProperty('background-color', 'rgba(255, 255, 255, 0.85)', 'important');
+                            element.style.setProperty('background-image', 'none', 'important');
                             element.style.setProperty('opacity', '1', 'important');
                             element.style.setProperty('color', '#333', 'important');
                             
-                            // å¦‚æœä¸»é¡Œæœ‰å¡ç‰‡åœ–ç‰‡ï¼Œè¨­ç½®èƒŒæ™¯åœ–ç‰‡
+                            // å¦‚æ?ä¸»é??‰å¡?‡å??‡ï?è¨­ç½®?Œæ™¯?–ç?
                             const imageKey = selector.replace('.', '').replace('[class*="', '').replace('"]', '') + 'Image';
                             if (theme[imageKey]) {
                                 element.style.setProperty('background-image', `url(${theme[imageKey]})`, 'important');
@@ -1063,7 +1235,7 @@ function applyTheme(themeId) {
                                 element.style.setProperty('background-repeat', 'no-repeat', 'important');
                             }
                             
-                            // ç¢ºä¿é‚Šæ¡†å¯è¦‹
+                            // ç¢ºä??Šæ??¯è?
                             element.style.setProperty('border', '1px solid rgba(0, 0, 0, 0.1)', 'important');
                         });
                     }
@@ -1076,44 +1248,44 @@ function applyTheme(themeId) {
         }
     };
 
-    // å»¶é²åŸ·è¡Œ
+    // å»¶é²?·è?
     setTimeout(applyCardImages, 100);
 
-    // æ‡‰ç”¨è¨˜å¸³æœ¬ä¸»é¡Œè‰²
+    // ?‰ç”¨è¨˜å¸³?¬ä¸»é¡Œè‰²
     const applyLedgerTheme = () => {
         try {
             console.log('Applying ledger theme colors for:', themeId);
             
-            // è¨˜å¸³æœ¬ç›¸é—œå…ƒç´ çš„ä¸»é¡Œè‰²æ‡‰ç”¨
+            // è¨˜å¸³?¬ç›¸?œå?ç´ ç?ä¸»é??²æ???
             const ledgerElements = [
-                // è¨˜å¸³æœ¬é¡å‹æ¨™ç±¤
+                // è¨˜å¸³?¬é??‹æ?ç±?
                 '.ledger-type-tab',
-                // è¨˜å¸³æœ¬åˆ—è¡¨é …ç›®
+                // è¨˜å¸³?¬å?è¡¨é???
                 '.ledger-entry',
                 '.ledger-item',
                 '.transaction-item',
                 '.entry-item',
-                // è¨˜å¸³æœ¬æ•¸æ“šé¡¯ç¤º
+                // è¨˜å¸³?¬æ•¸?šé¡¯ç¤?
                 '.ledger-amount',
                 '.entry-amount',
                 '.transaction-amount',
-                // è¨˜å¸³æœ¬åˆ†é¡
+                // è¨˜å¸³?¬å?é¡?
                 '.ledger-category',
                 '.entry-category',
                 '.transaction-category',
-                // è¨˜å¸³æœ¬å¸³æˆ¶
+                // è¨˜å¸³?¬å¸³??
                 '.ledger-account',
                 '.entry-account',
                 '.transaction-account',
-                // è¨˜å¸³æœ¬æ—¥æœŸ
+                // è¨˜å¸³?¬æ—¥??
                 '.ledger-date',
                 '.entry-date',
                 '.transaction-date',
-                // è¨˜å¸³æœ¬å‚™è¨»
+                // è¨˜å¸³?¬å?è¨?
                 '.ledger-note',
                 '.entry-note',
                 '.transaction-note',
-                // è¨˜å¸³æœ¬å®¹å™¨
+                // è¨˜å¸³?¬å®¹??
                 '#ledgerList',
                 '.ledger-container',
                 '.ledger-content'
@@ -1125,29 +1297,29 @@ function applyTheme(themeId) {
                     if (elements.length > 0) {
                         console.log(`Found ${elements.length} ledger elements for: ${selector}`);
                         elements.forEach(element => {
-                            // ç‰¹åˆ¥è™•ç†è¨˜å¸³å¡ç‰‡ - ä½¿ç”¨æ·ºè—è‰²
+                            // ?¹åˆ¥?•ç?è¨˜å¸³?¡ç? - ä½¿ç”¨æ·ºè???
                             if (selector === '.accounting-card') {
                                 element.style.backgroundColor = '#e3f2fd';
                                 element.style.borderColor = '#90caf9';
                                 element.style.color = '#1565c0';
                             } else {
-                                // å…¶ä»–è¨˜å¸³æœ¬å…ƒç´ ä½¿ç”¨ä¸»é¡Œè‰²
+                                // ?¶ä?è¨˜å¸³?¬å?ç´ ä½¿?¨ä¸»é¡Œè‰²
                                 element.style.borderColor = theme.color;
                                 element.style.color = theme.color;
                             }
                             
-                            // å°æ–¼é‡‘é¡é¡¯ç¤ºï¼Œä½¿ç”¨ä¸»é¡Œè‰²
+                            // å°æ–¼?‘é?é¡¯ç¤ºï¼Œä½¿?¨ä¸»é¡Œè‰²
                             if (selector.includes('amount')) {
                                 element.style.color = theme.color;
                                 element.style.fontWeight = 'bold';
                             }
                             
-                            // å°æ–¼å®¹å™¨ï¼Œä½¿ç”¨ä¸»é¡Œè‰²ä½œç‚ºé‚Šæ¡†
+                            // å°æ–¼å®¹å™¨ï¼Œä½¿?¨ä¸»é¡Œè‰²ä½œç‚º?Šæ?
                             if (selector.includes('container') || selector.includes('content')) {
                                 element.style.borderLeft = `4px solid ${theme.color}`;
                             }
                             
-                            // å°æ–¼æ´»å‹•æ¨™ç±¤ï¼Œä½¿ç”¨ä¸»é¡Œè‰²èƒŒæ™¯
+                            // å°æ–¼æ´»å?æ¨™ç±¤ï¼Œä½¿?¨ä¸»é¡Œè‰²?Œæ™¯
                             if (selector.includes('tab') && element.classList.contains('active')) {
                                 element.style.backgroundColor = theme.color;
                                 element.style.color = '#fff';
@@ -1163,25 +1335,25 @@ function applyTheme(themeId) {
         }
     };
     
-    // å»¶é²åŸ·è¡Œè¨˜å¸³æœ¬ä¸»é¡Œæ‡‰ç”¨
+    // å»¶é²?·è?è¨˜å¸³?¬ä¸»é¡Œæ???
     setTimeout(applyLedgerTheme, 150);
 }
 
 const originalButtonIcons = {
-    accountBtn: 'ğŸ’³',
-    emojiBtn: 'ğŸ˜Š',
-    memberBtn: 'ğŸ‘¤',
-    imageBtn: 'ğŸ“·',
-    checkBtn: 'âœ“',
-    searchBtn: 'ğŸ”',
-    addCategoryBtn: 'â•',
+    accountBtn: '?’³',
+    emojiBtn: '??',
+    memberBtn: '?‘¤',
+    imageBtn: '?“·',
+    checkBtn: '??,
+    searchBtn: '??',
+    addCategoryBtn: '??,
     quickNotes: {
-        'æ—©é¤': 'ğŸ³',
-        'åˆé¤': 'ğŸ±',
-        'æ™šé¤': 'ğŸ½ï¸',
-        'äº¤é€š': 'ğŸš—',
-        'è³¼ç‰©': 'ğŸ›’',
-        'å¨›æ¨‚': 'ğŸ®'
+        '?©é?': '?³',
+        '?ˆé?': '?±',
+        '?šé?': '?½ï¸?,
+        'äº¤é€?: '??',
+        'è³¼ç‰©': '??',
+        'å¨›æ?': '?®'
     }
 };
 
@@ -1427,24 +1599,24 @@ function showThemeNotification(theme) {
     notification.className = 'theme-notification';
     notification.innerHTML = `
         <div class="theme-notification-content">
-            <div class="theme-notification-icon">${theme.icon || 'ğŸ¨'}</div>
+            <div class="theme-notification-icon">${theme.icon || '?¨'}</div>
             <div class="theme-notification-text">
-                <div class="theme-notification-title">ä¸»é¡Œå·²åˆ‡æ›</div>
+                <div class="theme-notification-title">ä¸»é?å·²å???/div>
                 <div class="theme-notification-name">${theme.name}</div>
             </div>
-            <div class="theme-notification-close">âœ•</div>
+            <div class="theme-notification-close">??/div>
         </div>
     `;
     
     document.body.appendChild(notification);
     
-    // æ·»åŠ é—œé–‰äº‹ä»¶
+    // æ·»å??œé?äº‹ä»¶
     const closeBtn = notification.querySelector('.theme-notification-close');
     closeBtn.addEventListener('click', () => {
         removeNotification();
     });
     
-    // è‡ªå‹•ç§»é™¤
+    // ?ªå?ç§»é™¤
     const removeNotification = () => {
         notification.classList.add('theme-notification--fadeout');
         setTimeout(() => {
@@ -1454,10 +1626,10 @@ function showThemeNotification(theme) {
         }, 300);
     };
     
-    // 3ç§’å¾Œè‡ªå‹•ç§»é™¤
+    // 3ç§’å??ªå?ç§»é™¤
     setTimeout(removeNotification, 3000);
     
-    // é»æ“Šå¤–éƒ¨é—œé–‰
+    // é»æ?å¤–éƒ¨?œé?
     notification.addEventListener('click', (e) => {
         if (e.target === notification) {
             removeNotification();
@@ -1465,7 +1637,7 @@ function showThemeNotification(theme) {
     });
 }
 
-window.showThemeSelector = function showThemeSelector() {
+function showThemeSelector() {
     console.log('showThemeSelector called');
     console.log('Total themes available:', themes.length);
     console.log('Themes:', themes.map(t => ({ id: t.id, name: t.name, category: t.category })));
@@ -1482,14 +1654,14 @@ window.showThemeSelector = function showThemeSelector() {
     modal.innerHTML = `
         <div class="theme-custom-content modal-content-standard">
             <div class="theme-modal-header">
-                <div class="theme-modal-title">ğŸ¨ ä¸»é¡Œ</div>
-                <button class="theme-close-btn" type="button" aria-label="Close">âœ•</button>
+                <div class="theme-modal-title">?¨ ä¸»é?</div>
+                <button class="theme-close-btn" type="button" aria-label="Close">??/button>
             </div>
 
             <div class="theme-section">
-                <div class="theme-section-title">ä¸»é¡Œåˆ†é¡</div>
+                <div class="theme-section-title">ä¸»é??†é?</div>
                 <div class="theme-toolbar">
-                    <input id="themeSearchInput" class="theme-search-input" type="text" placeholder="æœå°‹ä¸»é¡Œ..." autocomplete="off" />
+                    <input id="themeSearchInput" class="theme-search-input" type="text" placeholder="?œå?ä¸»é?..." autocomplete="off" />
                     <div id="categoryTabs" class="theme-category-tabs"></div>
                 </div>
                 <div id="themeGrid" class="theme-grid theme-grid--categorized"></div>
@@ -1497,41 +1669,41 @@ window.showThemeSelector = function showThemeSelector() {
 
             
             <div class="theme-section theme-section--divider">
-                <div class="theme-section-title">èƒŒæ™¯åœ–ç‰‡</div>
+                <div class="theme-section-title">?Œæ™¯?–ç?</div>
                 <input type="file" id="backgroundImageInput" accept="image/*" style="display: none;">
-                <button id="uploadImageBtn" class="theme-primary-btn" type="button">ğŸ“· ä¸Šå‚³èƒŒæ™¯åœ–ç‰‡</button>
+                <button id="uploadImageBtn" class="theme-primary-btn" type="button">?“· ä¸Šå‚³?Œæ™¯?–ç?</button>
                 ${customTheme.backgroundImage ? `
                     <div id="imagePreviewContainer" class="theme-image-preview">
-                        <img src="${customTheme.backgroundImage}" alt="èƒŒæ™¯é è¦½" class="theme-image-preview-img">
-                        <button id="removeImageBtn" class="theme-image-remove-btn" type="button">âœ•</button>
+                        <img src="${customTheme.backgroundImage}" alt="?Œæ™¯?è¦½" class="theme-image-preview-img">
+                        <button id="removeImageBtn" class="theme-image-remove-btn" type="button">??/button>
                     </div>
                 ` : '<div id="imagePreviewContainer"></div>'}
             </div>
 
             <div class="theme-actions">
-                <button id="resetThemeBtn" class="theme-secondary-btn" type="button">é‡ç½®</button>
-                <button id="saveThemeBtn" class="theme-primary-btn" type="button">å„²å­˜è¨­å®š</button>
+                <button id="resetThemeBtn" class="theme-secondary-btn" type="button">?ç½®</button>
+                <button id="saveThemeBtn" class="theme-primary-btn" type="button">?²å?è¨­å?</button>
             </div>
         </div>
     `;
 
     document.body.appendChild(modal);
 
-    // åˆå§‹åŒ–åˆ†é¡æ¨™ç±¤
+    // ?å??–å?é¡æ?ç±?
     const initCategoryTabs = () => {
         const categoryTabs = document.getElementById('categoryTabs');
         if (!categoryTabs) return;
 
-        // æ·»åŠ ã€Œå…¨éƒ¨ã€é¸é …
+        // æ·»å??Œå…¨?¨ã€é¸??
         let tabsHTML = `
             <button class="category-tab active" data-category="all">
-                <span class="category-tab-icon">ğŸ¨</span>
-                <span class="category-tab-name">å…¨éƒ¨</span>
+                <span class="category-tab-icon">?¨</span>
+                <span class="category-tab-name">?¨éƒ¨</span>
                 <span class="category-tab-count">${themes.length}</span>
             </button>
         `;
 
-        // æ·»åŠ å„å€‹åˆ†é¡
+        // æ·»å??„å€‹å?é¡?
         Object.entries(themeCategories).forEach(([categoryId, categoryInfo]) => {
             const categoryThemes = themes.filter(t => t.category === categoryId);
             if (categoryThemes.length > 0) {
@@ -1547,7 +1719,7 @@ window.showThemeSelector = function showThemeSelector() {
 
         categoryTabs.innerHTML = tabsHTML;
 
-        // æ·»åŠ é»æ“Šäº‹ä»¶
+        // æ·»å?é»æ?äº‹ä»¶
         categoryTabs.querySelectorAll('.category-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 categoryTabs.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
@@ -1567,12 +1739,12 @@ window.showThemeSelector = function showThemeSelector() {
             return (t.name || '').toLowerCase().includes(q) || (t.id || '').toLowerCase().includes(q);
         });
 
-        // æŒ‰åˆ†é¡ç¯©é¸
+        // ?‰å?é¡ç¯©??
         if (selectedCategory !== 'all') {
             list = list.filter(t => t.category === selectedCategory);
         }
 
-        // æŒ‰åˆ†é¡åˆ†çµ„
+        // ?‰å?é¡å?çµ?
         const groupedThemes = {};
         list.forEach(theme => {
             const category = theme.category || 'basic';
@@ -1585,7 +1757,7 @@ window.showThemeSelector = function showThemeSelector() {
         let gridHTML = '';
         
         Object.entries(groupedThemes).forEach(([categoryId, categoryThemes]) => {
-            const categoryInfo = themeCategories[categoryId] || { name: 'å…¶ä»–', icon: 'ğŸ“', description: '' };
+            const categoryInfo = themeCategories[categoryId] || { name: '?¶ä?', icon: '??', description: '' };
             
             gridHTML += `
                 <div class="theme-category-section">
@@ -1604,7 +1776,7 @@ window.showThemeSelector = function showThemeSelector() {
                                     <div class="theme-item-content theme-item-content--compact">
                                         <div class="theme-item-icon">${theme.icon}</div>
                                         <div class="theme-item-name">${theme.name}</div>
-                                        ${isSelected ? '<div class="theme-item-check">âœ“</div>' : '<div class="theme-item-check theme-item-check--placeholder"></div>'}
+                                        ${isSelected ? '<div class="theme-item-check">??/div>' : '<div class="theme-item-check theme-item-check--placeholder"></div>'}
                                     </div>
                                 </div>
                             `;
@@ -1629,13 +1801,13 @@ window.showThemeSelector = function showThemeSelector() {
                 
                 console.log('Applying theme:', theme.name);
                 
-                // æ¸…é™¤è‡ªè¨‚ä¸»é¡Œè¨­å®šï¼Œæ‡‰ç”¨é è¨­ä¸»é¡Œ
+                // æ¸…é™¤?ªè?ä¸»é?è¨­å?ï¼Œæ??¨é?è¨­ä¸»é¡?
                 saveCustomTheme({});
                 applyTheme(themeId);
                 
-                // å¦‚æœä¸»é¡Œæœ‰èƒŒæ™¯åœ–ç‰‡ï¼Œæœƒè‡ªå‹•åœ¨applyThemeä¸­è™•ç†
+                // å¦‚æ?ä¸»é??‰è??¯å??‡ï??ƒè‡ª?•åœ¨applyThemeä¸­è???
                 if (theme && theme.backgroundImage) {
-                    console.log(` åˆ‡æ›åˆ°ä¸»é¡Œ "${theme.name}" ä¸¦è¼‰å…¥èƒŒæ™¯åœ–ç‰‡`);
+                    console.log(` ?‡æ??°ä¸»é¡?"${theme.name}" ä¸¦è??¥è??¯å??‡`);
                 }
 
                 grid.querySelectorAll('.theme-item').forEach(t => t.classList.remove('selected'));
@@ -1651,7 +1823,7 @@ window.showThemeSelector = function showThemeSelector() {
         });
     };
 
-    // åˆå§‹åŒ–
+    // ?å???
     initCategoryTabs();
     renderThemeGrid('');
 
@@ -1679,8 +1851,8 @@ window.showThemeSelector = function showThemeSelector() {
                     const imageUrl = event.target.result;
                     const previewContainer = document.getElementById('imagePreviewContainer');
                     previewContainer.innerHTML = `
-                        <img src="${imageUrl}" alt="èƒŒæ™¯é è¦½" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px;">
-                        <button id="removeImageBtn" style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; font-size: 18px;">âœ•</button>
+                        <img src="${imageUrl}" alt="?Œæ™¯?è¦½" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px;">
+                        <button id="removeImageBtn" style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; font-size: 18px;">??/button>
                     `;
                     previewContainer.style.position = 'relative';
                     previewContainer.style.marginTop = '12px';
@@ -1726,7 +1898,7 @@ window.showThemeSelector = function showThemeSelector() {
                 updateAllCharts();
             }
 
-            alert('ä¸»é¡Œè¨­å®šå·²å„²å­˜ï¼');
+            alert('ä¸»é?è¨­å?å·²å„²å­˜ï?');
             if (document.body.contains(modal)) {
                 document.body.removeChild(modal);
             }
@@ -1736,7 +1908,7 @@ window.showThemeSelector = function showThemeSelector() {
     const resetBtn = document.getElementById('resetThemeBtn');
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
-            if (confirm('ç¢ºå®šè¦é‡ç½®æ‰€æœ‰è‡ªè¨‚è¨­å®šå—ï¼Ÿ')) {
+            if (confirm('ç¢ºå?è¦é?ç½®æ??‰è‡ªè¨‚è¨­å®šå?ï¼?)) {
                 saveCustomTheme({});
                 applyTheme('blue');
                 applyCustomTheme();
