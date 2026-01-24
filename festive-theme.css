@@ -201,9 +201,9 @@
 :root[data-theme="festive"] .page-wallet,
 :root[data-theme="festive"] .page-history,
 :root[data-theme="festive"] .page-planner {
-    background: rgba(255, 255, 255, 0.9) !important;
-    backdrop-filter: blur(8px) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
 }
 
 /* 卡片样式 */
