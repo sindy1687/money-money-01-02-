@@ -1,0 +1,462 @@
+/* 宇宙夢幻主題樣式表 */
+/* Cosmic Dream Theme Styles */
+
+/* 基本主題變數 */
+[data-theme="cosmicDream"] {
+    --primary-color: #2A2A72;
+    --secondary-color: #4B0082;
+    --accent-color: #FFA500;
+    --light-blue: #87CEEB;
+    --gold: #FFD700;
+    --main-font-color: #FFFFFF;
+    --secondary-font-color: #E8E8E8;
+    --other-font-color: #B8B8B8;
+    --card-background: rgba(0, 0, 0, 0.7);
+    --card-border: rgba(255, 215, 0, 0.3);
+    --button-gradient: linear-gradient(135deg, #FFA500, #FFD700);
+    --button-hover: #FF8C00;
+    --button-disabled: rgba(255, 165, 0, 0.5);
+    --shadow-color: rgba(138, 43, 226, 0.3);
+    --glow-color: rgba(255, 215, 0, 0.4);
+}
+
+/* 背景設定 */
+[data-theme="cosmicDream"] body {
+    background-image: url('images/theme/cosmic-dream-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* 備用背景 - 如果圖片載入失敗 */
+[data-theme="cosmicDream"] body.no-image {
+    background: linear-gradient(135deg, #2A2A72 0%, #4B0082 50%, #8A2BE2 100%);
+}
+
+/* 字體設定 */
+[data-theme="cosmicDream"] {
+    font-family: 'Segoe UI', 'Microsoft JhengHei', 'Arial', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+[data-theme="cosmicDream"] h1, 
+[data-theme="cosmicDream"] h2, 
+[data-theme="cosmicDream"] h3, 
+[data-theme="cosmicDream"] h4, 
+[data-theme="cosmicDream"] h5, 
+[data-theme="cosmicDream"] h6 {
+    font-family: 'Segoe UI Light', 'Microsoft JhengHei', 'Arial', sans-serif;
+    font-weight: 300;
+    color: var(--main-font-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="cosmicDream"] .main-text {
+    color: var(--main-font-color);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="cosmicDream"] .secondary-text {
+    color: var(--secondary-font-color);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="cosmicDream"] .other-text {
+    color: var(--other-font-color);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* 數字和金額樣式 */
+[data-theme="cosmicDream"] .amount,
+[data-theme="cosmicDream"] .number,
+[data-theme="cosmicDream"] .price {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-weight: 600;
+    color: var(--gold);
+    text-shadow: 0 0 8px var(--glow-color);
+}
+
+/* 卡片樣式 */
+[data-theme="cosmicDream"] .card,
+[data-theme="cosmicDream"] .investment-card,
+[data-theme="cosmicDream"] .accounting-card,
+[data-theme="cosmicDream"] .wallet-budget-card,
+[data-theme="cosmicDream"] .monthly-planning-card,
+[data-theme="cosmicDream"] .investment-settings-card,
+[data-theme="cosmicDream"] .holding-card,
+[data-theme="cosmicDream"] .buying-card,
+[data-theme="cosmicDream"] .selling-card,
+[data-theme="cosmicDream"] .dividend-card,
+[data-theme="cosmicDream"] .smart-analysis-card,
+[data-theme="cosmicDream"] .smart-reminder-card,
+[data-theme="cosmicDream"] .regular-investment-card {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 32px var(--shadow-color),
+        0 0 20px var(--glow-color),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    opacity: 1 !important;
+}
+
+[data-theme="cosmicDream"] .card:hover,
+[data-theme="cosmicDream"] .investment-card:hover,
+[data-theme="cosmicDream"] .accounting-card:hover,
+[data-theme="cosmicDream"] .wallet-budget-card:hover,
+[data-theme="cosmicDream"] .monthly-planning-card:hover,
+[data-theme="cosmicDream"] .investment-settings-card:hover,
+[data-theme="cosmicDream"] .holding-card:hover,
+[data-theme="cosmicDream"] .buying-card:hover,
+[data-theme="cosmicDream"] .selling-card:hover,
+[data-theme="cosmicDream"] .dividend-card:hover,
+[data-theme="cosmicDream"] .smart-analysis-card:hover,
+[data-theme="cosmicDream"] .smart-reminder-card:hover,
+[data-theme="cosmicDream"] .regular-investment-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 12px 40px var(--shadow-color),
+        0 0 30px var(--glow-color),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* 按鈕樣式 */
+[data-theme="cosmicDream"] .btn-primary,
+[data-theme="cosmicDream"] .btn-buy,
+[data-theme="cosmicDream"] .btn-invest,
+[data-theme="cosmicDream"] .btn-recurring,
+[data-theme="cosmicDream"] .btn-back {
+    background: var(--button-gradient);
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 24px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 4px 16px rgba(255, 165, 0, 0.3),
+        0 0 12px var(--glow-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+[data-theme="cosmicDream"] .btn-primary:hover,
+[data-theme="cosmicDream"] .btn-buy:hover,
+[data-theme="cosmicDream"] .btn-invest:hover,
+[data-theme="cosmicDream"] .btn-recurring:hover,
+[data-theme="cosmicDream"] .btn-back:hover {
+    background: var(--button-hover);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 20px rgba(255, 165, 0, 0.4),
+        0 0 16px var(--glow-color);
+}
+
+[data-theme="cosmicDream"] .btn-primary:active,
+[data-theme="cosmicDream"] .btn-buy:active,
+[data-theme="cosmicDream"] .btn-invest:active,
+[data-theme="cosmicDream"] .btn-recurring:active,
+[data-theme="cosmicDream"] .btn-back:active {
+    transform: translateY(0);
+    box-shadow: 
+        0 2px 8px rgba(255, 165, 0, 0.3),
+        0 0 8px var(--glow-color);
+}
+
+[data-theme="cosmicDream"] .btn-primary:disabled,
+[data-theme="cosmicDream"] .btn-buy:disabled,
+[data-theme="cosmicDream"] .btn-invest:disabled,
+[data-theme="cosmicDream"] .btn-recurring:disabled,
+[data-theme="cosmicDream"] .btn-back:disabled {
+    background: var(--button-disabled);
+    border-color: rgba(255, 165, 0, 0.3);
+    color: rgba(42, 42, 114, 0.5);
+    cursor: not-allowed;
+    opacity: 0.5;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 導航欄樣式 */
+[data-theme="cosmicDream"] .navbar,
+[data-theme="cosmicDream"] .nav-header {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--card-border);
+    box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+[data-theme="cosmicDream"] .nav-item,
+[data-theme="cosmicDream"] .nav-link {
+    color: var(--main-font-color);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
+}
+
+[data-theme="cosmicDream"] .nav-item:hover,
+[data-theme="cosmicDream"] .nav-link:hover {
+    color: var(--gold);
+    text-shadow: 0 0 8px var(--glow-color);
+}
+
+/* 浮動操作按鈕 (FAB) */
+[data-theme="cosmicDream"] .fab,
+[data-theme="cosmicDream"] .floating-action-btn {
+    background: var(--button-gradient);
+    border: 2px solid var(--gold);
+    box-shadow: 
+        0 6px 20px rgba(255, 165, 0, 0.4),
+        0 0 16px var(--glow-color);
+    color: var(--primary-color);
+}
+
+[data-theme="cosmicDream"] .fab:hover,
+[data-theme="cosmicDream"] .floating-action-btn:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 
+        0 8px 24px rgba(255, 165, 0, 0.5),
+        0 0 20px var(--glow-color);
+}
+
+/* 小森對話框樣式 */
+[data-theme="cosmicDream"] .xiaosen-chat,
+[data-theme="cosmicDream"] .chat-container,
+[data-theme="cosmicDream"] .ai-assistant {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 
+        0 8px 32px var(--shadow-color),
+        0 0 20px var(--glow-color);
+}
+
+[data-theme="cosmicDream"] .chat-message,
+[data-theme="cosmicDream"] .ai-message {
+    background: rgba(75, 0, 130, 0.3);
+    border-left: 4px solid var(--accent-color);
+    color: var(--main-font-color);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin: 8px 0;
+}
+
+[data-theme="cosmicDream"] .chat-input,
+[data-theme="cosmicDream"] .ai-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--card-border);
+    border-radius: 25px;
+    color: var(--main-font-color);
+    padding: 12px 20px;
+}
+
+[data-theme="cosmicDream"] .chat-input::placeholder,
+[data-theme="cosmicDream"] .ai-input::placeholder {
+    color: var(--other-font-color);
+}
+
+/* 智慧功能樣式 */
+[data-theme="cosmicDream"] .smart-analysis,
+[data-theme="cosmicDream"] .smart-reminder,
+[data-theme="cosmicDream"] .insight-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 6px 24px var(--shadow-color),
+        0 0 16px var(--glow-color);
+}
+
+[data-theme="cosmicDream"] .smart-icon,
+[data-theme="cosmicDream"] .insight-icon {
+    color: var(--accent-color);
+    text-shadow: 0 0 8px var(--glow-color);
+}
+
+/* 表單元素樣式 */
+[data-theme="cosmicDream"] input,
+[data-theme="cosmicDream"] textarea,
+[data-theme="cosmicDream"] select {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: var(--main-font-color);
+    padding: 12px 16px;
+}
+
+[data-theme="cosmicDream"] input::placeholder,
+[data-theme="cosmicDream"] textarea::placeholder,
+[data-theme="cosmicDream"] select::placeholder {
+    color: var(--other-font-color);
+}
+
+[data-theme="cosmicDream"] input:focus,
+[data-theme="cosmicDream"] textarea:focus,
+[data-theme="cosmicDream"] select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 12px var(--glow-color);
+    outline: none;
+}
+
+/* 模態框樣式 */
+[data-theme="cosmicDream"] .modal,
+[data-theme="cosmicDream"] .popup,
+[data-theme="cosmicDream"] .dialog {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 12px 48px var(--shadow-color),
+        0 0 32px var(--glow-color);
+}
+
+[data-theme="cosmicDream"] .modal-header,
+[data-theme="cosmicDream"] .popup-header,
+[data-theme="cosmicDream"] .dialog-header {
+    border-bottom: 1px solid var(--card-border);
+    color: var(--main-font-color);
+}
+
+/* 圖表樣式 */
+[data-theme="cosmicDream"] .chart-container,
+[data-theme="cosmicDream"] canvas {
+    filter: drop-shadow(0 4px 12px var(--shadow-color));
+}
+
+[data-theme="cosmicDream"] .chart-title {
+    color: var(--main-font-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    [data-theme="cosmicDream"] body {
+        background-size: cover;
+        background-position: center;
+    }
+    
+    [data-theme="cosmicDream"] .card,
+    [data-theme="cosmicDream"] .investment-card,
+    [data-theme="cosmicDream"] .accounting-card,
+    [data-theme="cosmicDream"] .wallet-budget-card,
+    [data-theme="cosmicDream"] .monthly-planning-card,
+    [data-theme="cosmicDream"] .investment-settings-card,
+    [data-theme="cosmicDream"] .holding-card,
+    [data-theme="cosmicDream"] .buying-card,
+    [data-theme="cosmicDream"] .selling-card,
+    [data-theme="cosmicDream"] .dividend-card,
+    [data-theme="cosmicDream"] .smart-analysis-card,
+    [data-theme="cosmicDream"] .smart-reminder-card,
+    [data-theme="cosmicDream"] .regular-investment-card {
+        margin: 8px;
+        padding: 16px;
+        border-radius: 12px;
+    }
+    
+    [data-theme="cosmicDream"] .btn-primary,
+    [data-theme="cosmicDream"] .btn-buy,
+    [data-theme="cosmicDream"] .btn-invest,
+    [data-theme="cosmicDream"] .btn-recurring,
+    [data-theme="cosmicDream"] .btn-back {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    [data-theme="cosmicDream"] .xiaosen-chat,
+    [data-theme="cosmicDream"] .chat-container {
+        margin: 8px;
+        border-radius: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    [data-theme="cosmicDream"] .card,
+    [data-theme="cosmicDream"] .investment-card,
+    [data-theme="cosmicDream"] .accounting-card,
+    [data-theme="cosmicDream"] .wallet-budget-card,
+    [data-theme="cosmicDream"] .monthly-planning-card,
+    [data-theme="cosmicDream"] .investment-settings-card,
+    [data-theme="cosmicDream"] .holding-card,
+    [data-theme="cosmicDream"] .buying-card,
+    [data-theme="cosmicDream"] .selling-card,
+    [data-theme="cosmicDream"] .dividend-card,
+    [data-theme="cosmicDream"] .smart-analysis-card,
+    [data-theme="cosmicDream"] .smart-reminder-card,
+    [data-theme="cosmicDream"] .regular-investment-card {
+        margin: 4px;
+        padding: 12px;
+        border-radius: 8px;
+    }
+    
+    [data-theme="cosmicDream"] h1, [data-theme="cosmicDream"] h2 {
+        font-size: 1.5em;
+    }
+    
+    [data-theme="cosmicDream"] h3, [data-theme="cosmicDream"] h4 {
+        font-size: 1.2em;
+    }
+}
+
+/* 動畫效果 */
+@keyframes cosmicGlow {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px var(--glow-color),
+            0 0 40px var(--shadow-color);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px var(--glow-color),
+            0 0 60px var(--shadow-color);
+    }
+}
+
+[data-theme="cosmicDream"] .glow-effect {
+    animation: cosmicGlow 3s ease-in-out infinite;
+}
+
+/* 載入動畫 */
+@keyframes cosmicPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+[data-theme="cosmicDream"] .pulse-effect {
+    animation: cosmicPulse 2s ease-in-out infinite;
+}
+
+/* 滾動條樣式 */
+[data-theme="cosmicDream"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+[data-theme="cosmicDream"] ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+[data-theme="cosmicDream"] ::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+    box-shadow: 0 0 8px var(--glow-color);
+}
+
+[data-theme="cosmicDream"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--gold);
+}

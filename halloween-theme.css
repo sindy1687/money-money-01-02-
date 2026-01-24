@@ -132,9 +132,9 @@
 :root[data-theme="halloween"] .page-wallet,
 :root[data-theme="halloween"] .page-history,
 :root[data-theme="halloween"] .page-planner {
-    background: transparent !important;
-    backdrop-filter: none !important;
-    box-shadow: none !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(8px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* 卡片樣式 */

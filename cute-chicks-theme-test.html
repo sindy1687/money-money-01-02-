@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可愛小雞主題測試</title>
+    <link rel="stylesheet" href="cute-chicks-theme.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background: linear-gradient(135deg, var(--color-primary, #FFD93D) 0%, var(--color-primary-light, #FFE066) 50%, var(--color-secondary, #FF9800) 100%);
+            border: 2px solid var(--color-primary-dark, #FFC107);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(255, 217, 61, 0.3);
+            color: var(--text-primary, #5D4037);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary, #FFD93D) 0%, var(--color-secondary, #FF9800) 100%);
+            border: none;
+            color: var(--text-primary, #5D4037);
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-weight: 600;
+            margin: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(255, 217, 61, 0.2);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--color-primary-light, #FFE066) 0%, var(--color-primary-lighter, #FFEC8B) 50%, var(--color-secondary-light, #FFB74D) 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(255, 217, 61, 0.35);
+        }
+        .buying-card {
+            background: linear-gradient(135deg, var(--color-primary, #FFD93D) 0%, var(--color-primary-light, #FFE066) 50%, var(--color-secondary, #FF9800) 100%);
+            border: 2px solid var(--color-primary-dark, #FFC107);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            color: var(--text-primary, #5D4037);
+            box-shadow: 0 4px 20px rgba(255, 217, 61, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .selling-card {
+            background: linear-gradient(135deg, var(--color-primary, #FFD93D) 0%, var(--color-primary-light, #FFE066) 50%, var(--color-secondary, #FF9800) 100%);
+            border: 2px solid var(--color-primary-dark, #FFC107);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            color: var(--text-primary, #5D4037);
+            box-shadow: 0 4px 20px rgba(255, 217, 61, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dividend-card {
+            background: linear-gradient(135deg, var(--color-primary, #FFD93D) 0%, var(--color-primary-light, #FFE066) 50%, var(--color-secondary, #FF9800) 100%);
+            border: 2px solid var(--color-primary-dark, #FFC107);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            color: var(--text-primary, #5D4037);
+            box-shadow: 0 4px 20px rgba(255, 217, 61, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .buying-card:hover,
+        .selling-card:hover,
+        .dividend-card:hover {
+            background: linear-gradient(135deg, var(--color-primary-light, #FFE066) 0%, var(--color-primary-lighter, #FFEC8B) 50%, var(--color-secondary-light, #FFB74D) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(255, 193, 7, 0.4);
+        }
+        .amount {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 24px;
+        }
+        .theme-info {
+            background: linear-gradient(135deg, var(--color-primary-light, #FFE066) 0%, var(--color-primary-lighter, #FFEC8B) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(8px);
+            color: var(--text-primary, #5D4037);
+        }
+    </style>
+</head>
+<body data-theme="cuteChicks">
+    <div class="test-container">
+        <div class="theme-info">
+            <h1>🐥 可愛小雞主題測試</h1>
+            <p>這是可愛小雞主題的測試頁面，用來驗證主題是否正確載入和顯示。</p>
+        </div>
+
+        <div class="card">
+            <h2>一般卡片測試</h2>
+            <p>這是一般卡片的樣式，應該具有不透明的背景和清晰的文字。</p>
+            <button class="btn-primary">主要按鈕</button>
+            <span class="amount">NT$ 1,234,567</span>
+        </div>
+
+        <div class="buying-card">
+            <h2>買入卡片測試</h2>
+            <p>這是買入卡片，應該具有藍色背景和白色文字。</p>
+            <button class="btn-primary">買入按鈕</button>
+            <span class="amount">NT$ 999,999</span>
+        </div>
+
+        <div class="selling-card">
+            <h2>賣出卡片測試</h2>
+            <p>這是賣出卡片，應該具有紅色背景和白色文字。</p>
+            <button class="btn-primary">賣出按鈕</button>
+            <span class="amount">NT$ 888,888</span>
+        </div>
+
+        <div class="dividend-card">
+            <h2>股息卡片測試</h2>
+            <p>這是股息卡片，應該具有綠色背景和白色文字。</p>
+            <button class="btn-primary">股息按鈕</button>
+            <span class="amount">NT$ 777,777</span>
+        </div>
+
+        <div class="card">
+            <h2>響應式測試</h2>
+            <p>請調整瀏覽器視窗大小來測試響應式設計。</p>
+            <input type="text" placeholder="輸入框測試" style="padding: 10px; border-radius: 8px; border: 2px solid var(--color-primary-rgba-30); margin: 10px;">
+        </div>
+    </div>
+</body>
+</html>

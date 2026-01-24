@@ -1,0 +1,468 @@
+/* 諸事皆順主題 - 基於紅金配色和吉祥風格 */
+:root[data-theme="everythingGoesWell"] {
+    /* 主要色彩 - 從圖片提取的紅金配色 */
+    --color-primary: #D32F2F;
+    --color-primary-light: #E53935;
+    --color-primary-lighter: #EF5350;
+    --color-primary-dark: #C62828;
+    --color-secondary: #FFD700;
+    --color-secondary-light: #FFEB3B;
+    --color-secondary-dark: #FFC107;
+    
+    /* 功能色彩 */
+    --color-success: #4CAF50;
+    --color-danger: #F44336;
+    --color-warning: #FF9800;
+    --color-info: #2196F3;
+    --color-error: var(--color-danger);
+    
+    /* 背景漸層 - 紅金配色 */
+    --bg-primary: linear-gradient(135deg, rgba(211, 47, 47, 0.95) 0%, rgba(229, 57, 53, 0.85) 35%, rgba(255, 215, 0, 0.75) 100%);
+    --bg-body: rgba(211, 47, 47, 0.92);
+    --bg-body-strong: rgba(229, 57, 53, 0.94);
+    --bg-gradient: linear-gradient(135deg, #D32F2F 0%, #E53935 40%, #FFD700 90%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(211, 47, 47, 0.15) 0%, rgba(255, 215, 0, 0.25) 100%);
+    --bg-white: rgba(255, 248, 225, 0.88);
+    --bg-card: linear-gradient(135deg, rgba(255, 248, 225, 0.85) 0%, rgba(255, 235, 59, 0.75) 100%);
+    --bg-light: rgba(229, 57, 53, 0.6);
+    --bg-lighter: rgba(239, 83, 80, 0.5);
+    --bg-soft: rgba(255, 215, 0, 0.55);
+    --bg-soft-strong: rgba(255, 215, 0, 0.7);
+    
+    /* 文字色彩 - 確保可讀性 */
+    --text-primary: #2c3e50;
+    --text-secondary: #5a6c7d;
+    --text-tertiary: #7f8c8d;
+    --text-strong: #1a252f;
+    --text-white: #ffffff;
+    --text-accent: #FFD700;
+    
+    /* 邊框色彩 */
+    --border-primary: rgba(211, 47, 47, 0.6);
+    --border-light: rgba(229, 57, 53, 0.3);
+    --border-medium: rgba(211, 47, 47, 0.4);
+    --card-border-color: rgba(211, 47, 47, 0.5);
+    --control-border-color: rgba(229, 57, 53, 0.4);
+    --table-border-color: rgba(239, 83, 80, 0.3);
+    --border-accent: rgba(255, 215, 0, 0.6);
+    
+    /* 陰影效果 */
+    --shadow-primary: 0 15px 45px rgba(211, 47, 47, 0.3);
+    --shadow-primary-lg: 0 25px 65px rgba(211, 47, 47, 0.25);
+    --shadow-card: 0 8px 25px rgba(211, 47, 47, 0.2);
+    --shadow-accent: 0 8px 25px rgba(255, 215, 0, 0.15);
+    
+    /* 按鈕樣式 */
+    --btn-primary-bg: linear-gradient(135deg, #D32F2F 0%, #E53935 100%);
+    --btn-primary-hover: linear-gradient(135deg, #C62828 0%, #D32F2F 100%);
+    --btn-secondary-bg: linear-gradient(135deg, #FFD700 0%, #FFEB3B 100%);
+    --btn-secondary-hover: linear-gradient(135deg, #FFC107 0%, #FFD700 100%);
+    
+    /* 字體設定 - 吉祥風格 */
+    --font-primary: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-secondary: 'Space Grotesk', 'JetBrains Mono', monospace;
+    --font-display: 'Clash Display', 'Inter', sans-serif;
+    --font-festive: 'Inter', 'Poppins', cursive;
+}
+
+/* 全局字體設定 */
+:root[data-theme="everythingGoesWell"] body,
+:root[data-theme="everythingGoesWell"] .app-container,
+:root[data-theme="everythingGoesWell"] * {
+    font-family: var(--font-primary);
+}
+
+/* 標題字體美化 - 吉祥風格 */
+:root[data-theme="everythingGoesWell"] h1,
+:root[data-theme="everythingGoesWell"] h2,
+:root[data-theme="everythingGoesWell"] h3,
+:root[data-theme="everythingGoesWell"] .page-title,
+:root[data-theme="everythingGoesWell"] .card-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 背景圖片設定 */
+:root[data-theme="everythingGoesWell"] body {
+    background-image: url("https://i.pinimg.com/736x/b8/cb/78/b8cb7858857324b13abc8b7957dd832e.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* 主容器背景 */
+:root[data-theme="everythingGoesWell"] .app-container,
+:root[data-theme="everythingGoesWell"] .page-container {
+    background: var(--bg-primary);
+    backdrop-filter: blur(10px);
+}
+
+/* 卡片樣式 - 不透明漸層 */
+:root[data-theme="everythingGoesWell"] .card,
+:root[data-theme="everythingGoesWell"] .budget-card,
+:root[data-theme="everythingGoesWell"] .investment-card,
+:root[data-theme="everythingGoesWell"] .accounting-card,
+:root[data-theme="everythingGoesWell"] .wallet-budget-card,
+:root[data-theme="everythingGoesWell"] .monthly-planning-card,
+:root[data-theme="everythingGoesWell"] .investment-settings-card,
+:root[data-theme="everythingGoesWell"] .holding-card,
+:root[data-theme="everythingGoesWell"] .buy-card,
+:root[data-theme="everythingGoesWell"] .sell-card,
+:root[data-theme="everythingGoesWell"] .dividend-card,
+:root[data-theme="everythingGoesWell"] .smart-analysis-card,
+:root[data-theme="everythingGoesWell"] .smart-reminder-card,
+:root[data-theme="everythingGoesWell"] .regular-investment-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+:root[data-theme="everythingGoesWell"] .card::before,
+:root[data-theme="everythingGoesWell"] .budget-card::before,
+:root[data-theme="everythingGoesWell"] .investment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+:root[data-theme="everythingGoesWell"] .card:hover,
+:root[data-theme="everythingGoesWell"] .budget-card:hover,
+:root[data-theme="everythingGoesWell"] .investment-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
+    border-color: var(--border-accent);
+}
+
+/* 按鈕樣式 */
+:root[data-theme="everythingGoesWell"] .btn,
+:root[data-theme="everythingGoesWell"] .btn-primary,
+:root[data-theme="everythingGoesWell"] .buy-btn,
+:root[data-theme="everythingGoesWell"] .regular-investment-btn {
+    background: var(--btn-primary-bg);
+    color: var(--text-white);
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+:root[data-theme="everythingGoesWell"] .btn::before,
+:root[data-theme="everythingGoesWell"] .btn-primary::before,
+:root[data-theme="everythingGoesWell"] .buy-btn::before,
+:root[data-theme="everythingGoesWell"] .regular-investment-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+:root[data-theme="everythingGoesWell"] .btn:hover::before,
+:root[data-theme="everythingGoesWell"] .btn-primary:hover::before,
+:root[data-theme="everythingGoesWell"] .buy-btn:hover::before,
+:root[data-theme="everythingGoesWell"] .regular-investment-btn:hover::before {
+    left: 100%;
+}
+
+:root[data-theme="everythingGoesWell"] .btn:hover,
+:root[data-theme="everythingGoesWell"] .btn-primary:hover,
+:root[data-theme="everythingGoesWell"] .buy-btn:hover,
+:root[data-theme="everythingGoesWell"] .regular-investment-btn:hover {
+    background: var(--btn-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+}
+
+:root[data-theme="everythingGoesWell"] .btn-secondary,
+:root[data-theme="everythingGoesWell"] .btn-accent {
+    background: var(--btn-secondary-bg);
+    color: var(--text-primary);
+}
+
+:root[data-theme="everythingGoesWell"] .btn-secondary:hover,
+:root[data-theme="everythingGoesWell"] .btn-accent:hover {
+    background: var(--btn-secondary-hover);
+}
+
+/* 返回按鈕 - 金色風格 */
+:root[data-theme="everythingGoesWell"] .back-btn,
+:root[data-theme="everythingGoesWell"] .return-btn {
+    background: var(--btn-secondary-bg);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-accent);
+}
+
+:root[data-theme="everythingGoesWell"] .back-btn:hover,
+:root[data-theme="everythingGoesWell"] .return-btn:hover {
+    background: var(--btn-secondary-hover);
+    transform: scale(1.1) rotate(180deg);
+}
+
+/* 彈窗樣式 */
+:root[data-theme="everythingGoesWell"] .modal,
+:root[data-theme="everythingGoesWell"] .popup,
+:root[data-theme="everythingGoesWell"] .dialog {
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 20px;
+    box-shadow: var(--shadow-primary-lg);
+    backdrop-filter: blur(12px);
+}
+
+/* 標籤頁樣式 */
+:root[data-theme="everythingGoesWell"] .tab-btn,
+:root[data-theme="everythingGoesWell"] .record-type-tab {
+    background: var(--bg-lighter);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="everythingGoesWell"] .tab-btn.active,
+:root[data-theme="everythingGoesWell"] .record-type-tab.active {
+    background: var(--btn-primary-bg);
+    color: var(--text-white);
+    border-color: var(--border-primary);
+}
+
+/* 輸入框樣式 */
+:root[data-theme="everythingGoesWell"] input,
+:root[data-theme="everythingGoesWell"] textarea,
+:root[data-theme="everythingGoesWell"] select {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="everythingGoesWell"] input:focus,
+:root[data-theme="everythingGoesWell"] textarea:focus,
+:root[data-theme="everythingGoesWell"] select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+}
+
+/* 小森對話框樣式 */
+:root[data-theme="everythingGoesWell"] .xiaosen-chat,
+:root[data-theme="everythingGoesWell"] .chat-box,
+:root[data-theme="everythingGoesWell"] .ai-assistant {
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(8px);
+    font-family: var(--font-primary);
+    max-width: 90vw;
+    resize: both;
+    overflow: auto;
+    position: relative;
+}
+
+:root[data-theme="everythingGoesWell"] .xiaosen-chat::before,
+:root[data-theme="everythingGoesWell"] .chat-box::before {
+    content: '🐰';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: var(--btn-secondary-bg);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+:root[data-theme="everythingGoesWell"] .xiaosen-chat .message,
+:root[data-theme="everythingGoesWell"] .chat-box .message {
+    background: var(--bg-lighter);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin: 8px;
+    color: var(--text-primary);
+    border-left: 3px solid var(--color-secondary);
+}
+
+:root[data-theme="everythingGoesWell"] .xiaosen-chat .message.user,
+:root[data-theme="everythingGoesWell"] .chat-box .message.user {
+    background: var(--btn-primary-bg);
+    color: var(--text-white);
+    border-left: 3px solid var(--color-secondary);
+}
+
+/* 智慧分析和提醒卡片 */
+:root[data-theme="everythingGoesWell"] .smart-analysis-card,
+:root[data-theme="everythingGoesWell"] .smart-reminder-card {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-soft-strong) 100%);
+    border: 1px solid var(--border-accent);
+    border-left: 4px solid var(--color-secondary);
+    position: relative;
+}
+
+:root[data-theme="everythingGoesWell"] .smart-analysis-card::before,
+:root[data-theme="everythingGoesWell"] .smart-reminder-card::before {
+    content: '🎊';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    opacity: 0.7;
+}
+
+/* 圖表容器 */
+:root[data-theme="everythingGoesWell"] .chart-container,
+:root[data-theme="everythingGoesWell"] .chart-wrapper {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow-card);
+}
+
+/* 數據表格 */
+:root[data-theme="everythingGoesWell"] table,
+:root[data-theme="everythingGoesWell"] .data-table {
+    background: var(--bg-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+:root[data-theme="everythingGoesWell"] th,
+:root[data-theme="everythingGoesWell"] .table-header {
+    background: var(--btn-primary-bg);
+    color: var(--text-white);
+    font-family: var(--font-secondary);
+    font-weight: 600;
+}
+
+:root[data-theme="everythingGoesWell"] td,
+:root[data-theme="everythingGoesWell"] .table-cell {
+    border-bottom: 1px solid var(--table-border-color);
+    color: var(--text-primary);
+}
+
+/* 浮動操作按鈕 (FAB) */
+:root[data-theme="everythingGoesWell"] .fab,
+:root[data-theme="everythingGoesWell"] .floating-action-btn {
+    background: var(--btn-secondary-bg);
+    color: var(--text-primary);
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    box-shadow: var(--shadow-accent);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="everythingGoesWell"] .fab:hover,
+:root[data-theme="everythingGoesWell"] .floating-action-btn:hover {
+    background: var(--btn-secondary-hover);
+    transform: scale(1.1) rotate(90deg);
+}
+
+/* 側邊欄 */
+:root[data-theme="everythingGoesWell"] .sidebar,
+:root[data-theme="everythingGoesWell"] .nav-drawer {
+    background: var(--bg-card);
+    border-right: 1px solid var(--border-primary);
+    backdrop-filter: blur(10px);
+}
+
+/* 頁面載入動畫 */
+:root[data-theme="everythingGoesWell"] .page-loading {
+    background: var(--bg-primary);
+}
+
+:root[data-theme="everythingGoesWell"] .loading-spinner {
+    border: 3px solid var(--border-light);
+    border-top: 3px solid var(--color-primary);
+    border-radius: 50%;
+}
+
+/* 吉祥裝飾元素 */
+:root[data-theme="everythingGoesWell"] .card::after {
+    content: '🎋';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 16px;
+    opacity: 0.3;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    :root[data-theme="everythingGoesWell"] .xiaosen-chat,
+    :root[data-theme="everythingGoesWell"] .chat-box {
+        max-width: 95vw;
+        font-size: 14px;
+    }
+    
+    :root[data-theme="everythingGoesWell"] .card,
+    :root[data-theme="everythingGoesWell"] .budget-card,
+    :root[data-theme="everythingGoesWell"] .investment-card {
+        margin: 8px;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="everythingGoesWell"] .xiaosen-chat,
+    :root[data-theme="everythingGoesWell"] .chat-box {
+        max-width: 98vw;
+        font-size: 13px;
+    }
+    
+    :root[data-theme="everythingGoesWell"] .btn,
+    :root[data-theme="everythingGoesWell"] .buy-btn,
+    :root[data-theme="everythingGoesWell"] .regular-investment-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* 深色模式支援 */
+@media (prefers-color-scheme: dark) {
+    :root[data-theme="everythingGoesWell"] {
+        --text-primary: #ffffff;
+        --text-secondary: #e0e0e0;
+        --bg-white: rgba(30, 41, 59, 0.88);
+        --bg-card: linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(51, 65, 85, 0.75) 100%);
+    }
+}

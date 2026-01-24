@@ -1,0 +1,515 @@
+/* ========== 兔子泡泡茶主題 ========== */
+:root[data-theme="bunnyBubbleTea"] {
+    --color-primary: #87CEEB;
+    --color-primary-light: #ADD8E6;
+    --color-primary-lighter: #B0E0E6;
+    --color-primary-dark: #5F9EA0;
+    --color-primary-rgba-08: rgba(135, 206, 235, 0.08);
+    --color-primary-rgba-10: rgba(135, 206, 235, 0.10);
+    --color-primary-rgba-12: rgba(135, 206, 235, 0.12);
+    --color-primary-rgba-15: rgba(135, 206, 235, 0.15);
+    --color-primary-rgba-18: rgba(135, 206, 235, 0.18);
+    --color-primary-rgba-20: rgba(135, 206, 235, 0.20);
+    --color-primary-rgba-25: rgba(135, 206, 235, 0.25);
+    --color-primary-rgba-30: rgba(135, 206, 235, 0.30);
+    --color-primary-rgba-40: rgba(135, 206, 235, 0.40);
+    --color-primary-rgba-45: rgba(135, 206, 235, 0.45);
+    
+    --text-primary: #2C3E50;
+    --text-secondary: #5D6D7E;
+    --text-muted: #95A5A6;
+    
+    --bg-white: rgba(255, 255, 255, 0.9);
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --bg-light: rgba(255, 255, 255, 0.7);
+    --bg-lighter: rgba(255, 255, 255, 0.5);
+    --bg-soft: rgba(255, 255, 255, 0.3);
+    
+    --border-light: rgba(135, 206, 235, 0.2);
+    --border-medium: rgba(135, 206, 235, 0.3);
+    --border-dark: rgba(135, 206, 235, 0.4);
+    
+    --shadow-sm: 0 2px 4px rgba(135, 206, 235, 0.1);
+    --shadow-primary: 0 4px 12px rgba(135, 206, 235, 0.15);
+    --shadow-lg: 0 8px 24px rgba(135, 206, 235, 0.2);
+}
+
+/* ========== 移除強制白色背景 ========== */
+
+/* 投資卡片 - 實心背景 */
+:root[data-theme="bunnyBubbleTea"] .investment-card {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 50%, #90CAF9 100%) !important;
+    border: 2px solid var(--color-primary-rgba-30) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px var(--color-primary-rgba-20) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 記帳卡片 - 實心背景 */
+:root[data-theme="bunnyBubbleTea"] .accounting-card {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 50%, #90CAF9 100%) !important;
+    border: 2px solid var(--color-primary-rgba-30) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px var(--color-primary-rgba-20) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 每日支出顯示 - 實心背景 */
+:root[data-theme="bunnyBubbleTea"] .daily-expense-display,
+:root[data-theme="bunnyBubbleTea"] .daily-expense-in-history {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 50%, #90CAF9 100%) !important;
+    border: 2px solid var(--color-primary-rgba-30) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px var(--color-primary-rgba-20) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+:root[data-theme="bunnyBubbleTea"] .daily-expense-display:hover,
+:root[data-theme="bunnyBubbleTea"] .daily-expense-in-history:hover {
+    background: linear-gradient(135deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-20) 50%, var(--color-primary-rgba-15) 100%) !important;
+    box-shadow: 0 6px 16px var(--color-primary-rgba-20) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* 錢包預算卡片 - 實心背景 */
+:root[data-theme="bunnyBubbleTea"] .wallet-budget-card {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 50%, #90CAF9 100%) !important;
+    border: 2px solid var(--color-primary-rgba-30) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px var(--color-primary-rgba-20) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 每月規劃卡片 - 實心背景 */
+:root[data-theme="bunnyBubbleTea"] .monthly-planning-card {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 50%, #90CAF9 100%) !important;
+    border: 2px solid var(--color-primary-rgba-30) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px var(--color-primary-rgba-20) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 投資設定卡片 - 實心背景 */
+:root[data-theme="bunnyBubbleTea"] .investment-settings-card {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 50%, #90CAF9 100%) !important;
+    border: 2px solid var(--color-primary-rgba-30) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px var(--color-primary-rgba-20) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 持有中卡片 - 實心背景 */
+:root[data-theme="bunnyBubbleTea"] .holding-card {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 50%, #90CAF9 100%) !important;
+    border: 2px solid var(--color-primary-rgba-30) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px var(--color-primary-rgba-20) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 智慧分析卡片 - 實心背景 */
+:root[data-theme="bunnyBubbleTea"] .smart-analysis-card,
+:root[data-theme="bunnyBubbleTea"] .smart-reminder-card,
+:root[data-theme="bunnyBubbleTea"] .regular-investment-card {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 50%, #90CAF9 100%) !important;
+    border: 2px solid var(--color-primary-rgba-30) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px var(--color-primary-rgba-20) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 其他卡片類型 - 實心背景 */
+:root[data-theme="bunnyBubbleTea"] .card,
+:root[data-theme="bunnyBubbleTea"] .record-card,
+:root[data-theme="bunnyBubbleTea"] .budget-card {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 50%, #90CAF9 100%) !important;
+    border: 2px solid var(--color-primary-rgba-30) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px var(--color-primary-rgba-20) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 卡片懸停效果 */
+:root[data-theme="bunnyBubbleTea"] .card:hover,
+:root[data-theme="bunnyBubbleTea"] .record-card:hover,
+:root[data-theme="bunnyBubbleTea"] .investment-card:hover,
+:root[data-theme="bunnyBubbleTea"] .accounting-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 32px var(--color-primary-rgba-25) !important;
+    border-color: var(--color-primary-rgba-40) !important;
+}
+
+/* 卡片內容樣式 - 確保文字可讀性 */
+:root[data-theme="bunnyBubbleTea"] .card *,
+:root[data-theme="bunnyBubbleTea"] .investment-card *,
+:root[data-theme="bunnyBubbleTea"] .accounting-card * {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 卡片標題和內容背景 */
+:root[data-theme="bunnyBubbleTea"] .card-header,
+:root[data-theme="bunnyBubbleTea"] .card-content,
+:root[data-theme="bunnyBubbleTea"] .card-title,
+:root[data-theme="bunnyBubbleTea"] .card-body {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border-radius: 12px !important;
+    padding: 12px 16px !important;
+    margin: 8px !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* 按鈕樣式 */
+:root[data-theme="bunnyBubbleTea"] .btn-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%) !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="bunnyBubbleTea"] .btn-primary:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary-lighter) 100%) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 16px var(--color-primary-rgba-25) !important;
+}
+
+:root[data-theme="bunnyBubbleTea"] .btn-secondary {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: var(--color-primary) !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="bunnyBubbleTea"] .btn-secondary:hover {
+    background: var(--color-primary) !important;
+    color: white !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 16px var(--color-primary-rgba-25) !important;
+}
+
+/* 輸入框樣式 */
+:root[data-theme="bunnyBubbleTea"] input,
+:root[data-theme="bunnyBubbleTea"] select,
+:root[data-theme="bunnyBubbleTea"] textarea {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid var(--color-primary-rgba-30) !important;
+    border-radius: 12px !important;
+    color: var(--text-primary) !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="bunnyBubbleTea"] input:focus,
+:root[data-theme="bunnyBubbleTea"] select:focus,
+:root[data-theme="bunnyBubbleTea"] textarea:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 3px var(--color-primary-rgba-20) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* 模態框樣式 */
+:root[data-theme="bunnyBubbleTea"] .modal,
+:root[data-theme="bunnyBubbleTea"] .dialog,
+:root[data-theme="bunnyBubbleTea"] .popup {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 2px solid var(--color-primary-rgba-30) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 16px 40px var(--color-primary-rgba-25) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+}
+
+/* 導航欄樣式 */
+:root[data-theme="bunnyBubbleTea"] .nav-header,
+:root[data-theme="bunnyBubbleTea"] .page-header {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%) !important;
+    border-bottom: 1px solid var(--color-primary-rgba-20) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* 統計項目樣式 */
+:root[data-theme="bunnyBubbleTea"] .stat-item {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid var(--color-primary-rgba-20) !important;
+    border-radius: 16px !important;
+    padding: 14px 16px !important;
+    box-shadow: 0 8px 24px var(--color-primary-rgba-15) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    :root[data-theme="bunnyBubbleTea"] .card,
+    :root[data-theme="bunnyBubbleTea"] .investment-card,
+    :root[data-theme="bunnyBubbleTea"] .accounting-card {
+        border-radius: 12px !important;
+        margin: 8px !important;
+    }
+    
+    :root[data-theme="bunnyBubbleTea"] .daily-expense-display {
+        padding: 6px 10px !important;
+    }
+    
+    :root[data-theme="bunnyBubbleTea"] .daily-expense-label {
+        font-size: 10px !important;
+    }
+    
+    :root[data-theme="bunnyBubbleTea"] .daily-expense-amount {
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="bunnyBubbleTea"] .card,
+    :root[data-theme="bunnyBubbleTea"] .investment-card,
+    :root[data-theme="bunnyBubbleTea"] .accounting-card {
+        border-radius: 10px !important;
+        margin: 6px !important;
+        padding: 12px !important;
+    }
+    
+    :root[data-theme="bunnyBubbleTea"] .card-header,
+    :root[data-theme="bunnyBubbleTea"] .card-content {
+        padding: 8px 12px !important;
+        margin: 6px !important;
+    }
+}
+
+/* 動畫效果 */
+:root[data-theme="bunnyBubbleTea"] .card,
+:root[data-theme="bunnyBubbleTea"] .investment-card,
+:root[data-theme="bunnyBubbleTea"] .accounting-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* 確保圖片背景正確顯示 */
+:root[data-theme="bunnyBubbleTea"] .investment-card,
+:root[data-theme="bunnyBubbleTea"] .accounting-card,
+:root[data-theme="bunnyBubbleTea"] .card,
+:root[data-theme="bunnyBubbleTea"] .record-card {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* 文字可讀性增強 */
+:root[data-theme="bunnyBubbleTea"] .card h1,
+:root[data-theme="bunnyBubbleTea"] .card h2,
+:root[data-theme="bunnyBubbleTea"] .card h3,
+:root[data-theme="bunnyBubbleTea"] .card h4,
+:root[data-theme="bunnyBubbleTea"] .card h5,
+:root[data-theme="bunnyBubbleTea"] .card h6,
+:root[data-theme="bunnyBubbleTea"] .investment-card h1,
+:root[data-theme="bunnyBubbleTea"] .investment-card h2,
+:root[data-theme="bunnyBubbleTea"] .investment-card h3,
+:root[data-theme="bunnyBubbleTea"] .investment-card h4,
+:root[data-theme="bunnyBubbleTea"] .investment-card h5,
+:root[data-theme="bunnyBubbleTea"] .investment-card h6,
+:root[data-theme="bunnyBubbleTea"] .accounting-card h1,
+:root[data-theme="bunnyBubbleTea"] .accounting-card h2,
+:root[data-theme="bunnyBubbleTea"] .accounting-card h3,
+:root[data-theme="bunnyBubbleTea"] .accounting-card h4,
+:root[data-theme="bunnyBubbleTea"] .accounting-card h5,
+:root[data-theme="bunnyBubbleTea"] .accounting-card h6 {
+    color: var(--text-primary) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    padding: 4px 8px !important;
+    border-radius: 8px !important;
+    display: inline-block !important;
+}
+
+:root[data-theme="bunnyBubbleTea"] .card p,
+:root[data-theme="bunnyBubbleTea"] .card span,
+:root[data-theme="bunnyBubbleTea"] .card div,
+:root[data-theme="bunnyBubbleTea"] .investment-card p,
+:root[data-theme="bunnyBubbleTea"] .investment-card span,
+:root[data-theme="bunnyBubbleTea"] .investment-card div,
+:root[data-theme="bunnyBubbleTea"] .accounting-card p,
+:root[data-theme="bunnyBubbleTea"] .accounting-card span,
+:root[data-theme="bunnyBubbleTea"] .accounting-card div {
+    color: var(--text-primary) !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6) !important;
+}
+
+/* ========== 買入、賣出、股息卡片專用藍色樣式 ========== */
+
+/* 買入卡片 - 藍色背景（不透明） */
+:root[data-theme="bunnyBubbleTea"] .buying-card {
+    background: linear-gradient(135deg, #4A90E2 0%, #5BA0F2 50%, #6BB6FF 100%) !important;
+    border: 2px solid #3A7BC8 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px rgba(74, 144, 226, 0.5) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 賣出卡片 - 紅色背景（不透明） */
+:root[data-theme="bunnyBubbleTea"] .selling-card {
+    background: linear-gradient(135deg, #E74C3C 0%, #F56C6C 50%, #FF6B6B 100%) !important;
+    border: 2px solid #C0392B !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px rgba(231, 76, 60, 0.5) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 股息卡片 - 綠色背景（不透明） */
+:root[data-theme="bunnyBubbleTea"] .dividend-card {
+    background: linear-gradient(135deg, #27AE60 0%, #2ECC71 50%, #52BE80 100%) !important;
+    border: 2px solid #229954 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px rgba(39, 174, 96, 0.5) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 買入卡片懸停效果（不透明） */
+:root[data-theme="bunnyBubbleTea"] .buying-card:hover {
+    background: linear-gradient(135deg, #5BA0F2 0%, #6BB6FF 50%, #7BB6FF 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 32px rgba(74, 144, 226, 0.6) !important;
+    border-color: #4A90E2 !important;
+}
+
+/* 賣出卡片懸停效果（不透明） */
+:root[data-theme="bunnyBubbleTea"] .selling-card:hover {
+    background: linear-gradient(135deg, #F56C6C 0%, #FF6B6B 50%, #FF7979 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 32px rgba(231, 76, 60, 0.6) !important;
+    border-color: #E74C3C !important;
+}
+
+/* 股息卡片懸停效果（不透明） */
+:root[data-theme="bunnyBubbleTea"] .dividend-card:hover {
+    background: linear-gradient(135deg, #2ECC71 0%, #52BE80 50%, #58D68D 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 32px rgba(39, 174, 96, 0.6) !important;
+    border-color: #27AE60 !important;
+}
+
+/* 買入卡片文字樣式 */
+:root[data-theme="bunnyBubbleTea"] .buying-card h3,
+:root[data-theme="bunnyBubbleTea"] .buying-card h4,
+:root[data-theme="bunnyBubbleTea"] .buying-card .card-title,
+:root[data-theme="bunnyBubbleTea"] .buying-card .card-content {
+    color: white !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    font-weight: 600 !important;
+}
+
+/* 賣出卡片文字樣式 */
+:root[data-theme="bunnyBubbleTea"] .selling-card h3,
+:root[data-theme="bunnyBubbleTea"] .selling-card h4,
+:root[data-theme="bunnyBubbleTea"] .selling-card .card-title,
+:root[data-theme="bunnyBubbleTea"] .selling-card .card-content {
+    color: white !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    font-weight: 600 !important;
+}
+
+/* 股息卡片文字樣式 */
+:root[data-theme="bunnyBubbleTea"] .dividend-card h3,
+:root[data-theme="bunnyBubbleTea"] .dividend-card h4,
+:root[data-theme="bunnyBubbleTea"] .dividend-card .card-title,
+:root[data-theme="bunnyBubbleTea"] .dividend-card .card-content {
+    color: white !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    font-weight: 600 !important;
+}
+
+/* 買入卡片按鈕樣式（不透明） */
+:root[data-theme="bunnyBubbleTea"] .buying-card .btn-primary {
+    background: white !important;
+    color: #4A90E2 !important;
+    border: 2px solid white !important;
+    font-weight: 700 !important;
+}
+
+:root[data-theme="bunnyBubbleTea"] .buying-card .btn-primary:hover {
+    background: #F8F9FA !important;
+    color: #3A7BC8 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3) !important;
+}
+
+/* 賣出卡片按鈕樣式（不透明） */
+:root[data-theme="bunnyBubbleTea"] .selling-card .btn-primary {
+    background: white !important;
+    color: #E74C3C !important;
+    border: 2px solid white !important;
+    font-weight: 700 !important;
+}
+
+:root[data-theme="bunnyBubbleTea"] .selling-card .btn-primary:hover {
+    background: #F8F9FA !important;
+    color: #C0392B !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3) !important;
+}
+
+/* 股息卡片按鈕樣式（不透明） */
+:root[data-theme="bunnyBubbleTea"] .dividend-card .btn-primary {
+    background: white !important;
+    color: #27AE60 !important;
+    border: 2px solid white !important;
+    font-weight: 700 !important;
+}
+
+:root[data-theme="bunnyBubbleTea"] .dividend-card .btn-primary:hover {
+    background: #F8F9FA !important;
+    color: #229954 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3) !important;
+}
+
+/* 數值和金額顯示樣式 */
+:root[data-theme="bunnyBubbleTea"] .buying-card .amount,
+:root[data-theme="bunnyBubbleTea"] .buying-card .price,
+:root[data-theme="bunnyBubbleTea"] .buying-card .value {
+    color: white !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+:root[data-theme="bunnyBubbleTea"] .selling-card .amount,
+:root[data-theme="bunnyBubbleTea"] .selling-card .price,
+:root[data-theme="bunnyBubbleTea"] .selling-card .value {
+    color: white !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+:root[data-theme="bunnyBubbleTea"] .dividend-card .amount,
+:root[data-theme="bunnyBubbleTea"] .dividend-card .price,
+:root[data-theme="bunnyBubbleTea"] .dividend-card .value {
+    color: white !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 狀態標籤樣式（不透明） */
+:root[data-theme="bunnyBubbleTea"] .buying-card .status-badge,
+:root[data-theme="bunnyBubbleTea"] .selling-card .status-badge,
+:root[data-theme="bunnyBubbleTea"] .dividend-card .status-badge {
+    background: white !important;
+    color: #333333 !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}

@@ -1,0 +1,647 @@
+/* ========== 可愛小雞主題 ========== */
+:root[data-theme="cuteChicks"] {
+    --color-primary: #FFD93D;
+    --color-primary-light: #FFE066;
+    --color-primary-lighter: #FFEC8B;
+    --color-primary-dark: #FFC107;
+    --color-primary-darker: #FF9800;
+    --color-primary-bright: #FFF59D;
+    --color-primary-soft: #FFF176;
+    --color-primary-warm: #FFEB3B;
+    --color-primary-gold: #FFC947;
+    --color-primary-sunny: #FFD54F;
+    --color-primary-cream: #FFF8E1;
+    --color-primary-pale: #FFFDE7;
+    --color-primary-rgba-05: rgba(255, 217, 61, 0.05);
+    --color-primary-rgba-08: rgba(255, 217, 61, 0.08);
+    --color-primary-rgba-10: rgba(255, 217, 61, 0.10);
+    --color-primary-rgba-12: rgba(255, 217, 61, 0.12);
+    --color-primary-rgba-15: rgba(255, 217, 61, 0.15);
+    --color-primary-rgba-18: rgba(255, 217, 61, 0.18);
+    --color-primary-rgba-20: rgba(255, 217, 61, 0.20);
+    --color-primary-rgba-25: rgba(255, 217, 61, 0.25);
+    --color-primary-rgba-30: rgba(255, 217, 61, 0.30);
+    --color-primary-rgba-35: rgba(255, 217, 61, 0.35);
+    --color-primary-rgba-40: rgba(255, 217, 61, 0.40);
+    --color-primary-rgba-45: rgba(255, 217, 61, 0.45);
+    --color-primary-rgba-50: rgba(255, 217, 61, 0.50);
+    --color-primary-rgba-60: rgba(255, 217, 61, 0.60);
+    --color-primary-rgba-70: rgba(255, 217, 61, 0.70);
+    --color-primary-rgba-80: rgba(255, 217, 61, 0.80);
+    
+    --color-secondary: #FF9800;
+    --color-secondary-light: #FFB74D;
+    --color-secondary-lighter: #FFCC80;
+    --color-secondary-dark: #F57C00;
+    --color-secondary-darker: #E65100;
+    --color-secondary-rgba-20: rgba(255, 152, 0, 0.20);
+    --color-secondary-rgba-30: rgba(255, 152, 0, 0.30);
+    --color-secondary-rgba-40: rgba(255, 152, 0, 0.40);
+    
+    --color-accent: #FFB300;
+    --color-accent-light: #FFCA28;
+    --color-accent-dark: #FF8F00;
+    
+    --text-primary: #5D4037;
+    --text-secondary: #7D5A50;
+    --text-muted: #8D6E63;
+    --text-light: #A1887F;
+    
+    --bg-white: var(--bg-yellow-warm);
+    --bg-card: var(--bg-yellow-soft);
+    --bg-light: var(--bg-yellow-light);
+    --bg-lighter: var(--bg-yellow-pale);
+    --bg-soft: rgba(255, 255, 255, 0.4);
+    --bg-yellow-warm: #FFF8E1;
+    --bg-yellow-soft: #FFF9C4;
+    --bg-yellow-light: #FFF59D;
+    --bg-yellow-pale: #FFFDE7;
+    
+    --border-light: rgba(255, 217, 61, 0.3);
+    --border-medium: rgba(255, 217, 61, 0.4);
+    --border-dark: rgba(255, 217, 61, 0.5);
+    --border-warm: rgba(255, 193, 7, 0.4);
+    --border-gold: rgba(255, 193, 71, 0.5);
+    
+    --shadow-sm: 0 2px 8px rgba(255, 152, 0, 0.15);
+    --shadow-primary: 0 4px 16px rgba(255, 217, 61, 0.2);
+    --shadow-lg: 0 8px 32px rgba(255, 152, 0, 0.25);
+    --shadow-yellow: 0 4px 20px rgba(255, 217, 61, 0.3);
+    --shadow-gold: 0 6px 24px rgba(255, 193, 7, 0.35);
+    --shadow-warm: 0 8px 28px rgba(255, 152, 0, 0.4);
+    
+    /* 黃色漸層設定 */
+    --gradient-yellow-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-secondary) 100%);
+    --gradient-yellow-warm: linear-gradient(135deg, var(--color-primary-warm) 0%, var(--color-primary-light) 50%, var(--color-accent) 100%);
+    --gradient-yellow-soft: linear-gradient(135deg, var(--color-primary-soft) 0%, var(--color-primary-lighter) 50%, var(--color-primary-bright) 100%);
+    --gradient-yellow-gold: linear-gradient(135deg, var(--color-primary-gold) 0%, var(--color-primary-sunny) 50%, var(--color-secondary-light) 100%);
+    --gradient-yellow-cream: linear-gradient(135deg, var(--color-primary-cream) 0%, var(--color-primary-pale) 50%, var(--bg-yellow-light) 100%);
+    --gradient-yellow-subtle: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-20) 50%, var(--color-primary-rgba-10) 100%);
+    --gradient-yellow-hover: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary-lighter) 50%, var(--color-secondary-light) 100%);
+    --gradient-yellow-active: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-secondary-dark) 100%);
+    
+    /* 字體設定 - 自然溫柔風格 */
+    --font-family-primary: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-family-heading: 'Space Grotesk', 'Inter', sans-serif;
+    --font-family-mono: 'JetBrains Mono', monospace;
+}
+
+/* ========== 背景設定 ========== */
+:root[data-theme="cuteChicks"] body {
+    background-image: url("https://i.pinimg.com/736x/5e/fa/70/5efa708c248a5f52fcacd7f98fab80ed.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* ========== 移除強制白色背景 - 確保所有卡片使用黃色 ========== */
+
+/* 所有卡片統一使用黃色背景（不透明） */
+:root[data-theme="cuteChicks"] .investment-card,
+:root[data-theme="cuteChicks"] .accounting-card,
+:root[data-theme="cuteChicks"] .monthly-planning-card,
+:root[data-theme="cuteChicks"] .investment-settings-card,
+:root[data-theme="cuteChicks"] .holding-card,
+:root[data-theme="cuteChicks"] .buying-card,
+:root[data-theme="cuteChicks"] .selling-card,
+:root[data-theme="cuteChicks"] .dividend-card,
+:root[data-theme="cuteChicks"] .wallet-budget-card,
+:root[data-theme="cuteChicks"] .smart-analysis-card,
+:root[data-theme="cuteChicks"] .smart-reminder-card,
+:root[data-theme="cuteChicks"] .regular-investment-card {
+    background: var(--gradient-yellow-primary) !important;
+    border: 2px solid var(--color-primary-dark) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--shadow-yellow) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    opacity: 1 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* 每日支出顯示 - 黃色背景（不透明） */
+:root[data-theme="cuteChicks"] .daily-expense-display,
+:root[data-theme="cuteChicks"] .daily-expense-in-history {
+    background: var(--gradient-yellow-subtle) !important;
+    border: 1px solid var(--border-warm) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: all 0.3s ease !important;
+    opacity: 1 !important;
+}
+
+:root[data-theme="cuteChicks"] .daily-expense-display:hover,
+:root[data-theme="cuteChicks"] .daily-expense-in-history:hover {
+    background: var(--gradient-yellow-hover) !important;
+    box-shadow: var(--shadow-primary) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* 其他通用卡片 - 黃色背景（不透明） */
+:root[data-theme="cuteChicks"] .card,
+:root[data-theme="cuteChicks"] .record-card,
+:root[data-theme="cuteChicks"] .budget-card {
+    background: var(--gradient-yellow-primary) !important;
+    border: 2px solid var(--color-primary-dark) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--shadow-yellow) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    opacity: 1 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* 卡片懸停效果 */
+:root[data-theme="cuteChicks"] .card:hover,
+:root[data-theme="cuteChicks"] .record-card:hover,
+:root[data-theme="cuteChicks"] .budget-card:hover,
+:root[data-theme="cuteChicks"] .investment-card:hover,
+:root[data-theme="cuteChicks"] .accounting-card:hover,
+:root[data-theme="cuteChicks"] .monthly-planning-card:hover,
+:root[data-theme="cuteChicks"] .investment-settings-card:hover,
+:root[data-theme="cuteChicks"] .holding-card:hover,
+:root[data-theme="cuteChicks"] .buying-card:hover,
+:root[data-theme="cuteChicks"] .selling-card:hover,
+:root[data-theme="cuteChicks"] .dividend-card:hover,
+:root[data-theme="cuteChicks"] .wallet-budget-card:hover,
+:root[data-theme="cuteChicks"] .smart-analysis-card:hover,
+:root[data-theme="cuteChicks"] .smart-reminder-card:hover,
+:root[data-theme="cuteChicks"] .regular-investment-card:hover {
+    background: var(--gradient-yellow-hover) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-gold) !important;
+    border-color: var(--color-accent) !important;
+}
+
+/* 卡片內容樣式 - 移除白色背景，直接顯示在黃色背景上 */
+:root[data-theme="cuteChicks"] .card *,
+:root[data-theme="cuteChicks"] .investment-card *,
+:root[data-theme="cuteChicks"] .accounting-card * {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 移除卡片標題和內容的白色背景 */
+:root[data-theme="cuteChicks"] .card-header,
+:root[data-theme="cuteChicks"] .card-content,
+:root[data-theme="cuteChicks"] .card-title,
+:root[data-theme="cuteChicks"] .card-body {
+    background: transparent !important;
+    border-radius: 0 !important;
+    padding: 12px 16px !important;
+    margin: 8px !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* ========== 按鈕樣式 ========== */
+
+/* 主要按鈕 - 買入、定期定額、返回按鈕 */
+:root[data-theme="cuteChicks"] .btn-primary,
+:root[data-theme="cuteChicks"] .buy-btn,
+:root[data-theme="cuteChicks"] .regular-investment-btn,
+:root[data-theme="cuteChicks"] .back-btn {
+    background: var(--gradient-yellow-primary) !important;
+    border: none !important;
+    color: var(--text-primary) !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    font-family: var(--font-family-primary) !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-primary) !important;
+}
+
+:root[data-theme="cuteChicks"] .btn-primary:hover,
+:root[data-theme="cuteChicks"] .buy-btn:hover,
+:root[data-theme="cuteChicks"] .regular-investment-btn:hover,
+:root[data-theme="cuteChicks"] .back-btn:hover {
+    background: var(--gradient-yellow-hover) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-yellow) !important;
+}
+
+:root[data-theme="cuteChicks"] .btn-primary:active,
+:root[data-theme="cuteChicks"] .buy-btn:active,
+:root[data-theme="cuteChicks"] .regular-investment-btn:active,
+:root[data-theme="cuteChicks"] .back-btn:active {
+    background: var(--gradient-yellow-active) !important;
+    transform: translateY(0) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+:root[data-theme="cuteChicks"] .btn-primary:disabled,
+:root[data-theme="cuteChicks"] .buy-btn:disabled,
+:root[data-theme="cuteChicks"] .regular-investment-btn:disabled,
+:root[data-theme="cuteChicks"] .back-btn:disabled {
+    background: var(--color-primary-rgba-30) !important;
+    color: var(--text-muted) !important;
+    transform: none !important;
+    box-shadow: none !important;
+    cursor: not-allowed !important;
+}
+
+/* 次要按鈕 */
+:root[data-theme="cuteChicks"] .btn-secondary {
+    background: var(--bg-yellow-soft) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: var(--color-primary) !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    font-family: var(--font-family-primary) !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="cuteChicks"] .btn-secondary:hover {
+    background: var(--gradient-yellow-primary) !important;
+    color: var(--text-primary) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-primary) !important;
+}
+
+/* ========== 所有卡片統一黃色設計（不透明） ========== */
+
+/* 所有卡片懸停效果（統一黃色） */
+:root[data-theme="cuteChicks"] .card:hover,
+:root[data-theme="cuteChicks"] .record-card:hover,
+:root[data-theme="cuteChicks"] .budget-card:hover,
+:root[data-theme="cuteChicks"] .investment-card:hover,
+:root[data-theme="cuteChicks"] .accounting-card:hover,
+:root[data-theme="cuteChicks"] .monthly-planning-card:hover,
+:root[data-theme="cuteChicks"] .investment-settings-card:hover,
+:root[data-theme="cuteChicks"] .holding-card:hover,
+:root[data-theme="cuteChicks"] .buying-card:hover,
+:root[data-theme="cuteChicks"] .selling-card:hover,
+:root[data-theme="cuteChicks"] .dividend-card:hover,
+:root[data-theme="cuteChicks"] .wallet-budget-card:hover,
+:root[data-theme="cuteChicks"] .smart-analysis-card:hover,
+:root[data-theme="cuteChicks"] .smart-reminder-card:hover,
+:root[data-theme="cuteChicks"] .regular-investment-card:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary-lighter) 50%, var(--color-secondary-light) 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 32px var(--color-primary-rgba-35) !important;
+    border-color: var(--color-primary) !important;
+}
+
+:root[data-theme="cuteChicks"] .daily-expense-display:hover,
+:root[data-theme="cuteChicks"] .daily-expense-in-history:hover {
+    background: linear-gradient(135deg, var(--color-primary-rgba-25) 0%, var(--color-primary-rgba-30) 50%, var(--color-primary-rgba-25) 100%) !important;
+    box-shadow: 0 6px 16px var(--color-primary-rgba-30) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* 所有卡片文字樣式（統一深色文字） */
+:root[data-theme="cuteChicks"] .investment-card h3,
+:root[data-theme="cuteChicks"] .investment-card h4,
+:root[data-theme="cuteChicks"] .investment-card .card-title,
+:root[data-theme="cuteChicks"] .investment-card .card-content,
+:root[data-theme="cuteChicks"] .accounting-card h3,
+:root[data-theme="cuteChicks"] .accounting-card h4,
+:root[data-theme="cuteChicks"] .accounting-card .card-title,
+:root[data-theme="cuteChicks"] .accounting-card .card-content,
+:root[data-theme="cuteChicks"] .monthly-planning-card h3,
+:root[data-theme="cuteChicks"] .monthly-planning-card h4,
+:root[data-theme="cuteChicks"] .monthly-planning-card .card-title,
+:root[data-theme="cuteChicks"] .monthly-planning-card .card-content,
+:root[data-theme="cuteChicks"] .investment-settings-card h3,
+:root[data-theme="cuteChicks"] .investment-settings-card h4,
+:root[data-theme="cuteChicks"] .investment-settings-card .card-title,
+:root[data-theme="cuteChicks"] .investment-settings-card .card-content,
+:root[data-theme="cuteChicks"] .holding-card h3,
+:root[data-theme="cuteChicks"] .holding-card h4,
+:root[data-theme="cuteChicks"] .holding-card .card-title,
+:root[data-theme="cuteChicks"] .holding-card .card-content,
+:root[data-theme="cuteChicks"] .buying-card h3,
+:root[data-theme="cuteChicks"] .buying-card h4,
+:root[data-theme="cuteChicks"] .buying-card .card-title,
+:root[data-theme="cuteChicks"] .buying-card .card-content,
+:root[data-theme="cuteChicks"] .selling-card h3,
+:root[data-theme="cuteChicks"] .selling-card h4,
+:root[data-theme="cuteChicks"] .selling-card .card-title,
+:root[data-theme="cuteChicks"] .selling-card .card-content,
+:root[data-theme="cuteChicks"] .dividend-card h3,
+:root[data-theme="cuteChicks"] .dividend-card h4,
+:root[data-theme="cuteChicks"] .dividend-card .card-title,
+:root[data-theme="cuteChicks"] .dividend-card .card-content,
+:root[data-theme="cuteChicks"] .wallet-budget-card h3,
+:root[data-theme="cuteChicks"] .wallet-budget-card h4,
+:root[data-theme="cuteChicks"] .wallet-budget-card .card-title,
+:root[data-theme="cuteChicks"] .wallet-budget-card .card-content,
+:root[data-theme="cuteChicks"] .smart-analysis-card h3,
+:root[data-theme="cuteChicks"] .smart-analysis-card h4,
+:root[data-theme="cuteChicks"] .smart-analysis-card .card-title,
+:root[data-theme="cuteChicks"] .smart-analysis-card .card-content,
+:root[data-theme="cuteChicks"] .smart-reminder-card h3,
+:root[data-theme="cuteChicks"] .smart-reminder-card h4,
+:root[data-theme="cuteChicks"] .smart-reminder-card .card-title,
+:root[data-theme="cuteChicks"] .smart-reminder-card .card-content,
+:root[data-theme="cuteChicks"] .regular-investment-card h3,
+:root[data-theme="cuteChicks"] .regular-investment-card h4,
+:root[data-theme="cuteChicks"] .regular-investment-card .card-title,
+:root[data-theme="cuteChicks"] .regular-investment-card .card-content {
+    color: var(--text-primary) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+    font-weight: 600 !important;
+    font-family: var(--font-family-primary) !important;
+}
+
+/* 所有卡片按鈕樣式（統一白色按鈕） */
+:root[data-theme="cuteChicks"] .investment-card .btn-primary,
+:root[data-theme="cuteChicks"] .accounting-card .btn-primary,
+:root[data-theme="cuteChicks"] .monthly-planning-card .btn-primary,
+:root[data-theme="cuteChicks"] .investment-settings-card .btn-primary,
+:root[data-theme="cuteChicks"] .holding-card .btn-primary,
+:root[data-theme="cuteChicks"] .buying-card .btn-primary,
+:root[data-theme="cuteChicks"] .selling-card .btn-primary,
+:root[data-theme="cuteChicks"] .dividend-card .btn-primary,
+:root[data-theme="cuteChicks"] .wallet-budget-card .btn-primary,
+:root[data-theme="cuteChicks"] .smart-analysis-card .btn-primary,
+:root[data-theme="cuteChicks"] .smart-reminder-card .btn-primary,
+:root[data-theme="cuteChicks"] .regular-investment-card .btn-primary {
+    background: var(--color-primary) !important;
+    color: var(--text-primary) !important;
+    border: 2px solid var(--color-primary-dark) !important;
+    font-weight: 700 !important;
+    font-family: var(--font-family-primary) !important;
+}
+
+:root[data-theme="cuteChicks"] .investment-card .btn-primary:hover,
+:root[data-theme="cuteChicks"] .accounting-card .btn-primary:hover,
+:root[data-theme="cuteChicks"] .monthly-planning-card .btn-primary:hover,
+:root[data-theme="cuteChicks"] .investment-settings-card .btn-primary:hover,
+:root[data-theme="cuteChicks"] .holding-card .btn-primary:hover,
+:root[data-theme="cuteChicks"] .buying-card .btn-primary:hover,
+:root[data-theme="cuteChicks"] .selling-card .btn-primary:hover,
+:root[data-theme="cuteChicks"] .dividend-card .btn-primary:hover,
+:root[data-theme="cuteChicks"] .wallet-budget-card .btn-primary:hover,
+:root[data-theme="cuteChicks"] .smart-analysis-card .btn-primary:hover,
+:root[data-theme="cuteChicks"] .smart-reminder-card .btn-primary:hover,
+:root[data-theme="cuteChicks"] .regular-investment-card .btn-primary:hover {
+    background: #F8F9FA !important;
+    color: var(--color-primary-dark) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px var(--color-primary-rgba-25) !important;
+}
+
+/* 所有卡片數值和金額顯示樣式 */
+:root[data-theme="cuteChicks"] .investment-card .amount,
+:root[data-theme="cuteChicks"] .investment-card .price,
+:root[data-theme="cuteChicks"] .investment-card .value,
+:root[data-theme="cuteChicks"] .accounting-card .amount,
+:root[data-theme="cuteChicks"] .accounting-card .price,
+:root[data-theme="cuteChicks"] .accounting-card .value,
+:root[data-theme="cuteChicks"] .monthly-planning-card .amount,
+:root[data-theme="cuteChicks"] .monthly-planning-card .price,
+:root[data-theme="cuteChicks"] .monthly-planning-card .value,
+:root[data-theme="cuteChicks"] .investment-settings-card .amount,
+:root[data-theme="cuteChicks"] .investment-settings-card .price,
+:root[data-theme="cuteChicks"] .investment-settings-card .value,
+:root[data-theme="cuteChicks"] .holding-card .amount,
+:root[data-theme="cuteChicks"] .holding-card .price,
+:root[data-theme="cuteChicks"] .holding-card .value,
+:root[data-theme="cuteChicks"] .buying-card .amount,
+:root[data-theme="cuteChicks"] .buying-card .price,
+:root[data-theme="cuteChicks"] .buying-card .value,
+:root[data-theme="cuteChicks"] .selling-card .amount,
+:root[data-theme="cuteChicks"] .selling-card .price,
+:root[data-theme="cuteChicks"] .selling-card .value,
+:root[data-theme="cuteChicks"] .dividend-card .amount,
+:root[data-theme="cuteChicks"] .dividend-card .price,
+:root[data-theme="cuteChicks"] .dividend-card .value,
+:root[data-theme="cuteChicks"] .wallet-budget-card .amount,
+:root[data-theme="cuteChicks"] .wallet-budget-card .price,
+:root[data-theme="cuteChicks"] .wallet-budget-card .value,
+:root[data-theme="cuteChicks"] .smart-analysis-card .amount,
+:root[data-theme="cuteChicks"] .smart-analysis-card .price,
+:root[data-theme="cuteChicks"] .smart-analysis-card .value,
+:root[data-theme="cuteChicks"] .smart-reminder-card .amount,
+:root[data-theme="cuteChicks"] .smart-reminder-card .price,
+:root[data-theme="cuteChicks"] .smart-reminder-card .value,
+:root[data-theme="cuteChicks"] .regular-investment-card .amount,
+:root[data-theme="cuteChicks"] .regular-investment-card .price,
+:root[data-theme="cuteChicks"] .regular-investment-card .value {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+    font-family: var(--font-family-mono) !important;
+}
+
+/* 所有卡片狀態標籤樣式 */
+:root[data-theme="cuteChicks"] .investment-card .status-badge,
+:root[data-theme="cuteChicks"] .accounting-card .status-badge,
+:root[data-theme="cuteChicks"] .monthly-planning-card .status-badge,
+:root[data-theme="cuteChicks"] .investment-settings-card .status-badge,
+:root[data-theme="cuteChicks"] .holding-card .status-badge,
+:root[data-theme="cuteChicks"] .buying-card .status-badge,
+:root[data-theme="cuteChicks"] .selling-card .status-badge,
+:root[data-theme="cuteChicks"] .dividend-card .status-badge,
+:root[data-theme="cuteChicks"] .wallet-budget-card .status-badge,
+:root[data-theme="cuteChicks"] .smart-analysis-card .status-badge,
+:root[data-theme="cuteChicks"] .smart-reminder-card .status-badge,
+:root[data-theme="cuteChicks"] .regular-investment-card .status-badge {
+    background: var(--color-primary-light) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--color-primary-dark) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    font-family: var(--font-family-primary) !important;
+}
+
+/* ========== 輸入框樣式 ========== */
+:root[data-theme="cuteChicks"] input,
+:root[data-theme="cuteChicks"] select,
+:root[data-theme="cuteChicks"] textarea {
+    background: var(--bg-yellow-soft) !important;
+    border: 2px solid var(--border-warm) !important;
+    border-radius: 12px !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-family-primary) !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="cuteChicks"] input:focus,
+:root[data-theme="cuteChicks"] select:focus,
+:root[data-theme="cuteChicks"] textarea:focus {
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 0 0 3px var(--color-primary-rgba-20) !important;
+    background: var(--bg-yellow-light) !important;
+}
+
+/* ========== 模態框樣式 ========== */
+:root[data-theme="cuteChicks"] .modal,
+:root[data-theme="cuteChicks"] .dialog,
+:root[data-theme="cuteChicks"] .popup {
+    background: var(--gradient-yellow-cream) !important;
+    border: 2px solid var(--border-gold) !important;
+    border-radius: 20px !important;
+    box-shadow: var(--shadow-gold) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+}
+
+/* ========== 小森對話框樣式 ========== */
+:root[data-theme="cuteChicks"] .xiaosen-dialog,
+:root[data-theme="cuteChicks"] .advisor-dialog {
+    background: var(--gradient-yellow-cream) !important;
+    border: 2px solid var(--border-gold) !important;
+    border-radius: 20px !important;
+    box-shadow: var(--shadow-gold) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    font-family: var(--font-family-primary) !important;
+}
+
+:root[data-theme="cuteChicks"] .xiaosen-dialog .dialog-header,
+:root[data-theme="cuteChicks"] .advisor-dialog .dialog-header {
+    background: var(--gradient-yellow-primary) !important;
+    color: var(--text-primary) !important;
+    border-radius: 18px 18px 0 0 !important;
+    font-family: var(--font-family-heading) !important;
+}
+
+/* ========== 導航欄樣式 ========== */
+:root[data-theme="cuteChicks"] .nav-header,
+:root[data-theme="cuteChicks"] .page-header {
+    background: var(--gradient-yellow-cream) !important;
+    border-bottom: 1px solid var(--border-warm) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* ========== 統計項目樣式 ========== */
+:root[data-theme="cuteChicks"] .stat-item {
+    background: var(--gradient-yellow-soft) !important;
+    border: 1px solid var(--border-warm) !important;
+    border-radius: 16px !important;
+    padding: 14px 16px !important;
+    box-shadow: var(--shadow-primary) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* ========== 智慧分析與提醒樣式 ========== */
+:root[data-theme="cuteChicks"] .smart-analysis-card,
+:root[data-theme="cuteChicks"] .smart-reminder-card {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-secondary) 100%) !important;
+    border: 2px solid var(--color-primary-dark) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px var(--color-primary-rgba-30) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    opacity: 1 !important;
+}
+
+:root[data-theme="cuteChicks"] .smart-analysis-card .card-header,
+:root[data-theme="cuteChicks"] .smart-reminder-card .card-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-family-heading) !important;
+}
+
+/* ========== 文字可讀性增強 - 移除白色背景 ========== */
+:root[data-theme="cuteChicks"] .card h1,
+:root[data-theme="cuteChicks"] .card h2,
+:root[data-theme="cuteChicks"] .card h3,
+:root[data-theme="cuteChicks"] .card h4,
+:root[data-theme="cuteChicks"] .card h5,
+:root[data-theme="cuteChicks"] .card h6,
+:root[data-theme="cuteChicks"] .investment-card h1,
+:root[data-theme="cuteChicks"] .investment-card h2,
+:root[data-theme="cuteChicks"] .investment-card h3,
+:root[data-theme="cuteChicks"] .investment-card h4,
+:root[data-theme="cuteChicks"] .investment-card h5,
+:root[data-theme="cuteChicks"] .investment-card h6,
+:root[data-theme="cuteChicks"] .accounting-card h1,
+:root[data-theme="cuteChicks"] .accounting-card h2,
+:root[data-theme="cuteChicks"] .accounting-card h3,
+:root[data-theme="cuteChicks"] .accounting-card h4,
+:root[data-theme="cuteChicks"] .accounting-card h5,
+:root[data-theme="cuteChicks"] .accounting-card h6 {
+    color: var(--text-primary) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+    background: transparent !important;
+    padding: 4px 8px !important;
+    border-radius: 8px !important;
+    display: inline-block !important;
+    font-family: var(--font-family-heading) !important;
+}
+
+:root[data-theme="cuteChicks"] .card p,
+:root[data-theme="cuteChicks"] .card span,
+:root[data-theme="cuteChicks"] .card div,
+:root[data-theme="cuteChicks"] .investment-card p,
+:root[data-theme="cuteChicks"] .investment-card span,
+:root[data-theme="cuteChicks"] .investment-card div,
+:root[data-theme="cuteChicks"] .accounting-card p,
+:root[data-theme="cuteChicks"] .accounting-card span,
+:root[data-theme="cuteChicks"] .accounting-card div {
+    color: var(--text-primary) !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6) !important;
+    font-family: var(--font-family-primary) !important;
+}
+
+/* 金額和數字樣式 */
+:root[data-theme="cuteChicks"] .amount,
+:root[data-theme="cuteChicks"] .price,
+:root[data-theme="cuteChicks"] .value,
+:root[data-theme="cuteChicks"] .currency {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    font-family: var(--font-family-mono) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ========== 響應式設計 ========== */
+@media (max-width: 768px) {
+    :root[data-theme="cuteChicks"] .card,
+    :root[data-theme="cuteChicks"] .investment-card,
+    :root[data-theme="cuteChicks"] .accounting-card {
+        border-radius: 12px !important;
+        margin: 8px !important;
+    }
+    
+    :root[data-theme="cuteChicks"] .daily-expense-display {
+        padding: 6px 10px !important;
+    }
+    
+    :root[data-theme="cuteChicks"] .daily-expense-label {
+        font-size: 10px !important;
+    }
+    
+    :root[data-theme="cuteChicks"] .daily-expense-amount {
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="cuteChicks"] .card,
+    :root[data-theme="cuteChicks"] .investment-card,
+    :root[data-theme="cuteChicks"] .accounting-card {
+        border-radius: 10px !important;
+        margin: 6px !important;
+        padding: 12px !important;
+    }
+    
+    :root[data-theme="cuteChicks"] .card-header,
+    :root[data-theme="cuteChicks"] .card-content {
+        padding: 8px 12px !important;
+        margin: 6px !important;
+    }
+}
+
+/* ========== 動畫效果 ========== */
+:root[data-theme="cuteChicks"] .card,
+:root[data-theme="cuteChicks"] .investment-card,
+:root[data-theme="cuteChicks"] .accounting-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* 確保背景圖片正確顯示 */
+:root[data-theme="cuteChicks"] .investment-card,
+:root[data-theme="cuteChicks"] .accounting-card,
+:root[data-theme="cuteChicks"] .card,
+:root[data-theme="cuteChicks"] .record-card {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
