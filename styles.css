@@ -113,10 +113,7 @@
 :root[data-theme="money"] .stock-item-card {
     background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-light) 25%, var(--color-secondary) 50%, var(--bg-lighter) 75%, var(--bg-soft) 100%);
     border: 1px solid var(--color-secondary);
-    box-shadow: 
-        0 12px 32px rgba(0, 0, 0, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4),
-        0 0 30px var(--color-secondary-rgba-40);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 30px var(--color-secondary-rgba-40);
 }
 
 :root[data-theme="money"] .investment-card::before,
@@ -4455,6 +4452,19 @@ body {
     -webkit-tap-highlight-color: transparent;
     color: var(--text-primary);
     letter-spacing: 0.005em;
+}
+
+/* 有背景圖片的主題不應用通用背景 */
+body[data-theme="totoro"],
+body[data-theme="noface"], 
+body[data-theme="demonslayer"],
+body[data-theme="shinobu"],
+body[data-theme="cutecreatures"],
+body[data-theme="spacegold"],
+body[data-theme="caitu"],
+body[data-theme="meow"],
+body[data-theme="bluerose"] {
+    background: unset !important;
     line-height: 1.6;
 }
 
@@ -6555,7 +6565,6 @@ width: 100%;
 .page-ledger {
     min-height: calc(100vh - 60px);
     padding-bottom: 160px;
-    background: var(--bg-light-gradient-reverse);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     width: 100%;
@@ -6638,7 +6647,6 @@ width: 100%;
 
 /* ========== 收支清單頁面 ========== */
 .page-ledger {
-    background: var(--bg-light-gradient-reverse);
     min-height: 100vh;
 }
 
@@ -34439,8 +34447,1107 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(135, 206, 235, 0.8) 100%) !important;
     color: var(--text-primary) !important;
     border: 2px solid var(--color-accent) !important;
+}
+
+/* ========== 花海星語主題 ========== */
+:root[data-theme="flowerSeaStar"] {
+    --color-primary: #9BB5FF;
+    --color-primary-light: #B8C9FF;
+    --color-primary-lighter: #D4DDFF;
+    --color-primary-dark: #7A9AE6;
+    --color-secondary: #FFB6D9;
+    --color-secondary-light: #FFCCE6;
+    --color-secondary-dark: #FF99CC;
+    --color-accent: #FFF0B2;
+    --color-accent-light: #FFF8D9;
+    --color-accent-dark: #FFE082;
+
+    --bg-primary: linear-gradient(135deg, #E3F2FD 0%, #FCE4EC 45%, #FFF9C4 100%);
+    --bg-body: #FFF5F7;
+    --bg-body-strong: #FFF0F2;
+    --bg-white: #FFFCFF;
+    --bg-light: #FFF8FA;
+    --bg-lighter: #FFFAFC;
+    --bg-card: #FFFCFF;
+    --bg-soft: #FFF9FB;
+    --bg-soft-strong: #FFF4F8;
+    --bg-gradient: linear-gradient(135deg, #B8C9FF 0%, #FFB6D9 50%, #FFF0B2 100%);
+    --bg-gradient-light: transparent;
+    --bg-light-gradient: linear-gradient(135deg, #FFFCFF 0%, #FFF8FA 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, #FFF8FA 0%, #FFFCFF 100%);
+
+    --text-primary: #2C3E50;
+    --text-secondary: #546E7A;
+    --text-tertiary: #78909C;
+    --text-strong: #1A252F;
+    --text-white: #FFFCFF;
+    --text-shadow-soft: 0 1px 2px rgba(155, 181, 255, 0.15);
+    --text-shadow-strong: 0 2px 6px rgba(155, 181, 255, 0.25);
+
+    --border-light: #E8EAF6;
+    --border-medium: #C5CAE9;
+    --border-primary: #9FA8DA;
+    --card-border-color: #E1BEE7;
+    --control-border-color: #D1C4E9;
+    --table-border-color: #EDE7F6;
+
+    --shadow-xs: 0 4px 10px rgba(155, 181, 255, 0.08);
+    --shadow-sm: 0 8px 16px rgba(155, 181, 255, 0.12);
+    --shadow-md: 0 10px 30px rgba(155, 181, 255, 0.16);
+    --shadow-lg: 0 20px 50px rgba(155, 181, 255, 0.2);
+    --shadow-card: 0 10px 30px rgba(155, 181, 255, 0.12);
+    --shadow-soft: 0 8px 18px rgba(155, 181, 255, 0.08);
+    --shadow-focus: 0 0 0 3px rgba(155, 181, 255, 0.2);
+
+    --radius-xs: 8px;
+    --radius-sm: 10px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-2xl: 24px;
+    --radius-full: 999px;
+
+    --font-family-primary: 'Poppins', 'Inter', sans-serif;
+    --font-family-heading: 'Clash Display', 'Inter', sans-serif;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-size-base: 15px;
+    --font-size-lg: 17px;
+    --font-size-xl: 20px;
+    --line-height-normal: 1.5;
+    --letter-spacing-normal: 0.01em;
+    --letter-spacing-tight: -0.01em;
+    --letter-spacing-wide: 0.025em;
+
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --blur-sm: 12px;
+    --blur-md: 18px;
+    --blur-lg: 28px;
+
+    --action-buy-bg: linear-gradient(135deg, #B8C9FF 0%, #9BB5FF 100%);
+    --action-buy-bg-hover: linear-gradient(135deg, #9BB5FF 0%, #7A9AE6 100%);
+    --action-buy-text: #FFFFFF;
+    --action-dca-bg: linear-gradient(135deg, #FFB6D9 0%, #FF99CC 100%);
+    --action-dca-bg-hover: linear-gradient(135deg, #FF99CC 0%, #FF66B2 100%);
+    --action-dca-text: #FFFFFF;
+    --action-side-bg: #FFF8FA;
+    --action-side-bg-hover: #FFF0F2;
+    --action-side-text: #2C3E50;
+}
+
+/* 背景圖與柔和遮罩 */
+body[data-theme="flowerSeaStar"] {
+    background: url("https://i.pinimg.com/736x/bf/6c/3c/bf6c3c24e13b16480fe60f0fded5d5d2.jpg") center/cover no-repeat fixed !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="flowerSeaStar"] body {
+    background: url("https://i.pinimg.com/736x/bf/6c/3c/bf6c3c24e13b16480fe60f0fded5d5d2.jpg") center/cover no-repeat fixed;
+    color: var(--text-primary);
+}
+
+:root[data-theme="flowerSeaStar"] body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: transparent;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* 頁面背景透明 */
+:root[data-theme="flowerSeaStar"] .page-input,
+:root[data-theme="flowerSeaStar"] .page-ledger,
+:root[data-theme="flowerSeaStar"] .page-chart,
+:root[data-theme="flowerSeaStar"] .page-budget,
+:root[data-theme="flowerSeaStar"] .page-monthly-planner,
+:root[data-theme="flowerSeaStar"] .page-daily-budget,
+:root[data-theme="flowerSeaStar"] .page-settings,
+:root[data-theme="flowerSeaStar"] .page-category-manage,
+:root[data-theme="flowerSeaStar"] .page-investment,
+:root[data-theme="flowerSeaStar"] .page-wallet,
+:root[data-theme="flowerSeaStar"] .page-history,
+:root[data-theme="flowerSeaStar"] .page-planner {
+    background: transparent !important;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+/* 花海星語主題記帳本頁面 - 確保透明 */
+body[data-theme="flowerSeaStar"] .page-ledger {
+    background: transparent !important;
+}
+
+/* 花海星語主題 - 支出和今天花多少透明 */
+:root[data-theme="flowerSeaStar"] .daily-expense-display,
+:root[data-theme="flowerSeaStar"] .daily-expense-in-history {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+
+/* 花海星語主題 - 支出金額數字完全透明 */
+:root[data-theme="flowerSeaStar"] .daily-expense-amount,
+:root[data-theme="flowerSeaStar"] .daily-expense-in-history .daily-expense-amount {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+
+/* 花海星語主題 - 隱藏標籤文字，只顯示數字 */
+:root[data-theme="flowerSeaStar"] .daily-expense-label {
+    display: none !important;
+}
+
+/* 花海星語主題 - 金額顯示透明 */
+:root[data-theme="flowerSeaStar"] .amount-display {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* 花海星語主題 - 記帳本記錄金額透明 */
+:root[data-theme="flowerSeaStar"] .page-ledger .record-card-amount,
+:root[data-theme="flowerSeaStar"] .page-ledger .transaction-amount,
+:root[data-theme="flowerSeaStar"] .page-ledger .record-amount,
+:root[data-theme="flowerSeaStar"] .page-ledger .amount-display,
+:root[data-theme="flowerSeaStar"] .page-ledger .daily-expense-display,
+:root[data-theme="flowerSeaStar"] .page-ledger .daily-expense-in-history {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+
+/* 花海星語主題 - 記帳本記錄卡片詳情透明 */
+:root[data-theme="flowerSeaStar"] .page-ledger .record-card-details > div {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+
+/* 卡片與彈窗透明 */
+:root[data-theme="flowerSeaStar"] .card,
+:root[data-theme="flowerSeaStar"] .record-card,
+:root[data-theme="flowerSeaStar"] .ledger-card,
+:root[data-theme="flowerSeaStar"] .summary-card,
+:root[data-theme="flowerSeaStar"] .budget-card,
+:root[data-theme="flowerSeaStar"] .wallet-card,
+:root[data-theme="flowerSeaStar"] .chart-card,
+:root[data-theme="flowerSeaStar"] .accounting-card,
+:root[data-theme="flowerSeaStar"] .wallet-budget-card,
+:root[data-theme="flowerSeaStar"] .monthly-planning-card,
+:root[data-theme="flowerSeaStar"] .investment-settings-card,
+:root[data-theme="flowerSeaStar"] .smart-analysis-card,
+:root[data-theme="flowerSeaStar"] .smart-reminder-card,
+:root[data-theme="flowerSeaStar"] .regular-investment-card {
+    background: transparent !important;
+    border: 1px solid var(--card-border-color) !important;
+    box-shadow: var(--card-shadow) !important;
+    backdrop-filter: var(--card-backdrop-filter) !important;
+}
+
+/* 花海星語主題 - 記帳日記不透明，使用漸層背景 */
+:root[data-theme="flowerSeaStar"] .diary-card {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.85) 0%,
+        rgba(255, 182, 193, 0.25) 25%,
+        rgba(221, 160, 221, 0.2) 50%,
+        rgba(176, 224, 230, 0.25) 75%,
+        rgba(255, 255, 255, 0.8) 100%) !important;
+    border: 2px solid rgba(255, 182, 193, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 
+        0 8px 32px rgba(255, 182, 193, 0.15),
+        0 4px 16px rgba(221, 160, 221, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(15px) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* 花海星語主題 - 記帳日記懸停效果 */
+:root[data-theme="flowerSeaStar"] .diary-card:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 182, 193, 0.35) 25%,
+        rgba(221, 160, 221, 0.3) 50%,
+        rgba(176, 224, 230, 0.35) 75%,
+        rgba(255, 255, 255, 0.85) 100%) !important;
+    border: 2px solid rgba(255, 182, 193, 0.6) !important;
+    box-shadow: 
+        0 12px 40px rgba(255, 182, 193, 0.25),
+        0 6px 24px rgba(221, 160, 221, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 花海星語主題 - 記帳日記文字顏色 */
+:root[data-theme="flowerSeaStar"] .diary-card {
+    color: #5A4A7C !important;
+}
+
+:root[data-theme="flowerSeaStar"] .diary-card h1,
+:root[data-theme="flowerSeaStar"] .diary-card h2,
+:root[data-theme="flowerSeaStar"] .diary-card h3,
+:root[data-theme="flowerSeaStar"] .diary-card h4,
+:root[data-theme="flowerSeaStar"] .diary-card h5,
+:root[data-theme="flowerSeaStar"] .diary-card h6,
+:root[data-theme="flowerSeaStar"] .diary-card .title,
+:root[data-theme="flowerSeaStar"] .diary-card .subtitle,
+:root[data-theme="flowerSeaStar"] .diary-card .card-title,
+:root[data-theme="flowerSeaStar"] .diary-card .card-subtitle {
+    color: #8B4F9F !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(139, 79, 159, 0.2) !important;
+}
+
+:root[data-theme="flowerSeaStar"] .diary-card .text,
+:root[data-theme="flowerSeaStar"] .diary-card .description,
+:root[data-theme="flowerSeaStar"] .diary-card .content,
+:root[data-theme="flowerSeaStar"] .diary-card p,
+:root[data-theme="flowerSeaStar"] .diary-card span,
+:root[data-theme="flowerSeaStar"] .diary-card div {
+    color: #5A4A7C !important;
+    font-weight: 500 !important;
+}
+
+/* 花海星語主題 - 隱藏記帳日記中的費用相關元素 */
+:root[data-theme="flowerSeaStar"] .diary-card-fee,
+:root[data-theme="flowerSeaStar"] .diary-card-fee *,
+:root[data-theme="flowerSeaStar"] .fee-label,
+:root[data-theme="flowerSeaStar"] .fee-label *,
+:root[data-theme="flowerSeaStar"] .fee-amount,
+:root[data-theme="flowerSeaStar"] .fee-amount *,
+:root[data-theme="flowerSeaStar"] [class*="fee"],
+:root[data-theme="flowerSeaStar"] [id*="fee"],
+:root[data-theme="flowerSeaStar"] [class*="fee"] *,
+:root[data-theme="flowerSeaStar"] [id*="fee"] *,
+:root[data-theme="flowerSeaStar"] .diary-card .fee-item,
+:root[data-theme="flowerSeaStar"] .diary-card .fee-row,
+:root[data-theme="flowerSeaStar"] .diary-card .expense-item,
+:root[data-theme="flowerSeaStar"] .diary-card .cost-row,
+:root[data-theme="flowerSeaStar"] .diary-card .charge-item,
+:root[data-theme="flowerSeaStar"] .diary-card .payment-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .service-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .transaction-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .handling-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .processing-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .platform-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .management-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .brokerage-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .commission-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .tax-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .other-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .misc-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .additional-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .extra-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .surcharge,
+:root[data-theme="flowerSeaStar"] .diary-card .deduction,
+:root[data-theme="flowerSeaStar"] .diary-card .penalty,
+:root[data-theme="flowerSeaStar"] .diary-card .fine,
+:root[data-theme="flowerSeaStar"] .diary-card .late-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .overdue-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .interest-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .finance-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .bank-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .transfer-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .withdrawal-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .deposit-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .exchange-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .conversion-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .currency-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .international-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .foreign-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .cross-border-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .global-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .worldwide-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .universal-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .standard-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .basic-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .regular-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .normal-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .typical-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .common-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .usual-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .general-fee,
+:root[data-theme="flowerSeaStar"] .diary-card .standard-charge,
+:root[data-theme="flowerSeaStar"] .diary-card .basic-charge,
+:root[data-theme="flowerSeaStar"] .diary-card .regular-charge,
+:root[data-theme="flowerSeaStar"] .diary-card .normal-charge,
+:root[data-theme="flowerSeaStar"] .diary-card .typical-charge,
+:root[data-theme="flowerSeaStar"] .diary-card .common-charge,
+:root[data-theme="flowerSeaStar"] .diary-card .usual-charge,
+:root[data-theme="flowerSeaStar"] .diary-card .general-charge,
+:root[data-theme="flowerSeaStar"] .diary-card .standard-cost,
+:root[data-theme="flowerSeaStar"] .diary-card .basic-cost,
+:root[data-theme="flowerSeaStar"] .diary-card .regular-cost,
+:root[data-theme="flowerSeaStar"] .diary-card .normal-cost,
+:root[data-theme="flowerSeaStar"] .diary-card .typical-cost,
+:root[data-theme="flowerSeaStar"] .diary-card .common-cost,
+:root[data-theme="flowerSeaStar"] .diary-card .usual-cost,
+:root[data-theme="flowerSeaStar"] .diary-card .general-cost,
+:root[data-theme="flowerSeaStar"] .diary-card .standard-price,
+:root[data-theme="flowerSeaStar"] .diary-card .basic-price,
+:root[data-theme="flowerSeaStar"] .diary-card .regular-price,
+:root[data-theme="flowerSeaStar"] .diary-card .normal-price,
+:root[data-theme="flowerSeaStar"] .diary-card .typical-price,
+:root[data-theme="flowerSeaStar"] .diary-card .common-price,
+:root[data-theme="flowerSeaStar"] .diary-card .usual-price,
+:root[data-theme="flowerSeaStar"] .diary-card .general-price,
+:root[data-theme="flowerSeaStar"] .diary-card .standard-rate,
+:root[data-theme="flowerSeaStar"] .diary-card .basic-rate,
+:root[data-theme="flowerSeaStar"] .diary-card .regular-rate,
+:root[data-theme="flowerSeaStar"] .diary-card .normal-rate,
+:root[data-theme="flowerSeaStar"] .diary-card .typical-rate,
+:root[data-theme="flowerSeaStar"] .diary-card .common-rate,
+:root[data-theme="flowerSeaStar"] .diary-card .usual-rate,
+:root[data-theme="flowerSeaStar"] .diary-card .general-rate,
+:root[data-theme="flowerSeaStar"] .diary-card .standard-amount,
+:root[data-theme="flowerSeaStar"] .diary-card .basic-amount,
+:root[data-theme="flowerSeaStar"] .diary-card .regular-amount,
+:root[data-theme="flowerSeaStar"] .diary-card .normal-amount,
+:root[data-theme="flowerSeaStar"] .diary-card .typical-amount,
+:root[data-theme="flowerSeaStar"] .diary-card .common-amount,
+:root[data-theme="flowerSeaStar"] .diary-card .usual-amount,
+:root[data-theme="flowerSeaStar"] .diary-card .general-amount,
+:root[data-theme="flowerSeaStar"] .diary-card .standard-total,
+:root[data-theme="flowerSeaStar"] .diary-card .basic-total,
+:root[data-theme="flowerSeaStar"] .diary-card .regular-total,
+:root[data-theme="flowerSeaStar"] .diary-card .normal-total,
+:root[data-theme="flowerSeaStar"] .diary-card .typical-total,
+:root[data-theme="flowerSeaStar"] .diary-card .common-total,
+:root[data-theme="flowerSeaStar"] .diary-card .usual-total,
+:root[data-theme="flowerSeaStar"] .diary-card .general-total,
+:root[data-theme="flowerSeaStar"] .diary-card .standard-sum,
+:root[data-theme="flowerSeaStar"] .diary-card .basic-sum,
+:root[data-theme="flowerSeaStar"] .diary-card .regular-sum,
+:root[data-theme="flowerSeaStar"] .diary-card .normal-sum,
+:root[data-theme="flowerSeaStar"] .diary-card .typical-sum,
+:root[data-theme="flowerSeaStar"] .diary-card .common-sum,
+:root[data-theme="flowerSeaStar"] .diary-card .usual-sum,
+:root[data-theme="flowerSeaStar"] .diary-card .general-sum {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    z-index: -9999 !important;
+}
+
+/* 花海星語主題 - 隱藏詳細分析和投資歷史 */
+:root[data-theme="flowerSeaStar"] .detailed-analysis,
+:root[data-theme="flowerSeaStar"] .detailed-analysis *,
+:root[data-theme="flowerSeaStar"] .investment-history,
+:root[data-theme="flowerSeaStar"] .investment-history *,
+:root[data-theme="flowerSeaStar"] .analysis-section,
+:root[data-theme="flowerSeaStar"] .analysis-section *,
+:root[data-theme="flowerSeaStar"] .history-section,
+:root[data-theme="flowerSeaStar"] .history-section *,
+:root[data-theme="flowerSeaStar"] .detailed-analysis-card,
+:root[data-theme="flowerSeaStar"] .detailed-analysis-card *,
+:root[data-theme="flowerSeaStar"] .investment-history-card,
+:root[data-theme="flowerSeaStar"] .investment-history-card *,
+:root[data-theme="flowerSeaStar"] .analysis-panel,
+:root[data-theme="flowerSeaStar"] .analysis-panel *,
+:root[data-theme="flowerSeaStar"] .history-panel,
+:root[data-theme="flowerSeaStar"] .history-panel *,
+:root[data-theme="flowerSeaStar"] .analysis-container,
+:root[data-theme="flowerSeaStar"] .analysis-container *,
+:root[data-theme="flowerSeaStar"] .history-container,
+:root[data-theme="flowerSeaStar"] .history-container *,
+:root[data-theme="flowerSeaStar"] .analysis-wrapper,
+:root[data-theme="flowerSeaStar"] .analysis-wrapper *,
+:root[data-theme="flowerSeaStar"] .history-wrapper,
+:root[data-theme="flowerSeaStar"] .history-wrapper *,
+:root[data-theme="flowerSeaStar"] .analysis-box,
+:root[data-theme="flowerSeaStar"] .analysis-box *,
+:root[data-theme="flowerSeaStar"] .history-box,
+:root[data-theme="flowerSeaStar"] .history-box *,
+:root[data-theme="flowerSeaStar"] .analysis-item,
+:root[data-theme="flowerSeaStar"] .analysis-item *,
+:root[data-theme="flowerSeaStar"] .history-item,
+:root[data-theme="flowerSeaStar"] .history-item *,
+:root[data-theme="flowerSeaStar"] .analysis-row,
+:root[data-theme="flowerSeaStar"] .analysis-row *,
+:root[data-theme="flowerSeaStar"] .history-row,
+:root[data-theme="flowerSeaStar"] .history-row *,
+:root[data-theme="flowerSeaStar"] .analysis-content,
+:root[data-theme="flowerSeaStar"] .analysis-content *,
+:root[data-theme="flowerSeaStar"] .history-content,
+:root[data-theme="flowerSeaStar"] .history-content *,
+:root[data-theme="flowerSeaStar"] .analysis-data,
+:root[data-theme="flowerSeaStar"] .analysis-data *,
+:root[data-theme="flowerSeaStar"] .history-data,
+:root[data-theme="flowerSeaStar"] .history-data *,
+:root[data-theme="flowerSeaStar"] .analysis-info,
+:root[data-theme="flowerSeaStar"] .analysis-info *,
+:root[data-theme="flowerSeaStar"] .history-info,
+:root[data-theme="flowerSeaStar"] .history-info *,
+:root[data-theme="flowerSeaStar"] .analysis-details,
+:root[data-theme="flowerSeaStar"] .analysis-details *,
+:root[data-theme="flowerSeaStar"] .history-details,
+:root[data-theme="flowerSeaStar"] .history-details *,
+:root[data-theme="flowerSeaStar"] .analysis-report,
+:root[data-theme="flowerSeaStar"] .analysis-report *,
+:root[data-theme="flowerSeaStar"] .history-report,
+:root[data-theme="flowerSeaStar"] .history-report *,
+:root[data-theme="flowerSeaStar"] .analysis-summary,
+:root[data-theme="flowerSeaStar"] .analysis-summary *,
+:root[data-theme="flowerSeaStar"] .history-summary,
+:root[data-theme="flowerSeaStar"] .history-summary *,
+:root[data-theme="flowerSeaStar"] .analysis-overview,
+:root[data-theme="flowerSeaStar"] .analysis-overview *,
+:root[data-theme="flowerSeaStar"] .history-overview,
+:root[data-theme="flowerSeaStar"] .history-overview *,
+:root[data-theme="flowerSeaStar"] .analysis-view,
+:root[data-theme="flowerSeaStar"] .analysis-view *,
+:root[data-theme="flowerSeaStar"] .history-view,
+:root[data-theme="flowerSeaStar"] .history-view *,
+:root[data-theme="flowerSeaStar"] .analysis-display,
+:root[data-theme="flowerSeaStar"] .analysis-display *,
+:root[data-theme="flowerSeaStar"] .history-display,
+:root[data-theme="flowerSeaStar"] .history-display *,
+:root[data-theme="flowerSeaStar"] .analysis-show,
+:root[data-theme="flowerSeaStar"] .analysis-show *,
+:root[data-theme="flowerSeaStar"] .history-show,
+:root[data-theme="flowerSeaStar"] .history-show *,
+:root[data-theme="flowerSeaStar"] .analysis-block,
+:root[data-theme="flowerSeaStar"] .analysis-block *,
+:root[data-theme="flowerSeaStar"] .history-block,
+:root[data-theme="flowerSeaStar"] .history-block *,
+:root[data-theme="flowerSeaStar"] .analysis-module,
+:root[data-theme="flowerSeaStar"] .analysis-module *,
+:root[data-theme="flowerSeaStar"] .history-module,
+:root[data-theme="flowerSeaStar"] .history-module *,
+:root[data-theme="flowerSeaStar"] .analysis-component,
+:root[data-theme="flowerSeaStar"] .analysis-component *,
+:root[data-theme="flowerSeaStar"] .history-component,
+:root[data-theme="flowerSeaStar"] .history-component *,
+:root[data-theme="flowerSeaStar"] .analysis-element,
+:root[data-theme="flowerSeaStar"] .analysis-element *,
+:root[data-theme="flowerSeaStar"] .history-element,
+:root[data-theme="flowerSeaStar"] .history-element *,
+:root[data-theme="flowerSeaStar"] .analysis-part,
+:root[data-theme="flowerSeaStar"] .analysis-part *,
+:root[data-theme="flowerSeaStar"] .history-part,
+:root[data-theme="flowerSeaStar"] .history-part *,
+:root[data-theme="flowerSeaStar"] .analysis-section-title,
+:root[data-theme="flowerSeaStar"] .analysis-section-title *,
+:root[data-theme="flowerSeaStar"] .history-section-title,
+:root[data-theme="flowerSeaStar"] .history-section-title *,
+:root[data-theme="flowerSeaStar"] .analysis-card-title,
+:root[data-theme="flowerSeaStar"] .analysis-card-title *,
+:root[data-theme="flowerSeaStar"] .history-card-title,
+:root[data-theme="flowerSeaStar"] .history-card-title *,
+:root[data-theme="flowerSeaStar"] .analysis-panel-title,
+:root[data-theme="flowerSeaStar"] .analysis-panel-title *,
+:root[data-theme="flowerSeaStar"] .history-panel-title,
+:root[data-theme="flowerSeaStar"] .history-panel-title *,
+:root[data-theme="flowerSeaStar"] .analysis-container-title,
+:root[data-theme="flowerSeaStar"] .analysis-container-title *,
+:root[data-theme="flowerSeaStar"] .history-container-title,
+:root[data-theme="flowerSeaStar"] .history-container-title *,
+:root[data-theme="flowerSeaStar"] .analysis-wrapper-title,
+:root[data-theme="flowerSeaStar"] .analysis-wrapper-title *,
+:root[data-theme="flowerSeaStar"] .history-wrapper-title,
+:root[data-theme="flowerSeaStar"] .history-wrapper-title *,
+:root[data-theme="flowerSeaStar"] .analysis-box-title,
+:root[data-theme="flowerSeaStar"] .analysis-box-title *,
+:root[data-theme="flowerSeaStar"] .history-box-title,
+:root[data-theme="flowerSeaStar"] .history-box-title *,
+:root[data-theme="flowerSeaStar"] .analysis-item-title,
+:root[data-theme="flowerSeaStar"] .analysis-item-title *,
+:root[data-theme="flowerSeaStar"] .history-item-title,
+:root[data-theme="flowerSeaStar"] .history-item-title *,
+:root[data-theme="flowerSeaStar"] .analysis-row-title,
+:root[data-theme="flowerSeaStar"] .analysis-row-title *,
+:root[data-theme="flowerSeaStar"] .history-row-title,
+:root[data-theme="flowerSeaStar"] .history-row-title *,
+:root[data-theme="flowerSeaStar"] .analysis-content-title,
+:root[data-theme="flowerSeaStar"] .analysis-content-title *,
+:root[data-theme="flowerSeaStar"] .history-content-title,
+:root[data-theme="flowerSeaStar"] .history-content-title *,
+:root[data-theme="flowerSeaStar"] .analysis-data-title,
+:root[data-theme="flowerSeaStar"] .analysis-data-title *,
+:root[data-theme="flowerSeaStar"] .history-data-title,
+:root[data-theme="flowerSeaStar"] .history-data-title *,
+:root[data-theme="flowerSeaStar"] .analysis-info-title,
+:root[data-theme="flowerSeaStar"] .analysis-info-title *,
+:root[data-theme="flowerSeaStar"] .history-info-title,
+:root[data-theme="flowerSeaStar"] .history-info-title *,
+:root[data-theme="flowerSeaStar"] .analysis-details-title,
+:root[data-theme="flowerSeaStar"] .analysis-details-title *,
+:root[data-theme="flowerSeaStar"] .history-details-title,
+:root[data-theme="flowerSeaStar"] .history-details-title *,
+:root[data-theme="flowerSeaStar"] .analysis-report-title,
+:root[data-theme="flowerSeaStar"] .analysis-report-title *,
+:root[data-theme="flowerSeaStar"] .history-report-title,
+:root[data-theme="flowerSeaStar"] .history-report-title *,
+:root[data-theme="flowerSeaStar"] .analysis-summary-title,
+:root[data-theme="flowerSeaStar"] .analysis-summary-title *,
+:root[data-theme="flowerSeaStar"] .history-summary-title,
+:root[data-theme="flowerSeaStar"] .history-summary-title *,
+:root[data-theme="flowerSeaStar"] .analysis-overview-title,
+:root[data-theme="flowerSeaStar"] .analysis-overview-title *,
+:root[data-theme="flowerSeaStar"] .history-overview-title,
+:root[data-theme="flowerSeaStar"] .history-overview-title *,
+:root[data-theme="flowerSeaStar"] .analysis-view-title,
+:root[data-theme="flowerSeaStar"] .analysis-view-title *,
+:root[data-theme="flowerSeaStar"] .history-view-title,
+:root[data-theme="flowerSeaStar"] .history-view-title *,
+:root[data-theme="flowerSeaStar"] .analysis-display-title,
+:root[data-theme="flowerSeaStar"] .analysis-display-title *,
+:root[data-theme="flowerSeaStar"] .history-display-title,
+:root[data-theme="flowerSeaStar"] .history-display-title *,
+:root[data-theme="flowerSeaStar"] .analysis-show-title,
+:root[data-theme="flowerSeaStar"] .analysis-show-title *,
+:root[data-theme="flowerSeaStar"] .history-show-title,
+:root[data-theme="flowerSeaStar"] .history-show-title *,
+:root[data-theme="flowerSeaStar"] .analysis-block-title,
+:root[data-theme="flowerSeaStar"] .analysis-block-title *,
+:root[data-theme="flowerSeaStar"] .history-block-title,
+:root[data-theme="flowerSeaStar"] .history-block-title *,
+:root[data-theme="flowerSeaStar"] .analysis-module-title,
+:root[data-theme="flowerSeaStar"] .analysis-module-title *,
+:root[data-theme="flowerSeaStar"] .history-module-title,
+:root[data-theme="flowerSeaStar"] .history-module-title *,
+:root[data-theme="flowerSeaStar"] .analysis-component-title,
+:root[data-theme="flowerSeaStar"] .analysis-component-title *,
+:root[data-theme="flowerSeaStar"] .history-component-title,
+:root[data-theme="flowerSeaStar"] .history-component-title *,
+:root[data-theme="flowerSeaStar"] .analysis-element-title,
+:root[data-theme="flowerSeaStar"] .analysis-element-title *,
+:root[data-theme="flowerSeaStar"] .history-element-title,
+:root[data-theme="flowerSeaStar"] .history-element-title *,
+:root[data-theme="flowerSeaStar"] .analysis-part-title,
+:root[data-theme="flowerSeaStar"] .analysis-part-title *,
+:root[data-theme="flowerSeaStar"] .history-part-title,
+:root[data-theme="flowerSeaStar"] .history-part-title *,
+:root[data-theme="flowerSeaStar"] [class*="analysis"],
+:root[data-theme="flowerSeaStar"] [class*="analysis"] *,
+:root[data-theme="flowerSeaStar"] [id*="analysis"],
+:root[data-theme="flowerSeaStar"] [id*="analysis"] *,
+:root[data-theme="flowerSeaStar"] [class*="history"],
+:root[data-theme="flowerSeaStar"] [class*="history"] *,
+:root[data-theme="flowerSeaStar"] [id*="history"],
+:root[data-theme="flowerSeaStar"] [id*="history"] * {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    z-index: -9999 !important;
+}
+
+/* 花海星語主題 - 投資卡片使用漸層背景 */
+:root[data-theme="flowerSeaStar"] .investment-card,
+:root[data-theme="flowerSeaStar"] .stock-item-card,
+:root[data-theme="flowerSeaStar"] .manage-investment-card,
+:root[data-theme="flowerSeaStar"] .holding-card,
+:root[data-theme="flowerSeaStar"] .buying-card,
+:root[data-theme="flowerSeaStar"] .selling-card,
+:root[data-theme="flowerSeaStar"] .dividend-card,
+:root[data-theme="flowerSeaStar"] .dca-card,
+:root[data-theme="flowerSeaStar"] .dividend-stat-card {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 193, 0.3) 0%,
+        rgba(255, 218, 185, 0.25) 25%,
+        rgba(221, 160, 221, 0.2) 50%,
+        rgba(176, 224, 230, 0.25) 75%,
+        rgba(255, 255, 255, 0.3) 100%) !important;
+    border: 2px solid rgba(255, 182, 193, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 
+        0 8px 32px rgba(255, 182, 193, 0.15),
+        0 4px 16px rgba(221, 160, 221, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(15px) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* 花海星語主題 - 投資卡片懸停效果 */
+:root[data-theme="flowerSeaStar"] .investment-card:hover,
+:root[data-theme="flowerSeaStar"] .stock-item-card:hover,
+:root[data-theme="flowerSeaStar"] .manage-investment-card:hover,
+:root[data-theme="flowerSeaStar"] .holding-card:hover,
+:root[data-theme="flowerSeaStar"] .buying-card:hover,
+:root[data-theme="flowerSeaStar"] .selling-card:hover,
+:root[data-theme="flowerSeaStar"] .dividend-card:hover,
+:root[data-theme="flowerSeaStar"] .dca-card:hover,
+:root[data-theme="flowerSeaStar"] .dividend-stat-card:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 193, 0.4) 0%,
+        rgba(255, 218, 185, 0.35) 25%,
+        rgba(221, 160, 221, 0.3) 50%,
+        rgba(176, 224, 230, 0.35) 75%,
+        rgba(255, 255, 255, 0.4) 100%) !important;
+    border: 2px solid rgba(255, 182, 193, 0.6) !important;
+    box-shadow: 
+        0 12px 40px rgba(255, 182, 193, 0.25),
+        0 6px 24px rgba(221, 160, 221, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 花海星語主題 - 股票號碼藍色字體無背景 */
+:root[data-theme="flowerSeaStar"] .stock-card-code,
+:root[data-theme="flowerSeaStar"] .stock-item-code,
+:root[data-theme="flowerSeaStar"] .stock-code,
+:root[data-theme="flowerSeaStar"] .input-stock-code,
+:root[data-theme="flowerSeaStar"] .modal-stock-code,
+:root[data-theme="flowerSeaStar"] .stock-name-code {
+    color: #4A90E2 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+}
+
+/* 花海星語主題 - 投資卡片字體顏色配合主題 */
+:root[data-theme="flowerSeaStar"] .investment-card .value,
+:root[data-theme="flowerSeaStar"] .investment-card .amount,
+:root[data-theme="flowerSeaStar"] .investment-card .price,
+:root[data-theme="flowerSeaStar"] .stock-item-card .value,
+:root[data-theme="flowerSeaStar"] .stock-item-card .amount,
+:root[data-theme="flowerSeaStar"] .stock-item-card .price,
+:root[data-theme="flowerSeaStar"] .manage-investment-card .value,
+:root[data-theme="flowerSeaStar"] .manage-investment-card .amount,
+:root[data-theme="flowerSeaStar"] .holding-card .value,
+:root[data-theme="flowerSeaStar"] .holding-card .amount,
+:root[data-theme="flowerSeaStar"] .holding-card .price,
+:root[data-theme="flowerSeaStar"] .buying-card .value,
+:root[data-theme="flowerSeaStar"] .buying-card .amount,
+:root[data-theme="flowerSeaStar"] .buying-card .price,
+:root[data-theme="flowerSeaStar"] .selling-card .value,
+:root[data-theme="flowerSeaStar"] .selling-card .amount,
+:root[data-theme="flowerSeaStar"] .selling-card .price,
+:root[data-theme="flowerSeaStar"] .dividend-card .value,
+:root[data-theme="flowerSeaStar"] .dividend-card .amount,
+:root[data-theme="flowerSeaStar"] .dca-card .value,
+:root[data-theme="flowerSeaStar"] .dca-card .amount,
+:root[data-theme="flowerSeaStar"] .dividend-stat-card .value,
+:root[data-theme="flowerSeaStar"] .dividend-stat-card .amount {
+    color: #D462A6 !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 3px rgba(212, 98, 166, 0.3) !important;
+}
+
+/* 花海星語主題 - 投資卡片標題顏色 */
+:root[data-theme="flowerSeaStar"] .investment-card .title,
+:root[data-theme="flowerSeaStar"] .investment-card .subtitle,
+:root[data-theme="flowerSeaStar"] .investment-card .card-title,
+:root[data-theme="flowerSeaStar"] .investment-card .card-subtitle,
+:root[data-theme="flowerSeaStar"] .stock-item-card .title,
+:root[data-theme="flowerSeaStar"] .stock-item-card .subtitle,
+:root[data-theme="flowerSeaStar"] .stock-item-card .card-title,
+:root[data-theme="flowerSeaStar"] .stock-item-card .card-subtitle,
+:root[data-theme="flowerSeaStar"] .manage-investment-card .title,
+:root[data-theme="flowerSeaStar"] .manage-investment-card .subtitle,
+:root[data-theme="flowerSeaStar"] .manage-investment-card .card-title,
+:root[data-theme="flowerSeaStar"] .manage-investment-card .card-subtitle,
+:root[data-theme="flowerSeaStar"] .holding-card .title,
+:root[data-theme="flowerSeaStar"] .holding-card .subtitle,
+:root[data-theme="flowerSeaStar"] .holding-card .card-title,
+:root[data-theme="flowerSeaStar"] .holding-card .card-subtitle {
+    color: #8B4F9F !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(139, 79, 159, 0.2) !important;
+}
+
+/* 花海星語主題 - 投資卡片次要文字顏色 */
+:root[data-theme="flowerSeaStar"] .investment-card .text,
+:root[data-theme="flowerSeaStar"] .investment-card .description,
+:root[data-theme="flowerSeaStar"] .investment-card .content,
+:root[data-theme="flowerSeaStar"] .investment-card p,
+:root[data-theme="flowerSeaStar"] .investment-card span,
+:root[data-theme="flowerSeaStar"] .investment-card div,
+:root[data-theme="flowerSeaStar"] .stock-item-card .text,
+:root[data-theme="flowerSeaStar"] .stock-item-card .description,
+:root[data-theme="flowerSeaStar"] .stock-item-card .content,
+:root[data-theme="flowerSeaStar"] .stock-item-card p,
+:root[data-theme="flowerSeaStar"] .stock-item-card span,
+:root[data-theme="flowerSeaStar"] .stock-item-card div,
+:root[data-theme="flowerSeaStar"] .manage-investment-card .text,
+:root[data-theme="flowerSeaStar"] .manage-investment-card .description,
+:root[data-theme="flowerSeaStar"] .manage-investment-card .content,
+:root[data-theme="flowerSeaStar"] .manage-investment-card p,
+:root[data-theme="flowerSeaStar"] .manage-investment-card span,
+:root[data-theme="flowerSeaStar"] .manage-investment-card div {
+    color: #5A4A7C !important;
+    font-weight: 500 !important;
+}
+
+/* 花海星語主題 - 投資卡片標籤顏色 */
+:root[data-theme="flowerSeaStar"] .investment-card .label,
+:root[data-theme="flowerSeaStar"] .investment-card .form-label,
+:root[data-theme="flowerSeaStar"] .stock-item-card .label,
+:root[data-theme="flowerSeaStar"] .stock-item-card .form-label,
+:root[data-theme="flowerSeaStar"] .manage-investment-card .label,
+:root[data-theme="flowerSeaStar"] .manage-investment-card .form-label {
+    color: #7B68B8 !important;
+    font-weight: 600 !important;
+}
+
+/* 花海星語主題 - FAB 按鈕圖示設定 */
+:root[data-theme="flowerSeaStar"] .fab-btn {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 193, 0.8) 0%,
+        rgba(221, 160, 221, 0.7) 50%,
+        rgba(176, 224, 230, 0.8) 100%) !important;
+    border: 2px solid rgba(255, 182, 193, 0.6) !important;
+    box-shadow: 
+        0 8px 24px rgba(255, 182, 193, 0.3),
+        0 4px 12px rgba(221, 160, 221, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    color: #8B4F9F !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    backdrop-filter: blur(15px) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+:root[data-theme="flowerSeaStar"] .fab-btn:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 193, 0.9) 0%,
+        rgba(221, 160, 221, 0.8) 50%,
+        rgba(176, 224, 230, 0.9) 100%) !important;
+    border: 2px solid rgba(255, 182, 193, 0.8) !important;
+    box-shadow: 
+        0 12px 32px rgba(255, 182, 193, 0.4),
+        0 6px 16px rgba(221, 160, 221, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+    transform: translateY(-2px) scale(1.05) !important;
+    color: #D462A6 !important;
+}
+
+:root[data-theme="flowerSeaStar"] .fab-btn:active {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 193, 0.7) 0%,
+        rgba(221, 160, 221, 0.6) 50%,
+        rgba(176, 224, 230, 0.7) 100%) !important;
+    transform: translateY(0) scale(0.95) !important;
+    box-shadow: 
+        0 4px 16px rgba(255, 182, 193, 0.2),
+        0 2px 8px rgba(221, 160, 221, 0.15) !important;
+}
+
+/* 模態框透明 */
+:root[data-theme="flowerSeaStar"] .modal-content,
+:root[data-theme="flowerSeaStar"] .modal-content-standard,
+:root[data-theme="flowerSeaStar"] .budget-category-modal-content,
+:root[data-theme="flowerSeaStar"] .budget-setting-modal-content,
+:root[data-theme="flowerSeaStar"] .category-modal-content,
+:root[data-theme="flowerSeaStar"] .dca-execute-modal .modal-content,
+:root[data-theme="flowerSeaStar"] .account-modal-content,
+:root[data-theme="flowerSeaStar"] .emoji-modal-content,
+:root[data-theme="flowerSeaStar"] .history-modal-content {
+    background: transparent !important;
+    border: none !important;
+    border-radius: var(--radius-xl);
+    box-shadow: none !important;
+    color: var(--text-primary) !important;
+    backdrop-filter: none;
+}
+
+/* 輸入區域透明 */
+:root[data-theme="flowerSeaStar"] .input-section {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none;
+}
+
+/* 鍵盤透明 */
+:root[data-theme="flowerSeaStar"] .key-btn {
+    background: transparent !important;
+    border: none !important;
+    color: var(--text-primary) !important;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-lg);
+    border-radius: var(--radius-lg);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root[data-theme="flowerSeaStar"] .key-btn:hover {
+    background: var(--bg-light) !important;
+    border-color: var(--border-primary) !important;
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
+
+:root[data-theme="flowerSeaStar"] .key-btn:active {
+    background: var(--bg-soft) !important;
+    transform: translateY(0);
+}
+
+:root[data-theme="flowerSeaStar"] .key-btn.operator {
+    background: var(--color-secondary-light) !important;
+    border-color: var(--color-secondary) !important;
+    color: var(--text-white) !important;
+}
+
+:root[data-theme="flowerSeaStar"] .key-btn.operator:hover {
+    background: var(--color-secondary) !important;
+}
+
+:root[data-theme="flowerSeaStar"] .key-btn.delete {
+    background: #FF6B6B !important;
+    border-color: #FF5252 !important;
+    color: var(--text-white) !important;
+}
+
+:root[data-theme="flowerSeaStar"] .key-btn.delete:hover {
+    background: #FF5252 !important;
+}
+
+:root[data-theme="flowerSeaStar"] .key-btn.equal {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary-dark) !important;
+    color: var(--text-white) !important;
+}
+
+:root[data-theme="flowerSeaStar"] .key-btn.equal:hover {
+    background: var(--color-primary-dark) !important;
+}
+
+/* 買入/定期定額/返回按鈕主題化 */
+:root[data-theme="flowerSeaStar"] .buy-btn,
+:root[data-theme="flowerSeaStar"] .action-buy {
+    background: var(--action-buy-bg) !important;
+    color: var(--action-buy-text) !important;
+    border: none !important;
+    border-radius: var(--radius-lg);
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-md);
+}
+
+:root[data-theme="flowerSeaStar"] .buy-btn:hover,
+:root[data-theme="flowerSeaStar"] .action-buy:hover {
+    background: var(--action-buy-bg-hover) !important;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+:root[data-theme="flowerSeaStar"] .dca-btn,
+:root[data-theme="flowerSeaStar"] .action-dca {
+    background: var(--action-dca-bg) !important;
+    color: var(--action-dca-text) !important;
+    border: none !important;
+    border-radius: var(--radius-lg);
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-md);
+}
+
+:root[data-theme="flowerSeaStar"] .dca-btn:hover,
+:root[data-theme="flowerSeaStar"] .action-dca:hover {
+    background: var(--action-dca-bg-hover) !important;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+:root[data-theme="flowerSeaStar"] .return-btn,
+:root[data-theme="flowerSeaStar"] .back-btn {
+    background: var(--action-side-bg) !important;
+    color: var(--action-side-text) !important;
+    border: 1px solid var(--border-medium) !important;
+    border-radius: var(--radius-md);
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-semibold);
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-xs);
+}
+
+:root[data-theme="flowerSeaStar"] .return-btn:hover,
+:root[data-theme="flowerSeaStar"] .back-btn:hover {
+    background: var(--action-side-bg-hover) !important;
+    border-color: var(--border-primary) !important;
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
+
+/* 小森對話框主題化與RWD */
+:root[data-theme="flowerSeaStar"] .mori-dialog {
+    background: var(--bg-card) !important;
+    border: 2px solid var(--card-border-color) !important;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    color: var(--text-primary) !important;
+    backdrop-filter: none;
+    max-width: 90vw;
+    word-wrap: break-word;
+}
+
+:root[data-theme="flowerSeaStar"] .mori-dialog .mori-content {
+    background: transparent !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    letter-spacing: var(--letter-spacing-normal);
+}
+
+:root[data-theme="flowerSeaStar"] .mori-dialog .mori-title {
+    color: var(--text-primary) !important;
+    font-family: var(--font-family-heading);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-normal);
+    letter-spacing: var(--letter-spacing-tight);
+    text-shadow: var(--text-shadow-soft);
+}
+
+/* 小森對話框 RWD 適配 */
+@media (max-width: 768px) {
+    :root[data-theme="flowerSeaStar"] .mori-dialog {
+        max-width: 95vw;
+        padding: 12px 16px;
+        margin: 0 10px;
+        transform: translateX(-50%);
+        border-radius: var(--radius-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="flowerSeaStar"] .mori-dialog {
+        max-width: 98vw;
+        padding: 10px 12px;
+        margin: 0 5px;
+        border-radius: var(--radius-md);
+    }
+}
+
+/* 底部導航 */
+:root[data-theme="flowerSeaStar"] .bottom-nav {
+    background: var(--bg-card) !important;
+    border-top: 1px solid var(--border-light) !important;
+    backdrop-filter: none;
+    box-shadow: 0 -2px 12px rgba(155, 181, 255, 0.1);
+}
+
+/* 表單元素 */
+:root[data-theme="flowerSeaStar"] .form-input,
+:root[data-theme="flowerSeaStar"] .form-select,
+:root[data-theme="flowerSeaStar"] .form-textarea {
+    background: var(--bg-white) !important;
+    border: 1px solid var(--border-light) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-md);
+    font-family: var(--font-family-primary);
+    transition: var(--transition-base);
+}
+
+:root[data-theme="flowerSeaStar"] .form-input:focus,
+:root[data-theme="flowerSeaStar"] .form-select:focus,
+:root[data-theme="flowerSeaStar"] .form-textarea:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: var(--shadow-focus);
+    outline: none;
+}
+
+/* 標籤按鈕 */
+:root[data-theme="flowerSeaStar"] .tab-btn {
+    background: var(--bg-white) !important;
+    color: var(--text-secondary) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: var(--radius-md);
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-medium);
+    transition: var(--transition-base);
+}
+
+:root[data-theme="flowerSeaStar"] .tab-btn.active,
+:root[data-theme="flowerSeaStar"] .tab-btn:hover {
+    background: var(--color-primary-light) !important;
+    color: var(--text-white) !important;
+    border-color: var(--color-primary) !important;
+}
+
+/* 錢包預算設定卡片背景圖 */
+:root[data-theme="flowerSeaStar"] .wallet-budget-card {
+    background-image: url('https://i.pinimg.com/736x/00/b1/a5/00b1a59e8f876c4cfeb2374f25e95381.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-blend-mode: overlay !important;
+    background-color: rgba(255, 252, 255, 0.85) !important;
+    position: relative;
+}
+
+:root[data-theme="flowerSeaStar"] .wallet-budget-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        rgba(155, 181, 255, 0.15) 0%,
+        rgba(255, 182, 217, 0.1) 50%,
+        rgba(255, 240, 178, 0.05) 100%);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* 智慧分析/提醒卡片 */
+:root[data-theme="flowerSeaStar"] .smart-analysis-card,
+:root[data-theme="flowerSeaStar"] .smart-reminder-card {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-soft) 100%) !important;
+    border: 1px solid var(--border-primary) !important;
+    box-shadow: var(--shadow-md);
+}
+
+/* 定期定額管理卡片 */
+:root[data-theme="flowerSeaStar"] .regular-investment-card {
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-soft) 100%) !important;
+    border: 1px solid var(--border-primary) !important;
+    box-shadow: var(--shadow-md);
+}
+
+/* 持有中/買入/賣出/股息卡片 */
+:root[data-theme="flowerSeaStar"] .holding-card,
+:root[data-theme="flowerSeaStar"] .buying-card,
+:root[data-theme="flowerSeaStar"] .selling-card,
+:root[data-theme="flowerSeaStar"] .dividend-card {
+    background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%) !important;
+    border: 1px solid var(--border-primary) !important;
     border-radius: 24px !important;
-    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2) !important;
+    box-shadow: 0 10px 30px rgba(155, 181, 255, 0.2) !important;
 }
 
 /* 返回按鈕 */
@@ -35349,6 +36456,284 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     .search-input-wrapper {
         max-width: 100%;
     }
+}
+
+/* ========== 小王子星空主題 ========== */
+:root[data-theme="littlePrinceGlow"] {
+    /* 主題色彩 */
+    --color-primary: #F4E4C1;
+    --color-primary-light: #F8EED2;
+    --color-primary-lighter: #FAF3E0;
+    --color-primary-dark: #D4AF37;
+    --color-secondary: #A8C8EC;
+    --color-secondary-light: #B8D4E3;
+    --color-secondary-dark: #2C3E50;
+    
+    /* 文字顏色 */
+    --text-primary: #2C3E50;
+    --text-secondary: #34495E;
+    --text-muted: #7F8C8D;
+    --text-inverse: #FFFFFF;
+    
+    /* 背景顏色 */
+    --bg-primary: rgba(244, 228, 193, 0.15);
+    --bg-body: rgba(244, 228, 193, 0.1);
+    --bg-body-strong: rgba(244, 228, 193, 0.2);
+    --bg-white: rgba(255, 255, 255, 0.95);
+    --bg-light: rgba(244, 228, 193, 0.3);
+    --bg-lighter: rgba(255, 255, 255, 0.5);
+    --bg-card: rgba(255, 255, 255, 0.9);
+    
+    /* 邊框顏色 */
+    --border-primary: #D4AF37;
+    --border-secondary: #A8C8EC;
+    --border-light: rgba(244, 228, 193, 0.3);
+    --border-medium: rgba(244, 228, 193, 0.5);
+    
+    /* 陰影效果 */
+    --shadow-primary: 0 8px 32px rgba(244, 228, 193, 0.3);
+    --shadow-hover: 0 12px 48px rgba(244, 228, 193, 0.5);
+    --shadow-glow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+:root[data-theme="littlePrinceGlow"] body {
+    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover no-repeat fixed !important;
+    background-color: transparent !important;
+    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
+    color: var(--text-primary);
+    position: relative;
+}
+
+:root[data-theme="littlePrinceGlow"] body::before {
+    display: none !important;
+}
+
+/* 記帳本頁面背景 - 確保背景顯示 */
+:root[data-theme="littlePrinceGlow"] .page-ledger,
+:root[data-theme="littlePrinceGlow"] .ledger-page,
+:root[data-theme="littlePrinceGlow"] .accounting-page,
+:root[data-theme="littlePrinceGlow"] .main-content.ledger {
+    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
+    background-color: transparent !important;
+    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
+    position: relative !important;
+}
+
+/* 移除記帳本頁面的背景覆層 */
+:root[data-theme="littlePrinceGlow"] .page-ledger::before,
+:root[data-theme="littlePrinceGlow"] .ledger-page::before,
+:root[data-theme="littlePrinceGlow"] .accounting-page::before,
+:root[data-theme="littlePrinceGlow"] .main-content.ledger::before {
+    display: none !important;
+}
+
+/* FAB按鈕 - 小王子主題，位置在右邊 */
+:root[data-theme="littlePrinceGlow"] .fab-btn {
+    position: fixed !important;
+    bottom: 180px !important;
+    right: max(16px, calc((100vw - 1200px) / 2 + 24px)) !important;
+    background: linear-gradient(135deg, #F4E4C1 0%, #E8D5B7 50%, #D4AF37 100%) !important;
+    color: #2C3E50 !important;
+    border: 3px solid #D4AF37 !important;
+    border-radius: 50% !important;
+    width: 56px !important;
+    height: 56px !important;
+    font-size: 24px !important;
+    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.4) !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: var(--theme-font-family) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
+}
+
+:root[data-theme="littlePrinceGlow"] .fab-btn:hover {
+    background: linear-gradient(135deg, #D4AF37 0%, #E6A87C 50%, #2C3E50 100%) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-4px) scale(1.1) !important;
+    box-shadow: 0 12px 48px rgba(230, 168, 124, 0.5) !important;
+    border-color: #E6A87C !important;
+}
+
+:root[data-theme="littlePrinceGlow"] .fab-btn:active {
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 6px 24px rgba(212, 175, 55, 0.3) !important;
+}
+
+/* 投資卡片和股票代碼樣式 - 小王子主題 */
+:root[data-theme="littlePrinceGlow"] .stock-card-code,
+:root[data-theme="littlePrinceGlow"] .stock-item-code,
+:root[data-theme="littlePrinceGlow"] .stock-code,
+:root[data-theme="littlePrinceGlow"] .input-stock-code,
+:root[data-theme="littlePrinceGlow"] .modal-stock-code {
+    color: #D4AF37 !important;
+    font-weight: 700 !important;
+    font-family: var(--theme-font-family) !important;
+    background: linear-gradient(135deg, rgba(244, 228, 193, 0.3), rgba(212, 175, 55, 0.2)) !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+:root[data-theme="littlePrinceGlow"] .investment-card .stock-code,
+:root[data-theme="littlePrinceGlow"] .stock-item-card .stock-code {
+    color: #2C3E50 !important;
+    font-weight: 600 !important;
+    background: rgba(244, 228, 193, 0.8) !important;
+    padding: 4px 8px !important;
+    border-radius: 6px !important;
+    border: 2px solid #D4AF37 !important;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2) !important;
+}
+
+:root[data-theme="littlePrinceGlow"] .investment-card:hover .stock-code,
+:root[data-theme="littlePrinceGlow"] .stock-item-card:hover .stock-code {
+    background: linear-gradient(135deg, #D4AF37 0%, #E6A87C 100%) !important;
+    color: #FFFFFF !important;
+    transform: scale(1.05) !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 16px rgba(230, 168, 124, 0.4) !important;
+}
+
+:root[data-theme="littlePrinceGlow"] .stock-name-code {
+    color: #2C3E50 !important;
+    font-weight: 600 !important;
+    font-family: var(--theme-font-family) !important;
+}
+
+:root[data-theme="littlePrinceGlow"] .stock-item-card .secondary-text,
+:root[data-theme="littlePrinceGlow"] .stock-item-card .muted-text {
+    color: #34495E !important;
+    font-weight: 500 !important;
+}
+
+/* 持有卡片樣式 - 小王子主題 - 最高優先級 */
+:root[data-theme="littlePrinceGlow"] body .holding-card,
+:root[data-theme="littlePrinceGlow"] body .holdings-card,
+:root[data-theme="littlePrinceGlow"] body .stock-holding-card,
+:root[data-theme="littlePrinceGlow"] div .holding-card,
+:root[data-theme="littlePrinceGlow"] div .holdings-card,
+:root[data-theme="littlePrinceGlow"] div .stock-holding-card {
+    background: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") center/cover fixed !important;
+    background-color: transparent !important;
+    background-image: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") !important;
+    border: 3px solid #D4AF37 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+:root[data-theme="littlePrinceGlow"] .holding-card::before,
+:root[data-theme="littlePrinceGlow"] .holdings-card::before,
+:root[data-theme="littlePrinceGlow"] .stock-holding-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(244, 228, 193, 0.3) !important;
+    z-index: 1 !important;
+}
+
+:root[data-theme="littlePrinceGlow"] .holding-card > *,
+:root[data-theme="littlePrinceGlow"] .holdings-card > *,
+:root[data-theme="littlePrinceGlow"] .stock-holding-card > * {
+    position: relative !important;
+    z-index: 2 !important;
+    color: #2C3E50 !important;
+}
+
+:root[data-theme="littlePrinceGlow"] body .holding-card:hover,
+:root[data-theme="littlePrinceGlow"] body .holdings-card:hover,
+:root[data-theme="littlePrinceGlow"] body .stock-holding-card:hover,
+:root[data-theme="littlePrinceGlow"] div .holding-card:hover,
+:root[data-theme="littlePrinceGlow"] div .holdings-card:hover,
+:root[data-theme="littlePrinceGlow"] div .stock-holding-card:hover {
+    background: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") center/cover fixed !important;
+    background-color: transparent !important;
+    background-image: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") !important;
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 48px rgba(230, 168, 124, 0.4) !important;
+    border-color: #E6A87C !important;
+}
+
+:root[data-theme="littlePrinceGlow"] .holding-card:hover::before,
+:root[data-theme="littlePrinceGlow"] .holdings-card:hover::before,
+:root[data-theme="littlePrinceGlow"] .stock-holding-card:hover::before {
+    background: rgba(230, 168, 124, 0.9) !important;
+}
+
+/* 持有卡片標題樣式 */
+:root[data-theme="littlePrinceGlow"] .holding-card h3,
+:root[data-theme="littlePrinceGlow"] .holdings-card h3,
+:root[data-theme="littlePrinceGlow"] .stock-holding-card h3 {
+    color: #2C3E50 !important;
+    font-family: var(--theme-font-family) !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+/* 持有卡片內容樣式 */
+:root[data-theme="littlePrinceGlow"] .holding-card .stock-code,
+:root[data-theme="littlePrinceGlow"] .holdings-card .stock-code,
+:root[data-theme="littlePrinceGlow"] .stock-holding-card .stock-code {
+    color: #2C3E50 !important;
+    font-weight: 600 !important;
+    background: rgba(244, 228, 193, 0.8) !important;
+    padding: 4px 8px !important;
+    border-radius: 6px !important;
+    border: 2px solid #D4AF37 !important;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2) !important;
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+:root[data-theme="littlePrinceGlow"] .holding-card .price,
+:root[data-theme="littlePrinceGlow"] .holdings-card .price,
+:root[data-theme="littlePrinceGlow"] .stock-holding-card .price,
+:root[data-theme="littlePrinceGlow"] .holding-card .amount,
+:root[data-theme="littlePrinceGlow"] .holdings-card .amount,
+:root[data-theme="littlePrinceGlow"] .stock-holding-card .amount {
+    color: #2C3E50 !important;
+    font-weight: 600 !important;
+    font-family: var(--theme-font-family) !important;
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+/* 持有卡片百分比樣式 */
+:root[data-theme="littlePrinceGlow"] .holding-card .percentage,
+:root[data-theme="littlePrinceGlow"] .holdings-card .percentage,
+:root[data-theme="littlePrinceGlow"] .stock-holding-card .percentage {
+    font-weight: 700 !important;
+    font-family: var(--theme-font-family) !important;
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+:root[data-theme="littlePrinceGlow"] .holding-card .percentage.positive,
+:root[data-theme="littlePrinceGlow"] .holdings-card .percentage.positive,
+:root[data-theme="littlePrinceGlow"] .stock-holding-card .percentage.positive {
+    color: #27AE60 !important;
+    background: rgba(39, 174, 96, 0.1) !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+    border: 1px solid rgba(39, 174, 96, 0.3) !important;
+}
+
+:root[data-theme="littlePrinceGlow"] .holding-card .percentage.negative,
+:root[data-theme="littlePrinceGlow"] .holdings-card .percentage.negative,
+:root[data-theme="littlePrinceGlow"] .stock-holding-card .percentage.negative {
+    color: #E74C3C !important;
+    background: rgba(231, 76, 60, 0.1) !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+    border: 1px solid rgba(231, 76, 60, 0.3) !important;
 }
 
 /* ========== 夢幻星河主題 ========== */
@@ -36617,293 +38002,17 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     transform: translateY(-2px) !important;
     border-color: var(--color-secondary) !important;
 }
-/ *   = = = = = = = = = =   �a*�? ? ��䏝���?   -   %v��j�? v�? ? ? = = = = = = = = = =   * / 
- 
- 
- 
- / *   �a*�? ? ��䏝���?   -   pd��? pd��? ?  "? %v��j�? v�? ? ? * / 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . m o n t h l y - p l a n n i n g - c a r d   { 
- 
-         b a c k g r o u n d :   r g b a ( 1 0 ,   2 5 ,   4 1 ,   0 . 7 )   ! i m p o r t a n t ; 
- 
-         b a c k d r o p - f i l t e r :   b l u r ( 2 0 p x )   s a t u r a t e ( 1 8 0 % )   ! i m p o r t a n t ; 
- 
-         - w e b k i t - b a c k d r o p - f i l t e r :   b l u r ( 2 0 p x )   s a t u r a t e ( 1 8 0 % )   ! i m p o r t a n t ; 
- 
-         b o r d e r :   1 p x   s o l i d   r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 3 )   ! i m p o r t a n t ; 
- 
-         b o r d e r - r a d i u s :   2 0 p x   ! i m p o r t a n t ; 
- 
-         b o x - s h a d o w :   
- 
-                 0   8 p x   3 2 p x   r g b a ( 0 ,   0 ,   0 ,   0 . 3 )   ! i m p o r t a n t , 
- 
-                 i n s e t   0   1 p x   0   r g b a ( 2 5 5 ,   2 5 5 ,   2 5 5 ,   0 . 1 )   ! i m p o r t a n t , 
- 
-                 0   0   0   1 p x   r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 1 )   ! i m p o r t a n t ; 
- 
-         p o s i t i o n :   r e l a t i v e   ! i m p o r t a n t ; 
- 
-         o v e r f l o w :   h i d d e n   ! i m p o r t a n t ; 
- 
-         t r a n s i t i o n :   a l l   0 . 3 s   c u b i c - b e z i e r ( 0 . 4 ,   0 ,   0 . 2 ,   1 )   ! i m p o r t a n t ; 
- 
- } 
- 
- 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . m o n t h l y - p l a n n i n g - c a r d : : b e f o r e   { 
- 
-         c o n t e n t :   ' '   ! i m p o r t a n t ; 
- 
-         p o s i t i o n :   a b s o l u t e   ! i m p o r t a n t ; 
- 
-         t o p :   0   ! i m p o r t a n t ; 
- 
-         l e f t :   0   ! i m p o r t a n t ; 
- 
-         r i g h t :   0   ! i m p o r t a n t ; 
- 
-         b o t t o m :   0   ! i m p o r t a n t ; 
- 
-         b a c k g r o u n d :   l i n e a r - g r a d i e n t ( 1 3 5 d e g ,   
- 
-                 r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 0 5 )   0 % ,   
- 
-                 r g b a ( 3 0 ,   5 8 ,   9 5 ,   0 . 0 8 )   5 0 % ,   
- 
-                 r g b a ( 2 6 ,   5 4 ,   9 3 ,   0 . 0 5 )   1 0 0 % )   ! i m p o r t a n t ; 
- 
-         z - i n d e x :   0   ! i m p o r t a n t ; 
- 
-         p o i n t e r - e v e n t s :   n o n e   ! i m p o r t a n t ; 
- 
- } 
- 
- 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . m o n t h l y - p l a n n i n g - c a r d   >   *   { 
- 
-         p o s i t i o n :   r e l a t i v e   ! i m p o r t a n t ; 
- 
-         z - i n d e x :   1   ! i m p o r t a n t ; 
- 
- } 
- 
- 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . m o n t h l y - p l a n n i n g - c a r d : h o v e r   { 
- 
-         b a c k g r o u n d :   r g b a ( 1 0 ,   2 5 ,   4 1 ,   0 . 8 5 )   ! i m p o r t a n t ; 
- 
-         b a c k d r o p - f i l t e r :   b l u r ( 2 5 p x )   s a t u r a t e ( 2 0 0 % )   ! i m p o r t a n t ; 
- 
-         - w e b k i t - b a c k d r o p - f i l t e r :   b l u r ( 2 5 p x )   s a t u r a t e ( 2 0 0 % )   ! i m p o r t a n t ; 
- 
-         b o r d e r - c o l o r :   r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 5 )   ! i m p o r t a n t ; 
- 
-         b o x - s h a d o w :   
- 
-                 0   1 2 p x   4 0 p x   r g b a ( 0 ,   0 ,   0 ,   0 . 4 )   ! i m p o r t a n t , 
- 
-                 i n s e t   0   1 p x   0   r g b a ( 2 5 5 ,   2 5 5 ,   2 5 5 ,   0 . 2 )   ! i m p o r t a n t , 
- 
-                 0   0   2 0 p x   r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 2 )   ! i m p o r t a n t ; 
- 
-         t r a n s f o r m :   t r a n s l a t e Y ( - 4 p x )   s c a l e ( 1 . 0 2 )   ! i m p o r t a n t ; 
- 
- } 
- 
- 
- 
- / *   �a*�? ? ��䏝���?   -   ? *"J�?  "? %v��j�? v�? ? ? * / 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . d i v i d e n d - c a r d   { 
- 
-         b a c k g r o u n d :   r g b a ( 1 0 ,   2 5 ,   4 1 ,   0 . 7 )   ! i m p o r t a n t ; 
- 
-         b a c k d r o p - f i l t e r :   b l u r ( 2 0 p x )   s a t u r a t e ( 1 8 0 % )   ! i m p o r t a n t ; 
- 
-         - w e b k i t - b a c k d r o p - f i l t e r :   b l u r ( 2 0 p x )   s a t u r a t e ( 1 8 0 % )   ! i m p o r t a n t ; 
- 
-         b o r d e r :   1 p x   s o l i d   r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 3 )   ! i m p o r t a n t ; 
- 
-         b o r d e r - r a d i u s :   2 0 p x   ! i m p o r t a n t ; 
- 
-         b o x - s h a d o w :   
- 
-                 0   8 p x   3 2 p x   r g b a ( 0 ,   0 ,   0 ,   0 . 3 )   ! i m p o r t a n t , 
- 
-                 i n s e t   0   1 p x   0   r g b a ( 2 5 5 ,   2 5 5 ,   2 5 5 ,   0 . 1 )   ! i m p o r t a n t , 
- 
-                 0   0   0   1 p x   r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 1 )   ! i m p o r t a n t ; 
- 
-         p o s i t i o n :   r e l a t i v e   ! i m p o r t a n t ; 
- 
-         o v e r f l o w :   h i d d e n   ! i m p o r t a n t ; 
- 
-         t r a n s i t i o n :   a l l   0 . 3 s   c u b i c - b e z i e r ( 0 . 4 ,   0 ,   0 . 2 ,   1 )   ! i m p o r t a n t ; 
- 
- } 
- 
- 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . d i v i d e n d - c a r d : : b e f o r e   { 
- 
-         c o n t e n t :   ' '   ! i m p o r t a n t ; 
- 
-         p o s i t i o n :   a b s o l u t e   ! i m p o r t a n t ; 
- 
-         t o p :   0   ! i m p o r t a n t ; 
- 
-         l e f t :   0   ! i m p o r t a n t ; 
- 
-         r i g h t :   0   ! i m p o r t a n t ; 
- 
-         b o t t o m :   0   ! i m p o r t a n t ; 
- 
-         b a c k g r o u n d :   l i n e a r - g r a d i e n t ( 1 3 5 d e g ,   
- 
-                 r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 0 5 )   0 % ,   
- 
-                 r g b a ( 3 0 ,   5 8 ,   9 5 ,   0 . 0 8 )   5 0 % ,   
- 
-                 r g b a ( 2 6 ,   5 4 ,   9 3 ,   0 . 0 5 )   1 0 0 % )   ! i m p o r t a n t ; 
- 
-         z - i n d e x :   0   ! i m p o r t a n t ; 
- 
-         p o i n t e r - e v e n t s :   n o n e   ! i m p o r t a n t ; 
- 
- } 
- 
- 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . d i v i d e n d - c a r d   >   *   { 
- 
-         p o s i t i o n :   r e l a t i v e   ! i m p o r t a n t ; 
- 
-         z - i n d e x :   1   ! i m p o r t a n t ; 
- 
- } 
- 
- 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . d i v i d e n d - c a r d : h o v e r   { 
- 
-         b a c k g r o u n d :   r g b a ( 1 0 ,   2 5 ,   4 1 ,   0 . 8 5 )   ! i m p o r t a n t ; 
- 
-         b a c k d r o p - f i l t e r :   b l u r ( 2 5 p x )   s a t u r a t e ( 2 0 0 % )   ! i m p o r t a n t ; 
- 
-         - w e b k i t - b a c k d r o p - f i l t e r :   b l u r ( 2 5 p x )   s a t u r a t e ( 2 0 0 % )   ! i m p o r t a n t ; 
- 
-         b o r d e r - c o l o r :   r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 5 )   ! i m p o r t a n t ; 
- 
-         b o x - s h a d o w :   
- 
-                 0   1 2 p x   4 0 p x   r g b a ( 0 ,   0 ,   0 ,   0 . 4 )   ! i m p o r t a n t , 
- 
-                 i n s e t   0   1 p x   0   r g b a ( 2 5 5 ,   2 5 5 ,   2 5 5 ,   0 . 2 )   ! i m p o r t a n t , 
- 
-                 0   0   2 0 p x   r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 2 )   ! i m p o r t a n t ; 
- 
-         t r a n s f o r m :   t r a n s l a t e Y ( - 4 p x )   s c a l e ( 1 . 0 2 )   ! i m p o r t a n t ; 
- 
- } 
- 
- 
- 
- / *   �a*�? ? ��䏝���?   -   ?  "? ? sb? nd�? �dUt? %vB�2o  * / 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . m o n t h l y - p l a n n i n g - c a r d   h 2 , 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . m o n t h l y - p l a n n i n g - c a r d   h 3 , 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . m o n t h l y - p l a n n i n g - c a r d   . c a r d - t i t l e , 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . d i v i d e n d - c a r d   h 2 , 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . d i v i d e n d - c a r d   h 3 , 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . d i v i d e n d - c a r d   . c a r d - t i t l e   { 
- 
-         c o l o r :   # 6 4 f f d a   ! i m p o r t a n t ; 
- 
-         t e x t - s h a d o w :   0   2 p x   4 p x   r g b a ( 0 ,   0 ,   0 ,   0 . 5 )   ! i m p o r t a n t ; 
- 
-         f o n t - w e i g h t :   6 0 0   ! i m p o r t a n t ; 
- 
- } 
- 
- 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . m o n t h l y - p l a n n i n g - c a r d   p , 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . m o n t h l y - p l a n n i n g - c a r d   . c a r d - t e x t , 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . d i v i d e n d - c a r d   p , 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . d i v i d e n d - c a r d   . c a r d - t e x t   { 
- 
-         c o l o r :   r g b a ( 2 5 5 ,   2 5 5 ,   2 5 5 ,   0 . 9 )   ! i m p o r t a n t ; 
- 
-         t e x t - s h a d o w :   0   1 p x   2 p x   r g b a ( 0 ,   0 ,   0 ,   0 . 3 )   ! i m p o r t a n t ; 
- 
- } 
- 
- 
- 
- / *   �a*�? ? ��䏝���?   -   ? '�? %v��j�? v�? ? ? * / 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . m o n t h l y - p l a n n i n g - c a r d   b u t t o n , 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . d i v i d e n d - c a r d   b u t t o n   { 
- 
-         b a c k g r o u n d :   r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 2 )   ! i m p o r t a n t ; 
- 
-         b a c k d r o p - f i l t e r :   b l u r ( 1 0 p x )   ! i m p o r t a n t ; 
- 
-         - w e b k i t - b a c k d r o p - f i l t e r :   b l u r ( 1 0 p x )   ! i m p o r t a n t ; 
- 
-         b o r d e r :   1 p x   s o l i d   r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 4 )   ! i m p o r t a n t ; 
- 
-         c o l o r :   # 6 4 f f d a   ! i m p o r t a n t ; 
- 
-         t e x t - s h a d o w :   0   1 p x   2 p x   r g b a ( 0 ,   0 ,   0 ,   0 . 3 )   ! i m p o r t a n t ; 
- 
-         t r a n s i t i o n :   a l l   0 . 3 s   e a s e   ! i m p o r t a n t ; 
- 
- } 
- 
- 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . m o n t h l y - p l a n n i n g - c a r d   b u t t o n : h o v e r , 
- 
- [ d a t a - t h e m e = " n i g h t g l o w S e a s o n s " ]   . d i v i d e n d - c a r d   b u t t o n : h o v e r   { 
- 
-         b a c k g r o u n d :   r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 3 )   ! i m p o r t a n t ; 
- 
-         b o r d e r - c o l o r :   r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 6 )   ! i m p o r t a n t ; 
- 
-         b o x - s h a d o w :   0   4 p x   1 5 p x   r g b a ( 1 0 0 ,   2 5 5 ,   2 1 8 ,   0 . 3 )   ! i m p o r t a n t ; 
- 
-         t r a n s f o r m :   t r a n s l a t e Y ( - 2 p x )   ! i m p o r t a n t ; 
- 
- } 
- 
- /* ========== 夜�??�季主�? - 毛玻?��???========== */
 
-/* 夜�??�季主�? - 定�?定�??��?毛玻?��???*/
+/* ========== 夜光季節主題 - 毛玻璃效果 ========== */
+
+/* 夜光季節主題 - 定期定額卡片毛玻璃效果 */
 [data-theme="nightglowSeasons"] .monthly-planning-card {
     background: rgba(10, 25, 41, 0.7) !important;
     backdrop-filter: blur(20px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
     border: 1px solid rgba(100, 255, 218, 0.3) !important;
     border-radius: 20px !important;
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3) !important,
-        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important,
-        0 0 0 1px rgba(100, 255, 218, 0.1) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important, inset 0 1px 0 rgba(255, 255, 255, 0.1) !important, 0 0 0 1px rgba(100, 255, 218, 0.1) !important;
     position: relative !important;
     overflow: hidden !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -36934,10 +38043,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     backdrop-filter: blur(25px) saturate(200%) !important;
     -webkit-backdrop-filter: blur(25px) saturate(200%) !important;
     border-color: rgba(100, 255, 218, 0.5) !important;
-    box-shadow: 
-        0 12px 40px rgba(0, 0, 0, 0.4) !important,
-        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important,
-        0 0 20px rgba(100, 255, 218, 0.2) !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4) !important, inset 0 1px 0 rgba(255, 255, 255, 0.2) !important, 0 0 20px rgba(100, 255, 218, 0.2) !important;
     transform: translateY(-4px) scale(1.02) !important;
 }
 
@@ -37029,3 +38135,263 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     transform: translateY(-2px) !important;
 }
 /* ========== 夜光四季主題 - 買入、定期定額、股利卡片不透明效果 ========== */
+
+/* 強制覆蓋持有卡片背景 - 小王子主題 - 最終保障 */
+:root[data-theme="littlePrinceGlow"] .holding-card,
+:root[data-theme="littlePrinceGlow"] .holdings-card,
+:root[data-theme="littlePrinceGlow"] .stock-holding-card,
+:root[data-theme="littlePrinceGlow"] body .holding-card,
+:root[data-theme="littlePrinceGlow"] body .holdings-card,
+:root[data-theme="littlePrinceGlow"] body .stock-holding-card,
+:root[data-theme="littlePrinceGlow"] div .holding-card,
+:root[data-theme="littlePrinceGlow"] div .holdings-card,
+:root[data-theme="littlePrinceGlow"] div .stock-holding-card,
+.holding-card[data-theme="littlePrinceGlow"],
+.holdings-card[data-theme="littlePrinceGlow"],
+.stock-holding-card[data-theme="littlePrinceGlow"] {
+    background: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") center/cover fixed !important;
+    background-image: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") !important;
+    background-color: transparent !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* 強制覆蓋懸停效果 */
+:root[data-theme="littlePrinceGlow"] .holding-card:hover,
+:root[data-theme="littlePrinceGlow"] .holdings-card:hover,
+:root[data-theme="littlePrinceGlow"] .stock-holding-card:hover,
+:root[data-theme="littlePrinceGlow"] body .holding-card:hover,
+:root[data-theme="littlePrinceGlow"] body .holdings-card:hover,
+:root[data-theme="littlePrinceGlow"] body .stock-holding-card:hover,
+:root[data-theme="littlePrinceGlow"] div .holding-card:hover,
+:root[data-theme="littlePrinceGlow"] div .holdings-card:hover,
+:root[data-theme="littlePrinceGlow"] div .stock-holding-card:hover,
+.holding-card[data-theme="littlePrinceGlow"]:hover,
+.holdings-card[data-theme="littlePrinceGlow"]:hover,
+.stock-holding-card[data-theme="littlePrinceGlow"]:hover {
+    background: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") center/cover fixed !important;
+    background-image: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") !important;
+    background-color: transparent !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* 第三次檢查 - 強制覆蓋 ::before 偽元素透明度 */
+:root[data-theme="littlePrinceGlow"] .holding-card::before,
+:root[data-theme="littlePrinceGlow"] .holdings-card::before,
+:root[data-theme="littlePrinceGlow"] .stock-holding-card::before,
+:root[data-theme="littlePrinceGlow"] body .holding-card::before,
+:root[data-theme="littlePrinceGlow"] body .holdings-card::before,
+:root[data-theme="littlePrinceGlow"] body .stock-holding-card::before,
+:root[data-theme="littlePrinceGlow"] div .holding-card::before,
+:root[data-theme="littlePrinceGlow"] div .holdings-card::before,
+:root[data-theme="littlePrinceGlow"] div .stock-holding-card::before,
+.holding-card[data-theme="littlePrinceGlow"]::before,
+.holdings-card[data-theme="littlePrinceGlow"]::before,
+.stock-holding-card[data-theme="littlePrinceGlow"]::before {
+    background: rgba(244, 228, 193, 0.15) !important;
+    z-index: 1 !important;
+}
+
+/* 第三次檢查 - 確保背景圖片在最底層 */
+:root[data-theme="littlePrinceGlow"] .holding-card,
+:root[data-theme="littlePrinceGlow"] .holdings-card,
+:root[data-theme="littlePrinceGlow"] .stock-holding-card {
+    background: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") center/cover fixed !important;
+    background-image: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") !important;
+    background-color: transparent !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    position: relative !important;
+    z-index: 0 !important;
+}
+
+/* 買入、賣出、股息卡片背景 - 小王子主題 */
+:root[data-theme="littlePrinceGlow"] .buying-card,
+:root[data-theme="littlePrinceGlow"] .selling-card,
+:root[data-theme="littlePrinceGlow"] .dividend-card {
+    background: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") center/cover fixed !important;
+    background-image: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") !important;
+    background-color: transparent !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    border: 3px solid #D4AF37 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 買入、賣出、股息卡片 ::before 偽元素 */
+:root[data-theme="littlePrinceGlow"] .buying-card::before,
+:root[data-theme="littlePrinceGlow"] .selling-card::before,
+:root[data-theme="littlePrinceGlow"] .dividend-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(244, 228, 193, 0.15) !important;
+    z-index: 1 !important;
+}
+
+/* 買入、賣出、股息卡片內容層 */
+:root[data-theme="littlePrinceGlow"] .buying-card > *,
+:root[data-theme="littlePrinceGlow"] .selling-card > *,
+:root[data-theme="littlePrinceGlow"] .dividend-card > * {
+    position: relative !important;
+    z-index: 2 !important;
+    color: #2C3E50 !important;
+}
+
+/* 買入、賣出、股息卡片懸停效果 */
+:root[data-theme="littlePrinceGlow"] .buying-card:hover,
+:root[data-theme="littlePrinceGlow"] .selling-card:hover,
+:root[data-theme="littlePrinceGlow"] .dividend-card:hover {
+    background: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") center/cover fixed !important;
+    background-image: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") !important;
+    background-color: transparent !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 48px rgba(230, 168, 124, 0.4) !important;
+    border-color: #E6A87C !important;
+}
+
+/* 買入、賣出、股息卡片懸停 ::before 效果 */
+:root[data-theme="littlePrinceGlow"] .buying-card:hover::before,
+:root[data-theme="littlePrinceGlow"] .selling-card:hover::before,
+:root[data-theme="littlePrinceGlow"] .dividend-card:hover::before {
+    background: rgba(230, 168, 124, 0.3) !important;
+}
+
+/* 錢包預算設定和每月規劃卡片背景 - 小王子主題 */
+:root[data-theme="littlePrinceGlow"] .wallet-budget-card,
+:root[data-theme="littlePrinceGlow"] .monthly-planning-card {
+    background: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") center/cover fixed !important;
+    background-image: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") !important;
+    background-color: transparent !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    border: 3px solid #D4AF37 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 錢包預算設定和每月規劃卡片 ::before 偽元素 */
+:root[data-theme="littlePrinceGlow"] .wallet-budget-card::before,
+:root[data-theme="littlePrinceGlow"] .monthly-planning-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(244, 228, 193, 0.15) !important;
+    z-index: 1 !important;
+}
+
+/* 錢包預算設定和每月規劃卡片內容層 */
+:root[data-theme="littlePrinceGlow"] .wallet-budget-card > *,
+:root[data-theme="littlePrinceGlow"] .monthly-planning-card > * {
+    position: relative !important;
+    z-index: 2 !important;
+    color: #2C3E50 !important;
+}
+
+/* 錢包預算設定和每月規劃卡片懸停效果 */
+:root[data-theme="littlePrinceGlow"] .wallet-budget-card:hover,
+:root[data-theme="littlePrinceGlow"] .monthly-planning-card:hover {
+    background: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") center/cover fixed !important;
+    background-image: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") !important;
+    background-color: transparent !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 12px 48px rgba(230, 168, 124, 0.4) !important;
+    border-color: #E6A87C !important;
+}
+
+/* 錢包預算設定和每月規劃卡片懸停 ::before 效果 */
+:root[data-theme="littlePrinceGlow"] .wallet-budget-card:hover::before,
+:root[data-theme="littlePrinceGlow"] .monthly-planning-card:hover::before {
+    background: rgba(230, 168, 124, 0.3) !important;
+}
+
+/* 超高優先級強制覆蓋錢包預算設定卡片背景 - 最終保障 */
+html body div:has(> .wallet-budget-card) .wallet-budget-card,
+html body .wallet-budget-card,
+html:root body .wallet-budget-card,
+html:root body div .wallet-budget-card,
+html:root body section .wallet-budget-card,
+html:root body main .wallet-budget-card,
+html:root body .container .wallet-budget-card,
+html:root body .row .wallet-budget-card,
+html:root body .col .wallet-budget-card,
+.wallet-budget-card {
+    background: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") center/cover fixed !important;
+    background-image: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") !important;
+    background-color: transparent !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    border: 3px solid #D4AF37 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 超高優先級強制覆蓋 - 主題特定 */
+html[data-theme="littlePrinceGlow"] body .wallet-budget-card,
+html:root[data-theme="littlePrinceGlow"] body .wallet-budget-card,
+html:root[data-theme="littlePrinceGlow"] body div .wallet-budget-card,
+html:root[data-theme="littlePrinceGlow"] body section .wallet-budget-card,
+html:root[data-theme="littlePrinceGlow"] body main .wallet-budget-card,
+html:root[data-theme="littlePrinceGlow"] body .container .wallet-budget-card,
+html:root[data-theme="littlePrinceGlow"] body .row .wallet-budget-card,
+html:root[data-theme="littlePrinceGlow"] body .col .wallet-budget-card {
+    background: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") center/cover fixed !important;
+    background-image: url("https://i.pinimg.com/1200x/ae/51/82/ae5182ede2d28dc8066005b77279b995.jpg") !important;
+    background-color: transparent !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* 超高優先級強制覆蓋 ::before 偽元素 */
+html body .wallet-budget-card::before,
+html:root body .wallet-budget-card::before,
+html:root body div .wallet-budget-card::before,
+html[data-theme="littlePrinceGlow"] body .wallet-budget-card::before,
+html:root[data-theme="littlePrinceGlow"] body .wallet-budget-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(244, 228, 193, 0.15) !important;
+    z-index: 1 !important;
+}
+
+/* 超高優先級強制覆蓋內容層 */
+html body .wallet-budget-card > *,
+html:root body .wallet-budget-card > *,
+html:root body div .wallet-budget-card > *,
+html[data-theme="littlePrinceGlow"] body .wallet-budget-card > *,
+html:root[data-theme="littlePrinceGlow"] body .wallet-budget-card > * {
+    position: relative !important;
+    z-index: 2 !important;
+    color: #2C3E50 !important;
+}

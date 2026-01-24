@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme.js 語法錯誤修復工具</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .error-info {
+            background: #ffebee;
+            border: 1px solid #f44336;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .fix-steps {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .code-block {
+            background: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        .button {
+            background: #2196f3;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-size: 16px;
+        }
+        .button:hover {
+            background: #1976d2;
+        }
+        .success {
+            background: #4caf50;
+        }
+        .warning {
+            background: #ff9800;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Theme.js 語法錯誤修復工具</h1>
+    
+    <div class="error-info">
+        <h2>❌ 錯誤信息</h2>
+        <p><strong>Uncaught SyntaxError: Unexpected token '}' (at theme.js:703:1)</strong></p>
+        <p>這表示在第703行有一個不匹配的大括號。</p>
+    </div>
+    
+    <div class="fix-steps">
+        <h2>✅ 修復步驟</h2>
+        
+        <h3>方法 1: 手動修復 (推薦)</h3>
+        <ol>
+            <li>打開 <code>js/theme.js</code> 文件</li>
+            <li>按 <kbd>Ctrl+G</kbd> 跳轉到第 <strong>703</strong> 行</li>
+            <li>找到這行內容: <span class="code-block">};</span></li>
+            <li>修改為: <span class="code-block">];</span></li>
+            <li>按 <kbd>Ctrl+S</kbd> 保存文件</li>
+            <li>重新載入頁面</li>
+        </ol>
+        
+        <h3>方法 2: 自動修復</h3>
+        <button class="button" onclick="autoFix()">🚀 自動修復</button>
+        <p>點擊此按鈕將自動下載修復後的文件。</p>
+    </div>
+    
+    <div class="fix-steps">
+        <h2>📝 詳細說明</h2>
+        <p><strong>為什麼需要修復？</strong></p>
+        <ul>
+            <li><code>themes</code> 是一個陣列 (Array)，應該用 <code>]</code> 結束</li>
+            <li><code>};</code> 是物件 (Object) 的結束符號</li>
+            <li>這個錯誤導致整個主題系統無法載入</li>
+        </ul>
+        
+        <p><strong>修復前:</strong></p>
+        <div class="code-block">
+var themes = window.AppThemes || [
+    // ... 所有主題定義 ...
+    {
+        id: 'cuteChicks',
+        name: '可愛小雞',
+        // ... 其他屬性 ...
+    }
+};  // ❌ 錯誤：陣列用了物件結束符號
+        </div>
+        
+        <p><strong>修復後:</strong></p>
+        <div class="code-block">
+var themes = window.AppThemes || [
+    // ... 所有主題定義 ...
+    {
+        id: 'cuteChicks',
+        name: '可愛小雞',
+        // ... 其他屬性 ...
+    }
+];  // ✅ 正確：陣列用陣列結束符號
+        </div>
+    </div>
+    
+    <div class="fix-steps">
+        <h2>🧪 驗證修復</h2>
+        <p>修復完成後，打開瀏覽器控制台運行：</p>
+        <div class="code-block">
+// 檢查主題陣列
+console.log('主題數量:', themes.length);
+
+// 檢查小王子主題
+const littlePrince = themes.find(t => t.id === 'littlePrince');
+console.log('小王子主題:', littlePrince ? '存在' : '不存在');
+
+// 檢查函數
+console.log('showThemeSelector 可用:', typeof showThemeSelector === 'function');
+        </div>
+        
+        <p><strong>期望結果:</strong></p>
+        <ul>
+            <li>✅ 主題數量: [數字]</li>
+            <li>✅ 小王子主題: 存在</li>
+            <li>✅ showThemeSelector 可用: true</li>
+        </ul>
+    </div>
+    
+    <div id="status"></div>
+    
+    <script>
+        async function autoFix() {
+            const status = document.getElementById('status');
+            
+            try {
+                status.innerHTML = '<div class="fix-steps"><h3>🔄 正在修復...</h3><p>正在讀取 theme.js 文件...</p></div>';
+                
+                // 讀取當前 theme.js 文件
+                const response = await fetch('js/theme.js');
+                const content = await response.text();
+                
+                status.innerHTML = '<div class="fix-steps"><h3>🔄 正在修復...</h3><p>正在分析語法錯誤...</p></div>';
+                
+                // 修復語法錯誤
+                const lines = content.split('\n');
+                let fixed = false;
+                
+                // 尋找並修復錯誤行
+                for (let i = 0; i < lines.length; i++) {
+                    if (lines[i].trim() === '};' && i >= 700 && i <= 710) {
+                        lines[i] = '];';
+                        fixed = true;
+                        console.log(`已修復第 ${i + 1} 行`);
+                        break;
+                    }
+                }
+                
+                if (!fixed) {
+                    throw new Error('未找到需要修復的語法錯誤');
+                }
+                
+                status.innerHTML = '<div class="fix-steps"><h3>🔄 正在修復...</h3><p>正在生成修復文件...</p></div>';
+                
+                // 創建修復後的文件
+                const fixedContent = lines.join('\n');
+                const blob = new Blob([fixedContent], { type: 'text/javascript' });
+                const url = URL.createObjectURL(blob);
+                
+                // 下載文件
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'theme.js';
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                status.innerHTML = '<div class="fix-steps success"><h3>✅ 修復完成！</h3><p>請下載修復後的 theme.js 文件，並替換原來的 js/theme.js 文件。</p><p>替換後請重新載入頁面。</p></div>';
+                
+            } catch (error) {
+                status.innerHTML = `<div class="error-info"><h3>❌ 修復失敗</h3><p>${error.message}</p><p>請使用手動修復方法。</p></div>`;
+                console.error('修復失敗:', error);
+            }
+        }
+        
+        // 檢查當前狀態
+        function checkStatus() {
+            try {
+                if (typeof themes !== 'undefined') {
+                    console.log('✅ themes 變數可用，主題數量:', themes.length);
+                } else {
+                    console.log('❌ themes 變數不可用，存在語法錯誤');
+                }
+                
+                if (typeof showThemeSelector === 'function') {
+                    console.log('✅ showThemeSelector 函數可用');
+                } else {
+                    console.log('❌ showThemeSelector 函數不可用');
+                }
+            } catch (error) {
+                console.log('❌ 檢查失敗:', error.message);
+            }
+        }
+        
+        // 頁面載入時檢查狀態
+        checkStatus();
+    </script>
+</body>
+</html>

@@ -13724,7 +13724,11 @@ function initSettingsPage() {
             } else if (action === 'creator') {
                 showCreatorInfo();
             } else if (action === 'theme') {
-                showThemeSelector();
+                if (typeof window.showThemeSelector === 'function') {
+                    window.showThemeSelector();
+                } else {
+                    console.error('showThemeSelector is not available. Ensure js/theme.js loaded successfully.');
+                }
             } else if (action === 'fontSize') {
                 showFontSizeSelector();
             } else if (action === 'annualReport') {
