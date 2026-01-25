@@ -1,0 +1,3010 @@
+/* 深色優雅主題 - 基於用戶指定圖片風格 */
+
+:root[data-theme="deepElegant"] {
+    /* 主題顏色 - 提取自圖片 */
+    --color-primary: #1a1f3a;
+    --color-secondary: #2d1b69;
+    --color-accent: #4a3c8c;
+    --color-background: #0d0d1a;
+    --color-surface: rgba(26, 31, 58, 0.8);
+    --color-surface-light: rgba(45, 27, 105, 0.6);
+    --color-surface-dark: rgba(13, 13, 26, 0.9);
+    
+    /* 文字顏色 - 高對比度 */
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #b8c5d6;
+    --color-text-tertiary: #8b95a7;
+    --color-text-inverse: #0d0d1a;
+    
+    /* 邊框和陰影 */
+    --border-color: rgba(74, 60, 140, 0.3);
+    --border-light: rgba(184, 197, 214, 0.2);
+    --border-accent: rgba(74, 60, 140, 0.6);
+    --shadow-light: 0 4px 20px rgba(26, 31, 58, 0.3);
+    --shadow-medium: 0 8px 30px rgba(26, 31, 58, 0.4);
+    --shadow-heavy: 0 12px 40px rgba(26, 31, 58, 0.5);
+    
+    /* 按鈕顏色 */
+    --btn-primary: linear-gradient(135deg, #4a3c8c 0%, #2d1b69 100%);
+    --btn-primary-hover: linear-gradient(135deg, #5a4c9c 0%, #3d2b79 100%);
+    --btn-secondary: linear-gradient(135deg, #1a1f3a 0%, #0d0d1a 100%);
+    --btn-accent: linear-gradient(135deg, #6a5c9c 0%, #4d3b79 100%);
+    
+    /* 卡片顏色 */
+    --card-bg: rgba(26, 31, 58, 0.7);
+    --card-border: rgba(74, 60, 140, 0.4);
+    --card-hover: rgba(74, 60, 140, 0.6);
+    
+    /* 狀態顏色 */
+    --success: #4caf50;
+    --warning: #ff9800;
+    --error: #f44336;
+    --info: #2196f3;
+    
+    /* 字體 */
+    --font-primary: 'Inter', 'Microsoft YaHei', sans-serif;
+    --font-secondary: 'Poppins', 'Microsoft YaHei', sans-serif;
+}
+
+/* 全局背景 */
+:root[data-theme="deepElegant"] body {
+    background: url('https://i.pinimg.com/736x/32/91/28/3291288e558fa4511b83ecb6f8a96d22.jpg') center/cover fixed;
+    background-color: #0d0d1a;
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
+    min-height: 100vh;
+}
+
+/* 主容器 */
+:root[data-theme="deepElegant"] .container,
+:root[data-theme="deepElegant"] .main-content {
+    background: var(--color-surface);
+    border-radius: 20px;
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-color);
+}
+
+/* 導航欄 */
+:root[data-theme="deepElegant"] .nav,
+:root[data-theme="deepElegant"] .navbar {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(15px);
+}
+
+:root[data-theme="deepElegant"] .nav-link,
+:root[data-theme="deepElegant"] .navbar-link {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="deepElegant"] .nav-link:hover,
+:root[data-theme="deepElegant"] .navbar-link:hover {
+    color: var(--color-text-primary);
+    background: var(--color-accent);
+}
+
+/* 卡片樣式 */
+:root[data-theme="deepElegant"] .card,
+:root[data-theme="deepElegant"] .investment-card,
+:root[data-theme="deepElegant"] .accounting-card,
+:root[data-theme="deepElegant"] .wallet-card,
+:root[data-theme="deepElegant"] .monthly-planning-card,
+:root[data-theme="deepElegant"] .investment-settings-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-light);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    color: var(--color-text-primary);
+}
+
+:root[data-theme="deepElegant"] .card:hover,
+:root[data-theme="deepElegant"] .investment-card:hover,
+:root[data-theme="deepElegant"] .accounting-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--card-hover);
+}
+
+/* 按鈕樣式 */
+:root[data-theme="deepElegant"] .btn,
+:root[data-theme="deepElegant"] .btn-primary,
+:root[data-theme="deepElegant"] .buy-btn,
+:root[data-theme="deepElegant"] .sell-btn,
+:root[data-theme="deepElegant"] .regular-investment-btn {
+    background: var(--btn-primary);
+    color: var(--color-text-primary);
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-family: var(--font-secondary);
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+:root[data-theme="deepElegant"] .btn:hover,
+:root[data-theme="deepElegant"] .btn-primary:hover,
+:root[data-theme="deepElegant"] .buy-btn:hover {
+    background: var(--btn-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+:root[data-theme="deepElegant"] .btn-secondary {
+    background: var(--btn-secondary);
+    color: var(--color-text-primary);
+}
+
+:root[data-theme="deepElegant"] .btn-accent {
+    background: var(--btn-accent);
+    color: var(--color-text-primary);
+}
+
+/* 輸入框樣式 */
+:root[data-theme="deepElegant"] input,
+:root[data-theme="deepElegant"] textarea,
+:root[data-theme="deepElegant"] select {
+    background: var(--color-surface-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--color-text-primary);
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    font-family: var(--font-primary);
+}
+
+:root[data-theme="deepElegant"] input:focus,
+:root[data-theme="deepElegant"] textarea:focus,
+:root[data-theme="deepElegant"] select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(74, 60, 140, 0.2);
+}
+
+/* 標題樣式 */
+:root[data-theme="deepElegant"] h1,
+:root[data-theme="deepElegant"] h2,
+:root[data-theme="deepElegant"] h3,
+:root[data-theme="deepElegant"] h4,
+:root[data-theme="deepElegant"] h5,
+:root[data-theme="deepElegant"] h6 {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 主文字樣式 - 金色漸層 */
+:root[data-theme="deepElegant"] .main-text,
+:root[data-theme="deepElegant"] .primary-text,
+:root[data-theme="deepElegant"] .title-text,
+:root[data-theme="deepElegant"] .heading-text,
+:root[data-theme="deepElegant"] .card-title,
+:root[data-theme="deepElegant"] .section-title {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 重要數字和金額 - 金色漸層 */
+:root[data-theme="deepElegant"] .amount,
+:root[data-theme="deepElegant"] .price,
+:root[data-theme="deepElegant"] .value,
+:root[data-theme="deepElegant"] .metric-value,
+:root[data-theme="deepElegant"] .stat-value,
+:root[data-theme="deepElegant"] .summary-value {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 按鈕文字 - 金色漸層 */
+:root[data-theme="deepElegant"] .btn,
+:root[data-theme="deepElegant"] .btn-primary,
+:root[data-theme="deepElegant"] .btn-secondary,
+:root[data-theme="deepElegant"] .buy-btn,
+:root[data-theme="deepElegant"] .sell-btn,
+:root[data-theme="deepElegant"] .regular-investment-btn {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 導航文字 - 金色漸層 */
+:root[data-theme="deepElegant"] .nav-link,
+:root[data-theme="deepElegant"] .navbar-link,
+:root[data-theme="deepElegant"] .menu-link,
+:root[data-theme="deepElegant"] .tab-link {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 卡片標題 - 金色漸層 */
+:root[data-theme="deepElegant"] .card h1,
+:root[data-theme="deepElegant"] .card h2,
+:root[data-theme="deepElegant"] .card h3,
+:root[data-theme="deepElegant"] .card h4,
+:root[data-theme="deepElegant"] .card h5,
+:root[data-theme="deepElegant"] .card h6,
+:root[data-theme="deepElegant"] .card .card-title,
+:root[data-theme="deepElegant"] .card .title {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 表格標題 - 金色漸層 */
+:root[data-theme="deepElegant"] .accounting-table th,
+:root[data-theme="deepElegant"] .ledger-table th,
+:root[data-theme="deepElegant"] table th {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 狀態文字 - 金色漸層 */
+:root[data-theme="deepElegant"] .status-text,
+:root[data-theme="deepElegant"] .success-text,
+:root[data-theme="deepElegant"] .warning-text,
+:root[data-theme="deepElegant"] .error-text,
+:root[data-theme="deepElegant"] .info-text {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 特殊強調文字 - 金色漸層 */
+:root[data-theme="deepElegant"] .highlight-text,
+:root[data-theme="deepElegant"] .emphasis-text,
+:root[data-theme="deepElegant"] .accent-text,
+:root[data-theme="deepElegant"] .featured-text {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 記帳頁面專用樣式 */
+:root[data-theme="deepElegant"] .accounting-page,
+:root[data-theme="deepElegant"] .ledger-page,
+:root[data-theme="deepElegant"] .accounting-main {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-accent);
+    box-shadow: var(--shadow-heavy);
+    color: var(--color-text-primary);
+}
+
+/* 記帳頁面內容文字 - 金色漸層 */
+:root[data-theme="deepElegant"] .accounting-page *,
+:root[data-theme="deepElegant"] .ledger-page *,
+:root[data-theme="deepElegant"] .accounting-main * {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 記帳頁面日期文字 - 特殊金色漸層 */
+:root[data-theme="deepElegant"] .accounting-page .date,
+:root[data-theme="deepElegant"] .accounting-page .date-text,
+:root[data-theme="deepElegant"] .accounting-page .record-date,
+:root[data-theme="deepElegant"] .accounting-page .transaction-date,
+:root[data-theme="deepElegant"] .accounting-page .entry-date,
+:root[data-theme="deepElegant"] .accounting-page .created-date,
+:root[data-theme="deepElegant"] .accounting-page .updated-date,
+:root[data-theme="deepElegant"] .accounting-page .date-display,
+:root[data-theme="deepElegant"] .accounting-page .date-label,
+:root[data-theme="deepElegant"] .accounting-page .date-value,
+:root[data-theme="deepElegant"] .accounting-page .date-time,
+:root[data-theme="deepElegant"] .accounting-page .date-info,
+:root[data-theme="deepElegant"] .accounting-page .date-field,
+:root[data-theme="deepElegant"] .accounting-page .date-input,
+:root[data-theme="deepElegant"] .accounting-page .calendar-date,
+:root[data-theme="deepElegant"] .accounting-page .form-date,
+:root[data-theme="deepElegant"] .accounting-page .filter-date,
+:root[data-theme="deepElegant"] .accounting-page .search-date,
+:root[data-theme="deepElegant"] .accounting-page .selected-date,
+:root[data-theme="deepElegant"] .accounting-page .current-date,
+:root[data-theme="deepElegant"] .accounting-page .month-date,
+:root[data-theme="deepElegant"] .accounting-page .year-date,
+:root[data-theme="deepElegant"] .accounting-page .day-date,
+:root[data-theme="deepElegant"] .accounting-page .time-date,
+:root[data-theme="deepElegant"] .accounting-page .full-date,
+:root[data-theme="deepElegant"] .accounting-page .short-date,
+:root[data-theme="deepElegant"] .accounting-page .long-date,
+:root[data-theme="deepElegant"] .ledger-page .date,
+:root[data-theme="deepElegant"] .ledger-page .date-text,
+:root[data-theme="deepElegant"] .ledger-page .record-date,
+:root[data-theme="deepElegant"] .ledger-page .transaction-date,
+:root[data-theme="deepElegant"] .ledger-page .entry-date,
+:root[data-theme="deepElegant"] .ledger-page .created-date,
+:root[data-theme="deepElegant"] .ledger-page .updated-date,
+:root[data-theme="deepElegant"] .ledger-page .date-display,
+:root[data-theme="deepElegant"] .ledger-page .date-label,
+:root[data-theme="deepElegant"] .ledger-page .date-value,
+:root[data-theme="deepElegant"] .ledger-page .date-time,
+:root[data-theme="deepElegant"] .ledger-page .date-info,
+:root[data-theme="deepElegant"] .ledger-page .date-field,
+:root[data-theme="deepElegant"] .ledger-page .date-input,
+:root[data-theme="deepElegant"] .ledger-page .calendar-date,
+:root[data-theme="deepElegant"] .ledger-page .form-date,
+:root[data-theme="deepElegant"] .ledger-page .filter-date,
+:root[data-theme="deepElegant"] .ledger-page .search-date,
+:root[data-theme="deepElegant"] .ledger-page .selected-date,
+:root[data-theme="deepElegant"] .ledger-page .current-date,
+:root[data-theme="deepElegant"] .ledger-page .month-date,
+:root[data-theme="deepElegant"] .ledger-page .year-date,
+:root[data-theme="deepElegant"] .ledger-page .day-date,
+:root[data-theme="deepElegant"] .ledger-page .time-date,
+:root[data-theme="deepElegant"] .ledger-page .full-date,
+:root[data-theme="deepElegant"] .ledger-page .short-date,
+:root[data-theme="deepElegant"] .ledger-page .long-date,
+:root[data-theme="deepElegant"] .accounting-main .date,
+:root[data-theme="deepElegant"] .accounting-main .date-text,
+:root[data-theme="deepElegant"] .accounting-main .record-date,
+:root[data-theme="deepElegant"] .accounting-main .transaction-date,
+:root[data-theme="deepElegant"] .accounting-main .entry-date,
+:root[data-theme="deepElegant"] .accounting-main .created-date,
+:root[data-theme="deepElegant"] .accounting-main .updated-date,
+:root[data-theme="deepElegant"] .accounting-main .date-display,
+:root[data-theme="deepElegant"] .accounting-main .date-label,
+:root[data-theme="deepElegant"] .accounting-main .date-value,
+:root[data-theme="deepElegant"] .accounting-main .date-time,
+:root[data-theme="deepElegant"] .accounting-main .date-info,
+:root[data-theme="deepElegant"] .accounting-main .date-field,
+:root[data-theme="deepElegant"] .accounting-main .date-input,
+:root[data-theme="deepElegant"] .accounting-main .calendar-date,
+:root[data-theme="deepElegant"] .accounting-main .form-date,
+:root[data-theme="deepElegant"] .accounting-main .filter-date,
+:root[data-theme="deepElegant"] .accounting-main .search-date,
+:root[data-theme="deepElegant"] .accounting-main .selected-date,
+:root[data-theme="deepElegant"] .accounting-main .current-date,
+:root[data-theme="deepElegant"] .accounting-main .month-date,
+:root[data-theme="deepElegant"] .accounting-main .year-date,
+:root[data-theme="deepElegant"] .accounting-main .day-date,
+:root[data-theme="deepElegant"] .accounting-main .time-date,
+:root[data-theme="deepElegant"] .accounting-main .full-date,
+:root[data-theme="deepElegant"] .accounting-main .short-date,
+:root[data-theme="deepElegant"] .accounting-main .long-date {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 記帳記錄條目 */
+:root[data-theme="deepElegant"] .accounting-record,
+:root[data-theme="deepElegant"] .ledger-entry,
+:root[data-theme="deepElegant"] .expense-item,
+:root[data-theme="deepElegant"] .income-item {
+    background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-light) 50%, var(--color-surface) 100%);
+    border: 1px solid var(--border-accent);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    margin: 8px 0;
+    padding: 12px 16px;
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-light);
+}
+
+/* 記帳記錄條目文字 - 金色漸層 */
+:root[data-theme="deepElegant"] .accounting-record *,
+:root[data-theme="deepElegant"] .ledger-entry *,
+:root[data-theme="deepElegant"] .expense-item *,
+:root[data-theme="deepElegant"] .income-item * {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 記帳記錄條目日期文字 - 特殊金色漸層 */
+:root[data-theme="deepElegant"] .accounting-record .date,
+:root[data-theme="deepElegant"] .accounting-record .date-text,
+:root[data-theme="deepElegant"] .accounting-record .record-date,
+:root[data-theme="deepElegant"] .accounting-record .transaction-date,
+:root[data-theme="deepElegant"] .accounting-record .entry-date,
+:root[data-theme="deepElegant"] .accounting-record .created-date,
+:root[data-theme="deepElegant"] .accounting-record .updated-date,
+:root[data-theme="deepElegant"] .accounting-record .date-display,
+:root[data-theme="deepElegant"] .accounting-record .date-label,
+:root[data-theme="deepElegant"] .accounting-record .date-value,
+:root[data-theme="deepElegant"] .accounting-record .date-time,
+:root[data-theme="deepElegant"] .accounting-record .date-info,
+:root[data-theme="deepElegant"] .accounting-record .date-field,
+:root[data-theme="deepElegant"] .accounting-record .date-input,
+:root[data-theme="deepElegant"] .accounting-record .calendar-date,
+:root[data-theme="deepElegant"] .accounting-record .form-date,
+:root[data-theme="deepElegant"] .accounting-record .filter-date,
+:root[data-theme="deepElegant"] .accounting-record .search-date,
+:root[data-theme="deepElegant"] .accounting-record .selected-date,
+:root[data-theme="deepElegant"] .accounting-record .current-date,
+:root[data-theme="deepElegant"] .accounting-record .month-date,
+:root[data-theme="deepElegant"] .accounting-record .year-date,
+:root[data-theme="deepElegant"] .accounting-record .day-date,
+:root[data-theme="deepElegant"] .accounting-record .time-date,
+:root[data-theme="deepElegant"] .accounting-record .full-date,
+:root[data-theme="deepElegant"] .accounting-record .short-date,
+:root[data-theme="deepElegant"] .accounting-record .long-date,
+:root[data-theme="deepElegant"] .ledger-entry .date,
+:root[data-theme="deepElegant"] .ledger-entry .date-text,
+:root[data-theme="deepElegant"] .ledger-entry .record-date,
+:root[data-theme="deepElegant"] .ledger-entry .transaction-date,
+:root[data-theme="deepElegant"] .ledger-entry .entry-date,
+:root[data-theme="deepElegant"] .ledger-entry .created-date,
+:root[data-theme="deepElegant"] .ledger-entry .updated-date,
+:root[data-theme="deepElegant"] .ledger-entry .date-display,
+:root[data-theme="deepElegant"] .ledger-entry .date-label,
+:root[data-theme="deepElegant"] .ledger-entry .date-value,
+:root[data-theme="deepElegant"] .ledger-entry .date-time,
+:root[data-theme="deepElegant"] .ledger-entry .date-info,
+:root[data-theme="deepElegant"] .ledger-entry .date-field,
+:root[data-theme="deepElegant"] .ledger-entry .date-input,
+:root[data-theme="deepElegant"] .ledger-entry .calendar-date,
+:root[data-theme="deepElegant"] .ledger-entry .form-date,
+:root[data-theme="deepElegant"] .ledger-entry .filter-date,
+:root[data-theme="deepElegant"] .ledger-entry .search-date,
+:root[data-theme="deepElegant"] .ledger-entry .selected-date,
+:root[data-theme="deepElegant"] .ledger-entry .current-date,
+:root[data-theme="deepElegant"] .ledger-entry .month-date,
+:root[data-theme="deepElegant"] .ledger-entry .year-date,
+:root[data-theme="deepElegant"] .ledger-entry .day-date,
+:root[data-theme="deepElegant"] .ledger-entry .time-date,
+:root[data-theme="deepElegant"] .ledger-entry .full-date,
+:root[data-theme="deepElegant"] .ledger-entry .short-date,
+:root[data-theme="deepElegant"] .ledger-entry .long-date,
+:root[data-theme="deepElegant"] .expense-item .date,
+:root[data-theme="deepElegant"] .expense-item .date-text,
+:root[data-theme="deepElegant"] .expense-item .record-date,
+:root[data-theme="deepElegant"] .expense-item .transaction-date,
+:root[data-theme="deepElegant"] .expense-item .entry-date,
+:root[data-theme="deepElegant"] .expense-item .created-date,
+:root[data-theme="deepElegant"] .expense-item .updated-date,
+:root[data-theme="deepElegant"] .expense-item .date-display,
+:root[data-theme="deepElegant"] .expense-item .date-label,
+:root[data-theme="deepElegant"] .expense-item .date-value,
+:root[data-theme="deepElegant"] .expense-item .date-time,
+:root[data-theme="deepElegant"] .expense-item .date-info,
+:root[data-theme="deepElegant"] .expense-item .date-field,
+:root[data-theme="deepElegant"] .expense-item .date-input,
+:root[data-theme="deepElegant"] .expense-item .calendar-date,
+:root[data-theme="deepElegant"] .expense-item .form-date,
+:root[data-theme="deepElegant"] .expense-item .filter-date,
+:root[data-theme="deepElegant"] .expense-item .search-date,
+:root[data-theme="deepElegant"] .expense-item .selected-date,
+:root[data-theme="deepElegant"] .expense-item .current-date,
+:root[data-theme="deepElegant"] .expense-item .month-date,
+:root[data-theme="deepElegant"] .expense-item .year-date,
+:root[data-theme="deepElegant"] .expense-item .day-date,
+:root[data-theme="deepElegant"] .expense-item .time-date,
+:root[data-theme="deepElegant"] .expense-item .full-date,
+:root[data-theme="deepElegant"] .expense-item .short-date,
+:root[data-theme="deepElegant"] .expense-item .long-date,
+:root[data-theme="deepElegant"] .income-item .date,
+:root[data-theme="deepElegant"] .income-item .date-text,
+:root[data-theme="deepElegant"] .income-item .record-date,
+:root[data-theme="deepElegant"] .income-item .transaction-date,
+:root[data-theme="deepElegant"] .income-item .entry-date,
+:root[data-theme="deepElegant"] .income-item .created-date,
+:root[data-theme="deepElegant"] .income-item .updated-date,
+:root[data-theme="deepElegant"] .income-item .date-display,
+:root[data-theme="deepElegant"] .income-item .date-label,
+:root[data-theme="deepElegant"] .income-item .date-value,
+:root[data-theme="deepElegant"] .income-item .date-time,
+:root[data-theme="deepElegant"] .income-item .date-info,
+:root[data-theme="deepElegant"] .income-item .date-field,
+:root[data-theme="deepElegant"] .income-item .date-input,
+:root[data-theme="deepElegant"] .income-item .calendar-date,
+:root[data-theme="deepElegant"] .income-item .form-date,
+:root[data-theme="deepElegant"] .income-item .filter-date,
+:root[data-theme="deepElegant"] .income-item .search-date,
+:root[data-theme="deepElegant"] .income-item .selected-date,
+:root[data-theme="deepElegant"] .income-item .current-date,
+:root[data-theme="deepElegant"] .income-item .month-date,
+:root[data-theme="deepElegant"] .income-item .year-date,
+:root[data-theme="deepElegant"] .income-item .day-date,
+:root[data-theme="deepElegant"] .income-item .time-date,
+:root[data-theme="deepElegant"] .income-item .full-date,
+:root[data-theme="deepElegant"] .income-item .short-date,
+:root[data-theme="deepElegant"] .income-item .long-date {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+:root[data-theme="deepElegant"] .accounting-record:hover,
+:root[data-theme="deepElegant"] .ledger-entry:hover,
+:root[data-theme="deepElegant"] .expense-item:hover,
+:root[data-theme="deepElegant"] .income-item:hover {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--border-accent);
+}
+
+/* 歷史記錄頁面 */
+:root[data-theme="deepElegant"] .history-page,
+:root[data-theme="deepElegant"] .transaction-history,
+:root[data-theme="deepElegant"] .record-history {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 50%, var(--color-accent) 100%);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-accent);
+    box-shadow: var(--shadow-heavy);
+    color: var(--color-text-primary);
+}
+
+/* 歷史記錄頁面文字 - 金色漸層 */
+:root[data-theme="deepElegant"] .history-page *,
+:root[data-theme="deepElegant"] .transaction-history *,
+:root[data-theme="deepElegant"] .record-history * {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 歷史記錄條目 */
+:root[data-theme="deepElegant"] .history-item,
+:root[data-theme="deepElegant"] .transaction-item,
+:root[data-theme="deepElegant"] .record-item {
+    background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-light) 50%, var(--color-surface) 100%);
+    border: 1px solid var(--border-accent);
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+    margin: 6px 0;
+    padding: 10px 14px;
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-light);
+}
+
+/* 歷史記錄條目文字 - 金色漸層 */
+:root[data-theme="deepElegant"] .history-item *,
+:root[data-theme="deepElegant"] .transaction-item *,
+:root[data-theme="deepElegant"] .record-item * {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 歷史記錄條目日期文字 - 特殊金色漸層 */
+:root[data-theme="deepElegant"] .history-item .date,
+:root[data-theme="deepElegant"] .history-item .date-text,
+:root[data-theme="deepElegant"] .history-item .record-date,
+:root[data-theme="deepElegant"] .history-item .transaction-date,
+:root[data-theme="deepElegant"] .history-item .entry-date,
+:root[data-theme="deepElegant"] .history-item .created-date,
+:root[data-theme="deepElegant"] .history-item .updated-date,
+:root[data-theme="deepElegant"] .history-item .date-display,
+:root[data-theme="deepElegant"] .history-item .date-label,
+:root[data-theme="deepElegant"] .history-item .date-value,
+:root[data-theme="deepElegant"] .history-item .date-time,
+:root[data-theme="deepElegant"] .history-item .date-info,
+:root[data-theme="deepElegant"] .history-item .date-field,
+:root[data-theme="deepElegant"] .history-item .date-input,
+:root[data-theme="deepElegant"] .history-item .calendar-date,
+:root[data-theme="deepElegant"] .history-item .form-date,
+:root[data-theme="deepElegant"] .history-item .filter-date,
+:root[data-theme="deepElegant"] .history-item .search-date,
+:root[data-theme="deepElegant"] .history-item .selected-date,
+:root[data-theme="deepElegant"] .history-item .current-date,
+:root[data-theme="deepElegant"] .history-item .month-date,
+:root[data-theme="deepElegant"] .history-item .year-date,
+:root[data-theme="deepElegant"] .history-item .day-date,
+:root[data-theme="deepElegant"] .history-item .time-date,
+:root[data-theme="deepElegant"] .history-item .full-date,
+:root[data-theme="deepElegant"] .history-item .short-date,
+:root[data-theme="deepElegant"] .history-item .long-date,
+:root[data-theme="deepElegant"] .transaction-item .date,
+:root[data-theme="deepElegant"] .transaction-item .date-text,
+:root[data-theme="deepElegant"] .transaction-item .record-date,
+:root[data-theme="deepElegant"] .transaction-item .transaction-date,
+:root[data-theme="deepElegant"] .transaction-item .entry-date,
+:root[data-theme="deepElegant"] .transaction-item .created-date,
+:root[data-theme="deepElegant"] .transaction-item .updated-date,
+:root[data-theme="deepElegant"] .transaction-item .date-display,
+:root[data-theme="deepElegant"] .transaction-item .date-label,
+:root[data-theme="deepElegant"] .transaction-item .date-value,
+:root[data-theme="deepElegant"] .transaction-item .date-time,
+:root[data-theme="deepElegant"] .transaction-item .date-info,
+:root[data-theme="deepElegant"] .transaction-item .date-field,
+:root[data-theme="deepElegant"] .transaction-item .date-input,
+:root[data-theme="deepElegant"] .transaction-item .calendar-date,
+:root[data-theme="deepElegant"] .transaction-item .form-date,
+:root[data-theme="deepElegant"] .transaction-item .filter-date,
+:root[data-theme="deepElegant"] .transaction-item .search-date,
+:root[data-theme="deepElegant"] .transaction-item .selected-date,
+:root[data-theme="deepElegant"] .transaction-item .current-date,
+:root[data-theme="deepElegant"] .transaction-item .month-date,
+:root[data-theme="deepElegant"] .transaction-item .year-date,
+:root[data-theme="deepElegant"] .transaction-item .day-date,
+:root[data-theme="deepElegant"] .transaction-item .time-date,
+:root[data-theme="deepElegant"] .transaction-item .full-date,
+:root[data-theme="deepElegant"] .transaction-item .short-date,
+:root[data-theme="deepElegant"] .transaction-item .long-date,
+:root[data-theme="deepElegant"] .record-item .date,
+:root[data-theme="deepElegant"] .record-item .date-text,
+:root[data-theme="deepElegant"] .record-item .record-date,
+:root[data-theme="deepElegant"] .record-item .transaction-date,
+:root[data-theme="deepElegant"] .record-item .entry-date,
+:root[data-theme="deepElegant"] .record-item .created-date,
+:root[data-theme="deepElegant"] .record-item .updated-date,
+:root[data-theme="deepElegant"] .record-item .date-display,
+:root[data-theme="deepElegant"] .record-item .date-label,
+:root[data-theme="deepElegant"] .record-item .date-value,
+:root[data-theme="deepElegant"] .record-item .date-time,
+:root[data-theme="deepElegant"] .record-item .date-info,
+:root[data-theme="deepElegant"] .record-item .date-field,
+:root[data-theme="deepElegant"] .record-item .date-input,
+:root[data-theme="deepElegant"] .record-item .calendar-date,
+:root[data-theme="deepElegant"] .record-item .form-date,
+:root[data-theme="deepElegant"] .record-item .filter-date,
+:root[data-theme="deepElegant"] .record-item .search-date,
+:root[data-theme="deepElegant"] .record-item .selected-date,
+:root[data-theme="deepElegant"] .record-item .current-date,
+:root[data-theme="deepElegant"] .record-item .month-date,
+:root[data-theme="deepElegant"] .record-item .year-date,
+:root[data-theme="deepElegant"] .record-item .day-date,
+:root[data-theme="deepElegant"] .record-item .time-date,
+:root[data-theme="deepElegant"] .record-item .full-date,
+:root[data-theme="deepElegant"] .record-item .short-date,
+:root[data-theme="deepElegant"] .record-item .long-date {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+:root[data-theme="deepElegant"] .history-item:hover,
+:root[data-theme="deepElegant"] .transaction-item:hover,
+:root[data-theme="deepElegant"] .record-item:hover {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--border-accent);
+}
+
+/* 記帳表格內容文字 - 金色漸層 */
+:root[data-theme="deepElegant"] .accounting-table td *,
+:root[data-theme="deepElegant"] .ledger-table td * {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 記帳統計卡片文字 - 金色漸層 */
+:root[data-theme="deepElegant"] .accounting-stats *,
+:root[data-theme="deepElegant"] .expense-summary *,
+:root[data-theme="deepElegant"] .income-summary * {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+/* 記帳本Fab圖示 - 特殊樣式 */
+:root[data-theme="deepElegant"] .fab,
+:root[data-theme="deepElegant"] .floating-action-button,
+:root[data-theme="deepElegant"] .add-button,
+:root[data-theme="deepElegant"] .create-button,
+:root[data-theme="deepElegant"] .new-entry-button,
+:root[data-theme="deepElegant"] .fab-icon,
+:root[data-theme="deepElegant"] .fab-button,
+:root[data-theme="deepElegant"] .action-fab,
+:root[data-theme="deepElegant"] .material-fab,
+:root[data-theme="deepElegant"] .speed-dial-fab {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+    border: 2px solid var(--border-accent);
+    border-radius: 50%;
+    box-shadow: var(--shadow-heavy);
+    backdrop-filter: blur(15px);
+    color: var(--color-text-primary);
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+/* Fab圖標特殊樣式 - 🌻 金色漸層 */
+:root[data-theme="deepElegant"] .fab::before,
+:root[data-theme="deepElegant"] .floating-action-button::before,
+:root[data-theme="deepElegant"] .add-button::before,
+:root[data-theme="deepElegant"] .create-button::before,
+:root[data-theme="deepElegant"] .new-entry-button::before,
+:root[data-theme="deepElegant"] .fab-icon::before,
+:root[data-theme="deepElegant"] .fab-button::before,
+:root[data-theme="deepElegant"] .action-fab::before,
+:root[data-theme="deepElegant"] .material-fab::before,
+:root[data-theme="deepElegant"] .speed-dial-fab::before {
+    content: '🌻';
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-size: 24px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* Fab圖標內容文字 - 金色漸層 */
+:root[data-theme="deepElegant"] .fab .fab-icon,
+:root[data-theme="deepElegant"] .floating-action-button .fab-icon,
+:root[data-theme="deepElegant"] .add-button .fab-icon,
+:root[data-theme="deepElegant"] .create-button .fab-icon,
+:root[data-theme="deepElegant"] .new-entry-button .fab-icon,
+:root[data-theme="deepElegant"] .fab-button .fab-icon,
+:root[data-theme="deepElegant"] .action-fab .fab-icon,
+:root[data-theme="deepElegant"] .material-fab .fab-icon,
+:root[data-theme="deepElegant"] .speed-dial-fab .fab-icon {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+    position: relative;
+    z-index: 2;
+}
+
+/* Fab懸停效果 */
+:root[data-theme="deepElegant"] .fab:hover,
+:root[data-theme="deepElegant"] .floating-action-button:hover,
+:root[data-theme="deepElegant"] .add-button:hover,
+:root[data-theme="deepElegant"] .create-button:hover,
+:root[data-theme="deepElegant"] .new-entry-button:hover,
+:root[data-theme="deepElegant"] .fab-button:hover,
+:root[data-theme="deepElegant"] .action-fab:hover,
+:root[data-theme="deepElegant"] .material-fab:hover,
+:root[data-theme="deepElegant"] .speed-dial-fab:hover {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 50%, var(--color-accent) 100%);
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 12px 40px rgba(74, 60, 140, 0.4);
+    border-color: rgba(255, 215, 0, 0.6);
+}
+
+:root[data-theme="deepElegant"] .fab:hover::before,
+:root[data-theme="deepElegant"] .floating-action-button:hover::before,
+:root[data-theme="deepElegant"] .add-button:hover::before,
+:root[data-theme="deepElegant"] .create-button:hover::before,
+:root[data-theme="deepElegant"] .new-entry-button:hover::before,
+:root[data-theme="deepElegant"] .fab-button:hover::before,
+:root[data-theme="deepElegant"] .action-fab:hover::before,
+:root[data-theme="deepElegant"] .material-fab:hover::before,
+:root[data-theme="deepElegant"] .speed-dial-fab:hover::before {
+    transform: translate(-50%, -50%) scale(1.2);
+    text-shadow: 0 4px 8px rgba(255, 215, 0, 0.5);
+    filter: drop-shadow(0 4px 8px rgba(255, 215, 0, 0.5));
+}
+
+/* Fab點擊效果 */
+:root[data-theme="deepElegant"] .fab:active,
+:root[data-theme="deepElegant"] .floating-action-button:active,
+:root[data-theme="deepElegant"] .add-button:active,
+:root[data-theme="deepElegant"] .create-button:active,
+:root[data-theme="deepElegant"] .new-entry-button:active,
+:root[data-theme="deepElegant"] .fab-button:active,
+:root[data-theme="deepElegant"] .action-fab:active,
+:root[data-theme="deepElegant"] .material-fab:active,
+:root[data-theme="deepElegant"] .speed-dial-fab:active {
+    transform: translateY(-2px) scale(0.95);
+    box-shadow: 0 6px 20px rgba(74, 60, 140, 0.3);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-primary) 100%);
+}
+
+/* Fab波紋效果 */
+:root[data-theme="deepElegant"] .fab::after,
+:root[data-theme="deepElegant"] .floating-action-button::after,
+:root[data-theme="deepElegant"] .add-button::after,
+:root[data-theme="deepElegant"] .create-button::after,
+:root[data-theme="deepElegant"] .new-entry-button::after,
+:root[data-theme="deepElegant"] .fab-button::after,
+:root[data-theme="deepElegant"] .action-fab::after,
+:root[data-theme="deepElegant"] .material-fab::after,
+:root[data-theme="deepElegant"] .speed-dial-fab::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 165, 0, 0.3) 50%, rgba(255, 215, 0, 0.3) 100%);
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+}
+
+:root[data-theme="deepElegant"] .fab:hover::after,
+:root[data-theme="deepElegant"] .floating-action-button:hover::after,
+:root[data-theme="deepElegant"] .add-button:hover::after,
+:root[data-theme="deepElegant"] .create-button:hover::after,
+:root[data-theme="deepElegant"] .new-entry-button:hover::after,
+:root[data-theme="deepElegant"] .fab-button:hover::after,
+:root[data-theme="deepElegant"] .action-fab:hover::after,
+:root[data-theme="deepElegant"] .material-fab:hover::after,
+:root[data-theme="deepElegant"] .speed-dial-fab:hover::after {
+    opacity: 1;
+    transform: scale(1.5);
+}
+
+/* Fab尺寸變體 */
+:root[data-theme="deepElegant"] .fab.small {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+}
+
+:root[data-theme="deepElegant"] .fab.large {
+    width: 64px;
+    height: 64px;
+    font-size: 28px;
+}
+
+:root[data-theme="deepElegant"] .fab.small::before {
+    font-size: 20px;
+}
+
+:root[data-theme="deepElegant"] .fab.large::before {
+    font-size: 28px;
+}
+
+/* Fab位置變體 */
+:root[data-theme="deepElegant"] .fab.top-left {
+    top: 20px;
+    left: 20px;
+}
+
+:root[data-theme="deepElegant"] .fab.top-right {
+    top: 20px;
+    right: 20px;
+}
+
+:root[data-theme="deepElegant"] .fab.bottom-left {
+    bottom: 20px;
+    left: 20px;
+}
+
+:root[data-theme="deepElegant"] .fab.bottom-right {
+    bottom: 20px;
+    right: 20px;
+}
+
+:root[data-theme="deepElegant"] .fab.center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Fab擴展選單 */
+:root[data-theme="deepElegant"] .fab-menu,
+:root[data-theme="deepElegant"] .speed-dial-menu,
+:root[data-theme="deepElegant"] .fab-options {
+    background: var(--color-surface);
+    border: 1px solid var(--border-accent);
+    border-radius: 12px;
+    box-shadow: var(--shadow-heavy);
+    backdrop-filter: blur(15px);
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    min-width: 200px;
+    z-index: 999;
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root[data-theme="deepElegant"] .fab.active + .fab-menu,
+:root[data-theme="deepElegant"] .fab.active + .speed-dial-menu,
+:root[data-theme="deepElegant"] .fab.active + .fab-options {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* Fab選單項目 */
+:root[data-theme="deepElegant"] .fab-menu-item,
+:root[data-theme="deepElegant"] .speed-dial-item,
+:root[data-theme="deepElegant"] .fab-option {
+    background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-light) 50%, var(--color-surface) 100%);
+    border: 1px solid var(--border-accent);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 4px;
+    color: var(--color-text-primary);
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.3));
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+:root[data-theme="deepElegant"] .fab-menu-item:hover,
+:root[data-theme="deepElegant"] .speed-dial-item:hover,
+:root[data-theme="deepElegant"] .fab-option:hover {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* 響應式設計 - Fab */
+@media (max-width: 768px) {
+    :root[data-theme="deepElegant"] .fab,
+    :root[data-theme="deepElegant"] .floating-action-button,
+    :root[data-theme="deepElegant"] .add-button,
+    :root[data-theme="deepElegant"] .create-button,
+    :root[data-theme="deepElegant"] .new-entry-button {
+        width: 56px;
+        height: 56px;
+        font-size: 22px;
+    }
+    
+    :root[data-theme="deepElegant"] .fab::before,
+    :root[data-theme="deepElegant"] .floating-action-button::before,
+    :root[data-theme="deepElegant"] .add-button::before,
+    :root[data-theme="deepElegant"] .create-button::before,
+    :root[data-theme="deepElegant"] .new-entry-button::before {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="deepElegant"] .fab,
+    :root[data-theme="deepElegant"] .floating-action-button,
+    :root[data-theme="deepElegant"] .add-button,
+    :root[data-theme="deepElegant"] .create-button,
+    :root[data-theme="deepElegant"] .new-entry-button {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+    }
+    
+    :root[data-theme="deepElegant"] .fab::before,
+    :root[data-theme="deepElegant"] .floating-action-button::before,
+    :root[data-theme="deepElegant"] .add-button::before,
+    :root[data-theme="deepElegant"] .create-button::before,
+    :root[data-theme="deepElegant"] .new-entry-button::before {
+        font-size: 20px;
+    }
+}
+
+/* 鍵盤頁面運算符號 - 紫色底金色字體 - 最高優先級 */
+html body[data-theme="deepElegant"] .calculator-page,
+html body[data-theme="deepElegant"] .keyboard-page,
+html body[data-theme="deepElegant"] .numeric-keyboard,
+html:root body[data-theme="deepElegant"] .calculator-page,
+html:root body[data-theme="deepElegant"] .keyboard-page,
+html:root body[data-theme="deepElegant"] .numeric-keyboard {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid var(--border-accent) !important;
+    box-shadow: var(--shadow-heavy) !important;
+    color: var(--color-text-primary) !important;
+}
+
+/* 運算符號按鈕 - 紫色底金色字體 - 最高優先級 */
+html body[data-theme="deepElegant"] .calculator-page .operator,
+html body[data-theme="deepElegant"] .calculator-page .operator-btn,
+html body[data-theme="deepElegant"] .calculator-page .calc-operator,
+html body[data-theme="deepElegant"] .calculator-page .math-operator,
+html body[data-theme="deepElegant"] .calculator-page .operation-btn,
+html body[data-theme="deepElegant"] .calculator-page .plus,
+html body[data-theme="deepElegant"] .calculator-page .minus,
+html body[data-theme="deepElegant"] .calculator-page .multiply,
+html body[data-theme="deepElegant"] .calculator-page .divide,
+html body[data-theme="deepElegant"] .calculator-page .equals,
+html body[data-theme="deepElegant"] .calculator-page .clear,
+html body[data-theme="deepElegant"] .calculator-page .decimal,
+html body[data-theme="deepElegant"] .calculator-page .percent,
+html:root body[data-theme="deepElegant"] .calculator-page .operator,
+html:root body[data-theme="deepElegant"] .calculator-page .operator-btn,
+html:root body[data-theme="deepElegant"] .calculator-page .calc-operator,
+html:root body[data-theme="deepElegant"] .calculator-page .math-operator,
+html:root body[data-theme="deepElegant"] .calculator-page .operation-btn,
+html:root body[data-theme="deepElegant"] .calculator-page .plus,
+html:root body[data-theme="deepElegant"] .calculator-page .minus,
+html:root body[data-theme="deepElegant"] .calculator-page .multiply,
+html:root body[data-theme="deepElegant"] .calculator-page .divide,
+html:root body[data-theme="deepElegant"] .calculator-page .equals,
+html:root body[data-theme="deepElegant"] .calculator-page .clear,
+html:root body[data-theme="deepElegant"] .calculator-page .decimal,
+html:root body[data-theme="deepElegant"] .calculator-page .percent {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 50%, var(--color-accent) 100%) !important;
+    border: 2px solid var(--border-accent) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--shadow-medium) !important;
+    backdrop-filter: blur(10px) !important;
+    color: transparent !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.4) !important;
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.4)) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 10 !important;
+}
+
+/* 運算符號文字 - 金色漸層 - 最高優先級 */
+html body[data-theme="deepElegant"] .calculator-page .operator::before,
+html body[data-theme="deepElegant"] .calculator-page .operator-btn::before,
+html body[data-theme="deepElegant"] .calculator-page .calc-operator::before,
+html body[data-theme="deepElegant"] .calculator-page .math-operator::before,
+html body[data-theme="deepElegant"] .calculator-page .operation-btn::before,
+html body[data-theme="deepElegant"] .calculator-page .plus::before,
+html body[data-theme="deepElegant"] .calculator-page .minus::before,
+html body[data-theme="deepElegant"] .calculator-page .multiply::before,
+html body[data-theme="deepElegant"] .calculator-page .divide::before,
+html body[data-theme="deepElegant"] .calculator-page .equals::before,
+html body[data-theme="deepElegant"] .calculator-page .clear::before,
+html body[data-theme="deepElegant"] .calculator-page .decimal::before,
+html body[data-theme="deepElegant"] .calculator-page .percent::before,
+html:root body[data-theme="deepElegant"] .calculator-page .operator::before,
+html:root body[data-theme="deepElegant"] .calculator-page .operator-btn::before,
+html:root body[data-theme="deepElegant"] .calculator-page .calc-operator::before,
+html:root body[data-theme="deepElegant"] .calculator-page .math-operator::before,
+html:root body[data-theme="deepElegant"] .calculator-page .operation-btn::before,
+html:root body[data-theme="deepElegant"] .calculator-page .plus::before,
+html:root body[data-theme="deepElegant"] .calculator-page .minus::before,
+html:root body[data-theme="deepElegant"] .calculator-page .multiply::before,
+html:root body[data-theme="deepElegant"] .calculator-page .divide::before,
+html:root body[data-theme="deepElegant"] .calculator-page .equals::before,
+html:root body[data-theme="deepElegant"] .calculator-page .clear::before,
+html:root body[data-theme="deepElegant"] .calculator-page .decimal::before,
+html:root body[data-theme="deepElegant"] .calculator-page .percent::before {
+    content: attr(data-operator) !important;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.4) !important;
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.4)) !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+}
+
+/* 通用運算符號樣式 - 最高優先級 */
+html body[data-theme="deepElegant"] button[class*="operator"],
+html body[data-theme="deepElegant"] button[class*="plus"],
+html body[data-theme="deepElegant"] button[class*="minus"],
+html body[data-theme="deepElegant"] button[class*="multiply"],
+html body[data-theme="deepElegant"] button[class*="divide"],
+html body[data-theme="deepElegant"] button[class*="equals"],
+html body[data-theme="deepElegant"] button[class*="clear"],
+html body[data-theme="deepElegant"] button[class*="decimal"],
+html body[data-theme="deepElegant"] button[class*="percent"],
+html:root body[data-theme="deepElegant"] button[class*="operator"],
+html:root body[data-theme="deepElegant"] button[class*="plus"],
+html:root body[data-theme="deepElegant"] button[class*="minus"],
+html:root body[data-theme="deepElegant"] button[class*="multiply"],
+html:root body[data-theme="deepElegant"] button[class*="divide"],
+html:root body[data-theme="deepElegant"] button[class*="equals"],
+html:root body[data-theme="deepElegant"] button[class*="clear"],
+html:root body[data-theme="deepElegant"] button[class*="decimal"],
+html:root body[data-theme="deepElegant"] button[class*="percent"] {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 50%, var(--color-accent) 100%) !important;
+    border: 2px solid var(--border-accent) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--shadow-medium) !important;
+    backdrop-filter: blur(10px) !important;
+    color: transparent !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.4) !important;
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.4)) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 10 !important;
+}
+
+/* 通用運算符號文字 - 最高優先級 */
+html body[data-theme="deepElegant"] button[class*="operator"]::before,
+html body[data-theme="deepElegant"] button[class*="plus"]::before,
+html body[data-theme="deepElegant"] button[class*="minus"]::before,
+html body[data-theme="deepElegant"] button[class*="multiply"]::before,
+html body[data-theme="deepElegant"] button[class*="divide"]::before,
+html body[data-theme="deepElegant"] button[class*="equals"]::before,
+html body[data-theme="deepElegant"] button[class*="clear"]::before,
+html body[data-theme="deepElegant"] button[class*="decimal"]::before,
+html body[data-theme="deepElegant"] button[class*="percent"]::before,
+html:root body[data-theme="deepElegant"] button[class*="operator"]::before,
+html:root body[data-theme="deepElegant"] button[class*="plus"]::before,
+html:root body[data-theme="deepElegant"] button[class*="minus"]::before,
+html:root body[data-theme="deepElegant"] button[class*="multiply"]::before,
+html:root body[data-theme="deepElegant"] button[class*="divide"]::before,
+html:root body[data-theme="deepElegant"] button[class*="equals"]::before,
+html:root body[data-theme="deepElegant"] button[class*="clear"]::before,
+html:root body[data-theme="deepElegant"] button[class*="decimal"]::before,
+html:root body[data-theme="deepElegant"] button[class*="percent"]::before {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.4) !important;
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.4)) !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+}
+
+/* 運算符號懸停效果 - 最高優先級 */
+html body[data-theme="deepElegant"] .calculator-page .operator:hover,
+html body[data-theme="deepElegant"] .calculator-page .operator-btn:hover,
+html body[data-theme="deepElegant"] .calculator-page .calc-operator:hover,
+html body[data-theme="deepElegant"] .calculator-page .math-operator:hover,
+html body[data-theme="deepElegant"] .calculator-page .operation-btn:hover,
+html body[data-theme="deepElegant"] .calculator-page .plus:hover,
+html body[data-theme="deepElegant"] .calculator-page .minus:hover,
+html body[data-theme="deepElegant"] .calculator-page .multiply:hover,
+html body[data-theme="deepElegant"] .calculator-page .divide:hover,
+html body[data-theme="deepElegant"] .calculator-page .equals:hover,
+html body[data-theme="deepElegant"] .calculator-page .clear:hover,
+html body[data-theme="deepElegant"] .calculator-page .decimal:hover,
+html body[data-theme="deepElegant"] .calculator-page .percent:hover,
+html:root body[data-theme="deepElegant"] .calculator-page .operator:hover,
+html:root body[data-theme="deepElegant"] .calculator-page .operator-btn:hover,
+html:root body[data-theme="deepElegant"] .calculator-page .calc-operator:hover,
+html:root body[data-theme="deepElegant"] .calculator-page .math-operator:hover,
+html:root body[data-theme="deepElegant"] .calculator-page .operation-btn:hover,
+html:root body[data-theme="deepElegant"] .calculator-page .plus:hover,
+html:root body[data-theme="deepElegant"] .calculator-page .minus:hover,
+html:root body[data-theme="deepElegant"] .calculator-page .multiply:hover,
+html:root body[data-theme="deepElegant"] .calculator-page .divide:hover,
+html:root body[data-theme="deepElegant"] .calculator-page .equals:hover,
+html:root body[data-theme="deepElegant"] .calculator-page .clear:hover,
+html:root body[data-theme="deepElegant"] .calculator-page .decimal:hover,
+html:root body[data-theme="deepElegant"] .calculator-page .percent:hover {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 50%, var(--color-accent) 100%) !important;
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 8px 32px rgba(74, 60, 140, 0.4) !important;
+    border-color: rgba(255, 215, 0, 0.6) !important;
+}
+
+/* 預算設定預算卡片 - 不透明淺紫色卡片 - 最高優先級 */
+html body[data-theme="deepElegant"] .budget-card,
+html body[data-theme="deepElegant"] .budget-setting-card,
+html body[data-theme="deepElegant"] .budget-item-card,
+html body[data-theme="deepElegant"] .budget-category-card,
+html body[data-theme="deepElegant"] .budget-overview-card,
+html body[data-theme="deepElegant"] .budget-summary-card,
+html body[data-theme="deepElegant"] .budget-progress-card,
+html body[data-theme="deepElegant"] .budget-analysis-card,
+html body[data-theme="deepElegant"] .budget-planning-card,
+html body[data-theme="deepElegant"] .budget-tracking-card,
+html:root body[data-theme="deepElegant"] .budget-card,
+html:root body[data-theme="deepElegant"] .budget-setting-card,
+html:root body[data-theme="deepElegant"] .budget-item-card,
+html:root body[data-theme="deepElegant"] .budget-category-card,
+html:root body[data-theme="deepElegant"] .budget-overview-card,
+html:root body[data-theme="deepElegant"] .budget-summary-card,
+html:root body[data-theme="deepElegant"] .budget-progress-card,
+html:root body[data-theme="deepElegant"] .budget-analysis-card,
+html:root body[data-theme="deepElegant"] .budget-planning-card,
+html:root body[data-theme="deepElegant"] .budget-tracking-card {
+    background: linear-gradient(135deg, #9b88d1 0%, #8b7ab8 50%, #9b88d1 100%) !important;
+    border: 2px solid rgba(74, 60, 140, 0.6) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(74, 60, 140, 0.4) !important;
+    backdrop-filter: blur(15px) !important;
+    color: var(--color-text-primary) !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.3)) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 10 !important;
+}
+
+/* 錢包預算卡片 - 紫色背景金色文字 - 最高優先級 */
+html body[data-theme="deepElegant"] .wallet-budget-card,
+html body[data-theme="deepElegant"] .wallet-budget-item,
+html body[data-theme="deepElegant"] .wallet-budget-category,
+html body[data-theme="deepElegant"] .wallet-budget-overview,
+html body[data-theme="deepElegant"] .wallet-budget-summary,
+html body[data-theme="deepElegant"] .wallet-budget-progress,
+html body[data-theme="deepElegant"] .wallet-budget-analysis,
+html body[data-theme="deepElegant"] .wallet-budget-planning,
+html body[data-theme="deepElegant"] .wallet-budget-tracking,
+html body[data-theme="deepElegant"] .wallet-budget-control,
+html body[data-theme="deepElegant"] .wallet-budget-limit,
+html body[data-theme="deepElegant"] .wallet-budget-allocation,
+html body[data-theme="deepElegant"] .wallet-budget-report,
+html:root body[data-theme="deepElegant"] .wallet-budget-card,
+html:root body[data-theme="deepElegant"] .wallet-budget-item,
+html:root body[data-theme="deepElegant"] .wallet-budget-category,
+html:root body[data-theme="deepElegant"] .wallet-budget-overview,
+html:root body[data-theme="deepElegant"] .wallet-budget-summary,
+html:root body[data-theme="deepElegant"] .wallet-budget-progress,
+html:root body[data-theme="deepElegant"] .wallet-budget-analysis,
+html:root body[data-theme="deepElegant"] .wallet-budget-planning,
+html:root body[data-theme="deepElegant"] .wallet-budget-tracking,
+html:root body[data-theme="deepElegant"] .wallet-budget-control,
+html:root body[data-theme="deepElegant"] .wallet-budget-limit,
+html:root body[data-theme="deepElegant"] .wallet-budget-allocation,
+html:root body[data-theme="deepElegant"] .wallet-budget-report {
+    background: linear-gradient(135deg, #4a3c8c 0%, #2d1b69 50%, #4a3c8c 100%) !important;
+    border: 2px solid rgba(74, 60, 140, 0.6) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(74, 60, 140, 0.4) !important;
+    backdrop-filter: blur(15px) !important;
+    color: var(--color-text-primary) !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.3)) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 10 !important;
+}
+
+/* 錢包預算卡片標題 - 金色漸層 - 最高優先級 */
+html body[data-theme="deepElegant"] .wallet-budget-card h1,
+html body[data-theme="deepElegant"] .wallet-budget-card h2,
+html body[data-theme="deepElegant"] .wallet-budget-card h3,
+html body[data-theme="deepElegant"] .wallet-budget-card h4,
+html body[data-theme="deepElegant"] .wallet-budget-card h5,
+html body[data-theme="deepElegant"] .wallet-budget-card h6,
+html body[data-theme="deepElegant"] .wallet-budget-item h1,
+html body[data-theme="deepElegant"] .wallet-budget-item h2,
+html body[data-theme="deepElegant"] .wallet-budget-item h3,
+html body[data-theme="deepElegant"] .wallet-budget-item h4,
+html body[data-theme="deepElegant"] .wallet-budget-item h5,
+html body[data-theme="deepElegant"] .wallet-budget-item h6,
+html body[data-theme="deepElegant"] .wallet-budget-category h1,
+html body[data-theme="deepElegant"] .wallet-budget-category h2,
+html body[data-theme="deepElegant"] .wallet-budget-category h3,
+html body[data-theme="deepElegant"] .wallet-budget-category h4,
+html body[data-theme="deepElegant"] .wallet-budget-category h5,
+html body[data-theme="deepElegant"] .wallet-budget-category h6,
+html body[data-theme="deepElegant"] .wallet-budget-overview h1,
+html body[data-theme="deepElegant"] .wallet-budget-overview h2,
+html body[data-theme="deepElegant"] .wallet-budget-overview h3,
+html body[data-theme="deepElegant"] .wallet-budget-overview h4,
+html body[data-theme="deepElegant"] .wallet-budget-overview h5,
+html body[data-theme="deepElegant"] .wallet-budget-overview h6,
+html body[data-theme="deepElegant"] .wallet-budget-summary h1,
+html body[data-theme="deepElegant"] .wallet-budget-summary h2,
+html body[data-theme="deepElegant"] .wallet-budget-summary h3,
+html body[data-theme="deepElegant"] .wallet-budget-summary h4,
+html body[data-theme="deepElegant"] .wallet-budget-summary h5,
+html body[data-theme="deepElegant"] .wallet-budget-summary h6,
+html body[data-theme="deepElegant"] .wallet-budget-progress h1,
+html body[data-theme="deepElegant"] .wallet-budget-progress h2,
+html body[data-theme="deepElegant"] .wallet-budget-progress h3,
+html body[data-theme="deepElegant"] .wallet-budget-progress h4,
+html body[data-theme="deepElegant"] .wallet-budget-progress h5,
+html body[data-theme="deepElegant"] .wallet-budget-progress h6,
+html body[data-theme="deepElegant"] .wallet-budget-analysis h1,
+html body[data-theme="deepElegant"] .wallet-budget-analysis h2,
+html body[data-theme="deepElegant"] .wallet-budget-analysis h3,
+html body[data-theme="deepElegant"] .wallet-budget-analysis h4,
+html body[data-theme="deepElegant"] .wallet-budget-analysis h5,
+html body[data-theme="deepElegant"] .wallet-budget-analysis h6,
+html body[data-theme="deepElegant"] .wallet-budget-planning h1,
+html body[data-theme="deepElegant"] .wallet-budget-planning h2,
+html body[data-theme="deepElegant"] .wallet-budget-planning h3,
+html body[data-theme="deepElegant"] .wallet-budget-planning h4,
+html body[data-theme="deepElegant"] .wallet-budget-planning h5,
+html body[data-theme="deepElegant"] .wallet-budget-planning h6,
+html body[data-theme="deepElegant"] .wallet-budget-tracking h1,
+html body[data-theme="deepElegant"] .wallet-budget-tracking h2,
+html body[data-theme="deepElegant"] .wallet-budget-tracking h3,
+html body[data-theme="deepElegant"] .wallet-budget-tracking h4,
+html body[data-theme="deepElegant"] .wallet-budget-tracking h5,
+html body[data-theme="deepElegant"] .wallet-budget-tracking h6,
+html body[data-theme="deepElegant"] .wallet-budget-control h1,
+html body[data-theme="deepElegant"] .wallet-budget-control h2,
+html body[data-theme="deepElegant"] .wallet-budget-control h3,
+html body[data-theme="deepElegant"] .wallet-budget-control h4,
+html body[data-theme="deepElegant"] .wallet-budget-control h5,
+html body[data-theme="deepElegant"] .wallet-budget-control h6,
+html body[data-theme="deepElegant"] .wallet-budget-limit h1,
+html body[data-theme="deepElegant"] .wallet-budget-limit h2,
+html body[data-theme="deepElegant"] .wallet-budget-limit h3,
+html body[data-theme="deepElegant"] .wallet-budget-limit h4,
+html body[data-theme="deepElegant"] .wallet-budget-limit h5,
+html body[data-theme="deepElegant"] .wallet-budget-limit h6,
+html body[data-theme="deepElegant"] .wallet-budget-allocation h1,
+html body[data-theme="deepElegant"] .wallet-budget-allocation h2,
+html body[data-theme="deepElegant"] .wallet-budget-allocation h3,
+html body[data-theme="deepElegant"] .wallet-budget-allocation h4,
+html body[data-theme="deepElegant"] .wallet-budget-allocation h5,
+html body[data-theme="deepElegant"] .wallet-budget-allocation h6,
+html body[data-theme="deepElegant"] .wallet-budget-report h1,
+html body[data-theme="deepElegant"] .wallet-budget-report h2,
+html body[data-theme="deepElegant"] .wallet-budget-report h3,
+html body[data-theme="deepElegant"] .wallet-budget-report h4,
+html body[data-theme="deepElegant"] .wallet-budget-report h5,
+html body[data-theme="deepElegant"] .wallet-budget-report h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-card h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-card h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-card h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-card h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-card h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-card h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-item h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-item h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-item h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-item h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-item h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-item h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-category h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-category h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-category h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-category h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-category h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-category h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-overview h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-overview h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-overview h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-overview h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-overview h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-overview h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-summary h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-summary h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-summary h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-summary h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-summary h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-summary h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-progress h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-progress h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-progress h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-progress h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-progress h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-progress h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-analysis h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-analysis h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-analysis h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-analysis h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-analysis h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-analysis h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-planning h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-planning h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-planning h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-planning h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-planning h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-planning h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-tracking h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-tracking h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-tracking h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-tracking h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-tracking h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-tracking h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-control h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-control h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-control h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-control h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-control h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-control h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-limit h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-limit h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-limit h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-limit h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-limit h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-limit h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-allocation h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-allocation h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-allocation h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-allocation h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-allocation h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-allocation h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-report h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-report h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-report h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-report h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-report h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-report h6 {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3)) !important;
+    margin: 8px 0 !important;
+    padding: 4px 8px !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 投資專區我的持股股票名字 - 金色文字 - 最高優先級 */
+html body[data-theme="deepElegant"] .stock-name,
+html body[data-theme="deepElegant"] .stock-code,
+html body[data-theme="deepElegant"] .modal-stock-name,
+html body[data-theme="deepElegant"] .modal-stock-code,
+html:root body[data-theme="deepElegant"] .stock-name,
+html:root body[data-theme="deepElegant"] .stock-code,
+html:root body[data-theme="deepElegant"] .modal-stock-name,
+html:root body[data-theme="deepElegant"] .modal-stock-code {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 600 !important;
+    font-size: 1.1em !important;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3)) !important;
+    margin: 4px 0 !important;
+    padding: 2px 4px !important;
+    position: relative !important;
+    z-index: 2 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* 投資專區我的持股股票名字懸停效果 - 最高優先級 */
+html body[data-theme="deepElegant"] .stock-name:hover,
+html body[data-theme="deepElegant"] .stock-code:hover,
+html body[data-theme="deepElegant"] .modal-stock-name:hover,
+html body[data-theme="deepElegant"] .modal-stock-code:hover,
+html:root body[data-theme="deepElegant"] .stock-name:hover,
+html:root body[data-theme="deepElegant"] .stock-code:hover,
+html:root body[data-theme="deepElegant"] .modal-stock-name:hover,
+html:root body[data-theme="deepElegant"] .modal-stock-code:hover {
+    background: linear-gradient(135deg, #FFD700 0%, #FFB347 50%, #FFD700 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-weight: 700 !important;
+    font-size: 1.2em !important;
+    text-shadow: 0 3px 6px rgba(255, 215, 0, 0.4) !important;
+    filter: drop-shadow(0 3px 6px rgba(255, 215, 0, 0.4)) !important;
+    transform: translateY(-1px) !important;
+}
+html body[data-theme="deepElegant"] .wallet-budget-card *,
+html body[data-theme="deepElegant"] .wallet-budget-item *,
+html body[data-theme="deepElegant"] .wallet-budget-category *,
+html body[data-theme="deepElegant"] .wallet-budget-overview *,
+html body[data-theme="deepElegant"] .wallet-budget-summary *,
+html body[data-theme="deepElegant"] .wallet-budget-progress *,
+html body[data-theme="deepElegant"] .wallet-budget-analysis *,
+html body[data-theme="deepElegant"] .wallet-budget-planning *,
+html body[data-theme="deepElegant"] .wallet-budget-tracking *,
+html body[data-theme="deepElegant"] .wallet-budget-control *,
+html body[data-theme="deepElegant"] .wallet-budget-limit *,
+html body[data-theme="deepElegant"] .wallet-budget-allocation *,
+html body[data-theme="deepElegant"] .wallet-budget-report *,
+html:root body[data-theme="deepElegant"] .wallet-budget-card *,
+html:root body[data-theme="deepElegant"] .wallet-budget-item *,
+html:root body[data-theme="deepElegant"] .wallet-budget-category *,
+html:root body[data-theme="deepElegant"] .wallet-budget-overview *,
+html:root body[data-theme="deepElegant"] .wallet-budget-summary *,
+html:root body[data-theme="deepElegant"] .wallet-budget-progress *,
+html:root body[data-theme="deepElegant"] .wallet-budget-analysis *,
+html:root body[data-theme="deepElegant"] .wallet-budget-planning *,
+html:root body[data-theme="deepElegant"] .wallet-budget-tracking *,
+html:root body[data-theme="deepElegant"] .wallet-budget-control *,
+html:root body[data-theme="deepElegant"] .wallet-budget-limit *,
+html:root body[data-theme="deepElegant"] .wallet-budget-allocation *,
+html:root body[data-theme="deepElegant"] .wallet-budget-report * {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.3)) !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+html body[data-theme="deepElegant"] .wallet-budget,
+html body[data-theme="deepElegant"] .wallet-budget *,
+html:root body[data-theme="deepElegant"] .wallet-budget,
+html:root body[data-theme="deepElegant"] .wallet-budget * {
+    background: #9b88d1 !important;
+    border: 2px solid rgba(74, 60, 140, 0.6) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(74, 60, 140, 0.4) !important;
+    backdrop-filter: blur(15px) !important;
+    color: var(--color-text-primary) !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.3)) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 10 !important;
+}
+
+/* 預算設定頁面標題 - 金色漸層 - 最高優先級 */
+html body[data-theme="deepElegant"] .wallet-budget h1,
+html body[data-theme="deepElegant"] .wallet-budget h2,
+html body[data-theme="deepElegant"] .wallet-budget h3,
+html body[data-theme="deepElegant"] .wallet-budget h4,
+html body[data-theme="deepElegant"] .wallet-budget h5,
+html body[data-theme="deepElegant"] .wallet-budget h6,
+html body[data-theme="deepElegant"] .wallet-budget .budget-title,
+html:root body[data-theme="deepElegant"] .wallet-budget h1,
+html:root body[data-theme="deepElegant"] .wallet-budget h2,
+html:root body[data-theme="deepElegant"] .wallet-budget h3,
+html:root body[data-theme="deepElegant"] .wallet-budget h4,
+html:root body[data-theme="deepElegant"] .wallet-budget h5,
+html:root body[data-theme="deepElegant"] .wallet-budget h6,
+html:root body[data-theme="deepElegant"] .wallet-budget .budget-title {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3)) !important;
+    margin: 8px 0 !important;
+    padding: 4px 8px !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 預算設定頁面內容文字 - 金色漸層 - 最高優先級 */
+html body[data-theme="deepElegant"] .wallet-budget *,
+html:root body[data-theme="deepElegant"] .wallet-budget * {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.3)) !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 預算設定頁面摘要 - 不透明樣式 - 最高優先級 */
+html body[data-theme="deepElegant"] .wallet-budget .budget-summary,
+html body[data-theme="deepElegant"] .wallet-budget .budget-summary *,
+html:root body[data-theme="deepElegant"] .wallet-budget .budget-summary,
+html:root body[data-theme="deepElegant"] .wallet-budget .budget-summary * {
+    background: #9b88d1 !important;
+    border: 2px solid rgba(74, 60, 140, 0.6) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(74, 60, 140, 0.4) !important;
+    backdrop-filter: blur(15px) !important;
+    color: var(--color-text-primary) !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.3)) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 10 !important;
+}
+
+/* 預算設定頁面摘要項目 - 金色文字 - 最高優先級 */
+html body[data-theme="deepElegant"] .wallet-budget .budget-summary-item,
+html body[data-theme="deepElegant"] .wallet-budget .budget-summary-item *,
+html:root body[data-theme="deepElegant"] .wallet-budget .budget-summary-item,
+html:root body[data-theme="deepElegant"] .wallet-budget .budget-summary-item * {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.3)) !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 預算設定頁面列表 - 不透明樣式 - 最高優先級 */
+html body[data-theme="deepElegant"] .wallet-budget .budget-list,
+html body[data-theme="deepElegant"] .wallet-budget .budget-list *,
+html:root body[data-theme="deepElegant"] .wallet-budget .budget-list,
+html:root body[data-theme="deepElegant"] .wallet-budget .budget-list * {
+    background: #9b88d1 !important;
+    border: 2px solid rgba(74, 60, 140, 0.6) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(74, 60, 140, 0.4) !important;
+    backdrop-filter: blur(15px) !important;
+    color: var(--color-text-primary) !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.3)) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 10 !important;
+}
+
+/* 預算設定頁面列表項目 - 金色文字 - 最高優先級 */
+html body[data-theme="deepElegant"] .wallet-budget .budget-list-item,
+html body[data-theme="deepElegant"] .wallet-budget .budget-list-item *,
+html:root body[data-theme="deepElegant"] .wallet-budget .budget-list-item,
+html:root body[data-theme="deepElegant"] .wallet-budget .budget-list-item * {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.3)) !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 預算卡片標題 - 金色漸層 - 最高優先級 */
+html body[data-theme="deepElegant"] .budget-card h1,
+html body[data-theme="deepElegant"] .budget-card h2,
+html body[data-theme="deepElegant"] .budget-card h3,
+html body[data-theme="deepElegant"] .budget-card h4,
+html body[data-theme="deepElegant"] .budget-card h5,
+html body[data-theme="deepElegant"] .budget-card h6,
+html body[data-theme="deepElegant"] .budget-setting-card h1,
+html body[data-theme="deepElegant"] .budget-setting-card h2,
+html body[data-theme="deepElegant"] .budget-setting-card h3,
+html body[data-theme="deepElegant"] .budget-setting-card h4,
+html body[data-theme="deepElegant"] .budget-setting-card h5,
+html body[data-theme="deepElegant"] .budget-setting-card h6,
+html body[data-theme="deepElegant"] .budget-item-card h1,
+html body[data-theme="deepElegant"] .budget-item-card h2,
+html body[data-theme="deepElegant"] .budget-item-card h3,
+html body[data-theme="deepElegant"] .budget-item-card h4,
+html body[data-theme="deepElegant"] .budget-item-card h5,
+html body[data-theme="deepElegant"] .budget-item-card h6,
+html:root body[data-theme="deepElegant"] .budget-card h1,
+html:root body[data-theme="deepElegant"] .budget-card h2,
+html:root body[data-theme="deepElegant"] .budget-card h3,
+html:root body[data-theme="deepElegant"] .budget-card h4,
+html:root body[data-theme="deepElegant"] .budget-card h5,
+html:root body[data-theme="deepElegant"] .budget-card h6,
+html:root body[data-theme="deepElegant"] .budget-setting-card h1,
+html:root body[data-theme="deepElegant"] .budget-setting-card h2,
+html:root body[data-theme="deepElegant"] .budget-setting-card h3,
+html:root body[data-theme="deepElegant"] .budget-setting-card h4,
+html:root body[data-theme="deepElegant"] .budget-setting-card h5,
+html:root body[data-theme="deepElegant"] .budget-setting-card h6,
+html:root body[data-theme="deepElegant"] .budget-item-card h1,
+html:root body[data-theme="deepElegant"] .budget-item-card h2,
+html:root body[data-theme="deepElegant"] .budget-item-card h3,
+html:root body[data-theme="deepElegant"] .budget-item-card h4,
+html:root body[data-theme="deepElegant"] .budget-item-card h5,
+html:root body[data-theme="deepElegant"] .budget-item-card h6,
+html body[data-theme="deepElegant"] .wallet-budget h1,
+html body[data-theme="deepElegant"] .wallet-budget h2,
+html body[data-theme="deepElegant"] .wallet-budget h3,
+html body[data-theme="deepElegant"] .wallet-budget h4,
+html body[data-theme="deepElegant"] .wallet-budget h5,
+html body[data-theme="deepElegant"] .wallet-budget h6,
+html body[data-theme="deepElegant"] .wallet-budget-card h1,
+html body[data-theme="deepElegant"] .wallet-budget-card h2,
+html body[data-theme="deepElegant"] .wallet-budget-card h3,
+html body[data-theme="deepElegant"] .wallet-budget-card h4,
+html body[data-theme="deepElegant"] .wallet-budget-card h5,
+html body[data-theme="deepElegant"] .wallet-budget-card h6,
+html body[data-theme="deepElegant"] .wallet-budget-setting h1,
+html body[data-theme="deepElegant"] .wallet-budget-setting h2,
+html body[data-theme="deepElegant"] .wallet-budget-setting h3,
+html body[data-theme="deepElegant"] .wallet-budget-setting h4,
+html body[data-theme="deepElegant"] .wallet-budget-setting h5,
+html body[data-theme="deepElegant"] .wallet-budget-setting h6,
+html body[data-theme="deepElegant"] .wallet-budget-config h1,
+html body[data-theme="deepElegant"] .wallet-budget-config h2,
+html body[data-theme="deepElegant"] .wallet-budget-config h3,
+html body[data-theme="deepElegant"] .wallet-budget-config h4,
+html body[data-theme="deepElegant"] .wallet-budget-config h5,
+html body[data-theme="deepElegant"] .wallet-budget-config h6,
+html body[data-theme="deepElegant"] .wallet-budget-management h1,
+html body[data-theme="deepElegant"] .wallet-budget-management h2,
+html body[data-theme="deepElegant"] .wallet-budget-management h3,
+html body[data-theme="deepElegant"] .wallet-budget-management h4,
+html body[data-theme="deepElegant"] .wallet-budget-management h5,
+html body[data-theme="deepElegant"] .wallet-budget-management h6,
+html:root body[data-theme="deepElegant"] .wallet-budget h1,
+html:root body[data-theme="deepElegant"] .wallet-budget h2,
+html:root body[data-theme="deepElegant"] .wallet-budget h3,
+html:root body[data-theme="deepElegant"] .wallet-budget h4,
+html:root body[data-theme="deepElegant"] .wallet-budget h5,
+html:root body[data-theme="deepElegant"] .wallet-budget h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-card h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-card h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-card h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-card h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-card h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-card h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-setting h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-setting h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-setting h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-setting h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-setting h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-setting h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-config h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-config h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-config h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-config h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-config h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-config h6,
+html:root body[data-theme="deepElegant"] .wallet-budget-management h1,
+html:root body[data-theme="deepElegant"] .wallet-budget-management h2,
+html:root body[data-theme="deepElegant"] .wallet-budget-management h3,
+html:root body[data-theme="deepElegant"] .wallet-budget-management h4,
+html:root body[data-theme="deepElegant"] .wallet-budget-management h5,
+html:root body[data-theme="deepElegant"] .wallet-budget-management h6 {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3)) !important;
+    margin: 8px 0 !important;
+    padding: 4px 8px !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 預算卡片內容文字 - 金色漸層 - 最高優先級 */
+html body[data-theme="deepElegant"] .budget-card *,
+html body[data-theme="deepElegant"] .budget-setting-card *,
+html body[data-theme="deepElegant"] .budget-item-card *,
+html body[data-theme="deepElegant"] .budget-category-card *,
+html body[data-theme="deepElegant"] .budget-overview-card *,
+html body[data-theme="deepElegant"] .budget-summary-card *,
+html body[data-theme="deepElegant"] .budget-progress-card *,
+html body[data-theme="deepElegant"] .budget-analysis-card *,
+html body[data-theme="deepElegant"] .budget-planning-card *,
+html body[data-theme="deepElegant"] .budget-tracking-card *,
+html:root body[data-theme="deepElegant"] .budget-card *,
+html:root body[data-theme="deepElegant"] .budget-setting-card *,
+html:root body[data-theme="deepElegant"] .budget-item-card *,
+html:root body[data-theme="deepElegant"] .budget-category-card *,
+html:root body[data-theme="deepElegant"] .budget-overview-card *,
+html:root body[data-theme="deepElegant"] .budget-summary-card *,
+html:root body[data-theme="deepElegant"] .budget-progress-card *,
+html:root body[data-theme="deepElegant"] .budget-analysis-card *,
+html:root body[data-theme="deepElegant"] .budget-planning-card *,
+html:root body[data-theme="deepElegant"] .budget-tracking-card *,
+html body[data-theme="deepElegant"] .wallet-budget *,
+html body[data-theme="deepElegant"] .wallet-budget-card *,
+html body[data-theme="deepElegant"] .wallet-budget-setting *,
+html body[data-theme="deepElegant"] .wallet-budget-config *,
+html body[data-theme="deepElegant"] .wallet-budget-management *,
+html body[data-theme="deepElegant"] .wallet-budget-planner *,
+html body[data-theme="deepElegant"] .wallet-budget-overview *,
+html body[data-theme="deepElegant"] .wallet-budget-summary *,
+html body[data-theme="deepElegant"] .wallet-budget-item *,
+html body[data-theme="deepElegant"] .wallet-budget-category *,
+html body[data-theme="deepElegant"] .wallet-budget-progress *,
+html body[data-theme="deepElegant"] .wallet-budget-analysis *,
+html body[data-theme="deepElegant"] .wallet-budget-tracking *,
+html body[data-theme="deepElegant"] .wallet-budget-control *,
+html body[data-theme="deepElegant"] .wallet-budget-limit *,
+html body[data-theme="deepElegant"] .wallet-budget-allocation *,
+html body[data-theme="deepElegant"] .wallet-budget-report *,
+html:root body[data-theme="deepElegant"] .wallet-budget *,
+html:root body[data-theme="deepElegant"] .wallet-budget-card *,
+html:root body[data-theme="deepElegant"] .wallet-budget-setting *,
+html:root body[data-theme="deepElegant"] .wallet-budget-config *,
+html:root body[data-theme="deepElegant"] .wallet-budget-management *,
+html:root body[data-theme="deepElegant"] .wallet-budget-planner *,
+html:root body[data-theme="deepElegant"] .wallet-budget-overview *,
+html:root body[data-theme="deepElegant"] .wallet-budget-summary *,
+html:root body[data-theme="deepElegant"] .wallet-budget-item *,
+html:root body[data-theme="deepElegant"] .wallet-budget-category *,
+html:root body[data-theme="deepElegant"] .wallet-budget-progress *,
+html:root body[data-theme="deepElegant"] .wallet-budget-analysis *,
+html:root body[data-theme="deepElegant"] .wallet-budget-tracking *,
+html:root body[data-theme="deepElegant"] .wallet-budget-control *,
+html:root body[data-theme="deepElegant"] .wallet-budget-limit *,
+html:root body[data-theme="deepElegant"] .wallet-budget-allocation *,
+html:root body[data-theme="deepElegant"] .wallet-budget-report * {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.3)) !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 預算卡片懸停效果 - 最高優先級 */
+html body[data-theme="deepElegant"] .budget-card:hover,
+html body[data-theme="deepElegant"] .budget-setting-card:hover,
+html body[data-theme="deepElegant"] .budget-item-card:hover,
+html body[data-theme="deepElegant"] .budget-category-card:hover,
+html body[data-theme="deepElegant"] .budget-overview-card:hover,
+html body[data-theme="deepElegant"] .budget-summary-card:hover,
+html body[data-theme="deepElegant"] .budget-progress-card:hover,
+html body[data-theme="deepElegant"] .budget-analysis-card:hover,
+html body[data-theme="deepElegant"] .budget-planning-card:hover,
+html body[data-theme="deepElegant"] .budget-tracking-card:hover,
+html:root body[data-theme="deepElegant"] .budget-card:hover,
+html:root body[data-theme="deepElegant"] .budget-setting-card:hover,
+html:root body[data-theme="deepElegant"] .budget-item-card:hover,
+html:root body[data-theme="deepElegant"] .budget-category-card:hover,
+html:root body[data-theme="deepElegant"] .budget-overview-card:hover,
+html:root body[data-theme="deepElegant"] .budget-summary-card:hover,
+html:root body[data-theme="deepElegant"] .budget-progress-card:hover,
+html:root body[data-theme="deepElegant"] .budget-analysis-card:hover,
+html:root body[data-theme="deepElegant"] .budget-planning-card:hover,
+html:root body[data-theme="deepElegant"] .budget-tracking-card:hover {
+    background: linear-gradient(135deg, #b8a8e8 0%, #a898d8 50%, #b8a8e8 100%) !important;
+    border-color: rgba(255, 215, 0, 0.6) !important;
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 12px 40px rgba(74, 60, 140, 0.5) !important;
+}
+
+/* 預算卡片按鈕 - 紫色底金色字體 - 最高優先級 */
+html body[data-theme="deepElegant"] .budget-card button,
+html body[data-theme="deepElegant"] .budget-setting-card button,
+html body[data-theme="deepElegant"] .budget-item-card button,
+html body[data-theme="deepElegant"] .budget-category-card button,
+html body[data-theme="deepElegant"] .budget-overview-card button,
+html body[data-theme="deepElegant"] .budget-summary-card button,
+html body[data-theme="deepElegant"] .budget-progress-card button,
+html body[data-theme="deepElegant"] .budget-analysis-card button,
+html body[data-theme="deepElegant"] .budget-planning-card button,
+html body[data-theme="deepElegant"] .budget-tracking-card button,
+html:root body[data-theme="deepElegant"] .budget-card button,
+html:root body[data-theme="deepElegant"] .budget-setting-card button,
+html:root body[data-theme="deepElegant"] .budget-item-card button,
+html:root body[data-theme="deepElegant"] .budget-category-card button,
+html:root body[data-theme="deepElegant"] .budget-overview-card button,
+html:root body[data-theme="deepElegant"] .budget-summary-card button,
+html:root body[data-theme="deepElegant"] .budget-progress-card button,
+html:root body[data-theme="deepElegant"] .budget-analysis-card button,
+html:root body[data-theme="deepElegant"] .budget-planning-card button,
+html:root body[data-theme="deepElegant"] .budget-tracking-card button {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 50%, var(--color-accent) 100%) !important;
+    border: 2px solid var(--border-accent) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--shadow-medium) !important;
+    backdrop-filter: blur(10px) !important;
+    color: transparent !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.4) !important;
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.4)) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 10 !important;
+}
+
+/* 預算卡片按鈕懸停效果 - 最高優先級 */
+html body[data-theme="deepElegant"] .budget-card button:hover,
+html body[data-theme="deepElegant"] .budget-setting-card button:hover,
+html body[data-theme="deepElegant"] .budget-item-card button:hover,
+html body[data-theme="deepElegant"] .budget-category-card button:hover,
+html body[data-theme="deepElegant"] .budget-overview-card button:hover,
+html body[data-theme="deepElegant"] .budget-summary-card button:hover,
+html body[data-theme="deepElegant"] .budget-progress-card button:hover,
+html body[data-theme="deepElegant"] .budget-analysis-card button:hover,
+html body[data-theme="deepElegant"] .budget-planning-card button:hover,
+html body[data-theme="deepElegant"] .budget-tracking-card button:hover,
+html:root body[data-theme="deepElegant"] .budget-card button:hover,
+html:root body[data-theme="deepElegant"] .budget-setting-card button:hover,
+html:root body[data-theme="deepElegant"] .budget-item-card button:hover,
+html:root body[data-theme="deepElegant"] .budget-category-card button:hover,
+html:root body[data-theme="deepElegant"] .budget-overview-card button:hover,
+html:root body[data-theme="deepElegant"] .budget-summary-card button:hover,
+html:root body[data-theme="deepElegant"] .budget-progress-card button:hover,
+html:root body[data-theme="deepElegant"] .budget-analysis-card button:hover,
+html:root body[data-theme="deepElegant"] .budget-planning-card button:hover,
+html:root body[data-theme="deepElegant"] .budget-tracking-card button:hover {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 50%, var(--color-accent) 100%) !important;
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 8px 32px rgba(74, 60, 140, 0.4) !important;
+    border-color: rgba(255, 215, 0, 0.6) !important;
+}
+
+/* 預算卡片輸入框 - 不透明淺紫色 - 最高優先級 */
+html body[data-theme="deepElegant"] .budget-card input,
+html body[data-theme="deepElegant"] .budget-setting-card input,
+html body[data-theme="deepElegant"] .budget-item-card input,
+html body[data-theme="deepElegant"] .budget-category-card input,
+html body[data-theme="deepElegant"] .budget-overview-card input,
+html body[data-theme="deepElegant"] .budget-summary-card input,
+html body[data-theme="deepElegant"] .budget-progress-card input,
+html body[data-theme="deepElegant"] .budget-analysis-card input,
+html body[data-theme="deepElegant"] .budget-planning-card input,
+html body[data-theme="deepElegant"] .budget-tracking-card input,
+html body[data-theme="deepElegant"] .budget-card textarea,
+html body[data-theme="deepElegant"] .budget-setting-card textarea,
+html body[data-theme="deepElegant"] .budget-item-card textarea,
+html body[data-theme="deepElegant"] .budget-category-card textarea,
+html body[data-theme="deepElegant"] .budget-overview-card textarea,
+html body[data-theme="deepElegant"] .budget-summary-card textarea,
+html body[data-theme="deepElegant"] .budget-progress-card textarea,
+html body[data-theme="deepElegant"] .budget-analysis-card textarea,
+html body[data-theme="deepElegant"] .budget-planning-card textarea,
+html body[data-theme="deepElegant"] .budget-tracking-card textarea,
+html:root body[data-theme="deepElegant"] .budget-card input,
+html:root body[data-theme="deepElegant"] .budget-setting-card input,
+html:root body[data-theme="deepElegant"] .budget-item-card input,
+html:root body[data-theme="deepElegant"] .budget-category-card input,
+html:root body[data-theme="deepElegant"] .budget-overview-card input,
+html:root body[data-theme="deepElegant"] .budget-summary-card input,
+html:root body[data-theme="deepElegant"] .budget-progress-card input,
+html:root body[data-theme="deepElegant"] .budget-analysis-card input,
+html:root body[data-theme="deepElegant"] .budget-planning-card input,
+html:root body[data-theme="deepElegant"] .budget-tracking-card input,
+html:root body[data-theme="deepElegant"] .budget-card textarea,
+html:root body[data-theme="deepElegant"] .budget-setting-card textarea,
+html:root body[data-theme="deepElegant"] .budget-item-card textarea,
+html:root body[data-theme="deepElegant"] .budget-category-card textarea,
+html:root body[data-theme="deepElegant"] .budget-overview-card textarea,
+html:root body[data-theme="deepElegant"] .budget-summary-card textarea,
+html:root body[data-theme="deepElegant"] .budget-progress-card textarea,
+html:root body[data-theme="deepElegant"] .budget-analysis-card textarea,
+html:root body[data-theme="deepElegant"] .budget-planning-card textarea,
+html:root body[data-theme="deepElegant"] .budget-tracking-card textarea {
+    background: linear-gradient(135deg, #c8b8e8 0%, #b8a8d8 50%, #c8b8e8 100%) !important;
+    border: 1px solid rgba(74, 60, 140, 0.6) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 16px rgba(74, 60, 140, 0.3) !important;
+    backdrop-filter: blur(8px) !important;
+    color: var(--color-text-primary) !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.3)) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 預算卡片輸入框懸停效果 - 最高優先級 */
+html body[data-theme="deepElegant"] .budget-card input:hover,
+html body[data-theme="deepElegant"] .budget-setting-card input:hover,
+html body[data-theme="deepElegant"] .budget-item-card input:hover,
+html body[data-theme="deepElegant"] .budget-category-card input:hover,
+html body[data-theme="deepElegant"] .budget-overview-card input:hover,
+html body[data-theme="deepElegant"] .budget-summary-card input:hover,
+html body[data-theme="deepElegant"] .budget-progress-card input:hover,
+html body[data-theme="deepElegant"] .budget-analysis-card input:hover,
+html body[data-theme="deepElegant"] .budget-planning-card input:hover,
+html body[data-theme="deepElegant"] .budget-tracking-card input:hover,
+html body[data-theme="deepElegant"] .budget-card textarea:hover,
+html body[data-theme="deepElegant"] .budget-setting-card textarea:hover,
+html body[data-theme="deepElegant"] .budget-item-card textarea:hover,
+html body[data-theme="deepElegant"] .budget-category-card textarea:hover,
+html body[data-theme="deepElegant"] .budget-overview-card textarea:hover,
+html body[data-theme="deepElegant"] .budget-summary-card textarea:hover,
+html body[data-theme="deepElegant"] .budget-progress-card textarea:hover,
+html body[data-theme="deepElegant"] .budget-analysis-card textarea:hover,
+html body[data-theme="deepElegant"] .budget-planning-card textarea:hover,
+html body[data-theme="deepElegant"] .budget-tracking-card textarea:hover,
+html:root body[data-theme="deepElegant"] .budget-card input:hover,
+html:root body[data-theme="deepElegant"] .budget-setting-card input:hover,
+html:root body[data-theme="deepElegant"] .budget-item-card input:hover,
+html:root body[data-theme="deepElegant"] .budget-category-card input:hover,
+html:root body[data-theme="deepElegant"] .budget-overview-card input:hover,
+html:root body[data-theme="deepElegant"] .budget-summary-card input:hover,
+html:root body[data-theme="deepElegant"] .budget-progress-card input:hover,
+html:root body[data-theme="deepElegant"] .budget-analysis-card input:hover,
+html:root body[data-theme="deepElegant"] .budget-planning-card input:hover,
+html:root body[data-theme="deepElegant"] .budget-tracking-card input:hover,
+html:root body[data-theme="deepElegant"] .budget-card textarea:hover,
+html:root body[data-theme="deepElegant"] .budget-setting-card textarea:hover,
+html:root body[data-theme="deepElegant"] .budget-item-card textarea:hover,
+html:root body[data-theme="deepElegant"] .budget-category-card textarea:hover,
+html:root body[data-theme="deepElegant"] .budget-overview-card textarea:hover,
+html:root body[data-theme="deepElegant"] .budget-summary-card textarea:hover,
+html:root body[data-theme="deepElegant"] .budget-progress-card textarea:hover,
+html:root body[data-theme="deepElegant"] .budget-analysis-card textarea:hover,
+html:root body[data-theme="deepElegant"] .budget-planning-card textarea:hover,
+html:root body[data-theme="deepElegant"] .budget-tracking-card textarea:hover {
+    background: linear-gradient(135deg, #d8c8f8 0%, #c8b8e8 50%, #d8c8f8 100%) !important;
+    border-color: rgba(255, 215, 0, 0.4) !important;
+    box-shadow: 0 6px 24px rgba(74, 60, 140, 0.4) !important;
+}
+
+/* 預算卡片選擇框 - 不透明淺紫色 - 最高優先級 */
+html body[data-theme="deepElegant"] .budget-card select,
+html body[data-theme="deepElegant"] .budget-setting-card select,
+html body[data-theme="deepElegant"] .budget-item-card select,
+html body[data-theme="deepElegant"] .budget-category-card select,
+html body[data-theme="deepElegant"] .budget-overview-card select,
+html body[data-theme="deepElegant"] .budget-summary-card select,
+html body[data-theme="deepElegant"] .budget-progress-card select,
+html body[data-theme="deepElegant"] .budget-analysis-card select,
+html body[data-theme="deepElegant"] .budget-planning-card select,
+html body[data-theme="deepElegant"] .budget-tracking-card select,
+html:root body[data-theme="deepElegant"] .budget-card select,
+html:root body[data-theme="deepElegant"] .budget-setting-card select,
+html:root body[data-theme="deepElegant"] .budget-item-card select,
+html:root body[data-theme="deepElegant"] .budget-category-card select,
+html:root body[data-theme="deepElegant"] .budget-overview-card select,
+html:root body[data-theme="deepElegant"] .budget-summary-card select,
+html:root body[data-theme="deepElegant"] .budget-progress-card select,
+html:root body[data-theme="deepElegant"] .budget-analysis-card select,
+html:root body[data-theme="deepElegant"] .budget-planning-card select,
+html:root body[data-theme="deepElegant"] .budget-tracking-card select {
+    background: linear-gradient(135deg, #c8b8e8 0%, #b8a8d8 50%, #c8b8e8 100%) !important;
+    border: 1px solid rgba(74, 60, 140, 0.6) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 16px rgba(74, 60, 140, 0.3) !important;
+    backdrop-filter: blur(8px) !important;
+    color: var(--color-text-primary) !important;
+    font-family: var(--font-secondary) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3) !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.3)) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 響應式設計 - 預算卡片 */
+@media (max-width: 768px) {
+    html body[data-theme="deepElegant"] .budget-card,
+    html body[data-theme="deepElegant"] .budget-setting-card,
+    html body[data-theme="deepElegant"] .budget-item-card,
+    html:root body[data-theme="deepElegant"] .budget-card,
+    html:root body[data-theme="deepElegant"] .budget-setting-card,
+    html:root body[data-theme="deepElegant"] .budget-item-card {
+        margin: 8px 4px !important;
+        padding: 12px !important;
+        border-radius: 12px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    html body[data-theme="deepElegant"] .budget-card,
+    html body[data-theme="deepElegant"] .budget-setting-card,
+    html body[data-theme="deepElegant"] .budget-item-card,
+    html:root body[data-theme="deepElegant"] .budget-card,
+    html:root body[data-theme="deepElegant"] .budget-setting-card,
+    html:root body[data-theme="deepElegant"] .budget-item-card {
+        margin: 4px 2px !important;
+        padding: 8px !important;
+        border-radius: 8px !important;
+    }
+}
+
+/* 運算符號按鈕 - 紫色底金色字體 */
+:root[data-theme="deepElegant"] .calculator-page .operator,
+:root[data-theme="deepElegant"] .calculator-page .operator-btn,
+:root[data-theme="deepElegant"] .calculator-page .calc-operator,
+:root[data-theme="deepElegant"] .calculator-page .math-operator,
+:root[data-theme="deepElegant"] .calculator-page .operation-btn,
+:root[data-theme="deepElegant"] .calculator-page .plus,
+:root[data-theme="deepElegant"] .calculator-page .minus,
+:root[data-theme="deepElegant"] .calculator-page .multiply,
+:root[data-theme="deepElegant"] .calculator-page .divide,
+:root[data-theme="deepElegant"] .calculator-page .equals,
+:root[data-theme="deepElegant"] .calculator-page .clear,
+:root[data-theme="deepElegant"] .calculator-page .decimal,
+:root[data-theme="deepElegant"] .calculator-page .percent,
+:root[data-theme="deepElegant"] .keyboard-page .operator,
+:root[data-theme="deepElegant"] .keyboard-page .operator-btn,
+:root[data-theme="deepElegant"] .keyboard-page .calc-operator,
+:root[data-theme="deepElegant"] .keyboard-page .math-operator,
+:root[data-theme="deepElegant"] .keyboard-page .operation-btn,
+:root[data-theme="deepElegant"] .keyboard-page .plus,
+:root[data-theme="deepElegant"] .keyboard-page .minus,
+:root[data-theme="deepElegant"] .keyboard-page .multiply,
+:root[data-theme="deepElegant"] .keyboard-page .divide,
+:root[data-theme="deepElegant"] .keyboard-page .equals,
+:root[data-theme="deepElegant"] .keyboard-page .clear,
+:root[data-theme="deepElegant"] .keyboard-page .decimal,
+:root[data-theme="deepElegant"] .keyboard-page .percent,
+:root[data-theme="deepElegant"] .numeric-keyboard .operator,
+:root[data-theme="deepElegant"] .numeric-keyboard .operator-btn,
+:root[data-theme="deepElegant"] .numeric-keyboard .calc-operator,
+:root[data-theme="deepElegant"] .numeric-keyboard .math-operator,
+:root[data-theme="deepElegant"] .numeric-keyboard .operation-btn,
+:root[data-theme="deepElegant"] .numeric-keyboard .plus,
+:root[data-theme="deepElegant"] .numeric-keyboard .minus,
+:root[data-theme="deepElegant"] .numeric-keyboard .multiply,
+:root[data-theme="deepElegant"] .numeric-keyboard .divide,
+:root[data-theme="deepElegant"] .numeric-keyboard .equals,
+:root[data-theme="deepElegant"] .numeric-keyboard .clear,
+:root[data-theme="deepElegant"] .numeric-keyboard .decimal,
+:root[data-theme="deepElegant"] .numeric-keyboard .percent {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+    border: 2px solid var(--border-accent);
+    border-radius: 12px;
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(10px);
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.4);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.4));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+}
+
+/* 運算符號文字 - 金色漸層 */
+:root[data-theme="deepElegant"] .calculator-page .operator::before,
+:root[data-theme="deepElegant"] .calculator-page .operator-btn::before,
+:root[data-theme="deepElegant"] .calculator-page .calc-operator::before,
+:root[data-theme="deepElegant"] .calculator-page .math-operator::before,
+:root[data-theme="deepElegant"] .calculator-page .operation-btn::before,
+:root[data-theme="deepElegant"] .calculator-page .plus::before,
+:root[data-theme="deepElegant"] .calculator-page .minus::before,
+:root[data-theme="deepElegant"] .calculator-page .multiply::before,
+:root[data-theme="deepElegant"] .calculator-page .divide::before,
+:root[data-theme="deepElegant"] .calculator-page .equals::before,
+:root[data-theme="deepElegant"] .calculator-page .clear::before,
+:root[data-theme="deepElegant"] .calculator-page .decimal::before,
+:root[data-theme="deepElegant"] .calculator-page .percent::before,
+:root[data-theme="deepElegant"] .keyboard-page .operator::before,
+:root[data-theme="deepElegant"] .keyboard-page .operator-btn::before,
+:root[data-theme="deepElegant"] .keyboard-page .calc-operator::before,
+:root[data-theme="deepElegant"] .keyboard-page .math-operator::before,
+:root[data-theme="deepElegant"] .keyboard-page .operation-btn::before,
+:root[data-theme="deepElegant"] .keyboard-page .plus::before,
+:root[data-theme="deepElegant"] .keyboard-page .minus::before,
+:root[data-theme="deepElegant"] .keyboard-page .multiply::before,
+:root[data-theme="deepElegant"] .keyboard-page .divide::before,
+:root[data-theme="deepElegant"] .keyboard-page .equals::before,
+:root[data-theme="deepElegant"] .keyboard-page .clear::before,
+:root[data-theme="deepElegant"] .keyboard-page .decimal::before,
+:root[data-theme="deepElegant"] .keyboard-page .percent::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .operator::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .operator-btn::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .calc-operator::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .math-operator::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .operation-btn::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .plus::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .minus::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .multiply::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .divide::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .equals::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .clear::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .decimal::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .percent::before {
+    content: attr(data-operator);
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.4);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.4));
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* 運算符號懸停效果 */
+:root[data-theme="deepElegant"] .calculator-page .operator:hover,
+:root[data-theme="deepElegant"] .calculator-page .operator-btn:hover,
+:root[data-theme="deepElegant"] .calculator-page .calc-operator:hover,
+:root[data-theme="deepElegant"] .calculator-page .math-operator:hover,
+:root[data-theme="deepElegant"] .calculator-page .operation-btn:hover,
+:root[data-theme="deepElegant"] .calculator-page .plus:hover,
+:root[data-theme="deepElegant"] .calculator-page .minus:hover,
+:root[data-theme="deepElegant"] .calculator-page .multiply:hover,
+:root[data-theme="deepElegant"] .calculator-page .divide:hover,
+:root[data-theme="deepElegant"] .calculator-page .equals:hover,
+:root[data-theme="deepElegant"] .calculator-page .clear:hover,
+:root[data-theme="deepElegant"] .calculator-page .decimal:hover,
+:root[data-theme="deepElegant"] .calculator-page .percent:hover,
+:root[data-theme="deepElegant"] .keyboard-page .operator:hover,
+:root[data-theme="deepElegant"] .keyboard-page .operator-btn:hover,
+:root[data-theme="deepElegant"] .keyboard-page .calc-operator:hover,
+:root[data-theme="deepElegant"] .keyboard-page .math-operator:hover,
+:root[data-theme="deepElegant"] .keyboard-page .operation-btn:hover,
+:root[data-theme="deepElegant"] .keyboard-page .plus:hover,
+:root[data-theme="deepElegant"] .keyboard-page .minus:hover,
+:root[data-theme="deepElegant"] .keyboard-page .multiply:hover,
+:root[data-theme="deepElegant"] .keyboard-page .divide:hover,
+:root[data-theme="deepElegant"] .keyboard-page .equals:hover,
+:root[data-theme="deepElegant"] .keyboard-page .clear:hover,
+:root[data-theme="deepElegant"] .keyboard-page .decimal:hover,
+:root[data-theme="deepElegant"] .keyboard-page .percent:hover,
+:root[data-theme="deepElegant"] .numeric-keyboard .operator:hover,
+:root[data-theme="deepElegant"] .numeric-keyboard .operator-btn:hover,
+:root[data-theme="deepElegant"] .numeric-keyboard .calc-operator:hover,
+:root[data-theme="deepElegant"] .numeric-keyboard .math-operator:hover,
+:root[data-theme="deepElegant"] .numeric-keyboard .operation-btn:hover,
+:root[data-theme="deepElegant"] .numeric-keyboard .plus:hover,
+:root[data-theme="deepElegant"] .numeric-keyboard .minus:hover,
+:root[data-theme="deepElegant"] .numeric-keyboard .multiply:hover,
+:root[data-theme="deepElegant"] .numeric-keyboard .divide:hover,
+:root[data-theme="deepElegant"] .numeric-keyboard .equals:hover,
+:root[data-theme="deepElegant"] .numeric-keyboard .clear:hover,
+:root[data-theme="deepElegant"] .numeric-keyboard .decimal:hover,
+:root[data-theme="deepElegant"] .numeric-keyboard .percent:hover {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 50%, var(--color-accent) 100%);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 32px rgba(74, 60, 140, 0.4);
+    border-color: rgba(255, 215, 0, 0.6);
+}
+
+:root[data-theme="deepElegant"] .calculator-page .operator:hover::before,
+:root[data-theme="deepElegant"] .calculator-page .operator-btn:hover::before,
+:root[data-theme="deepElegant"] .calculator-page .calc-operator:hover::before,
+:root[data-theme="deepElegant"] .calculator-page .math-operator:hover::before,
+:root[data-theme="deepElegant"] .calculator-page .operation-btn:hover::before,
+:root[data-theme="deepElegant"] .calculator-page .plus:hover::before,
+:root[data-theme="deepElegant"] .calculator-page .minus:hover::before,
+:root[data-theme="deepElegant"] .calculator-page .multiply:hover::before,
+:root[data-theme="deepElegant"] .calculator-page .divide:hover::before,
+:root[data-theme="deepElegant"] .calculator-page .equals:hover::before,
+:root[data-theme="deepElegant"] .calculator-page .clear:hover::before,
+:root[data-theme="deepElegant"] .calculator-page .decimal:hover::before,
+:root[data-theme="deepElegant"] .calculator-page .percent:hover::before,
+:root[data-theme="deepElegant"] .keyboard-page .operator:hover::before,
+:root[data-theme="deepElegant"] .keyboard-page .operator-btn:hover::before,
+:root[data-theme="deepElegant"] .keyboard-page .calc-operator:hover::before,
+:root[data-theme="deepElegant"] .keyboard-page .math-operator:hover::before,
+:root[data-theme="deepElegant"] .keyboard-page .operation-btn:hover::before,
+:root[data-theme="deepElegant"] .keyboard-page .plus:hover::before,
+:root[data-theme="deepElegant"] .keyboard-page .minus:hover::before,
+:root[data-theme="deepElegant"] .keyboard-page .multiply:hover::before,
+:root[data-theme="deepElegant"] .keyboard-page .divide:hover::before,
+:root[data-theme="deepElegant"] .keyboard-page .equals:hover::before,
+:root[data-theme="deepElegant"] .keyboard-page .clear:hover::before,
+:root[data-theme="deepElegant"] .keyboard-page .decimal:hover::before,
+:root[data-theme="deepElegant"] .keyboard-page .percent:hover::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .operator:hover::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .operator-btn:hover::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .calc-operator:hover::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .math-operator:hover::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .operation-btn:hover::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .plus:hover::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .minus:hover::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .multiply:hover::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .divide:hover::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .equals:hover::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .clear:hover::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .decimal:hover::before,
+:root[data-theme="deepElegant"] .numeric-keyboard .percent:hover::before {
+    transform: translate(-50%, -50%) scale(1.1);
+    text-shadow: 0 4px 8px rgba(255, 215, 0, 0.6);
+    filter: drop-shadow(0 4px 8px rgba(255, 215, 0, 0.6));
+}
+
+/* 運算符號點擊效果 */
+:root[data-theme="deepElegant"] .calculator-page .operator:active,
+:root[data-theme="deepElegant"] .calculator-page .operator-btn:active,
+:root[data-theme="deepElegant"] .calculator-page .calc-operator:active,
+:root[data-theme="deepElegant"] .calculator-page .math-operator:active,
+:root[data-theme="deepElegant"] .calculator-page .operation-btn:active,
+:root[data-theme="deepElegant"] .calculator-page .plus:active,
+:root[data-theme="deepElegant"] .calculator-page .minus:active,
+:root[data-theme="deepElegant"] .calculator-page .multiply:active,
+:root[data-theme="deepElegant"] .calculator-page .divide:active,
+:root[data-theme="deepElegant"] .calculator-page .equals:active,
+:root[data-theme="deepElegant"] .calculator-page .clear:active,
+:root[data-theme="deepElegant"] .calculator-page .decimal:active,
+:root[data-theme="deepElegant"] .calculator-page .percent:active,
+:root[data-theme="deepElegant"] .keyboard-page .operator:active,
+:root[data-theme="deepElegant"] .keyboard-page .operator-btn:active,
+:root[data-theme="deepElegant"] .keyboard-page .calc-operator:active,
+:root[data-theme="deepElegant"] .keyboard-page .math-operator:active,
+:root[data-theme="deepElegant"] .keyboard-page .operation-btn:active,
+:root[data-theme="deepElegant"] .keyboard-page .plus:active,
+:root[data-theme="deepElegant"] .keyboard-page .minus:active,
+:root[data-theme="deepElegant"] .keyboard-page .multiply:active,
+:root[data-theme="deepElegant"] .keyboard-page .divide:active,
+:root[data-theme="deepElegant"] .keyboard-page .equals:active,
+:root[data-theme="deepElegant"] .keyboard-page .clear:active,
+:root[data-theme="deepElegant"] .keyboard-page .decimal:active,
+:root[data-theme="deepElegant"] .keyboard-page .percent:active,
+:root[data-theme="deepElegant"] .numeric-keyboard .operator:active,
+:root[data-theme="deepElegant"] .numeric-keyboard .operator-btn:active,
+:root[data-theme="deepElegant"] .numeric-keyboard .calc-operator:active,
+:root[data-theme="deepElegant"] .numeric-keyboard .math-operator:active,
+:root[data-theme="deepElegant"] .numeric-keyboard .operation-btn:active,
+:root[data-theme="deepElegant"] .numeric-keyboard .plus:active,
+:root[data-theme="deepElegant"] .numeric-keyboard .minus:active,
+:root[data-theme="deepElegant"] .numeric-keyboard .multiply:active,
+:root[data-theme="deepElegant"] .numeric-keyboard .divide:active,
+:root[data-theme="deepElegant"] .numeric-keyboard .equals:active,
+:root[data-theme="deepElegant"] .numeric-keyboard .clear:active,
+:root[data-theme="deepElegant"] .numeric-keyboard .decimal:active,
+:root[data-theme="deepElegant"] .numeric-keyboard .percent:active {
+    transform: translateY(-1px) scale(0.95);
+    box-shadow: 0 4px 16px rgba(74, 60, 140, 0.3);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-primary) 100%);
+}
+
+/* 運算符號波紋效果 */
+:root[data-theme="deepElegant"] .calculator-page .operator::after,
+:root[data-theme="deepElegant"] .calculator-page .operator-btn::after,
+:root[data-theme="deepElegant"] .calculator-page .calc-operator::after,
+:root[data-theme="deepElegant"] .calculator-page .math-operator::after,
+:root[data-theme="deepElegant"] .calculator-page .operation-btn::after,
+:root[data-theme="deepElegant"] .calculator-page .plus::after,
+:root[data-theme="deepElegant"] .calculator-page .minus::after,
+:root[data-theme="deepElegant"] .calculator-page .multiply::after,
+:root[data-theme="deepElegant"] .calculator-page .divide::after,
+:root[data-theme="deepElegant"] .calculator-page .equals::after,
+:root[data-theme="deepElegant"] .calculator-page .clear::after,
+:root[data-theme="deepElegant"] .calculator-page .decimal::after,
+:root[data-theme="deepElegant"] .calculator-page .percent::after,
+:root[data-theme="deepElegant"] .keyboard-page .operator::after,
+:root[data-theme="deepElegant"] .keyboard-page .operator-btn::after,
+:root[data-theme="deepElegant"] .keyboard-page .calc-operator::after,
+:root[data-theme="deepElegant"] .keyboard-page .math-operator::after,
+:root[data-theme="deepElegant"] .keyboard-page .operation-btn::after,
+:root[data-theme="deepElegant"] .keyboard-page .plus::after,
+:root[data-theme="deepElegant"] .keyboard-page .minus::after,
+:root[data-theme="deepElegant"] .keyboard-page .multiply::after,
+:root[data-theme="deepElegant"] .keyboard-page .divide::after,
+:root[data-theme="deepElegant"] .keyboard-page .equals::after,
+:root[data-theme="deepElegant"] .keyboard-page .clear::after,
+:root[data-theme="deepElegant"] .keyboard-page .decimal::after,
+:root[data-theme="deepElegant"] .keyboard-page .percent::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .operator::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .operator-btn::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .calc-operator::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .math-operator::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .operation-btn::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .plus::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .minus::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .multiply::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .divide::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .equals::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .clear::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .decimal::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .percent::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 165, 0, 0.3) 50%, rgba(255, 215, 0, 0.3) 100%);
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+}
+
+:root[data-theme="deepElegant"] .calculator-page .operator:hover::after,
+:root[data-theme="deepElegant"] .calculator-page .operator-btn:hover::after,
+:root[data-theme="deepElegant"] .calculator-page .calc-operator:hover::after,
+:root[data-theme="deepElegant"] .calculator-page .math-operator:hover::after,
+:root[data-theme="deepElegant"] .calculator-page .operation-btn:hover::after,
+:root[data-theme="deepElegant"] .calculator-page .plus:hover::after,
+:root[data-theme="deepElegant"] .calculator-page .minus:hover::after,
+:root[data-theme="deepElegant"] .calculator-page .multiply:hover::after,
+:root[data-theme="deepElegant"] .calculator-page .divide:hover::after,
+:root[data-theme="deepElegant"] .calculator-page .equals:hover::after,
+:root[data-theme="deepElegant"] .calculator-page .clear:hover::after,
+:root[data-theme="deepElegant"] .calculator-page .decimal:hover::after,
+:root[data-theme="deepElegant"] .calculator-page .percent:hover::after,
+:root[data-theme="deepElegant"] .keyboard-page .operator:hover::after,
+:root[data-theme="deepElegant"] .keyboard-page .operator-btn:hover::after,
+:root[data-theme="deepElegant"] .keyboard-page .calc-operator:hover::after,
+:root[data-theme="deepElegant"] .keyboard-page .math-operator:hover::after,
+:root[data-theme="deepElegant"] .keyboard-page .operation-btn:hover::after,
+:root[data-theme="deepElegant"] .keyboard-page .plus:hover::after,
+:root[data-theme="deepElegant"] .keyboard-page .minus:hover::after,
+:root[data-theme="deepElegant"] .keyboard-page .multiply:hover::after,
+:root[data-theme="deepElegant"] .keyboard-page .divide:hover::after,
+:root[data-theme="deepElegant"] .keyboard-page .equals:hover::after,
+:root[data-theme="deepElegant"] .keyboard-page .clear:hover::after,
+:root[data-theme="deepElegant"] .keyboard-page .decimal:hover::after,
+:root[data-theme="deepElegant"] .keyboard-page .percent:hover::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .operator:hover::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .operator-btn:hover::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .calc-operator:hover::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .math-operator:hover::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .operation-btn:hover::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .plus:hover::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .minus:hover::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .multiply:hover::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .divide:hover::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .equals:hover::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .clear:hover::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .decimal:hover::after,
+:root[data-theme="deepElegant"] .numeric-keyboard .percent:hover::after {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* 響應式設計 - 運算符號 */
+@media (max-width: 768px) {
+    :root[data-theme="deepElegant"] .calculator-page .operator,
+    :root[data-theme="deepElegant"] .keyboard-page .operator,
+    :root[data-theme="deepElegant"] .numeric-keyboard .operator {
+        padding: 12px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="deepElegant"] .calculator-page .operator,
+    :root[data-theme="deepElegant"] .keyboard-page .operator,
+    :root[data-theme="deepElegant"] .numeric-keyboard .operator {
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+
+/* 投資卡片樣式 */
+:root[data-theme="deepElegant"] .holding-card,
+:root[data-theme="deepElegant"] .stock-item-card,
+:root[data-theme="deepElegant"] .investment-form {
+    background: url('https://i.pinimg.com/736x/32/91/28/3291288e558fa4511b83ecb6f8a96d22.jpg') center/cover;
+    border: 2px solid var(--border-accent);
+    border-radius: 16px;
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 投資卡片內容容器 */
+:root[data-theme="deepElegant"] .holding-card .card-content,
+:root[data-theme="deepElegant"] .holding-card .card-body,
+:root[data-theme="deepElegant"] .stock-item-card .card-content,
+:root[data-theme="deepElegant"] .investment-form .form-content {
+    background: rgba(26, 31, 58, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-accent);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    padding: 16px;
+    margin: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+/* 投資卡片標題 */
+:root[data-theme="deepElegant"] .holding-card h3,
+:root[data-theme="deepElegant"] .holding-card h4,
+:root[data-theme="deepElegant"] .stock-item-card h3,
+:root[data-theme="deepElegant"] .investment-form h3 {
+    background: rgba(74, 60, 140, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-accent);
+    border-radius: 8px;
+    color: var(--color-text-primary);
+    font-weight: 600;
+    padding: 8px 16px;
+    margin: 8px;
+    position: relative;
+    z-index: 3;
+}
+
+/* 投資卡片文字 */
+:root[data-theme="deepElegant"] .holding-card p,
+:root[data-theme="deepElegant"] .holding-card .card-text,
+:root[data-theme="deepElegant"] .stock-item-card p,
+:root[data-theme="deepElegant"] .investment-form p {
+    background: rgba(26, 31, 58, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    color: var(--color-text-secondary);
+    padding: 6px 12px;
+    margin: 4px;
+    position: relative;
+    z-index: 3;
+}
+
+/* 買入卡片特殊樣式 */
+:root[data-theme="deepElegant"] .buying-card,
+:root[data-theme="deepElegant"] #buyForm {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(56, 142, 60, 0.1) 100%);
+    border: 2px solid rgba(76, 175, 80, 0.4);
+}
+
+:root[data-theme="deepElegant"] .buying-card .card-content,
+:root[data-theme="deepElegant"] #buyForm .form-content {
+    background: rgba(76, 175, 80, 0.15);
+    border-color: rgba(76, 175, 80, 0.3);
+}
+
+/* 賣出卡片特殊樣式 */
+:root[data-theme="deepElegant"] .selling-card,
+:root[data-theme="deepElegant"] #sellForm {
+    background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(229, 57, 53, 0.1) 100%);
+    border: 2px solid rgba(244, 67, 54, 0.4);
+}
+
+:root[data-theme="deepElegant"] .selling-card .card-content,
+:root[data-theme="deepElegant"] #sellForm .form-content {
+    background: rgba(244, 67, 54, 0.15);
+    border-color: rgba(244, 67, 54, 0.3);
+}
+
+/* 股息卡片特殊樣式 */
+:root[data-theme="deepElegant"] .dividend-card,
+:root[data-theme="deepElegant"] #dividendForm,
+:root[data-theme="deepElegant"] #dividendInputPage {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 152, 0, 0.1) 100%);
+    border: 2px solid rgba(255, 193, 7, 0.4);
+}
+
+:root[data-theme="deepElegant"] .dividend-card .card-content,
+:root[data-theme="deepElegant"] #dividendForm .form-content,
+:root[data-theme="deepElegant"] #dividendInputPage .form-content {
+    background: rgba(255, 193, 7, 0.15);
+    border-color: rgba(255, 193, 7, 0.3);
+}
+
+/* 定期定額卡片特殊樣式 */
+:root[data-theme="deepElegant"] .reinvestment-card,
+:root[data-theme="deepElegant"] .dca-card,
+:root[data-theme="deepElegant"] #dcaForm {
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.1) 0%, rgba(123, 31, 162, 0.1) 100%);
+    border: 2px solid rgba(156, 39, 176, 0.4);
+}
+
+:root[data-theme="deepElegant"] .reinvestment-card .card-content,
+:root[data-theme="deepElegant"] .dca-card .card-content,
+:root[data-theme="deepElegant"] #dcaForm .form-content {
+    background: rgba(156, 39, 176, 0.15);
+    border-color: rgba(156, 39, 176, 0.3);
+}
+
+/* 彈窗樣式 */
+:root[data-theme="deepElegant"] .modal,
+:root[data-theme="deepElegant"] .dialog,
+:root[data-theme="deepElegant"] .popup {
+    background: var(--color-surface);
+    border: 1px solid var(--border-accent);
+    border-radius: 16px;
+    box-shadow: var(--shadow-heavy);
+    backdrop-filter: blur(15px);
+    color: var(--color-text-primary);
+}
+
+:root[data-theme="deepElegant"] .modal-header,
+:root[data-theme="deepElegant"] .dialog-header {
+    background: var(--color-accent);
+    border-bottom: 1px solid var(--border-accent);
+    border-radius: 16px 16px 0 0;
+    color: var(--color-text-primary);
+}
+
+/* 小森對話框樣式 */
+:root[data-theme="deepElegant"] .chat-dialog,
+:root[data-theme="deepElegant"] .ai-assistant,
+:root[data-theme="deepElegant"] .komori-dialog {
+    background: var(--color-surface);
+    border: 1px solid var(--border-accent);
+    border-radius: 20px;
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(15px);
+    color: var(--color-text-primary);
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow: auto;
+}
+
+:root[data-theme="deepElegant"] .chat-message,
+:root[data-theme="deepElegant"] .ai-message {
+    background: var(--color-surface-light);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin: 8px;
+    color: var(--color-text-primary);
+}
+
+/* 錢包預算設定卡片 */
+:root[data-theme="deepElegant"] .budget-card,
+:root[data-theme="deepElegant"] .budget-settings-card {
+    background: url('https://i.pinimg.com/736x/32/91/28/3291288e558fa4511b83ecb6f8a96d22.jpg') center/cover;
+    border: 2px solid var(--border-accent);
+    border-radius: 16px;
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+}
+
+:root[data-theme="deepElegant"] .budget-card .card-content,
+:root[data-theme="deepElegant"] .budget-settings-card .card-content {
+    background: rgba(26, 31, 58, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-accent);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+/* 每月規劃卡片 */
+:root[data-theme="deepElegant"] .monthly-planning-card,
+:root[data-theme="deepElegant"] .planning-card {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+    border: 2px solid var(--border-accent);
+    border-radius: 16px;
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(10px);
+    color: var(--color-text-primary);
+}
+
+/* 投資設定卡片 */
+:root[data-theme="deepElegant"] .investment-settings-card,
+:root[data-theme="deepElegant"] .settings-card {
+    background: var(--color-surface);
+    border: 1px solid var(--border-accent);
+    border-radius: 16px;
+    box-shadow: var(--shadow-light);
+    backdrop-filter: blur(10px);
+    color: var(--color-text-primary);
+}
+
+/* 返回按鈕樣式 */
+:root[data-theme="deepElegant"] .back-btn,
+:root[data-theme="deepElegant"] .return-btn,
+:root[data-theme="deepElegant"] .prev-btn {
+    background: var(--btn-secondary);
+    color: var(--color-text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="deepElegant"] .back-btn:hover,
+:root[data-theme="deepElegant"] .return-btn:hover {
+    background: var(--color-accent);
+    transform: translateY(-1px);
+}
+
+/* 表格樣式 */
+:root[data-theme="deepElegant"] table {
+    background: var(--color-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+}
+
+:root[data-theme="deepElegant"] th {
+    background: var(--color-accent);
+    color: var(--color-text-primary);
+    font-weight: 600;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-accent);
+}
+
+:root[data-theme="deepElegant"] td {
+    background: var(--color-surface-light);
+    color: var(--color-text-secondary);
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+:root[data-theme="deepElegant"] tr:hover td {
+    background: var(--card-hover);
+    color: var(--color-text-primary);
+}
+
+/* 記帳表格 */
+:root[data-theme="deepElegant"] .accounting-table,
+:root[data-theme="deepElegant"] .ledger-table {
+    background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-light) 50%, var(--color-surface) 100%);
+    border: 1px solid var(--border-accent);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="deepElegant"] .accounting-table th,
+:root[data-theme="deepElegant"] .ledger-table th {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+    color: var(--color-text-primary);
+    font-weight: 600;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-accent);
+    font-family: var(--font-secondary);
+}
+
+:root[data-theme="deepElegant"] .accounting-table td,
+:root[data-theme="deepElegant"] .ledger-table td {
+    background: linear-gradient(135deg, var(--color-surface-light) 0%, var(--color-surface) 50%, var(--color-surface-light) 100%);
+    color: var(--color-text-secondary);
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border-accent);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="deepElegant"] .accounting-table tr:hover td,
+:root[data-theme="deepElegant"] .ledger-table tr:hover td {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+    color: var(--color-text-primary);
+    transform: scale(1.01);
+}
+
+/* 記帳統計卡片 */
+:root[data-theme="deepElegant"] .accounting-stats,
+:root[data-theme="deepElegant"] .expense-summary,
+:root[data-theme="deepElegant"] .income-summary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+    border: 1px solid var(--border-accent);
+    border-radius: 12px;
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(10px);
+    padding: 16px;
+    color: var(--color-text-primary);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="deepElegant"] .accounting-stats:hover,
+:root[data-theme="deepElegant"] .expense-summary:hover,
+:root[data-theme="deepElegant"] .income-summary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-heavy);
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 50%, var(--color-primary) 100%);
+}
+
+/* 統計數據樣式 */
+:root[data-theme="deepElegant"] .stat-card,
+:root[data-theme="deepElegant"] .summary-card,
+:root[data-theme="deepElegant"] .metric-card {
+    background: var(--color-surface);
+    border: 1px solid var(--border-accent);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    backdrop-filter: blur(8px);
+    padding: 16px;
+    color: var(--color-text-primary);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="deepElegant"] .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* 圖表容器樣式 */
+:root[data-theme="deepElegant"] .chart-container,
+:root[data-theme="deepElegant"] .graph-container {
+    background: var(--color-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    backdrop-filter: blur(8px);
+    padding: 20px;
+    color: var(--color-text-primary);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    :root[data-theme="deepElegant"] .container {
+        border-radius: 12px;
+        margin: 10px;
+    }
+    
+    :root[data-theme="deepElegant"] .card {
+        border-radius: 12px;
+        margin: 8px;
+    }
+    
+    :root[data-theme="deepElegant"] .chat-dialog,
+    :root[data-theme="deepElegant"] .ai-assistant {
+        max-width: 95vw;
+        max-height: 85vh;
+        margin: 10px;
+    }
+    
+    :root[data-theme="deepElegant"] .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="deepElegant"] .container {
+        border-radius: 8px;
+        margin: 5px;
+    }
+    
+    :root[data-theme="deepElegant"] .card {
+        border-radius: 8px;
+        margin: 4px;
+        padding: 12px;
+    }
+    
+    :root[data-theme="deepElegant"] .chat-dialog,
+    :root[data-theme="deepElegant"] .ai-assistant {
+        max-width: 98vw;
+        max-height: 90vh;
+        margin: 5px;
+    }
+    
+    :root[data-theme="deepElegant"] .btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+}
+
+/* 動畫效果 */
+:root[data-theme="deepElegant"] .card,
+:root[data-theme="deepElegant"] .btn,
+:root[data-theme="deepElegant"] .modal {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root[data-theme="deepElegant"] .card:hover {
+    transform: translateY(-4px) scale(1.02);
+}
+
+:root[data-theme="deepElegant"] .btn:hover {
+    transform: translateY(-2px);
+}
+
+/* 滾動條樣式 */
+:root[data-theme="deepElegant"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+:root[data-theme="deepElegant"] ::-webkit-scrollbar-track {
+    background: var(--color-surface-dark);
+    border-radius: 4px;
+}
+
+:root[data-theme="deepElegant"] ::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 4px;
+}
+
+:root[data-theme="deepElegant"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--border-accent);
+}

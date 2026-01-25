@@ -5,7 +5,6 @@ const path = require('path');
 // 需要修復的CSS文件列表
 const cssFiles = [
     'festive-theme.css',
-    'dynamic-wealth-theme.css', 
     'dreamy-realm-theme.css',
     'halloween-theme.css',
     'little-prince-theme.css'

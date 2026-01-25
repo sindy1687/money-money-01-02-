@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勾選框修復測試</title>
+    
+    <!-- 核心樣式 -->
+    <link rel="stylesheet" href="styles-core.css">
+    
+    <!-- 主題樣式 -->
+    <link rel="stylesheet" href="themes.css">
+    
+    <!-- 完整樣式 -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        body {
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: var(--bg-white, #fff);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid var(--border-light, #e5e7eb);
+            border-radius: 8px;
+        }
+        
+        .test-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary, #333);
+        }
+        
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: var(--bg-card, rgba(255, 255, 255, 0.9));
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .theme-btn {
+            display: block;
+            width: 100%;
+            padding: 8px 12px;
+            margin: 4px 0;
+            border: 1px solid var(--border-primary, #ddd);
+            border-radius: 4px;
+            background: var(--bg-white, #fff);
+            color: var(--text-primary, #333);
+            cursor: pointer;
+            transition: var(--transition-normal, 0.3s ease);
+        }
+        
+        .theme-btn:hover {
+            background: var(--color-primary, #007bff);
+            color: var(--text-white, #fff);
+        }
+        
+        .theme-btn.active {
+            background: var(--color-primary, #007bff);
+            color: var(--text-white, #fff);
+        }
+        
+        .status-indicator {
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        @media (max-width: 480px) {
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body data-theme="money">
+    <!-- 主題切換器 -->
+    <div class="theme-switcher">
+        <h3>測試主題</h3>
+        <button class="theme-btn active" onclick="setTheme('money')">Money</button>
+        <button class="theme-btn" onclick="setTheme('totoro')">Totoro</button>
+        <button class="theme-btn" onclick="setTheme('noface')">No Face</button>
+        <button class="theme-btn" onclick="setTheme('spacegold')">Space Gold</button>
+        <button class="theme-btn" onclick="setTheme('festive')">Festive</button>
+        <button class="theme-btn" onclick="setTheme('fruit')">Fruit</button>
+        <button class="theme-btn" onclick="setTheme('emeraldPrince')">Emerald Prince</button>
+    </div>
+
+    <div class="test-container">
+        <h1>🔧 勾選框修復測試</h1>
+        <p>這個頁面用於測試勾選框在所有主題下的顯示效果。</p>
+
+        <!-- 原始問題測試 -->
+        <div class="test-section">
+            <h2 class="test-title">📋 原始問題勾選框</h2>
+            <p>測試「系統自動計算」和「定期定額投資」勾選框：</p>
+            
+            <div class="checkbox-grid">
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" id="calcAutoFeeCheckbox">
+                    <span class="form-checkbox-text">系統自動計算（0.1425%，最低20元）</span>
+                </label>
+                
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" id="calcIsDCAInput">
+                    <span class="form-checkbox-text">定期定額投資</span>
+                </label>
+            </div>
+            
+            <div id="original-status" class="status-indicator status-success">
+                ✅ 原始勾選框已修復
+            </div>
+        </div>
+
+        <!-- 基礎勾選框測試 -->
+        <div class="test-section">
+            <h2 class="test-title">🧪 基礎勾選框測試</h2>
+            <p>測試各種基礎勾選框狀態：</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" checked>
+                    <span class="form-checkbox-text">預選中狀態</span>
+                </label>
+                
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox">
+                    <span class="form-checkbox-text">未選中狀態</span>
+                </label>
+                
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" disabled>
+                    <span class="form-checkbox-text">禁用狀態</span>
+                </label>
+                
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" disabled checked>
+                    <span class="form-checkbox-text">禁用且選中</span>
+                </label>
+            </div>
+            
+            <div id="basic-status" class="status-indicator status-success">
+                ✅ 基礎勾選框正常
+            </div>
+        </div>
+
+        <!-- 交互測試 -->
+        <div class="test-section">
+            <h2 class="test-title">🎯 交互測試</h2>
+            <p>測試勾選框的交互效果：</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" id="interactive1">
+                    <span class="form-checkbox-text">點擊測試 1</span>
+                </label>
+                
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" id="interactive2">
+                    <span class="form-checkbox-text">點擊測試 2</span>
+                </label>
+                
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" id="interactive3">
+                    <span class="form-checkbox-text">點擊測試 3</span>
+                </label>
+            </div>
+            
+            <div id="interactive-status" class="status-indicator status-success">
+                ✅ 交互測試正常
+            </div>
+        </div>
+
+        <!-- 批量測試 -->
+        <div class="test-section">
+            <h2 class="test-title">📊 批量測試</h2>
+            <p>測試多個勾選框的批量操作：</p>
+            
+            <div style="margin-bottom: 15px;">
+                <button onclick="selectAll()">全選</button>
+                <button onclick="deselectAll()">全不選</button>
+                <button onclick="toggleAll()">反選</button>
+                <button onclick="checkStatus()">檢查狀態</button>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" name="batch" value="1">
+                    <span class="form-checkbox-text">選項 1</span>
+                </label>
+                
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" name="batch" value="2">
+                    <span class="form-checkbox-text">選項 2</span>
+                </label>
+                
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" name="batch" value="3">
+                    <span class="form-checkbox-text">選項 3</span>
+                </label>
+                
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" name="batch" value="4">
+                    <span class="form-checkbox-text">選項 4</span>
+                </label>
+                
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" name="batch" value="5">
+                    <span class="form-checkbox-text">選項 5</span>
+                </label>
+                
+                <label class="form-checkbox-label">
+                    <input type="checkbox" class="form-checkbox" name="batch" value="6">
+                    <span class="form-checkbox-text">選項 6</span>
+                </label>
+            </div>
+            
+            <div id="batch-status" class="status-indicator status-success">
+                ✅ 批量測試正常
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 主題切換功能
+        function setTheme(themeName) {
+            // 移除所有主題按鈕的 active 狀態
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 設置當前主題按鈕為 active
+            event.target.classList.add('active');
+            
+            // 設置 body 的 data-theme 屬性
+            document.body.setAttribute('data-theme', themeName);
+            
+            // 保存主題選擇到 localStorage
+            localStorage.setItem('selectedTheme', themeName);
+            
+            // 重新檢查勾選框狀態
+            setTimeout(checkAllCheckboxes, 100);
+        }
+        
+        // 檢查所有勾選框狀態
+        function checkAllCheckboxes() {
+            const checkboxes = document.querySelectorAll('.form-checkbox');
+            let hasIssues = false;
+            
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    // 檢查勾選標記是否可見
+                    const computedStyle = window.getComputedStyle(checkbox, '::after');
+                    const content = computedStyle.getPropertyValue('content');
+                    const opacity = computedStyle.getPropertyValue('opacity');
+                    const visibility = computedStyle.getPropertyValue('visibility');
+                    
+                    if (content === 'none' || opacity === '0' || visibility === 'hidden') {
+                        hasIssues = true;
+                    }
+                }
+            });
+            
+            // 更新狀態指示器
+            updateStatusIndicators(hasIssues);
+        }
+        
+        // 更新狀態指示器
+        function updateStatusIndicators(hasIssues) {
+            const indicators = document.querySelectorAll('.status-indicator');
+            indicators.forEach(indicator => {
+                if (hasIssues) {
+                    indicator.className = 'status-indicator status-error';
+                    indicator.innerHTML = '❌ 發現勾選框問題';
+                } else {
+                    indicator.className = 'status-indicator status-success';
+                    indicator.innerHTML = '✅ 勾選框正常';
+                }
+            });
+        }
+        
+        // 批量操作功能
+        function selectAll() {
+            document.querySelectorAll('input[name="batch"]').forEach(cb => cb.checked = true);
+            setTimeout(checkAllCheckboxes, 100);
+        }
+        
+        function deselectAll() {
+            document.querySelectorAll('input[name="batch"]').forEach(cb => cb.checked = false);
+            setTimeout(checkAllCheckboxes, 100);
+        }
+        
+        function toggleAll() {
+            document.querySelectorAll('input[name="batch"]').forEach(cb => cb.checked = !cb.checked);
+            setTimeout(checkAllCheckboxes, 100);
+        }
+        
+        function checkStatus() {
+            const checked = document.querySelectorAll('input[name="batch"]:checked').length;
+            const total = document.querySelectorAll('input[name="batch"]').length;
+            alert(`已選中 ${checked}/${total} 個選項`);
+        }
+        
+        // 監聽勾選框變化
+        document.addEventListener('change', function(e) {
+            if (e.target.classList.contains('form-checkbox')) {
+                setTimeout(checkAllCheckboxes, 50);
+            }
+        });
+        
+        // 頁面載入時初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 載入保存的主題
+            const savedTheme = localStorage.getItem('selectedTheme');
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme);
+                
+                // 更新主題按鈕狀態
+                document.querySelectorAll('.theme-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.textContent.toLowerCase().includes(savedTheme.toLowerCase()) ||
+                        btn.onclick.toString().includes(savedTheme)) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+            
+            // 初始檢查
+            setTimeout(checkAllCheckboxes, 500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,2143 @@
+/* 夢幻藍色花卉主題 - 基於用戶提供的Pinterest圖片設計 */
+
+:root[data-theme="dreamyPink"] {
+    /* 主色調 - 基於藍色花卉 */
+    --color-primary: #2196f3;
+    --color-primary-light: #64b5f6;
+    --color-primary-lighter: #90caf9;
+    --color-primary-dark: #1976d2;
+    --color-primary-darker: #1565c0;
+    
+    /* 輔助色 - 藍色花卉色系 */
+    --color-secondary: #81c784;
+    --color-accent: #4fc3f7;
+    --color-surface: rgba(255, 255, 255, 0.1);
+    --color-surface-dark: rgba(255, 255, 255, 0.05);
+    
+    /* 文字顏色 - 確保對比度 */
+    --color-text-primary: #263238;
+    --color-text-secondary: #37474f;
+    --color-text-light: #ffffff;
+    --color-text-muted: #546e7a;
+    
+    /* 背景色 - 全透明 */
+    --bg-primary: rgba(255, 255, 255, 0);
+    --bg-secondary: rgba(33, 150, 243, 0.05);
+    --bg-surface: rgba(255, 255, 255, 0.1);
+    --bg-card: rgba(255, 255, 255, 0.15);
+    --bg-overlay: rgba(33, 150, 243, 0.1);
+    
+    /* 邊框和陰影 */
+    --border-color: rgba(33, 150, 243, 0.3);
+    --border-light: rgba(33, 150, 243, 0.2);
+    --shadow-light: 0 4px 20px rgba(33, 150, 243, 0.1);
+    --shadow-medium: 0 8px 30px rgba(33, 150, 243, 0.15);
+    --shadow-heavy: 0 12px 40px rgba(33, 150, 243, 0.2);
+    
+    /* 按鈕樣式 */
+    --btn-bg: linear-gradient(135deg, rgba(33, 150, 243, 0.8), rgba(33, 150, 243, 0.6));
+    --btn-hover: linear-gradient(135deg, rgba(33, 150, 243, 0.9), rgba(25, 118, 210, 0.8));
+    --btn-text: #ffffff;
+    --btn-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+    
+    /* 卡片樣式 */
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --card-border: rgba(33, 150, 243, 0.3);
+    --card-shadow: 0 8px 32px rgba(33, 150, 243, 0.15);
+    --card-hover-shadow: 0 12px 40px rgba(33, 150, 243, 0.25);
+    
+    /* 輸入框樣式 */
+    --input-bg: rgba(255, 255, 255, 0.2);
+    --input-border: rgba(33, 150, 243, 0.4);
+    --input-focus-border: #2196f3;
+    --input-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+/* 全局背景 */
+:root[data-theme="dreamyPink"] body {
+    background: url('https://i.pinimg.com/736x/4b/8d/f6/4b8df6fa8b0094fa01fd59fa7177a2d2.jpg') center/cover fixed;
+    background-color: rgba(255, 255, 255, 0);
+    color: var(--color-text-primary);
+    font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    min-height: 100vh;
+}
+
+/* 主容器 */
+:root[data-theme="dreamyPink"] .container,
+:root[data-theme="dreamyPink"] .main-content {
+    background: var(--bg-surface);
+    border-radius: 20px;
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-light);
+}
+
+/* 卡片樣式 */
+:root[data-theme="dreamyPink"] .card,
+:root[data-theme="dreamyPink"] .investment-card,
+:root[data-theme="dreamyPink"] .accounting-card,
+:root[data-theme="dreamyPink"] .wallet-card,
+:root[data-theme="dreamyPink"] .monthly-planning-card,
+:root[data-theme="dreamyPink"] .investment-settings-card,
+:root[data-theme="dreamyPink"] .buying-card,
+:root[data-theme="dreamyPink"] .selling-card,
+:root[data-theme="dreamyPink"] .dividend-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+/* 我的持股卡片 - 專用背景圖片 */
+:root[data-theme="dreamyPink"] .holding-card,
+body[data-theme="dreamyPink"] .holding-card,
+:root[data-theme="dreamyPink"] .stock-item-card,
+body[data-theme="dreamyPink"] .stock-item-card {
+    background: url('https://i.pinimg.com/1200x/a3/79/5c/a3795c5ed00c9589044cd126bfc927b4.jpg') center/cover !important;
+    border: 2px solid rgba(33, 150, 243, 0.4) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(33, 150, 243, 0.15) !important;
+    backdrop-filter: blur(8px) !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 我的持股卡片內容容器 - 確保可讀性 */
+:root[data-theme="dreamyPink"] .holding-card .card-content,
+:root[data-theme="dreamyPink"] .holding-card .card-body,
+:root[data-theme="dreamyPink"] .holding-card .content,
+:root[data-theme="dreamyPink"] .holding-card .container,
+body[data-theme="dreamyPink"] .holding-card .card-content,
+body[data-theme="dreamyPink"] .holding-card .card-body,
+body[data-theme="dreamyPink"] .holding-card .content,
+body[data-theme="dreamyPink"] .holding-card .container {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 16px rgba(33, 150, 243, 0.1) !important;
+    padding: 16px !important;
+    margin: 12px !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 我的持股卡片標題 */
+:root[data-theme="dreamyPink"] .holding-card h3,
+:root[data-theme="dreamyPink"] .holding-card h4,
+:root[data-theme="dreamyPink"] .holding-card .card-title,
+:root[data-theme="dreamyPink"] .holding-card .title,
+body[data-theme="dreamyPink"] .holding-card h3,
+body[data-theme="dreamyPink"] .holding-card h4,
+body[data-theme="dreamyPink"] .holding-card .card-title,
+body[data-theme="dreamyPink"] .holding-card .title {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.4) !important;
+    border-radius: 8px !important;
+    color: var(--color-text-primary) !important;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8) !important;
+    font-weight: 600 !important;
+    padding: 8px 16px !important;
+    margin: 8px !important;
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+/* 我的持股卡片文字內容 */
+:root[data-theme="dreamyPink"] .holding-card p,
+:root[data-theme="dreamyPink"] .holding-card .card-text,
+:root[data-theme="dreamyPink"] .holding-card .text,
+:root[data-theme="dreamyPink"] .holding-card .description,
+body[data-theme="dreamyPink"] .holding-card p,
+body[data-theme="dreamyPink"] .holding-card .card-text,
+body[data-theme="dreamyPink"] .holding-card .text,
+body[data-theme="dreamyPink"] .holding-card .description {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+    border-radius: 6px !important;
+    color: var(--color-text-primary) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6) !important;
+    padding: 6px 12px !important;
+    margin: 4px !important;
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+/* 我的持股卡片懸停效果 */
+:root[data-theme="dreamyPink"] .holding-card:hover,
+body[data-theme="dreamyPink"] .holding-card:hover {
+    background: url('https://i.pinimg.com/1200x/a3/79/5c/a3795c5ed00c9589044cd126bfc927b4.jpg') center/cover !important;
+    border-color: rgba(33, 150, 243, 0.6) !important;
+    box-shadow: 0 12px 40px rgba(33, 150, 243, 0.25) !important;
+    transform: translateY(-4px) scale(1.02) !important;
+}
+
+/* 我的持股卡片 - 最高優先級規則 */
+html body[data-theme="dreamyPink"] .holding-card,
+html body[data-theme="dreamyPink"] div.holding-card,
+html body[data-theme="dreamyPink"] *[class*="holding-card"],
+html body[data-theme="dreamyPink"] .stock-item-card,
+html body[data-theme="dreamyPink"] div.stock-item-card,
+html body[data-theme="dreamyPink"] *[class*="stock-item-card"] {
+    background: url('https://i.pinimg.com/1200x/a3/79/5c/a3795c5ed00c9589044cd126bfc927b4.jpg') center/cover !important;
+    border: 2px solid rgba(33, 150, 243, 0.4) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(33, 150, 243, 0.15) !important;
+    backdrop-filter: blur(8px) !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 9999 !important;
+}
+
+/* 我的持股卡片內容容器 - 最高優先級 */
+html body[data-theme="dreamyPink"] .holding-card .card-content,
+html body[data-theme="dreamyPink"] .holding-card .card-body,
+html body[data-theme="dreamyPink"] .holding-card .content,
+html body[data-theme="dreamyPink"] .holding-card .container,
+html body[data-theme="dreamyPink"] div.holding-card .card-content,
+html body[data-theme="dreamyPink"] div.holding-card .card-body,
+html body[data-theme="dreamyPink"] div.holding-card .content,
+html body[data-theme="dreamyPink"] div.holding-card .container,
+html body[data-theme="dreamyPink"] .stock-item-card .card-content,
+html body[data-theme="dreamyPink"] .stock-item-card .card-body,
+html body[data-theme="dreamyPink"] .stock-item-card .content,
+html body[data-theme="dreamyPink"] .stock-item-card .container,
+html body[data-theme="dreamyPink"] .stock-item-card .stock-grid-card-top,
+html body[data-theme="dreamyPink"] .stock-item-card .stock-grid-card-title {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 16px rgba(33, 150, 243, 0.1) !important;
+    padding: 8px !important;
+    margin: 4px !important;
+    position: relative !important;
+    z-index: 9999 !important;
+}
+
+/* 我的持股卡片標題 - 最高優先級 */
+html body[data-theme="dreamyPink"] .holding-card h3,
+html body[data-theme="dreamyPink"] .holding-card h4,
+html body[data-theme="dreamyPink"] .holding-card .card-title,
+html body[data-theme="dreamyPink"] .holding-card .title,
+html body[data-theme="dreamyPink"] div.holding-card h3,
+html body[data-theme="dreamyPink"] div.holding-card h4,
+html body[data-theme="dreamyPink"] div.holding-card .card-title,
+html body[data-theme="dreamyPink"] div.holding-card .title,
+html body[data-theme="dreamyPink"] .stock-item-card h3,
+html body[data-theme="dreamyPink"] .stock-item-card h4,
+html body[data-theme="dreamyPink"] .stock-item-card .card-title,
+html body[data-theme="dreamyPink"] .stock-item-card .title,
+html body[data-theme="dreamyPink"] .stock-item-card .stock-card-name,
+html body[data-theme="dreamyPink"] .stock-item-card .stock-grid-card-title {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.4) !important;
+    border-radius: 8px !important;
+    color: #333 !important;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8) !important;
+    font-weight: 600 !important;
+    padding: 4px 8px !important;
+    margin: 2px !important;
+    position: relative !important;
+    z-index: 9999 !important;
+}
+
+/* 我的持股卡片文字內容 - 最高優先級 */
+html body[data-theme="dreamyPink"] .holding-card p,
+html body[data-theme="dreamyPink"] .holding-card .card-text,
+html body[data-theme="dreamyPink"] .holding-card .text,
+html body[data-theme="dreamyPink"] .holding-card .description,
+html body[data-theme="dreamyPink"] div.holding-card p,
+html body[data-theme="dreamyPink"] div.holding-card .card-text,
+html body[data-theme="dreamyPink"] div.holding-card .text,
+html body[data-theme="dreamyPink"] div.holding-card .description,
+html body[data-theme="dreamyPink"] .stock-item-card p,
+html body[data-theme="dreamyPink"] .stock-item-card .card-text,
+html body[data-theme="dreamyPink"] .stock-item-card .text,
+html body[data-theme="dreamyPink"] .stock-item-card .description,
+html body[data-theme="dreamyPink"] .stock-item-card .stock-card-price,
+html body[data-theme="dreamyPink"] .stock-item-card .stock-card-change {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+    border-radius: 6px !important;
+    color: var(--color-text-primary) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6) !important;
+    padding: 3px 6px !important;
+    margin: 2px !important;
+    position: relative !important;
+    z-index: 9999 !important;
+}
+
+/* 我的持股卡片懸停效果 - 最高優先級 */
+html body[data-theme="dreamyPink"] .holding-card:hover,
+html body[data-theme="dreamyPink"] div.holding-card:hover,
+html body[data-theme="dreamyPink"] *[class*="holding-card"]:hover,
+html body[data-theme="dreamyPink"] .stock-item-card:hover,
+html body[data-theme="dreamyPink"] div.stock-item-card:hover,
+html body[data-theme="dreamyPink"] *[class*="stock-item-card"]:hover {
+    background: url('https://i.pinimg.com/1200x/a3/79/5c/a3795c5ed00c9589044cd126bfc927b4.jpg') center/cover !important;
+    border-color: rgba(33, 150, 243, 0.6) !important;
+    box-shadow: 0 12px 40px rgba(33, 150, 243, 0.25) !important;
+    transform: translateY(-4px) scale(1.02) !important;
+    z-index: 9999 !important;
+}
+
+:root[data-theme="dreamyPink"] .card:hover,
+:root[data-theme="dreamyPink"] .investment-card:hover,
+:root[data-theme="dreamyPink"] .accounting-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-hover-shadow);
+    border-color: var(--color-primary);
+}
+
+/* 按鈕樣式 */
+:root[data-theme="dreamyPink"] .btn,
+:root[data-theme="dreamyPink"] .btn-primary,
+:root[data-theme="dreamyPink"] .buy-btn,
+:root[data-theme="dreamyPink"] .sell-btn,
+:root[data-theme="dreamyPink"] .regular-investment-btn {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 600;
+    box-shadow: var(--btn-shadow);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+:root[data-theme="dreamyPink"] .btn:hover,
+:root[data-theme="dreamyPink"] .btn-primary:hover,
+:root[data-theme="dreamyPink"] .buy-btn:hover,
+:root[data-theme="dreamyPink"] .sell-btn:hover,
+:root[data-theme="dreamyPink"] .regular-investment-btn:hover {
+    background: var(--btn-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+}
+
+:root[data-theme="dreamyPink"] .btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(233, 30, 99, 0.3);
+}
+
+/* 輸入框樣式 */
+:root[data-theme="dreamyPink"] input,
+:root[data-theme="dreamyPink"] textarea,
+:root[data-theme="dreamyPink"] select {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    color: var(--color-text-primary);
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="dreamyPink"] input:focus,
+:root[data-theme="dreamyPink"] textarea:focus,
+:root[data-theme="dreamyPink"] select:focus {
+    outline: none;
+    border-color: var(--input-focus-border);
+    box-shadow: var(--input-shadow);
+}
+
+/* 導航欄 */
+:root[data-theme="dreamyPink"] .nav,
+:root[data-theme="dreamyPink"] .navbar {
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-light);
+    backdrop-filter: blur(10px);
+}
+
+/* 記帳頁面專用樣式 */
+:root[data-theme="dreamyPink"] .accounting-page,
+:root[data-theme="dreamyPink"] .ledger-page,
+:root[data-theme="dreamyPink"] .accounting-main {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(33, 150, 243, 0.2);
+    box-shadow: 0 8px 32px rgba(33, 150, 243, 0.1);
+}
+
+/* 記帳記錄條目 */
+:root[data-theme="dreamyPink"] .accounting-record,
+:root[data-theme="dreamyPink"] .ledger-entry,
+:root[data-theme="dreamyPink"] .expense-item,
+:root[data-theme="dreamyPink"] .income-item {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(33, 150, 243, 0.15);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    margin: 8px 0;
+    padding: 12px 16px;
+}
+
+:root[data-theme="dreamyPink"] .accounting-record:hover,
+:root[data-theme="dreamyPink"] .ledger-entry:hover,
+:root[data-theme="dreamyPink"] .expense-item:hover,
+:root[data-theme="dreamyPink"] .income-item:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(33, 150, 243, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(33, 150, 243, 0.15);
+}
+
+/* 歷史記錄頁面 */
+:root[data-theme="dreamyPink"] .history-page,
+:root[data-theme="dreamyPink"] .transaction-history,
+:root[data-theme="dreamyPink"] .record-history {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(33, 150, 243, 0.18);
+    box-shadow: 0 8px 32px rgba(33, 150, 243, 0.08);
+}
+
+/* 歷史記錄條目 */
+:root[data-theme="dreamyPink"] .history-item,
+:root[data-theme="dreamyPink"] .transaction-item,
+:root[data-theme="dreamyPink"] .record-item {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(33, 150, 243, 0.12);
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+    margin: 6px 0;
+    padding: 10px 14px;
+}
+
+:root[data-theme="dreamyPink"] .history-item:hover,
+:root[data-theme="dreamyPink"] .transaction-item:hover,
+:root[data-theme="dreamyPink"] .record-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(33, 150, 243, 0.25);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 12px rgba(33, 150, 243, 0.12);
+}
+
+/* 記帳表格 */
+:root[data-theme="dreamyPink"] .accounting-table,
+:root[data-theme="dreamyPink"] .ledger-table {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(33, 150, 243, 0.15);
+}
+
+:root[data-theme="dreamyPink"] .accounting-table th,
+:root[data-theme="dreamyPink"] .ledger-table th {
+    background: rgba(33, 150, 243, 0.2);
+    color: var(--color-text-light);
+    font-weight: 600;
+    padding: 12px;
+}
+
+:root[data-theme="dreamyPink"] .accounting-table td,
+:root[data-theme="dreamyPink"] .ledger-table td {
+    background: rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(33, 150, 243, 0.1);
+    color: var(--color-text-secondary);
+    padding: 10px 12px;
+}
+
+:root[data-theme="dreamyPink"] .accounting-table tr:hover td,
+:root[data-theme="dreamyPink"] .ledger-table tr:hover td {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* 記帳統計卡片 */
+:root[data-theme="dreamyPink"] .accounting-stats,
+:root[data-theme="dreamyPink"] .expense-summary,
+:root[data-theme="dreamyPink"] .income-summary {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(33, 150, 243, 0.2);
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 6px 24px rgba(33, 150, 243, 0.12);
+    padding: 16px;
+    margin: 10px 0;
+}
+
+/* 記帳分類標籤 */
+:root[data-theme="dreamyPink"] .category-tag,
+:root[data-theme="dreamyPink"] .expense-category,
+:root[data-theme="dreamyPink"] .income-category {
+    background: rgba(33, 150, 243, 0.15);
+    color: var(--color-text-light);
+    border: 1px solid rgba(33, 150, 243, 0.3);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+}
+
+/* 預算設定頁面專用樣式 - 包含所有可能的類名 */
+:root[data-theme="dreamyPink"] .budget-settings,
+:root[data-theme="dreamyPink"] .budget-page,
+:root[data-theme="dreamyPink"] .budget-config,
+:root[data-theme="dreamyPink"] .budget-settings-card,
+:root[data-theme="dreamyPink"] .monthly-planning-card,
+:root[data-theme="dreamyPink"] .investment-settings-card,
+body[data-theme="dreamyPink"] .budget-settings,
+body[data-theme="dreamyPink"] .budget-page,
+body[data-theme="dreamyPink"] .budget-config,
+body[data-theme="dreamyPink"] .budget-settings-card,
+body[data-theme="dreamyPink"] .monthly-planning-card,
+body[data-theme="dreamyPink"] .investment-settings-card {
+    background: url('https://i.pinimg.com/736x/a3/79/5c/a3795c5ed00c9589044cd126bfc927b4.jpg') center/cover fixed;
+    border-radius: 20px;
+    border: 1px solid rgba(33, 150, 243, 0.2);
+    box-shadow: 0 8px 32px rgba(33, 150, 243, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 預算設定內容容器 - 強制透明度 - 包含所有可能的類名 - 最高優先級 */
+:root[data-theme="dreamyPink"] .budget-settings-content,
+:root[data-theme="dreamyPink"] .budget-content,
+:root[data-theme="dreamyPink"] .budget-config-content,
+:root[data-theme="dreamyPink"] .budget-settings-card .card-content,
+:root[data-theme="dreamyPink"] .monthly-planning-card .card-content,
+:root[data-theme="dreamyPink"] .investment-settings-card .card-content,
+:root[data-theme="dreamyPink"] .budget-settings .card-content,
+:root[data-theme="dreamyPink"] .budget-page .card-content,
+:root[data-theme="dreamyPink"] .budget-config .card-content,
+body[data-theme="dreamyPink"] .budget-settings-content,
+body[data-theme="dreamyPink"] .budget-content,
+body[data-theme="dreamyPink"] .budget-config-content,
+body[data-theme="dreamyPink"] .budget-settings-card .card-content,
+body[data-theme="dreamyPink"] .monthly-planning-card .card-content,
+body[data-theme="dreamyPink"] .investment-settings-card .card-content,
+body[data-theme="dreamyPink"] .budget-settings .card-content,
+body[data-theme="dreamyPink"] .budget-page .card-content,
+body[data-theme="dreamyPink"] .budget-config .card-content,
+html body[data-theme="dreamyPink"] .budget-settings-content,
+html body[data-theme="dreamyPink"] .budget-content,
+html body[data-theme="dreamyPink"] .budget-config-content,
+html body[data-theme="dreamyPink"] .budget-settings-card .card-content,
+html body[data-theme="dreamyPink"] .monthly-planning-card .card-content,
+html body[data-theme="dreamyPink"] .investment-settings-card .card-content,
+html body[data-theme="dreamyPink"] .budget-settings .card-content,
+html body[data-theme="dreamyPink"] .budget-page .card-content,
+html body[data-theme="dreamyPink"] .budget-config .card-content {
+    background: var(--color-primary) !important;
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(33, 150, 243, 0.25);
+    box-shadow: 0 6px 24px rgba(33, 150, 243, 0.12);
+    padding: 20px;
+    margin: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+/* 預算設定頁面通用card-content覆蓋 - 最高優先級 */
+:root[data-theme="dreamyPink"] .budget-settings .card-content,
+:root[data-theme="dreamyPink"] .budget-page .card-content,
+:root[data-theme="dreamyPink"] .budget-config .card-content,
+:root[data-theme="dreamyPink"] .budget-settings-card .card-content,
+:root[data-theme="dreamyPink"] .monthly-planning-card .card-content,
+:root[data-theme="dreamyPink"] .investment-settings-card .card-content,
+body[data-theme="dreamyPink"] .budget-settings .card-content,
+body[data-theme="dreamyPink"] .budget-page .card-content,
+body[data-theme="dreamyPink"] .budget-config .card-content,
+body[data-theme="dreamyPink"] .budget-settings-card .card-content,
+body[data-theme="dreamyPink"] .monthly-planning-card .card-content,
+body[data-theme="dreamyPink"] .investment-settings-card .card-content {
+    background: var(--color-primary) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.25) !important;
+    box-shadow: 0 6px 24px rgba(33, 150, 243, 0.12) !important;
+    padding: 20px !important;
+    margin: 16px !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* 最強力覆蓋 - 針對所有可能的card-content */
+html body[data-theme="dreamyPink"] div.card-content,
+html body[data-theme="dreamyPink"] .card-content,
+html body[data-theme="dreamyPink"] *[class*="card-content"],
+html body[data-theme="dreamyPink"] .budget-settings .card-content,
+html body[data-theme="dreamyPink"] .budget-page .card-content,
+html body[data-theme="dreamyPink"] .budget-config .card-content,
+html body[data-theme="dreamyPink"] .budget-settings-card .card-content,
+html body[data-theme="dreamyPink"] .monthly-planning-card .card-content,
+html body[data-theme="dreamyPink"] .investment-settings-card .card-content {
+    background: var(--color-primary) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.25) !important;
+    box-shadow: 0 6px 24px rgba(33, 150, 243, 0.12) !important;
+    padding: 20px !important;
+    margin: 16px !important;
+    position: relative !important;
+    z-index: 9999 !important;
+}
+
+/* 通用卡片內容覆蓋 - 最高優先級 */
+html body[data-theme="dreamyPink"] .budget-settings div[class*="card-content"],
+html body[data-theme="dreamyPink"] .budget-page div[class*="card-content"],
+html body[data-theme="dreamyPink"] .budget-config div[class*="card-content"],
+html body[data-theme="dreamyPink"] .budget-settings-card div[class*="card-content"],
+html body[data-theme="dreamyPink"] .monthly-planning-card div[class*="card-content"],
+html body[data-theme="dreamyPink"] .investment-settings-card div[class*="card-content"] {
+    background: var(--color-primary) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.25) !important;
+    box-shadow: 0 6px 24px rgba(33, 150, 243, 0.12) !important;
+    padding: 20px !important;
+    margin: 16px !important;
+    position: relative !important;
+    z-index: 9999 !important;
+}
+
+/* 預算設定卡片 */
+:root[data-theme="dreamyPink"] .budget-card,
+:root[data-theme="dreamyPink"] .budget-item,
+:root[data-theme="dreamyPink"] .budget-category {
+    background: url('https://i.pinimg.com/736x/78/a0/3e/78a03ea3f253f41c6f51ab5ccfe186c2.jpg') center/cover;
+    border: 2px solid rgba(33, 150, 243, 0.4);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    margin: 10px 0;
+    padding: 16px;
+    box-shadow: 0 4px 16px rgba(33, 150, 243, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+:root[data-theme="dreamyPink"] .budget-card:hover,
+:root[data-theme="dreamyPink"] .budget-item:hover,
+:root[data-theme="dreamyPink"] .budget-category:hover {
+    border-color: rgba(33, 150, 243, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(33, 150, 243, 0.3);
+}
+
+/* 預算卡片內容容器 - 強制透明度 */
+:root[data-theme="dreamyPink"] .budget-card .card-content,
+:root[data-theme="dreamyPink"] .budget-item .item-content,
+:root[data-theme="dreamyPink"] .budget-category .category-content,
+body[data-theme="dreamyPink"] .budget-card .card-content,
+body[data-theme="dreamyPink"] .budget-item .item-content,
+body[data-theme="dreamyPink"] .budget-category .category-content {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px;
+    padding: 12px;
+    margin: -8px;
+    position: relative;
+    z-index: 1;
+}
+
+/* 預算卡片標題 - 強制透明度 */
+:root[data-theme="dreamyPink"] .budget-card h3,
+:root[data-theme="dreamyPink"] .budget-item h3,
+:root[data-theme="dreamyPink"] .budget-category h3,
+body[data-theme="dreamyPink"] .budget-card h3,
+body[data-theme="dreamyPink"] .budget-item h3,
+body[data-theme="dreamyPink"] .budget-category h3 {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: -16px -16px 12px -16px;
+    color: var(--color-text-primary);
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+}
+
+/* 預算設定輸入框 - 強制透明度 - 包含所有可能的類名 */
+:root[data-theme="dreamyPink"] .budget-settings input,
+:root[data-theme="dreamyPink"] .budget-page input,
+:root[data-theme="dreamyPink"] .budget-config input,
+:root[data-theme="dreamyPink"] .budget-settings select,
+:root[data-theme="dreamyPink"] .budget-page select,
+:root[data-theme="dreamyPink"] .budget-config select,
+:root[data-theme="dreamyPink"] .budget-settings-card input,
+:root[data-theme="dreamyPink"] .monthly-planning-card input,
+:root[data-theme="dreamyPink"] .investment-settings-card input,
+:root[data-theme="dreamyPink"] .budget-settings-card select,
+:root[data-theme="dreamyPink"] .monthly-planning-card select,
+:root[data-theme="dreamyPink"] .investment-settings-card select,
+body[data-theme="dreamyPink"] .budget-settings input,
+body[data-theme="dreamyPink"] .budget-page input,
+body[data-theme="dreamyPink"] .budget-config input,
+body[data-theme="dreamyPink"] .budget-settings select,
+body[data-theme="dreamyPink"] .budget-page select,
+body[data-theme="dreamyPink"] .budget-config select,
+body[data-theme="dreamyPink"] .budget-settings-card input,
+body[data-theme="dreamyPink"] .monthly-planning-card input,
+body[data-theme="dreamyPink"] .investment-settings-card input,
+body[data-theme="dreamyPink"] .budget-settings-card select,
+body[data-theme="dreamyPink"] .monthly-planning-card select,
+body[data-theme="dreamyPink"] .investment-settings-card select {
+    background: rgba(255, 255, 255, 0) !important;
+    border: 1px solid rgba(33, 150, 243, 0.4);
+    border-radius: 8px;
+    color: var(--color-text-primary);
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="dreamyPink"] .budget-settings input:focus,
+:root[data-theme="dreamyPink"] .budget-page input:focus,
+:root[data-theme="dreamyPink"] .budget-config input:focus,
+:root[data-theme="dreamyPink"] .budget-settings select:focus,
+:root[data-theme="dreamyPink"] .budget-page select:focus,
+:root[data-theme="dreamyPink"] .budget-config select:focus,
+body[data-theme="dreamyPink"] .budget-settings input:focus,
+body[data-theme="dreamyPink"] .budget-page input:focus,
+body[data-theme="dreamyPink"] .budget-config input:focus,
+body[data-theme="dreamyPink"] .budget-settings select:focus,
+body[data-theme="dreamyPink"] .budget-page select:focus,
+body[data-theme="dreamyPink"] .budget-config select:focus {
+    outline: none;
+    border-color: rgba(33, 150, 243, 0.6);
+    background: rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+}
+
+/* 預算設定按鈕 */
+:root[data-theme="dreamyPink"] .budget-settings .btn,
+:root[data-theme="dreamyPink"] .budget-page .btn,
+:root[data-theme="dreamyPink"] .budget-config .btn,
+:root[data-theme="dreamyPink"] .budget-btn,
+:root[data-theme="dreamyPink"] .save-budget-btn {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.8), rgba(33, 150, 243, 0.6));
+    color: var(--color-text-light);
+    border: 1px solid rgba(33, 150, 243, 0.3);
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.2);
+}
+
+:root[data-theme="dreamyPink"] .budget-settings .btn:hover,
+:root[data-theme="dreamyPink"] .budget-page .btn:hover,
+:root[data-theme="dreamyPink"] .budget-config .btn:hover,
+:root[data-theme="dreamyPink"] .budget-btn:hover,
+:root[data-theme="dreamyPink"] .save-budget-btn:hover {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.9), rgba(25, 118, 210, 0.8));
+    border-color: rgba(33, 150, 243, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
+}
+
+/* 預算進度條 */
+:root[data-theme="dreamyPink"] .budget-progress,
+:root[data-theme="dreamyPink"] .budget-bar,
+:root[data-theme="dreamyPink"] .progress-bar,
+:root[data-theme="dreamyPink"] .budget-progress-bar,
+:root[data-theme="dreamyPink"] .expense-progress,
+:root[data-theme="dreamyPink"] .category-progress {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(33, 150, 243, 0.3);
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+    overflow: hidden;
+    height: 20px;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="dreamyPink"] .budget-progress-fill,
+:root[data-theme="dreamyPink"] .budget-bar-fill,
+:root[data-theme="dreamyPink"] .progress-fill,
+:root[data-theme="dreamyPink"] .budget-progress-fill,
+:root[data-theme="dreamyPink"] .expense-progress-fill,
+:root[data-theme="dreamyPink"] .category-progress-fill {
+    background: linear-gradient(90deg, rgba(33, 150, 243, 0.8), rgba(33, 150, 243, 0.6));
+    backdrop-filter: blur(2px);
+    transition: width 0.3s ease;
+    height: 100%;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 預算進度條動畫效果 */
+:root[data-theme="dreamyPink"] .budget-progress-fill::after,
+:root[data-theme="dreamyPink"] .budget-bar-fill::after,
+:root[data-theme="dreamyPink"] .progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0), 
+        rgba(255, 255, 255, 0.3), 
+        rgba(255, 255, 255, 0));
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* 預算進度條文字標籤 */
+:root[data-theme="dreamyPink"] .budget-progress-label,
+:root[data-theme="dreamyPink"] .progress-label,
+:root[data-theme="dreamyPink"] .budget-percentage {
+    color: var(--color-text-primary);
+    font-weight: 600;
+    font-size: 12px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+/* 預算進度條容器 */
+:root[data-theme="dreamyPink"] .budget-progress-container,
+:root[data-theme="dreamyPink"] .progress-container {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(33, 150, 243, 0.2);
+    border-radius: 12px;
+    padding: 12px;
+    margin: 8px 0;
+    backdrop-filter: blur(6px);
+}
+
+/* 預算進度條警告狀態 */
+:root[data-theme="dreamyPink"] .budget-progress.warning .budget-progress-fill,
+:root[data-theme="dreamyPink"] .budget-bar.warning .budget-bar-fill {
+    background: linear-gradient(90deg, rgba(255, 152, 0, 0.8), rgba(255, 193, 7, 0.6));
+}
+
+/* 預算進度條危險狀態 */
+:root[data-theme="dreamyPink"] .budget-progress.danger .budget-progress-fill,
+:root[data-theme="dreamyPink"] .budget-bar.danger .budget-bar-fill {
+    background: linear-gradient(90deg, rgba(244, 67, 54, 0.8), rgba(239, 83, 80, 0.6));
+}
+
+/* 預算進度條成功狀態 */
+:root[data-theme="dreamyPink"] .budget-progress.success .budget-progress-fill,
+:root[data-theme="dreamyPink"] .budget-bar.success .budget-bar-fill {
+    background: linear-gradient(90deg, rgba(76, 175, 80, 0.8), rgba(129, 199, 132, 0.6));
+}
+
+/* 預算統計面板 */
+:root[data-theme="dreamyPink"] .budget-stats,
+:root[data-theme="dreamyPink"] .budget-summary,
+:root[data-theme="dreamyPink"] .budget-overview {
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(33, 150, 243, 0.35);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 6px 24px rgba(33, 150, 243, 0.15);
+    padding: 18px;
+    margin: 12px 0;
+}
+
+:root[data-theme="dreamyPink"] .nav-item,
+:root[data-theme="dreamyPink"] .nav-link {
+    color: var(--color-text-primary);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="dreamyPink"] .nav-item:hover,
+:root[data-theme="dreamyPink"] .nav-link:hover {
+    background: var(--bg-secondary);
+    color: var(--color-primary);
+}
+
+/* 模態框和彈窗 */
+:root[data-theme="dreamyPink"] .modal,
+:root[data-theme="dreamyPink"] .dialog,
+:root[data-theme="dreamyPink"] .popup {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    box-shadow: var(--shadow-heavy);
+    backdrop-filter: blur(20px);
+}
+
+/* 小森對話框 */
+:root[data-theme="dreamyPink"] .chat-container,
+:root[data-theme="dreamyPink"] .chat-bubble {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+}
+
+:root[data-theme="dreamyPink"] .chat-bubble {
+    background: linear-gradient(135deg, rgba(255, 158, 199, 0.9), rgba(233, 30, 99, 0.9));
+    color: var(--color-text-light);
+}
+
+/* 標題樣式 */
+:root[data-theme="dreamyPink"] h1,
+:root[data-theme="dreamyPink"] h2,
+:root[data-theme="dreamyPink"] h3,
+:root[data-theme="dreamyPink"] h4,
+:root[data-theme="dreamyPink"] h5,
+:root[data-theme="dreamyPink"] h6 {
+    color: var(--color-text-primary);
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 文字樣式 */
+:root[data-theme="dreamyPink"] .text-primary {
+    color: var(--color-text-primary);
+}
+
+:root[data-theme="dreamyPink"] .text-secondary {
+    color: var(--color-text-secondary);
+}
+
+:root[data-theme="dreamyPink"] .text-light {
+    color: var(--color-text-light);
+}
+
+:root[data-theme="dreamyPink"] .text-muted {
+    color: var(--color-text-muted);
+}
+
+/* 每月花費試算與規劃頁面 - 毛玻璃效果 */
+:root[data-theme="dreamyPink"] .page-planner,
+:root[data-theme="dreamyPink"] .monthly-planner,
+:root[data-theme="dreamyPink"] .expense-planner,
+:root[data-theme="dreamyPink"] .budget-planner,
+body[data-theme="dreamyPink"] .page-planner,
+body[data-theme="dreamyPink"] .monthly-planner,
+body[data-theme="dreamyPink"] .expense-planner,
+body[data-theme="dreamyPink"] .budget-planner {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 32px rgba(33, 150, 243, 0.15) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 每月花費試算與規劃頁面內容容器 */
+:root[data-theme="dreamyPink"] .page-planner .container,
+:root[data-theme="dreamyPink"] .monthly-planner .container,
+:root[data-theme="dreamyPink"] .expense-planner .container,
+:root[data-theme="dreamyPink"] .budget-planner .container,
+:root[data-theme="dreamyPink"] .page-planner .main-content,
+:root[data-theme="dreamyPink"] .monthly-planner .main-content,
+:root[data-theme="dreamyPink"] .expense-planner .main-content,
+:root[data-theme="dreamyPink"] .budget-planner .main-content,
+body[data-theme="dreamyPink"] .page-planner .container,
+body[data-theme="dreamyPink"] .monthly-planner .container,
+body[data-theme="dreamyPink"] .expense-planner .container,
+body[data-theme="dreamyPink"] .budget-planner .container,
+body[data-theme="dreamyPink"] .page-planner .main-content,
+body[data-theme="dreamyPink"] .monthly-planner .main-content,
+body[data-theme="dreamyPink"] .expense-planner .main-content,
+body[data-theme="dreamyPink"] .budget-planner .main-content {
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.25) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 6px 24px rgba(33, 150, 243, 0.12) !important;
+    padding: 24px !important;
+    margin: 16px !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 每月花費試算與規劃卡片 */
+:root[data-theme="dreamyPink"] .page-planner .card,
+:root[data-theme="dreamyPink"] .monthly-planner .card,
+:root[data-theme="dreamyPink"] .expense-planner .card,
+:root[data-theme="dreamyPink"] .budget-planner .card,
+:root[data-theme="dreamyPink"] .page-planner .monthly-planning-card,
+:root[data-theme="dreamyPink"] .monthly-planner .monthly-planning-card,
+:root[data-theme="dreamyPink"] .expense-planner .monthly-planning-card,
+:root[data-theme="dreamyPink"] .budget-planner .monthly-planning-card,
+body[data-theme="dreamyPink"] .page-planner .card,
+body[data-theme="dreamyPink"] .monthly-planner .card,
+body[data-theme="dreamyPink"] .expense-planner .card,
+body[data-theme="dreamyPink"] .budget-planner .card,
+body[data-theme="dreamyPink"] .page-planner .monthly-planning-card,
+body[data-theme="dreamyPink"] .monthly-planner .monthly-planning-card,
+body[data-theme="dreamyPink"] .expense-planner .monthly-planning-card,
+body[data-theme="dreamyPink"] .budget-planner .monthly-planning-card {
+    background: rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.35) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 8px 28px rgba(33, 150, 243, 0.18) !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 每月花費試算與規劃卡片懸停效果 */
+:root[data-theme="dreamyPink"] .page-planner .card:hover,
+:root[data-theme="dreamyPink"] .monthly-planner .card:hover,
+:root[data-theme="dreamyPink"] .expense-planner .card:hover,
+:root[data-theme="dreamyPink"] .budget-planner .card:hover,
+:root[data-theme="dreamyPink"] .page-planner .monthly-planning-card:hover,
+:root[data-theme="dreamyPink"] .monthly-planner .monthly-planning-card:hover,
+:root[data-theme="dreamyPink"] .expense-planner .monthly-planning-card:hover,
+:root[data-theme="dreamyPink"] .budget-planner .monthly-planning-card:hover,
+body[data-theme="dreamyPink"] .page-planner .card:hover,
+body[data-theme="dreamyPink"] .monthly-planner .card:hover,
+body[data-theme="dreamyPink"] .expense-planner .card:hover,
+body[data-theme="dreamyPink"] .budget-planner .card:hover,
+body[data-theme="dreamyPink"] .page-planner .monthly-planning-card:hover,
+body[data-theme="dreamyPink"] .monthly-planner .monthly-planning-card:hover,
+body[data-theme="dreamyPink"] .expense-planner .monthly-planning-card:hover,
+body[data-theme="dreamyPink"] .budget-planner .monthly-planning-card:hover {
+    background: rgba(255, 255, 255, 0.22) !important;
+    border-color: rgba(33, 150, 243, 0.45) !important;
+    box-shadow: 0 12px 36px rgba(33, 150, 243, 0.25) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 每月花費試算與規劃輸入框 */
+:root[data-theme="dreamyPink"] .page-planner input,
+:root[data-theme="dreamyPink"] .monthly-planner input,
+:root[data-theme="dreamyPink"] .expense-planner input,
+:root[data-theme="dreamyPink"] .budget-planner input,
+:root[data-theme="dreamyPink"] .page-planner select,
+:root[data-theme="dreamyPink"] .monthly-planner select,
+:root[data-theme="dreamyPink"] .expense-planner select,
+:root[data-theme="dreamyPink"] .budget-planner select,
+body[data-theme="dreamyPink"] .page-planner input,
+body[data-theme="dreamyPink"] .monthly-planner input,
+body[data-theme="dreamyPink"] .expense-planner input,
+body[data-theme="dreamyPink"] .budget-planner input,
+body[data-theme="dreamyPink"] .page-planner select,
+body[data-theme="dreamyPink"] .monthly-planner select,
+body[data-theme="dreamyPink"] .expense-planner select,
+body[data-theme="dreamyPink"] .budget-planner select {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.4) !important;
+    border-radius: 12px !important;
+    color: var(--color-text-primary) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 每月花費試算與規劃輸入框聚焦效果 */
+:root[data-theme="dreamyPink"] .page-planner input:focus,
+:root[data-theme="dreamyPink"] .monthly-planner input:focus,
+:root[data-theme="dreamyPink"] .expense-planner input:focus,
+:root[data-theme="dreamyPink"] .budget-planner input:focus,
+:root[data-theme="dreamyPink"] .page-planner select:focus,
+:root[data-theme="dreamyPink"] .monthly-planner select:focus,
+:root[data-theme="dreamyPink"] .expense-planner select:focus,
+:root[data-theme="dreamyPink"] .budget-planner select:focus,
+body[data-theme="dreamyPink"] .page-planner input:focus,
+body[data-theme="dreamyPink"] .monthly-planner input:focus,
+body[data-theme="dreamyPink"] .expense-planner input:focus,
+body[data-theme="dreamyPink"] .budget-planner input:focus,
+body[data-theme="dreamyPink"] .page-planner select:focus,
+body[data-theme="dreamyPink"] .monthly-planner select:focus,
+body[data-theme="dreamyPink"] .expense-planner select:focus,
+body[data-theme="dreamyPink"] .budget-planner select:focus {
+    outline: none !important;
+    border-color: rgba(33, 150, 243, 0.6) !important;
+    background: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2) !important;
+}
+
+/* 每月花費試算與規劃按鈕 */
+:root[data-theme="dreamyPink"] .page-planner .btn,
+:root[data-theme="dreamyPink"] .monthly-planner .btn,
+:root[data-theme="dreamyPink"] .expense-planner .btn,
+:root[data-theme="dreamyPink"] .budget-planner .btn,
+body[data-theme="dreamyPink"] .page-planner .btn,
+body[data-theme="dreamyPink"] .monthly-planner .btn,
+body[data-theme="dreamyPink"] .expense-planner .btn,
+body[data-theme="dreamyPink"] .budget-planner .btn {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.8), rgba(33, 150, 243, 0.6)) !important;
+    backdrop-filter: blur(6px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+    border-radius: 12px !important;
+    color: var(--color-text-light) !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.2) !important;
+}
+
+/* 每月花費試算與規劃按鈕懸停效果 */
+:root[data-theme="dreamyPink"] .page-planner .btn:hover,
+:root[data-theme="dreamyPink"] .monthly-planner .btn:hover,
+:root[data-theme="dreamyPink"] .expense-planner .btn:hover,
+:root[data-theme="dreamyPink"] .budget-planner .btn:hover,
+body[data-theme="dreamyPink"] .page-planner .btn:hover,
+body[data-theme="dreamyPink"] .monthly-planner .btn:hover,
+body[data-theme="dreamyPink"] .expense-planner .btn:hover,
+body[data-theme="dreamyPink"] .budget-planner .btn:hover {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.9), rgba(25, 118, 210, 0.8)) !important;
+    border-color: rgba(33, 150, 243, 0.5) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3) !important;
+}
+
+/* 卡費每日預算追蹤頁面 - 日期毛玻璃效果 */
+:root[data-theme="dreamyPink"] .daily-budget-tracker,
+:root[data-theme="dreamyPink"] .budget-tracker,
+:root[data-theme="dreamyPink"] .expense-tracker,
+:root[data-theme="dreamyPink"] .daily-expense-tracker,
+:root[data-theme="dreamyPink"] .card-budget-tracker,
+body[data-theme="dreamyPink"] .daily-budget-tracker,
+body[data-theme="dreamyPink"] .budget-tracker,
+body[data-theme="dreamyPink"] .expense-tracker,
+body[data-theme="dreamyPink"] .daily-expense-tracker,
+body[data-theme="dreamyPink"] .card-budget-tracker {
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.25) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 6px 24px rgba(33, 150, 243, 0.12) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 卡費每日預算追蹤日期容器 */
+:root[data-theme="dreamyPink"] .daily-budget-tracker .date-container,
+:root[data-theme="dreamyPink"] .budget-tracker .date-container,
+:root[data-theme="dreamyPink"] .expense-tracker .date-container,
+:root[data-theme="dreamyPink"] .daily-expense-tracker .date-container,
+:root[data-theme="dreamyPink"] .card-budget-tracker .date-container,
+:root[data-theme="dreamyPink"] .daily-budget-tracker .date-picker,
+:root[data-theme="dreamyPink"] .budget-tracker .date-picker,
+:root[data-theme="dreamyPink"] .expense-tracker .date-picker,
+:root[data-theme="dreamyPink"] .daily-expense-tracker .date-picker,
+:root[data-theme="dreamyPink"] .card-budget-tracker .date-picker,
+:root[data-theme="dreamyPink"] .daily-budget-tracker .date-display,
+:root[data-theme="dreamyPink"] .budget-tracker .date-display,
+:root[data-theme="dreamyPink"] .expense-tracker .date-display,
+:root[data-theme="dreamyPink"] .daily-expense-tracker .date-display,
+:root[data-theme="dreamyPink"] .card-budget-tracker .date-display,
+body[data-theme="dreamyPink"] .daily-budget-tracker .date-container,
+body[data-theme="dreamyPink"] .budget-tracker .date-container,
+body[data-theme="dreamyPink"] .expense-tracker .date-container,
+body[data-theme="dreamyPink"] .daily-expense-tracker .date-container,
+body[data-theme="dreamyPink"] .card-budget-tracker .date-container,
+body[data-theme="dreamyPink"] .daily-budget-tracker .date-picker,
+body[data-theme="dreamyPink"] .budget-tracker .date-picker,
+body[data-theme="dreamyPink"] .expense-tracker .date-picker,
+body[data-theme="dreamyPink"] .daily-expense-tracker .date-picker,
+body[data-theme="dreamyPink"] .card-budget-tracker .date-picker,
+body[data-theme="dreamyPink"] .daily-budget-tracker .date-display,
+body[data-theme="dreamyPink"] .budget-tracker .date-display,
+body[data-theme="dreamyPink"] .expense-tracker .date-display,
+body[data-theme="dreamyPink"] .daily-expense-tracker .date-display,
+body[data-theme="dreamyPink"] .card-budget-tracker .date-display {
+    background: rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.35) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 16px rgba(33, 150, 243, 0.15) !important;
+    padding: 12px 20px !important;
+    margin: 8px !important;
+    position: relative !important;
+    z-index: 2 !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 卡費每日預算追蹤日期輸入框 */
+:root[data-theme="dreamyPink"] .daily-budget-tracker input[type="date"],
+:root[data-theme="dreamyPink"] .budget-tracker input[type="date"],
+:root[data-theme="dreamyPink"] .expense-tracker input[type="date"],
+:root[data-theme="dreamyPink"] .daily-expense-tracker input[type="date"],
+:root[data-theme="dreamyPink"] .card-budget-tracker input[type="date"],
+:root[data-theme="dreamyPink"] .daily-budget-tracker .date-input,
+:root[data-theme="dreamyPink"] .budget-tracker .date-input,
+:root[data-theme="dreamyPink"] .expense-tracker .date-input,
+:root[data-theme="dreamyPink"] .daily-expense-tracker .date-input,
+:root[data-theme="dreamyPink"] .card-budget-tracker .date-input,
+body[data-theme="dreamyPink"] .daily-budget-tracker input[type="date"],
+body[data-theme="dreamyPink"] .budget-tracker input[type="date"],
+body[data-theme="dreamyPink"] .expense-tracker input[type="date"],
+body[data-theme="dreamyPink"] .daily-expense-tracker input[type="date"],
+body[data-theme="dreamyPink"] .card-budget-tracker input[type="date"],
+body[data-theme="dreamyPink"] .daily-budget-tracker .date-input,
+body[data-theme="dreamyPink"] .budget-tracker .date-input,
+body[data-theme="dreamyPink"] .expense-tracker .date-input,
+body[data-theme="dreamyPink"] .daily-expense-tracker .date-input,
+body[data-theme="dreamyPink"] .card-budget-tracker .date-input {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.4) !important;
+    border-radius: 10px !important;
+    color: var(--color-text-primary) !important;
+    padding: 10px 16px !important;
+    transition: all 0.3s ease !important;
+    font-weight: 500 !important;
+}
+
+/* 卡費每日預算追蹤日期輸入框聚焦效果 */
+:root[data-theme="dreamyPink"] .daily-budget-tracker input[type="date"]:focus,
+:root[data-theme="dreamyPink"] .budget-tracker input[type="date"]:focus,
+:root[data-theme="dreamyPink"] .expense-tracker input[type="date"]:focus,
+:root[data-theme="dreamyPink"] .daily-expense-tracker input[type="date"]:focus,
+:root[data-theme="dreamyPink"] .card-budget-tracker input[type="date"]:focus,
+:root[data-theme="dreamyPink"] .daily-budget-tracker .date-input:focus,
+:root[data-theme="dreamyPink"] .budget-tracker .date-input:focus,
+:root[data-theme="dreamyPink"] .expense-tracker .date-input:focus,
+:root[data-theme="dreamyPink"] .daily-expense-tracker .date-input:focus,
+:root[data-theme="dreamyPink"] .card-budget-tracker .date-input:focus,
+body[data-theme="dreamyPink"] .daily-budget-tracker input[type="date"]:focus,
+body[data-theme="dreamyPink"] .budget-tracker input[type="date"]:focus,
+body[data-theme="dreamyPink"] .expense-tracker input[type="date"]:focus,
+body[data-theme="dreamyPink"] .daily-expense-tracker input[type="date"]:focus,
+body[data-theme="dreamyPink"] .card-budget-tracker input[type="date"]:focus,
+body[data-theme="dreamyPink"] .daily-budget-tracker .date-input:focus,
+body[data-theme="dreamyPink"] .budget-tracker .date-input:focus,
+body[data-theme="dreamyPink"] .expense-tracker .date-input:focus,
+body[data-theme="dreamyPink"] .daily-expense-tracker .date-input:focus,
+body[data-theme="dreamyPink"] .card-budget-tracker .date-input:focus {
+    outline: none !important;
+    border-color: rgba(33, 150, 243, 0.6) !important;
+    background: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2) !important;
+}
+
+/* 卡費每日預算追蹤日期標籤 */
+:root[data-theme="dreamyPink"] .daily-budget-tracker .date-label,
+:root[data-theme="dreamyPink"] .budget-tracker .date-label,
+:root[data-theme="dreamyPink"] .expense-tracker .date-label,
+:root[data-theme="dreamyPink"] .daily-expense-tracker .date-label,
+:root[data-theme="dreamyPink"] .card-budget-tracker .date-label,
+:root[data-theme="dreamyPink"] .daily-budget-tracker .label,
+:root[data-theme="dreamyPink"] .budget-tracker .label,
+:root[data-theme="dreamyPink"] .expense-tracker .label,
+:root[data-theme="dreamyPink"] .daily-expense-tracker .label,
+:root[data-theme="dreamyPink"] .card-budget-tracker .label,
+body[data-theme="dreamyPink"] .daily-budget-tracker .date-label,
+body[data-theme="dreamyPink"] .budget-tracker .date-label,
+body[data-theme="dreamyPink"] .expense-tracker .date-label,
+body[data-theme="dreamyPink"] .daily-expense-tracker .date-label,
+body[data-theme="dreamyPink"] .card-budget-tracker .date-label,
+body[data-theme="dreamyPink"] .daily-budget-tracker .label,
+body[data-theme="dreamyPink"] .budget-tracker .label,
+body[data-theme="dreamyPink"] .expense-tracker .label,
+body[data-theme="dreamyPink"] .daily-expense-tracker .label,
+body[data-theme="dreamyPink"] .card-budget-tracker .label {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(6px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+    border-radius: 8px !important;
+    color: var(--color-text-primary) !important;
+    padding: 6px 12px !important;
+    margin: 4px !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* 卡費每日預算追蹤日期按鈕 */
+:root[data-theme="dreamyPink"] .daily-budget-tracker .date-btn,
+:root[data-theme="dreamyPink"] .budget-tracker .date-btn,
+:root[data-theme="dreamyPink"] .expense-tracker .date-btn,
+:root[data-theme="dreamyPink"] .daily-expense-tracker .date-btn,
+:root[data-theme="dreamyPink"] .card-budget-tracker .date-btn,
+:root[data-theme="dreamyPink"] .daily-budget-tracker .calendar-btn,
+:root[data-theme="dreamyPink"] .budget-tracker .calendar-btn,
+:root[data-theme="dreamyPink"] .expense-tracker .calendar-btn,
+:root[data-theme="dreamyPink"] .daily-expense-tracker .calendar-btn,
+:root[data-theme="dreamyPink"] .card-budget-tracker .calendar-btn,
+body[data-theme="dreamyPink"] .daily-budget-tracker .date-btn,
+body[data-theme="dreamyPink"] .budget-tracker .date-btn,
+body[data-theme="dreamyPink"] .expense-tracker .date-btn,
+body[data-theme="dreamyPink"] .daily-expense-tracker .date-btn,
+body[data-theme="dreamyPink"] .card-budget-tracker .date-btn,
+body[data-theme="dreamyPink"] .daily-budget-tracker .calendar-btn,
+body[data-theme="dreamyPink"] .budget-tracker .calendar-btn,
+body[data-theme="dreamyPink"] .expense-tracker .calendar-btn,
+body[data-theme="dreamyPink"] .daily-expense-tracker .calendar-btn,
+body[data-theme="dreamyPink"] .card-budget-tracker .calendar-btn {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.7), rgba(33, 150, 243, 0.5)) !important;
+    backdrop-filter: blur(6px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+    border-radius: 10px !important;
+    color: var(--color-text-light) !important;
+    padding: 8px 16px !important;
+    margin: 4px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 3px 12px rgba(33, 150, 243, 0.2) !important;
+    font-weight: 500 !important;
+}
+
+/* 卡費每日預算追蹤日期按鈕懸停效果 */
+:root[data-theme="dreamyPink"] .daily-budget-tracker .date-btn:hover,
+:root[data-theme="dreamyPink"] .budget-tracker .date-btn:hover,
+:root[data-theme="dreamyPink"] .expense-tracker .date-btn:hover,
+:root[data-theme="dreamyPink"] .daily-expense-tracker .date-btn:hover,
+:root[data-theme="dreamyPink"] .card-budget-tracker .date-btn:hover,
+:root[data-theme="dreamyPink"] .daily-budget-tracker .calendar-btn:hover,
+:root[data-theme="dreamyPink"] .budget-tracker .calendar-btn:hover,
+:root[data-theme="dreamyPink"] .expense-tracker .calendar-btn:hover,
+:root[data-theme="dreamyPink"] .daily-expense-tracker .calendar-btn:hover,
+:root[data-theme="dreamyPink"] .card-budget-tracker .calendar-btn:hover,
+body[data-theme="dreamyPink"] .daily-budget-tracker .date-btn:hover,
+body[data-theme="dreamyPink"] .budget-tracker .date-btn:hover,
+body[data-theme="dreamyPink"] .expense-tracker .date-btn:hover,
+body[data-theme="dreamyPink"] .daily-expense-tracker .date-btn:hover,
+body[data-theme="dreamyPink"] .card-budget-tracker .date-btn:hover,
+body[data-theme="dreamyPink"] .daily-budget-tracker .calendar-btn:hover,
+body[data-theme="dreamyPink"] .budget-tracker .calendar-btn:hover,
+body[data-theme="dreamyPink"] .expense-tracker .calendar-btn:hover,
+body[data-theme="dreamyPink"] .daily-expense-tracker .calendar-btn:hover,
+body[data-theme="dreamyPink"] .card-budget-tracker .calendar-btn:hover {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.8), rgba(25, 118, 210, 0.7)) !important;
+    border-color: rgba(33, 150, 243, 0.5) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 16px rgba(33, 150, 243, 0.3) !important;
+}
+
+/* 卡費每日預算追蹤日期容器懸停效果 */
+:root[data-theme="dreamyPink"] .daily-budget-tracker .date-container:hover,
+:root[data-theme="dreamyPink"] .budget-tracker .date-container:hover,
+:root[data-theme="dreamyPink"] .expense-tracker .date-container:hover,
+:root[data-theme="dreamyPink"] .daily-expense-tracker .date-container:hover,
+:root[data-theme="dreamyPink"] .card-budget-tracker .date-container:hover,
+:root[data-theme="dreamyPink"] .daily-budget-tracker .date-picker:hover,
+:root[data-theme="dreamyPink"] .budget-tracker .date-picker:hover,
+:root[data-theme="dreamyPink"] .expense-tracker .date-picker:hover,
+:root[data-theme="dreamyPink"] .daily-expense-tracker .date-picker:hover,
+:root[data-theme="dreamyPink"] .card-budget-tracker .date-picker:hover,
+:root[data-theme="dreamyPink"] .daily-budget-tracker .date-display:hover,
+:root[data-theme="dreamyPink"] .budget-tracker .date-display:hover,
+:root[data-theme="dreamyPink"] .expense-tracker .date-display:hover,
+:root[data-theme="dreamyPink"] .daily-expense-tracker .date-display:hover,
+:root[data-theme="dreamyPink"] .card-budget-tracker .date-display:hover,
+body[data-theme="dreamyPink"] .daily-budget-tracker .date-container:hover,
+body[data-theme="dreamyPink"] .budget-tracker .date-container:hover,
+body[data-theme="dreamyPink"] .expense-tracker .date-container:hover,
+body[data-theme="dreamyPink"] .daily-expense-tracker .date-container:hover,
+body[data-theme="dreamyPink"] .card-budget-tracker .date-container:hover,
+body[data-theme="dreamyPink"] .daily-budget-tracker .date-picker:hover,
+body[data-theme="dreamyPink"] .budget-tracker .date-picker:hover,
+body[data-theme="dreamyPink"] .expense-tracker .date-picker:hover,
+body[data-theme="dreamyPink"] .daily-expense-tracker .date-picker:hover,
+body[data-theme="dreamyPink"] .card-budget-tracker .date-picker:hover,
+body[data-theme="dreamyPink"] .daily-budget-tracker .date-display:hover,
+body[data-theme="dreamyPink"] .budget-tracker .date-display:hover,
+body[data-theme="dreamyPink"] .expense-tracker .date-display:hover,
+body[data-theme="dreamyPink"] .daily-expense-tracker .date-display:hover,
+body[data-theme="dreamyPink"] .card-budget-tracker .date-display:hover {
+    background: rgba(255, 255, 255, 0.22) !important;
+    border-color: rgba(33, 150, 243, 0.45) !important;
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.2) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* 當月每日明細頁面 - 毛玻璃效果 - 最高優先級 */
+html body[data-theme="dreamyPink"] .daily-details,
+html body[data-theme="dreamyPink"] .monthly-details,
+html body[data-theme="dreamyPink"] .expense-details,
+html body[data-theme="dreamyPink"] .daily-expense-details,
+html body[data-theme="dreamyPink"] .current-month-details,
+html body[data-theme="dreamyPink"] .month-details,
+html body[data-theme="dreamyPink"] .daily-transaction-details,
+html body[data-theme="dreamyPink"] div.daily-details,
+html body[data-theme="dreamyPink"] div.monthly-details,
+html body[data-theme="dreamyPink"] div.expense-details,
+html body[data-theme="dreamyPink"] div.daily-expense-details,
+html body[data-theme="dreamyPink"] div.current-month-details,
+html body[data-theme="dreamyPink"] div.month-details,
+html body[data-theme="dreamyPink"] div.daily-transaction-details,
+html body[data-theme="dreamyPink"] *[class*="daily-details"],
+html body[data-theme="dreamyPink"] *[class*="monthly-details"],
+html body[data-theme="dreamyPink"] *[class*="expense-details"],
+html body[data-theme="dreamyPink"] *[class*="daily-expense-details"],
+html body[data-theme="dreamyPink"] *[class*="current-month-details"],
+html body[data-theme="dreamyPink"] *[class*="month-details"],
+html body[data-theme="dreamyPink"] *[class*="daily-transaction-details"] {
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.25) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 6px 24px rgba(33, 150, 243, 0.12) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 9999 !important;
+}
+
+/* 當月每日明細內容容器 - 最高優先級 */
+html body[data-theme="dreamyPink"] .daily-details .container,
+html body[data-theme="dreamyPink"] .monthly-details .container,
+html body[data-theme="dreamyPink"] .expense-details .container,
+html body[data-theme="dreamyPink"] .daily-expense-details .container,
+html body[data-theme="dreamyPink"] .current-month-details .container,
+html body[data-theme="dreamyPink"] .month-details .container,
+html body[data-theme="dreamyPink"] .daily-transaction-details .container,
+html body[data-theme="dreamyPink"] .daily-details .main-content,
+html body[data-theme="dreamyPink"] .monthly-details .main-content,
+html body[data-theme="dreamyPink"] .expense-details .main-content,
+html body[data-theme="dreamyPink"] .daily-expense-details .main-content,
+html body[data-theme="dreamyPink"] .current-month-details .main-content,
+html body[data-theme="dreamyPink"] .month-details .main-content,
+html body[data-theme="dreamyPink"] .daily-transaction-details .main-content,
+html body[data-theme="dreamyPink"] div.daily-details .container,
+html body[data-theme="dreamyPink"] div.monthly-details .container,
+html body[data-theme="dreamyPink"] div.expense-details .container,
+html body[data-theme="dreamyPink"] div.daily-expense-details .container,
+html body[data-theme="dreamyPink"] div.current-month-details .container,
+html body[data-theme="dreamyPink"] div.month-details .container,
+html body[data-theme="dreamyPink"] div.daily-transaction-details .container,
+html body[data-theme="dreamyPink"] div.daily-details .main-content,
+html body[data-theme="dreamyPink"] div.monthly-details .main-content,
+html body[data-theme="dreamyPink"] div.expense-details .main-content,
+html body[data-theme="dreamyPink"] div.daily-expense-details .main-content,
+html body[data-theme="dreamyPink"] div.current-month-details .main-content,
+html body[data-theme="dreamyPink"] div.month-details .main-content,
+html body[data-theme="dreamyPink"] div.daily-transaction-details .main-content {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.2) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(33, 150, 243, 0.1) !important;
+    padding: 20px !important;
+    margin: 12px !important;
+    position: relative !important;
+    z-index: 9999 !important;
+}
+
+/* 當月每日明細卡片 - 最高優先級 */
+html body[data-theme="dreamyPink"] .daily-details .card,
+html body[data-theme="dreamyPink"] .monthly-details .card,
+html body[data-theme="dreamyPink"] .expense-details .card,
+html body[data-theme="dreamyPink"] .daily-expense-details .card,
+html body[data-theme="dreamyPink"] .current-month-details .card,
+html body[data-theme="dreamyPink"] .month-details .card,
+html body[data-theme="dreamyPink"] .daily-transaction-details .card,
+html body[data-theme="dreamyPink"] .daily-details .detail-card,
+html body[data-theme="dreamyPink"] .monthly-details .detail-card,
+html body[data-theme="dreamyPink"] .expense-details .detail-card,
+html body[data-theme="dreamyPink"] .daily-expense-details .detail-card,
+html body[data-theme="dreamyPink"] .current-month-details .detail-card,
+html body[data-theme="dreamyPink"] .month-details .detail-card,
+html body[data-theme="dreamyPink"] .daily-transaction-details .detail-card,
+html body[data-theme="dreamyPink"] div.daily-details .card,
+html body[data-theme="dreamyPink"] div.monthly-details .card,
+html body[data-theme="dreamyPink"] div.expense-details .card,
+html body[data-theme="dreamyPink"] div.daily-expense-details .card,
+html body[data-theme="dreamyPink"] div.current-month-details .card,
+html body[data-theme="dreamyPink"] div.month-details .card,
+html body[data-theme="dreamyPink"] div.daily-transaction-details .card,
+html body[data-theme="dreamyPink"] div.daily-details .detail-card,
+html body[data-theme="dreamyPink"] div.monthly-details .detail-card,
+html body[data-theme="dreamyPink"] div.expense-details .detail-card,
+html body[data-theme="dreamyPink"] div.daily-expense-details .detail-card,
+html body[data-theme="dreamyPink"] div.current-month-details .detail-card,
+html body[data-theme="dreamyPink"] div.month-details .detail-card,
+html body[data-theme="dreamyPink"] div.daily-transaction-details .detail-card {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 16px rgba(33, 150, 243, 0.12) !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin: 8px 0 !important;
+    padding: 16px !important;
+    z-index: 9999 !important;
+}
+
+/* 當月每日明細列表項目 - 最高優先級 */
+html body[data-theme="dreamyPink"] .daily-details .list-item,
+html body[data-theme="dreamyPink"] .monthly-details .list-item,
+html body[data-theme="dreamyPink"] .expense-details .list-item,
+html body[data-theme="dreamyPink"] .daily-expense-details .list-item,
+html body[data-theme="dreamyPink"] .current-month-details .list-item,
+html body[data-theme="dreamyPink"] .month-details .list-item,
+html body[data-theme="dreamyPink"] .daily-transaction-details .list-item,
+html body[data-theme="dreamyPink"] .daily-details .transaction-item,
+html body[data-theme="dreamyPink"] .monthly-details .transaction-item,
+html body[data-theme="dreamyPink"] .expense-details .transaction-item,
+html body[data-theme="dreamyPink"] .daily-expense-details .transaction-item,
+html body[data-theme="dreamyPink"] .current-month-details .transaction-item,
+html body[data-theme="dreamyPink"] .month-details .transaction-item,
+html body[data-theme="dreamyPink"] .daily-transaction-details .transaction-item,
+html body[data-theme="dreamyPink"] div.daily-details .list-item,
+html body[data-theme="dreamyPink"] div.monthly-details .list-item,
+html body[data-theme="dreamyPink"] div.expense-details .list-item,
+html body[data-theme="dreamyPink"] div.daily-expense-details .list-item,
+html body[data-theme="dreamyPink"] div.current-month-details .list-item,
+html body[data-theme="dreamyPink"] div.month-details .list-item,
+html body[data-theme="dreamyPink"] div.daily-transaction-details .list-item,
+html body[data-theme="dreamyPink"] div.daily-details .transaction-item,
+html body[data-theme="dreamyPink"] div.monthly-details .transaction-item,
+html body[data-theme="dreamyPink"] div.expense-details .transaction-item,
+html body[data-theme="dreamyPink"] div.daily-expense-details .transaction-item,
+html body[data-theme="dreamyPink"] div.current-month-details .transaction-item,
+html body[data-theme="dreamyPink"] div.month-details .transaction-item,
+html body[data-theme="dreamyPink"] div.daily-transaction-details .transaction-item {
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(6px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.25) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.08) !important;
+    padding: 12px 16px !important;
+    margin: 6px 0 !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    z-index: 9999 !important;
+}
+
+/* 當月每日明細表格 - 最高優先級 */
+html body[data-theme="dreamyPink"] .daily-details table,
+html body[data-theme="dreamyPink"] .monthly-details table,
+html body[data-theme="dreamyPink"] .expense-details table,
+html body[data-theme="dreamyPink"] .daily-expense-details table,
+html body[data-theme="dreamyPink"] .current-month-details table,
+html body[data-theme="dreamyPink"] .month-details table,
+html body[data-theme="dreamyPink"] .daily-transaction-details table,
+html body[data-theme="dreamyPink"] div.daily-details table,
+html body[data-theme="dreamyPink"] div.monthly-details table,
+html body[data-theme="dreamyPink"] div.expense-details table,
+html body[data-theme="dreamyPink"] div.daily-expense-details table,
+html body[data-theme="dreamyPink"] div.current-month-details table,
+html body[data-theme="dreamyPink"] div.month-details table,
+html body[data-theme="dreamyPink"] div.daily-transaction-details table {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.2) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 16px rgba(33, 150, 243, 0.1) !important;
+    overflow: hidden !important;
+    z-index: 9999 !important;
+}
+
+/* 當月每日明細輸入框 - 最高優先級 */
+html body[data-theme="dreamyPink"] .daily-details input,
+html body[data-theme="dreamyPink"] .monthly-details input,
+html body[data-theme="dreamyPink"] .expense-details input,
+html body[data-theme="dreamyPink"] .daily-expense-details input,
+html body[data-theme="dreamyPink"] .current-month-details input,
+html body[data-theme="dreamyPink"] .month-details input,
+html body[data-theme="dreamyPink"] .daily-transaction-details input,
+html body[data-theme="dreamyPink"] .daily-details select,
+html body[data-theme="dreamyPink"] .monthly-details select,
+html body[data-theme="dreamyPink"] .expense-details select,
+html body[data-theme="dreamyPink"] .daily-expense-details select,
+html body[data-theme="dreamyPink"] .current-month-details select,
+html body[data-theme="dreamyPink"] .month-details select,
+html body[data-theme="dreamyPink"] .daily-transaction-details select,
+html body[data-theme="dreamyPink"] div.daily-details input,
+html body[data-theme="dreamyPink"] div.monthly-details input,
+html body[data-theme="dreamyPink"] div.expense-details input,
+html body[data-theme="dreamyPink"] div.daily-expense-details input,
+html body[data-theme="dreamyPink"] div.current-month-details input,
+html body[data-theme="dreamyPink"] div.month-details input,
+html body[data-theme="dreamyPink"] div.daily-transaction-details input,
+html body[data-theme="dreamyPink"] div.daily-details select,
+html body[data-theme="dreamyPink"] div.monthly-details select,
+html body[data-theme="dreamyPink"] div.expense-details select,
+html body[data-theme="dreamyPink"] div.daily-expense-details select,
+html body[data-theme="dreamyPink"] div.current-month-details select,
+html body[data-theme="dreamyPink"] div.month-details select,
+html body[data-theme="dreamyPink"] div.daily-transaction-details select {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(6px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+    border-radius: 8px !important;
+    color: var(--color-text-primary) !important;
+    padding: 8px 12px !important;
+    transition: all 0.3s ease !important;
+    z-index: 9999 !important;
+}
+
+/* 當月每日明細按鈕 - 最高優先級 */
+html body[data-theme="dreamyPink"] .daily-details .btn,
+html body[data-theme="dreamyPink"] .monthly-details .btn,
+html body[data-theme="dreamyPink"] .expense-details .btn,
+html body[data-theme="dreamyPink"] .daily-expense-details .btn,
+html body[data-theme="dreamyPink"] .current-month-details .btn,
+html body[data-theme="dreamyPink"] .month-details .btn,
+html body[data-theme="dreamyPink"] .daily-transaction-details .btn,
+html body[data-theme="dreamyPink"] div.daily-details .btn,
+html body[data-theme="dreamyPink"] div.monthly-details .btn,
+html body[data-theme="dreamyPink"] div.expense-details .btn,
+html body[data-theme="dreamyPink"] div.daily-expense-details .btn,
+html body[data-theme="dreamyPink"] div.current-month-details .btn,
+html body[data-theme="dreamyPink"] div.month-details .btn,
+html body[data-theme="dreamyPink"] div.daily-transaction-details .btn {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.7), rgba(33, 150, 243, 0.5)) !important;
+    backdrop-filter: blur(6px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+    border-radius: 8px !important;
+    color: var(--color-text-light) !important;
+    padding: 8px 16px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 3px 12px rgba(33, 150, 243, 0.2) !important;
+    z-index: 9999 !important;
+}
+
+/* 當月每日明細頁面 - 毛玻璃效果 */
+:root[data-theme="dreamyPink"] .daily-details,
+:root[data-theme="dreamyPink"] .monthly-details,
+:root[data-theme="dreamyPink"] .expense-details,
+:root[data-theme="dreamyPink"] .daily-expense-details,
+:root[data-theme="dreamyPink"] .current-month-details,
+:root[data-theme="dreamyPink"] .month-details,
+:root[data-theme="dreamyPink"] .daily-transaction-details,
+body[data-theme="dreamyPink"] .daily-details,
+body[data-theme="dreamyPink"] .monthly-details,
+body[data-theme="dreamyPink"] .expense-details,
+body[data-theme="dreamyPink"] .daily-expense-details,
+body[data-theme="dreamyPink"] .current-month-details,
+body[data-theme="dreamyPink"] .month-details,
+body[data-theme="dreamyPink"] .daily-transaction-details {
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.25) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 6px 24px rgba(33, 150, 243, 0.12) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 當月每日明細內容容器 */
+:root[data-theme="dreamyPink"] .daily-details .container,
+:root[data-theme="dreamyPink"] .monthly-details .container,
+:root[data-theme="dreamyPink"] .expense-details .container,
+:root[data-theme="dreamyPink"] .daily-expense-details .container,
+:root[data-theme="dreamyPink"] .current-month-details .container,
+:root[data-theme="dreamyPink"] .month-details .container,
+:root[data-theme="dreamyPink"] .daily-transaction-details .container,
+:root[data-theme="dreamyPink"] .daily-details .main-content,
+:root[data-theme="dreamyPink"] .monthly-details .main-content,
+:root[data-theme="dreamyPink"] .expense-details .main-content,
+:root[data-theme="dreamyPink"] .daily-expense-details .main-content,
+:root[data-theme="dreamyPink"] .current-month-details .main-content,
+:root[data-theme="dreamyPink"] .month-details .main-content,
+:root[data-theme="dreamyPink"] .daily-transaction-details .main-content,
+body[data-theme="dreamyPink"] .daily-details .container,
+body[data-theme="dreamyPink"] .monthly-details .container,
+body[data-theme="dreamyPink"] .expense-details .container,
+body[data-theme="dreamyPink"] .daily-expense-details .container,
+body[data-theme="dreamyPink"] .current-month-details .container,
+body[data-theme="dreamyPink"] .month-details .container,
+body[data-theme="dreamyPink"] .daily-transaction-details .container,
+body[data-theme="dreamyPink"] .daily-details .main-content,
+body[data-theme="dreamyPink"] .monthly-details .main-content,
+body[data-theme="dreamyPink"] .expense-details .main-content,
+body[data-theme="dreamyPink"] .daily-expense-details .main-content,
+body[data-theme="dreamyPink"] .current-month-details .main-content,
+body[data-theme="dreamyPink"] .month-details .main-content,
+body[data-theme="dreamyPink"] .daily-transaction-details .main-content {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.2) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(33, 150, 243, 0.1) !important;
+    padding: 20px !important;
+    margin: 12px !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 當月每日明細卡片 */
+:root[data-theme="dreamyPink"] .daily-details .card,
+:root[data-theme="dreamyPink"] .monthly-details .card,
+:root[data-theme="dreamyPink"] .expense-details .card,
+:root[data-theme="dreamyPink"] .daily-expense-details .card,
+:root[data-theme="dreamyPink"] .current-month-details .card,
+:root[data-theme="dreamyPink"] .month-details .card,
+:root[data-theme="dreamyPink"] .daily-transaction-details .card,
+:root[data-theme="dreamyPink"] .daily-details .detail-card,
+:root[data-theme="dreamyPink"] .monthly-details .detail-card,
+:root[data-theme="dreamyPink"] .expense-details .detail-card,
+:root[data-theme="dreamyPink"] .daily-expense-details .detail-card,
+:root[data-theme="dreamyPink"] .current-month-details .detail-card,
+:root[data-theme="dreamyPink"] .month-details .detail-card,
+:root[data-theme="dreamyPink"] .daily-transaction-details .detail-card,
+body[data-theme="dreamyPink"] .daily-details .card,
+body[data-theme="dreamyPink"] .monthly-details .card,
+body[data-theme="dreamyPink"] .expense-details .card,
+body[data-theme="dreamyPink"] .daily-expense-details .card,
+body[data-theme="dreamyPink"] .current-month-details .card,
+body[data-theme="dreamyPink"] .month-details .card,
+body[data-theme="dreamyPink"] .daily-transaction-details .card,
+body[data-theme="dreamyPink"] .daily-details .detail-card,
+body[data-theme="dreamyPink"] .monthly-details .detail-card,
+body[data-theme="dreamyPink"] .expense-details .detail-card,
+body[data-theme="dreamyPink"] .daily-expense-details .detail-card,
+body[data-theme="dreamyPink"] .current-month-details .detail-card,
+body[data-theme="dreamyPink"] .month-details .detail-card,
+body[data-theme="dreamyPink"] .daily-transaction-details .detail-card {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 16px rgba(33, 150, 243, 0.12) !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin: 8px 0 !important;
+    padding: 16px !important;
+}
+
+/* 當月每日明細卡片懸停效果 */
+:root[data-theme="dreamyPink"] .daily-details .card:hover,
+:root[data-theme="dreamyPink"] .monthly-details .card:hover,
+:root[data-theme="dreamyPink"] .expense-details .card:hover,
+:root[data-theme="dreamyPink"] .daily-expense-details .card:hover,
+:root[data-theme="dreamyPink"] .current-month-details .card:hover,
+:root[data-theme="dreamyPink"] .month-details .card:hover,
+:root[data-theme="dreamyPink"] .daily-transaction-details .card:hover,
+:root[data-theme="dreamyPink"] .daily-details .detail-card:hover,
+:root[data-theme="dreamyPink"] .monthly-details .detail-card:hover,
+:root[data-theme="dreamyPink"] .expense-details .detail-card:hover,
+:root[data-theme="dreamyPink"] .daily-expense-details .detail-card:hover,
+:root[data-theme="dreamyPink"] .current-month-details .detail-card:hover,
+:root[data-theme="dreamyPink"] .month-details .detail-card:hover,
+:root[data-theme="dreamyPink"] .daily-transaction-details .detail-card:hover,
+body[data-theme="dreamyPink"] .daily-details .card:hover,
+body[data-theme="dreamyPink"] .monthly-details .card:hover,
+body[data-theme="dreamyPink"] .expense-details .card:hover,
+body[data-theme="dreamyPink"] .daily-expense-details .card:hover,
+body[data-theme="dreamyPink"] .current-month-details .card:hover,
+body[data-theme="dreamyPink"] .month-details .card:hover,
+body[data-theme="dreamyPink"] .daily-transaction-details .card:hover,
+body[data-theme="dreamyPink"] .daily-details .detail-card:hover,
+body[data-theme="dreamyPink"] .monthly-details .detail-card:hover,
+body[data-theme="dreamyPink"] .expense-details .detail-card:hover,
+body[data-theme="dreamyPink"] .daily-expense-details .detail-card:hover,
+body[data-theme="dreamyPink"] .current-month-details .detail-card:hover,
+body[data-theme="dreamyPink"] .month-details .detail-card:hover,
+body[data-theme="dreamyPink"] .daily-transaction-details .detail-card:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(33, 150, 243, 0.4) !important;
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.18) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 當月每日明細列表項目 */
+:root[data-theme="dreamyPink"] .daily-details .list-item,
+:root[data-theme="dreamyPink"] .monthly-details .list-item,
+:root[data-theme="dreamyPink"] .expense-details .list-item,
+:root[data-theme="dreamyPink"] .daily-expense-details .list-item,
+:root[data-theme="dreamyPink"] .current-month-details .list-item,
+:root[data-theme="dreamyPink"] .month-details .list-item,
+:root[data-theme="dreamyPink"] .daily-transaction-details .list-item,
+:root[data-theme="dreamyPink"] .daily-details .transaction-item,
+:root[data-theme="dreamyPink"] .monthly-details .transaction-item,
+:root[data-theme="dreamyPink"] .expense-details .transaction-item,
+:root[data-theme="dreamyPink"] .daily-expense-details .transaction-item,
+:root[data-theme="dreamyPink"] .current-month-details .transaction-item,
+:root[data-theme="dreamyPink"] .month-details .transaction-item,
+:root[data-theme="dreamyPink"] .daily-transaction-details .transaction-item,
+body[data-theme="dreamyPink"] .daily-details .list-item,
+body[data-theme="dreamyPink"] .monthly-details .list-item,
+body[data-theme="dreamyPink"] .expense-details .list-item,
+body[data-theme="dreamyPink"] .daily-expense-details .list-item,
+body[data-theme="dreamyPink"] .current-month-details .list-item,
+body[data-theme="dreamyPink"] .month-details .list-item,
+body[data-theme="dreamyPink"] .daily-transaction-details .list-item,
+body[data-theme="dreamyPink"] .daily-details .transaction-item,
+body[data-theme="dreamyPink"] .monthly-details .transaction-item,
+body[data-theme="dreamyPink"] .expense-details .transaction-item,
+body[data-theme="dreamyPink"] .daily-expense-details .transaction-item,
+body[data-theme="dreamyPink"] .current-month-details .transaction-item,
+body[data-theme="dreamyPink"] .month-details .transaction-item,
+body[data-theme="dreamyPink"] .daily-transaction-details .transaction-item {
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(6px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.25) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.08) !important;
+    padding: 12px 16px !important;
+    margin: 6px 0 !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+}
+
+/* 當月每日明細列表項目懸停效果 */
+:root[data-theme="dreamyPink"] .daily-details .list-item:hover,
+:root[data-theme="dreamyPink"] .monthly-details .list-item:hover,
+:root[data-theme="dreamyPink"] .expense-details .list-item:hover,
+:root[data-theme="dreamyPink"] .daily-expense-details .list-item:hover,
+:root[data-theme="dreamyPink"] .current-month-details .list-item:hover,
+:root[data-theme="dreamyPink"] .month-details .list-item:hover,
+:root[data-theme="dreamyPink"] .daily-transaction-details .list-item:hover,
+:root[data-theme="dreamyPink"] .daily-details .transaction-item:hover,
+:root[data-theme="dreamyPink"] .monthly-details .transaction-item:hover,
+:root[data-theme="dreamyPink"] .expense-details .transaction-item:hover,
+:root[data-theme="dreamyPink"] .daily-expense-details .transaction-item:hover,
+:root[data-theme="dreamyPink"] .current-month-details .transaction-item:hover,
+:root[data-theme="dreamyPink"] .month-details .transaction-item:hover,
+:root[data-theme="dreamyPink"] .daily-transaction-details .transaction-item:hover,
+body[data-theme="dreamyPink"] .daily-details .list-item:hover,
+body[data-theme="dreamyPink"] .monthly-details .list-item:hover,
+body[data-theme="dreamyPink"] .expense-details .list-item:hover,
+body[data-theme="dreamyPink"] .daily-expense-details .list-item:hover,
+body[data-theme="dreamyPink"] .current-month-details .list-item:hover,
+body[data-theme="dreamyPink"] .month-details .list-item:hover,
+body[data-theme="dreamyPink"] .daily-transaction-details .list-item:hover,
+body[data-theme="dreamyPink"] .daily-details .transaction-item:hover,
+body[data-theme="dreamyPink"] .monthly-details .transaction-item:hover,
+body[data-theme="dreamyPink"] .expense-details .transaction-item:hover,
+body[data-theme="dreamyPink"] .daily-expense-details .transaction-item:hover,
+body[data-theme="dreamyPink"] .current-month-details .transaction-item:hover,
+body[data-theme="dreamyPink"] .month-details .transaction-item:hover,
+body[data-theme="dreamyPink"] .daily-transaction-details .transaction-item:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+    border-color: rgba(33, 150, 243, 0.35) !important;
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15) !important;
+    transform: translateX(4px) !important;
+}
+
+/* 當月每日明細表格 */
+:root[data-theme="dreamyPink"] .daily-details table,
+:root[data-theme="dreamyPink"] .monthly-details table,
+:root[data-theme="dreamyPink"] .expense-details table,
+:root[data-theme="dreamyPink"] .daily-expense-details table,
+:root[data-theme="dreamyPink"] .current-month-details table,
+:root[data-theme="dreamyPink"] .month-details table,
+:root[data-theme="dreamyPink"] .daily-transaction-details table,
+body[data-theme="dreamyPink"] .daily-details table,
+body[data-theme="dreamyPink"] .monthly-details table,
+body[data-theme="dreamyPink"] .expense-details table,
+body[data-theme="dreamyPink"] .daily-expense-details table,
+body[data-theme="dreamyPink"] .current-month-details table,
+body[data-theme="dreamyPink"] .month-details table,
+body[data-theme="dreamyPink"] .daily-transaction-details table {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.2) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 16px rgba(33, 150, 243, 0.1) !important;
+    overflow: hidden !important;
+}
+
+/* 當月每日明細表格標題 */
+:root[data-theme="dreamyPink"] .daily-details th,
+:root[data-theme="dreamyPink"] .monthly-details th,
+:root[data-theme="dreamyPink"] .expense-details th,
+:root[data-theme="dreamyPink"] .daily-expense-details th,
+:root[data-theme="dreamyPink"] .current-month-details th,
+:root[data-theme="dreamyPink"] .month-details th,
+:root[data-theme="dreamyPink"] .daily-transaction-details th,
+body[data-theme="dreamyPink"] .daily-details th,
+body[data-theme="dreamyPink"] .monthly-details th,
+body[data-theme="dreamyPink"] .expense-details th,
+body[data-theme="dreamyPink"] .daily-expense-details th,
+body[data-theme="dreamyPink"] .current-month-details th,
+body[data-theme="dreamyPink"] .month-details th,
+body[data-theme="dreamyPink"] .daily-transaction-details th {
+    background: rgba(33, 150, 243, 0.15) !important;
+    backdrop-filter: blur(6px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.25) !important;
+    color: var(--color-text-primary) !important;
+    font-weight: 600 !important;
+    padding: 12px !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* 當月每日明細表格內容 */
+:root[data-theme="dreamyPink"] .daily-details td,
+:root[data-theme="dreamyPink"] .monthly-details td,
+:root[data-theme="dreamyPink"] .expense-details td,
+:root[data-theme="dreamyPink"] .daily-expense-details td,
+:root[data-theme="dreamyPink"] .current-month-details td,
+:root[data-theme="dreamyPink"] .month-details td,
+:root[data-theme="dreamyPink"] .daily-transaction-details td,
+body[data-theme="dreamyPink"] .daily-details td,
+body[data-theme="dreamyPink"] .monthly-details td,
+body[data-theme="dreamyPink"] .expense-details td,
+body[data-theme="dreamyPink"] .daily-expense-details td,
+body[data-theme="dreamyPink"] .current-month-details td,
+body[data-theme="dreamyPink"] .month-details td,
+body[data-theme="dreamyPink"] .daily-transaction-details td {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(4px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.15) !important;
+    color: var(--color-text-primary) !important;
+    padding: 10px 12px !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 當月每日明細表格行懸停效果 */
+:root[data-theme="dreamyPink"] .daily-details tr:hover td,
+:root[data-theme="dreamyPink"] .monthly-details tr:hover td,
+:root[data-theme="dreamyPink"] .expense-details tr:hover td,
+:root[data-theme="dreamyPink"] .daily-expense-details tr:hover td,
+:root[data-theme="dreamyPink"] .current-month-details tr:hover td,
+:root[data-theme="dreamyPink"] .month-details tr:hover td,
+:root[data-theme="dreamyPink"] .daily-transaction-details tr:hover td,
+body[data-theme="dreamyPink"] .daily-details tr:hover td,
+body[data-theme="dreamyPink"] .monthly-details tr:hover td,
+body[data-theme="dreamyPink"] .expense-details tr:hover td,
+body[data-theme="dreamyPink"] .daily-expense-details tr:hover td,
+body[data-theme="dreamyPink"] .current-month-details tr:hover td,
+body[data-theme="dreamyPink"] .month-details tr:hover td,
+body[data-theme="dreamyPink"] .daily-transaction-details tr:hover td {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(33, 150, 243, 0.3) !important;
+}
+
+/* 當月每日明細輸入框 */
+:root[data-theme="dreamyPink"] .daily-details input,
+:root[data-theme="dreamyPink"] .monthly-details input,
+:root[data-theme="dreamyPink"] .expense-details input,
+:root[data-theme="dreamyPink"] .daily-expense-details input,
+:root[data-theme="dreamyPink"] .current-month-details input,
+:root[data-theme="dreamyPink"] .month-details input,
+:root[data-theme="dreamyPink"] .daily-transaction-details input,
+:root[data-theme="dreamyPink"] .daily-details select,
+:root[data-theme="dreamyPink"] .monthly-details select,
+:root[data-theme="dreamyPink"] .expense-details select,
+:root[data-theme="dreamyPink"] .daily-expense-details select,
+:root[data-theme="dreamyPink"] .current-month-details select,
+:root[data-theme="dreamyPink"] .month-details select,
+:root[data-theme="dreamyPink"] .daily-transaction-details select,
+body[data-theme="dreamyPink"] .daily-details input,
+body[data-theme="dreamyPink"] .monthly-details input,
+body[data-theme="dreamyPink"] .expense-details input,
+body[data-theme="dreamyPink"] .daily-expense-details input,
+body[data-theme="dreamyPink"] .current-month-details input,
+body[data-theme="dreamyPink"] .month-details input,
+body[data-theme="dreamyPink"] .daily-transaction-details input,
+body[data-theme="dreamyPink"] .daily-details select,
+body[data-theme="dreamyPink"] .monthly-details select,
+body[data-theme="dreamyPink"] .expense-details select,
+body[data-theme="dreamyPink"] .daily-expense-details select,
+body[data-theme="dreamyPink"] .current-month-details select,
+body[data-theme="dreamyPink"] .month-details select,
+body[data-theme="dreamyPink"] .daily-transaction-details select {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(6px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+    border-radius: 8px !important;
+    color: var(--color-text-primary) !important;
+    padding: 8px 12px !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 當月每日明細輸入框聚焦效果 */
+:root[data-theme="dreamyPink"] .daily-details input:focus,
+:root[data-theme="dreamyPink"] .monthly-details input:focus,
+:root[data-theme="dreamyPink"] .expense-details input:focus,
+:root[data-theme="dreamyPink"] .daily-expense-details input:focus,
+:root[data-theme="dreamyPink"] .current-month-details input:focus,
+:root[data-theme="dreamyPink"] .month-details input:focus,
+:root[data-theme="dreamyPink"] .daily-transaction-details input:focus,
+:root[data-theme="dreamyPink"] .daily-details select:focus,
+:root[data-theme="dreamyPink"] .monthly-details select:focus,
+:root[data-theme="dreamyPink"] .expense-details select:focus,
+:root[data-theme="dreamyPink"] .daily-expense-details select:focus,
+:root[data-theme="dreamyPink"] .current-month-details select:focus,
+:root[data-theme="dreamyPink"] .month-details select:focus,
+:root[data-theme="dreamyPink"] .daily-transaction-details select:focus,
+body[data-theme="dreamyPink"] .daily-details input:focus,
+body[data-theme="dreamyPink"] .monthly-details input:focus,
+body[data-theme="dreamyPink"] .expense-details input:focus,
+body[data-theme="dreamyPink"] .daily-expense-details input:focus,
+body[data-theme="dreamyPink"] .current-month-details input:focus,
+body[data-theme="dreamyPink"] .month-details input:focus,
+body[data-theme="dreamyPink"] .daily-transaction-details input:focus,
+body[data-theme="dreamyPink"] .daily-details select:focus,
+body[data-theme="dreamyPink"] .monthly-details select:focus,
+body[data-theme="dreamyPink"] .expense-details select:focus,
+body[data-theme="dreamyPink"] .daily-expense-details select:focus,
+body[data-theme="dreamyPink"] .current-month-details select:focus,
+body[data-theme="dreamyPink"] .month-details select:focus,
+body[data-theme="dreamyPink"] .daily-transaction-details select:focus {
+    outline: none !important;
+    border-color: rgba(33, 150, 243, 0.5) !important;
+    background: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2) !important;
+}
+
+/* 當月每日明細按鈕 */
+:root[data-theme="dreamyPink"] .daily-details .btn,
+:root[data-theme="dreamyPink"] .monthly-details .btn,
+:root[data-theme="dreamyPink"] .expense-details .btn,
+:root[data-theme="dreamyPink"] .daily-expense-details .btn,
+:root[data-theme="dreamyPink"] .current-month-details .btn,
+:root[data-theme="dreamyPink"] .month-details .btn,
+:root[data-theme="dreamyPink"] .daily-transaction-details .btn,
+body[data-theme="dreamyPink"] .daily-details .btn,
+body[data-theme="dreamyPink"] .monthly-details .btn,
+body[data-theme="dreamyPink"] .expense-details .btn,
+body[data-theme="dreamyPink"] .daily-expense-details .btn,
+body[data-theme="dreamyPink"] .current-month-details .btn,
+body[data-theme="dreamyPink"] .month-details .btn,
+body[data-theme="dreamyPink"] .daily-transaction-details .btn {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.7), rgba(33, 150, 243, 0.5)) !important;
+    backdrop-filter: blur(6px) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+    border-radius: 8px !important;
+    color: var(--color-text-light) !important;
+    padding: 8px 16px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 3px 12px rgba(33, 150, 243, 0.2) !important;
+}
+
+/* 當月每日明細按鈕懸停效果 */
+:root[data-theme="dreamyPink"] .daily-details .btn:hover,
+:root[data-theme="dreamyPink"] .monthly-details .btn:hover,
+:root[data-theme="dreamyPink"] .expense-details .btn:hover,
+:root[data-theme="dreamyPink"] .daily-expense-details .btn:hover,
+:root[data-theme="dreamyPink"] .current-month-details .btn:hover,
+:root[data-theme="dreamyPink"] .month-details .btn:hover,
+:root[data-theme="dreamyPink"] .daily-transaction-details .btn:hover,
+body[data-theme="dreamyPink"] .daily-details .btn:hover,
+body[data-theme="dreamyPink"] .monthly-details .btn:hover,
+body[data-theme="dreamyPink"] .expense-details .btn:hover,
+body[data-theme="dreamyPink"] .daily-expense-details .btn:hover,
+body[data-theme="dreamyPink"] .current-month-details .btn:hover,
+body[data-theme="dreamyPink"] .month-details .btn:hover,
+body[data-theme="dreamyPink"] .daily-transaction-details .btn:hover {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.8), rgba(25, 118, 210, 0.7)) !important;
+    border-color: rgba(33, 150, 243, 0.5) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 16px rgba(33, 150, 243, 0.3) !important;
+}
+
+/* 表格樣式 */
+:root[data-theme="dreamyPink"] table {
+    background: var(--bg-surface);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+}
+
+:root[data-theme="dreamyPink"] th {
+    background: var(--bg-secondary);
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+:root[data-theme="dreamyPink"] td {
+    border-bottom: 1px solid var(--border-light);
+    color: var(--color-text-secondary);
+}
+
+:root[data-theme="dreamyPink"] tr:hover td {
+    background: var(--bg-secondary);
+}
+
+/* 分隔線 */
+:root[data-theme="dreamyPink"] hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--color-primary), rgba(255, 255, 255, 0));
+    border-radius: 1px;
+}
+
+/* 滾動條 */
+:root[data-theme="dreamyPink"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+:root[data-theme="dreamyPink"] ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+}
+
+:root[data-theme="dreamyPink"] ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+}
+
+:root[data-theme="dreamyPink"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-dark);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    :root[data-theme="dreamyPink"] .container,
+    :root[data-theme="dreamyPink"] .main-content {
+        border-radius: 12px;
+        margin: 10px;
+    }
+    
+    :root[data-theme="dreamyPink"] .card,
+    :root[data-theme="dreamyPink"] .investment-card {
+        border-radius: 12px;
+        margin: 8px;
+    }
+    
+    :root[data-theme="dreamyPink"] .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* 動畫效果 */
+:root[data-theme="dreamyPink"] .animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+:root[data-theme="dreamyPink"] .animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* 特殊元素樣式 */
+:root[data-theme="dreamyPink"] .badge {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    border-radius: 12px;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+:root[data-theme="dreamyPink"] .tag {
+    background: var(--bg-secondary);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* FAB按鈕 */
+:root[data-theme="dreamyPink"] .fab,
+:root[data-theme="dreamyPink"] .floating-btn {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    box-shadow: var(--btn-shadow);
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="dreamyPink"] .fab:hover,
+:root[data-theme="dreamyPink"] .floating-btn:hover {
+    background: var(--btn-hover);
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+}
