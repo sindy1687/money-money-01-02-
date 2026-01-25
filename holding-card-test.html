@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>持股卡片主題測試</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="little-prince-theme.css">
+    <style>
+        body {
+            font-family: 'Georgia', 'Times New Roman', 'Noto Sans TC', serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            background: #f5f5f5;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .test-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            position: relative;
+            min-height: 200px;
+        }
+        
+        .controls {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .controls button {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            background: #007bff;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .controls button:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        .debug-info {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body data-theme="littlePrince">
+    <div class="test-container">
+        <div class="test-header">
+            <h1>👑 持股卡片主題測試</h1>
+            <p>專門測試小王子主題下的持股卡片樣式</p>
+        </div>
+
+        <div class="controls">
+            <button onclick="applyLittlePrinceTheme()">應用小王子主題</button>
+            <button onclick="applyDefaultTheme()">應用預設主題</button>
+            <button onclick="forceApplyStyles()">強制應用樣式</button>
+            <button onclick="debugStyles()">調試樣式</button>
+            <button onclick="clearDebugInfo()">清除調試信息</button>
+        </div>
+
+        <div class="debug-info" id="debugInfo">
+調試信息將顯示在這裡...
+        </div>
+
+        <div class="test-grid">
+            <!-- 持有中卡片 -->
+            <div class="card holding-card">
+                <h2>持有中股票</h2>
+                <p>股票代碼: <span class="stock-code">2330</span></p>
+                <p>股票名稱: 台積電</p>
+                <p>當前價格: <span class="price">1,770.00</span></p>
+                <p>漲跌幅: <span class="percentage positive">+10.00 (+0.57%)</span></p>
+                <p>昨收: <span class="yesterday-close">1,760.00</span></p>
+                <p>持有股數: <span class="shares">24 股</span></p>
+                <button class="btn">管理</button>
+            </div>
+
+            <!-- 持有卡片2 -->
+            <div class="card holdings-card">
+                <h2>持有多筆股票</h2>
+                <p>股票代碼: <span class="stock-code">0056</span></p>
+                <p>股票名稱: 高股息ETF</p>
+                <p>當前價格: <span class="price">125.50</span></p>
+                <p>漲跌幅: <span class="percentage negative">-0.50 (-0.40%)</span></p>
+                <p>昨收: <span class="yesterday-close">126.00</span></p>
+                <p>持有股數: <span class="shares">1000 股</span></p>
+                <button class="btn">查看詳情</button>
+            </div>
+
+            <!-- 股票持有卡片 -->
+            <div class="card stock-holding-card">
+                <h2>股票持有明細</h2>
+                <p>股票代碼: <span class="stock-code">3008</span></p>
+                <p>股票名稱: 大立光</p>
+                <p>當前價格: <span class="price">2,450.00</span></p>
+                <p>漲跌幅: <span class="percentage positive">+25.00 (+1.03%)</span></p>
+                <p>昨收: <span class="yesterday-close">2,425.00</span></p>
+                <p>持有股數: <span class="shares">10 股</span></p>
+                <button class="btn">交易記錄</button>
+            </div>
+
+            <!-- 股票卡片 -->
+            <div class="card stock-card">
+                <div class="stock-header">
+                    <div class="stock-info">
+                        <span class="stock-icon">📊</span>
+                        <div class="stock-name">台積電 (2330)</div>
+                        <div class="stock-price">NT$ 650.00</div>
+                    </div>
+                    <div class="stock-grid-card-change positive">▲ +5.2%</div>
+                </div>
+            </div>
+
+            <!-- 投資組合卡片 -->
+            <div class="card portfolio-card">
+                <div class="portfolio-card-title">持股數</div>
+                <div class="portfolio-card-value">1,000</div>
+            </div>
+
+            <!-- 投資組合卡片2 -->
+            <div class="card portfolio-card">
+                <div class="portfolio-card-title">未實現損益</div>
+                <div class="portfolio-card-value unrealized-pnl">+NT$8,250</div>
+            </div>
+
+            <!-- 投資組合卡片3 -->
+            <div class="card portfolio-card">
+                <div class="portfolio-card-title">報酬率</div>
+                <div class="portfolio-card-value">+5.48%</div>
+            </div>
+
+            <!-- 投資組合卡片4 -->
+            <div class="card portfolio-card">
+                <div class="portfolio-card-title">現價輸入</div>
+                <input type="number" class="current-price-input" placeholder="請輸入現價" value="158.75">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let debugInfo = document.getElementById('debugInfo');
+        
+        function log(message) {
+            debugInfo.textContent += new Date().toLocaleTimeString() + ': ' + message + '\n';
+            debugInfo.scrollTop = debugInfo.scrollHeight;
+            console.log(message);
+        }
+        
+        function clearDebugInfo() {
+            debugInfo.textContent = '';
+            log('調試信息已清除');
+        }
+        
+        function applyLittlePrinceTheme() {
+            log('=== 應用小王子主題 ===');
+            document.body.setAttribute('data-theme', 'littlePrince');
+            document.documentElement.setAttribute('data-theme', 'littlePrince');
+            log('主題屬性已設置為 littlePrince');
+            
+            setTimeout(() => {
+                checkCardStyles();
+            }, 100);
+        }
+        
+        function applyDefaultTheme() {
+            log('=== 應用預設主題 ===');
+            document.body.removeAttribute('data-theme');
+            document.documentElement.removeAttribute('data-theme');
+            log('主題屬性已清除');
+            
+            setTimeout(() => {
+                checkCardStyles();
+            }, 100);
+        }
+        
+        function forceApplyStyles() {
+            log('=== 強制應用樣式 ===');
+            
+            const holdingCards = document.querySelectorAll('.holding-card, .holdings-card, .stock-holding-card');
+            const stockCards = document.querySelectorAll('.stock-card');
+            const portfolioCards = document.querySelectorAll('.portfolio-card');
+            const allCards = document.querySelectorAll('.card');
+            
+            log(`找到 ${holdingCards.length} 個持股卡片`);
+            log(`找到 ${stockCards.length} 個股票卡片`);
+            log(`找到 ${portfolioCards.length} 個投資組合卡片`);
+            log(`找到 ${allCards.length} 個總卡片`);
+            
+            // 處理所有卡片
+            allCards.forEach((card, index) => {
+                log(`處理卡片 ${index + 1}: ${card.className}`);
+                
+                // 強制設置內聯樣式
+                card.style.setProperty('background', 'url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed', 'important');
+                card.style.setProperty('background-image', 'url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg")', 'important');
+                card.style.setProperty('background-size', 'cover', 'important');
+                card.style.setProperty('background-position', 'center', 'important');
+                card.style.setProperty('border', '3px solid #D4AF37', 'important');
+                card.style.setProperty('border-radius', '16px', 'important');
+                card.style.setProperty('backdrop-filter', 'blur(20px)', 'important');
+                card.style.setProperty('position', 'relative', 'important');
+                card.style.setProperty('overflow', 'hidden', 'important');
+                
+                log(`卡片 ${index + 1} 樣式已強制應用`);
+            });
+            
+            setTimeout(() => {
+                checkCardStyles();
+            }, 100);
+        }
+        
+        function checkCardStyles() {
+            log('=== 檢查卡片樣式 ===');
+            
+            const holdingCards = document.querySelectorAll('.holding-card, .holdings-card, .stock-holding-card');
+            const stockCards = document.querySelectorAll('.stock-card');
+            const portfolioCards = document.querySelectorAll('.portfolio-card');
+            const allCards = document.querySelectorAll('.card');
+            
+            log(`卡片統計:`);
+            log(`  總卡片數: ${allCards.length}`);
+            log(`  持股卡片: ${holdingCards.length}`);
+            log(`  股票卡片: ${stockCards.length}`);
+            log(`  投資組合卡片: ${portfolioCards.length}`);
+            
+            // 檢查持股卡片
+            holdingCards.forEach((card, index) => {
+                const computedStyle = window.getComputedStyle(card);
+                log(`\n--- 持股卡片 ${index + 1} (${card.className}) ---`);
+                logCardStyle(computedStyle, card.className);
+            });
+            
+            // 檢查股票卡片
+            stockCards.forEach((card, index) => {
+                const computedStyle = window.getComputedStyle(card);
+                log(`\n--- 股票卡片 ${index + 1} (${card.className}) ---`);
+                logCardStyle(computedStyle, card.className);
+            });
+            
+            // 檢查投資組合卡片
+            portfolioCards.forEach((card, index) => {
+                const computedStyle = window.getComputedStyle(card);
+                log(`\n--- 投資組合卡片 ${index + 1} (${card.className}) ---`);
+                logCardStyle(computedStyle, card.className);
+            });
+        }
+        
+        function logCardStyle(computedStyle, className) {
+            log(`背景圖片: ${computedStyle.backgroundImage.substring(0, 100)}...`);
+            log(`邊框: ${computedStyle.borderWidth} ${computedStyle.borderStyle} ${computedStyle.borderColor}`);
+            log(`邊框半徑: ${computedStyle.borderRadius}`);
+            log(`背景顏色: ${computedStyle.backgroundColor}`);
+            log(`backdrop-filter: ${computedStyle.backdropFilter}`);
+            
+            // 檢查是否包含小王子圖片
+            if (computedStyle.backgroundImage.includes('918748238a3b26c91dcacd9926591d57.jpg')) {
+                log('✅ 背景圖片正確');
+            } else {
+                log('❌ 背景圖片不正確');
+            }
+            
+            // 檢查邊框是否為金色
+            if (computedStyle.borderColor.includes('212, 175, 55') || 
+                computedStyle.borderColor.includes('d4af37') ||
+                computedStyle.borderColor.includes('218, 165, 32')) {
+                log('✅ 邊框顏色正確');
+            } else {
+                log('❌ 邊框顏色不正確: ' + computedStyle.borderColor);
+            }
+        }
+        
+        function debugStyles() {
+            log('=== 詳細調試信息 ===');
+            
+            // 檢查當前主題
+            const currentTheme = document.body.getAttribute('data-theme') || 
+                                document.documentElement.getAttribute('data-theme');
+            log(`當前主題: ${currentTheme}`);
+            
+            // 檢查CSS文件
+            const cssLinks = document.querySelectorAll('link[rel="stylesheet"]');
+            log('CSS文件:');
+            cssLinks.forEach((link, index) => {
+                log(`  ${index + 1}: ${link.href}`);
+            });
+            
+            // 檢查CSS變數
+            const rootStyles = getComputedStyle(document.documentElement);
+            log('CSS變數:');
+            log(`  --theme-gold: ${rootStyles.getPropertyValue('--theme-gold')}`);
+            log(`  --theme-shadow: ${rootStyles.getPropertyValue('--theme-shadow')}`);
+            log(`  --theme-primary: ${rootStyles.getPropertyValue('--theme-primary')}`);
+            
+            // 檢查所有卡片元素
+            const allCards = document.querySelectorAll('.card');
+            const holdingCards = document.querySelectorAll('.holding-card, .holdings-card, .stock-holding-card');
+            log(`卡片統計: 總共 ${allCards.length} 個卡片，其中 ${holdingCards.length} 個持股卡片`);
+            
+            checkCardStyles();
+        }
+        
+        // 頁面載入時自動應用主題
+        document.addEventListener('DOMContentLoaded', function() {
+            log('頁面載入完成');
+            applyLittlePrinceTheme();
+        });
+    </script>
+</body>
+</html>

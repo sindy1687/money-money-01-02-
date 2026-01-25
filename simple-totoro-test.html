@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡單龍貓背景測試</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url("image/f6e910dc17992265ad9833055ff153ac.jpg") center/cover no-repeat fixed;
+        }
+        
+        .test-content {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .status {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="test-content">
+        <h1>🌼 龍貓背景測試</h1>
+        <div id="status" class="status">正在檢查背景...</div>
+        <p>如果您能看到龍貓背景圖片，表示路徑正確。</p>
+        <p>如果看不到背景圖片，請檢查：</p>
+        <ul style="text-align: left; display: inline-block;">
+            <li>圖片文件是否存在：image/f6e910dc17992265ad9833055ff153ac.jpg</li>
+            <li>相對路徑是否正確</li>
+            <li>瀏覽器是否能載入圖片</li>
+        </ul>
+    </div>
+    
+    <script>
+        // 檢查圖片是否能載入
+        function checkBackgroundImage() {
+            const img = new Image();
+            img.onload = function() {
+                document.getElementById('status').innerHTML = '<span class="success">✅ 背景圖片載入成功！</span>';
+            };
+            img.onerror = function() {
+                document.getElementById('status').innerHTML = '<span class="error">❌ 背景圖片載入失敗</span>';
+                console.error('無法載入圖片：image/f6e910dc17992265ad9833055ff153ac.jpg');
+            };
+            img.src = 'image/f6e910dc17992265ad9833055ff153ac.jpg';
+        }
+        
+        window.onload = checkBackgroundImage;
+    </script>
+</body>
+</html>

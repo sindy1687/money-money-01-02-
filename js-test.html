@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 測試</title>
+</head>
+<body>
+    <h1>JavaScript 測試頁面</h1>
+    <div id="test-output"></div>
+    
+    <script src="js/theme.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const output = document.getElementById('test-output');
+            
+            // 測試函數是否存在
+            const tests = [
+                { name: 'initTheme', exists: typeof initTheme === 'function' },
+                { name: 'getCurrentTheme', exists: typeof getCurrentTheme === 'function' },
+                { name: 'applyTheme', exists: typeof applyTheme === 'function' },
+                { name: 'applyCustomTheme', exists: typeof applyCustomTheme === 'function' },
+                { name: 'getCustomTheme', exists: typeof getCustomTheme === 'function' },
+                { name: 'saveCustomTheme', exists: typeof saveCustomTheme === 'function' },
+                { name: 'updateThemeButtons', exists: typeof updateThemeButtons === 'function' },
+                { name: 'showThemeSelector', exists: typeof showThemeSelector === 'function' }
+            ];
+            
+            let html = '<h2>函數存在性測試:</h2><ul>';
+            tests.forEach(test => {
+                html += `<li>${test.name}: ${test.exists ? '✅ 存在' : '❌ 不存在'}</li>`;
+            });
+            html += '</ul>';
+            
+            // 測試主題數組
+            html += '<h2>主題數組測試:</h2>';
+            if (typeof themes !== 'undefined') {
+                html += `<p>主題數組存在，包含 ${themes.length} 個主題</p>`;
+                html += '<ul>';
+                themes.slice(0, 5).forEach(theme => {
+                    html += `<li>${theme.name} (${theme.id})</li>`;
+                });
+                if (themes.length > 5) {
+                    html += `<li>... 還有 ${themes.length - 5} 個主題</li>`;
+                }
+                html += '</ul>';
+            } else {
+                html += '<p>❌ 主題數組不存在</p>';
+            }
+            
+            // 測試當前主題
+            html += '<h2>當前主題測試:</h2>';
+            try {
+                const currentTheme = getCurrentTheme();
+                html += `<p>當前主題: ${currentTheme}</p>`;
+            } catch (error) {
+                html += `<p>❌ 獲取當前主題失敗: ${error.message}</p>`;
+            }
+            
+            output.innerHTML = html;
+        });
+    </script>
+</body>
+</html>

@@ -2926,6 +2926,9 @@ function initQuickNotes() {
         noteInput.dispatchEvent(new Event('input', { bubbles: true }));
     }
     
+    // 渲染常用備註按鈕（包含預設和自定義）
+    renderQuickNotes();
+    
     // 當輸入區域顯示時，顯示常用備註按鈕
     const observer = new MutationObserver(() => {
         if (inputSection && inputSection.style.display !== 'none') {
@@ -2940,38 +2943,7 @@ function initQuickNotes() {
             quickNotesContainer.classList.add('show');
         }
     }
-    
-    // 綁定常用備註按鈕點擊事件
-    quickNotesButtons.querySelectorAll('.quick-note-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const note = btn.dataset.note;
-            if (noteInput) {
-                const currentValue = noteInput.value.trim();
-                // 檢查輸入框是否已經包含該備註，避免重複
-                if (currentValue.includes(note)) {
-                    // 如果已包含，不重複添加
-                    return;
-                }
-                // 如果輸入框已有內容，在後面追加；否則直接填入
-                let newValue;
-                if (currentValue) {
-                    newValue = currentValue + ' ' + note;
-                } else {
-                    newValue = note;
-                }
-                noteInput.value = newValue;
-                
-                // 儲存這次使用的備註作為「上一次的備註」
-                localStorage.setItem('lastQuickNote', newValue);
-                
-                // 觸發input事件，確保其他監聽器能收到
-                noteInput.dispatchEvent(new Event('input', { bubbles: true }));
-                // 聚焦到輸入框
-                noteInput.focus();
-            }
-        });
-    });
-    
+
     // 當備註輸入框獲得焦點時，確保常用備註按鈕顯示
     noteInput.addEventListener('focus', (e) => {
         quickNotesContainer.classList.add('show');
@@ -2984,7 +2956,7 @@ function initQuickNotes() {
             }
         }, 100);
     });
-    
+
     // 監聽備註輸入框的變化，如果用戶手動輸入或修改，也更新記憶
     noteInput.addEventListener('input', () => {
         const currentValue = noteInput.value.trim();
@@ -2992,11 +2964,235 @@ function initQuickNotes() {
             localStorage.setItem('lastQuickNote', currentValue);
         }
     });
-    
+
     // 防止輸入框focus時自動滾動（手機適配）
     noteInput.addEventListener('touchstart', (e) => {
         // 阻止默認行為，防止自動滾動
     }, { passive: true });
+
+    // 綁定新增常用備註按鈕
+    const addQuickNoteBtn = document.getElementById('addQuickNoteBtn');
+    if (addQuickNoteBtn) {
+        addQuickNoteBtn.addEventListener('click', showQuickNoteModal);
+    }
+}
+
+// ========== 常用備註管理功能 ==========
+
+// 獲取自定義常用備註列表
+function getCustomQuickNotes() {
+    return JSON.parse(localStorage.getItem('customQuickNotes') || '[]');
+}
+
+// 保存自定義常用備註列表
+function saveCustomQuickNotes(notes) {
+    localStorage.setItem('customQuickNotes', JSON.stringify(notes));
+}
+
+// 顯示新增常用備註模態框
+function showQuickNoteModal() {
+    const modal = document.getElementById('quickNoteModal');
+    if (!modal) return;
+
+    // 初始化圖標選擇
+    initQuickNoteEmojiGrid();
+
+    // 顯示模態框
+    modal.style.display = 'block';
+
+    // 綁定關閉事件
+    const closeBtn = document.getElementById('quickNoteModalClose');
+    const overlay = modal.querySelector('.modal-overlay');
+    const saveBtn = document.getElementById('quickNoteSaveBtn');
+    const nameInput = document.getElementById('quickNoteNameInput');
+
+    const closeModal = () => {
+        modal.style.display = 'none';
+        // 清空輸入
+        nameInput.value = '';
+        // 清除選中的圖標
+        document.querySelectorAll('.quick-note-modal .emoji-grid button.selected').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+    };
+
+    closeBtn.onclick = closeModal;
+    overlay.onclick = closeModal;
+
+    // 綁定保存事件
+    saveBtn.onclick = () => {
+        const selectedEmoji = document.querySelector('.quick-note-modal .emoji-grid button.selected');
+
+        const name = nameInput.value.trim();
+        const emoji = selectedEmoji ? selectedEmoji.textContent : '📝';
+
+        if (!name) {
+            alert('請輸入備註名稱');
+            return;
+        }
+
+        // 添加到自定義備註列表
+        const customNotes = getCustomQuickNotes();
+        customNotes.push({ name, emoji });
+        saveCustomQuickNotes(customNotes);
+
+        // 重新渲染常用備註按鈕
+        renderQuickNotes();
+
+        // 關閉模態框
+        closeModal();
+
+        // 播放成功音效（如果存在）
+        if (typeof playClickSound === 'function') {
+            playClickSound();
+        }
+    };
+
+    // 聚焦到輸入框
+    setTimeout(() => {
+        nameInput.focus();
+    }, 100);
+}
+
+// 初始化常用備註圖標選擇網格
+function initQuickNoteEmojiGrid() {
+    const grid = document.getElementById('quickNoteEmojiGrid');
+    if (!grid) return;
+
+    const commonEmojis = [
+        // 食物飲料
+        '🍳', '🍱', '🍽️', '☕', '🍕', '🍔', '🌮', '🥗', '🍰', '🍷', 
+        '🥤', '🍜', '🍣', '🥘', '🍝', '🍞', '🥐', '🧁', '🍩', '🍪',
+        
+        // 交通出行
+        '🚗', '🚕', '🚌', '🚇', '✈️', '🚢', '🏍️', '🚲', '🛴', '🛵',
+        '🚂', '🚁', '🛸', '🚀', '🚠', '🚡', '🚃', '🚋', '🚞', '🚟',
+        
+        // 購物消費
+        '🛒', '🛍️', '🛍️', '💳', '💰', '💵', '💴', '💶', '💷', '💸',
+        '🧾', '📊', '📈', '📉', '💹', '💱', '💲', '⚖️', '🧮', '🔢',
+        
+        // 娛樂休閒
+        '🎮', '🎯', '🎲', '🎪', '🎭', '🎨', '🎬', '🎤', '🎧', '🎼',
+        '🎵', '🎶', '🎹', '🥁', '🎸', '🎺', '🎷', '🎻', '🎺', '🎬',
+        
+        // 生活用品
+        '💊', '📚', '🏠', '💡', '🔧', '🔨', '🪛', '🔩', '⚙️', '🧰',
+        '🪒', '🧴', '🧼', '🧽', '🧹', '🪣', '🗑️', '📌', '📍', '📎',
+        
+        // 運動健康
+        '🏃', '🏊', '🚴', '🏋️', '🤸', '🧘', '🏃‍♀️', '🏊‍♀️', '🚴‍♀️', '🤸‍♀️',
+        '🧘‍♀️', '💪', '🏥', '🩺', '💉', '🩹', '🦷', '👁️', '🧠', '❤️',
+        
+        // 電子產品
+        '💻', '📱', '📷', '📹', '📼', '💾', '💿', '📀', '🖥️', '⌨️',
+        '🖱️', '🖨️', '📠', '📟', '📞', '☎️', '📱', '📲', '⌚', '🕰️',
+        
+        // 工作學習
+        '📝', '✏️', '✒️', '🖊️', '🖋️', '📌', '📍', '📎', '📏', '📐',
+        '🔍', '🔎', '📖', '📗', '📘', '📙', '📔', '📓', '📒', '🎓',
+        
+        // 特殊場合
+        '🎂', '🎁', '🎈', '🎉', '🎊', '🎀', '🎁', '💝', '💐', '🌹',
+        '🌸', '🌺', '🌻', '🌷', '🌹', '🏆', '🥇', '🥈', '🥉', '🏅',
+        
+        // 天氣季節
+        '☀️', '🌤️', '⛅', '☁️', '🌧️', '⛈️', '🌩️', '🌨️', '❄️', '☃️',
+        '🌬️', '🌈', '🌅', '🌄', '🌆', '🌇', '🌃', '🌌', '🌠', '⭐',
+        
+        // 動物寵物
+        '🐕', '🐈', '🐈‍⬛', '🐕‍🦺', '🦮', '🐩', '🐇', '🐰', '🐿️', '🦔',
+        '🦇', '🐻', '🐼', '🐨', '🐯', '🦁', '🐮', '🐷', '🐽', '🐸',
+        
+        // 其他常用
+        '🌟', '✨', '💫', '⚡', '🔥', '💧', '🌊', '🍀', '🌿', '🌱',
+        '🌳', '🌲', '🌴', '🌵', '🌾', '🌺', '🌻', '🌼', '🌷', '🌹',
+        
+        '📌', '📍', '✅', '❌', '⚠️', '🚨', '🔔', '🔕', '📢', '📣',
+        '💤', '😴', '😪', '😵', '🤯', '🥳', '🎊', '🤩', '😍', '🥰'
+    ];
+
+    grid.innerHTML = commonEmojis.map(emoji => 
+        `<button type="button" data-emoji="${emoji}">${emoji}</button>`
+    ).join('');
+
+    // 綁定選擇事件
+    grid.querySelectorAll('button').forEach(btn => {
+        btn.onclick = () => {
+            // 移除其他選中狀態
+            grid.querySelectorAll('button.selected').forEach(b => b.classList.remove('selected'));
+            // 添加選中狀態
+            btn.classList.add('selected');
+        };
+    });
+
+    // 默認選中第一個
+    if (grid.querySelector('button')) {
+        grid.querySelector('button').classList.add('selected');
+    }
+}
+
+// 重新渲染常用備註按鈕
+function renderQuickNotes() {
+    const quickNotesButtons = document.getElementById('quickNotesButtons');
+    if (!quickNotesButtons) return;
+
+    // 清空現有按鈕
+    quickNotesButtons.innerHTML = '';
+
+    // 預設備註
+    const defaultNotes = [
+        { name: '早餐', emoji: '🍳' },
+        { name: '午餐', emoji: '🍱' },
+        { name: '晚餐', emoji: '🍽️' },
+        { name: '交通', emoji: '🚗' },
+        { name: '購物', emoji: '🛒' },
+        { name: '娛樂', emoji: '🎮' }
+    ];
+
+    // 獲取自定義備註
+    const customNotes = getCustomQuickNotes();
+
+    // 合併所有備註
+    const allNotes = [...defaultNotes, ...customNotes];
+
+    // 創建按鈕
+    allNotes.forEach(note => {
+        const btn = document.createElement('button');
+        btn.className = 'quick-note-btn';
+        btn.dataset.note = note.name;
+        btn.textContent = `${note.emoji} ${note.name}`;
+
+        // 綁定點擊事件
+        btn.addEventListener('click', () => {
+            const noteInput = document.getElementById('noteInput');
+            if (noteInput) {
+                const currentValue = noteInput.value.trim();
+                // 檢查輸入框是否已經包含該備註，避免重複
+                if (currentValue.includes(note.name)) {
+                    return;
+                }
+                // 如果輸入框已有內容，在後面追加；否則直接填入
+                let newValue;
+                if (currentValue) {
+                    newValue = currentValue + ' ' + note.name;
+                } else {
+                    newValue = note.name;
+                }
+                noteInput.value = newValue;
+
+                // 儲存這次使用的備註作為「上一次的備註」
+                localStorage.setItem('lastQuickNote', newValue);
+
+                // 觸發input事件，確保其他監聽器能收到
+                noteInput.dispatchEvent(new Event('input', { bubbles: true }));
+                // 聚焦到輸入框
+                noteInput.focus();
+            }
+        });
+
+        quickNotesButtons.appendChild(btn);
+    });
 }
 
 // ========== 常用項目、上一筆複製、預設金額功能 ==========

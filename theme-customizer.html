@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主題自定義編輯器</title>
+    
+    <!-- 核心樣式 -->
+    <link rel="stylesheet" href="styles-core.css">
+    
+    <!-- 主題樣式 -->
+    <link rel="stylesheet" href="themes.css">
+    
+    <!-- 完整樣式 -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        body {
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary, #f5f5f5);
+        }
+        
+        .editor-container {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .control-panel {
+            background: var(--bg-card, #fff);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--shadow-md);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .preview-panel {
+            background: var(--bg-card, #fff);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary, #333);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .control-group {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-light, #e5e7eb);
+        }
+        
+        .control-group:last-child {
+            border-bottom: none;
+        }
+        
+        .control-item {
+            margin-bottom: 12px;
+        }
+        
+        .control-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary, #666);
+            margin-bottom: 5px;
+        }
+        
+        .control-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border-primary, #ddd);
+            border-radius: 6px;
+            font-size: 14px;
+            background: var(--bg-white, #fff);
+            color: var(--text-primary, #333);
+        }
+        
+        .color-input-wrapper {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .color-preview {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            border: 2px solid var(--border-primary, #ddd);
+            cursor: pointer;
+        }
+        
+        .range-input {
+            width: 100%;
+            margin: 5px 0;
+        }
+        
+        .range-value {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary, #666);
+        }
+        
+        .preset-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .preset-btn {
+            padding: 8px 12px;
+            border: 1px solid var(--border-primary, #ddd);
+            border-radius: 6px;
+            background: var(--bg-white, #fff);
+            color: var(--text-primary, #333);
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+        
+        .preset-btn:hover {
+            background: var(--color-primary, #007bff);
+            color: var(--text-white, #fff);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary {
+            background: var(--color-primary, #007bff);
+            color: var(--text-white, #fff);
+        }
+        
+        .btn-secondary {
+            background: var(--bg-light, #f8f9fa);
+            color: var(--text-primary, #333);
+            border: 1px solid var(--border-primary, #ddd);
+        }
+        
+        .btn-danger {
+            background: var(--color-error, #dc3545);
+            color: var(--text-white, #fff);
+        }
+        
+        .preview-content {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .preview-section {
+            padding: 20px;
+            border: 1px solid var(--border-light, #e5e7eb);
+            border-radius: 8px;
+        }
+        
+        .preview-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary, #333);
+        }
+        
+        .theme-info {
+            background: var(--bg-light, #f8f9fa);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .theme-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .theme-description {
+            font-size: 14px;
+            color: var(--text-secondary, #666);
+        }
+        
+        @media (max-width: 768px) {
+            .editor-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .control-panel {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body data-theme="money">
+    <div class="editor-container">
+        <!-- 控制面板 -->
+        <div class="control-panel">
+            <h1 class="section-title">🎨 主題自定義編輯器</h1>
+            
+            <!-- 主題資訊 -->
+            <div class="theme-info">
+                <div class="theme-name" id="themeName">自定義主題</div>
+                <div class="theme-description">調整下方參數來創建您的專屬主題</div>
+            </div>
+            
+            <!-- 顏色控制 -->
+            <div class="control-group">
+                <h3 class="section-title">🎨 顏色設定</h3>
+                
+                <div class="control-item">
+                    <label class="control-label">主要顏色</label>
+                    <div class="color-input-wrapper">
+                        <div class="color-preview" id="primaryPreview" style="background: var(--color-primary)"></div>
+                        <input type="color" class="control-input" id="primaryColor" value="#2c3e50">
+                        <input type="text" class="control-input" id="primaryHex" value="#2c3e50" style="width: 80px;">
+                    </div>
+                </div>
+                
+                <div class="control-item">
+                    <label class="control-label">次要顏色</label>
+                    <div class="color-input-wrapper">
+                        <div class="color-preview" id="secondaryPreview" style="background: var(--color-secondary)"></div>
+                        <input type="color" class="control-input" id="secondaryColor" value="#f39c12">
+                        <input type="text" class="control-input" id="secondaryHex" value="#f39c12" style="width: 80px;">
+                    </div>
+                </div>
+                
+                <div class="control-item">
+                    <label class="control-label">強調顏色</label>
+                    <div class="color-input-wrapper">
+                        <div class="color-preview" id="accentPreview" style="background: var(--color-accent)"></div>
+                        <input type="color" class="control-input" id="accentColor" value="#e67e22">
+                        <input type="text" class="control-input" id="accentHex" value="#e67e22" style="width: 80px;">
+                    </div>
+                </div>
+                
+                <div class="control-item">
+                    <label class="control-label">背景顏色</label>
+                    <div class="color-input-wrapper">
+                        <div class="color-preview" id="bgPreview" style="background: var(--bg-primary)"></div>
+                        <input type="color" class="control-input" id="bgColor" value="#06140d">
+                        <input type="text" class="control-input" id="bgHex" value="#06140d" style="width: 80px;">
+                    </div>
+                </div>
+                
+                <div class="control-item">
+                    <label class="control-label">文字顏色</label>
+                    <div class="color-input-wrapper">
+                        <div class="color-preview" id="textPreview" style="background: var(--text-primary)"></div>
+                        <input type="color" class="control-input" id="textColor" value="#ecf0f1">
+                        <input type="text" class="control-input" id="textHex" value="#ecf0f1" style="width: 80px;">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 字體控制 -->
+            <div class="control-group">
+                <h3 class="section-title">📝 字體設定</h3>
+                
+                <div class="control-item">
+                    <label class="control-label">字體大小</label>
+                    <input type="range" class="range-input" id="fontSize" min="12" max="20" value="16">
+                    <div class="range-value" id="fontSizeValue">16px</div>
+                </div>
+                
+                <div class="control-item">
+                    <label class="control-label">字體粗細</label>
+                    <select class="control-input" id="fontWeight">
+                        <option value="300">細體 (300)</option>
+                        <option value="400">正常 (400)</option>
+                        <option value="500">中等 (500)</option>
+                        <option value="600" selected>半粗 (600)</option>
+                        <option value="700">粗體 (700)</option>
+                        <option value="800">特粗 (800)</option>
+                    </select>
+                </div>
+                
+                <div class="control-item">
+                    <label class="control-label">字體族</label>
+                    <select class="control-input" id="fontFamily">
+                        <option value="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">系統預設</option>
+                        <option value="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif">SF Pro Display</option>
+                        <option value="'Helvetica Neue', Arial, sans-serif">Helvetica Neue</option>
+                        <option value="'Arial', sans-serif">Arial</option>
+                        <option value="'Georgia', serif">Georgia</option>
+                        <option value="'Times New Roman', serif">Times New Roman</option>
+                        <option value="'Courier New', monospace">Courier New</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- 間距控制 -->
+            <div class="control-group">
+                <h3 class="section-title">📏 間距設定</h3>
+                
+                <div class="control-item">
+                    <label class="control-label">邊框圓角</label>
+                    <input type="range" class="range-input" id="borderRadius" min="0" max="20" value="8">
+                    <div class="range-value" id="borderRadiusValue">8px</div>
+                </div>
+                
+                <div class="control-item">
+                    <label class="control-label">內邊距</label>
+                    <input type="range" class="range-input" id="padding" min="8" max="32" value="16">
+                    <div class="range-value" id="paddingValue">16px</div>
+                </div>
+            </div>
+            
+            <!-- 預設主題 -->
+            <div class="control-group">
+                <h3 class="section-title">🎭 預設主題</h3>
+                <div class="preset-buttons">
+                    <button class="preset-btn" onclick="applyPreset('money')">Money</button>
+                    <button class="preset-btn" onclick="applyPreset('totoro')">Totoro</button>
+                    <button class="preset-btn" onclick="applyPreset('noface')">No Face</button>
+                    <button class="preset-btn" onclick="applyPreset('spacegold')">Space Gold</button>
+                    <button class="preset-btn" onclick="applyPreset('festive')">Festive</button>
+                    <button class="preset-btn" onclick="applyPreset('fruit')">Fruit</button>
+                    <button class="preset-btn" onclick="applyPreset('emeraldPrince')">Emerald Prince</button>
+                    <button class="preset-btn" onclick="applyPreset('random')">🎲 隨機</button>
+                </div>
+            </div>
+            
+            <!-- 操作按鈕 -->
+            <div class="action-buttons">
+                <button class="action-btn btn-primary" onclick="saveTheme()">💾 儲存主題</button>
+                <button class="action-btn btn-secondary" onclick="exportTheme()">📤 匯出</button>
+                <button class="action-btn btn-danger" onclick="resetTheme()">🔄 重置</button>
+            </div>
+        </div>
+        
+        <!-- 預覽面板 -->
+        <div class="preview-panel">
+            <h2 class="section-title">👀 實時預覽</h2>
+            
+            <div class="preview-content">
+                <!-- 基礎元件預覽 -->
+                <div class="preview-section">
+                    <h3 class="preview-title">基礎元件</h3>
+                    
+                    <div style="display: grid; gap: 15px;">
+                        <label class="form-checkbox-label">
+                            <input type="checkbox" class="form-checkbox" checked>
+                            <span class="form-checkbox-text">勾選框示例</span>
+                        </label>
+                        
+                        <div class="button-group">
+                            <button class="btn btn-primary">主要按鈕</button>
+                            <button class="btn btn-secondary">次要按鈕</button>
+                            <button class="btn btn-accent">強調按鈕</button>
+                        </div>
+                        
+                        <div class="input-group">
+                            <input type="text" class="form-input" placeholder="輸入框示例">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 卡片預覽 -->
+                <div class="preview-section">
+                    <h3 class="preview-title">卡片樣式</h3>
+                    
+                    <div class="card">
+                        <h4>📊 統計卡片</h4>
+                        <p>這是一個示例卡片，展示當前主題的樣式效果。</p>
+                        <div class="stat-item">
+                            <div class="stat-value">$12,345</div>
+                            <div class="stat-label">總資產</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 表單預覽 -->
+                <div class="preview-section">
+                    <h3 class="preview-title">表單樣式</h3>
+                    
+                    <div class="form-section">
+                        <div class="input-group">
+                            <label class="input-field-label">📋 標籤文字</label>
+                            <input type="text" class="form-input" placeholder="請輸入內容">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input-field-label">📝 備註</label>
+                            <textarea class="form-textarea" placeholder="請輸入備註"></textarea>
+                        </div>
+                        
+                        <button class="form-submit-btn">✓ 提交</button>
+                    </div>
+                </div>
+                
+                <!-- 導航預覽 -->
+                <div class="preview-section">
+                    <h3 class="preview-title">導航樣式</h3>
+                    
+                    <nav class="bottom-nav">
+                        <div class="nav-item active">
+                            <span>🏠</span>
+                            <span>首頁</span>
+                        </div>
+                        <div class="nav-item">
+                            <span>📖</span>
+                            <span>帳本</span>
+                        </div>
+                        <div class="nav-item">
+                            <span>📊</span>
+                            <span>圖表</span>
+                        </div>
+                        <div class="nav-item">
+                            <span>⚙️</span>
+                            <span>設定</span>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 主題配置
+        let currentTheme = {
+            name: '自定義主題',
+            colors: {
+                primary: '#2c3e50',
+                secondary: '#f39c12',
+                accent: '#e67e22',
+                background: '#06140d',
+                text: '#ecf0f1'
+            },
+            fonts: {
+                size: 16,
+                weight: 600,
+                family: '-apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif'
+            },
+            spacing: {
+                borderRadius: 8,
+                padding: 16
+            }
+        };
+        
+        // 預設主題配置
+        const presetThemes = {
+            money: {
+                name: 'Money 主題',
+                colors: {
+                    primary: '#2c3e50',
+                    secondary: '#f39c12',
+                    accent: '#e67e22',
+                    background: '#06140d',
+                    text: '#ecf0f1'
+                }
+            },
+            totoro: {
+                name: '龍貓主題',
+                colors: {
+                    primary: '#4682B4',
+                    secondary: '#98D8C8',
+                    accent: '#FFB6C1',
+                    background: '#F5F5DC',
+                    text: '#36454F'
+                }
+            },
+            noface: {
+                name: '無臉男主題',
+                colors: {
+                    primary: '#f6c343',
+                    secondary: '#8b5cf6',
+                    accent: '#ec4899',
+                    background: '#1f1b24',
+                    text: '#e5e5e5'
+                }
+            },
+            spacegold: {
+                name: '太空金主題',
+                colors: {
+                    primary: '#1e3a8a',
+                    secondary: '#fbbf24',
+                    accent: '#f59e0b',
+                    background: '#0f172a',
+                    text: '#f1f5f9'
+                }
+            },
+            festive: {
+                name: '節慶主題',
+                colors: {
+                    primary: '#dc2626',
+                    secondary: '#16a34a',
+                    accent: '#f59e0b',
+                    background: '#fef2f2',
+                    text: '#1f2937'
+                }
+            },
+            fruit: {
+                name: '水果主題',
+                colors: {
+                    primary: '#ef4444',
+                    secondary: '#22c55e',
+                    accent: '#f59e0b',
+                    background: '#fef3c7',
+                    text: '#1f2937'
+                }
+            },
+            emeraldPrince: {
+                name: '翡翠王子主題',
+                colors: {
+                    primary: '#047857',
+                    secondary: '#10b981',
+                    accent: '#f59e0b',
+                    background: '#ecfdf5',
+                    text: '#1f2937'
+                }
+            }
+        };
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeControls();
+            updatePreview();
+        });
+        
+        // 初始化控制項
+        function initializeControls() {
+            // 顏色控制
+            ['primary', 'secondary', 'accent', 'bg', 'text'].forEach(type => {
+                const colorInput = document.getElementById(type + 'Color');
+                const hexInput = document.getElementById(type + 'Hex');
+                const preview = document.getElementById(type + 'Preview');
+                
+                colorInput.addEventListener('input', function() {
+                    const color = this.value;
+                    hexInput.value = color;
+                    preview.style.background = color;
+                    updateThemeColor(type, color);
+                });
+                
+                hexInput.addEventListener('input', function() {
+                    const color = this.value;
+                    if (/^#[0-9A-F]{6}$/i.test(color)) {
+                        colorInput.value = color;
+                        preview.style.background = color;
+                        updateThemeColor(type, color);
+                    }
+                });
+                
+                preview.addEventListener('click', function() {
+                    colorInput.click();
+                });
+            });
+            
+            // 字體控制
+            document.getElementById('fontSize').addEventListener('input', function() {
+                const size = this.value;
+                document.getElementById('fontSizeValue').textContent = size + 'px';
+                updateThemeFont('size', size);
+            });
+            
+            document.getElementById('fontWeight').addEventListener('input', function() {
+                updateThemeFont('weight', this.value);
+            });
+            
+            document.getElementById('fontFamily').addEventListener('input', function() {
+                updateThemeFont('family', this.value);
+            });
+            
+            // 間距控制
+            document.getElementById('borderRadius').addEventListener('input', function() {
+                const radius = this.value;
+                document.getElementById('borderRadiusValue').textContent = radius + 'px';
+                updateThemeSpacing('borderRadius', radius);
+            });
+            
+            document.getElementById('padding').addEventListener('input', function() {
+                const padding = this.value;
+                document.getElementById('paddingValue').textContent = padding + 'px';
+                updateThemeSpacing('padding', padding);
+            });
+        }
+        
+        // 更新主題顏色
+        function updateThemeColor(type, color) {
+            const colorMap = {
+                primary: 'color-primary',
+                secondary: 'color-secondary',
+                accent: 'color-accent',
+                bg: 'bg-primary',
+                text: 'text-primary'
+            };
+            
+            document.documentElement.style.setProperty('--' + colorMap[type], color);
+            currentTheme.colors[type] = color;
+        }
+        
+        // 更新主題字體
+        function updateThemeFont(type, value) {
+            if (type === 'size') {
+                document.documentElement.style.setProperty('--font-size-md', value + 'px');
+                currentTheme.fonts.size = value;
+            } else if (type === 'weight') {
+                document.documentElement.style.setProperty('--font-weight-base', value);
+                currentTheme.fonts.weight = value;
+            } else if (type === 'family') {
+                document.documentElement.style.setProperty('--font-family-base', value);
+                currentTheme.fonts.family = value;
+            }
+        }
+        
+        // 更新主題間距
+        function updateThemeSpacing(type, value) {
+            if (type === 'borderRadius') {
+                document.documentElement.style.setProperty('--border-radius-md', value + 'px');
+                currentTheme.spacing.borderRadius = value;
+            } else if (type === 'padding') {
+                document.documentElement.style.setProperty('--spacing-md', value + 'px');
+                currentTheme.spacing.padding = value;
+            }
+        }
+        
+        // 更新預覽
+        function updatePreview() {
+            // 更新主題名稱
+            document.getElementById('themeName').textContent = currentTheme.name;
+        }
+        
+        // 應用預設主題
+        function applyPreset(themeName) {
+            if (themeName === 'random') {
+                // 隨機主題
+                const randomColor = () => '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+                currentTheme.colors = {
+                    primary: randomColor(),
+                    secondary: randomColor(),
+                    accent: randomColor(),
+                    background: randomColor(),
+                    text: randomColor()
+                };
+            } else if (presetThemes[themeName]) {
+                currentTheme = { ...currentTheme, ...presetThemes[themeName] };
+            }
+            
+            // 更新控制項
+            Object.keys(currentTheme.colors).forEach(type => {
+                const color = currentTheme.colors[type];
+                const colorInput = document.getElementById(type + 'Color');
+                const hexInput = document.getElementById(type + 'Hex');
+                const preview = document.getElementById(type + 'Preview');
+                
+                if (colorInput && hexInput && preview) {
+                    colorInput.value = color;
+                    hexInput.value = color;
+                    preview.style.background = color;
+                    updateThemeColor(type, color);
+                }
+            });
+            
+            updatePreview();
+        }
+        
+        // 儲存主題
+        function saveTheme() {
+            const themeData = JSON.stringify(currentTheme);
+            localStorage.setItem('customTheme', themeData);
+            
+            // 顯示成功訊息
+            showNotification('主題已儲存到本地儲存！');
+        }
+        
+        // 匯出主題
+        function exportTheme() {
+            const themeData = JSON.stringify(currentTheme, null, 2);
+            const blob = new Blob([themeData], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'custom-theme.json';
+            a.click();
+            
+            URL.revokeObjectURL(url);
+            showNotification('主題已匯出！');
+        }
+        
+        // 重置主題
+        function resetTheme() {
+            if (confirm('確定要重置所有設定嗎？')) {
+                applyPreset('money');
+                showNotification('主題已重置！');
+            }
+        }
+        
+        // 顯示通知
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--color-primary);
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                box-shadow: var(--shadow-lg);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // 添加動畫樣式
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

@@ -22,14 +22,18 @@
     <link rel="stylesheet" href="getrich-cats-theme.css">
     <link rel="stylesheet" href="fortune-noble-theme.css">
     <link rel="stylesheet" href="gold-ingot-theme.css">
-    <link rel="stylesheet" href="dynamic-wealth-theme.css">
-    <link rel="stylesheet" href="anime-golden-blue-theme.css">
+        <link rel="stylesheet" href="anime-golden-blue-theme.css">
     <link rel="stylesheet" href="anime-elegant-blue-theme.css">
     <link rel="stylesheet" href="everything-goes-well-theme.css">
     <link rel="stylesheet" href="bunny-bubble-tea-theme.css">
     <link rel="stylesheet" href="cute-chicks-theme.css">
     <link rel="stylesheet" href="cosmic-dream-theme.css">
-        <link rel="stylesheet" href="little-prince-theme.css">
+    <!-- 深色優雅主題 -->
+    <link rel="stylesheet" href="deep-elegant-theme.css">
+    <!-- 自動轉帳功能樣式 -->
+    <link rel="stylesheet" href="css/auto-transfer.css">
+    <!-- 夢幻藍色花卉主題 - 最後載入以確保最高優先級 -->
+    <link rel="stylesheet" href="dreamy-pink-theme.css?v=20250125_2240">
     
     <!-- Google Fonts - 美觀字體系統 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -428,6 +432,32 @@
                 <div class="account-manage-actions">
                     <button class="form-submit-btn" id="accountSaveBtn">儲存</button>
                     <button class="form-delete-btn" id="accountDeleteBtn" style="display: none;">刪除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增常用備註對話框 -->
+    <div class="quick-note-modal" id="quickNoteModal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content quick-note-modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">新增常用備註</h3>
+                <button class="modal-close-btn" id="quickNoteModalClose">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-field">
+                    <label class="form-label">備註名稱</label>
+                    <input type="text" class="form-input" id="quickNoteNameInput" placeholder="例如：咖啡、加油、房租..." maxlength="20">
+                </div>
+                <div class="form-field">
+                    <label class="form-label">選擇圖標</label>
+                    <div class="emoji-grid" id="quickNoteEmojiGrid">
+                        <!-- 常用圖標將由 JavaScript 動態生成 -->
+                    </div>
+                </div>
+                <div class="quick-note-actions">
+                    <button class="form-submit-btn" id="quickNoteSaveBtn">儲存</button>
                 </div>
             </div>
         </div>
@@ -1958,6 +1988,35 @@
         </button>
     </div>
 
+    <!-- 自動繳費管理頁面 -->
+    <div class="auto-payment-management-page" id="autoPaymentManagementPage" style="display: none;">
+        <div class="auto-payment-header">
+            <button class="auto-payment-back-btn" id="autoPaymentBackBtn">← 返回</button>
+            <h2 class="auto-payment-title">自動繳費管理</h2>
+            <button class="auto-payment-add-btn" id="autoPaymentAddBtn">➕ 新增</button>
+        </div>
+        
+        <div class="auto-payment-summary" id="autoPaymentSummary">
+            <!-- 統計摘要將由 JavaScript 動態生成 -->
+        </div>
+        
+        <div class="auto-payment-list-container" id="autoPaymentListContainer">
+            <!-- 自動繳費計劃列表將由 JavaScript 動態生成 -->
+        </div>
+    </div>
+
+    <!-- 自動繳費設定頁面 -->
+    <div class="auto-payment-setup-page" id="autoPaymentSetupPage" style="display: none;">
+        <div class="auto-payment-setup-header">
+            <button class="auto-payment-setup-back-btn" id="autoPaymentSetupBackBtn">← 返回</button>
+            <h2 class="auto-payment-setup-title">新增繳費計劃</h2>
+        </div>
+        
+        <div class="auto-payment-setup-form">
+            <!-- 表單內容將由 JavaScript 動態生成 -->
+        </div>
+    </div>
+
     <!-- 自動轉帳管理頁面 -->
     <div class="auto-transfer-management-page" id="autoTransferManagementPage" style="display: none;">
         <div class="auto-transfer-header">
@@ -2035,8 +2094,11 @@
     <script src="js/advisor.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/themes-new.js"></script>
-    <script src="js/dynamic-wealth-fix.js"></script>
-    <script src="js/autoTransfer.js"></script>
+    <script src="verify-little-prince-theme.js"></script>
+    <script src="force-little-prince-cards.js"></script>
+        <!-- 自動轉帳功能已移除 -->
+        <script src="js/autoPayment.js"></script>
+        <!-- settings-auto-transfer-patch.js 已移除 -->
     <!-- 性能優化器 -->
     <script src="js/performance-optimizer-simple.js"></script>
     <!-- 增強投資追蹤系統 -->
@@ -2133,5 +2195,7 @@
             }, 1000);
         });
     </script>
+    <script src="fix-investment-icons.js"></script>
+    <script src="add-dreamy-pink-theme.js"></script>
 </body>
 </html>

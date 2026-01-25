@@ -17,8 +17,8 @@
     --bg-body: rgba(44, 62, 80, 0.96);
     --bg-body-strong: rgba(52, 73, 94, 0.98);
     --bg-gradient: linear-gradient(135deg, #1a252f 0%, #2c3e50 60%, #f39c12 100%);
-    --bg-gradient-light: linear-gradient(135deg, rgba(52, 73, 94, 0.08) 0%, rgba(243, 156, 18, 0.25) 100%);
-    --bg-white: rgba(44, 62, 80, 0.78);
+    --bg-gradient-light: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    --bg-white: #ffffff;
     --bg-card: rgba(52, 73, 94, 0.8);
     --bg-light: rgba(127, 140, 141, 0.64);
     --bg-lighter: rgba(149, 165, 166, 0.52);
@@ -58,15 +58,15 @@
     --color-secondary-rgba-25: rgba(243, 156, 18, 0.25);
     --color-secondary-rgba-30: rgba(243, 156, 18, 0.3);
     --color-secondary-rgba-40: rgba(243, 156, 18, 0.4);
-    --bg-light-gradient: linear-gradient(135deg, rgba(44, 62, 80, 0.85) 0%, rgba(44, 62, 80, 0.65) 100%);
-    --bg-light-gradient-reverse: linear-gradient(180deg, rgba(44, 62, 80, 0.85) 0%, rgba(44, 62, 80, 0.65) 100%);
+    --bg-light-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, #e9ecef 0%, #f8f9fa 100%);
     --action-side-bg: color-mix(in srgb, rgba(52, 73, 94, 0.92) 75%, rgba(243, 156, 18, 0.08));
     --action-side-bg-hover: color-mix(in srgb, rgba(52, 73, 94, 0.92) 65%, rgba(243, 156, 18, 0.2));
     --action-side-text: rgba(236, 240, 241, 0.96);
 }
 
 :root[data-theme="money"] body {
-    background: transparent;
+    background: var(--bg-primary);
     color: var(--text-primary);
 }
 
@@ -75,7 +75,7 @@
 }
 
 :root[data-theme="money"] .page-ledger {
-    background: transparent !important;
+    background: var(--bg-primary) !important;
     backdrop-filter: none !important;
     box-shadow: none !important;
 }
@@ -91,7 +91,7 @@
 :root[data-theme="money"] .page-wallet,
 :root[data-theme="money"] .page-history,
 :root[data-theme="money"] .page-planner {
-    background: transparent;
+    background: var(--bg-primary);
     backdrop-filter: none;
     box-shadow: none;
 }
@@ -191,8 +191,7 @@
 }
 
 :root[data-theme="totoro"] body {
-    background: url("https://i.pinimg.com/736x/f6/e9/10/f6e910dc17992265ad9833055ff153ac.jpg") center/cover no-repeat fixed;
-    background-color: var(--bg-primary);
+    background: url("image/f6e910dc17992265ad9833055ff153ac.jpg") center/cover no-repeat fixed !important;
 }
 
 :root[data-theme="totoro"] body::before {
@@ -419,7 +418,7 @@
 :root[data-theme="noface"] .investment-input-page,
 :root[data-theme="noface"] .wishlist-content,
 :root[data-theme="noface"] .savings-content {
-    background: transparent !important;
+    background: var(--bg-primary) !important;
     box-shadow: none;
 }
 
@@ -672,7 +671,7 @@
 :root[data-theme="demonslayer"] .investment-input-page,
 :root[data-theme="demonslayer"] .wishlist-content,
 :root[data-theme="demonslayer"] .savings-content {
-    background: transparent !important;
+    background: var(--bg-primary) !important;
     box-shadow: none;
 }
 
@@ -844,7 +843,7 @@
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65) !important;
 }
 
-/* ========== 蝴蝶忍 (Koch? Shinobu) 主題 - 全新重寫版本 ========== */
+/* ========== 蝴蝶忍 (Kochō Shinobu) 主題 - 全新重寫版本 ========== */
 
 :root[data-theme="shinobu"] {
     /* 主要顏色系統 - 基於蝴蝶忍的紫色和粉色系 */
@@ -981,7 +980,7 @@
 :root[data-theme="shinobu"] .investment-input-page,
 :root[data-theme="shinobu"] .wishlist-content,
 :root[data-theme="shinobu"] .savings-content {
-    background: transparent !important;
+    background: var(--bg-primary) !important;
     box-shadow: none;
 }
 
@@ -1495,8 +1494,8 @@
 
 :root[data-theme="shinobu"] .record-card::before {
     background-image: none !important;
-    background: transparent !important;
-    opacity: 0 !important;
+    background: var(--bg-primary) !important;
+    opacity: 1 !important;
 }
 
 /* ========== 主題特色效果 ========== */
@@ -1632,7 +1631,7 @@
 :root[data-theme="cutecreatures"] .investment-input-page,
 :root[data-theme="cutecreatures"] .wishlist-content,
 :root[data-theme="cutecreatures"] .savings-content {
-    background: transparent !important;
+    background: var(--bg-primary) !important;
     box-shadow: none;
 }
 
@@ -2334,7 +2333,7 @@
 }
 
 :root[data-theme="spacegold"] body {
-    background: url("https://i.pinimg.com/736x/eb/33/27/eb3327b7caa47a87c1f4cee99344892e.jpg") center/cover no-repeat fixed;
+    background: url("image/f6e910dc17992265ad9833055ff153ac.jpg") center/cover no-repeat fixed;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--font-family-primary);
@@ -2369,7 +2368,7 @@
 :root[data-theme="spacegold"] .investment-input-page,
 :root[data-theme="spacegold"] .wishlist-content,
 :root[data-theme="spacegold"] .savings-content {
-    background: transparent !important;
+    background: var(--bg-primary) !important;
     box-shadow: none;
 }
 
@@ -5728,7 +5727,7 @@ width: 100%;
     bottom: 0;
     left: 0;
     right: 0;
-    background: var(--bg-white);
+    background: #ffffff;
     border-top-left-radius: var(--radius-xl);
     border-top-right-radius: var(--radius-xl);
     border: 2px solid var(--color-primary-light);
@@ -6293,7 +6292,7 @@ width: 100%;
     text-align: center;
     margin-bottom: var(--spacing-lg);
     padding: var(--spacing-lg);
-    background: var(--bg-gradient-light);
+    background: #f8f9fa;
     border-radius: var(--radius-lg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -11007,13 +11006,14 @@ width: 100%;
 }
 
 .theme-item-preview--image.error::after {
-    content: '???';
+    content: '🖼️';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 32px;
     opacity: 0.3;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
 
 .theme-item-preview::after {
@@ -14763,9 +14763,10 @@ width: 100%;
 }
 
 .stock-grid-card-tag--shares::before {
-    content: '?';
+    content: '📊';
     font-size: 12px;
     color: rgba(15, 23, 42, 0.6);
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
 
 .stock-grid-card-tag.positive {
@@ -15873,7 +15874,7 @@ width: 100%;
 }
 
 .record-card.dividend-reinvest::after {
-    content: '??';
+    content: '💰';
     position: absolute;
     top: 10px;
     right: 10px;
@@ -15881,6 +15882,7 @@ width: 100%;
     opacity: 0.3;
     animation: float 3s ease-in-out infinite;
     pointer-events: none;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
 
 @keyframes dividendGlow {
@@ -16316,9 +16318,10 @@ width: 100%;
 }
 
 .investment-form-back-btn::before {
-    content: '??';
+    content: '←';
     font-size: 16px;
     margin-right: 2px;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
 
 .investment-form-back-btn .back-btn-icon {
@@ -16666,7 +16669,16 @@ width: 100%;
 
 .type-icon {
     font-size: 24px;
-    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', 'Twemoji', 'Android Emoji', sans-serif !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    line-height: 1 !important;
+    unicode-bidi: isolate !important;
+    text-orientation: mixed !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
 }
 
 .type-text {
@@ -16712,35 +16724,35 @@ width: 100%;
 /* 為不同標籤添加可愛圖標 */
 /* 代碼欄位 */
 .form-field:has(#calcStockCodeInput) .form-label::before {
-    content: '??';
+    content: '🏷️';
     font-size: 16px;
     margin-right: 2px;
 }
 
 /* 股票名稱欄位 */
 .form-field:has(#calcStockNameInput) .form-label::before {
-    content: '??';
+    content: '📈';
     font-size: 16px;
     margin-right: 2px;
 }
 
 /* 日期欄位 */
 .form-field:has(#calcDateInput) .form-label::before {
-    content: '??';
+    content: '📅';
     font-size: 16px;
     margin-right: 2px;
 }
 
 /* 價格欄位 */
 .form-field:has(#calcPriceInput) .form-label::before {
-    content: '??';
+    content: '💰';
     font-size: 16px;
     margin-right: 2px;
 }
 
 /* 股數欄位 */
 .form-field:has(#calcSharesInput) .form-label::before {
-    content: '??';
+    content: '🔢';
     font-size: 16px;
     margin-right: 2px;
 }
@@ -16848,82 +16860,131 @@ width: 100%;
     }
 }
 
-/* 定期定額 checkbox 樣式 */
-.form-checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    padding: 12px 16px;
-    border: 2px solid var(--border-light);
-    border-radius: 12px;
-    background: var(--bg-white);
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow-sm);
-    user-select: none;
-}
+/* ===================================
+   勾選框樣式修復 - 確保在所有主題下正常工作
+   =================================== */
 
-.form-checkbox-label:hover {
-    border-color: var(--color-primary-light);
-    background: var(--bg-gradient-light);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-.form-checkbox-label:active {
-    transform: translateY(0);
-}
-
+/* 強制覆蓋任何可能影響勾選框的樣式 */
 .form-checkbox {
-    width: 20px;
-    height: 20px;
-    margin: 0;
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    border: 2px solid color-mix(in srgb, var(--color-primary) 18%, #d1d5db 82%);
-    border-radius: 6px;
-    background: var(--bg-white, var(--bg-white));
-    position: relative;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
+    width: 20px !important;
+    height: 20px !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    -ms-appearance: none !important;
+    border: 2px solid color-mix(in srgb, var(--color-primary) 18%, #d1d5db 82%) !important;
+    border-radius: 6px !important;
+    background: var(--bg-white, #ffffff) !important;
+    position: relative !important;
+    transition: all 0.3s ease !important;
+    flex-shrink: 0 !important;
+    z-index: 1 !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
 }
 
+/* 確保選中狀態的樣式優先級最高 */
 .form-checkbox:checked {
     background: linear-gradient(135deg,
         var(--color-primary-light) 0%,
-        var(--color-primary) 100%);
-    border-color: var(--color-primary);
+        var(--color-primary) 100%) !important;
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
 }
 
+/* 強制確保勾選標記可見 */
 .form-checkbox:checked::after {
-    content: '?';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--bg-white);
-    font-size: 14px;
-    font-weight: bold;
+    content: '✓' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    color: white !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif !important;
+    z-index: 10 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    line-height: 1 !important;
+    width: auto !important;
+    height: auto !important;
 }
 
+/* 確保標籤文本樣式正確 */
 .form-checkbox-text {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-primary, #333);
-    flex: 1;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    color: var(--text-primary, #333) !important;
+    flex: 1 !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
 }
 
+/* 確保標籤容器樣式正確 */
+.form-checkbox-label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 8px 12px !important;
+    border: 2px solid transparent !important;
+    border-radius: 8px !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 標籤懸停效果 */
+.form-checkbox-label:hover {
+    border-color: var(--color-primary-light) !important;
+    background: var(--bg-gradient-light, rgba(0, 0, 0, 0.05)) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.1)) !important;
+}
+
+/* 標籤激活效果 */
+.form-checkbox-label:active {
+    transform: translateY(0) !important;
+}
+
+/* 選中狀態的標籤樣式 */
 .form-checkbox-label:has(.form-checkbox:checked) {
-    border-color: var(--color-primary);
+    border-color: var(--color-primary) !important;
     background: linear-gradient(135deg,
         color-mix(in srgb, var(--color-primary-light) 25%, transparent) 0%,
-        color-mix(in srgb, var(--color-primary-light) 45%, transparent) 100%);
+        color-mix(in srgb, var(--color-primary-light) 45%, transparent) 100%) !important;
 }
 
 .form-checkbox-label:has(.form-checkbox:checked) .form-checkbox-text {
-    color: var(--color-primary);
-    font-weight: 600;
+    color: var(--color-primary) !important;
+    font-weight: 600 !important;
+}
+
+/* 針對不同主題的特殊修復 */
+:root[data-theme="money"] .form-checkbox:checked::after,
+:root[data-theme="totoro"] .form-checkbox:checked::after,
+:root[data-theme="noface"] .form-checkbox:checked::after,
+:root[data-theme="spacegold"] .form-checkbox:checked::after,
+:root[data-theme="festive"] .form-checkbox:checked::after,
+:root[data-theme="fruit"] .form-checkbox:checked::after,
+:root[data-theme="emeraldPrince"] .form-checkbox:checked::after {
+    content: '✓' !important;
+    color: white !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 10 !important;
 }
 
 /* 日期輸入框容器 */
@@ -16976,8 +17037,9 @@ width: 100%;
 }
 
 .form-query-btn::before {
-    content: '??';
+    content: '🔍';
     font-size: 18px;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
 
 /* 響應式：按鈕大小調整 */
@@ -17163,8 +17225,9 @@ width: 100%;
 }
 
 .quick-title::before {
-    content: '?? 或快速選擇：';
+    content: '⚡ 或快速選擇：';
     margin-right: 4px;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
 
 .quick-buttons {
@@ -17359,9 +17422,10 @@ width: 100%;
 }
 
 .form-submit-btn::before {
-    content: '?';
+    content: '✓';
     font-size: 18px;
     animation: sparkle 2s ease-in-out infinite;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
 
 @keyframes sparkle {
@@ -17430,7 +17494,7 @@ width: 100%;
 }
 
 .input-page-header::before {
-    content: '?';
+    content: '📝';
     position: absolute;
     top: 20px;
     right: 60px;
@@ -17440,7 +17504,7 @@ width: 100%;
 }
 
 .input-page-header::after {
-    content: '??';
+    content: '✨';
     position: absolute;
     top: 20px;
     right: 100px;
@@ -17587,7 +17651,7 @@ width: 100%;
 }
 
 .investment-back-btn::before {
-    content: '??';
+    content: '←';
     font-size: 16px;
     font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
@@ -17655,7 +17719,7 @@ width: 100%;
 }
 
 .input-field-label::before {
-    content: '??';
+    content: '📋';
     font-size: 16px;
     font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
@@ -18776,8 +18840,7 @@ width: 100%;
 }
 
 .dca-execute-modal .modal-body {
-    padding: 16px 18px 18px;
-    background: var(--bg-white);
+    padding: var(--spacing-xl);
     flex: 1 1 auto;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -19453,6 +19516,84 @@ transform: scale(0.99);
     flex: 1;
     text-align: center;
     margin: 0;
+}
+
+/* 常用備註模態框樣式 */
+.quick-note-modal .modal-content {
+    max-width: 400px;
+    width: 90%;
+}
+
+.quick-note-modal .modal-body {
+    padding: 20px;
+}
+
+.quick-note-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.quick-note-modal .emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 6px;
+    margin-top: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 8px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    background: var(--bg-white);
+}
+
+.quick-note-modal .emoji-grid button {
+    padding: 6px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    background: var(--bg-white);
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.2s ease;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+}
+
+.quick-note-modal .emoji-grid button:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary-rgba-10);
+    transform: scale(1.1);
+}
+
+.quick-note-modal .emoji-grid button.selected {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(243, 156, 18, 0.3);
+}
+
+/* 滾動條樣式 */
+.quick-note-modal .emoji-grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.quick-note-modal .emoji-grid::-webkit-scrollbar-track {
+    background: var(--bg-lighter);
+    border-radius: 3px;
+}
+
+.quick-note-modal .emoji-grid::-webkit-scrollbar-thumb {
+    background: var(--color-primary-lighter);
+    border-radius: 3px;
+}
+
+.quick-note-modal .emoji-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-light);
 }
 
 /* ========== 定期定額管理頁面 ========== */
@@ -27597,7 +27738,7 @@ body {
 
 /* 水果圖標裝飾 */
 :root[data-theme="fruit"] .card::after {
-    content: '??';
+    content: '🍎';
     position: absolute;
     top: -10px;
     right: -10px;
@@ -27605,22 +27746,27 @@ body {
     opacity: 0.3;
     transform: rotate(15deg);
     pointer-events: none;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
 
 :root[data-theme="fruit"] .investment-card::after {
-    content: '??';
+    content: '📈';
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
 
 :root[data-theme="fruit"] .budget-card::after {
-    content: '??';
+    content: '💳';
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
 
 :root[data-theme="fruit"] .wallet-card::after {
-    content: '??';
+    content: '👛';
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
 
 :root[data-theme="fruit"] .chart-card::after {
-    content: '??';
+    content: '📊';
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
 /* 為所有主題統一設置預算標籤文字為淺色 */
 .budget-summary-label {
@@ -29478,7 +29624,7 @@ body {
 }
 
 :root[data-theme="emeraldPrince"] .komori-dialog::before {
-    content: '??';
+    content: '👑';
     position: absolute;
     top: -15px;
     left: 50%;
@@ -29490,8 +29636,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
-    border: 2px solid var(--border-accent);
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', sans-serif;
 }
 
 /* 翡翠王子主題 - 投資卡片和持股卡片 */
@@ -31555,7 +31700,7 @@ body {
 :root[data-theme="starry"] select:focus {
     background: rgba(255, 255, 255, 0.12) !important;
     border-color: var(--color-secondary) !important;
-    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3) !important, inset 0 0 10px rgba(107, 70, 193, 0.1) !important;
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3), inset 0 0 10px rgba(107, 70, 193, 0.1) !important;
     transform: translateY(-1px) !important;
 }
 
@@ -36249,7 +36394,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 }
 
 /* ========== 節日慶典主題 ========== */
-[data-theme="festive"] {
+:root[data-theme="festive"] {
     /* 主要顏色 - 基於節日慶典圖片提取 */
     --color-primary: #E63946;
     --color-primary-light: #F77F8D;
@@ -36338,59 +36483,59 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 }
 
 /* 基礎樣式 */
-[data-theme="festive"] body {
+:root[data-theme="festive"] body {
     background: transparent;
     color: var(--text-primary);
 }
 
-[data-theme="festive"] body::before {
+:root[data-theme="festive"] body::before {
     display: none;
 }
 
 /* 頁面背景透明化 */
-[data-theme="festive"] .page-ledger {
+:root[data-theme="festive"] .page-ledger {
     background: transparent !important;
     backdrop-filter: none !important;
     box-shadow: none !important;
 }
 
-[data-theme="festive"] .page-input,
-[data-theme="festive"] .page-chart,
-[data-theme="festive"] .page-monthly-planner,
-[data-theme="festive"] .page-daily-budget,
-[data-theme="festive"] .page-settings,
-[data-theme="festive"] .page-category-manage,
-[data-theme="festive"] .page-investment,
-[data-theme="festive"] .page-wallet,
-[data-theme="festive"] .page-history,
-[data-theme="festive"] .page-planner {
+:root[data-theme="festive"] .page-input,
+:root[data-theme="festive"] .page-chart,
+:root[data-theme="festive"] .page-monthly-planner,
+:root[data-theme="festive"] .page-daily-budget,
+:root[data-theme="festive"] .page-settings,
+:root[data-theme="festive"] .page-category-manage,
+:root[data-theme="festive"] .page-investment,
+:root[data-theme="festive"] .page-wallet,
+:root[data-theme="festive"] .page-history,
+:root[data-theme="festive"] .page-planner {
     background: transparent;
     backdrop-filter: none;
     box-shadow: none;
 }
 
 /* 卡片樣式 */
-[data-theme="festive"] .card,
-[data-theme="festive"] .record-card,
-[data-theme="festive"] .chart-card,
-[data-theme="festive"] .investment-card,
-[data-theme="festive"] .stock-item-card,
-[data-theme="festive"] .budget-item,
-[data-theme="festive"] .dca-card,
-[data-theme="festive"] .installment-card,
-[data-theme="festive"] .dividend-stat-card,
-[data-theme="festive"] .emoji-modal-content,
-[data-theme="festive"] .crop-modal-content,
-[data-theme="festive"] .history-modal-content,
-[data-theme="festive"] .input-section,
-[data-theme="festive"] .bottom-nav,
-[data-theme="festive"] .header-section,
-[data-theme="festive"] .form-select,
-[data-theme="festive"] .form-textarea,
-[data-theme="festive"] .note-input,
-[data-theme="festive"] .dialog-content,
-[data-theme="festive"] .modal-content {
-    background: var(--bg-card) !important;
+:root[data-theme="festive"] .card,
+:root[data-theme="festive"] .record-card,
+:root[data-theme="festive"] .chart-card,
+:root[data-theme="festive"] .investment-card,
+:root[data-theme="spacegold"] .tab-text,
+:root[data-theme="spacegold"] .account-item-name,
+:root[data-theme="spacegold"] .account-item-currency,
+:root[data-theme="spacegold"] .budget-summary-label,
+:root[data-theme="spacegold"] .budget-summary-amount,
+:root[data-theme="spacegold"] .category-name,
+:root[data-theme="spacegold"] .category-amount,
+:root[data-theme="spacegold"] .record-amount,
+:root[data-theme="spacegold"] .record-category,
+:root[data-theme="spacegold"] .ledger-amount,
+:root[data-theme="spacegold"] .ledger-category,
+:root[data-theme="spacegold"] .history-amount,
+:root[data-theme="spacegold"] .history-category,
+:root[data-theme="spacegold"] .stat-label,
+:root[data-theme="spacegold"] .stat-value,
+:root[data-theme="spacegold"] .page-title {
+    color: var(--text-primary) !important;
     border: 2px solid var(--border-primary) !important;
     border-radius: 20px !important;
     backdrop-filter: blur(15px) !important;
@@ -36398,11 +36543,11 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     transition: all 0.3s ease !important;
 }
 
-[data-theme="festive"] .card:hover,
-[data-theme="festive"] .record-card:hover,
-[data-theme="festive"] .chart-card:hover,
-[data-theme="festive"] .investment-card:hover,
-[data-theme="festive"] .stock-item-card:hover {
+:root[data-theme="festive"] .card:hover,
+:root[data-theme="festive"] .record-card:hover,
+:root[data-theme="festive"] .chart-card:hover,
+:root[data-theme="festive"] .investment-card:hover,
+:root[data-theme="festive"] .stock-item-card:hover {
     background: var(--bg-white) !important;
     box-shadow: 0 12px 35px var(--color-primary-rgba-35) !important;
     transform: translateY(-3px) !important;
@@ -36410,14 +36555,14 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 }
 
 /* 按鈕樣式 */
-[data-theme="festive"] .btn,
-[data-theme="festive"] .btn-primary,
-[data-theme="festive"] .btn-secondary,
-[data-theme="festive"] .tab-btn,
-[data-theme="festive"] .key-btn,
-[data-theme="festive"] .operator-btn,
-[data-theme="festive"] .delete-btn,
-[data-theme="festive"] .equal-btn {
+:root[data-theme="festive"] .btn,
+:root[data-theme="festive"] .btn-primary,
+:root[data-theme="festive"] .btn-secondary,
+:root[data-theme="festive"] .tab-btn,
+:root[data-theme="festive"] .key-btn,
+:root[data-theme="festive"] .operator-btn,
+:root[data-theme="festive"] .delete-btn,
+:root[data-theme="festive"] .equal-btn {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
     color: var(--text-white) !important;
     border: 2px solid var(--border-primary) !important;
@@ -36427,25 +36572,35 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     box-shadow: 0 4px 15px var(--color-primary-rgba-25) !important;
 }
 
-[data-theme="festive"] .btn:hover,
-[data-theme="festive"] .btn-primary:hover,
-[data-theme="festive"] .tab-btn:hover,
-[data-theme="festive"] .key-btn:hover {
+:root[data-theme="spacegold"] .card:hover,
+:root[data-theme="spacegold"] .record-card:hover,
+:root[data-theme="spacegold"] .chart-card:hover,
+:root[data-theme="spacegold"] .investment-card:hover {
+    background: linear-gradient(135deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-20) 50%, var(--color-primary-rgba-15) 100%) !important;
+    border: 2px solid var(--color-primary) !important;
+    box-shadow: 0 10px 30px var(--color-primary-rgba-30) !important;
+    transform: translateY(-2px) !important;
+}
+
+:root[data-theme="spacegold"] .btn:hover,
+:root[data-theme="spacegold"] .btn-primary:hover,
+:root[data-theme="spacegold"] .tab-btn:hover,
+:root[data-theme="spacegold"] .key-btn:hover {
     background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%) !important;
     box-shadow: 0 6px 20px var(--color-primary-rgba-35) !important;
     transform: translateY(-2px) !important;
 }
 
-[data-theme="festive"] .delete-btn:hover {
+:root[data-theme="spacegold"] .delete-btn:hover {
     background: linear-gradient(135deg, var(--color-danger) 0%, var(--color-primary-dark) 100%) !important;
 }
 
-[data-theme="festive"] .equal-btn:hover {
+:root[data-theme="spacegold"] .equal-btn:hover {
     background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-success) 100%) !important;
 }
 
 /* FAB 按鈕 */
-[data-theme="festive"] .fab-btn {
+:root[data-theme="spacegold"] .fab-btn {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%) !important;
     color: var(--text-white) !important;
     border: 3px solid var(--border-primary) !important;
@@ -36456,33 +36611,44 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     transition: all 0.3s ease !important;
 }
 
-[data-theme="festive"] .fab-btn:hover {
-    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 50%, var(--color-accent) 100%) !important;
+:root[data-theme="festive"] .fab-btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%) !important;
+    color: var(--text-white) !important;
+    border: 3px solid var(--border-primary) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 8px 25px var(--color-primary-rgba-40) !important;
+    font-size: 24px !important;
+    font-weight: 900 !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="festive"] .fab-btn:hover {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 50%, var(--color-primary) 100%) !important;
     box-shadow: 0 12px 35px var(--color-primary-rgba-50) !important;
-    transform: scale(1.1) rotate(5deg) !important;
+    transform: translateY(-3px) scale(1.05) !important;
 }
 
 /* 導航欄 */
-[data-theme="festive"] .bottom-nav {
+:root[data-theme="spacegold"] .bottom-nav {
     background: var(--bg-card) !important;
     border-top: 2px solid var(--border-primary) !important;
     backdrop-filter: blur(15px) !important;
 }
 
-[data-theme="festive"] .nav-item {
+:root[data-theme="spacegold"] .nav-item {
     color: var(--text-secondary) !important;
     transition: all 0.3s ease !important;
 }
 
-[data-theme="festive"] .nav-item.active,
-[data-theme="festive"] .nav-item:hover {
+:root[data-theme="spacegold"] .nav-item.active,
+:root[data-theme="spacegold"] .nav-item:hover {
     color: var(--color-primary) !important;
     background: var(--color-primary-rgba-15) !important;
     border-radius: 12px !important;
 }
 
 /* 統計項目 */
-[data-theme="festive"] .stat-item {
+:root[data-theme="spacegold"] .stat-item {
     background: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-15) 50%, var(--color-primary-rgba-10) 100%) !important;
     border: 1px solid var(--color-primary-rgba-20) !important;
     box-shadow: 0 4px 12px var(--color-primary-rgba-15) !important;
@@ -36491,14 +36657,23 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     transition: all 0.3s ease !important;
 }
 
-[data-theme="festive"] .stat-item:hover {
+:root[data-theme="festive"] .stat-item {
+    background: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-15) 50%, var(--color-primary-rgba-10) 100%) !important;
+    border: 1px solid var(--color-primary-rgba-20) !important;
+    box-shadow: 0 4px 12px var(--color-primary-rgba-15) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 16px !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="spacegold"] .stat-item:hover {
     background: linear-gradient(135deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-20) 50%, var(--color-primary-rgba-15) 100%) !important;
     box-shadow: 0 6px 16px var(--color-primary-rgba-20) !important;
     transform: translateY(-2px) !important;
 }
 
 /* 記帳記錄 */
-[data-theme="festive"] .record-card {
+:root[data-theme="festive"] .record-card {
     background: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-15) 50%, var(--color-primary-rgba-08) 100%) !important;
     border: 2px solid var(--border-primary) !important;
     border-radius: 20px !important;
@@ -36507,25 +36682,31 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     transition: all 0.3s ease !important;
 }
 
-[data-theme="festive"] .record-card:hover {
+:root[data-theme="festive"] .record-card:hover {
     background: linear-gradient(135deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-20) 50%, var(--color-primary-rgba-12) 100%) !important;
     box-shadow: 0 6px 16px var(--color-primary-rgba-20) !important;
     transform: translateY(-2px) !important;
 }
 
-[data-theme="festive"] .record-card::before {
+:root[data-theme="festive"] .record-card::before {
     background-image: none !important;
     background: transparent !important;
     opacity: 0 !important;
 }
 
-[data-theme="festive"] .record-card::after {
-    background: transparent !important;
+:root[data-theme="spacegold"] .record-card::before {
+    background-image: none !important;
+    background: var(--bg-primary) !important;
+    opacity: 1 !important;
+}
+
+:root[data-theme="spacegold"] .record-card::after {
+    background: var(--bg-primary) !important;
 }
 
 /* 每日支出 */
-[data-theme="festive"] .daily-expense-display,
-[data-theme="festive"] .daily-expense-in-history {
+:root[data-theme="spacegold"] .daily-expense-display,
+:root[data-theme="spacegold"] .daily-expense-in-history {
     background: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-15) 50%, var(--color-primary-rgba-10) 100%) !important;
     border: 1px solid var(--color-primary-rgba-20) !important;
     box-shadow: 0 4px 12px var(--color-primary-rgba-15) !important;
@@ -36533,14 +36714,14 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     transition: all 0.3s ease !important;
 }
 
-[data-theme="festive"] .daily-expense-display:hover,
-[data-theme="festive"] .daily-expense-in-history:hover {
+:root[data-theme="spacegold"] .daily-expense-display:hover,
+:root[data-theme="spacegold"] .daily-expense-in-history:hover {
     background: linear-gradient(135deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-20) 50%, var(--color-primary-rgba-15) 100%) !important;
     box-shadow: 0 6px 16px var(--color-primary-rgba-20) !important;
     transform: translateY(-1px) !important;
 }
 
-[data-theme="festive"] .summary-stats .stat-value.expense {
+:root[data-theme="spacegold"] .summary-stats .stat-value.expense {
     color: var(--color-danger) !important;
     background: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-15) 50%, var(--color-primary-rgba-10) 100%) !important;
     padding: 4px 8px !important;
@@ -36550,34 +36731,34 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     transition: all 0.3s ease !important;
 }
 
-[data-theme="festive"] .summary-stats .stat-value.expense:hover {
+:root[data-theme="spacegold"] .summary-stats .stat-value.expense:hover {
     background: linear-gradient(135deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-20) 50%, var(--color-primary-rgba-15) 100%) !important;
     box-shadow: 0 4px 10px var(--color-primary-rgba-20) !important;
     transform: translateY(-1px) !important;
 }
 
 /* 標籤和文字 */
-[data-theme="festive"] .tab-text,
-[data-theme="festive"] .account-item-name,
-[data-theme="festive"] .account-item-currency,
-[data-theme="festive"] .budget-summary-label,
-[data-theme="festive"] .budget-detail-label,
-[data-theme="festive"] .stat-label,
-[data-theme="festive"] .dividend-stat-label,
-[data-theme="festive"] .account-info {
+:root[data-theme="festive"] .tab-text,
+:root[data-theme="festive"] .account-item-name,
+:root[data-theme="festive"] .account-item-currency,
+:root[data-theme="festive"] .budget-summary-label,
+:root[data-theme="festive"] .budget-detail-label,
+:root[data-theme="festive"] .stat-label,
+:root[data-theme="festive"] .dividend-stat-label,
+:root[data-theme="festive"] .account-info {
     color: var(--text-secondary) !important;
     font-weight: 600 !important;
 }
 
-[data-theme="festive"] .history-transaction-note {
+:root[data-theme="festive"] .history-transaction-note {
     color: var(--text-secondary) !important;
     font-size: 0.9em !important;
     font-style: italic !important;
 }
 
 /* 投資卡片 */
-[data-theme="festive"] .portfolio-shares,
-[data-theme="festive"] .stock-grid-card-tag--shares {
+:root[data-theme="festive"] .portfolio-shares,
+:root[data-theme="festive"] .stock-grid-card-tag--shares {
     background: linear-gradient(145deg, var(--color-primary-rgba-15) 0%, var(--color-secondary-rgba-20) 100%) !important;
     color: var(--text-white) !important;
     border: 2px solid var(--color-primary-rgba-30) !important;
@@ -36591,42 +36772,42 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-[data-theme="festive"] .portfolio-shares:hover,
-[data-theme="festive"] .stock-grid-card-tag--shares:hover {
+:root[data-theme="festive"] .portfolio-shares:hover,
+:root[data-theme="festive"] .stock-grid-card-tag--shares:hover {
     background: linear-gradient(145deg, var(--color-primary-rgba-20) 0%, var(--color-secondary-rgba-25) 100%) !important;
     box-shadow: 0 6px 16px var(--color-primary-rgba-30), inset 0 1px 3px rgba(255, 255, 255, 0.4) !important;
     transform: translateY(-2px) scale(1.05) !important;
 }
 
 /* 滾動條 */
-[data-theme="festive"] ::-webkit-scrollbar {
+:root[data-theme="festive"] ::-webkit-scrollbar {
     width: 12px !important;
 }
 
-[data-theme="festive"] ::-webkit-scrollbar-track {
+:root[data-theme="festive"] ::-webkit-scrollbar-track {
     background: var(--color-primary-rgba-10) !important;
     border-radius: 6px !important;
 }
 
-[data-theme="festive"] ::-webkit-scrollbar-thumb {
+:root[data-theme="festive"] ::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
     border-radius: 6px !important;
     border: 2px solid var(--border-primary) !important;
 }
 
-[data-theme="festive"] ::-webkit-scrollbar-thumb:hover {
+:root[data-theme="festive"] ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%) !important;
 }
 
 /* 漲跌幅統一設定 */
-[data-theme="festive"] .stock-change-positive,
-[data-theme="festive"] .price-up {
+:root[data-theme="festive"] .stock-change-positive,
+:root[data-theme="festive"] .price-up {
     background: #f44336 !important;
     color: white !important;
 }
 
-[data-theme="festive"] .stock-change-negative,
-[data-theme="festive"] .price-down {
+:root[data-theme="festive"] .stock-change-negative,
+:root[data-theme="festive"] .price-down {
     background: #4caf50 !important;
     color: white !important;
 }
@@ -36651,16 +36832,16 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     50% { opacity: 1; transform: scale(1.2); }
 }
 
-[data-theme="festive"] .fab-btn {
+:root[data-theme="festive"] .fab-btn {
     animation: festiveGlow 3s ease-in-out infinite;
 }
 
-[data-theme="festive"] .card {
+:root[data-theme="festive"] .card {
     background-size: 200% 200% !important;
     animation: festiveGradient 8s ease infinite;
 }
 
-[data-theme="festive"] .stat-value::after {
+:root[data-theme="festive"] .stat-value::after {
     content: '?';
     position: absolute;
     top: -5px;
@@ -36671,14 +36852,14 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 
 /* 響應式設計 */
 @media (max-width: 768px) {
-    [data-theme="festive"] .card,
-    [data-theme="festive"] .dialog-content,
-    [data-theme="festive"] .modal-content {
+    :root[data-theme="festive"] .card,
+    :root[data-theme="festive"] .dialog-content,
+    :root[data-theme="festive"] .modal-content {
         border-radius: 16px !important;
         margin: 8px !important;
     }
     
-    [data-theme="festive"] .fab-btn {
+    :root[data-theme="festive"] .fab-btn {
         width: 52px !important;
         height: 52px !important;
         font-size: 22px !important;
@@ -36687,14 +36868,14 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 }
 
 @media (max-width: 480px) {
-    [data-theme="festive"] .card,
-    [data-theme="festive"] .dialog-content,
-    [data-theme="festive"] .modal-content {
+    :root[data-theme="festive"] .card,
+    :root[data-theme="festive"] .dialog-content,
+    :root[data-theme="festive"] .modal-content {
         border-radius: 12px !important;
         margin: 4px !important;
     }
     
-    [data-theme="festive"] .fab-btn {
+    :root[data-theme="festive"] .fab-btn {
         width: 48px !important;
         height: 48px !important;
         font-size: 20px !important;
@@ -36704,14 +36885,14 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 }
 
 /* 節日慶典主題 - 預算設定頁面使用通用樣式 */
-[data-theme="festive"] .page-budget {
+:root[data-theme="festive"] .page-budget {
     background: transparent !important;
     backdrop-filter: none !important;
     box-shadow: none !important;
 }
 
 /* 節日慶典主題 - 預算摘要卡片背景圖片 */
-[data-theme="festive"] .budget-summary {
+:root[data-theme="festive"] .budget-progress-bar {
     background: url("https://i.pinimg.com/736x/6f/49/9a/6f499af434927a2eff91221a60393ae5.jpg") center/cover !important;
     background-blend-mode: overlay !important;
     background-color: rgba(230, 57, 70, 0.3) !important;
@@ -36723,7 +36904,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     overflow: hidden !important;
 }
 
-[data-theme="festive"] .budget-summary::before {
+:root[data-theme="festive"] .budget-progress-bar::before {
     content: '' !important;
     position: absolute !important;
     top: 0 !important;
@@ -36734,23 +36915,15 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     z-index: 0 !important;
 }
 
-[data-theme="festive"] .budget-summary > * {
+:root[data-theme="festive"] .budget-progress-bar > * {
     position: relative !important;
     z-index: 1 !important;
 }
 
-[data-theme="festive"] .budget-summary-item {
-    background: var(--color-primary-rgba-10) !important;
-    border: 1px solid var(--color-primary-rgba-20) !important;
-    border-radius: 12px !important;
-    backdrop-filter: blur(5px) !important;
-    transition: all 0.3s ease !important;
-}
-
-[data-theme="festive"] .budget-summary-item:hover {
-    background: var(--color-primary-rgba-15) !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 4px 12px var(--color-primary-rgba-20) !important;
+:root[data-theme="festive"] .budget-progress-bar:hover {
+    background-color: rgba(230, 57, 70, 0.4) !important;
+    box-shadow: 0 12px 35px var(--color-primary-rgba-35) !important;
+    transform: translateY(-2px) !important;
 }
 
 /* 節日慶典主題 - 預算項目卡片背景圖片 */
@@ -36767,7 +36940,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     overflow: hidden !important;
 }
 
-[data-theme="festive"] .budget-item::before {
+:root[data-theme="festive"] .budget-item::before {
     content: '' !important;
     position: absolute !important;
     top: 0 !important;
@@ -36778,12 +36951,12 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     z-index: 0 !important;
 }
 
-[data-theme="festive"] .budget-item > * {
+:root[data-theme="festive"] .budget-item > * {
     position: relative !important;
     z-index: 1 !important;
 }
 
-[data-theme="festive"] .budget-item:hover {
+:root[data-theme="festive"] .budget-item:hover {
     background: var(--bg-white) !important;
     box-shadow: 0 8px 25px var(--color-primary-rgba-30) !important;
     transform: translateY(-2px) !important;
@@ -36791,7 +36964,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 }
 
 /* 節日慶典主題 - 預算設定卡片背景圖片 */
-[data-theme="festive"] .wallet-budget-card {
+:root[data-theme="festive"] .wallet-budget-card {
     background: url("https://i.pinimg.com/736x/6f/49/9a/6f499af434927a2eff91221a60393ae5.jpg") center/cover !important;
     background-blend-mode: overlay !important;
     background-color: rgba(230, 57, 70, 0.3) !important;
@@ -36802,7 +36975,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     box-shadow: 0 8px 25px var(--color-primary-rgba-25) !important;
 }
 
-[data-theme="festive"] .wallet-budget-card::before {
+:root[data-theme="festive"] .wallet-budget-card::before {
     content: '';
     position: absolute !important;
     top: 0 !important;
@@ -36814,19 +36987,19 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     z-index: 0 !important;
 }
 
-[data-theme="festive"] .wallet-budget-card > * {
+:root[data-theme="festive"] .wallet-budget-card > * {
     position: relative !important;
     z-index: 1 !important;
 }
 
-[data-theme="festive"] .wallet-budget-card:hover {
+:root[data-theme="festive"] .wallet-budget-card:hover {
     background-color: rgba(230, 57, 70, 0.4) !important;
     box-shadow: 0 12px 35px var(--color-primary-rgba-35) !important;
     transform: translateY(-2px) !important;
 }
 
 /* 節日慶典主題 - 覆蓋通用summary-card規則 */
-[data-theme="festive"] .summary-card {
+:root[data-theme="festive"] .summary-card {
     background: url("https://i.pinimg.com/1200x/ba/24/9a/ba249a3cc3f9f317683f78c240ff0686.jpg") center/cover !important;
     background-blend-mode: overlay !important;
     background-color: rgba(230, 57, 70, 0.3) !important;
@@ -36841,7 +37014,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     transition: all 0.3s ease !important;
 }
 
-[data-theme="festive"] .summary-card::before {
+:root[data-theme="festive"] .summary-card::before {
     content: '' !important;
     position: absolute !important;
     top: 0 !important;
@@ -36852,19 +37025,19 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     z-index: 0 !important;
 }
 
-[data-theme="festive"] .summary-card > * {
+:root[data-theme="festive"] .summary-card > * {
     position: relative !important;
     z-index: 1 !important;
 }
 
-[data-theme="festive"] .summary-card:hover {
+:root[data-theme="festive"] .summary-card:hover {
     background-color: rgba(230, 57, 70, 0.4) !important;
     box-shadow: 0 12px 35px var(--color-primary-rgba-35) !important;
     transform: translateY(-2px) !important;
 }
 
 /* 確保圖示在節日慶典主題中可見 */
-[data-theme="festive"] .summary-card .summary-icon {
+:root[data-theme="festive"] .summary-card .summary-icon {
     color: white !important;
     font-size: 24px !important;
     margin-bottom: 10px !important;
@@ -36873,21 +37046,21 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     position: relative !important;
 }
 
-[data-theme="festive"] .summary-card .summary-content {
+:root[data-theme="festive"] .summary-card .summary-content {
     color: white !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
     z-index: 2 !important;
     position: relative !important;
 }
 
-[data-theme="festive"] .summary-card .summary-label {
+:root[data-theme="festive"] .summary-card .summary-label {
     color: white !important;
     font-size: 14px !important;
     opacity: 0.9 !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
 
-[data-theme="festive"] .summary-card .summary-value {
+:root[data-theme="festive"] .summary-card .summary-value {
     color: white !important;
     font-size: 18px !important;
     font-weight: bold !important;
@@ -36895,7 +37068,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 }
 
 /* 節日慶典主題 - 投資設定卡片背景圖片 */
-[data-theme="festive"] .investment-settings-card {
+:root[data-theme="festive"] .investment-settings-card {
     background: url("https://i.pinimg.com/1200x/ba/24/9a/ba249a3cc3f9f317683f78c240ff0686.jpg") center/cover !important;
     background-blend-mode: overlay !important;
     background-color: rgba(230, 57, 70, 0.25) !important;
@@ -36908,7 +37081,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     overflow: hidden !important;
 }
 
-[data-theme="festive"] .investment-settings-card::before {
+:root[data-theme="festive"] .investment-settings-card::before {
     content: '' !important;
     position: absolute !important;
     top: 0 !important;
@@ -36919,12 +37092,12 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     z-index: 0 !important;
 }
 
-[data-theme="festive"] .investment-settings-card > * {
+:root[data-theme="festive"] .investment-settings-card > * {
     position: relative !important;
     z-index: 1 !important;
 }
 
-[data-theme="festive"] .investment-settings-card:hover {
+:root[data-theme="festive"] .investment-settings-card:hover {
     background: var(--bg-white) !important;
     box-shadow: 0 8px 25px var(--color-primary-rgba-30) !important;
     transform: translateY(-2px) !important;
@@ -36932,7 +37105,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 }
 
 /* 節日慶典主題 - 持股卡片背景圖片 */
-[data-theme="festive"] .holding-card {
+:root[data-theme="festive"] .holding-card {
     background: url("https://i.pinimg.com/1200x/ba/24/9a/ba249a3cc3f9f317683f78c240ff0686.jpg") center/cover !important;
     background-blend-mode: overlay !important;
     background-color: rgba(230, 57, 70, 0.25) !important;
@@ -36945,7 +37118,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     overflow: hidden !important;
 }
 
-[data-theme="festive"] .holding-card::before {
+:root[data-theme="festive"] .holding-card::before {
     content: '' !important;
     position: absolute !important;
     top: 0 !important;
@@ -36956,12 +37129,12 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     z-index: 0 !important;
 }
 
-[data-theme="festive"] .holding-card > * {
+:root[data-theme="festive"] .holding-card > * {
     position: relative !important;
     z-index: 1 !important;
 }
 
-[data-theme="festive"] .holding-card:hover {
+:root[data-theme="festive"] .holding-card:hover {
     background: var(--bg-white) !important;
     box-shadow: 0 8px 25px var(--color-primary-rgba-30) !important;
     transform: translateY(-2px) !important;
@@ -36969,7 +37142,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 }
 
 /* 節日慶典主題 - 買入卡片背景圖片 */
-[data-theme="festive"] .buying-card {
+:root[data-theme="festive"] .buying-card {
     background: url("https://i.pinimg.com/1200x/ba/24/9a/ba249a3cc3f9f317683f78c240ff0686.jpg") center/cover !important;
     background-blend-mode: overlay !important;
     background-color: rgba(230, 57, 70, 0.25) !important;
@@ -36982,7 +37155,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     overflow: hidden !important;
 }
 
-[data-theme="festive"] .buying-card::before {
+:root[data-theme="festive"] .buying-card::before {
     content: '' !important;
     position: absolute !important;
     top: 0 !important;
@@ -36993,12 +37166,12 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     z-index: 0 !important;
 }
 
-[data-theme="festive"] .buying-card > * {
+:root[data-theme="festive"] .buying-card > * {
     position: relative !important;
     z-index: 1 !important;
 }
 
-[data-theme="festive"] .buying-card:hover {
+:root[data-theme="festive"] .buying-card:hover {
     background: var(--bg-white) !important;
     box-shadow: 0 8px 25px var(--color-primary-rgba-30) !important;
     transform: translateY(-2px) !important;
@@ -37006,7 +37179,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 }
 
 /* 節日慶典主題 - 賣出卡片背景圖片 */
-[data-theme="festive"] .selling-card {
+:root[data-theme="festive"] .selling-card {
     background: url("https://i.pinimg.com/1200x/ba/24/9a/ba249a3cc3f9f317683f78c240ff0686.jpg") center/cover !important;
     background-blend-mode: overlay !important;
     background-color: rgba(230, 57, 70, 0.25) !important;
@@ -37019,7 +37192,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     overflow: hidden !important;
 }
 
-[data-theme="festive"] .selling-card::before {
+:root[data-theme="festive"] .selling-card::before {
     content: '' !important;
     position: absolute !important;
     top: 0 !important;
@@ -37030,12 +37203,12 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     z-index: 0 !important;
 }
 
-[data-theme="festive"] .selling-card > * {
+:root[data-theme="festive"] .selling-card > * {
     position: relative !important;
     z-index: 1 !important;
 }
 
-[data-theme="festive"] .selling-card:hover {
+:root[data-theme="festive"] .selling-card:hover {
     background: var(--bg-white) !important;
     box-shadow: 0 8px 25px var(--color-primary-rgba-30) !important;
     transform: translateY(-2px) !important;
@@ -37043,7 +37216,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 }
 
 /* 節日慶典主題 - 股息卡片背景圖片 */
-[data-theme="festive"] .dividend-card {
+:root[data-theme="festive"] .dividend-card {
     background: url("https://i.pinimg.com/1200x/ba/24/9a/ba249a3cc3f9f317683f78c240ff0686.jpg") center/cover !important;
     background-blend-mode: overlay !important;
     background-color: rgba(230, 57, 70, 0.25) !important;
@@ -37056,7 +37229,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     overflow: hidden !important;
 }
 
-[data-theme="festive"] .dividend-card::before {
+:root[data-theme="festive"] .dividend-card::before {
     content: '' !important;
     position: absolute !important;
     top: 0 !important;
@@ -37067,12 +37240,12 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     z-index: 0 !important;
 }
 
-[data-theme="festive"] .dividend-card > * {
+:root[data-theme="festive"] .dividend-card > * {
     position: relative !important;
     z-index: 1 !important;
 }
 
-[data-theme="festive"] .dividend-card:hover {
+:root[data-theme="festive"] .dividend-card:hover {
     background: var(--bg-white) !important;
     box-shadow: 0 8px 25px var(--color-primary-rgba-30) !important;
     transform: translateY(-2px) !important;
@@ -37080,7 +37253,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
 }
 
 /* 節日慶典主題 - 預算列表項目 */
-[data-theme="festive"] .budget-item {
+:root[data-theme="festive"] .budget-item {
     background: url("https://i.pinimg.com/736x/6f/49/9a/6f499af434927a2eff91221a60393ae5.jpg") center/cover !important;
     background-blend-mode: overlay !important;
     background-color: rgba(230, 57, 70, 0.25) !important;
@@ -37093,7 +37266,7 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     overflow: hidden !important;
 }
 
-[data-theme="festive"] .budget-item::before {
+:root[data-theme="festive"] .budget-item::before {
     content: '' !important;
     position: absolute !important;
     top: 0 !important;
@@ -37104,12 +37277,12 @@ html:has([data-theme="shinobu"]) *[class*="budget-remaining"] {
     z-index: 0 !important;
 }
 
-[data-theme="festive"] .budget-item > * {
+:root[data-theme="festive"] .budget-item > * {
     position: relative !important;
     z-index: 1 !important;
 }
 
-[data-theme="festive"] .budget-item:hover {
+:root[data-theme="festive"] .budget-item:hover {
     background: var(--bg-white) !important;
     box-shadow: 0 8px 25px var(--color-primary-rgba-30) !important;
     transform: translateY(-2px) !important;

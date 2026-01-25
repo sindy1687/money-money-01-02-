@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Money - 財務管理系統</title>
+    
+    <!-- 核心樣式 - 必須首先載入 -->
+    <link rel="stylesheet" href="styles-core.css">
+    
+    <!-- 主題樣式 - 在核心樣式之後載入 -->
+    <link rel="stylesheet" href="themes.css">
+    
+    <!-- 原始樣式 - 包含所有特定組件樣式（可選） -->
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    
+    <style>
+        /* 示例：如何動態切換主題 */
+        :root {
+            --theme-transition: all 0.3s ease;
+        }
+        
+        body {
+            transition: var(--theme-transition);
+        }
+        
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: var(--bg-card, rgba(255, 255, 255, 0.9));
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .theme-btn {
+            padding: 8px 12px;
+            margin: 4px;
+            border: 1px solid var(--border-primary, #ddd);
+            border-radius: 4px;
+            background: var(--bg-white, #fff);
+            color: var(--text-primary, #333);
+            cursor: pointer;
+            transition: var(--transition-normal);
+        }
+        
+        .theme-btn:hover {
+            background: var(--color-primary, #007bff);
+            color: var(--text-white, #fff);
+        }
+        
+        .theme-btn.active {
+            background: var(--color-primary, #007bff);
+            color: var(--text-white, #fff);
+        }
+    </style>
+</head>
+<body data-theme="money">
+    <!-- 主題切換器 -->
+    <div class="theme-switcher">
+        <h3>選擇主題</h3>
+        <button class="theme-btn active" onclick="setTheme('money')">Money</button>
+        <button class="theme-btn" onclick="setTheme('totoro')">Totoro</button>
+        <button class="theme-btn" onclick="setTheme('noface')">No Face</button>
+        <button class="theme-btn" onclick="setTheme('spacegold')">Space Gold</button>
+        <button class="theme-btn" onclick="setTheme('festive')">Festive</button>
+        <button class="theme-btn" onclick="setTheme('fruit')">Fruit</button>
+        <button class="theme-btn" onclick="setTheme('emeraldPrince')">Emerald Prince</button>
+    </div>
+
+    <!-- 主要內容 -->
+    <div class="container">
+        <header class="header-section">
+            <h1>Money Money 財務管理系統</h1>
+            <p>主題樣式已成功分離！</p>
+        </header>
+
+        <main class="main-content">
+            <!-- 示例卡片 -->
+            <div class="card">
+                <h2>歡迎使用新版本</h2>
+                <p>主題樣式已經從核心樣式中分離出來，使代碼更加模組化和易於維護。</p>
+            </div>
+
+            <!-- 示例統計項目 -->
+            <div class="stat-item">
+                <div class="stat-value">📊 $12,345</div>
+                <div class="stat-label">總資產</div>
+            </div>
+
+            <!-- 示例按鈕組 -->
+            <div class="button-group">
+                <button class="btn btn-primary">主要按鈕</button>
+                <button class="btn btn-secondary">次要按鈕</button>
+                <button class="btn btn-accent">強調按鈕</button>
+            </div>
+
+            <!-- 示例表單 -->
+            <div class="form-section">
+                <div class="input-group">
+                    <label class="input-field-label">📋 輸入金額</label>
+                    <input type="number" class="form-input" placeholder="請輸入金額">
+                </div>
+                <div class="input-group">
+                    <label class="input-field-label">📝 備註</label>
+                    <textarea class="form-textarea" placeholder="請輸入備註"></textarea>
+                </div>
+                <button class="form-submit-btn">✓ 提交</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- 浮動操作按鈕 -->
+    <button class="fab-btn" onclick="showAddModal()">
+        <span>+</span>
+    </button>
+
+    <!-- 底部導航 -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="navigateTo('home')">
+            <span>🏠</span>
+            <span>首頁</span>
+        </div>
+        <div class="nav-item" onclick="navigateTo('ledger')">
+            <span>📖</span>
+            <span>帳本</span>
+        </div>
+        <div class="nav-item" onclick="navigateTo('chart')">
+            <span>📊</span>
+            <span>圖表</span>
+        </div>
+        <div class="nav-item" onclick="navigateTo('settings')">
+            <span>⚙️</span>
+            <span>設定</span>
+        </div>
+    </nav>
+
+    <script>
+        // 主題切換功能
+        function setTheme(themeName) {
+            // 移除所有主題按鈕的 active 狀態
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 設置當前主題按鈕為 active
+            event.target.classList.add('active');
+            
+            // 設置 body 的 data-theme 屬性
+            document.body.setAttribute('data-theme', themeName);
+            
+            // 保存主題選擇到 localStorage
+            localStorage.setItem('selectedTheme', themeName);
+            
+            // 顯示主題切換提示
+            showNotification(`已切換到 ${getThemeDisplayName(themeName)} 主題`);
+        }
+        
+        // 獲取主題顯示名稱
+        function getThemeDisplayName(themeName) {
+            const themeNames = {
+                'money': 'Money',
+                'totoro': '龍貓',
+                'noface': '無臉男',
+                'spacegold': '太空金',
+                'festive': '節慶',
+                'fruit': '水果',
+                'emeraldPrince': '翡翠王子'
+            };
+            return themeNames[themeName] || themeName;
+        }
+        
+        // 載入保存的主題
+        function loadSavedTheme() {
+            const savedTheme = localStorage.getItem('selectedTheme');
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme);
+                
+                // 更新主題按鈕狀態
+                document.querySelectorAll('.theme-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.textContent.toLowerCase().includes(savedTheme.toLowerCase()) ||
+                        btn.onclick.toString().includes(savedTheme)) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+        }
+        
+        // 顯示通知
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--color-primary);
+                color: var(--text-white);
+                padding: 12px 24px;
+                border-radius: 8px;
+                box-shadow: var(--shadow-lg);
+                z-index: 10000;
+                animation: slideInDown 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // 導航功能
+        function navigateTo(page) {
+            showNotification(`導航到 ${page} 頁面`);
+        }
+        
+        // 顯示添加模態框
+        function showAddModal() {
+            showNotification('打開添加模態框');
+        }
+        
+        // 頁面載入時初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedTheme();
+            
+            // 添加鍵盤快捷鍵支持
+            document.addEventListener('keydown', function(e) {
+                // Ctrl/Cmd + T 打開主題切換器
+                if ((e.ctrlKey || e.metaKey) && e.key === 't') {
+                    e.preventDefault();
+                    document.querySelector('.theme-switcher').style.display = 
+                        document.querySelector('.theme-switcher').style.display === 'none' ? 'block' : 'none';
+                }
+            });
+        });
+        
+        // 添加動畫樣式
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInDown {
+                from {
+                    transform: translate(-50%, -100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translate(-50%, 0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
+            
+            .notification {
+                font-family: inherit;
+                font-size: 14px;
+                font-weight: 500;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
