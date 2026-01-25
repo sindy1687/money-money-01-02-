@@ -5,44 +5,41 @@
 // 新主題陣列 - 將會合併到主題系統中
 const newThemes = [
     {
-        id: 'cosmicDream',
-        name: '宇宙夢幻',
-        icon: '🌌',
-        buttonIcon: '✨',
-        preview: 'url("images/theme/cosmic-dream-bg.jpg") center/cover',
-        color: '#B19CD9',
-        category: 'cosmic',
-        backgroundImage: 'images/theme/cosmic-dream-bg.jpg',
-        investmentCardImage: 'images/theme/cosmic-dream-bg.jpg',
-        accountingCardImage: 'images/theme/cosmic-dream-bg.jpg',
-        walletBudgetCardImage: 'images/theme/cosmic-dream-bg.jpg',
-        monthlyPlanningCardImage: 'images/theme/cosmic-dream-bg.jpg',
-        investmentSettingsCardImage: 'images/theme/cosmic-dream-bg.jpg',
-        holdingCardImage: 'images/theme/cosmic-dream-bg.jpg',
-        buyingCardImage: 'images/theme/cosmic-dream-bg.jpg',
-        sellingCardImage: 'images/theme/cosmic-dream-bg.jpg',
-        dividendCardImage: 'images/theme/cosmic-dream-bg.jpg',
-        smartAnalysisCardImage: 'images/theme/cosmic-dream-bg.jpg',
-        smartReminderCardImage: 'images/theme/cosmic-dream-bg.jpg',
-        regularInvestmentCardImage: 'images/theme/cosmic-dream-bg.jpg'
-    },
-    {
-        id: 'flowerSeaStar',
-        name: '花海星語',
-        icon: '🌸',
-        buttonIcon: '🌊',
-        preview: 'url("https://i.pinimg.com/736x/bf/6c/3c/bf6c3c24e13b16480fe60f0fded5d5d2.jpg") center/cover',
-        color: '#9BB5FF',
-        category: 'anime',
-        backgroundImage: 'https://i.pinimg.com/736x/bf/6c/3c/bf6c3c24e13b16480fe60f0fded5d5d2.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/736x/00/b1/a5/00b1a59e8f876c4cfeb2374f25e95381.jpg'
+        id: 'deepElegant',
+        name: '深色優雅',
+        category: 'elegant',
+        description: '基於深色圖片的優雅主題，包含漸層和毛玻璃效果',
+        icon: '🌙',
+        preview: 'url("https://i.pinimg.com/736x/32/91/28/3291288e558fa4511b83ecb6f8a96d22.jpg") center/cover',
+        cssFile: 'deep-elegant-theme.css',
+        author: 'System',
+        version: '1.0.0',
+        tags: ['dark', 'elegant', 'gradient', 'glass'],
+        features: [
+            '深色背景圖片',
+            '毛玻璃效果',
+            '高對比度文字',
+            '優雅卡片設計',
+            '響應式適配'
+        ],
+        customColors: {
+            primary: '#1a1f3a',
+            secondary: '#2d1b69',
+            accent: '#4a3c8c',
+            background: '#0d0d1a',
+            text: '#ffffff'
+        }
     }
-    // 未來的新主題將在這裡添加
 ];
 
 // 新主題分類定義
 const newThemeCategories = {
-    // 未來的新分類將在這裡添加
+    elegant: {
+        name: '優雅風格',
+        description: '優雅、現代的主題風格',
+        icon: '✨',
+        color: '#4a3c8c'
+    }
 };
 
 // 新主題動畫定義
@@ -146,12 +143,21 @@ function getNewTheme(themeId) {
     return newThemes.find(theme => theme.id === themeId);
 }
 
-// 頁面載入完成後自動合併新主題
+// 頁面載入完成後立即合併新主題（無延遲）
 document.addEventListener('DOMContentLoaded', () => {
-    // 等待一確保主題系統已載入
+    // 立即合併新主題，確保在主題系統初始化之前完成
+    mergeNewThemes();
+    
+    // 等待主題系統初始化完成後更新選擇器
     setTimeout(() => {
-        mergeNewThemes();
-    }, 100);
+        if (typeof updateThemeSelector === 'function') {
+            updateThemeSelector();
+        }
+        
+        // 如果當前已經選擇了我們的新主題，重新應用
+        const currentTheme = getCurrentTheme ? getCurrentTheme() : null;
+        // 主題相關的檢查和應用邏輯已移除
+    }, 200);
 });
 
 // 導出函數供外部使用

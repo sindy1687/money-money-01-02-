@@ -122,6 +122,14 @@ const buttonIcons = {
         navChart: '📊',
         navSettings: '⚙️'
     },
+    littlePrince: {
+        fab: '👑',
+        navLedger: '📖',
+        navWallet: '💰',
+        navInvestment: '📈',
+        navChart: '📊',
+        navSettings: '⚙️'
+    },
     firefly: {
         fab: '✨',
         navLedger: '✨',

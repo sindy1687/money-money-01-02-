@@ -300,36 +300,16 @@ var themes = window.AppThemes || [
         preview: 'url("https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg") center/cover',
         color: '#87CEEB',
         category: 'cute',
-        backgroundImage: 'https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg'
-    },
-    {
-        id: 'cute',
-        name: '可愛圖片主題',
-        icon: '🐾',
-        buttonIcon: '🐾',
-        preview: 'url("image/BMG.jpg") center/cover',
-        color: '#4dd0e1',
-        category: 'cute',
-        backgroundImage: 'image/BMG.jpg'
-    },
-    {
-        id: 'cutePastel',
-        name: '可愛粉彩',
-        icon: '🌸',
-        buttonIcon: '🐰',
-        preview: 'linear-gradient(135deg, #ffeef8 0%, #fff5f5 25%, #f0f8ff 50%, #fffaf0 75%, #f5fff5 100%)',
-        color: '#ff69b4',
-        category: 'cute',
-        backgroundImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
-        investmentCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
-        accountingCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
-        holdingCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
-        buyingCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
-        sellingCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg',
-        dividendCardImage: 'https://i.pinimg.com/1200x/a9/c3/7f/a9c37f338368fb7359227ec493fdc5a8.jpg'
+        backgroundImage: 'https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/9b/c1/cd/9bc1cd5e89c11cd36a290ef3cf707919.jpg'
     },
     {
         id: 'bluerose',
@@ -460,25 +440,6 @@ var themes = window.AppThemes || [
         dividendCardImage: 'https://i.pinimg.com/736x/26/c9/c0/26c9c0297b0cad3dfa8d6d5c41ccfc18.jpg'
     },
     {
-        id: 'cutecreatures',
-        name: '可愛生物',
-        icon: '🌿',
-        buttonIcon: '🐾',
-        preview: 'url("https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg") center/cover',
-        color: '#90EE90',
-        category: 'cute',
-        backgroundImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
-        investmentCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
-        accountingCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
-        walletBudgetCardImage: 'https://i.pinimg.com/736x/85/74/68/857468da4307fa5dc160ad691a91203b.jpg',
-        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
-        investmentSettingsCardImage: 'https://i.pinimg.com/1200x/12/9a/54/129a54dd2352298e7e8d4630eacc6b76.jpg',
-        holdingCardImage: 'https://i.pinimg.com/736x/47/8e/82/478e82dd1e2a82bc5d4d2914aa8be731.jpg',
-        buyingCardImage: 'https://i.pinimg.com/1200x/12/9a/54/129a54dd2352298e7e8d4630eacc6b76.jpg',
-        sellingCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg',
-        dividendCardImage: 'https://i.pinimg.com/736x/9d/4a/a3/9d4aa350394b78ca7071e58ddda9d0ac.jpg'
-    },
-    {
         id: 'getrichCats',
         name: '可愛發財貓',
         icon: '🐱',
@@ -579,10 +540,10 @@ var themes = window.AppThemes || [
         name: '金藍動漫',
         icon: '🎧',
         buttonIcon: '👦',
-        preview: 'url("https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg") center/cover',
+        preview: 'transparent',
         color: '#D4AF37',
         category: 'fantasy',
-        backgroundImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
+        backgroundImage: 'transparent',
         investmentCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
         accountingCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
         walletBudgetCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
@@ -591,7 +552,32 @@ var themes = window.AppThemes || [
         holdingCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
         buyingCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
         sellingCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
-        dividendCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg'
+        dividendCardImage: 'https://i.pinimg.com/1200x/b4/ad/11/b4ad1151dc916174a6e9ffc4c6050ec8.jpg',
+        smartAnalysisCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
+        smartReminderCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
+        regularInvestmentCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg'
+    },
+    {
+        id: 'littlePrince',
+        name: '小王子黃冠',
+        icon: '👑',
+        buttonIcon: '🌟',
+        preview: 'url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover',
+        color: '#FFD700',
+        category: 'anime',
+        backgroundImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
+        investmentCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
+        accountingCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
+        walletBudgetCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
+        monthlyPlanningCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
+        investmentSettingsCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
+        holdingCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
+        buyingCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
+        sellingCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
+        dividendCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
+        smartAnalysisCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
+        smartReminderCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg',
+        regularInvestmentCardImage: 'https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg'
     }
 ];
 
@@ -742,14 +728,15 @@ function applyTheme(themeId) {
     
     // 自動應用主題背景圖片
     const theme = themes.find(t => t.id === themeId);
-    if (theme && theme.backgroundImage) {
+    if (theme && theme.backgroundImage && theme.backgroundImage !== 'transparent') {
         applyThemeBackgroundImage(theme.backgroundImage);
     } else {
-        // 如果主題沒有背景圖片，清除背景
+        // 如果主題沒有背景圖片或是透明背景，清除背景
         document.body.style.backgroundImage = '';
         document.body.style.backgroundSize = '';
         document.body.style.backgroundPosition = '';
         document.body.style.backgroundRepeat = '';
+        document.body.style.backgroundAttachment = '';
     }
     
     // 應用卡片背景圖片
@@ -820,7 +807,15 @@ function applyCardBackgroundImage(selector, imageUrl) {
 }
 
 function applyThemeBackgroundImage(imageUrl) {
-    if (!imageUrl) return;
+    if (!imageUrl || imageUrl === 'transparent' || imageUrl.trim() === 'transparent') {
+        // 如果沒有背景圖片或是透明背景，清除背景
+        document.body.style.backgroundImage = '';
+        document.body.style.backgroundSize = '';
+        document.body.style.backgroundPosition = '';
+        document.body.style.backgroundRepeat = '';
+        document.body.style.backgroundAttachment = '';
+        return;
+    }
     
     // 檢查圖片是否可以載入
     const img = new Image();
@@ -842,6 +837,7 @@ function applyThemeBackgroundImage(imageUrl) {
         document.body.style.backgroundSize = '';
         document.body.style.backgroundPosition = '';
         document.body.style.backgroundRepeat = '';
+        document.body.style.backgroundAttachment = '';
         
         console.warn(`⚠️ 主題背景圖片載入失敗: ${imageUrl}`);
     };
@@ -967,6 +963,14 @@ function updateThemeButtons(themeId) {
         totoro: {
             fab: '🌱',
             navLedger: '📗',
+            navWallet: '💰',
+            navInvestment: '📈',
+            navChart: '📊',
+            navSettings: '⚙️'
+        },
+        littlePrince: {
+            fab: '👑',
+            navLedger: '📖',
             navWallet: '💰',
             navInvestment: '📈',
             navChart: '📊',
@@ -1110,15 +1114,15 @@ function updateThemeButtons(themeId) {
             navSettings: '⚡'
         },
         
-       cutecreatures: {
-    fab: '🌿',
-    navLedger: '🐾',
-    navWallet: '🌱',
-    navInvestment: '🍃',
-    navChart: '🌿',
-    navSettings: '🌿'
-},
-spacegold: {
+        animeGoldenBlue: {
+            fab: '🎧',
+            navLedger: '📖',
+            navWallet: '💰',
+            navInvestment: '📈',
+            navChart: '📊',
+            navSettings: '⚙️'
+        },
+       spacegold: {
     fab: '🚀',
     navLedger: '🪐',
     navWallet: '✨',
@@ -1453,11 +1457,15 @@ function applyCustomTheme() {
         document.body.style.backgroundSize = 'cover';
         document.body.style.backgroundPosition = 'center';
         document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundAttachment = 'fixed';
+        console.log('Applied custom background image from theme');
     } else {
         document.body.style.backgroundImage = '';
         document.body.style.backgroundSize = '';
         document.body.style.backgroundPosition = '';
         document.body.style.backgroundRepeat = '';
+        document.body.style.backgroundAttachment = '';
+        console.log('Cleared custom background image');
     }
 }
 
@@ -1706,46 +1714,147 @@ function showThemeSelector() {
     }
 
     
+    // 改善的背景圖片上傳功能
     const uploadBtn = document.getElementById('uploadImageBtn');
     const imageInput = document.getElementById('backgroundImageInput');
     const removeImageBtn = document.getElementById('removeImageBtn');
 
     if (uploadBtn && imageInput) {
-        uploadBtn.addEventListener('click', () => imageInput.click());
+        uploadBtn.addEventListener('click', () => {
+            playClickSound();
+            imageInput.click();
+        });
+        
         imageInput.addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (file) {
+                // 驗證檔案類型和大小
+                if (!file.type.startsWith('image/')) {
+                    alert('請選擇有效的圖片檔案！');
+                    return;
+                }
+                
+                if (file.size > 10 * 1024 * 1024) { // 10MB 限制
+                    alert('圖片檔案過大，請選擇小於 10MB 的圖片！');
+                    return;
+                }
+                
                 const reader = new FileReader();
                 reader.onload = (event) => {
                     const imageUrl = event.target.result;
                     const previewContainer = document.getElementById('imagePreviewContainer');
+                    
+                    // 創建更好的預覽界面
                     previewContainer.innerHTML = `
-                        <img src="${imageUrl}" alt="背景預覽" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px;">
-                        <button id="removeImageBtn" style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; font-size: 18px;">✕</button>
+                        <div class="theme-image-preview" style="position: relative; margin-top: 12px;">
+                            <img src="${imageUrl}" alt="背景預覽" class="theme-image-preview-img" 
+                                 style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                            <div class="theme-image-overlay" style="position: absolute; top: 8px; right: 8px; display: flex; gap: 8px;">
+                                <button id="removeImageBtn" class="theme-image-action-btn" 
+                                        style="background: rgba(244,67,54,0.9); color: white; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"
+                                        title="移除圖片">✕</button>
+                            </div>
+                            <div class="theme-image-info" style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.7); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px;">
+                                ${file.name} (${(file.size / 1024).toFixed(1)} KB)
+                            </div>
+                        </div>
                     `;
-                    previewContainer.style.position = 'relative';
-                    previewContainer.style.marginTop = '12px';
 
+                    // 綁定移除按鈕事件
                     const newRemoveBtn = document.getElementById('removeImageBtn');
                     if (newRemoveBtn) {
                         newRemoveBtn.addEventListener('click', () => {
-                            imageInput.value = '';
-                            previewContainer.innerHTML = '';
-                            previewContainer.style.marginTop = '0';
+                            playClickSound();
+                            if (confirm('確定要移除這張背景圖片嗎？')) {
+                                imageInput.value = '';
+                                previewContainer.innerHTML = '';
+                                previewContainer.style.marginTop = '0';
+                            }
                         });
                     }
+                    
+                    // 自動儲存到 localStorage
+                    const tempTheme = getCustomTheme();
+                    tempTheme.backgroundImage = imageUrl;
+                    saveCustomTheme(tempTheme);
+                    applyCustomTheme();
+                    
+                    // 顯示成功提示
+                    showNotification('背景圖片已上傳並自動儲存！', 'success');
                 };
+                
+                reader.onerror = () => {
+                    alert('圖片讀取失敗，請重試！');
+                };
+                
                 reader.readAsDataURL(file);
             }
         });
     }
 
+    // 初始化時檢查是否有已儲存的背景圖片
+    const initBackgroundImage = () => {
+        const customTheme = getCustomTheme();
+        if (customTheme.backgroundImage) {
+            const previewContainer = document.getElementById('imagePreviewContainer');
+            if (previewContainer) {
+                previewContainer.innerHTML = `
+                    <div class="theme-image-preview" style="position: relative; margin-top: 12px;">
+                        <img src="${customTheme.backgroundImage}" alt="背景預覽" class="theme-image-preview-img" 
+                             style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                        <div class="theme-image-overlay" style="position: absolute; top: 8px; right: 8px; display: flex; gap: 8px;">
+                            <button id="removeImageBtn" class="theme-image-action-btn" 
+                                    style="background: rgba(244,67,54,0.9); color: white; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"
+                                    title="移除圖片">✕</button>
+                        </div>
+                        <div class="theme-image-info" style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.7); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px;">
+                            已儲存的背景圖片
+                        </div>
+                    </div>
+                `;
+                
+                // 綁定移除按鈕事件
+                const newRemoveBtn = document.getElementById('removeImageBtn');
+                if (newRemoveBtn) {
+                    newRemoveBtn.addEventListener('click', () => {
+                        playClickSound();
+                        if (confirm('確定要移除這張背景圖片嗎？')) {
+                            imageInput.value = '';
+                            previewContainer.innerHTML = '';
+                            previewContainer.style.marginTop = '0';
+                            
+                            // 清除 localStorage 中的背景圖片
+                            const tempTheme = getCustomTheme();
+                            delete tempTheme.backgroundImage;
+                            saveCustomTheme(tempTheme);
+                            applyCustomTheme();
+                            showNotification('背景圖片已移除！', 'info');
+                        }
+                    });
+                }
+            }
+        }
+    };
+    
+    // 調用初始化
+    initBackgroundImage();
+    
     if (removeImageBtn) {
         removeImageBtn.addEventListener('click', () => {
-            imageInput.value = '';
-            const previewContainer = document.getElementById('imagePreviewContainer');
-            previewContainer.innerHTML = '';
-            previewContainer.style.marginTop = '0';
+            playClickSound();
+            if (confirm('確定要移除這張背景圖片嗎？')) {
+                imageInput.value = '';
+                const previewContainer = document.getElementById('imagePreviewContainer');
+                previewContainer.innerHTML = '';
+                previewContainer.style.marginTop = '0';
+                
+                // 清除 localStorage 中的背景圖片
+                const tempTheme = getCustomTheme();
+                delete tempTheme.backgroundImage;
+                saveCustomTheme(tempTheme);
+                applyCustomTheme();
+                showNotification('背景圖片已移除！', 'info');
+            }
         });
     }
 
@@ -1753,11 +1862,14 @@ function showThemeSelector() {
     if (saveBtn) {
         saveBtn.addEventListener('click', () => {
             playClickSound();
-            const theme = {};
+            const theme = getCustomTheme(); // 獲取現有的自訂主題設定
 
             const imagePreview = document.querySelector('#imagePreviewContainer img');
             if (imagePreview) {
                 theme.backgroundImage = imagePreview.src;
+            } else {
+                // 如果沒有圖片預覽，清除背景圖片設定
+                delete theme.backgroundImage;
             }
 
             saveCustomTheme(theme);
@@ -1767,7 +1879,7 @@ function showThemeSelector() {
                 updateAllCharts();
             }
 
-            alert('主題設定已儲存！');
+            showNotification('主題設定已儲存！重整頁面後背景圖片會自動載入。', 'success');
             if (document.body.contains(modal)) {
                 document.body.removeChild(modal);
             }
@@ -1784,17 +1896,53 @@ function showThemeSelector() {
                 if (document.body.contains(modal)) {
                     document.body.removeChild(modal);
                 }
-                showThemeSelector();
             }
         });
     }
 
     const closeBtn = modal.querySelector('.theme-close-btn');
     if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
+        // 移除可能存在的事件監聽器
+        closeBtn.replaceWith(closeBtn.cloneNode(true));
+        const newCloseBtn = modal.querySelector('.theme-close-btn');
+        
+        newCloseBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Close button clicked');
             if (document.body.contains(modal)) {
                 document.body.removeChild(modal);
             }
+        });
+        
+        // 確保按鈕可見和可點擊
+        newCloseBtn.style.cssText = `
+            position: absolute !important;
+            top: 12px !important;
+            right: 12px !important;
+            width: 36px !important;
+            height: 36px !important;
+            background: transparent !important;
+            border: 1px solid transparent !important;
+            border-radius: 6px !important;
+            color: var(--text-secondary) !important;
+            font-size: 18px !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            z-index: 1000 !important;
+            pointer-events: auto !important;
+        `;
+        
+        newCloseBtn.addEventListener('mouseenter', () => {
+            newCloseBtn.style.background = 'var(--bg-light) !important';
+            newCloseBtn.style.color = 'var(--text-primary) !important';
+        });
+        
+        newCloseBtn.addEventListener('mouseleave', () => {
+            newCloseBtn.style.background = 'transparent !important';
+            newCloseBtn.style.color = 'var(--text-secondary) !important';
         });
     }
 
@@ -1805,19 +1953,47 @@ function showThemeSelector() {
             }
         }
     });
+
+    const savedTheme = getCurrentTheme();
+    
+    // 等待新主題合併完成後再應用主題
+    setTimeout(() => {
+        applyTheme(savedTheme);
+        applyCustomTheme();
+        const customTheme = getCustomTheme();
+        if (customTheme.backgroundImage) {
+            document.body.style.backgroundImage = `url(${customTheme.backgroundImage})`;
+        }
+        setTimeout(() => {
+            updateThemeButtons(savedTheme);
+        }, 100);
+    }, 50); // 給新主題合併一點時間
 }
 
+// 初始化主題系統
 function initTheme() {
     const savedTheme = getCurrentTheme();
-    applyTheme(savedTheme);
-    applyCustomTheme();
-    const customTheme = getCustomTheme();
-    if (customTheme.backgroundImage) {
-        document.body.style.backgroundImage = `url(${customTheme.backgroundImage})`;
-    }
+    
+    // 等待新主題合併完成後再應用主題
     setTimeout(() => {
-        updateThemeButtons(savedTheme);
-    }, 100);
+        applyTheme(savedTheme);
+        applyCustomTheme();
+        
+        // 確保重整後背景圖片能正確載入
+        const customTheme = getCustomTheme();
+        if (customTheme && customTheme.backgroundImage) {
+            console.log('Loading custom background image on page load');
+            document.body.style.backgroundImage = `url(${customTheme.backgroundImage})`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundRepeat = 'no-repeat';
+            document.body.style.backgroundAttachment = 'fixed';
+        }
+        
+        setTimeout(() => {
+            updateThemeButtons(savedTheme);
+        }, 100);
+    }, 50); // 給新主題合併一點時間
 }
 
 document.addEventListener('DOMContentLoaded', () => {
