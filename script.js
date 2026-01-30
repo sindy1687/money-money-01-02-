@@ -1164,10 +1164,10 @@ const PREV_CLOSE_COOLDOWN_MS = 5 * 60 * 1000;
 const publicQuoteProxies = [
     // 新的可用代理服務
     'https://api.codetabs.com/v1/proxy/?quest=',
-    'https://corsproxy.io/?',
-    // cors-anywhere.herokuapp.com 已經不可用，完全移除
-    // 暫時移除 r.jina.ai (503 錯誤)
-    // 'https://r.jina.ai/http://',
+    'https://api.allorigins.win/raw?url=',
+    // 添加更多可用的代理服務
+    'https://corsproxy.org/?',
+    'https://proxy.cors.sh/?',
 ];
 
 function isProxyInCooldown(proxyBase) {
@@ -1197,12 +1197,7 @@ async function fetchPrevCloseFromTwseOtc(stockCode) {
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 8000);
                 let finalUrl;
-                if (proxyBase.includes('corsproxy.io')) {
-                    finalUrl = `${proxyBase}${encodeURIComponent(url)}`;
-                } else {
-                    // codetabs.com 和其他代理
-                    finalUrl = `${proxyBase}${encodeURIComponent(url)}`;
-                }
+                finalUrl = `${proxyBase}${encodeURIComponent(url)}`;
                 const resp = await fetch(finalUrl, { signal: controller.signal });
                 clearTimeout(timeoutId);
                 if (!resp) continue;
@@ -1274,12 +1269,7 @@ async function fetchPreviousCloseOnly(stockCode) {
                     const controller = new AbortController();
                     const timeoutId = setTimeout(() => controller.abort(), 8000);
                     let finalUrl;
-                    if (proxyBase.includes('corsproxy.io')) {
-                        finalUrl = `${proxyBase}${encodeURIComponent(yahooChartUrl)}`;
-                    } else {
-                        // codetabs.com 和其他代理
-                        finalUrl = `${proxyBase}${encodeURIComponent(yahooChartUrl)}`;
-                    }
+                    finalUrl = `${proxyBase}${encodeURIComponent(yahooChartUrl)}`;
                     const resp = await fetch(finalUrl, { signal: controller.signal });
                     clearTimeout(timeoutId);
                     if (!resp) continue;
@@ -1318,12 +1308,7 @@ async function fetchPreviousCloseOnly(stockCode) {
                     const controller = new AbortController();
                     const timeoutId = setTimeout(() => controller.abort(), 8000);
                     let finalUrl;
-                    if (proxyBase.includes('corsproxy.io')) {
-                        finalUrl = `${proxyBase}${encodeURIComponent(yahooQuoteUrl)}`;
-                    } else {
-                        // codetabs.com 和其他代理
-                        finalUrl = `${proxyBase}${encodeURIComponent(yahooQuoteUrl)}`;
-                    }
+                    finalUrl = `${proxyBase}${encodeURIComponent(yahooQuoteUrl)}`;
                     const resp = await fetch(finalUrl, { signal: controller.signal });
                     clearTimeout(timeoutId);
                     if (!resp) continue;
@@ -1383,12 +1368,7 @@ async function fetchYahooChartViaPublicProxies(yahooUrl, stockCode) {
             const timeoutId = setTimeout(() => controller.abort(), 10000);
             try {
                 let finalUrl;
-                if (proxyBase.includes('corsproxy.io')) {
-                    finalUrl = `${proxyBase}${encodeURIComponent(yahooUrl)}`;
-                } else {
-                    // codetabs.com 和其他代理
-                    finalUrl = `${proxyBase}${encodeURIComponent(yahooUrl)}`;
-                }
+                finalUrl = `${proxyBase}${encodeURIComponent(yahooUrl)}`;
 
                 const resp = await fetch(finalUrl, { signal: controller.signal });
                 if (!resp || !resp.ok) continue;
@@ -2915,8 +2895,12 @@ function initQuickNotes() {
     const quickNotesButtons = document.getElementById('quickNotesButtons');
     const noteInput = document.getElementById('noteInput');
     const inputSection = document.getElementById('inputSection');
+    const addQuickNoteBtn = document.getElementById('addQuickNoteBtn');
     
     if (!quickNotesContainer || !quickNotesButtons || !noteInput) return;
+    
+    // 載入自訂常用備註
+    loadCustomQuickNotes();
     
     // 載入上一次的備註
     const lastNote = localStorage.getItem('lastQuickNote');
@@ -2925,9 +2909,6 @@ function initQuickNotes() {
         // 觸發input事件，確保其他監聽器能收到
         noteInput.dispatchEvent(new Event('input', { bubbles: true }));
     }
-    
-    // 渲染常用備註按鈕（包含預設和自定義）
-    renderQuickNotes();
     
     // 當輸入區域顯示時，顯示常用備註按鈕
     const observer = new MutationObserver(() => {
@@ -2943,7 +2924,45 @@ function initQuickNotes() {
             quickNotesContainer.classList.add('show');
         }
     }
-
+    
+    // 綁定常用備註按鈕點擊事件
+    quickNotesButtons.querySelectorAll('.quick-note-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const note = btn.dataset.note;
+            if (noteInput) {
+                const currentValue = noteInput.value.trim();
+                // 檢查輸入框是否已經包含該備註，避免重複
+                if (currentValue.includes(note)) {
+                    // 如果已包含，不重複添加
+                    return;
+                }
+                // 如果輸入框已有內容，在後面追加；否則直接填入
+                let newValue;
+                if (currentValue) {
+                    newValue = currentValue + ' ' + note;
+                } else {
+                    newValue = note;
+                }
+                noteInput.value = newValue;
+                
+                // 儲存這次使用的備註作為「上一次的備註」
+                localStorage.setItem('lastQuickNote', newValue);
+                
+                // 觸發input事件，確保其他監聽器能收到
+                noteInput.dispatchEvent(new Event('input', { bubbles: true }));
+                // 聚焦到輸入框
+                noteInput.focus();
+            }
+        });
+    });
+    
+    // 新增常用備註按鈕事件
+    if (addQuickNoteBtn) {
+        addQuickNoteBtn.addEventListener('click', () => {
+            showAddQuickNoteDialog();
+        });
+    }
+    
     // 當備註輸入框獲得焦點時，確保常用備註按鈕顯示
     noteInput.addEventListener('focus', (e) => {
         quickNotesContainer.classList.add('show');
@@ -2956,7 +2975,7 @@ function initQuickNotes() {
             }
         }, 100);
     });
-
+    
     // 監聽備註輸入框的變化，如果用戶手動輸入或修改，也更新記憶
     noteInput.addEventListener('input', () => {
         const currentValue = noteInput.value.trim();
@@ -2964,234 +2983,750 @@ function initQuickNotes() {
             localStorage.setItem('lastQuickNote', currentValue);
         }
     });
-
+    
     // 防止輸入框focus時自動滾動（手機適配）
     noteInput.addEventListener('touchstart', (e) => {
         // 阻止默認行為，防止自動滾動
     }, { passive: true });
-
-    // 綁定新增常用備註按鈕
-    const addQuickNoteBtn = document.getElementById('addQuickNoteBtn');
-    if (addQuickNoteBtn) {
-        addQuickNoteBtn.addEventListener('click', showQuickNoteModal);
-    }
 }
 
-// ========== 常用備註管理功能 ==========
-
-// 獲取自定義常用備註列表
-function getCustomQuickNotes() {
-    return JSON.parse(localStorage.getItem('customQuickNotes') || '[]');
-}
-
-// 保存自定義常用備註列表
-function saveCustomQuickNotes(notes) {
-    localStorage.setItem('customQuickNotes', JSON.stringify(notes));
-}
-
-// 顯示新增常用備註模態框
-function showQuickNoteModal() {
-    const modal = document.getElementById('quickNoteModal');
-    if (!modal) return;
-
-    // 初始化圖標選擇
-    initQuickNoteEmojiGrid();
-
-    // 顯示模態框
-    modal.style.display = 'block';
-
-    // 綁定關閉事件
-    const closeBtn = document.getElementById('quickNoteModalClose');
-    const overlay = modal.querySelector('.modal-overlay');
-    const saveBtn = document.getElementById('quickNoteSaveBtn');
-    const nameInput = document.getElementById('quickNoteNameInput');
-
-    const closeModal = () => {
-        modal.style.display = 'none';
-        // 清空輸入
-        nameInput.value = '';
-        // 清除選中的圖標
-        document.querySelectorAll('.quick-note-modal .emoji-grid button.selected').forEach(btn => {
-            btn.classList.remove('selected');
-        });
-    };
-
-    closeBtn.onclick = closeModal;
-    overlay.onclick = closeModal;
-
-    // 綁定保存事件
-    saveBtn.onclick = () => {
-        const selectedEmoji = document.querySelector('.quick-note-modal .emoji-grid button.selected');
-
-        const name = nameInput.value.trim();
-        const emoji = selectedEmoji ? selectedEmoji.textContent : '📝';
-
-        if (!name) {
-            alert('請輸入備註名稱');
-            return;
-        }
-
-        // 添加到自定義備註列表
-        const customNotes = getCustomQuickNotes();
-        customNotes.push({ name, emoji });
-        saveCustomQuickNotes(customNotes);
-
-        // 重新渲染常用備註按鈕
-        renderQuickNotes();
-
-        // 關閉模態框
-        closeModal();
-
-        // 播放成功音效（如果存在）
-        if (typeof playClickSound === 'function') {
-            playClickSound();
-        }
-    };
-
-    // 聚焦到輸入框
-    setTimeout(() => {
-        nameInput.focus();
-    }, 100);
-}
-
-// 初始化常用備註圖標選擇網格
-function initQuickNoteEmojiGrid() {
-    const grid = document.getElementById('quickNoteEmojiGrid');
-    if (!grid) return;
-
-    const commonEmojis = [
-        // 食物飲料
-        '🍳', '🍱', '🍽️', '☕', '🍕', '🍔', '🌮', '🥗', '🍰', '🍷', 
-        '🥤', '🍜', '🍣', '🥘', '🍝', '🍞', '🥐', '🧁', '🍩', '🍪',
-        
-        // 交通出行
-        '🚗', '🚕', '🚌', '🚇', '✈️', '🚢', '🏍️', '🚲', '🛴', '🛵',
-        '🚂', '🚁', '🛸', '🚀', '🚠', '🚡', '🚃', '🚋', '🚞', '🚟',
-        
-        // 購物消費
-        '🛒', '🛍️', '🛍️', '💳', '💰', '💵', '💴', '💶', '💷', '💸',
-        '🧾', '📊', '📈', '📉', '💹', '💱', '💲', '⚖️', '🧮', '🔢',
-        
-        // 娛樂休閒
-        '🎮', '🎯', '🎲', '🎪', '🎭', '🎨', '🎬', '🎤', '🎧', '🎼',
-        '🎵', '🎶', '🎹', '🥁', '🎸', '🎺', '🎷', '🎻', '🎺', '🎬',
-        
-        // 生活用品
-        '💊', '📚', '🏠', '💡', '🔧', '🔨', '🪛', '🔩', '⚙️', '🧰',
-        '🪒', '🧴', '🧼', '🧽', '🧹', '🪣', '🗑️', '📌', '📍', '📎',
-        
-        // 運動健康
-        '🏃', '🏊', '🚴', '🏋️', '🤸', '🧘', '🏃‍♀️', '🏊‍♀️', '🚴‍♀️', '🤸‍♀️',
-        '🧘‍♀️', '💪', '🏥', '🩺', '💉', '🩹', '🦷', '👁️', '🧠', '❤️',
-        
-        // 電子產品
-        '💻', '📱', '📷', '📹', '📼', '💾', '💿', '📀', '🖥️', '⌨️',
-        '🖱️', '🖨️', '📠', '📟', '📞', '☎️', '📱', '📲', '⌚', '🕰️',
-        
-        // 工作學習
-        '📝', '✏️', '✒️', '🖊️', '🖋️', '📌', '📍', '📎', '📏', '📐',
-        '🔍', '🔎', '📖', '📗', '📘', '📙', '📔', '📓', '📒', '🎓',
-        
-        // 特殊場合
-        '🎂', '🎁', '🎈', '🎉', '🎊', '🎀', '🎁', '💝', '💐', '🌹',
-        '🌸', '🌺', '🌻', '🌷', '🌹', '🏆', '🥇', '🥈', '🥉', '🏅',
-        
-        // 天氣季節
-        '☀️', '🌤️', '⛅', '☁️', '🌧️', '⛈️', '🌩️', '🌨️', '❄️', '☃️',
-        '🌬️', '🌈', '🌅', '🌄', '🌆', '🌇', '🌃', '🌌', '🌠', '⭐',
-        
-        // 動物寵物
-        '🐕', '🐈', '🐈‍⬛', '🐕‍🦺', '🦮', '🐩', '🐇', '🐰', '🐿️', '🦔',
-        '🦇', '🐻', '🐼', '🐨', '🐯', '🦁', '🐮', '🐷', '🐽', '🐸',
-        
-        // 其他常用
-        '🌟', '✨', '💫', '⚡', '🔥', '💧', '🌊', '🍀', '🌿', '🌱',
-        '🌳', '🌲', '🌴', '🌵', '🌾', '🌺', '🌻', '🌼', '🌷', '🌹',
-        
-        '📌', '📍', '✅', '❌', '⚠️', '🚨', '🔔', '🔕', '📢', '📣',
-        '💤', '😴', '😪', '😵', '🤯', '🥳', '🎊', '🤩', '😍', '🥰'
-    ];
-
-    grid.innerHTML = commonEmojis.map(emoji => 
-        `<button type="button" data-emoji="${emoji}">${emoji}</button>`
-    ).join('');
-
-    // 綁定選擇事件
-    grid.querySelectorAll('button').forEach(btn => {
-        btn.onclick = () => {
-            // 移除其他選中狀態
-            grid.querySelectorAll('button.selected').forEach(b => b.classList.remove('selected'));
-            // 添加選中狀態
-            btn.classList.add('selected');
-        };
-    });
-
-    // 默認選中第一個
-    if (grid.querySelector('button')) {
-        grid.querySelector('button').classList.add('selected');
-    }
-}
-
-// 重新渲染常用備註按鈕
-function renderQuickNotes() {
+// 載入自訂常用備註
+function loadCustomQuickNotes() {
+    const customNotes = JSON.parse(localStorage.getItem('customQuickNotes') || '[]');
     const quickNotesButtons = document.getElementById('quickNotesButtons');
+    
     if (!quickNotesButtons) return;
-
-    // 清空現有按鈕
+    
+    // 清空現有按鈕（除了預設的）
+    const defaultNotes = ['早餐', '午餐', '晚餐', '交通', '購物', '娛樂'];
     quickNotesButtons.innerHTML = '';
-
-    // 預設備註
-    const defaultNotes = [
-        { name: '早餐', emoji: '🍳' },
-        { name: '午餐', emoji: '🍱' },
-        { name: '晚餐', emoji: '🍽️' },
-        { name: '交通', emoji: '🚗' },
-        { name: '購物', emoji: '🛒' },
-        { name: '娛樂', emoji: '🎮' }
+    
+    // 重新添加預設按鈕
+    const defaultButtons = [
+        { note: '早餐', icon: '🍳' },
+        { note: '午餐', icon: '🍱' },
+        { note: '晚餐', icon: '🍽️' },
+        { note: '交通', icon: '🚗' },
+        { note: '購物', icon: '🛒' },
+        { note: '娛樂', icon: '🎮' }
     ];
-
-    // 獲取自定義備註
-    const customNotes = getCustomQuickNotes();
-
-    // 合併所有備註
-    const allNotes = [...defaultNotes, ...customNotes];
-
-    // 創建按鈕
-    allNotes.forEach(note => {
+    
+    defaultButtons.forEach(item => {
         const btn = document.createElement('button');
         btn.className = 'quick-note-btn';
-        btn.dataset.note = note.name;
-        btn.textContent = `${note.emoji} ${note.name}`;
+        btn.dataset.note = item.note;
+        btn.textContent = `${item.icon} ${item.note}`;
+        quickNotesButtons.appendChild(btn);
+    });
+    
+    // 添加自訂按鈕
+    customNotes.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = 'quick-note-btn custom-note';
+        btn.dataset.note = item.note;
+        btn.textContent = `${item.icon} ${item.note}`;
+        quickNotesButtons.appendChild(btn);
+    });
+    
+    // 重新綁定點擊事件
+    bindQuickNoteEvents();
+}
 
-        // 綁定點擊事件
+// 綁定常用備註按鈕事件
+function bindQuickNoteEvents() {
+    const quickNotesButtons = document.getElementById('quickNotesButtons');
+    const noteInput = document.getElementById('noteInput');
+    
+    if (!quickNotesButtons || !noteInput) return;
+    
+    quickNotesButtons.querySelectorAll('.quick-note-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            const noteInput = document.getElementById('noteInput');
+            const note = btn.dataset.note;
             if (noteInput) {
                 const currentValue = noteInput.value.trim();
                 // 檢查輸入框是否已經包含該備註，避免重複
-                if (currentValue.includes(note.name)) {
+                if (currentValue.includes(note)) {
                     return;
                 }
                 // 如果輸入框已有內容，在後面追加；否則直接填入
                 let newValue;
                 if (currentValue) {
-                    newValue = currentValue + ' ' + note.name;
+                    newValue = currentValue + ' ' + note;
                 } else {
-                    newValue = note.name;
+                    newValue = note;
                 }
                 noteInput.value = newValue;
-
+                
                 // 儲存這次使用的備註作為「上一次的備註」
                 localStorage.setItem('lastQuickNote', newValue);
-
+                
                 // 觸發input事件，確保其他監聽器能收到
                 noteInput.dispatchEvent(new Event('input', { bubbles: true }));
                 // 聚焦到輸入框
                 noteInput.focus();
             }
         });
+    });
+}
 
-        quickNotesButtons.appendChild(btn);
+// 顯示新增常用備註對話框
+function showAddQuickNoteDialog() {
+    const customNotes = JSON.parse(localStorage.getItem('customQuickNotes') || '[]');
+
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;';
+
+    // 生成現有自訂備註列表
+    const existingNotesHtml = customNotes.length > 0 ? `
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">管理現有備註</label>
+            <div class="existing-notes-list" style="max-height: 120px; overflow-y: auto; border: 2px solid #e0e0e0; border-radius: 8px; padding: 8px;">
+                ${customNotes.map((note, index) => `
+                    <div class="existing-note-item" style="display: flex; justify-content: space-between; align-items: center; padding: 8px; margin-bottom: 4px; background: #f8f9fa; border-radius: 6px;">
+                        <span style="display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 18px;">${note.icon}</span>
+                            <span style="font-weight: 500;">${note.note}</span>
+                        </span>
+                        <button class="delete-note-btn" data-index="${index}" style="background: #ff4444; color: white; border: none; border-radius: 4px; padding: 4px 8px; font-size: 12px; cursor: pointer;">刪除</button>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    ` : '';
+
+    modal.innerHTML = `
+        <div class="modal-content" style="background: white; border-radius: 16px; padding: 24px; max-width: 400px; width: 100%;">
+            <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="margin: 0; font-size: 20px; font-weight: 600;">管理常用備註</h3>
+                <button class="modal-close-btn" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #999;">✕</button>
+            </div>
+            <div class="modal-body">
+                ${existingNotesHtml}
+                
+                <div style="margin-bottom: 16px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">新增備註</label>
+                    <input type="text" id="newNoteText" placeholder="例如：咖啡、加油、房租..." style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">選擇圖示</label>
+                    <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                        <input type="text" id="customIconInput" placeholder="或輸入自訂圖示 (如: 🥟, 🍜, 🎯)" style="flex: 1; padding: 8px; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 14px; box-sizing: border-box;">
+                        <button id="useCustomIconBtn" style="padding: 8px 12px; background: #51cf66; color: white; border: none; border-radius: 6px; font-size: 12px; cursor: pointer; white-space: nowrap;">使用自訂</button>
+                    </div>
+                    <div class="icon-selector" id="iconSelector" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; max-height: 120px; overflow-y: auto; padding: 8px; border: 2px solid #e0e0e0; border-radius: 8px;">
+                        ${getIconOptions()}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="display: flex; gap: 12px;">
+                <button id="cancelAddNoteBtn" style="flex: 1; padding: 12px; background: #f0f0f0; color: #666; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer;">取消</button>
+                <button id="confirmAddNoteBtn" style="flex: 1; padding: 12px; background: #ff69b4; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer;">新增</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const noteInput = document.getElementById('newNoteText');
+    const iconSelector = document.getElementById('iconSelector');
+    const customIconInput = document.getElementById('customIconInput');
+    const useCustomIconBtn = document.getElementById('useCustomIconBtn');
+    let selectedIcon = '📝';
+
+    // 綁定自訂圖示輸入事件
+    useCustomIconBtn.addEventListener('click', () => {
+        const customIcon = customIconInput.value.trim();
+        if (customIcon) {
+            // 清除預設圖示選擇
+            iconSelector.querySelectorAll('.icon-option').forEach(b => b.classList.remove('selected'));
+            selectedIcon = customIcon;
+            
+            // 視覺反饋
+            useCustomIconBtn.style.background = '#28a745';
+            useCustomIconBtn.textContent = '已選用';
+            setTimeout(() => {
+                useCustomIconBtn.style.background = '#51cf66';
+                useCustomIconBtn.textContent = '使用自訂';
+            }, 1000);
+        }
+    });
+
+    // 當自訂圖示輸入框有內容時，按 Enter 也可以使用
+    customIconInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            useCustomIconBtn.click();
+        }
+    });
+
+    // 綁定圖示選擇
+    iconSelector.querySelectorAll('.icon-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+            iconSelector.querySelectorAll('.icon-option').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selectedIcon = btn.dataset.icon;
+            
+            // 清空自訂圖示輸入框
+            customIconInput.value = '';
+        });
+    });
+
+    // 預設選中第一個圖示
+    const firstIcon = iconSelector.querySelector('.icon-option');
+    if (firstIcon) {
+        firstIcon.classList.add('selected');
+        selectedIcon = firstIcon.dataset.icon;
+    }
+
+    // 綁定刪除按鈕事件
+    modal.querySelectorAll('.delete-note-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const index = parseInt(btn.dataset.index);
+            if (confirm(`確定要刪除「${customNotes[index].note}」這個備註嗎？`)) {
+                customNotes.splice(index, 1);
+                localStorage.setItem('customQuickNotes', JSON.stringify(customNotes));
+
+                // 重新載入常用備註
+                loadCustomQuickNotes();
+
+                // 重新顯示對話框
+                document.body.removeChild(modal);
+                showAddQuickNoteDialog();
+            }
+        });
+    });
+
+    // 綁定事件
+    modal.querySelector('.modal-close-btn').onclick = () => {
+        document.body.removeChild(modal);
+    };
+
+    modal.querySelector('#cancelAddNoteBtn').onclick = () => {
+        document.body.removeChild(modal);
+    };
+
+    modal.querySelector('#confirmAddNoteBtn').onclick = () => {
+        const noteText = noteInput.value.trim();
+        if (!noteText) {
+            alert('請輸入備註名稱');
+            return;
+        }
+
+        // 檢查是否已存在
+        const defaultNotes = ['早餐', '午餐', '晚餐', '交通', '購物', '娛樂'];
+
+        if (defaultNotes.includes(noteText) || customNotes.some(n => n.note === noteText)) {
+            alert('此備註已存在');
+            return;
+        }
+
+        // 新增備註
+        customNotes.push({
+            note: noteText,
+            icon: selectedIcon,
+            createdAt: new Date().toISOString()
+        });
+
+        localStorage.setItem('customQuickNotes', JSON.stringify(customNotes));
+
+        // 重新載入常用備註
+        loadCustomQuickNotes();
+
+        // 重新顯示對話框以顯示更新後的列表
+        document.body.removeChild(modal);
+        showAddQuickNoteDialog();
+    };
+
+    // 自動聚焦到輸入框
+    noteInput.focus();
+}
+
+// 獲取圖示選項
+function getIconOptions() {
+    const icons = [
+        '📝', '☕', '🍕', '🥤', '🎬', '📚',
+        '💊', '⛽', '🏠', '📱', '💻', '👕',
+        '🎁', '✈️', '🏥', '🎓', '🏋️', '🛍️',
+        '🍔', '🍜', '🍰', '🥐', '🍺', '🍷'
+    ];
+    
+    return icons.map(icon => `
+        <button class="icon-option" data-icon="${icon}" style="width: 40px; height: 40px; border: 2px solid #e0e0e0; border-radius: 8px; background: white; font-size: 20px; cursor: pointer; transition: all 0.2s;">
+            ${icon}
+        </button>
+    `).join('');
+}
+
+// ========== 每月固定扣款功能 ==========
+
+// 獲取每月固定扣款列表
+function getMonthlyDeductions() {
+    return JSON.parse(localStorage.getItem('monthlyDeductions') || '[]');
+}
+
+// 保存每月固定扣款列表
+function saveMonthlyDeductions(deductions) {
+    localStorage.setItem('monthlyDeductions', JSON.stringify(deductions));
+}
+
+// 新增每月固定扣款
+function addMonthlyDeduction(deduction) {
+    const deductions = getMonthlyDeductions();
+    deduction.id = Date.now().toString();
+    deduction.createdAt = new Date().toISOString();
+    deductions.push(deduction);
+    saveMonthlyDeductions(deductions);
+    return deduction;
+}
+
+function deleteMonthlyDeduction(id) {
+    const deductions = getMonthlyDeductions();
+    const filtered = deductions.filter(d => d.id !== id);
+    saveMonthlyDeductions(filtered);
+}
+
+// 更新每月固定扣款
+function updateMonthlyDeduction(id, updates) {
+    const deductions = getMonthlyDeductions();
+    const index = deductions.findIndex(d => d.id === id);
+    if (index !== -1) {
+        deductions[index] = { ...deductions[index], ...updates, updatedAt: new Date().toISOString() };
+        saveMonthlyDeductions(deductions);
+        return deductions[index];
+    }
+    return null;
+}
+
+function getMonthlyDeductionAccounts() {
+    try {
+        if (typeof getAccounts === 'function') {
+            return getAccounts() || [];
+        }
+    } catch (_) {}
+
+    try {
+        return JSON.parse(localStorage.getItem('accounts') || '[]');
+    } catch (_) {
+        return [];
+    }
+}
+
+function getAccountNameById(accountId) {
+    const accounts = getMonthlyDeductionAccounts();
+    const id = accountId || '';
+    const match = accounts.find(a => a && a.id === id);
+    return match?.name || '';
+}
+
+function getMonthlyDeductionAccountOptionsHtml(selectedAccountId = '') {
+    const accounts = getMonthlyDeductionAccounts();
+
+    if (!accounts || accounts.length === 0) {
+        return '<option value="">尚無帳戶（請先建立帳戶）</option>';
+    }
+
+    return [
+        '<option value="">請選擇扣款帳戶</option>',
+        ...accounts.map(acc => {
+            const id = acc?.id || '';
+            const name = acc?.name || '';
+            const selectedAttr = id && id === selectedAccountId ? ' selected' : '';
+            return `<option value="${id}"${selectedAttr}>${name}</option>`;
+        })
+    ].join('');
+}
+
+function getMonthlyDeductionDayOptionsHtml(selectedDay) {
+    const selected = parseInt(selectedDay, 10);
+    return [
+        '<option value="">請選擇每月扣款日</option>',
+        ...Array.from({ length: 31 }, (_, i) => {
+            const day = i + 1;
+            const selectedAttr = day === selected ? ' selected' : '';
+            return `<option value="${day}"${selectedAttr}>每月 ${day} 號</option>`;
+        })
+    ].join('');
+}
+
+function getMonthlyDeductionEffectiveDay(year, monthIndex, dayOfMonth) {
+    const d = parseInt(dayOfMonth, 10);
+    const safeDay = Number.isFinite(d) && d >= 1 ? d : 1;
+    const lastDay = new Date(year, monthIndex + 1, 0).getDate();
+    return Math.min(safeDay, lastDay);
+}
+
+// 檢查是否需要執行每月固定扣款（到指定日才執行；每月只執行一次）
+function checkAndExecuteMonthlyDeductions() {
+    const deductions = getMonthlyDeductions();
+    const today = new Date();
+    const currentMonth = today.getMonth();
+    const currentYear = today.getFullYear();
+    const todayDate = today.getDate();
+
+    deductions.forEach(deduction => {
+        const lastExecuted = deduction.lastExecuted ? new Date(deduction.lastExecuted) : null;
+
+        const effectiveDay = getMonthlyDeductionEffectiveDay(
+            currentYear,
+            currentMonth,
+            deduction.dayOfMonth
+        );
+
+        if (todayDate < effectiveDay) {
+            return;
+        }
+
+        if (!lastExecuted ||
+            lastExecuted.getMonth() !== currentMonth ||
+            lastExecuted.getFullYear() !== currentYear) {
+            executeMonthlyDeduction(deduction);
+        }
+    });
+}
+
+// 執行每月固定扣款（自動記帳到記帳本 accountingRecords，並寫入 account）
+function executeMonthlyDeduction(deduction) {
+    const now = new Date();
+    const date = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+
+    const record = {
+        type: 'expense',
+        category: deduction.category,
+        amount: deduction.amount,
+        note: `${deduction.name} (每月固定扣款)`,
+        date: date,
+        timestamp: now.toISOString(),
+        account: deduction.accountId || '',
+        isMonthlyDeduction: true,
+        monthlyDeductionId: deduction.id
+    };
+
+    try {
+        const records = JSON.parse(localStorage.getItem('accountingRecords') || '[]');
+        records.push(record);
+        localStorage.setItem('accountingRecords', JSON.stringify(records));
+    } catch (error) {
+        console.error('保存每月固定扣款記帳失敗:', error);
+        return;
+    }
+
+    updateMonthlyDeduction(deduction.id, { lastExecuted: now.toISOString() });
+
+    if (typeof updateAccountDisplay === 'function') {
+        updateAccountDisplay();
+    }
+
+    showNotification(`已自動記錄每月固定扣款：${deduction.name} NT$${deduction.amount.toLocaleString('zh-TW')}`);
+}
+
+// 載入扣款列表
+function loadDeductionsList() {
+    const deductions = getMonthlyDeductions();
+    const listContainer = document.getElementById('deductionsList');
+    const totalElement = document.getElementById('totalDeductions');
+    const countElement = document.getElementById('deductionCount');
+
+    if (!listContainer) return;
+
+    // 計算總額
+    const total = deductions.reduce((sum, d) => sum + d.amount, 0);
+    totalElement.textContent = total.toLocaleString('zh-TW');
+    countElement.textContent = deductions.length;
+
+    // 生成列表
+    if (deductions.length === 0) {
+        listContainer.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px; color: rgba(255,255,255,0.7); font-size: 16px;">
+                <div style="font-size: 48px; margin-bottom: 16px;">📋</div>
+                <div>尚未設定任何固定扣款</div>
+                <div style="font-size: 14px; margin-top: 8px;">點擊上方按鈕開始新增</div>
+            </div>
+        `;
+    } else {
+        listContainer.innerHTML = deductions.map(deduction => {
+            const lastExecuted = deduction.lastExecuted ? new Date(deduction.lastExecuted) : null;
+            const lastExecutedText = lastExecuted ? 
+                `上次執行：${lastExecuted.getFullYear()}/${(lastExecuted.getMonth() + 1).toString().padStart(2, '0')}/${lastExecuted.getDate().toString().padStart(2, '0')}` : 
+                '尚未執行';
+
+            const dayLabel = deduction.dayOfMonth ? `每月 ${deduction.dayOfMonth} 號扣款` : '未設定扣款日';
+            const accountName = getAccountNameById(deduction.accountId);
+            const accountLabel = accountName ? `帳戶：${accountName}` : '未選擇帳戶';
+
+            return `
+                <div class="deduction-item" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 12px; padding: 16px; color: white;" data-id="${deduction.id}">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+                        <div>
+                            <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">${deduction.name}</div>
+                            <div style="font-size: 24px; font-weight: bold; color: #ffeb3b;">NT$${deduction.amount.toLocaleString('zh-TW')}</div>
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="edit-deduction-btn" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 12px;">編輯</button>
+                            <button class="delete-deduction-btn" style="background: rgba(244,67,54,0.8); border: none; color: white; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 12px;">刪除</button>
+                        </div>
+                    </div>
+                    <div style="font-size: 12px; opacity: 0.8; line-height: 1.4;">
+                        <div>分類：${deduction.category}</div>
+                        <div>${dayLabel}</div>
+                        <div>${accountLabel}</div>
+                        <div>${lastExecutedText}</div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        // 綁定編輯和刪除事件
+        listContainer.querySelectorAll('.edit-deduction-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const itemId = btn.closest('.deduction-item').dataset.id;
+                showEditDeductionDialog(itemId);
+            });
+        });
+
+        listContainer.querySelectorAll('.delete-deduction-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const itemId = btn.closest('.deduction-item').dataset.id;
+                if (confirm('確定要刪除這個固定扣款嗎？')) {
+                    deleteMonthlyDeduction(itemId);
+                    loadDeductionsList();
+                    showNotification('固定扣款已刪除');
+                }
+            });
+        });
+    }
+}
+
+// 顯示新增扣款對話框
+function showAddDeductionDialog() {
+    showModal('新增每月固定扣款', `
+        <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">名稱</label>
+            <input type="text" id="deductionName" placeholder="例如：房租、保險費、會員費" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">金額</label>
+            <input type="number" id="deductionAmount" placeholder="請輸入金額" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">分類</label>
+            <select id="deductionCategory" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
+                ${getMonthlyDeductionCategoryOptionsHtml('')}
+            </select>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">每月扣款日</label>
+            <select id="deductionDayOfMonth" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
+                ${getMonthlyDeductionDayOptionsHtml(1)}
+            </select>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">扣款帳戶</label>
+            <select id="deductionAccount" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
+                ${getMonthlyDeductionAccountOptionsHtml('')}
+            </select>
+        </div>
+    `, [
+        { text: '取消', action: 'close', style: 'background: #f0f0f0; color: #666;' },
+        { 
+            text: '新增', 
+            action: 'add', 
+            style: 'background: #ff69b4; color: white;',
+            onClick: (modal) => {
+                const name = document.getElementById('deductionName').value.trim();
+                const amount = parseFloat(document.getElementById('deductionAmount').value);
+                const category = document.getElementById('deductionCategory').value;
+                const dayOfMonth = parseInt(document.getElementById('deductionDayOfMonth').value, 10);
+                const accountId = document.getElementById('deductionAccount').value;
+
+                if (!name) {
+                    alert('請輸入名稱');
+                    return;
+                }
+
+                if (!amount || amount <= 0) {
+                    alert('請輸入有效金額');
+                    return;
+                }
+
+                if (!category) {
+                    alert('請選擇分類');
+                    return;
+                }
+
+                if (!dayOfMonth || dayOfMonth < 1 || dayOfMonth > 31) {
+                    alert('請選擇每月扣款日');
+                    return;
+                }
+
+                if (!accountId) {
+                    alert('請選擇扣款帳戶');
+                    return;
+                }
+
+                // 新增扣款
+                addMonthlyDeduction({ name, amount, category, dayOfMonth, accountId });
+
+                // 關閉對話框並重新載入列表
+                document.body.removeChild(modal);
+                loadDeductionsList();
+                showNotification('固定扣款已新增');
+            }
+        }
+    ]);
+}
+
+// 顯示編輯扣款對話框
+function showEditDeductionDialog(id) {
+    const deductions = getMonthlyDeductions();
+    const deduction = deductions.find(d => d.id === id);
+
+    if (!deduction) return;
+
+    showModal('編輯每月固定扣款', `
+        <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">名稱</label>
+            <input type="text" id="deductionName" value="${deduction.name}" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">金額</label>
+            <input type="number" id="deductionAmount" value="${deduction.amount}" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">分類</label>
+            <select id="deductionCategory" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
+                ${getMonthlyDeductionCategoryOptionsHtml(deduction.category)}
+            </select>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">每月扣款日</label>
+            <select id="deductionDayOfMonth" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
+                ${getMonthlyDeductionDayOptionsHtml(deduction.dayOfMonth || 1)}
+            </select>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">扣款帳戶</label>
+            <select id="deductionAccount" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
+                ${getMonthlyDeductionAccountOptionsHtml(deduction.accountId || '')}
+            </select>
+        </div>
+    `, [
+        { text: '取消', action: 'close', style: 'background: #f0f0f0; color: #666;' },
+        { 
+            text: '儲存', 
+            action: 'save', 
+            style: 'background: #ff69b4; color: white;',
+            onClick: (modal) => {
+                const name = document.getElementById('deductionName').value.trim();
+                const amount = parseFloat(document.getElementById('deductionAmount').value);
+                const category = document.getElementById('deductionCategory').value;
+                const dayOfMonth = parseInt(document.getElementById('deductionDayOfMonth').value, 10);
+                const accountId = document.getElementById('deductionAccount').value;
+
+                if (!name) {
+                    alert('請輸入名稱');
+                    return;
+                }
+
+                if (!amount || amount <= 0) {
+                    alert('請輸入有效金額');
+                    return;
+                }
+
+                if (!category) {
+                    alert('請選擇分類');
+                    return;
+                }
+
+                if (!dayOfMonth || dayOfMonth < 1 || dayOfMonth > 31) {
+                    alert('請選擇每月扣款日');
+                    return;
+                }
+
+                if (!accountId) {
+                    alert('請選擇扣款帳戶');
+                    return;
+                }
+
+                // 更新扣款
+                updateMonthlyDeduction(id, { name, amount, category, dayOfMonth, accountId });
+
+                // 關閉對話框並重新載入列表
+                document.body.removeChild(modal);
+                loadDeductionsList();
+                showNotification('固定扣款已更新');
+            }
+        }
+    ]);
+}
+
+// 通用模態框函數
+function showModal(title, content, buttons) {
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10001; display: flex; align-items: center; justify-content: center; padding: 20px;';
+
+    const buttonsHtml = (buttons || []).map(btn =>
+        `<button data-action="${btn.action}" style="flex: 1; padding: 12px; ${btn.style}; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; margin: 0 6px;">${btn.text}</button>`
+    ).join('');
+
+    modal.innerHTML = `
+        <div class="modal-content" style="background: white; border-radius: 16px; padding: 24px; max-width: 400px; width: 100%;">
+            <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="margin: 0; font-size: 20px; font-weight: 600;">${title}</h3>
+                <button class="modal-close-btn" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #999;">✕</button>
+            </div>
+            <div class="modal-body">${content}</div>
+            <div class="modal-footer" style="display: flex; gap: 12px; margin-top: 20px;">
+                ${buttonsHtml}
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const closeModal = () => {
+        if (document.body.contains(modal)) {
+            document.body.removeChild(modal);
+        }
+    };
+
+    const closeBtn = modal.querySelector('.modal-close-btn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+
+    const closeActionBtn = modal.querySelector('[data-action="close"]');
+    if (closeActionBtn) {
+        closeActionBtn.addEventListener('click', closeModal);
+    }
+
+    (buttons || []).forEach(btn => {
+        const el = modal.querySelector(`[data-action="${btn.action}"]`);
+        if (!el) return;
+
+        if (btn.action !== 'close' && typeof btn.onClick === 'function') {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                btn.onClick(modal);
+            });
+        }
+    });
+
+    // 點擊背景關閉
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
     });
 }
 
@@ -4299,6 +4834,22 @@ function initInvestmentPage() {
         });
     }
 
+    const analysisBtn = document.getElementById('investmentAnalysisBtn');
+    if (analysisBtn) {
+        analysisBtn.addEventListener('click', () => {
+            playClickSound();
+            showInvestmentAnalysisModal();
+        });
+    }
+
+    const historyBtn = document.getElementById('investmentHistoryBtn');
+    if (historyBtn) {
+        historyBtn.addEventListener('click', () => {
+            playClickSound();
+            showInvestmentHistoryModal();
+        });
+    }
+
     const allocationBtn = document.getElementById('investmentAllocationBtn');
     if (allocationBtn) {
         allocationBtn.addEventListener('click', () => {
@@ -4840,10 +5391,10 @@ function initStockSearch() {
         // 觸摸設備的輸入反饋
         searchInput.addEventListener('touchstart', () => {
             searchInput.style.transform = 'scale(0.98)';
-        });
+        }, { passive: true });
         searchInput.addEventListener('touchend', () => {
             searchInput.style.transform = 'scale(1)';
-        });
+        }, { passive: true });
     }
     
     if (searchClearBtn) {
@@ -4859,10 +5410,10 @@ function initStockSearch() {
         // 觸摸反饋
         searchClearBtn.addEventListener('touchstart', () => {
             searchClearBtn.style.transform = 'scale(0.9)';
-        });
+        }, { passive: true });
         searchClearBtn.addEventListener('touchend', () => {
             searchClearBtn.style.transform = 'scale(1)';
-        });
+        }, { passive: true });
     }
 }
 
@@ -4963,12 +5514,16 @@ function updateAutoRefreshButton() {
     }
 }
 
-// 初始化時檢查是否需要啟動定時更新
+// 初始化時啟動自動更新：每次刷新立即抓價，並開啟定時更新
 function initAutoRefreshPrices() {
-    const savedSetting = localStorage.getItem('autoRefreshPrices');
-    if (savedSetting === 'true') {
-        startAutoRefreshPrices();
-    }
+    // 先做一次即時抓價（尊重手動價格，函式內會跳過）
+    autoLoadStockPrices();
+
+    // 預設開啟定時更新
+    startAutoRefreshPrices();
+
+    // 記錄設定，方便之後需要關閉時仍有狀態可循
+    localStorage.setItem('autoRefreshPrices', 'true');
 }
 
 // 自動載入所有持股的現價
@@ -4992,13 +5547,6 @@ async function autoLoadStockPrices() {
         let skippedCount = 0;
         for (const code of stockCodes) {
             try {
-                // 檢查是否有今天手動輸入的價格
-                if (hasManualPriceToday(code)) {
-                    skippedCount++;
-                    console.log(`⏭️ ${code} 今天已有手動輸入的價格，跳過自動更新`);
-                    continue;
-                }
-
                 const price = await fetchStockPrice(code, { allowPrompt: false });
                 if (price) {
                     successCount++;
@@ -5014,10 +5562,6 @@ async function autoLoadStockPrices() {
             catch (err) {
                 console.error(`獲取 ${code} 股價失敗:`, err);
             }
-        }
-        
-        if (skippedCount > 0) {
-            console.log(`⏭️ 跳過 ${skippedCount} 個今天已有手動輸入價格的股票`);
         }
         
         console.log(`價格更新完成: ${successCount}/${stockCodes.length} 成功`);
@@ -6281,40 +6825,20 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
     });
 }
 
- // 從 API 獲取股票現價
- async function fetchStockPrice(stockCode, options = {}) {
-     const { allowPrompt = true, maxAgeMs = 6 * 60 * 60 * 1000 } = options;
-    // 檢查是否有今天手動輸入的價格，如果有則跳過網絡請求
-    if (hasManualPriceToday(stockCode)) {
-        const manualPrice = getStockCurrentPrice(stockCode);
-        console.log(`📝 ${stockCode} 今天已有手動輸入的價格 (NT$${manualPrice.toFixed(2)})，跳過自動更新`);
-        return manualPrice;
-    }
+// 從 API 獲取股票現價
+async function fetchStockPrice(stockCode, options = {}) {
+    const { allowPrompt = true, maxAgeMs = 6 * 60 * 60 * 1000 } = options;
+    let savedPrice = null;
 
-    // 若本地緩存價格仍新鮮，直接使用（減少外部請求）
-    if (maxAgeMs && maxAgeMs > 0) {
-        const cached = getStockPriceData(stockCode);
-        if (cached && cached.price && cached.timestamp && Date.now() - cached.timestamp < maxAgeMs) {
-            return cached.price;
-        }
-    }
-     
-     try {
+    try {
         // 處理債券 ETF 和特殊格式
-        // 台灣股票/ETF 格式：2330.TW 或 00751B.TW
-        // 注意：債券 ETF 代碼如 00751B 需要保持 B 後綴
         let yahooSymbol;
-        
-        // 檢查是否為債券 ETF（以 B 結尾）或其他特殊格式
         if (stockCode.endsWith('B') || stockCode.endsWith('L') || stockCode.endsWith('R') || stockCode.endsWith('U') || stockCode.endsWith('K')) {
-            // 債券 ETF 或特殊 ETF，保持原格式
             yahooSymbol = `${stockCode}.TWO`;
         } else if (stockCode.startsWith('A0')) {
-            // 政府債券代碼（如 A04109），Yahoo Finance 可能不支持，返回 null
             console.log(`債券代碼 ${stockCode} 無法從 Yahoo Finance 獲取價格`);
             return null;
         } else {
-            // 一般股票或 ETF
             yahooSymbol = `${stockCode}.TW`;
         }
 
@@ -6322,7 +6846,7 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
             ? [`${stockCode}.TWO`, `${stockCode}.TW`]
             : [yahooSymbol];
 
-        // 1) Try local proxy (opt-in)
+        // 1) 本機代理（可選）
         const proxyEndpoint = 'http://localhost:5000/api/quote?symbols=';
         const enableLocalQuoteProxy = String(localStorage.getItem('useLocalQuoteProxy') || '').toLowerCase() === 'true';
         if (enableLocalQuoteProxy && !isLocalQuoteProxyInCooldown()) {
@@ -6333,27 +6857,23 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
                     const proxyUrl = `${proxyEndpoint}${encodeURIComponent(candidateSymbol)}`;
                     const proxyResponse = await fetch(proxyUrl, {
                         method: 'GET',
-                        headers: {
-                            'Accept': 'application/json'
-                        },
+                        headers: { 'Accept': 'application/json' },
                         signal: controller.signal
                     });
 
-                    if (!proxyResponse || !proxyResponse.ok) {
-                        continue;
-                    }
+                    if (!proxyResponse || !proxyResponse.ok) continue;
 
                     const responseText = await proxyResponse.text();
                     let data;
                     try {
                         data = JSON.parse(responseText);
-                    } catch (parseError) {
+                    } catch (_) {
                         continue;
                     }
 
-                    if (data && data.quoteResponse && data.quoteResponse.result && data.quoteResponse.result.length > 0) {
+                    if (data?.quoteResponse?.result?.length) {
                         const q = data.quoteResponse.result[0];
-                        const previousClose = q.regularMarketPreviousClose || q.regularMarketPreviousClosePrice || q.regularMarketPreviousClose || null;
+                        const previousClose = q.regularMarketPreviousClose || q.regularMarketPreviousClosePrice || null;
                         if (previousClose && previousClose > 0) {
                             saveStockPreviousClosePrice(stockCode, previousClose);
                         }
@@ -6366,13 +6886,9 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
                         }
                     }
 
-                    if (data && data.chart && data.chart.result) {
-                        if (data.chart.result.length === 0) {
-                            continue;
-                        }
-
+                    if (data?.chart?.result?.length) {
                         const result = data.chart.result[0];
-                        if (result && result.meta && !result.error) {
+                        if (result?.meta && !result.error) {
                             const previousClose = result.meta.previousClose || result.meta.regularMarketPreviousClose || null;
                             if (previousClose && previousClose > 0) {
                                 saveStockPreviousClosePrice(stockCode, previousClose);
@@ -6387,9 +6903,7 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
                         }
                     }
                 } catch (proxyError) {
-                    if (proxyError.name === 'AbortError') {
-                        continue;
-                    }
+                    if (proxyError.name === 'AbortError') continue;
                     markQuoteProxyFailed();
                     maybeAlertQuoteProxyDown();
                     break;
@@ -6399,7 +6913,7 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
             }
         }
 
-        // 2) Public proxy fallback for ALL symbols，附加輕量重試
+        // 2) 公開代理重試
         for (let attempt = 0; attempt < 2; attempt++) {
             for (const candidateSymbol of symbolCandidates) {
                 const yahooChartUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${candidateSymbol}?interval=1d&range=1d`;
@@ -6412,84 +6926,59 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
             }
         }
 
-        // 如果所有代理都失敗，嘗試使用備用方案（僅針對債券 ETF）
-        // 注意：瀏覽器控制台可能仍會顯示 404 等錯誤，這是正常的，代碼會正確處理
+        // 3) 債券 ETF 備援流程
         if (stockCode.endsWith('B')) {
             console.log(`債券 ETF ${stockCode} 無法從 Yahoo Finance 獲取價格，嘗試備用方法...`);
-            
-            // 嘗試方案1：使用不同的 Yahoo Finance 格式（移除 .TW 後綴）
+
             try {
-                const alternativeSymbol = `${stockCode}.TWO`; // 不帶 .TW
+                const alternativeSymbol = `${stockCode}.TWO`;
                 const testUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${alternativeSymbol}?interval=1d&range=1d`;
-                
-                // 嘗試通過代理訪問
+
                 for (const proxyUrl of publicQuoteProxies) {
                     try {
                         let proxyResponse;
                         if (proxyUrl.includes('allorigins')) {
-                            const yahooUrl = encodeURIComponent(testUrl);
-                            proxyResponse = await fetch(proxyUrl + yahooUrl);
-                        } else if (proxyUrl.includes('codetabs')) {
                             proxyResponse = await fetch(proxyUrl + encodeURIComponent(testUrl));
-                        } else if (proxyUrl.includes('corsproxy.io')) {
+                        } else if (proxyUrl.includes('codetabs')) {
                             proxyResponse = await fetch(proxyUrl + encodeURIComponent(testUrl));
                         } else {
                             proxyResponse = await fetch(proxyUrl + testUrl);
                         }
-                        
-                        // 檢查響應狀態
-                        if (!proxyResponse || proxyResponse.status === 404) {
-                            continue; // 靜默跳過 404 或無響應
-                        }
-                        
+
+                        if (!proxyResponse || proxyResponse.status === 404) continue;
+
                         if (proxyResponse.status === 200 && proxyResponse.ok) {
                             const responseText = await proxyResponse.text();
                             try {
-                            const data = JSON.parse(responseText);
-                            
-                            if (data && data.chart && data.chart.result && data.chart.result.length > 0) {
-                                const result = data.chart.result[0];
-                                if (result && result.meta) {
-                                    const currentPrice = result.meta.regularMarketPrice || result.meta.previousClose || null;
-                                    if (currentPrice && currentPrice > 0) {
-                                        saveStockCurrentPrice(stockCode, currentPrice, false); // false = 自動獲取
+                                const data = JSON.parse(responseText);
+                                if (data?.chart?.result?.length) {
+                                    const result = data.chart.result[0];
+                                    if (result?.meta) {
+                                        const currentPrice = result.meta.regularMarketPrice || result.meta.previousClose || null;
+                                        if (currentPrice && currentPrice > 0) {
+                                            saveStockCurrentPrice(stockCode, currentPrice, false);
                                             console.log(`✓ 通過備用格式成功獲取 ${stockCode} 價格: ${currentPrice}`);
-                                        return currentPrice;
+                                            return currentPrice;
+                                        }
                                     }
                                 }
-                                }
-                            } catch (parseError) {
-                                continue; // 解析失敗，嘗試下一個
+                            } catch (_) {
+                                continue;
                             }
                         }
-                    } catch (altError) {
-                        continue; // 靜默跳過所有錯誤
+                    } catch (_) {
+                        continue;
                     }
                 }
             } catch (backupError) {
                 console.log('備用格式嘗試失敗:', backupError);
             }
-            
-            // 嘗試方案2：檢查是否有已保存的價格
-            const savedPrice = getStockCurrentPrice(stockCode);
+
+            savedPrice = getStockCurrentPrice(stockCode);
             if (savedPrice && savedPrice > 0) {
                 console.log(`使用已保存的 ${stockCode} 價格: ${savedPrice}`);
                 return savedPrice;
             }
-            
-            // 如果都沒有，提示用戶手動輸入
-            console.info(`💡 債券 ETF ${stockCode} 無法自動獲取價格`);
-            console.info(`   請在個股詳情頁面的「現價」輸入框中手動輸入當前價格`);
-        }
-        
-        // 如果所有方法都失敗，提示用戶手動輸入（所有股票都適用）
-        const savedPrice = getStockCurrentPrice(stockCode);
-        const hasManualToday = hasManualPriceToday(stockCode);
-        
-        // 顯示友好的提示框（如果今天還沒有手動輸入過價格）
-        if (allowPrompt && !hasManualToday) {
-            const stockName = findStockName(stockCode) || stockCode;
-            const isBondETF = stockCode.endsWith('B');
 
             const manualPrice = await showStockPriceQueryModal({
                 stockCode,
@@ -6501,42 +6990,30 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
             if (manualPrice && !isNaN(manualPrice) && manualPrice > 0) {
                 saveStockCurrentPrice(stockCode, manualPrice, true);
                 console.log(`✓ 已保存手動輸入的 ${stockCode} 價格: ${manualPrice}`);
-                if (typeof updateInvestmentSummary === 'function') {
-                    updateInvestmentSummary();
-                }
-                if (typeof updateStockList === 'function') {
-                    updateStockList();
-                }
+                if (typeof updateInvestmentSummary === 'function') updateInvestmentSummary();
+                if (typeof updateStockList === 'function') updateStockList();
                 return manualPrice;
             }
-        } else {
-            console.log(`📝 ${stockCode} 今天已有手動輸入的價格，不顯示提示框`);
         }
-        
+
         // 記錄警告信息
         if (stockCode.endsWith('B')) {
             console.warn(`債券 ETF ${stockCode} 無法自動獲取價格`);
-            console.info(`可能原因：該債券 ETF 不在 Yahoo Finance 數據庫中，或代碼格式不同`);
+            console.info('可能原因：該債券 ETF 不在 Yahoo Finance 數據庫中，或代碼格式不同');
         } else {
             console.warn(`代碼 ${stockCode} 無法獲取價格`);
-            console.info(`請在個股詳情頁面手動輸入價格`);
+            console.info('請在個股詳情頁面手動輸入價格');
         }
-        
-        // 如果有已保存的價格，返回它（即使不是今天的）
-        if (savedPrice) {
-            return savedPrice;
-        }
-        
+
+        savedPrice = getStockCurrentPrice(stockCode);
+        if (savedPrice) return savedPrice;
+
         throw new Error('所有代理服務都無法獲取價格');
     } catch (error) {
         const errorMsg = error.message || '未知錯誤';
         console.error(`獲取 ${stockCode} 股價失敗:`, errorMsg);
-        
-        // 檢查是否有今天手動輸入的價格，如果沒有則提示手動輸入
-        const savedPrice = getStockCurrentPrice(stockCode);
-        const hasManualToday = hasManualPriceToday(stockCode);
-        
-        if (!hasManualToday) {
+
+        if (allowPrompt) {
             const stockName = findStockName(stockCode) || stockCode;
             const isBondETF = stockCode.endsWith('B');
 
@@ -6544,45 +7021,39 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
                 stockCode,
                 stockName,
                 isBondETF,
-                defaultPrice: savedPrice
+                defaultPrice: getStockCurrentPrice(stockCode)
             });
 
             if (manualPrice && !isNaN(manualPrice) && manualPrice > 0) {
                 saveStockCurrentPrice(stockCode, manualPrice, true);
                 console.log(`✓ 已保存手動輸入的 ${stockCode} 價格: ${manualPrice}`);
-                if (typeof updateInvestmentSummary === 'function') {
-                    updateInvestmentSummary();
-                }
-                if (typeof updateStockList === 'function') {
-                    updateStockList();
-                }
+                if (typeof updateInvestmentSummary === 'function') updateInvestmentSummary();
+                if (typeof updateStockList === 'function') updateStockList();
                 return manualPrice;
             }
         }
-        
-        // 如果是債券 ETF 或代碼不存在，給出更友好的提示
+
         if (stockCode.endsWith('B')) {
             console.info(`💡 提示：債券 ETF ${stockCode} 無法自動獲取價格`);
-            console.info(`   請點擊該持股卡片，在「現價」欄位中手動輸入當前價格`);
+            console.info('   請點擊該持股卡片，在「現價」欄位中手動輸入當前價格');
         } else if (errorMsg.includes('不存在') || errorMsg.includes('404')) {
             console.info(`💡 提示：代碼 ${stockCode} 在 Yahoo Finance 中不存在`);
-            console.info(`   請在個股詳情頁面手動輸入價格`);
+            console.info('   請在個股詳情頁面手動輸入價格');
         }
-        
-        // 返回已保存的價格（如果有的話），否則返回 null
+
         return savedPrice || null;
     }
 }
 
 // 批量獲取多支股票的現價
 async function fetchMultipleStockPrices(stockCodes) {
-    const promises = stockCodes.map(code => 
+    const promises = stockCodes.map(code =>
         fetchStockPrice(code).catch(err => {
             console.error(`獲取 ${code} 股價失敗:`, err);
             return null;
         })
     );
-    
+
     const results = await Promise.all(promises);
     return results;
 }
@@ -13138,13 +13609,10 @@ function initSettingsPage() {
         {
             title: '☁️ 雲端同步',
             items: [
-                { icon: '☁️', title: '雲端備份（完整）', description: '一鍵備份所有資料', action: 'cloudBackupFull', accent: 'linear-gradient(135deg, #43e97b, #38f9d7)', iconGradient: 'linear-gradient(135deg, #43e97b, #38f9d7)' },
-                { icon: '☁️', title: '雲端還原（完整）', description: '從雲端還原備份', action: 'cloudRestoreFull', accent: 'linear-gradient(135deg, #fa709a, #fee140)', iconGradient: 'linear-gradient(135deg, #fa709a, #fee140)' },
+                { icon: '☁️', title: '雲端備份', description: '一鍵備份所有資料', action: 'cloudBackupFull', accent: 'linear-gradient(135deg, #43e97b, #38f9d7)', iconGradient: 'linear-gradient(135deg, #43e97b, #38f9d7)' },
+                { icon: '☁️', title: '雲端還原', description: '從雲端還原備份', action: 'cloudRestoreFull', accent: 'linear-gradient(135deg, #fa709a, #fee140)', iconGradient: 'linear-gradient(135deg, #fa709a, #fee140)' },
                 { icon: '🔗', title: 'Sheet 網址', description: '設定 Google Sheet Web App', action: 'setGoogleSheetUploadUrl', accent: 'linear-gradient(135deg, #5ee7df, #b490ca)', iconGradient: 'linear-gradient(135deg, #5ee7df, #b490ca)' },
-                { icon: '🔑', title: '雲端備份碼', description: '設定雲端還原安全碼', action: 'setGoogleCloudBackupKey', accent: 'linear-gradient(135deg, #4facfe, #00f2fe)', iconGradient: 'linear-gradient(135deg, #4facfe, #00f2fe)' },
-                { icon: '🧾', title: '上傳明細', description: '同步所有記錄明細', action: 'uploadAllRecordsDetailsToGoogleSheet', accent: 'linear-gradient(135deg, #30cfd0, #330867)', iconGradient: 'linear-gradient(135deg, #30cfd0, #330867)' },
-                { icon: '🧮', title: '按帳戶備份', description: '依帳戶上傳資料', action: 'uploadRecordsByAccountToGoogleSheet', accent: 'linear-gradient(135deg, #f6d365, #fda085)', iconGradient: 'linear-gradient(135deg, #f6d365, #fda085)' },
-                { icon: '📊', title: '上傳加總', description: '同步收支分類加總', action: 'uploadIncomeExpenseCategorySummaryToGoogleSheet', accent: 'linear-gradient(135deg, #89f7fe, #66a6ff)', iconGradient: 'linear-gradient(135deg, #89f7fe, #66a6ff)' }
+                { icon: '🔑', title: '雲端備份碼', description: '設定雲端還原安全碼', action: 'setGoogleCloudBackupKey', accent: 'linear-gradient(135deg, #4facfe, #00f2fe)', iconGradient: 'linear-gradient(135deg, #4facfe, #00f2fe)' }
             ]
         },
         {
@@ -13158,7 +13626,8 @@ function initSettingsPage() {
             title: '📊 分析工具',
             items: [
                 { icon: '📈', title: '年報', description: '生成年度分析報告', action: 'annualReport', accent: 'linear-gradient(135deg, #a1c4fd, #c2e9fb)', iconGradient: 'linear-gradient(135deg, #a1c4fd, #c2e9fb)' },
-                { icon: '📑', title: '分期', description: '管理分期與長期支出', action: 'installmentRules', accent: 'linear-gradient(135deg, #fbc2eb, #a6c1ee)', iconGradient: 'linear-gradient(135deg, #fbc2eb, #a6c1ee)' }
+                { icon: '📑', title: '分期', description: '管理分期與長期支出', action: 'installmentRules', accent: 'linear-gradient(135deg, #fbc2eb, #a6c1ee)', iconGradient: 'linear-gradient(135deg, #fbc2eb, #a6c1ee)' },
+                { icon: '🔄', title: '每月固定扣款', description: '管理房租、保險等固定支出', action: 'monthlyDeductions', accent: 'linear-gradient(135deg, #ff9a9e, #fecfef)', iconGradient: 'linear-gradient(135deg, #ff758c, #ff7eb3)' }
             ]
         },
         {
@@ -13204,25 +13673,23 @@ function initSettingsPage() {
                 <div class="settings-section-items">
                     ${itemsHtml}
                 </div>
-            </div>
-        `;
+            </div>`;
     }).join('');
-
+    
     settingsList.innerHTML = sectionHTML;
 
     // 綁定點擊事件
     document.querySelectorAll('.settings-item').forEach(item => {
         item.addEventListener('click', () => {
             const action = item.dataset.action;
-            if (action === 'uploadAllData') {
-                uploadAllDataToGoogleSheet();
-            } else if (action === 'deleteAllData') {
-                deleteAllDataFromGoogleSheet();
-            } else if (action === 'backup') {
-                backupData();
-            } else if (action === 'restore') {
-                restoreData();
-            } else if (action === 'setGoogleSheetUploadUrl') {
+
+            // 處理每月固定扣款
+            if (action === 'monthlyDeductions') {
+                showMonthlyDeductionsPage();
+                return;
+            }
+
+            if (action === 'setGoogleSheetUploadUrl') {
                 setGoogleSheetUploadUrl();
             } else if (action === 'setGoogleCloudBackupKey') {
                 setGoogleCloudBackupKey();
@@ -13230,34 +13697,23 @@ function initSettingsPage() {
                 cloudBackupToGoogleSheet();
             } else if (action === 'cloudRestoreFull') {
                 cloudRestoreFromGoogleSheet();
-            } else if (action === 'uploadAllRecordsDetailsToGoogleSheet') {
-                uploadAllRecordsDetailsToGoogleSheet();
-            } else if (action === 'uploadRecordsByAccountToGoogleSheet') {
-                uploadRecordsByAccountToGoogleSheet();
-            } else if (action === 'uploadIncomeExpenseCategorySummaryToGoogleSheet') {
-                uploadIncomeExpenseCategorySummaryToGoogleSheet();
+            } else if (action === 'backup') {
+                backupData();
+            } else if (action === 'restore') {
+                restoreData();
             } else if (action === 'creator') {
                 showCreatorInfo();
             } else if (action === 'theme') {
                 showThemeSelector();
             } else if (action === 'fontSize') {
                 showFontSizeSelector();
-                        } else if (action === 'annualReport') {
+            } else if (action === 'annualReport') {
                 showAnnualReport();
             } else if (action === 'installmentRules') {
                 showInstallmentManagementPage();
             }
         });
     });
-}
-
-// 顯示想買的東西/存錢目標頁面
-function showWishlistSavingsPage() {
-    document.getElementById('pageSettings').style.display = 'none';
-    document.getElementById('pageWishlistSavings').style.display = 'block';
-    
-    // 重新渲染列表
-    switchTab(wishlistSavingsManager.currentTab || 'wishlist');
 }
 
 function getInstallmentRules() {
@@ -13841,6 +14297,14 @@ function showAnnualReport() {
                         <div class="annual-report-top-percent" style="font-size: 14px; color: #999; margin-top: 8px;">佔總支出 ${((topExpenseCategory.amount / totalExpense) * 100).toFixed(1)}%</div>
                     </div>
                 ` : ''}
+                
+                <!-- 年度建議 -->
+                <div class="annual-report-suggestions" style="background: linear-gradient(135deg, #e3f2fd 0%, #f3f9ff 100%); padding: 20px; border-radius: 16px; border: 2px solid #bbdefb;">
+                    <h3 class="annual-report-section-title" style="margin: 0 0 16px 0; font-size: 18px; font-weight: 600; color: #1976d2;">💡 年度建議</h3>
+                    <div class="annual-report-suggestions-list" style="display: flex; flex-direction: column; gap: 12px;">
+                        ${generateAnnualSuggestions(totalExpense, expenseRanking, totalInvestment, totalDividend, topExpenseCategory)}
+                    </div>
+                </div>
             </div>
             
             <div class="annual-report-footer" style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #f0f0f0; text-align: center;">
@@ -13925,6 +14389,114 @@ function exportAnnualReport(year, data) {
     URL.revokeObjectURL(url);
     
     alert('年度報告已匯出！');
+}
+
+// 生成年度建議
+function generateAnnualSuggestions(totalExpense, expenseRanking, totalInvestment, totalDividend, topExpenseCategory) {
+    let suggestions = [];
+    
+    console.log('=== 年度建議調試信息 ===');
+    console.log('總支出:', totalExpense);
+    console.log('支出排行:', expenseRanking);
+    console.log('總投資:', totalInvestment);
+    console.log('總股息:', totalDividend);
+    console.log('最燒錢分類:', topExpenseCategory);
+    
+    // 支出控制建議
+    if (totalExpense > 500000) {
+        suggestions.push({
+            icon: '💰',
+            title: '支出偏高提醒',
+            content: `您的年度總支出 NT$${totalExpense.toLocaleString()} 相對較高，建議檢視非必要支出，制定月度預算計畫。`
+        });
+        console.log('添加支出控制建議');
+    }
+    
+    // 最燒錢分類建議
+    if (topExpenseCategory && topExpenseCategory.amount / totalExpense > 0.3) {
+        suggestions.push({
+            icon: '🎯',
+            title: '控制主要支出',
+            content: `${topExpenseCategory.category} 佔總支出 ${((topExpenseCategory.amount / totalExpense) * 100).toFixed(1)}%，建議設定此分類的月度上限。`
+        });
+        console.log('添加主要支出控制建議');
+    }
+    
+    // 投資建議
+    if (totalInvestment > 0) {
+        const dividendYield = totalDividend / totalInvestment * 100;
+        if (dividendYield < 2) {
+            suggestions.push({
+                icon: '📈',
+                title: '投資組合優化',
+                content: `您的股息收益率為 ${dividendYield.toFixed(2)}%，考慮增加高股息股票或ETF配置以提高被動收入。`
+            });
+            console.log('添加投資組合優化建議');
+        } else {
+            suggestions.push({
+                icon: '🌟',
+                title: '投資表現良好',
+                content: `您的股息收益率達 ${dividendYield.toFixed(2)}%，繼續保持當前的投資策略，可考慮定期再投資。`
+            });
+            console.log('添加投資表現良好建議');
+        }
+    } else {
+        suggestions.push({
+            icon: '🚀',
+            title: '開始投資理財',
+            content: '建議開始定期定額投資，利用時間複利效果，為未來財務自由做準備。'
+        });
+        console.log('添加開始投資理財建議');
+    }
+    
+    // 儲蓄建議
+    const monthlyAverage = totalExpense / 12;
+    if (monthlyAverage < 20000) {
+        suggestions.push({
+            icon: '🏦',
+            title: '增加儲蓄',
+            content: '您的月均支出較低，建議將多餘資金用於定期儲蓄或投資，建立緊急預備金。'
+        });
+        console.log('增加儲蓄建議');
+    }
+    
+    // 分類多樣化建議
+    const uniqueCategories = expenseRanking.length;
+    if (uniqueCategories < 5) {
+        suggestions.push({
+            icon: '🎨',
+            title: '豐富記帳分類',
+            content: `您目前只有 ${uniqueCategories} 個支出分類，建議細化分類以更好地掌握資金流向。`
+        });
+        console.log('添加豐富記帳分類建議');
+    }
+    
+    // 如果沒有建議，添加一個默認建議
+    if (suggestions.length === 0) {
+        suggestions.push({
+            icon: '🎉',
+            title: '財務狀況良好',
+            content: '您的財務狀況相當健康，繼續保持良好的記帳習慣和理財規劃！'
+        });
+        console.log('添加默認建議');
+    }
+    
+    console.log('最終建議數量:', suggestions.length);
+    console.log('========================');
+    
+    // 生成HTML
+    const html = suggestions.map(suggestion => `
+        <div class="annual-report-suggestion-item" style="background: white; padding: 16px; border-radius: 12px; border-left: 4px solid #1976d2; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <div class="suggestion-header" style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <span class="suggestion-icon" style="font-size: 20px;">${suggestion.icon}</span>
+                <span class="suggestion-title" style="font-weight: 600; color: #1976d2; font-size: 16px;">${suggestion.title}</span>
+            </div>
+            <div class="suggestion-content" style="color: #666; font-size: 14px; line-height: 1.5;">${suggestion.content}</div>
+        </div>
+    `).join('');
+    
+    console.log('生成的HTML長度:', html.length);
+    return html;
 }
 
 // 備份資料（包含所有資料）
@@ -14444,124 +15016,65 @@ function showCreatorInfo() {
     modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10004; display: flex; align-items: center; justify-content: center; overflow-y: auto;';
     
     modal.innerHTML = `
-        <div class="creator-content" style="background: white; border-radius: 20px; padding: 32px; max-width: 400px; width: 90%; max-height: 90vh; overflow-y: auto; margin: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); -webkit-overflow-scrolling: touch;">
+        <div class="creator-content" style="background: white; border-radius: 20px; padding: 32px; max-width: 520px; width: 92%; max-height: 90vh; overflow-y: auto; margin: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); -webkit-overflow-scrolling: touch;">
             <div style="display: flex; justify-content: flex-end; margin-bottom: 16px; position: sticky; top: 0; background: white; z-index: 10; padding-bottom: 8px;">
                 <button class="creator-close-btn" style="background: none; border: none; font-size: 24px; color: #999; cursor: pointer; padding: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: all 0.2s;">✕</button>
             </div>
-            
-            <div style="font-size: 64px; margin-bottom: 20px;">👨‍💻</div>
-            <h2 style="font-size: 24px; font-weight: 600; color: #333; margin: 0 0 8px 0;">記帳本</h2>
-            <p style="font-size: 14px; color: #999; margin: 0 0 24px 0;">版本 1.0.7</p>
-            
-            <div style="text-align: left; margin-bottom: 24px; padding: 20px; background: linear-gradient(135deg, #fff5f9 0%, #ffeef5 100%); border-radius: 12px;">
-                <h3 style="font-size: 16px; font-weight: 600; color: #ff69b4; margin: 0 0 12px 0;">關於本應用</h3>
-                <p style="font-size: 14px; color: #666; line-height: 1.8; margin: 0 0 12px 0;">
-                    這是一個功能完整的個人記帳應用，幫助您輕鬆管理財務、追蹤支出、設定預算，並進行投資記錄。
-                </p>
-                <p style="font-size: 14px; color: #666; line-height: 1.8; margin: 0;">
-                    所有數據都存儲在您的設備本地，保護您的隱私安全。
-                </p>
-            </div>
-            
-            <div style="text-align: left; margin-bottom: 24px;">
-                <h3 style="font-size: 16px; font-weight: 600; color: #333; margin: 0 0 12px 0;">主要功能</h3>
-                <div style="font-size: 14px; color: #666; line-height: 2;">
-                    <div>✓ 多帳戶管理</div>
-                    <div>✓ 分類記帳</div>
-                    <div>✓ 預算設定</div>
-                    <div>✓ 投資追蹤</div>
-                    <div>✓ 圖表分析</div>
-                    <div>✓ 資料備份與還原</div>
-                </div>
-            </div>
-            
-            <div style="padding-top: 20px; border-top: 1px solid #f0f0f0;">
-                <p style="font-size: 12px; color: #999; margin: 0;">
-                    Made with ❤️ for better financial management
-                </p>
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(modal);
-    
-    // 綁定關閉按鈕
-    const closeBtn = modal.querySelector('.creator-close-btn');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            if (document.body.contains(modal)) {
-                document.body.removeChild(modal);
-            }
-        });
-        
-        // 懸停效果
-        closeBtn.addEventListener('mouseenter', () => {
-            closeBtn.style.background = '#f5f5f5';
-        });
-        closeBtn.addEventListener('mouseleave', () => {
-            closeBtn.style.background = 'none';
-        });
-    }
-    
-    // 點擊遮罩關閉
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            if (document.body.contains(modal)) {
-                document.body.removeChild(modal);
-            }
-        }
-    });
-}
 
-// 顯示創作者信息
-function showCreatorInfo() {
-    const modal = document.createElement('div');
-    modal.className = 'creator-modal';
-    modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10004; display: flex; align-items: center; justify-content: center; overflow-y: auto;';
-    
-    modal.innerHTML = `
-        <div class="creator-content" style="background: white; border-radius: 20px; padding: 32px; max-width: 400px; width: 90%; max-height: 90vh; overflow-y: auto; margin: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); -webkit-overflow-scrolling: touch;">
-            <div style="display: flex; justify-content: flex-end; margin-bottom: 16px; position: sticky; top: 0; background: white; z-index: 10; padding-bottom: 8px;">
-                <button class="creator-close-btn" style="background: none; border: none; font-size: 24px; color: #999; cursor: pointer; padding: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: all 0.2s;">✕</button>
-            </div>
-            
-            <div style="font-size: 64px; margin-bottom: 20px;">👨‍💻</div>
-            <h2 style="font-size: 24px; font-weight: 600; color: #333; margin: 0 0 8px 0;">記帳本</h2>
-            <p style="font-size: 14px; color: #999; margin: 0 0 24px 0;">版本 1.0.7</p>
-            
-            <div style="text-align: left; margin-bottom: 24px; padding: 20px; background: linear-gradient(135deg, #fff5f9 0%, #ffeef5 100%); border-radius: 12px;">
-                <h3 style="font-size: 16px; font-weight: 600; color: #ff69b4; margin: 0 0 12px 0;">關於本應用</h3>
-                <p style="font-size: 14px; color: #666; line-height: 1.8; margin: 0 0 12px 0;">
-                    這是一個功能完整的個人記帳應用，幫助您輕鬆管理財務、追蹤支出、設定預算，並進行投資記錄。
-                </p>
-                <p style="font-size: 14px; color: #666; line-height: 1.8; margin: 0;">
-                    所有數據都存儲在您的設備本地，保護您的隱私安全。
-                </p>
-            </div>
-            
-            <div style="text-align: left; margin-bottom: 24px;">
-                <h3 style="font-size: 16px; font-weight: 600; color: #333; margin: 0 0 12px 0;">主要功能</h3>
-                <div style="font-size: 14px; color: #666; line-height: 2;">
-                    <div>✓ 多帳戶管理</div>
-                    <div>✓ 分類記帳</div>
-                    <div>✓ 預算設定</div>
-                    <div>✓ 投資追蹤</div>
-                    <div>✓ 圖表分析</div>
-                    <div>✓ 資料備份與還原</div>
+            <div style="font-size: 56px; margin-bottom: 12px;">📱</div>
+            <h2 style="font-size: 22px; font-weight: 700; color: #333; margin: 0 0 6px 0;">關於本應用</h2>
+            <p style="font-size: 13px; color: #999; margin: 0 0 18px 0;">版本 20251227_1</p>
+
+            <div style="text-align: left; margin-bottom: 16px; padding: 16px; background: linear-gradient(135deg, #fff5f9 0%, #ffeef5 100%); border-radius: 12px;">
+                <div style="font-size: 14px; font-weight: 700; color: #ff69b4; margin: 0 0 8px 0;">資料與隱私</div>
+                <div style="font-size: 13px; color: #666; line-height: 1.8;">
+                    <div>• 本機優先：預設所有資料儲存在本機（localStorage）</div>
+                    <div>• 雲端備份：僅在您主動使用備份/同步功能時才會上傳</div>
                 </div>
             </div>
-            
-            <div style="padding-top: 20px; border-top: 1px solid #f0f0f0;">
-                <p style="font-size: 12px; color: #999; margin: 0;">
-                    Made with ❤️ for better financial management
-                </p>
+
+            <div style="text-align: left; margin-bottom: 16px; padding: 16px; background: #f8f9fa; border-radius: 12px;">
+                <div style="font-size: 14px; font-weight: 700; color: #333; margin: 0 0 8px 0;">本機資料儲存鍵</div>
+                <div style="font-size: 13px; color: #666; line-height: 1.8;">
+                    <div>• 記帳明細：accountingRecords</div>
+                    <div>• 帳戶：accounts</div>
+                    <div>• 每月固定扣款：monthlyDeductions</div>
+                    <div>• 分期/長期支出：installmentRules</div>
+                </div>
+            </div>
+
+            <div style="text-align: left; margin-bottom: 16px; padding: 16px; background: #ffffff; border-radius: 12px; border: 1px solid #f0f0f0;">
+                <div style="font-size: 14px; font-weight: 700; color: #333; margin: 0 0 8px 0;">設定頁：所有詳細設定</div>
+                <div style="font-size: 13px; color: #666; line-height: 1.9;">
+                    <div style="font-weight: 700; color:#333; margin-top: 6px;">🎨 個人化設定</div>
+                    <div>• 主題：切換主題</div>
+                    <div>• 字體：調整字體大小</div>
+
+                    <div style="font-weight: 700; color:#333; margin-top: 10px;">☁️ 雲端同步</div>
+                    <div>• 通用備份/還原（自動）</div>
+                    <div>• 預覽備份</div>
+                    <div>• 雲端備份/還原（完整）</div>
+                    <div>• Sheet 網址 / 雲端備份碼</div>
+                    <div>• 上傳明細 / 按帳戶備份 / 上傳加總</div>
+
+                    <div style="font-weight: 700; color:#333; margin-top: 10px;">💾 本機備份</div>
+                    <div>• 備份 / 還原</div>
+
+                    <div style="font-weight: 700; color:#333; margin-top: 10px;">📊 分析工具</div>
+                    <div>• 年報</div>
+                    <div>• 分期：管理分期與長期支出</div>
+                    <div>• 每月固定扣款：可選每月扣款日與扣款帳戶，到期自動寫入記帳本</div>
+                </div>
+            </div>
+
+            <div style="padding-top: 16px; border-top: 1px solid #f0f0f0;">
+                <p style="font-size: 12px; color: #999; margin: 0;">Made with ❤️ for better financial management</p>
             </div>
         </div>
     `;
-    
+
     document.body.appendChild(modal);
-    
-    // 綁定關閉按鈕
+
     const closeBtn = modal.querySelector('.creator-close-btn');
     if (closeBtn) {
         closeBtn.addEventListener('click', () => {
@@ -14569,8 +15082,7 @@ function showCreatorInfo() {
                 document.body.removeChild(modal);
             }
         });
-        
-        // 懸停效果
+
         closeBtn.addEventListener('mouseenter', () => {
             closeBtn.style.background = '#f5f5f5';
         });
@@ -14578,8 +15090,7 @@ function showCreatorInfo() {
             closeBtn.style.background = 'none';
         });
     }
-    
-    // 點擊遮罩關閉
+
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             if (document.body.contains(modal)) {
@@ -14828,6 +15339,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof checkAndExecuteDCAPlans === 'function') {
         checkAndExecuteDCAPlans();
     }
+
+    // 每月固定扣款：到指定日期後自動入帳（每月只執行一次）
+    if (typeof checkAndExecuteMonthlyDeductions === 'function') {
+        checkAndExecuteMonthlyDeductions();
+    }
     
     // 應用保存的字體大小
     initFontSize();
@@ -14983,22 +15499,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // 初始化智慧提醒按鈕
-    const smartRemindersBtn = document.getElementById('smartRemindersBtn');
-    if (smartRemindersBtn) {
-        smartRemindersBtn.addEventListener('click', () => {
-            if (window.smartReminderSystem && typeof window.smartReminderSystem.showReminderPanel === 'function') {
-                window.smartReminderSystem.showReminderPanel();
-            } else {
-                console.warn('智慧提醒系統未載入');
-                alert('智慧提醒系統正在載入中，請稍後再試...');
-            }
-        });
-    }
-    
-    const investmentBackBtn = document.getElementById('investmentBackBtn');
     // 投資專區返回按鈕已刪除，只保留買入按鈕
-
     const nextMonthBillsBackBtn = document.getElementById('nextMonthBillsBackBtn');
     if (nextMonthBillsBackBtn) {
         nextMonthBillsBackBtn.addEventListener('click', () => {
@@ -21385,10 +21886,9 @@ function initAccountImageUpload() {
     }
 }
 
-// 通用模態框控制
 const FOCUSABLE_SELECTOR = [
-    '[data-autofocus]',
     'button:not([disabled])',
+    '[href]',
     'input:not([disabled])',
     'select:not([disabled])',
     'textarea:not([disabled])',
@@ -22818,18 +23318,19 @@ function updateSettingsEventHandlers() {
                 uploadRecordsByAccountToGoogleSheet();
             } else if (action === 'uploadIncomeExpenseCategorySummaryToGoogleSheet') {
                 uploadIncomeExpenseCategorySummaryToGoogleSheet();
+            } else if (action === 'monthlyDeductions') {
+                showMonthlyDeductionsPage();
             } else if (action === 'creator') {
                 showCreatorInfo();
             } else if (action === 'theme') {
                 showThemeSelector();
             } else if (action === 'fontSize') {
                 showFontSizeSelector();
-                        } else if (action === 'annualReport') {
+            } else if (action === 'annualReport') {
                 showAnnualReport();
             } else if (action === 'installmentRules') {
                 showInstallmentManagementPage();
             }
         });
     });
-
 }
