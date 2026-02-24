@@ -4952,26 +4952,10 @@ function setGoogleCloudBackupKey() {
         localStorage.removeItem('googleCloudBackupKey');
         alert('已清除雲端備份碼');
         return;
+    }
 
-        // 帳戶相關
-        accounts: JSON.parse(localStorage.getItem('accounts') || '[]'),
-
-        // 表情和圖標
-        imageEmojis: JSON.parse(localStorage.getItem('imageEmojis') || '[]'),
-
-        // 成員
-        members: JSON.parse(localStorage.getItem('members') || '[]'),
-
-        // 設定
-        theme: localStorage.getItem('theme') || 'default',
-        fontSize: localStorage.getItem('fontSize') || 'medium',
-        customTheme: JSON.parse(localStorage.getItem('customTheme') || '{}'),
-
-        // 備份資訊
-        backupDate: new Date().toISOString(),
-        backupVersion: 'cloud-1.0',
-        appName: '記帳本'
-    };
+    localStorage.setItem('googleCloudBackupKey', v);
+    alert('已儲存雲端備份碼');
 }
 
 function cloudBackupToGoogleSheet() {
