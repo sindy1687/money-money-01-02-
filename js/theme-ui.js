@@ -59,11 +59,14 @@ const themeVideoController = (() => {
 function createThemeCard(theme) {
     const isSelected = theme.id === (window.ThemeCore ? window.ThemeCore.getCurrentTheme() : 'blue');
     const hasBackgroundImage = theme.backgroundImage;
+    const previewStyle = hasBackgroundImage
+        ? `background-image: url('${theme.backgroundImage}')`
+        : (theme.preview && theme.preview.includes(':') ? theme.preview : `background: ${theme.preview};`);
     
     return `
         <div class="theme-item ${isSelected ? 'active' : ''}" data-theme-id="${theme.id}">
             <div class="theme-card">
-                <div class="theme-preview" style="${theme.preview}"></div>
+                <div class="theme-preview" style="${previewStyle}"></div>
                 <div class="theme-info">
                     <div class="theme-icon">${theme.icon}</div>
                     <div class="theme-name">${theme.name}</div>
@@ -184,7 +187,7 @@ function renderThemeGrid(searchQuery = '', selectedCategory = 'all') {
                         return `
                             <div class="theme-item ${isSelected ? 'active' : ''}" data-theme-id="${theme.id}">
                                 <div class="theme-card">
-                                    <div class="theme-preview" style="${theme.preview}"></div>
+                                    <div class="theme-preview" style="${hasBackgroundImage ? `background-image: url('${theme.backgroundImage}')` : (theme.preview && theme.preview.includes(':') ? theme.preview : `background: ${theme.preview};`)}"></div>
                                     <div class="theme-info">
                                         <div class="theme-icon">${theme.icon}</div>
                                         <div class="theme-name">${theme.name}</div>

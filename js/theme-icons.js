@@ -50,14 +50,6 @@ const buttonIcons = {
         navChart: '📄',
         navSettings: '🛠️'
     },
-    star: {
-        fab: '⭐',
-        navLedger: '🌌',
-        navWallet: '💫',
-        navInvestment: '🌟',
-        navChart: '🔭',
-        navSettings: '🌠'
-    },
     red: {
         fab: '❤️',
         navLedger: '📕',
@@ -90,14 +82,6 @@ const buttonIcons = {
         navChart: '📉',
         navSettings: '🎛️'
     },
-    aurora: {
-        fab: '🌈',
-        navLedger: '🌈',
-        navWallet: '💎',
-        navInvestment: '📈',
-        navChart: '📊',
-        navSettings: '⚙️'
-    },
     noface: {
         fab: '🪙',
         navLedger: '📜',
@@ -122,22 +106,6 @@ const buttonIcons = {
         navChart: '📊',
         navSettings: '⚙️'
     },
-    littlePrince: {
-        fab: '👑',
-        navLedger: '📖',
-        navWallet: '💰',
-        navInvestment: '📈',
-        navChart: '📊',
-        navSettings: '⚙️'
-    },
-    firefly: {
-        fab: '✨',
-        navLedger: '✨',
-        navWallet: '💫',
-        navInvestment: '🌟',
-        navChart: '🔭',
-        navSettings: '🌠'
-    },
     snow: {
         fab: '❄️',
         navLedger: '❄️',
@@ -153,22 +121,6 @@ const buttonIcons = {
         navInvestment: '📈',
         navChart: '📊',
         navSettings: '⚙️'
-    },
-    neon: {
-        fab: '🟣',
-        navLedger: '🟣',
-        navWallet: '💎',
-        navInvestment: '📈',
-        navChart: '📊',
-        navSettings: '⚙️'
-    },
-    cyberpunk: {
-        fab: '🤖',
-        navLedger: '🗂️',
-        navWallet: '💳',
-        navInvestment: '💹',
-        navChart: '📈',
-        navSettings: '🛠️'
     },
     money: {
         fab: '💸',
@@ -282,21 +234,69 @@ const buttonIcons = {
         navChart: '🌌',
         navSettings: '✨'
     },
-    getrich: {
-        fab: '🧧',
+    littlePrinceWhaleNight: {
+        fab: '👑',
         navLedger: '📖',
-        navWallet: '💰',
+        navWallet: '🐋',
+        navInvestment: '📈',
+        navChart: '🌌',
+        navSettings: '⚙️'
+    },
+    littlePrince: {
+        fab: '👑',
+        navLedger: '📖',
+        navWallet: '🌟',
+        navInvestment: '📈',
+        navChart: '✨',
+        navSettings: '⚙️'
+    },
+    cozyWood: {
+        fab: '🪵',
+        navLedger: '📒',
+        navWallet: '🧺',
+        navInvestment: '🌿',
+        navChart: '📊',
+        navSettings: '🪛'
+    },
+    amberRonin: {
+        fab: '🍁',
+        navLedger: '🗡️',
+        navWallet: '🪙',
         navInvestment: '📈',
         navChart: '📊',
         navSettings: '⚙️'
     },
-    animeGoldenBlue: {
-        fab: '🎧',
-        navLedger: '🎧',
-        navWallet: '🎧',
-        navInvestment: '🎧',
-        navChart: '🎧',
-        navSettings: '🎧'
+    serpentEyes: {
+        fab: '👁️',
+        navLedger: '📜',
+        navWallet: '🪙',
+        navInvestment: '📈',
+        navChart: '📊',
+        navSettings: '⚙️'
+    },
+    kitsuneElegance: {
+        fab: '🦊',
+        navLedger: '📒',
+        navWallet: '🪙',
+        navInvestment: '📈',
+        navChart: '📊',
+        navSettings: '⚙️'
+    },
+    pikachuSnow: {
+        fab: '⚡',
+        navLedger: '📘',
+        navWallet: '💎',
+        navInvestment: '📈',
+        navChart: '📊',
+        navSettings: '⚙️'
+    },
+    blackCatCoinGalaxy: {
+        fab: '🪙',
+        navLedger: '📒',
+        navWallet: '🪙',
+        navInvestment: '📈',
+        navChart: '✨',
+        navSettings: '⚙️'
     }
 };
 

@@ -1,1688 +1,310 @@
-/* ========== 小王子星空主題 - 專用樣式 ========== */
+/* ========== 小王子星光主題 - 參考指定圖片配色 ========== */
 
-/* 強制覆蓋所有其他主題樣式 - 最高優先級 */
-html body [data-theme="littlePrince"] .holding-card,
-html body [data-theme="littlePrince"] .holdings-card,
-html body [data-theme="littlePrince"] .stock-holding-card,
-html body [data-theme="littlePrince"] .stock-card,
-html body [data-theme="littlePrince"] .portfolio-card,
-html:root body [data-theme="littlePrince"] .holding-card,
-html:root body [data-theme="littlePrince"] .holdings-card,
-html:root body [data-theme="littlePrince"] .stock-holding-card,
-html:root body [data-theme="littlePrince"] .stock-card,
-html:root body [data-theme="littlePrince"] .portfolio-card,
-html body div [data-theme="littlePrince"] .holding-card,
-html body div [data-theme="littlePrince"] .holdings-card,
-html body div [data-theme="littlePrince"] .stock-holding-card,
-html body div [data-theme="littlePrince"] .stock-card,
-html body div [data-theme="littlePrince"] .portfolio-card,
-html body section [data-theme="littlePrince"] .holding-card,
-html body section [data-theme="littlePrince"] .holdings-card,
-html body section [data-theme="littlePrince"] .stock-holding-card,
-html body section [data-theme="littlePrince"] .stock-card,
-html body section [data-theme="littlePrince"] .portfolio-card,
-html body main [data-theme="littlePrince"] .holding-card,
-html body main [data-theme="littlePrince"] .holdings-card,
-html body main [data-theme="littlePrince"] .stock-holding-card,
-html body main [data-theme="littlePrince"] .stock-card,
-html body main [data-theme="littlePrince"] .portfolio-card,
-html body .container [data-theme="littlePrince"] .holding-card,
-html body .container [data-theme="littlePrince"] .holdings-card,
-html body .container [data-theme="littlePrince"] .stock-holding-card,
-html body .container [data-theme="littlePrince"] .stock-card,
-html body .container [data-theme="littlePrince"] .portfolio-card,
-html body .row [data-theme="littlePrince"] .holding-card,
-html body .row [data-theme="littlePrince"] .holdings-card,
-html body .row [data-theme="littlePrince"] .stock-holding-card,
-html body .row [data-theme="littlePrince"] .stock-card,
-html body .row [data-theme="littlePrince"] .portfolio-card,
-html body .col [data-theme="littlePrince"] .holding-card,
-html body .col [data-theme="littlePrince"] .holdings-card,
-html body .col [data-theme="littlePrince"] .stock-holding-card,
-html body .col [data-theme="littlePrince"] .stock-card,
-html body .col [data-theme="littlePrince"] .portfolio-card {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-color: transparent !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    border: 3px solid #D4AF37 !important;
-    border-radius: 16px !important;
-    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3), 0 4px 16px rgba(0, 0, 0, 0.2) !important;
-    position: relative !important;
-    overflow: hidden !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    transition: all 0.3s ease !important;
-}
-
-/* 基於圖片色彩的主題配色 */
-[data-theme="littlePrince"] {
-    --theme-primary: #F4E4C1;
-    --theme-secondary: #E8D5B7;
-    --theme-accent: #A8C8EC;
-    --theme-dark: #2C3E50;
-    --theme-warm: #E6A87C;
-    --theme-gold: #D4AF37;
-    
-    /* 漸層色彩 */
-    --gradient-primary: linear-gradient(135deg, #F4E4C1 0%, #E8D5B7 50%, #D4AF37 100%);
-    --gradient-secondary: linear-gradient(135deg, #A8C8EC 0%, #B8D4E3 50%, #2C3E50 100%);
-    --gradient-warm: linear-gradient(135deg, #E6A87C 0%, #F4E4C1 50%, #E8D5B7 100%);
-    
-    /* 字體設定 */
-    --theme-font-family: 'Georgia', 'Times New Roman', 'Noto Sans TC', serif;
-    --theme-font-size: 16px;
-    --theme-font-weight: 400;
-    --theme-line-height: 1.6;
-    
-    /* 陰影效果 */
-    --theme-shadow: 0 8px 32px rgba(244, 228, 193, 0.3);
-    --theme-shadow-hover: 0 12px 48px rgba(244, 228, 193, 0.5);
-    --theme-glow: 0 0 20px rgba(212, 175, 55, 0.4);
-}
-
-/* 全局字體美化 - 移除陰影效果 */
-[data-theme="littlePrince"] body {
-    font-family: var(--theme-font-family) !important;
-    font-size: var(--theme-font-size) !important;
-    font-weight: var(--theme-font-weight) !important;
-    line-height: var(--theme-line-height) !important;
-    color: var(--theme-dark) !important;
-}
-
-/* 背景處理 - 完全顯示圖片，不淡化 - 最高優先級 */
-[data-theme="littlePrince"],
 :root[data-theme="littlePrince"] {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    position: relative !important;
+    /* 主色調 - 披風深藍 */
+    --color-primary: #3E5B9A;
+    --color-primary-light: #5E77B4;
+    --color-primary-lighter: #91A3D6;
+    --color-primary-dark: #2B3E73;
+
+    /* 次要色調 - 王冠/星光金 */
+    --color-secondary: #D6B25E;
+    --color-secondary-light: #E4C87D;
+    --color-secondary-dark: #B8933E;
+
+    /* 強調色 - 柔和薰衣草灰 */
+    --color-accent: #B7A6D4;
+    --color-accent-light: #CABBDF;
+    --color-accent-dark: #9B8ABF;
+
+    /* 狀態顏色 */
+    --color-success: #16a34a;
+    --color-danger: #dc2626;
+    --color-warning: #d97706;
+    --color-info: #2563eb;
+    --color-error: var(--color-danger);
+
+    /* 背景系統 - 以圖片暖霧白為主，避免文字不清楚 */
+    --bg-primary: linear-gradient(135deg, rgba(252, 245, 235, 0.98) 0%, rgba(245, 232, 220, 0.96) 45%, rgba(235, 226, 240, 0.94) 100%);
+    --bg-body: rgba(255, 248, 240, 0.72);
+    --bg-body-strong: rgba(255, 248, 240, 0.86);
+    --bg-gradient: linear-gradient(135deg, rgba(62, 91, 154, 0.20) 0%, rgba(214, 178, 94, 0.16) 50%, rgba(183, 166, 212, 0.16) 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(62, 91, 154, 0.10) 0%, rgba(214, 178, 94, 0.08) 100%);
+    --bg-white: rgba(255, 252, 248, 0.95);
+    --bg-card: rgba(255, 252, 248, 0.90);
+    --bg-light: rgba(62, 91, 154, 0.10);
+    --bg-lighter: rgba(62, 91, 154, 0.07);
+    --bg-soft: rgba(214, 178, 94, 0.10);
+    --bg-soft-strong: rgba(214, 178, 94, 0.16);
+    --bg-overlay: rgba(22, 26, 42, 0.45);
+
+    /* 文字顏色 - 以深色系確保在淺卡片上清楚 */
+    --text-primary: rgba(34, 37, 53, 0.96);
+    --text-secondary: rgba(34, 37, 53, 0.78);
+    --text-tertiary: rgba(34, 37, 53, 0.62);
+    --text-strong: rgba(18, 20, 28, 0.98);
+    --text-white: rgba(255, 255, 255, 0.96);
+
+    /* 邊框顏色 */
+    --border-primary: rgba(62, 91, 154, 0.35);
+    --border-light: rgba(62, 91, 154, 0.18);
+    --border-medium: rgba(62, 91, 154, 0.26);
+    --card-border-color: rgba(214, 178, 94, 0.26);
+    --control-border-color: rgba(62, 91, 154, 0.24);
+    --table-border-color: rgba(62, 91, 154, 0.16);
+
+    /* 陰影 */
+    --shadow-primary: 0 18px 55px rgba(26, 28, 40, 0.16);
+    --shadow-primary-lg: 0 28px 80px rgba(26, 28, 40, 0.22);
+
+    /* 透明度變體（供部分元件使用） */
+    --color-primary-rgba-08: rgba(62, 91, 154, 0.08);
+    --color-primary-rgba-10: rgba(62, 91, 154, 0.10);
+    --color-primary-rgba-12: rgba(62, 91, 154, 0.12);
+    --color-primary-rgba-15: rgba(62, 91, 154, 0.15);
+    --color-primary-rgba-18: rgba(62, 91, 154, 0.18);
+    --color-primary-rgba-20: rgba(62, 91, 154, 0.20);
+    --color-primary-rgba-22: rgba(62, 91, 154, 0.22);
+    --color-primary-rgba-25: rgba(62, 91, 154, 0.25);
+    --color-primary-rgba-30: rgba(62, 91, 154, 0.30);
+
+    --color-secondary-rgba-10: rgba(214, 178, 94, 0.10);
+    --color-secondary-rgba-15: rgba(214, 178, 94, 0.15);
+    --color-secondary-rgba-20: rgba(214, 178, 94, 0.20);
+
+    /* 側邊欄顏色 */
+    --action-side-bg: color-mix(in srgb, rgba(255, 252, 248, 0.92) 78%, rgba(62, 91, 154, 0.10));
+    --action-side-bg-hover: color-mix(in srgb, rgba(255, 252, 248, 0.92) 68%, rgba(62, 91, 154, 0.16));
+    --action-side-text: var(--text-primary);
 }
 
-[data-theme="littlePrince"] body,
 :root[data-theme="littlePrince"] body {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-color: transparent !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    position: relative !important;
+    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover no-repeat fixed;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
 }
 
-/* 移除背景覆層 - 讓圖片完全顯示 */
-[data-theme="littlePrince"]::before,
-:root[data-theme="littlePrince"]::before,
-[data-theme="littlePrince"] body::before,
 :root[data-theme="littlePrince"] body::before {
-    display: none !important;
+    display: none;
 }
 
-/* 卡片樣式 - 投資卡片顯示主題圖片 */
-[data-theme="littlePrince"] .card,
-[data-theme="littlePrince"] .accounting-card,
-[data-theme="littlePrince"] .investment-settings-card,
-[data-theme="littlePrince"] .smart-analysis-card,
-[data-theme="littlePrince"] .smart-reminder-card,
-[data-theme="littlePrince"] .regular-investment-card {
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 16px !important;
-    box-shadow: var(--theme-shadow) !important;
-    position: relative !important;
-    overflow: hidden !important;
-    transition: all 0.3s ease !important;
+:root[data-theme="littlePrince"] .page-input,
+:root[data-theme="littlePrince"] .page-ledger,
+:root[data-theme="littlePrince"] .page-chart,
+:root[data-theme="littlePrince"] .page-budget,
+:root[data-theme="littlePrince"] .page-monthly-planner,
+:root[data-theme="littlePrince"] .page-daily-budget,
+:root[data-theme="littlePrince"] .page-settings,
+:root[data-theme="littlePrince"] .page-category-manage,
+:root[data-theme="littlePrince"] .page-investment,
+:root[data-theme="littlePrince"] .page-wallet,
+:root[data-theme="littlePrince"] .page-history,
+:root[data-theme="littlePrince"] .page-planner,
+:root[data-theme="littlePrince"] .dividend-page,
+:root[data-theme="littlePrince"] .dca-management-page,
+:root[data-theme="littlePrince"] .dca-setup-page,
+:root[data-theme="littlePrince"] .investment-input-page,
+:root[data-theme="littlePrince"] .installment-management-page,
+:root[data-theme="littlePrince"] .installment-setup-page,
+:root[data-theme="littlePrince"] .wishlist-content,
+:root[data-theme="littlePrince"] .savings-content {
+    background: transparent !important;
+    box-shadow: none;
 }
 
-/* 投資卡片 - 顯示主題背景圖片 */
-[data-theme="littlePrince"] .investment-card {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover !important;
-    position: relative !important;
-}
-
-[data-theme="littlePrince"] .investment-card::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    background: rgba(255, 255, 255, 0.85) !important;
-    z-index: 1 !important;
-}
-
-/* 投資卡片內容 - 確保在背景圖片上可見 */
-[data-theme="littlePrince"] .investment-card h2,
-[data-theme="littlePrince"] .investment-card h3,
-[data-theme="littlePrince"] .investment-card p,
-[data-theme="littlePrince"] .investment-card .card-text,
-[data-theme="littlePrince"] .investment-card .card-content {
-    position: relative !important;
-    z-index: 2 !important;
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-}
-
-[data-theme="littlePrince"] .investment-card h2,
-[data-theme="littlePrince"] .investment-card h3 {
-    font-weight: 700 !important;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(255, 255, 255, 0.5) !important;
-}
-
-[data-theme="littlePrince"] .investment-card p,
-[data-theme="littlePrince"] .investment-card .card-text {
-    font-weight: 500 !important;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(255, 255, 255, 0.4) !important;
-}
-
-[data-theme="littlePrince"] .card:hover,
-[data-theme="littlePrince"] .investment-card:hover,
-[data-theme="littlePrince"] .accounting-card:hover,
-[data-theme="littlePrince"] .wallet-budget-card:hover,
-[data-theme="littlePrince"] .monthly-planning-card:hover {
-    transform: translateY(-4px) scale(1.02) !important;
-    box-shadow: var(--theme-shadow-hover) !important;
-    border-color: var(--theme-warm) !important;
-}
-
-/* 卡片標題樣式 - 增強對比度 */
-[data-theme="littlePrince"] .card h2,
-[data-theme="littlePrince"] .card h3,
-[data-theme="littlePrince"] .investment-card h2,
-[data-theme="littlePrince"] .investment-card h3,
-[data-theme="littlePrince"] .accounting-card h2,
-[data-theme="littlePrince"] .accounting-card h3,
-[data-theme="littlePrince"] .wallet-budget-card h2,
-[data-theme="littlePrince"] .wallet-budget-card h3,
-[data-theme="littlePrince"] .monthly-planning-card h2,
-[data-theme="littlePrince"] .monthly-planning-card h3 {
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 700 !important;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(255, 255, 255, 0.5) !important;
-    margin-bottom: 16px !important;
-    position: relative !important;
-    z-index: 2 !important;
-}
-
-/* 卡片內容樣式 - 增強對比度 */
-[data-theme="littlePrince"] .card p,
-[data-theme="littlePrince"] .card .card-text,
-[data-theme="littlePrince"] .investment-card p,
-[data-theme="littlePrince"] .investment-card .card-text,
-[data-theme="littlePrince"] .accounting-card p,
-[data-theme="littlePrince"] .accounting-card .card-text {
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-size: 15px !important;
-    font-weight: 500 !important;
-    line-height: 1.6 !important;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(255, 255, 255, 0.4) !important;
-    position: relative !important;
-    z-index: 2 !important;
-}
-
-/* 按鈕樣式 */
-[data-theme="littlePrince"] button,
-[data-theme="littlePrince"] .btn,
-[data-theme="littlePrince"] .btn-primary,
-[data-theme="littlePrince"] .btn-secondary,
-[data-theme="littlePrince"] .buy-button,
-[data-theme="littlePrince"] .sell-button,
-[data-theme="littlePrince"] .regular-investment-btn {
-    background: var(--gradient-primary) !important;
-    color: var(--theme-dark) !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 12px !important;
-    padding: 12px 24px !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 600 !important;
-    font-size: 14px !important;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
-    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3) !important;
-    transition: all 0.3s ease !important;
-    cursor: pointer !important;
-    position: relative !important;
-    overflow: hidden !important;
-}
-
-[data-theme="littlePrince"] button::before,
-[data-theme="littlePrince"] .btn::before,
-[data-theme="littlePrince"] .btn-primary::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: -100% !important;
-    width: 100% !important;
-    height: 100% !important;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent) !important;
-    transition: left 0.5s ease !important;
-}
-
-[data-theme="littlePrince"] button:hover,
-[data-theme="littlePrince"] .btn:hover,
-[data-theme="littlePrince"] .btn-primary:hover,
-[data-theme="littlePrince"] .buy-button:hover,
-[data-theme="littlePrince"] .sell-button:hover,
-[data-theme="littlePrince"] .regular-investment-btn:hover {
-    background: var(--gradient-warm) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 24px rgba(230, 168, 124, 0.4) !important;
-    border-color: var(--theme-warm) !important;
-}
-
-[data-theme="littlePrince"] button:hover::before,
-[data-theme="littlePrince"] .btn:hover::before,
-[data-theme="littlePrince"] .btn-primary:hover::before {
-    left: 100% !important;
-}
-
-/* 導航欄樣式 */
-[data-theme="littlePrince"] .nav-bar,
-[data-theme="littlePrince"] .navigation,
-[data-theme="littlePrince"] .nav-container {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 16px !important;
-    box-shadow: var(--theme-shadow) !important;
-}
-
-[data-theme="littlePrince"] .nav-item,
-[data-theme="littlePrince"] .nav-link {
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 500 !important;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3) !important;
-    transition: all 0.3s ease !important;
-}
-
-[data-theme="littlePrince"] .nav-item:hover,
-[data-theme="littlePrince"] .nav-item.active,
-[data-theme="littlePrince"] .nav-link:hover,
-[data-theme="littlePrince"] .nav-link.active {
-    color: var(--theme-gold) !important;
-    background: rgba(244, 228, 193, 0.3) !important;
-    border-radius: 8px !important;
-}
-
-/* 彈窗/對話框樣式 */
-[data-theme="littlePrince"] .modal,
-[data-theme="littlePrince"] .dialog,
-[data-theme="littlePrince"] .popup,
-[data-theme="littlePrince"] .advisor-dialog,
-[data-theme="littlePrince"] .modal-content,
-[data-theme="littlePrince"] .dialog-content {
-    background: rgba(255, 255, 255, 0.98) !important;
-    backdrop-filter: blur(30px) !important;
-    -webkit-backdrop-filter: blur(30px) !important;
-    border: 3px solid var(--theme-gold) !important;
+:root[data-theme="littlePrince"] .card,
+:root[data-theme="littlePrince"] .record-card,
+:root[data-theme="littlePrince"] .ledger-card,
+:root[data-theme="littlePrince"] .summary-card,
+:root[data-theme="littlePrince"] .budget-card,
+:root[data-theme="littlePrince"] .wallet-card,
+:root[data-theme="littlePrince"] .chart-card,
+:root[data-theme="littlePrince"] .investment-card,
+:root[data-theme="littlePrince"] .accounting-card,
+:root[data-theme="littlePrince"] .wallet-budget-card,
+:root[data-theme="littlePrince"] .monthly-planning-card,
+:root[data-theme="littlePrince"] .investment-settings-card,
+:root[data-theme="littlePrince"] .holding-card,
+:root[data-theme="littlePrince"] .buying-card,
+:root[data-theme="littlePrince"] .selling-card,
+:root[data-theme="littlePrince"] .dividend-card,
+:root[data-theme="littlePrince"] .stock-item-card,
+:root[data-theme="littlePrince"] .monthly-planner-card,
+:root[data-theme="littlePrince"] .dividend-stat-card,
+:root[data-theme="littlePrince"] .dca-card,
+:root[data-theme="littlePrince"] .installment-card,
+:root[data-theme="littlePrince"] .dca-item-card,
+:root[data-theme="littlePrince"] .stat-card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--card-border-color) !important;
+    box-shadow: var(--shadow-primary) !important;
     border-radius: 20px !important;
-    box-shadow: var(--theme-shadow-hover) !important;
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
+    backdrop-filter: blur(14px) saturate(135%) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(135%) !important;
 }
 
-[data-theme="littlePrince"] .modal-header,
-[data-theme="littlePrince"] .dialog-header,
-[data-theme="littlePrince"] .modal-title,
-[data-theme="littlePrince"] .dialog-title {
-    background: var(--gradient-primary) !important;
-    color: var(--theme-dark) !important;
-    border-radius: 16px 16px 0 0 !important;
-    padding: 20px !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 600 !important;
-    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5) !important;
+:root[data-theme="littlePrince"] .bottom-nav {
+    background: rgba(255, 252, 248, 0.80) !important;
+    border-top: 1px solid var(--border-light) !important;
+    backdrop-filter: blur(18px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
 }
 
-[data-theme="littlePrince"] .modal-body,
-[data-theme="littlePrince"] .dialog-body {
-    padding: 24px !important;
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    line-height: 1.6 !important;
+:root[data-theme="littlePrince"] .nav-item.active {
+    background: var(--color-secondary-rgba-15) !important;
+    box-shadow: 0 10px 24px rgba(26, 28, 40, 0.10) !important;
 }
 
-/* 鍵盤樣式 - 不透明 */
-[data-theme="littlePrince"] .keyboard,
-[data-theme="littlePrince"] .number-keyboard,
-[data-theme="littlePrince"] .calc-keyboard {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 16px !important;
-    box-shadow: var(--theme-shadow) !important;
+:root[data-theme="littlePrince"] .modal-content,
+:root[data-theme="littlePrince"] .modal-content-standard,
+:root[data-theme="littlePrince"] .budget-category-modal-content,
+:root[data-theme="littlePrince"] .budget-setting-modal-content,
+:root[data-theme="littlePrince"] .category-modal-content,
+:root[data-theme="littlePrince"] .dca-execute-modal .modal-content,
+:root[data-theme="littlePrince"] .account-modal-content,
+:root[data-theme="littlePrince"] .emoji-modal-content,
+:root[data-theme="littlePrince"] .history-modal-content,
+:root[data-theme="littlePrince"] .portfolio-analysis-content,
+:root[data-theme="littlePrince"] .goal-tracking-content,
+:root[data-theme="littlePrince"] .dialog-content,
+:root[data-theme="littlePrince"] .reminder-panel,
+:root[data-theme="littlePrince"] .spending-analysis-panel {
+    background: var(--bg-white) !important;
+    border: 1px solid var(--border-primary) !important;
+    box-shadow: var(--shadow-primary-lg) !important;
+    backdrop-filter: blur(18px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
 }
 
-[data-theme="littlePrince"] .keyboard-key,
-[data-theme="littlePrince"] .number-key,
-[data-theme="littlePrince"] .calc-key {
-    background: var(--gradient-primary) !important;
-    color: var(--theme-dark) !important;
-    border: 1px solid var(--theme-gold) !important;
-    border-radius: 8px !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 600 !important;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
-    transition: all 0.2s ease !important;
+:root[data-theme="littlePrince"] .modal-overlay,
+:root[data-theme="littlePrince"] .dialog-overlay {
+    background: var(--bg-overlay) !important;
 }
 
-[data-theme="littlePrince"] .keyboard-key:hover,
-[data-theme="littlePrince"] .number-key:hover,
-[data-theme="littlePrince"] .calc-key:hover {
-    background: var(--gradient-warm) !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 4px 12px rgba(230, 168, 124, 0.4) !important;
+:root[data-theme="littlePrince"] .form-input,
+:root[data-theme="littlePrince"] .form-select,
+:root[data-theme="littlePrince"] .form-textarea,
+:root[data-theme="littlePrince"] .note-input,
+:root[data-theme="littlePrince"] input,
+:root[data-theme="littlePrince"] select,
+:root[data-theme="littlePrince"] textarea {
+    background: rgba(255, 255, 255, 0.86) !important;
+    border: 1px solid var(--control-border-color) !important;
+    color: var(--text-primary) !important;
 }
 
-/* 輸入框樣式 */
-[data-theme="littlePrince"] input,
-[data-theme="littlePrince"] textarea,
-[data-theme="littlePrince"] select,
-[data-theme="littlePrince"] .form-control {
-    background: rgba(255, 255, 255, 0.9) !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 8px !important;
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-size: 14px !important;
-    padding: 12px 16px !important;
-    transition: all 0.3s ease !important;
-}
-
-[data-theme="littlePrince"] input:focus,
-[data-theme="littlePrince"] textarea:focus,
-[data-theme="littlePrince"] select:focus,
-[data-theme="littlePrince"] .form-control:focus {
-    border-color: var(--theme-warm) !important;
-    box-shadow: 0 0 16px rgba(230, 168, 124, 0.3) !important;
+:root[data-theme="littlePrince"] .form-input:focus,
+:root[data-theme="littlePrince"] .form-select:focus,
+:root[data-theme="littlePrince"] .form-textarea:focus,
+:root[data-theme="littlePrince"] .note-input:focus,
+:root[data-theme="littlePrince"] input:focus,
+:root[data-theme="littlePrince"] select:focus,
+:root[data-theme="littlePrince"] textarea:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 3px var(--color-primary-rgba-15) !important;
     outline: none !important;
 }
 
-[data-theme="littlePrince"] input::placeholder,
-[data-theme="littlePrince"] textarea::placeholder {
-    color: var(--theme-secondary) !important;
-    font-style: italic !important;
+:root[data-theme="littlePrince"] .btn,
+:root[data-theme="littlePrince"] .btn-primary,
+:root[data-theme="littlePrince"] .form-submit-btn,
+:root[data-theme="littlePrince"] .submit-btn,
+:root[data-theme="littlePrince"] button {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+    border: 1px solid rgba(62, 91, 154, 0.24) !important;
+    color: var(--text-white) !important;
 }
 
-/* 表格樣式 */
-[data-theme="littlePrince"] table,
-[data-theme="littlePrince"] .table {
-    background: rgba(255, 255, 255, 0.95) !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 12px !important;
-    overflow: hidden !important;
-    box-shadow: var(--theme-shadow) !important;
+:root[data-theme="littlePrince"] .btn:hover,
+:root[data-theme="littlePrince"] .btn-primary:hover,
+:root[data-theme="littlePrince"] .form-submit-btn:hover,
+:root[data-theme="littlePrince"] .submit-btn:hover,
+:root[data-theme="littlePrince"] button:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%) !important;
 }
 
-[data-theme="littlePrince"] th,
-[data-theme="littlePrince"] .table-header {
-    background: var(--gradient-primary) !important;
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 600 !important;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
-    padding: 16px !important;
+/* 買入 / 定期定額 按鈕 */
+:root[data-theme="littlePrince"] .buy-action-btn-large,
+:root[data-theme="littlePrince"] .action-btn.buy-btn,
+:root[data-theme="littlePrince"] #actionBuy,
+:root[data-theme="littlePrince"] .buy-btn {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%) !important;
+    border-color: rgba(214, 178, 94, 0.28) !important;
+    color: rgba(34, 37, 53, 0.98) !important;
 }
 
-[data-theme="littlePrince"] td,
-[data-theme="littlePrince"] .table-cell {
-    background: rgba(255, 255, 255, 0.8) !important;
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    padding: 12px 16px !important;
-    border-top: 1px solid var(--theme-gold) !important;
-}
-
-[data-theme="littlePrince"] tr:hover td,
-[data-theme="littlePrince"] .table-row:hover .table-cell {
-    background: rgba(244, 228, 193, 0.3) !important;
-}
-
-/* 智慧分析和智慧提醒卡片 */
-[data-theme="littlePrince"] .smart-analysis-card,
-[data-theme="littlePrince"] .smart-reminder-card {
-    background: rgba(255, 255, 255, 0.95) !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-blend-mode: overlay !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 16px !important;
-    box-shadow: var(--theme-shadow) !important;
-    position: relative !important;
-}
-
-[data-theme="littlePrince"] .smart-analysis-card::before,
-[data-theme="littlePrince"] .smart-reminder-card::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    background: rgba(244, 228, 193, 0.8) !important;
-    z-index: 1 !important;
-}
-
-[data-theme="littlePrince"] .smart-analysis-card > *,
-[data-theme="littlePrince"] .smart-reminder-card > * {
-    position: relative !important;
-    z-index: 2 !important;
+:root[data-theme="littlePrince"] .dca-action-btn-large,
+:root[data-theme="littlePrince"] .action-btn.dca-btn,
+:root[data-theme="littlePrince"] #actionDCA,
+:root[data-theme="littlePrince"] .dca-btn {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%) !important;
+    border-color: rgba(183, 166, 212, 0.30) !important;
+    color: var(--text-white) !important;
 }
 
 /* 返回按鈕 */
-[data-theme="littlePrince"] .back-button,
-[data-theme="littlePrince"] .return-btn,
-[data-theme="littlePrince"] .go-back,
-[data-theme="littlePrince"] button,
-[data-theme="littlePrince"] .btn {
-    background: var(--gradient-primary) !important;
-    color: var(--theme-dark) !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 8px !important;
-    padding: 10px 20px !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 600 !important;
-    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3) !important;
-    transition: all 0.3s ease !important;
+:root[data-theme="littlePrince"] .back-btn,
+:root[data-theme="littlePrince"] .investment-form-back-btn,
+:root[data-theme="littlePrince"] .auto-transfer-back-btn,
+:root[data-theme="littlePrince"] .auto-transfer-setup-back-btn,
+:root[data-theme="littlePrince"] .dca-back-btn,
+:root[data-theme="littlePrince"] .dca-setup-back-btn {
+    background: rgba(255, 252, 248, 0.78) !important;
+    border: 1px solid var(--border-light) !important;
+    color: var(--text-primary) !important;
 }
 
-[data-theme="littlePrince"] .back-button:hover,
-[data-theme="littlePrince"] .return-btn:hover,
-[data-theme="littlePrince"] .go-back:hover,
-[data-theme="littlePrince"] button:hover,
-[data-theme="littlePrince"] .btn:hover {
-    background: var(--gradient-warm) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 24px rgba(230, 168, 124, 0.4) !important;
+/* 智慧分析 / 智慧提醒 */
+:root[data-theme="littlePrince"] .smart-analysis-btn,
+:root[data-theme="littlePrince"] .smart-reminders-btn,
+:root[data-theme="littlePrince"] .smart-suggestion-btn {
+    background: linear-gradient(135deg, rgba(62, 91, 154, 0.92) 0%, rgba(183, 166, 212, 0.86) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.30) !important;
+    color: var(--text-white) !important;
 }
 
-/* FAB按鈕 - 小王子主題，位置在右邊 */
-[data-theme="littlePrince"] .fab,
-[data-theme="littlePrince"] .fab-button,
-[data-theme="littlePrince"] #fabBtn {
-    position: fixed !important;
-    bottom: 180px !important;
-    right: max(16px, calc((100vw - 1200px) / 2 + 24px)) !important;
-    background: var(--gradient-primary) !important;
-    color: var(--theme-dark) !important;
-    border: 3px solid var(--theme-gold) !important;
-    border-radius: 50% !important;
-    width: 56px !important;
-    height: 56px !important;
-    font-size: 24px !important;
-    box-shadow: var(--theme-glow) !important;
-    transition: all 0.3s ease !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 600 !important;
+:root[data-theme="littlePrince"] .smart-analysis-btn:hover,
+:root[data-theme="littlePrince"] .smart-reminders-btn:hover,
+:root[data-theme="littlePrince"] .smart-suggestion-btn:hover {
+    box-shadow: 0 10px 28px rgba(62, 91, 154, 0.18) !important;
 }
 
-[data-theme="littlePrince"] .fab:hover,
-[data-theme="littlePrince"] .fab-button:hover,
-[data-theme="littlePrince"] #fabBtn:hover {
-    background: var(--gradient-warm) !important;
-    color: #FFFFFF !important;
-    transform: translateY(-4px) scale(1.1) !important;
-    box-shadow: 0 8px 32px rgba(230, 168, 124, 0.5) !important;
-    border-color: var(--theme-warm) !important;
+/* 對話框（顧問聊天等） */
+:root[data-theme="littlePrince"] .history-advisor-chat {
+    background: rgba(255, 252, 248, 0.92) !important;
+    border: 1px solid var(--border-light) !important;
 }
 
-[data-theme="littlePrince"] .fab:active,
-[data-theme="littlePrince"] .fab-button:active,
-[data-theme="littlePrince"] #fabBtn:active {
-    transform: translateY(-2px) scale(1.05) !important;
-    box-shadow: 0 6px 24px rgba(212, 175, 55, 0.3) !important;
+:root[data-theme="littlePrince"] .advisor-quick-btn {
+    background: rgba(62, 91, 154, 0.08) !important;
+    border: 1px solid rgba(62, 91, 154, 0.18) !important;
+    color: var(--text-primary) !important;
 }
 
-/* 股票代碼和投資卡片樣式 - 小王子主題 - 最高優先級 */
-[data-theme="littlePrince"] .stock-card-code,
-[data-theme="littlePrince"] .stock-item-code,
-[data-theme="littlePrince"] .stock-code,
-[data-theme="littlePrince"] .input-stock-code,
-[data-theme="littlePrince"] .modal-stock-code {
-    color: #D4AF37 !important;
-    font-weight: 700 !important;
-    font-family: var(--theme-font-family) !important;
-    background: linear-gradient(135deg, rgba(244, 228, 193, 0.3), rgba(212, 175, 55, 0.2)) !important;
-    padding: 2px 6px !important;
-    border-radius: 4px !important;
-    border: 1px solid rgba(212, 175, 55, 0.3) !important;
-    position: relative !important;
-    z-index: 2 !important;
+:root[data-theme="littlePrince"] .advisor-quick-btn:hover {
+    background: rgba(214, 178, 94, 0.14) !important;
+    border-color: rgba(214, 178, 94, 0.26) !important;
 }
 
-[data-theme="littlePrince"] .investment-card .stock-code,
-[data-theme="littlePrince"] .stock-item-card .stock-code {
-    color: #2C3E50 !important;
-    font-weight: 600 !important;
-    background: rgba(244, 228, 193, 0.8) !important;
-    padding: 4px 8px !important;
-    border-radius: 6px !important;
-    border: 2px solid #D4AF37 !important;
-    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2) !important;
-    position: relative !important;
-    z-index: 3 !important;
+:root[data-theme="littlePrince"] .advisor-chat-input-container {
+    background: rgba(255, 252, 248, 0.92) !important;
 }
 
-[data-theme="littlePrince"] .investment-card:hover .stock-code,
-[data-theme="littlePrince"] .stock-item-card:hover .stock-code {
-    background: linear-gradient(135deg, #D4AF37 0%, #E6A87C 100%) !important;
-    color: #FFFFFF !important;
-    transform: scale(1.05) !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 4px 16px rgba(230, 168, 124, 0.4) !important;
+:root[data-theme="littlePrince"] .advisor-chat-input {
+    background: rgba(255, 255, 255, 0.86) !important;
+    border: 1px solid var(--border-light) !important;
+    color: var(--text-primary) !important;
 }
 
-[data-theme="littlePrince"] .stock-name-code {
-    color: #2C3E50 !important;
-    font-weight: 600 !important;
-    font-family: var(--theme-font-family) !important;
-    position: relative !important;
-    z-index: 2 !important;
-}
-
-[data-theme="littlePrince"] .stock-item-card .secondary-text,
-[data-theme="littlePrince"] .stock-item-card .muted-text {
-    color: #34495E !important;
-    font-weight: 500 !important;
-    position: relative !important;
-    z-index: 2 !important;
-}
-
-/* 投資卡片標題和數字樣式 */
-[data-theme="littlePrince"] .investment-card h3,
-[data-theme="littlePrince"] .stock-item-card h3 {
-    color: #2C3E50 !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 700 !important;
-    position: relative !important;
-    z-index: 3 !important;
-}
-
-[data-theme="littlePrince"] .investment-card .price,
-[data-theme="littlePrince"] .stock-item-card .price,
-[data-theme="littlePrince"] .investment-card .amount,
-[data-theme="littlePrince"] .stock-item-card .amount {
-    color: #2C3E50 !important;
-    font-weight: 600 !important;
-    font-family: var(--theme-font-family) !important;
-    position: relative !important;
-    z-index: 3 !important;
-}
-
-/* 投資卡片百分比樣式 */
-[data-theme="littlePrince"] .investment-card .percentage,
-[data-theme="littlePrince"] .stock-item-card .percentage {
-    font-weight: 700 !important;
-    font-family: var(--theme-font-family) !important;
-    position: relative !important;
-    z-index: 3 !important;
-}
-
-[data-theme="littlePrince"] .investment-card .percentage.positive,
-[data-theme="littlePrince"] .stock-item-card .percentage.positive {
-    color: #27AE60 !important;
-    background: rgba(39, 174, 96, 0.1) !important;
-    padding: 2px 6px !important;
-    border-radius: 4px !important;
-    border: 1px solid rgba(39, 174, 96, 0.3) !important;
-}
-
-[data-theme="littlePrince"] .investment-card .percentage.negative,
-[data-theme="littlePrince"] .stock-item-card .percentage.negative {
-    color: #E74C3C !important;
-    background: rgba(231, 76, 60, 0.1) !important;
-    padding: 2px 6px !important;
-    border-radius: 4px !important;
-    border: 1px solid rgba(231, 76, 60, 0.3) !important;
-}
-
-/* 持有卡片樣式 - 小王子主題 - 超高優先級 */
-[data-theme="littlePrince"] body .holding-card,
-[data-theme="littlePrince"] body .holdings-card,
-[data-theme="littlePrince"] body .stock-holding-card,
-[data-theme="littlePrince"] div .holding-card,
-[data-theme="littlePrince"] div .holdings-card,
-[data-theme="littlePrince"] div .stock-holding-card,
-:root[data-theme="littlePrince"] body .holding-card,
-:root[data-theme="littlePrince"] body .holdings-card,
-:root[data-theme="littlePrince"] body .stock-holding-card,
-html[data-theme="littlePrince"] body .holding-card,
-html[data-theme="littlePrince"] body .holdings-card,
-html[data-theme="littlePrince"] body .stock-holding-card,
-html:root[data-theme="littlePrince"] body .holding-card,
-html:root[data-theme="littlePrince"] body .holdings-card,
-html:root[data-theme="littlePrince"] body .stock-holding-card,
-body[data-theme="littlePrince"] .holding-card,
-body[data-theme="littlePrince"] .holdings-card,
-body[data-theme="littlePrince"] .stock-holding-card {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-color: transparent !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    border: 3px solid var(--theme-gold) !important;
-    border-radius: 16px !important;
-    box-shadow: var(--theme-shadow) !important;
-    position: relative !important;
-    overflow: hidden !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-}
-
-[data-theme="littlePrince"] .holding-card::before,
-[data-theme="littlePrince"] .holdings-card::before,
-[data-theme="littlePrince"] .stock-holding-card::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    background: rgba(244, 228, 193, 0.3) !important;
-    z-index: 1 !important;
-}
-
-[data-theme="littlePrince"] .holding-card > *,
-[data-theme="littlePrince"] .holdings-card > *,
-[data-theme="littlePrince"] .stock-holding-card > * {
-    position: relative !important;
-    z-index: 2 !important;
-    color: var(--theme-dark) !important;
-}
-
-/* 持有卡片懸停效果 - 超高優先級 */
-[data-theme="littlePrince"] body .holding-card:hover,
-[data-theme="littlePrince"] body .holdings-card:hover,
-[data-theme="littlePrince"] body .stock-holding-card:hover,
-[data-theme="littlePrince"] div .holding-card:hover,
-[data-theme="littlePrince"] div .holdings-card:hover,
-[data-theme="littlePrince"] div .stock-holding-card:hover,
-:root[data-theme="littlePrince"] body .holding-card:hover,
-:root[data-theme="littlePrince"] body .holdings-card:hover,
-:root[data-theme="littlePrince"] body .stock-holding-card:hover,
-html[data-theme="littlePrince"] body .holding-card:hover,
-html[data-theme="littlePrince"] body .holdings-card:hover,
-html[data-theme="littlePrince"] body .stock-holding-card:hover,
-html:root[data-theme="littlePrince"] body .holding-card:hover,
-html:root[data-theme="littlePrince"] body .holdings-card:hover,
-html:root[data-theme="littlePrince"] body .stock-holding-card:hover,
-body[data-theme="littlePrince"] .holding-card:hover,
-body[data-theme="littlePrince"] .holdings-card:hover,
-body[data-theme="littlePrince"] .stock-holding-card:hover {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-color: transparent !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    transform: translateY(-4px) scale(1.02) !important;
-    box-shadow: var(--theme-shadow-hover) !important;
-    border-color: var(--theme-warm) !important;
-}
-
-[data-theme="littlePrince"] .holding-card:hover::before,
-[data-theme="littlePrince"] .holdings-card:hover::before,
-[data-theme="littlePrince"] .stock-holding-card:hover::before {
-    background: rgba(230, 168, 124, 0.9) !important;
-}
-
-/* 持有卡片標題樣式 */
-[data-theme="littlePrince"] .holding-card h3,
-[data-theme="littlePrince"] .holdings-card h3,
-[data-theme="littlePrince"] .stock-holding-card h3 {
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 700 !important;
-    position: relative !important;
-    z-index: 3 !important;
-}
-
-/* 持有卡片內容樣式 */
-[data-theme="littlePrince"] .holding-card .stock-code,
-[data-theme="littlePrince"] .holdings-card .stock-code,
-[data-theme="littlePrince"] .stock-holding-card .stock-code {
-    color: var(--theme-dark) !important;
-    font-weight: 600 !important;
-    background: rgba(244, 228, 193, 0.8) !important;
-    padding: 4px 8px !important;
-    border-radius: 6px !important;
-    border: 2px solid var(--theme-gold) !important;
-    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2) !important;
-    position: relative !important;
-    z-index: 3 !important;
-}
-
-[data-theme="littlePrince"] .holding-card .price,
-[data-theme="littlePrince"] .holdings-card .price,
-[data-theme="littlePrince"] .stock-holding-card .price,
-[data-theme="littlePrince"] .holding-card .amount,
-[data-theme="littlePrince"] .holdings-card .amount,
-[data-theme="littlePrince"] .stock-holding-card .amount {
-    color: var(--theme-dark) !important;
-    font-weight: 600 !important;
-    font-family: var(--theme-font-family) !important;
-    position: relative !important;
-    z-index: 3 !important;
-}
-
-/* 持有卡片百分比樣式 */
-[data-theme="littlePrince"] .holding-card .percentage,
-[data-theme="littlePrince"] .holdings-card .percentage,
-[data-theme="littlePrince"] .stock-holding-card .percentage {
-    font-weight: 700 !important;
-    font-family: var(--theme-font-family) !important;
-    position: relative !important;
-    z-index: 3 !important;
-}
-
-[data-theme="littlePrince"] .holding-card .percentage.positive,
-[data-theme="littlePrince"] .holdings-card .percentage.positive,
-[data-theme="littlePrince"] .stock-holding-card .percentage.positive {
-    color: #27AE60 !important;
-    background: rgba(39, 174, 96, 0.1) !important;
-    padding: 2px 6px !important;
-    border-radius: 4px !important;
-    border: 1px solid rgba(39, 174, 96, 0.3) !important;
-}
-
-[data-theme="littlePrince"] .holding-card .percentage.negative,
-[data-theme="littlePrince"] .holdings-card .percentage.negative,
-[data-theme="littlePrince"] .stock-holding-card .percentage.negative {
-    color: #E74C3C !important;
-    background: rgba(231, 76, 60, 0.1) !important;
-    padding: 2px 6px !important;
-    border-radius: 4px !important;
-    border: 1px solid rgba(231, 76, 60, 0.3) !important;
-}
-
-/* 股票卡片樣式 - 小王子主題 */
-[data-theme="littlePrince"] body .stock-card,
-[data-theme="littlePrince"] div .stock-card,
-:root[data-theme="littlePrince"] body .stock-card,
-html[data-theme="littlePrince"] body .stock-card,
-html:root[data-theme="littlePrince"] body .stock-card,
-body[data-theme="littlePrince"] .stock-card {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-color: transparent !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    border: 3px solid var(--theme-gold) !important;
-    border-radius: 16px !important;
-    box-shadow: var(--theme-shadow) !important;
-    position: relative !important;
-    overflow: hidden !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-}
-
-[data-theme="littlePrince"] .stock-card::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    background: rgba(244, 228, 193, 0.3) !important;
-    z-index: 1 !important;
-}
-
-[data-theme="littlePrince"] .stock-card > * {
-    position: relative !important;
-    z-index: 2 !important;
-    color: var(--theme-dark) !important;
-}
-
-/* 投資組合卡片樣式 - 小王子主題 */
-[data-theme="littlePrince"] body .portfolio-card,
-[data-theme="littlePrince"] div .portfolio-card,
-:root[data-theme="littlePrince"] body .portfolio-card,
-html[data-theme="littlePrince"] body .portfolio-card,
-html:root[data-theme="littlePrince"] body .portfolio-card,
-body[data-theme="littlePrince"] .portfolio-card {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-color: transparent !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    border: 3px solid var(--theme-gold) !important;
-    border-radius: 16px !important;
-    box-shadow: var(--theme-shadow) !important;
-    position: relative !important;
-    overflow: hidden !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-}
-
-[data-theme="littlePrince"] .portfolio-card::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    background: rgba(244, 228, 193, 0.3) !important;
-    z-index: 1 !important;
-}
-
-[data-theme="littlePrince"] .portfolio-card > * {
-    position: relative !important;
-    z-index: 2 !important;
-    color: var(--theme-dark) !important;
-}
-
-/* 股票卡片和投資組合卡片懸停效果 */
-[data-theme="littlePrince"] body .stock-card:hover,
-[data-theme="littlePrince"] div .stock-card:hover,
-:root[data-theme="littlePrince"] body .stock-card:hover,
-html[data-theme="littlePrince"] body .stock-card:hover,
-html:root[data-theme="littlePrince"] body .stock-card:hover,
-body[data-theme="littlePrince"] .stock-card:hover,
-[data-theme="littlePrince"] body .portfolio-card:hover,
-[data-theme="littlePrince"] div .portfolio-card:hover,
-:root[data-theme="littlePrince"] body .portfolio-card:hover,
-html[data-theme="littlePrince"] body .portfolio-card:hover,
-html:root[data-theme="littlePrince"] body .portfolio-card:hover,
-body[data-theme="littlePrince"] .portfolio-card:hover {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-color: transparent !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    transform: translateY(-4px) scale(1.02) !important;
-    box-shadow: var(--theme-shadow-hover) !important;
-    border-color: var(--theme-warm) !important;
-}
-
-[data-theme="littlePrince"] .stock-card:hover::before,
-[data-theme="littlePrince"] .portfolio-card:hover::before {
-    background: rgba(230, 168, 124, 0.9) !important;
-}
-
-/* 股票卡片和投資組合卡片內容樣式 */
-[data-theme="littlePrince"] .stock-card h2,
-[data-theme="littlePrince"] .stock-card h3,
-[data-theme="littlePrince"] .stock-card .stock-name,
-[data-theme="littlePrince"] .stock-card .stock-price,
-[data-theme="littlePrince"] .portfolio-card h2,
-[data-theme="littlePrince"] .portfolio-card h3,
-[data-theme="littlePrince"] .portfolio-card .portfolio-card-title,
-[data-theme="littlePrince"] .portfolio-card .portfolio-card-value {
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 700 !important;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(255, 255, 255, 0.5) !important;
-    position: relative !important;
-    z-index: 3 !important;
-}
-
-[data-theme="littlePrince"] .stock-card p,
-[data-theme="littlePrince"] .stock-card .stock-info,
-[data-theme="littlePrince"] .portfolio-card p,
-[data-theme="littlePrince"] .portfolio-card .portfolio-info {
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 500 !important;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(255, 255, 255, 0.4) !important;
-    position: relative !important;
-    z-index: 3 !important;
-}
-
-/* 股票卡片和投資組合卡片特殊元素樣式 */
-[data-theme="littlePrince"] .stock-card .stock-icon,
-[data-theme="littlePrince"] .portfolio-card .portfolio-icon {
-    background: rgba(244, 228, 193, 0.8) !important;
-    color: var(--theme-dark) !important;
-    border-radius: 50% !important;
-    padding: 8px !important;
-    font-size: 20px !important;
-    position: relative !important;
-    z-index: 3 !important;
-}
-
-[data-theme="littlePrince"] .stock-card .stock-grid-card-change,
-[data-theme="littlePrince"] .portfolio-card .portfolio-card-change {
-    font-weight: 700 !important;
-    font-family: var(--theme-font-family) !important;
-    position: relative !important;
-    z-index: 3 !important;
-}
-
-[data-theme="littlePrince"] .stock-card .stock-grid-card-change.positive,
-[data-theme="littlePrince"] .portfolio-card .portfolio-card-value.unrealized-pnl:not(.negative) {
-    color: #27AE60 !important;
-    background: rgba(39, 174, 96, 0.1) !important;
-    padding: 2px 6px !important;
-    border-radius: 4px !important;
-    border: 1px solid rgba(39, 174, 96, 0.3) !important;
-}
-
-[data-theme="littlePrince"] .stock-card .stock-grid-card-change.negative,
-[data-theme="littlePrince"] .portfolio-card .portfolio-card-value.unrealized-pnl.negative {
-    color: #E74C3C !important;
-    background: rgba(231, 76, 60, 0.1) !important;
-    padding: 2px 6px !important;
-    border-radius: 4px !important;
-    border: 1px solid rgba(231, 76, 60, 0.3) !important;
-}
-
-/* 股票卡片和投資組合卡片輸入框樣式 */
-[data-theme="littlePrince"] .stock-card input,
-[data-theme="littlePrince"] .portfolio-card input {
-    background: rgba(244, 228, 193, 0.8) !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 8px !important;
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 500 !important;
-    padding: 8px 12px !important;
-    position: relative !important;
-    z-index: 3 !important;
-}
-
-[data-theme="littlePrince"] .stock-card input::placeholder,
-[data-theme="littlePrince"] .portfolio-card input::placeholder {
-    color: var(--theme-dark) !important;
-    opacity: 0.7 !important;
-}
-
-/* 股票卡片和投資組合卡片按鈕樣式 */
-[data-theme="littlePrince"] .stock-card button,
-[data-theme="littlePrince"] .portfolio-card button {
-    background: linear-gradient(135deg, var(--theme-gold) 0%, var(--theme-warm) 100%) !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 12px !important;
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 600 !important;
-    padding: 10px 20px !important;
-    position: relative !important;
-    z-index: 3 !important;
-    transition: all 0.3s ease !important;
-}
-
-[data-theme="littlePrince"] .stock-card button:hover,
-[data-theme="littlePrince"] .portfolio-card button:hover {
-    background: linear-gradient(135deg, var(--theme-warm) 0%, var(--theme-primary) 100%) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4) !important;
-}
-html body div:has(> .holding-card) .holding-card,
-html body div:has(> .holdings-card) .holdings-card,
-html body div:has(> .stock-holding-card) .stock-holding-card,
-html body .holding-card,
-html body .holdings-card,
-html body .stock-holding-card,
-html:root body .holding-card,
-html:root body .holdings-card,
-html:root body .stock-holding-card,
-html:root body div .holding-card,
-html:root body div .holdings-card,
-html:root body div .stock-holding-card,
-html:root body section .holding-card,
-html:root body section .holdings-card,
-html:root body section .stock-holding-card,
-html:root body main .holding-card,
-html:root body main .holdings-card,
-html:root body main .stock-holding-card,
-html:root body .container .holding-card,
-html:root body .container .holdings-card,
-html:root body .container .stock-holding-card,
-html:root body .row .holding-card,
-html:root body .row .holdings-card,
-html:root body .row .stock-holding-card,
-html:root body .col .holding-card,
-html:root body .col .holdings-card,
-html:root body .col .stock-holding-card,
-.holding-card,
-.holdings-card,
-.stock-holding-card {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    background-color: transparent !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    border: 3px solid var(--theme-gold) !important;
-    border-radius: 16px !important;
-    box-shadow: var(--theme-shadow) !important;
-    position: relative !important;
-    overflow: hidden !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-}
-
-/* 超高優先級強制覆蓋 - 主題特定 */
-html[data-theme="littlePrince"] body .holding-card,
-html:root[data-theme="littlePrince"] body .holding-card,
-html:root[data-theme="littlePrince"] body div .holding-card,
-html:root[data-theme="littlePrince"] body section .holding-card,
-html:root[data-theme="littlePrince"] body main .holding-card,
-html:root[data-theme="littlePrince"] body .container .holding-card,
-html:root[data-theme="littlePrince"] body .row .holding-card,
-html:root[data-theme="littlePrince"] body .col .holding-card,
-html[data-theme="littlePrince"] body .holdings-card,
-html:root[data-theme="littlePrince"] body .holdings-card,
-html:root[data-theme="littlePrince"] body div .holdings-card,
-html:root[data-theme="littlePrince"] body section .holdings-card,
-html:root[data-theme="littlePrince"] body main .holdings-card,
-html:root[data-theme="littlePrince"] body .container .holdings-card,
-html:root[data-theme="littlePrince"] body .row .holdings-card,
-html:root[data-theme="littlePrince"] body .col .holdings-card,
-html[data-theme="littlePrince"] body .stock-holding-card,
-html:root[data-theme="littlePrince"] body .stock-holding-card,
-html:root[data-theme="littlePrince"] body div .stock-holding-card,
-html:root[data-theme="littlePrince"] body section .stock-holding-card,
-html:root[data-theme="littlePrince"] body main .stock-holding-card,
-html:root[data-theme="littlePrince"] body .container .stock-holding-card,
-html:root[data-theme="littlePrince"] body .row .stock-holding-card,
-html:root[data-theme="littlePrince"] body .col .stock-holding-card {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    background-color: transparent !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-}
-[data-theme="littlePrince"] .holding-card::before,
-[data-theme="littlePrince"] .holdings-card::before,
-[data-theme="littlePrince"] .stock-holding-card::before,
-[data-theme="littlePrince"] body .holding-card::before,
-[data-theme="littlePrince"] body .holdings-card::before,
-[data-theme="littlePrince"] body .stock-holding-card::before,
-[data-theme="littlePrince"] div .holding-card::before,
-[data-theme="littlePrince"] div .holdings-card::before,
-[data-theme="littlePrince"] div .stock-holding-card::before,
-.holding-card[data-theme="littlePrince"]::before,
-.holdings-card[data-theme="littlePrince"]::before,
-.stock-holding-card[data-theme="littlePrince"]::before {
-    background: rgba(244, 228, 193, 0.15) !important;
-    z-index: 1 !important;
-}
-
-/* 第三次檢查 - 確保背景圖片在最底層 */
-[data-theme="littlePrince"] .holding-card,
-[data-theme="littlePrince"] .holdings-card,
-[data-theme="littlePrince"] .stock-holding-card {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    background-color: transparent !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    position: relative !important;
-    z-index: 0 !important;
-}
-
-/* 買入、賣出、股息卡片背景 - 小王子主題 */
-[data-theme="littlePrince"] .buying-card,
-[data-theme="littlePrince"] .selling-card,
-[data-theme="littlePrince"] .dividend-card {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    background-color: transparent !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    border: 3px solid var(--theme-gold) !important;
-    border-radius: 16px !important;
-    box-shadow: var(--theme-shadow) !important;
-    position: relative !important;
-    overflow: hidden !important;
-}
-
-/* 買入、賣出、股息卡片 ::before 偽元素 */
-[data-theme="littlePrince"] .buying-card::before,
-[data-theme="littlePrince"] .selling-card::before,
-[data-theme="littlePrince"] .dividend-card::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    background: rgba(244, 228, 193, 0.15) !important;
-    z-index: 1 !important;
-}
-
-/* 買入、賣出、股息卡片內容層 */
-[data-theme="littlePrince"] .buying-card > *,
-[data-theme="littlePrince"] .selling-card > *,
-[data-theme="littlePrince"] .dividend-card > * {
-    position: relative !important;
-    z-index: 2 !important;
-    color: var(--theme-dark) !important;
-}
-
-/* 買入、賣出、股息卡片懸停效果 */
-[data-theme="littlePrince"] .buying-card:hover,
-[data-theme="littlePrince"] .selling-card:hover,
-[data-theme="littlePrince"] .dividend-card:hover {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    background-color: transparent !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    transform: translateY(-4px) !important;
-    box-shadow: var(--theme-shadow-hover) !important;
-    border-color: var(--theme-warm) !important;
-}
-
-/* 買入、賣出、股息卡片懸停 ::before 效果 */
-[data-theme="littlePrince"] .buying-card:hover::before,
-[data-theme="littlePrince"] .selling-card:hover::before,
-[data-theme="littlePrince"] .dividend-card:hover::before {
-    background: rgba(230, 168, 124, 0.3) !important;
-}
-
-/* 錢包預算設定和每月規劃卡片背景 - 小王子主題 */
-[data-theme="littlePrince"] .wallet-budget-card,
-[data-theme="littlePrince"] .monthly-planning-card {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    background-color: transparent !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    border: 3px solid var(--theme-gold) !important;
-    border-radius: 16px !important;
-    box-shadow: var(--theme-shadow) !important;
-    position: relative !important;
-    overflow: hidden !important;
-}
-
-/* 錢包預算設定和每月規劃卡片 ::before 偽元素 */
-[data-theme="littlePrince"] .wallet-budget-card::before,
-[data-theme="littlePrince"] .monthly-planning-card::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    background: rgba(244, 228, 193, 0.15) !important;
-    z-index: 1 !important;
-}
-
-/* 錢包預算設定和每月規劃卡片內容層 */
-[data-theme="littlePrince"] .wallet-budget-card > *,
-[data-theme="littlePrince"] .monthly-planning-card > * {
-    position: relative !important;
-    z-index: 2 !important;
-    color: var(--theme-dark) !important;
-}
-
-/* 錢包預算設定和每月規劃卡片懸停效果 */
-[data-theme="littlePrince"] .wallet-budget-card:hover,
-[data-theme="littlePrince"] .monthly-planning-card:hover {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    background-color: transparent !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    transform: translateY(-4px) scale(1.02) !important;
-    box-shadow: var(--theme-shadow-hover) !important;
-    border-color: var(--theme-warm) !important;
-}
-
-/* 錢包預算設定和每月規劃卡片懸停 ::before 效果 */
-[data-theme="littlePrince"] .wallet-budget-card:hover::before,
-[data-theme="littlePrince"] .monthly-planning-card:hover::before {
-    background: rgba(230, 168, 124, 0.3) !important;
-}
-
-/* 強制覆蓋錢包預算設定卡片背景 - 最高優先級 */
-[data-theme="littlePrince"] .wallet-budget-card,
-[data-theme="littlePrince"] .monthly-planning-card,
-:root[data-theme="littlePrince"] .wallet-budget-card,
-:root[data-theme="littlePrince"] .monthly-planning-card,
-body[data-theme="littlePrince"] .wallet-budget-card,
-body[data-theme="littlePrince"] .monthly-planning-card {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    background-color: transparent !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    border: 3px solid var(--theme-gold) !important;
-    border-radius: 16px !important;
-    box-shadow: var(--theme-shadow) !important;
-    position: relative !important;
-    overflow: hidden !important;
-}
-
-/* 強制覆蓋錢包預算設定卡片 ::before - 最高優先級 */
-[data-theme="littlePrince"] .wallet-budget-card::before,
-[data-theme="littlePrince"] .monthly-planning-card::before,
-:root[data-theme="littlePrince"] .wallet-budget-card::before,
-:root[data-theme="littlePrince"] .monthly-planning-card::before,
-body[data-theme="littlePrince"] .wallet-budget-card::before,
-body[data-theme="littlePrince"] .monthly-planning-card::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    background: rgba(244, 228, 193, 0.15) !important;
-    z-index: 1 !important;
-}
-
-/* 強制覆蓋錢包預算設定卡片內容層 - 最高優先級 */
-[data-theme="littlePrince"] .wallet-budget-card > *,
-[data-theme="littlePrince"] .monthly-planning-card > *,
-:root[data-theme="littlePrince"] .wallet-budget-card > *,
-:root[data-theme="littlePrince"] .monthly-planning-card > *,
-body[data-theme="littlePrince"] .wallet-budget-card > *,
-body[data-theme="littlePrince"] .monthly-planning-card > * {
-    position: relative !important;
-    z-index: 2 !important;
-    color: var(--theme-dark) !important;
-}
-
-/* 超高優先級強制覆蓋錢包預算設定卡片背景 - 最終保障 */
-html body div:has(> .wallet-budget-card) .wallet-budget-card,
-html body .wallet-budget-card,
-html:root body .wallet-budget-card,
-html:root body div .wallet-budget-card,
-html:root body section .wallet-budget-card,
-html:root body main .wallet-budget-card,
-html:root body .container .wallet-budget-card,
-html:root body .row .wallet-budget-card,
-html:root body .col .wallet-budget-card,
-.wallet-budget-card {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    background-color: transparent !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    border: 3px solid var(--theme-gold) !important;
-    border-radius: 16px !important;
-    box-shadow: var(--theme-shadow) !important;
-    position: relative !important;
-    overflow: hidden !important;
-}
-
-/* 超高優先級強制覆蓋 - 主題特定 */
-html[data-theme="littlePrince"] body .wallet-budget-card,
-html:root[data-theme="littlePrince"] body .wallet-budget-card,
-html:root[data-theme="littlePrince"] body div .wallet-budget-card,
-html:root[data-theme="littlePrince"] body section .wallet-budget-card,
-html:root[data-theme="littlePrince"] body main .wallet-budget-card,
-html:root[data-theme="littlePrince"] body .container .wallet-budget-card,
-html:root[data-theme="littlePrince"] body .row .wallet-budget-card,
-html:root[data-theme="littlePrince"] body .col .wallet-budget-card {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    background-color: transparent !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-}
-
-/* 超高優先級強制覆蓋 ::before 偽元素 */
-html body .wallet-budget-card::before,
-html:root body .wallet-budget-card::before,
-html:root body div .wallet-budget-card::before,
-html[data-theme="littlePrince"] body .wallet-budget-card::before,
-html:root[data-theme="littlePrince"] body .wallet-budget-card::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    background: rgba(244, 228, 193, 0.15) !important;
-    z-index: 1 !important;
-}
-
-/* 超高優先級強制覆蓋內容層 */
-html body .wallet-budget-card > *,
-html:root body .wallet-budget-card > *,
-html:root body div .wallet-budget-card > *,
-html[data-theme="littlePrince"] body .wallet-budget-card > *,
-html:root[data-theme="littlePrince"] body .wallet-budget-card > * {
-    position: relative !important;
-    z-index: 2 !important;
-    color: var(--theme-dark) !important;
-}
-[data-theme="littlePrince"] .holding-card::after,
-[data-theme="littlePrince"] .holdings-card::after,
-[data-theme="littlePrince"] .stock-holding-card::after {
-    content: '👑' !important;
-    position: absolute !important;
-    top: 10px !important;
-    right: 10px !important;
-    font-size: 16px !important;
-    animation: twinkle 3s ease-in-out infinite !important;
-    z-index: 4 !important;
-}
-
-/* 響應式設計 */
-@media (max-width: 768px) {
-    [data-theme="littlePrince"] .card,
-    [data-theme="littlePrince"] .investment-card,
-    [data-theme="littlePrince"] .accounting-card,
-    [data-theme="littlePrince"] .wallet-budget-card,
-    [data-theme="littlePrince"] .monthly-planning-card {
-        margin: 8px !important;
-        padding: 16px !important;
-        border-radius: 12px !important;
-    }
-    
-    [data-theme="littlePrince"] button,
-    [data-theme="littlePrince"] .btn {
-        padding: 10px 20px !important;
-        font-size: 13px !important;
-    }
-    
-    [data-theme="littlePrince"] .modal,
-    [data-theme="littlePrince"] .dialog {
-        margin: 16px !important;
-        border-radius: 16px !important;
-    }
+:root[data-theme="littlePrince"] .advisor-send-btn {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%) !important;
+    color: rgba(34, 37, 53, 0.98) !important;
 }
 
 @media (max-width: 480px) {
-    [data-theme="littlePrince"] {
-        font-size: 14px !important;
+    :root[data-theme="littlePrince"] .history-advisor-chat {
+        width: 100% !important;
+        height: 70vh !important;
+        border-radius: 16px 16px 0 0 !important;
     }
-    
-    [data-theme="littlePrince"] .card,
-    [data-theme="littlePrince"] .investment-card,
-    [data-theme="littlePrince"] .accounting-card {
-        margin: 4px !important;
-        padding: 12px !important;
-        border-radius: 8px !important;
-    }
-    
-    [data-theme="littlePrince"] .fab,
-    [data-theme="littlePrince"] #fabBtn {
-        width: 48px !important;
-        height: 48px !important;
-        font-size: 20px !important;
-    }
-}
-
-/* 動畫效果 */
-@keyframes littlePrince {
-    0% { box-shadow: 0 0 5px rgba(212, 175, 55, 0.3); }
-    50% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
-    100% { box-shadow: 0 0 5px rgba(212, 175, 55, 0.3); }
-}
-
-[data-theme="littlePrince"] .card:hover,
-[data-theme="littlePrince"] button:hover {
-    animation: littlePrince 2s ease-in-out infinite !important;
-}
-
-/* 特殊效果 - 星光閃爍 */
-@keyframes twinkle {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
-}
-
-[data-theme="littlePrince"] .card::after {
-    content: '✨' !important;
-    position: absolute !important;
-    top: 10px !important;
-    right: 10px !important;
-    font-size: 16px !important;
-    animation: twinkle 3s ease-in-out infinite !important;
-    z-index: 3 !important;
-}
-
-/* 小森對話框特殊樣式 */
-[data-theme="littlePrince"] .xiaosen-dialog,
-[data-theme="littlePrince"] .advisor-dialog,
-[data-theme="littlePrince"] .ai-assistant {
-    background: rgba(255, 255, 255, 0.98) !important;
-    background-image: linear-gradient(135deg, 
-        rgba(244, 228, 193, 0.9) 0%, 
-        rgba(255, 255, 255, 0.95) 50%, 
-        rgba(168, 200, 236, 0.9) 100%) !important;
-    border: 3px solid var(--theme-gold) !important;
-    border-radius: 20px !important;
-    box-shadow: var(--theme-shadow-hover) !important;
-    max-width: 90vw !important;
-    max-height: 80vh !important;
-    overflow: auto !important;
-    resize: both !important;
-}
-
-[data-theme="littlePrince"] .xiaosen-dialog .dialog-header,
-[data-theme="littlePrince"] .advisor-dialog .dialog-header {
-    background: var(--gradient-primary) !important;
-    color: var(--theme-dark) !important;
-    padding: 20px !important;
-    border-radius: 17px 17px 0 0 !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 600 !important;
-    text-align: center !important;
-}
-
-[data-theme="littlePrince"] .xiaosen-dialog .dialog-content,
-[data-theme="littlePrince"] .advisor-dialog .dialog-content {
-    padding: 24px !important;
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    line-height: 1.6 !important;
-    text-align: justify !important;
-}
-
-/* 記帳本頁面特殊處理 - 完全顯示背景圖片，不淡化 - 最高優先級 */
-[data-theme="littlePrince"] .page-ledger,
-[data-theme="littlePrince"] .ledger-page,
-[data-theme="littlePrince"] .accounting-page,
-[data-theme="littlePrince"] .main-content.ledger,
-:root[data-theme="littlePrince"] .page-ledger,
-:root[data-theme="littlePrince"] .ledger-page,
-:root[data-theme="littlePrince"] .accounting-page,
-:root[data-theme="littlePrince"] .main-content.ledger {
-    background: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") center/cover fixed !important;
-    background-color: transparent !important;
-    background-image: url("https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg") !important;
-    position: relative !important;
-}
-
-/* 移除記帳本背景覆層 - 讓圖片完全顯示 */
-[data-theme="littlePrince"] .page-ledger::before,
-[data-theme="littlePrince"] .ledger-page::before,
-[data-theme="littlePrince"] .accounting-page::before,
-[data-theme="littlePrince"] .main-content.ledger::before,
-:root[data-theme="littlePrince"] .page-ledger::before,
-:root[data-theme="littlePrince"] .ledger-page::before,
-:root[data-theme="littlePrince"] .accounting-page::before,
-:root[data-theme="littlePrince"] .main-content.ledger::before {
-    display: none !important;
-}
-
-/* 記帳本卡片 - 完全不透明 */
-[data-theme="littlePrince"] .ledger-entry,
-[data-theme="littlePrince"] .ledger-item,
-[data-theme="littlePrince"] .transaction-item,
-[data-theme="littlePrince"] .entry-item,
-[data-theme="littlePrince"] .ledger-list-item,
-[data-theme="littlePrince"] .accounting-entry {
-    background: rgba(255, 255, 255, 0.98) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 12px !important;
-    box-shadow: var(--theme-shadow) !important;
-    position: relative !important;
-    z-index: 2 !important;
-    opacity: 1 !important;
-}
-
-[data-theme="littlePrince"] .ledger-entry:hover,
-[data-theme="littlePrince"] .ledger-item:hover,
-[data-theme="littlePrince"] .transaction-item:hover {
-    background: rgba(255, 255, 255, 1) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: var(--theme-shadow-hover) !important;
-    border-color: var(--theme-warm) !important;
-}
-
-/* 記帳本標題和內容 - 增強對比度 */
-[data-theme="littlePrince"] .ledger-entry h3,
-[data-theme="littlePrince"] .ledger-item h3,
-[data-theme="littlePrince"] .transaction-item h3,
-[data-theme="littlePrince"] .entry-item h3 {
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 700 !important;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(255, 255, 255, 0.5) !important;
-    position: relative !important;
-    z-index: 3 !important;
-}
-
-[data-theme="littlePrince"] .ledger-entry p,
-[data-theme="littlePrince"] .ledger-item p,
-[data-theme="littlePrince"] .transaction-item p,
-[data-theme="littlePrince"] .entry-item p {
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 500 !important;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(255, 255, 255, 0.4) !important;
-    position: relative !important;
-    z-index: 3 !important;
-}
-
-/* 記帳本按鈕 */
-[data-theme="littlePrince"] .ledger-button,
-[data-theme="littlePrince"] .add-entry-btn,
-[data-theme="littlePrince"] .delete-entry-btn,
-[data-theme="littlePrince"] .edit-entry-btn {
-    background: var(--gradient-primary) !important;
-    color: var(--theme-dark) !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 8px !important;
-    padding: 8px 16px !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 600 !important;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
-    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3) !important;
-    transition: all 0.3s ease !important;
-    opacity: 1 !important;
-}
-
-[data-theme="littlePrince"] .ledger-button:hover,
-[data-theme="littlePrince"] .add-entry-btn:hover {
-    background: var(--gradient-warm) !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 6px 24px rgba(230, 168, 124, 0.4) !important;
-}
-
-/* 記帳本輸入框 */
-[data-theme="littlePrince"] .ledger-input,
-[data-theme="littlePrince"] .entry-input,
-[data-theme="littlePrince"] .amount-input,
-[data-theme="littlePrince"] .category-input {
-    background: rgba(255, 255, 255, 0.95) !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 8px !important;
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    padding: 10px 14px !important;
-    opacity: 1 !important;
-}
-
-[data-theme="littlePrince"] .ledger-input:focus,
-[data-theme="littlePrince"] .entry-input:focus {
-    border-color: var(--theme-warm) !important;
-    box-shadow: 0 0 16px rgba(230, 168, 124, 0.3) !important;
-    outline: none !important;
-}
-
-/* 記帳本表格 */
-[data-theme="littlePrince"] .ledger-table,
-[data-theme="littlePrince"] .transaction-table {
-    background: rgba(255, 255, 255, 0.95) !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 12px !important;
-    overflow: hidden !important;
-    box-shadow: var(--theme-shadow) !important;
-    opacity: 1 !important;
-}
-
-[data-theme="littlePrince"] .ledger-table th,
-[data-theme="littlePrince"] .transaction-table th {
-    background: var(--gradient-primary) !important;
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 600 !important;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
-    padding: 12px !important;
-    opacity: 1 !important;
-}
-
-[data-theme="littlePrince"] .ledger-table td,
-[data-theme="littlePrince"] .transaction-table td {
-    background: rgba(255, 255, 255, 0.9) !important;
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    padding: 10px 12px !important;
-    border-top: 1px solid var(--theme-gold) !important;
-    opacity: 1 !important;
-}
-
-[data-theme="littlePrince"] .ledger-table tr:hover td,
-[data-theme="littlePrince"] .transaction-table tr:hover td {
-    background: rgba(244, 228, 193, 0.3) !important;
-}
-
-/* 記帳本統計卡片 */
-[data-theme="littlePrince"] .ledger-stats,
-[data-theme="littlePrince"] .accounting-stats,
-[data-theme="littlePrince"] .summary-card,
-[data-theme="littlePrince"] .balance-card {
-    background: rgba(255, 255, 255, 0.98) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border: 2px solid var(--theme-gold) !important;
-    border-radius: 12px !important;
-    box-shadow: var(--theme-shadow) !important;
-    padding: 16px !important;
-    opacity: 1 !important;
-}
-
-[data-theme="littlePrince"] .ledger-stats h4,
-[data-theme="littlePrince"] .accounting-stats h4,
-[data-theme="littlePrince"] .summary-card h4 {
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-weight: 600 !important;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
-}
-
-[data-theme="littlePrince"] .ledger-stats p,
-[data-theme="littlePrince"] .accounting-stats p {
-    color: var(--theme-dark) !important;
-    font-family: var(--theme-font-family) !important;
-    font-size: 18px !important;
-    font-weight: 500 !important;
-}
-
-/* 確保所有記帳本相關元素都不透明 */
-[data-theme="littlePrince"] .ledger-page *,
-[data-theme="littlePrince"] .ledger-container *,
-[data-theme="littlePrince"] .accounting-page * {
-    opacity: 1 !important;
-}
-
-[data-theme="littlePrince"] .ledger-page .transparent,
-[data-theme="littlePrince"] .ledger-container .transparent,
-[data-theme="littlePrince"] .accounting-page .transparent {
-    opacity: 0.95 !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-}
-
-/* 確保所有元素都不透明 */
-[data-theme="littlePrince"] * {
-    opacity: 1 !important;
-}
-
-[data-theme="littlePrince"] .transparent,
-[data-theme="littlePrince"] .semi-transparent {
-    opacity: 0.9 !important;
-    background: rgba(255, 255, 255, 0.9) !important;
 }

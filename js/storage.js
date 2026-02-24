@@ -1,5 +1,108 @@
 // ========== 存儲相關工具函數 ==========
 
+ function openAppDb() {
+     return new Promise((resolve, reject) => {
+         if (!('indexedDB' in window)) {
+             reject(new Error('IndexedDB not supported'));
+             return;
+         }
+ 
+         const request = indexedDB.open('money-money', 1);
+         request.onupgradeneeded = () => {
+             const db = request.result;
+             if (!db.objectStoreNames.contains('kv')) {
+                 db.createObjectStore('kv');
+             }
+         };
+         request.onsuccess = () => resolve(request.result);
+         request.onerror = () => reject(request.error);
+     });
+ }
+ 
+ async function idbGet(key) {
+     const db = await openAppDb();
+     return new Promise((resolve, reject) => {
+         const tx = db.transaction('kv', 'readonly');
+         const store = tx.objectStore('kv');
+         const req = store.get(key);
+         req.onsuccess = () => resolve(req.result);
+         req.onerror = () => reject(req.error);
+         tx.oncomplete = () => db.close();
+     });
+ }
+ 
+ async function idbSet(key, value) {
+     const db = await openAppDb();
+     return new Promise((resolve, reject) => {
+         const tx = db.transaction('kv', 'readwrite');
+         const store = tx.objectStore('kv');
+         const req = store.put(value, key);
+         req.onsuccess = () => resolve(true);
+         req.onerror = () => reject(req.error);
+         tx.oncomplete = () => db.close();
+     });
+ }
+
+ async function initCategoryCustomIconsStorage() {
+     try {
+         const fromIdb = await idbGet('categoryCustomIcons');
+         if (fromIdb && typeof fromIdb === 'object') {
+             window.__categoryCustomIconsCache = fromIdb;
+             return fromIdb;
+         }
+ 
+         const fromLocal = localStorage.getItem('categoryCustomIcons');
+         if (fromLocal) {
+             let parsed = {};
+             try {
+                 parsed = JSON.parse(fromLocal) || {};
+             } catch (e) {
+                 parsed = {};
+             }
+             await idbSet('categoryCustomIcons', parsed);
+             localStorage.removeItem('categoryCustomIcons');
+             window.__categoryCustomIconsCache = parsed;
+             return parsed;
+         }
+ 
+         window.__categoryCustomIconsCache = {};
+         return {};
+     } catch (e) {
+         const fallback = JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
+         window.__categoryCustomIconsCache = fallback;
+         return fallback;
+     }
+ }
+
+ function getCategoryCustomIconsSync() {
+     if (window.__categoryCustomIconsCache && typeof window.__categoryCustomIconsCache === 'object') {
+         return window.__categoryCustomIconsCache;
+     }
+     try {
+         return JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
+     } catch (e) {
+         return {};
+     }
+ }
+
+ async function setCategoryCustomIcons(customIcons) {
+     try {
+         await idbSet('categoryCustomIcons', customIcons || {});
+         window.__categoryCustomIconsCache = customIcons || {};
+         return true;
+     } catch (e) {
+         try {
+             localStorage.setItem('categoryCustomIcons', JSON.stringify(customIcons || {}));
+             window.__categoryCustomIconsCache = customIcons || {};
+             return true;
+         } catch (err) {
+             console.error('categoryCustomIcons save failed:', err);
+             alert('存儲空間不足！\n\n請嘗試：\n1. 刪除一些不使用的分類圖標\n2. 使用較小的圖片\n3. 清除瀏覽器緩存');
+             return false;
+         }
+     }
+ }
+
 // 壓縮圖片函數（減少 localStorage 使用量）
 // 針對大量圖示優化：更小的尺寸和更低的品質
 function compressImage(dataUrl, maxWidth = 150, maxHeight = 150, quality = 0.6) {
@@ -91,7 +194,7 @@ async function compressAllIcons(customIcons) {
 
 // 獲取存儲空間使用情況
 function getStorageInfo() {
-    const customIcons = JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
+    const customIcons = getCategoryCustomIconsSync();
     const iconCount = Object.keys(customIcons).length;
     let totalSize = 0;
     let imageCount = 0;

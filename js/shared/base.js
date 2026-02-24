@@ -158,13 +158,14 @@ function createModal(options = {}) {
     };
     modal.innerHTML = `
         <div class="modal-content" style="
-            background: white;
+            background: var(--bg-card, rgba(255, 255, 255, 0.92));
+            color: var(--text-primary, #111);
             border-radius: 12px;
             padding: 24px;
             ${sizeMap[size] || sizeMap.medium}
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-primary, 0 8px 32px rgba(0,0,0,0.2));
             animation: slideUp 0.3s ease;
         ">
             ${title ? `<h2 style="margin:0 0 16px 0;">${title}</h2>` : ''}
@@ -177,7 +178,7 @@ function createModal(options = {}) {
                 border: none;
                 font-size: 20px;
                 cursor: pointer;
-                color: #666;
+                color: var(--text-secondary, #666);
             ">✕</button>
         </div>
     `;

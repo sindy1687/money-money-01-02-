@@ -2,19 +2,11 @@
 
 // 主題選擇器顯示（如果 script.js 中有相關邏輯，放這裡）
 function showThemeSelector() {
-    // 檢查 theme.js 中的 showThemeSelector 函數是否可用
-    try {
-        // 直接調用 theme.js 中的 showThemeSelector 函數
-        // 使用 setTimeout 確保在當前執行上下文之外調用
-        setTimeout(() => {
-            if (typeof showThemeSelector === 'function') {
-                showThemeSelector();
-            } else {
-                console.warn('showThemeSelector from theme.js not available');
-            }
-        }, 0);
-    } catch (error) {
-        console.error('Error calling showThemeSelector:', error);
+    // 假設主題選擇器邏輯已經在 theme.js，這裡只放 script.js 內的依賴
+    if (typeof window.showThemeSelectorFromTheme === 'function') {
+        window.showThemeSelectorFromTheme();
+    } else {
+        console.warn('showThemeSelector not available');
     }
 }
 
