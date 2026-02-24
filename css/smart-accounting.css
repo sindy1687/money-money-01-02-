@@ -2,8 +2,8 @@
 
 /* 智慧分析按鈕 */
 .smart-analysis-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--text-white);
     border: none;
     padding: 8px 16px;
     border-radius: 6px;
@@ -17,13 +17,13 @@
 
 .smart-analysis-btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-primary) 40%, transparent);
 }
 
 /* 智慧建議橫幅 */
 .smart-suggestion-banner {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--text-white);
     padding: 12px 20px;
     margin: 10px 0;
     border-radius: 8px;
@@ -110,8 +110,8 @@
 
 /* 智慧建議按鈕 */
 .smart-suggestion-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--text-white);
     border: none;
     padding: 8px 16px;
     border-radius: 6px;
@@ -126,7 +126,7 @@
 
 .smart-suggestion-btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-primary) 40%, transparent);
 }
 
 /* 智慧建議對話框 */

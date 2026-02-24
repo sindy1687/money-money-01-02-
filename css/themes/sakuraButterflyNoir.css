@@ -1,0 +1,445 @@
+:root[data-theme="sakuraButterflyNoir"] {
+    --color-primary: #1a2d55;
+    --color-primary-light: #4b73c6;
+    --color-primary-lighter: #dbe7ff;
+    --color-primary-dark: #071122;
+
+    --color-secondary: #8b5cf6;
+    --color-secondary-light: #c4b5fd;
+    --color-secondary-dark: #5b21b6;
+
+    --color-accent: #d6b25e;
+    --color-accent-light: #f3e3b7;
+    --color-accent-dark: #9a6a1f;
+
+    --color-success: #16a34a;
+    --color-danger: #dc2626;
+    --color-warning: #f59e0b;
+    --color-info: #2563eb;
+    --color-error: var(--color-danger);
+
+    --bg-primary: linear-gradient(135deg,
+        rgba(7, 17, 34, 0.92) 0%,
+        rgba(26, 45, 85, 0.62) 48%,
+        rgba(139, 92, 246, 0.22) 78%,
+        rgba(214, 178, 94, 0.16) 100%);
+
+    --bg-body: rgba(240, 246, 255, 0.76);
+    --bg-body-strong: rgba(240, 246, 255, 0.92);
+    --bg-dark: rgba(7, 17, 34, 0.82);
+
+    --bg-gradient: linear-gradient(135deg,
+        rgba(240, 246, 255, 0.56) 0%,
+        rgba(219, 231, 255, 0.34) 55%,
+        rgba(26, 45, 85, 0.16) 100%);
+
+    --bg-gradient-light: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.82) 0%,
+        rgba(219, 231, 255, 0.24) 100%);
+
+    --bg-white: rgba(252, 253, 255, 0.94);
+    --bg-card: rgba(255, 255, 255, 0.90);
+    --bg-light: rgba(240, 246, 255, 0.84);
+    --bg-lighter: rgba(219, 231, 255, 0.72);
+    --bg-soft: rgba(26, 45, 85, 0.08);
+    --bg-soft-strong: rgba(139, 92, 246, 0.12);
+
+    --text-primary: rgba(7, 18, 28, 0.96);
+    --text-secondary: rgba(7, 18, 28, 0.78);
+    --text-tertiary: rgba(7, 18, 28, 0.62);
+    --text-strong: rgba(0, 0, 0, 0.96);
+    --text-white: rgba(255, 255, 255, 0.98);
+
+    --border-primary: rgba(26, 45, 85, 0.46);
+    --border-light: rgba(7, 18, 28, 0.12);
+    --border-medium: rgba(26, 45, 85, 0.22);
+    --card-border-color: rgba(139, 92, 246, 0.18);
+    --control-border-color: rgba(26, 45, 85, 0.20);
+    --table-border-color: rgba(7, 18, 28, 0.12);
+
+    --shadow-primary: 0 18px 54px rgba(7, 17, 34, 0.20);
+    --shadow-primary-lg: 0 28px 78px rgba(7, 17, 34, 0.18);
+
+    --action-side-bg: color-mix(in srgb, rgba(255, 255, 255, 0.90) 84%, rgba(26, 45, 85, 0.12));
+    --action-side-bg-hover: color-mix(in srgb, rgba(255, 255, 255, 0.90) 74%, rgba(26, 45, 85, 0.18));
+    --action-side-text: var(--text-primary);
+
+    --action-buy-bg: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-primary) 90%, white) 0%,
+        color-mix(in srgb, var(--color-primary-dark) 78%, var(--color-secondary)) 100%);
+
+    --action-buy-bg-hover: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-primary-light) 86%, white) 0%,
+        color-mix(in srgb, var(--color-primary-dark) 82%, var(--color-secondary-dark)) 100%);
+
+    --action-buy-text: rgba(255, 255, 255, 0.98);
+
+    --action-dca-bg: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-accent-light) 84%, white) 0%,
+        color-mix(in srgb, var(--color-accent) 72%, rgba(255, 182, 212, 0.80)) 55%,
+        color-mix(in srgb, var(--color-secondary) 64%, var(--color-primary-dark)) 100%);
+
+    --action-dca-bg-hover: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-accent-light) 88%, white) 0%,
+        color-mix(in srgb, var(--color-accent) 80%, var(--color-accent-dark)) 100%);
+
+    --action-dca-text: rgba(7, 18, 28, 0.96);
+}
+
+:root[data-theme="sakuraButterflyNoir"] body {
+    background: url("https://i.pinimg.com/1200x/e3/60/80/e360802409fd0907c577495677b9c5d1.jpg") center/cover no-repeat fixed;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+:root[data-theme="sakuraButterflyNoir"] body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.92;
+    background-image:
+        radial-gradient(circle at 22% 18%, rgba(255, 218, 236, 0.26), transparent 58%),
+        radial-gradient(circle at 78% 24%, rgba(214, 178, 94, 0.30), transparent 62%),
+        radial-gradient(circle at 62% 76%, rgba(139, 92, 246, 0.20), transparent 64%),
+        radial-gradient(circle at 34% 84%, rgba(75, 115, 198, 0.18), transparent 60%),
+        linear-gradient(135deg, rgba(7, 17, 34, 0.72) 0%, rgba(7, 17, 34, 0.52) 55%, rgba(7, 17, 34, 0.70) 100%);
+}
+
+:root[data-theme="sakuraButterflyNoir"] .page-ledger,
+:root[data-theme="sakuraButterflyNoir"] .page-input,
+:root[data-theme="sakuraButterflyNoir"] .page-chart,
+:root[data-theme="sakuraButterflyNoir"] .page-budget,
+:root[data-theme="sakuraButterflyNoir"] .page-monthly-planner,
+:root[data-theme="sakuraButterflyNoir"] .page-daily-budget,
+:root[data-theme="sakuraButterflyNoir"] .page-settings,
+:root[data-theme="sakuraButterflyNoir"] .page-category-manage,
+:root[data-theme="sakuraButterflyNoir"] .page-investment,
+:root[data-theme="sakuraButterflyNoir"] .page-wallet,
+:root[data-theme="sakuraButterflyNoir"] .page-history,
+:root[data-theme="sakuraButterflyNoir"] .page-planner,
+:root[data-theme="sakuraButterflyNoir"] .page-manage-investment,
+:root[data-theme="sakuraButterflyNoir"] .page-annual-report,
+:root[data-theme="sakuraButterflyNoir"] .page-diary,
+:root[data-theme="sakuraButterflyNoir"] .page-installment,
+:root[data-theme="sakuraButterflyNoir"] .installment-page,
+:root[data-theme="sakuraButterflyNoir"] .dca-page,
+:root[data-theme="sakuraButterflyNoir"] .fixed-deposit-page,
+:root[data-theme="sakuraButterflyNoir"] .dividend-page,
+:root[data-theme="sakuraButterflyNoir"] .dca-management-page,
+:root[data-theme="sakuraButterflyNoir"] .dca-setup-page,
+:root[data-theme="sakuraButterflyNoir"] .auto-transfer-management-page,
+:root[data-theme="sakuraButterflyNoir"] .auto-transfer-setup-page,
+:root[data-theme="sakuraButterflyNoir"] .investment-input-page,
+:root[data-theme="sakuraButterflyNoir"] .installment-management-page,
+:root[data-theme="sakuraButterflyNoir"] .installment-setup-page,
+:root[data-theme="sakuraButterflyNoir"] .wishlist-content,
+:root[data-theme="sakuraButterflyNoir"] .savings-content {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .card,
+:root[data-theme="sakuraButterflyNoir"] .record-card,
+:root[data-theme="sakuraButterflyNoir"] .ledger-card,
+:root[data-theme="sakuraButterflyNoir"] .summary-card,
+:root[data-theme="sakuraButterflyNoir"] .budget-card,
+:root[data-theme="sakuraButterflyNoir"] .wallet-card,
+:root[data-theme="sakuraButterflyNoir"] .chart-card,
+:root[data-theme="sakuraButterflyNoir"] .investment-card,
+:root[data-theme="sakuraButterflyNoir"] .manage-investment-card,
+:root[data-theme="sakuraButterflyNoir"] .annual-report-card,
+:root[data-theme="sakuraButterflyNoir"] .diary-card,
+:root[data-theme="sakuraButterflyNoir"] .monthly-planning-card,
+:root[data-theme="sakuraButterflyNoir"] .investment-settings-card,
+:root[data-theme="sakuraButterflyNoir"] .wallet-budget-card,
+:root[data-theme="sakuraButterflyNoir"] .holding-card,
+:root[data-theme="sakuraButterflyNoir"] .buying-card,
+:root[data-theme="sakuraButterflyNoir"] .selling-card,
+:root[data-theme="sakuraButterflyNoir"] .dividend-card,
+:root[data-theme="sakuraButterflyNoir"] .regular-investment-card,
+:root[data-theme="sakuraButterflyNoir"] .investment-management-card,
+:root[data-theme="sakuraButterflyNoir"] .stock-item-card,
+:root[data-theme="sakuraButterflyNoir"] .monthly-planner-card,
+:root[data-theme="sakuraButterflyNoir"] .dividend-stat-card,
+:root[data-theme="sakuraButterflyNoir"] .dca-card,
+:root[data-theme="sakuraButterflyNoir"] .installment-card,
+:root[data-theme="sakuraButterflyNoir"] .fixed-deposit-card,
+:root[data-theme="sakuraButterflyNoir"] .dca-item-card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--card-border-color) !important;
+    box-shadow: var(--shadow-primary) !important;
+    color: var(--text-primary) !important;
+    backdrop-filter: blur(16px);
+}
+
+:root[data-theme="sakuraButterflyNoir"] .investment-card {
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.88) 0%,
+            rgba(255, 255, 255, 0.78) 100%),
+        url("https://i.pinimg.com/736x/88/f7/00/88f700ccd7c12c7d48f5be80bb89ecd1.jpg") center/cover no-repeat !important;
+ }
+
+:root[data-theme="sakuraButterflyNoir"] .investment-card::before,
+:root[data-theme="sakuraButterflyNoir"] .stock-item-card::before {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.62) 0%,
+        rgba(219, 231, 255, 0.38) 55%,
+        rgba(255, 218, 236, 0.22) 100%);
+}
+
+:root[data-theme="sakuraButterflyNoir"] .nav-item.active {
+    background: rgba(139, 92, 246, 0.14);
+    box-shadow: 0 10px 26px rgba(7, 17, 34, 0.16);
+}
+
+:root[data-theme="sakuraButterflyNoir"] .theme-modal-overlay,
+:root[data-theme="sakuraButterflyNoir"] .modal-overlay,
+:root[data-theme="sakuraButterflyNoir"] .dialog-overlay,
+:root[data-theme="sakuraButterflyNoir"] .portfolio-analysis-modal {
+    background: color-mix(in srgb, rgba(7, 17, 34, 0.62) 75%, transparent) !important;
+    backdrop-filter: blur(10px);
+}
+
+:root[data-theme="sakuraButterflyNoir"] .modal-content,
+:root[data-theme="sakuraButterflyNoir"] .modal-content-standard,
+:root[data-theme="sakuraButterflyNoir"] .budget-category-modal-content,
+:root[data-theme="sakuraButterflyNoir"] .budget-setting-modal-content,
+:root[data-theme="sakuraButterflyNoir"] .category-modal-content,
+:root[data-theme="sakuraButterflyNoir"] .dca-execute-modal .modal-content,
+:root[data-theme="sakuraButterflyNoir"] .account-modal-content,
+:root[data-theme="sakuraButterflyNoir"] .emoji-modal-content,
+:root[data-theme="sakuraButterflyNoir"] .history-modal-content,
+:root[data-theme="sakuraButterflyNoir"] .entry-detail-content,
+:root[data-theme="sakuraButterflyNoir"] .crop-modal-content,
+:root[data-theme="sakuraButterflyNoir"] .dialog-container,
+:root[data-theme="sakuraButterflyNoir"] .xiaosen-dialog,
+:root[data-theme="sakuraButterflyNoir"] .komori-dialog,
+:root[data-theme="sakuraButterflyNoir"] .mori-dialog-box,
+:root[data-theme="sakuraButterflyNoir"] .theme-modal-content,
+:root[data-theme="sakuraButterflyNoir"] .theme-modal-container,
+:root[data-theme="sakuraButterflyNoir"] .dialog-content,
+:root[data-theme="sakuraButterflyNoir"] .popup-content,
+:root[data-theme="sakuraButterflyNoir"] .portfolio-analysis-content {
+    background: color-mix(in srgb, var(--bg-card) 94%, rgba(219, 231, 255, 0.56)) !important;
+    border: 1px solid var(--border-medium) !important;
+    box-shadow: var(--shadow-primary-lg) !important;
+    color: var(--text-primary) !important;
+    backdrop-filter: blur(18px);
+    max-width: min(92vw, 720px);
+}
+
+:root[data-theme="sakuraButterflyNoir"] .portfolio-analysis-header {
+    background: color-mix(in srgb, var(--bg-card) 86%, rgba(255, 218, 236, 0.30)) !important;
+    border-bottom: 1px solid var(--border-light) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .spending-analysis-panel,
+:root[data-theme="sakuraButterflyNoir"] .reminder-panel,
+:root[data-theme="sakuraButterflyNoir"] .quick-settings,
+:root[data-theme="sakuraButterflyNoir"] .smart-notification {
+    background: color-mix(in srgb, var(--bg-card) 94%, rgba(255, 218, 236, 0.30)) !important;
+    border-color: var(--border-medium) !important;
+    box-shadow: var(--shadow-primary-lg) !important;
+    color: var(--text-primary) !important;
+    backdrop-filter: blur(18px);
+}
+
+:root[data-theme="sakuraButterflyNoir"] .input-section {
+    background: color-mix(in srgb, var(--bg-card) 94%, rgba(219, 231, 255, 0.46)) !important;
+    border-top: 2px solid rgba(26, 45, 85, 0.16) !important;
+    box-shadow: 0 -10px 28px rgba(7, 17, 34, 0.14);
+    backdrop-filter: blur(18px);
+}
+
+:root[data-theme="sakuraButterflyNoir"] .bottom-nav {
+    background: color-mix(in srgb, rgba(255, 255, 255, 0.86) 90%, rgba(219, 231, 255, 0.46)) !important;
+    border-top: 1px solid rgba(26, 45, 85, 0.14) !important;
+    backdrop-filter: blur(18px);
+}
+
+:root[data-theme="sakuraButterflyNoir"] .form-input,
+:root[data-theme="sakuraButterflyNoir"] .form-select,
+:root[data-theme="sakuraButterflyNoir"] .form-textarea,
+:root[data-theme="sakuraButterflyNoir"] .note-input,
+:root[data-theme="sakuraButterflyNoir"] .theme-search-input,
+:root[data-theme="sakuraButterflyNoir"] .advisor-chat-input {
+    background: rgba(255, 255, 255, 0.90) !important;
+    border: 2px solid rgba(26, 45, 85, 0.18) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .form-input:focus,
+:root[data-theme="sakuraButterflyNoir"] .form-select:focus,
+:root[data-theme="sakuraButterflyNoir"] .form-textarea:focus,
+:root[data-theme="sakuraButterflyNoir"] .note-input:focus,
+:root[data-theme="sakuraButterflyNoir"] .theme-search-input:focus,
+:root[data-theme="sakuraButterflyNoir"] .advisor-chat-input:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 3px rgba(26, 45, 85, 0.16) !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .header-section,
+:root[data-theme="sakuraButterflyNoir"] .ledger-header,
+:root[data-theme="sakuraButterflyNoir"] .chart-header,
+:root[data-theme="sakuraButterflyNoir"] .budget-header,
+:root[data-theme="sakuraButterflyNoir"] .monthly-planner-header,
+:root[data-theme="sakuraButterflyNoir"] .theme-modal-header {
+    background: color-mix(in srgb, rgba(255, 255, 255, 0.80) 88%, rgba(219, 231, 255, 0.42)) !important;
+    border-bottom: 1px solid rgba(26, 45, 85, 0.12) !important;
+    backdrop-filter: blur(18px);
+}
+
+:root[data-theme="sakuraButterflyNoir"] .tab-btn,
+:root[data-theme="sakuraButterflyNoir"] .chart-tab-btn,
+:root[data-theme="sakuraButterflyNoir"] .ledger-type-tab,
+:root[data-theme="sakuraButterflyNoir"] .record-type-tab,
+:root[data-theme="sakuraButterflyNoir"] .category-tab {
+    background: rgba(255, 255, 255, 0.86) !important;
+    border: 1px solid rgba(26, 45, 85, 0.16) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .tab-btn.active,
+:root[data-theme="sakuraButterflyNoir"] .chart-tab-btn.active,
+:root[data-theme="sakuraButterflyNoir"] .ledger-type-tab.active,
+:root[data-theme="sakuraButterflyNoir"] .record-type-tab.active,
+:root[data-theme="sakuraButterflyNoir"] .category-tab.active {
+    background: rgba(139, 92, 246, 0.14) !important;
+    border: 2px solid rgba(139, 92, 246, 0.26) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 12px 28px rgba(7, 17, 34, 0.14) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .tab-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .chart-tab-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .ledger-type-tab:hover,
+:root[data-theme="sakuraButterflyNoir"] .record-type-tab:hover,
+:root[data-theme="sakuraButterflyNoir"] .category-tab:hover {
+    background: rgba(26, 45, 85, 0.08) !important;
+    border-color: rgba(26, 45, 85, 0.22) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .key-btn {
+    background: rgba(255, 255, 255, 0.88) !important;
+    border: 2px solid rgba(26, 45, 85, 0.14) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 10px 26px rgba(7, 17, 34, 0.12) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .key-btn:hover {
+    background: rgba(26, 45, 85, 0.08) !important;
+    border-color: rgba(26, 45, 85, 0.22) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .key-btn.operator {
+    background: rgba(139, 92, 246, 0.14) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .btn,
+:root[data-theme="sakuraButterflyNoir"] .buy-action-btn-large {
+    background: var(--action-buy-bg) !important;
+    color: var(--action-buy-text) !important;
+    border: 2px solid color-mix(in srgb, var(--color-primary) 60%, white) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .buy-action-btn-large:hover {
+    background: var(--action-buy-bg-hover) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .dca-action-btn-large {
+    background: var(--action-dca-bg) !important;
+    color: var(--action-dca-text) !important;
+    border: 2px solid color-mix(in srgb, var(--color-accent) 55%, white) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .dca-action-btn-large:hover {
+    background: var(--action-dca-bg-hover) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .dca-add-btn,
+:root[data-theme="sakuraButterflyNoir"] .form-submit-btn,
+:root[data-theme="sakuraButterflyNoir"] .entry-detail-edit-btn,
+:root[data-theme="sakuraButterflyNoir"] .entry-edit-save,
+:root[data-theme="sakuraButterflyNoir"] .investment-form-submit-btn,
+:root[data-theme="sakuraButterflyNoir"] .buy-btn,
+:root[data-theme="sakuraButterflyNoir"] .dca-execute-btn,
+:root[data-theme="sakuraButterflyNoir"] .buy-action-btn-large,
+:root[data-theme="sakuraButterflyNoir"] .allocation-btn.primary,
+:root[data-theme="sakuraButterflyNoir"] .modal-btn.confirm-btn,
+:root[data-theme="sakuraButterflyNoir"] .smart-analysis-btn,
+:root[data-theme="sakuraButterflyNoir"] .smart-reminders-btn,
+:root[data-theme="sakuraButterflyNoir"] .smart-suggestion-btn {
+    background: var(--action-buy-bg) !important;
+    color: var(--action-buy-text) !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .dca-add-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .form-submit-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .entry-detail-edit-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .entry-edit-save:hover,
+:root[data-theme="sakuraButterflyNoir"] .investment-form-submit-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .buy-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .dca-execute-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .allocation-btn.primary:hover,
+:root[data-theme="sakuraButterflyNoir"] .modal-btn.confirm-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .smart-analysis-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .smart-reminders-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .smart-suggestion-btn:hover {
+    background: var(--action-buy-bg-hover) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .allocation-btn,
+:root[data-theme="sakuraButterflyNoir"] .modal-btn.cancel-btn {
+    background: var(--action-side-bg) !important;
+    color: var(--action-side-text) !important;
+    border: 1px solid rgba(26, 45, 85, 0.20) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .back-btn,
+:root[data-theme="sakuraButterflyNoir"] .modal-back-btn,
+:root[data-theme="sakuraButterflyNoir"] .return-btn,
+:root[data-theme="sakuraButterflyNoir"] .input-back-btn,
+:root[data-theme="sakuraButterflyNoir"] .dca-back-btn,
+:root[data-theme="sakuraButterflyNoir"] .dca-setup-back-btn {
+    background: rgba(255, 255, 255, 0.86) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid rgba(26, 45, 85, 0.16) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .back-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .modal-back-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .return-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .input-back-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .dca-back-btn:hover,
+:root[data-theme="sakuraButterflyNoir"] .dca-setup-back-btn:hover {
+    background: rgba(26, 45, 85, 0.08) !important;
+    border-color: rgba(26, 45, 85, 0.30) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .insight-item.info {
+    background: color-mix(in srgb, var(--bg-card) 86%, rgba(37, 99, 235, 0.10)) !important;
+    border-left-color: var(--color-info) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .insight-item.warning {
+    background: color-mix(in srgb, var(--bg-card) 86%, rgba(245, 158, 11, 0.10)) !important;
+    border-left-color: var(--color-warning) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .insight-item.error {
+    background: color-mix(in srgb, var(--bg-card) 86%, rgba(220, 38, 38, 0.10)) !important;
+    border-left-color: var(--color-danger) !important;
+}
+
+:root[data-theme="sakuraButterflyNoir"] .recommendation-item {
+    background: color-mix(in srgb, var(--bg-card) 86%, rgba(22, 163, 74, 0.10)) !important;
+    border-left-color: var(--color-success) !important;
+}
