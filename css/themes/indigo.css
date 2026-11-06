@@ -1,3 +1,146 @@
+/* ===== indigo 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+/* ========== 新增主題：靛藍色主題 ========== */
+:root[data-theme="indigo"] {
+    --color-primary: #5c6bc0;
+    --color-primary-light: #7986cb;
+    --color-primary-lighter: #9fa8da;
+    --color-primary-dark: #3f51b5;
+    --bg-primary: linear-gradient(135deg, #e8eaf6 0%, #f3f4f9 100%);
+    --bg-gradient: linear-gradient(135deg, #7986cb 0%, #5c6bc0 100%);
+    --bg-gradient-light: linear-gradient(135deg, #e8eaf6 0%, #f3f4f9 100%);
+    --border-primary: #5c6bc0;
+    --shadow-primary: 0 2px 8px rgba(92, 107, 192, 0.25);
+    --shadow-primary-lg: 0 4px 12px rgba(92, 107, 192, 0.3);
+    --color-primary-rgba-08: rgba(92, 107, 192, 0.08);
+    --color-primary-rgba-10: rgba(92, 107, 192, 0.1);
+    --color-primary-rgba-15: rgba(92, 107, 192, 0.15);
+    --color-primary-rgba-20: rgba(92, 107, 192, 0.2);
+    --color-primary-rgba-25: rgba(92, 107, 192, 0.25);
+    --color-primary-rgba-30: rgba(92, 107, 192, 0.3);
+    --color-primary-rgba-12: rgba(92, 107, 192, 0.12);
+    --color-primary-rgba-18: rgba(92, 107, 192, 0.18);
+    --color-primary-light-rgba-08: rgba(121, 134, 203, 0.08);
+    --color-primary-light-rgba-10: rgba(121, 134, 203, 0.1);
+    --color-primary-light-rgba-15: rgba(121, 134, 203, 0.15);
+    --color-primary-light-rgba-20: rgba(121, 134, 203, 0.2);
+    --color-primary-light-rgba-25: rgba(121, 134, 203, 0.25);
+    --color-primary-light-rgba-30: rgba(121, 134, 203, 0.3);
+    --color-primary-light-rgba-40: rgba(121, 134, 203, 0.4);
+    --bg-light-gradient: linear-gradient(135deg, var(--bg-white) 0%, #f3f4f9 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, #f3f4f9 0%, var(--bg-white) 100%);
+    
+    /* 文字顏色變數 */
+    --text-primary: rgba(255, 255, 255, 0.95);
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-tertiary: rgba(255, 255, 255, 0.75);
+    --text-white: rgba(255, 255, 255, 0.98);
+    
+    /* 背景顏色變數 */
+    --bg-white: rgba(92, 107, 192, 0.8);
+    --bg-card: rgba(92, 107, 192, 0.7);
+    --bg-light: rgba(121, 134, 203, 0.6);
+    --bg-lighter: rgba(159, 168, 218, 0.5);
+    --bg-soft: rgba(63, 81, 181, 0.4);
+}
+
+/* Indigo 主題記帳記錄條目金額顏色 - 白色 */
+:root[data-theme="indigo"] .transaction-item .amount,
+:root[data-theme="indigo"] .transaction-item .money,
+:root[data-theme="indigo"] .transaction-item .price,
+:root[data-theme="indigo"] .transaction-item .value,
+:root[data-theme="indigo"] .transaction-item .transaction-amount {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 800 !important;
+}
+
+/* Indigo 主題記帳記錄條目日期顏色 - 白色 */
+:root[data-theme="indigo"] .transaction-item .date,
+:root[data-theme="indigo"] .transaction-item .time,
+:root[data-theme="indigo"] .transaction-item .datetime,
+:root[data-theme="indigo"] .group-header {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 600 !important;
+}
+
+/* Indigo 主題記帳記錄條目分類顏色 - 白色 */
+:root[data-theme="indigo"] .transaction-item .transaction-category,
+:root[data-theme="indigo"] .transaction-item .transaction-account,
+:root[data-theme="indigo"] .transaction-item .transaction-member,
+:root[data-theme="indigo"] .transaction-item .transaction-note {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 500 !important;
+}
+
+/* Indigo 主題記帳記錄條目圖標顏色 */
+:root[data-theme="indigo"] .transaction-item .transaction-icon,
+:root[data-theme="indigo"] .transaction-item .transaction-emoji-image {
+    filter: hue-rotate(240deg) saturate(1.2) !important;
+}
+
+/* Indigo 主題歷史記錄備註文字顏色 - 白色 (高優先級) */
+:root[data-theme="indigo"] .history-transaction-note {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* Indigo 主題歷史記錄成員文字顏色 - 白色 (高優先級) */
+:root[data-theme="indigo"] .history-transaction-member {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* Indigo 主題歷史記錄帳戶文字顏色 - 白色 (高優先級) */
+:root[data-theme="indigo"] .history-transaction-account {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* Indigo 主題歷史記錄備註文字顏色 - 白色 (最高優先級) */
+:root[data-theme="indigo"] .card .history-transaction-note,
+:root[data-theme="indigo"] .page-history .history-transaction-note,
+:root[data-theme="indigo"] .transaction-item .history-transaction-note {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* Indigo 主題歷史記錄成員文字顏色 - 白色 (最高優先級) */
+:root[data-theme="indigo"] .card .history-transaction-member,
+:root[data-theme="indigo"] .page-history .history-transaction-member,
+:root[data-theme="indigo"] .transaction-item .history-transaction-member {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* Indigo 主題歷史記錄帳戶文字顏色 - 白色 (最高優先級) */
+:root[data-theme="indigo"] .card .history-transaction-account,
+:root[data-theme="indigo"] .page-history .history-transaction-account,
+:root[data-theme="indigo"] .transaction-item .history-transaction-account {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* Indigo 主題歷史記錄備註文字顏色 - 白色 (所有子元素) */
+:root[data-theme="indigo"] .card .history-transaction-note *,
+:root[data-theme="indigo"] .page-history .history-transaction-note *,
+:root[data-theme="indigo"] .transaction-item .history-transaction-note * {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Indigo 主題歷史記錄成員文字顏色 - 白色 (所有子元素) */
+:root[data-theme="indigo"] .card .history-transaction-member *,
+:root[data-theme="indigo"] .page-history .history-transaction-member *,
+:root[data-theme="indigo"] .transaction-item .history-transaction-member * {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Indigo 主題歷史記錄帳戶文字顏色 - 白色 (所有子元素) */
+:root[data-theme="indigo"] .card .history-transaction-account *,
+:root[data-theme="indigo"] .page-history .history-transaction-account *,
+:root[data-theme="indigo"] .transaction-item .history-transaction-account * {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ===== indigo 主題原有樣式 ===== */
 ﻿/* ========== 新增主題：靛藍色主題 ========== */
 :root[data-theme="indigo"] {
     --color-primary: #5c6bc0;
@@ -103,8 +246,21 @@
     filter: hue-rotate(240deg) saturate(1.2) !important;
 }
 
-
-:root[data-theme="indigo"] body,
-
-:root[data-theme="indigo"] body::before,
-
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="indigo"] {
+    --k-main: #5c6bc0;
+    --k-main-dark: #384692;
+    --k-main-light: #ccd0eb;
+    --k-btn-top: #5c6bc0;
+    --k-btn-bottom: #384692;
+    --k-on-main: #ffffff;
+    --k-paper: #f6f7fb;
+    --k-paper-2: #e5e8f5;
+    --k-line: #aeb6e0;
+    --k-ink: #1a2042;
+    --k-ink-soft: #444d7e;
+    --k-title: #384692;
+    --k-deep: #141933;
+    --k-on-deep: #dbdef0;
+}
+/* ===== 主題設計工具組配色結束 ===== */

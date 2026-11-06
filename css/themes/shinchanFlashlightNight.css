@@ -262,16 +262,12 @@
     color: var(--color-primary-light) !important;
 }
 
-:root[data-theme="shinchanFlashlightNight"] .smart-analysis-btn,
-:root[data-theme="shinchanFlashlightNight"] .smart-reminders-btn,
 :root[data-theme="shinchanFlashlightNight"] .smart-suggestion-btn {
     background: linear-gradient(135deg, rgba(242, 193, 78, 0.96), rgba(90, 111, 196, 0.92)) !important;
     color: rgba(10, 16, 36, 0.94) !important;
     border: 2px solid rgba(255, 217, 138, 0.30) !important;
 }
 
-:root[data-theme="shinchanFlashlightNight"] .smart-analysis-btn:hover,
-:root[data-theme="shinchanFlashlightNight"] .smart-reminders-btn:hover,
 :root[data-theme="shinchanFlashlightNight"] .smart-suggestion-btn:hover {
     box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35) !important;
     filter: brightness(1.03);
@@ -309,3 +305,22 @@
 :root[data-theme="shinchanFlashlightNight"] .fixed-deposit-card .form-submit-btn:hover {
     background: var(--action-buy-bg-hover) !important;
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="shinchanFlashlightNight"] {
+    --k-main: #5a6fc4;
+    --k-main-dark: #364997;
+    --k-main-light: #cad1ec;
+    --k-btn-top: #5a6fc4;
+    --k-btn-bottom: #364997;
+    --k-on-main: #ffffff;
+    --k-paper: #f6f7fc;
+    --k-paper-2: #e5e8f6;
+    --k-line: #acb7e1;
+    --k-ink: #192143;
+    --k-ink-soft: #444f7e;
+    --k-title: #364997;
+    --k-deep: #33281f;
+    --k-on-deep: #dbdff0;
+}
+/* ===== 主題設計工具組配色結束 ===== */

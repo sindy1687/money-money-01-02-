@@ -370,8 +370,6 @@
 :root[data-theme="pastelStarryEyes"] .dca-execute-btn,
 :root[data-theme="pastelStarryEyes"] .allocation-btn.primary,
 :root[data-theme="pastelStarryEyes"] .modal-btn.confirm-btn,
-:root[data-theme="pastelStarryEyes"] .smart-analysis-btn,
-:root[data-theme="pastelStarryEyes"] .smart-reminders-btn,
 :root[data-theme="pastelStarryEyes"] .smart-suggestion-btn {
     background: var(--action-buy-bg) !important;
     color: var(--action-buy-text) !important;
@@ -425,3 +423,22 @@
     background: color-mix(in srgb, var(--bg-card) 86%, rgba(22, 163, 74, 0.10)) !important;
     border-left-color: var(--color-success) !important;
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="pastelStarryEyes"] {
+    --k-main: #7c33ff;
+    --k-main-dark: #5000e0;
+    --k-main-light: #d3bff8;
+    --k-btn-top: #7c33ff;
+    --k-btn-bottom: #5000e0;
+    --k-on-main: #ffffff;
+    --k-paper: #f8f5fc;
+    --k-paper-2: #eae3f7;
+    --k-line: #bfabe3;
+    --k-ink: #281943;
+    --k-ink-soft: #59447e;
+    --k-title: #5000e0;
+    --k-deep: #201b36;
+    --k-on-deep: #e3dbf0;
+}
+/* ===== 主題設計工具組配色結束 ===== */

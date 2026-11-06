@@ -1,3 +1,54 @@
+/* ===== green 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+:root[data-theme="green"] {
+    --color-primary: #4caf50;
+    --color-primary-light: #81c784;
+    --color-primary-lighter: #66bb6a;
+    --color-primary-dark: #388e3c;
+    --bg-primary: linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%);
+    --bg-gradient: linear-gradient(135deg, #81c784 0%, #66bb6a 100%);
+    --bg-gradient-light: linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%);
+    --border-primary: #4caf50;
+    --shadow-primary: 0 2px 8px rgba(76, 175, 80, 0.25);
+    --shadow-primary-lg: 0 4px 12px rgba(76, 175, 80, 0.3);
+    --color-primary-rgba-08: rgba(76, 175, 80, 0.08);
+    --color-primary-rgba-10: rgba(76, 175, 80, 0.1);
+    --color-primary-rgba-15: rgba(76, 175, 80, 0.15);
+    --color-primary-rgba-20: rgba(76, 175, 80, 0.2);
+    --color-primary-rgba-25: rgba(76, 175, 80, 0.25);
+    --color-primary-rgba-30: rgba(76, 175, 80, 0.3);
+    --color-primary-rgba-12: rgba(76, 175, 80, 0.12);
+    --color-primary-rgba-18: rgba(76, 175, 80, 0.18);
+    --color-primary-light-rgba-08: rgba(129, 199, 132, 0.08);
+    --color-primary-light-rgba-10: rgba(129, 199, 132, 0.1);
+    --color-primary-light-rgba-15: rgba(129, 199, 132, 0.15);
+    --color-primary-light-rgba-20: rgba(129, 199, 132, 0.2);
+    --color-primary-light-rgba-25: rgba(129, 199, 132, 0.25);
+    --color-primary-light-rgba-30: rgba(129, 199, 132, 0.3);
+    --color-primary-light-rgba-40: rgba(129, 199, 132, 0.4);
+    --bg-light-gradient: linear-gradient(135deg, var(--bg-white) 0%, #f1f8f4 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, #f1f8f4 0%, var(--bg-white) 100%);
+}
+
+:root[data-theme="green"] .budget-summary-label,
+:root[data-theme="green"] .budget-detail-label,
+:root[data-theme="green"] .stat-label,
+:root[data-theme="green"] .dividend-stat-label,
+:root[data-theme="green"] .account-info,
+:root[data-theme="green"] .account-item-name,
+:root[data-theme="green"] .account-item-currency,
+:root[data-theme="green"] .tab-text {
+    color: rgba(76, 175, 80, 0.8) !important;
+}
+
+:root[data-theme="green"] .portfolio-shares,
+:root[data-theme="green"] .stock-grid-card-tag--shares {
+    color: var(--color-accent) !important;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2) 0%, rgba(76, 175, 80, 0.15) 100%) !important;
+    border: 1px solid rgba(76, 175, 80, 0.3) !important;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.25) !important;
+}
+
+/* ===== green 主題原有樣式 ===== */
 ﻿:root[data-theme="green"].dark,
 
 :root[data-theme="green"] {
@@ -30,7 +81,21 @@
     --bg-light-gradient-reverse: linear-gradient(180deg, #f1f8f4 0%, var(--bg-white) 100%);
 }
 
-:root[data-theme="green"] body,
-
-:root[data-theme="green"] body::before,
-
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="green"] {
+    --k-main: #4caf50;
+    --k-main-dark: #337636;
+    --k-main-light: #cde9ce;
+    --k-btn-top: #39843c;
+    --k-btn-bottom: #337636;
+    --k-on-main: #ffffff;
+    --k-paper: #f6fbf6;
+    --k-paper-2: #e6f4e7;
+    --k-line: #b1ddb3;
+    --k-ink: #1c401d;
+    --k-ink-soft: #407742;
+    --k-title: #337636;
+    --k-deep: #163217;
+    --k-on-deep: #dbf0dc;
+}
+/* ===== 主題設計工具組配色結束 ===== */

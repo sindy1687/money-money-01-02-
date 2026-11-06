@@ -415,3 +415,22 @@
         border-radius: 16px 16px 0 0 !important;
     }
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="shibaPastel"] {
+    --k-main: #ed6b45;
+    --k-main-dark: #cc3e14;
+    --k-main-light: #f8ccbf;
+    --k-btn-top: #f19074;
+    --k-btn-bottom: #ed6b45;
+    --k-on-main: #411b10;
+    --k-paper: #fcf7f5;
+    --k-paper-2: #f7e8e3;
+    --k-line: #e3b8ab;
+    --k-ink: #432319;
+    --k-ink-soft: #7e5144;
+    --k-title: #b93812;
+    --k-deep: #392018;
+    --k-on-deep: #f0e0db;
+}
+/* ===== 主題設計工具組配色結束 ===== */

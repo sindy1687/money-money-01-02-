@@ -380,8 +380,6 @@
 :root[data-theme="pastelBlossomMist"] .dca-execute-btn,
 :root[data-theme="pastelBlossomMist"] .allocation-btn.primary,
 :root[data-theme="pastelBlossomMist"] .modal-btn.confirm-btn,
-:root[data-theme="pastelBlossomMist"] .smart-analysis-btn,
-:root[data-theme="pastelBlossomMist"] .smart-reminders-btn,
 :root[data-theme="pastelBlossomMist"] .smart-suggestion-btn {
     background: var(--action-buy-bg) !important;
     color: var(--action-buy-text) !important;
@@ -397,8 +395,6 @@
 :root[data-theme="pastelBlossomMist"] .dca-execute-btn:hover,
 :root[data-theme="pastelBlossomMist"] .allocation-btn.primary:hover,
 :root[data-theme="pastelBlossomMist"] .modal-btn.confirm-btn:hover,
-:root[data-theme="pastelBlossomMist"] .smart-analysis-btn:hover,
-:root[data-theme="pastelBlossomMist"] .smart-reminders-btn:hover,
 :root[data-theme="pastelBlossomMist"] .smart-suggestion-btn:hover {
     background: var(--action-buy-bg-hover) !important;
 }
@@ -450,3 +446,22 @@
     background: color-mix(in srgb, var(--bg-card) 86%, rgba(22, 163, 74, 0.10)) !important;
     border-left-color: var(--color-success) !important;
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="pastelBlossomMist"] {
+    --k-main: #e44e78;
+    --k-main-dark: #c21e4c;
+    --k-main-light: #f5c1d0;
+    --k-btn-top: #eb7a9a;
+    --k-btn-bottom: #e44e78;
+    --k-on-main: #390e1a;
+    --k-paper: #fcf5f7;
+    --k-paper-2: #f7e3e9;
+    --k-line: #e3abba;
+    --k-ink: #431925;
+    --k-ink-soft: #7e4454;
+    --k-title: #c21e4c;
+    --k-deep: #391822;
+    --k-on-deep: #f0dbe1;
+}
+/* ===== 主題設計工具組配色結束 ===== */

@@ -1,0 +1,195 @@
+/* ===== starryOceanPrince 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+:root[data-theme="starryOceanPrince"] {
+     --color-secondary-rgba-20: rgba(11, 26, 51, 0.2);
+     --color-secondary-rgba-25: rgba(11, 26, 51, 0.25);
+     --color-secondary-rgba-30: rgba(11, 26, 51, 0.3);
+     --color-secondary-rgba-40: rgba(11, 26, 51, 0.4);
+     --bg-light-gradient: linear-gradient(135deg, rgba(5, 8, 20, 0.86) 0%, rgba(18, 32, 64, 0.68) 100%);
+     --bg-light-gradient-reverse: linear-gradient(180deg, rgba(5, 8, 20, 0.86) 0%, rgba(18, 32, 64, 0.68) 100%);
+     --action-side-bg: color-mix(in srgb, rgba(5, 8, 20, 0.92) 78%, rgba(43, 108, 255, 0.12));
+     --action-side-bg-hover: color-mix(in srgb, rgba(5, 8, 20, 0.92) 66%, rgba(43, 108, 255, 0.22));
+     --action-side-text: var(--text-primary);
+     --action-buy-bg: linear-gradient(135deg, rgba(43, 108, 255, 0.96) 0%, rgba(20, 59, 159, 0.96) 100%);
+     --action-buy-bg-hover: linear-gradient(135deg, rgba(106, 167, 255, 0.98) 0%, rgba(43, 108, 255, 0.98) 100%);
+     --action-buy-text: rgba(6, 10, 18, 0.96);
+     --action-dca-bg: linear-gradient(135deg, rgba(127, 215, 255, 0.92) 0%, rgba(43, 108, 255, 0.92) 100%);
+     --action-dca-bg-hover: linear-gradient(135deg, rgba(184, 236, 255, 0.96) 0%, rgba(127, 215, 255, 0.96) 100%);
+     --action-dca-text: rgba(6, 10, 18, 0.96);
+ }
+
+ :root[data-theme="starryOceanPrince"] body {
+     background: url("https://i.pinimg.com/1200x/a5/1c/e4/a51ce4741b9a6ff901bc67d09f9a791c.jpg") center/cover no-repeat fixed;
+     background-color: var(--bg-primary);
+     color: var(--text-primary);
+ }
+
+ :root[data-theme="starryOceanPrince"] body::before {
+     display: none;
+ }
+
+ :root[data-theme="starryOceanPrince"] .page-ledger {
+     background: transparent !important;
+     backdrop-filter: none !important;
+     box-shadow: none !important;
+ }
+
+ :root[data-theme="starryOceanPrince"] .page-input,
+ :root[data-theme="starryOceanPrince"] .page-chart,
+ :root[data-theme="starryOceanPrince"] .page-budget,
+ :root[data-theme="starryOceanPrince"] .page-monthly-planner,
+ :root[data-theme="starryOceanPrince"] .page-daily-budget,
+ :root[data-theme="starryOceanPrince"] .page-settings,
+ :root[data-theme="starryOceanPrince"] .page-category-manage,
+ :root[data-theme="starryOceanPrince"] .page-investment,
+ :root[data-theme="starryOceanPrince"] .page-wallet,
+ :root[data-theme="starryOceanPrince"] .page-history,
+ :root[data-theme="starryOceanPrince"] .page-planner,
+ :root[data-theme="starryOceanPrince"] .page-manage-investment,
+ :root[data-theme="starryOceanPrince"] .page-annual-report,
+ :root[data-theme="starryOceanPrince"] .page-diary,
+ :root[data-theme="starryOceanPrince"] .page-installment,
+ :root[data-theme="starryOceanPrince"] .installment-page,
+ :root[data-theme="starryOceanPrince"] .dca-page,
+ :root[data-theme="starryOceanPrince"] .fixed-deposit-page,
+ :root[data-theme="starryOceanPrince"] .dividend-page,
+ :root[data-theme="starryOceanPrince"] .dca-management-page,
+ :root[data-theme="starryOceanPrince"] .dca-setup-page,
+ :root[data-theme="starryOceanPrince"] .investment-input-page {
+     background: transparent !important;
+     backdrop-filter: none !important;
+     box-shadow: none !important;
+ }
+
+ :root[data-theme="starryOceanPrince"] .card,
+ :root[data-theme="starryOceanPrince"] .record-card,
+ :root[data-theme="starryOceanPrince"] .ledger-card,
+ :root[data-theme="starryOceanPrince"] .summary-card,
+ :root[data-theme="starryOceanPrince"] .budget-card,
+ :root[data-theme="starryOceanPrince"] .wallet-card,
+ :root[data-theme="starryOceanPrince"] .chart-card,
+ :root[data-theme="starryOceanPrince"] .investment-card,
+ :root[data-theme="starryOceanPrince"] .stock-item-card,
+ :root[data-theme="starryOceanPrince"] .manage-investment-card,
+ :root[data-theme="starryOceanPrince"] .annual-report-card,
+ :root[data-theme="starryOceanPrince"] .about-card,
+ :root[data-theme="starryOceanPrince"] .diary-card,
+ :root[data-theme="starryOceanPrince"] .monthly-planning-card,
+ :root[data-theme="starryOceanPrince"] .investment-settings-card,
+ :root[data-theme="starryOceanPrince"] .wallet-budget-card,
+ :root[data-theme="starryOceanPrince"] .holding-card,
+ :root[data-theme="starryOceanPrince"] .buying-card,
+ :root[data-theme="starryOceanPrince"] .selling-card,
+ :root[data-theme="starryOceanPrince"] .dividend-card,
+ :root[data-theme="starryOceanPrince"] .regular-investment-card,
+ :root[data-theme="starryOceanPrince"] .investment-management-card,
+ :root[data-theme="starryOceanPrince"] .dca-card,
+ :root[data-theme="starryOceanPrince"] .installment-card,
+ :root[data-theme="starryOceanPrince"] .fixed-deposit-card,
+ :root[data-theme="starryOceanPrince"] .dca-item-card {
+     background: rgba(8, 12, 24, 0.84) !important;
+     border: 1px solid var(--border-light) !important;
+     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35) !important;
+     backdrop-filter: blur(12px) !important;
+     color: var(--text-primary) !important;
+ }
+
+ :root[data-theme="starryOceanPrince"] .investment-card,
+ :root[data-theme="starryOceanPrince"] .stock-item-card {
+     background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-light) 30%, var(--color-primary-rgba-20) 55%, rgba(8, 12, 24, 0.86) 100%) !important;
+     border: 1px solid var(--border-primary) !important;
+ }
+
+ :root[data-theme="starryOceanPrince"] .investment-card::before,
+ :root[data-theme="starryOceanPrince"] .stock-item-card::before {
+     background: linear-gradient(135deg, var(--color-primary-rgba-30) 0%, var(--color-primary-rgba-20) 55%, rgba(127, 215, 255, 0.08) 100%) !important;
+ }
+
+ :root[data-theme="starryOceanPrince"] .nav-item.active {
+     background: linear-gradient(135deg, var(--color-primary-rgba-20) 0%, rgba(127, 215, 255, 0.12) 100%);
+     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+ }
+
+ :root[data-theme="starryOceanPrince"] .modal-content,
+ :root[data-theme="starryOceanPrince"] .modal-content-standard,
+ :root[data-theme="starryOceanPrince"] .budget-category-modal-content,
+ :root[data-theme="starryOceanPrince"] .budget-setting-modal-content,
+ :root[data-theme="starryOceanPrince"] .category-modal-content,
+ :root[data-theme="starryOceanPrince"] .dca-execute-modal .modal-content,
+ :root[data-theme="starryOceanPrince"] .account-modal-content,
+ :root[data-theme="starryOceanPrince"] .emoji-modal-content,
+ :root[data-theme="starryOceanPrince"] .history-modal-content,
+ :root[data-theme="starryOceanPrince"] .crop-modal-content,
+ :root[data-theme="starryOceanPrince"] .dialog-container,
+ :root[data-theme="starryOceanPrince"] .xiaosen-dialog,
+ :root[data-theme="starryOceanPrince"] .komori-dialog,
+ :root[data-theme="starryOceanPrince"] .mori-dialog-box,
+ :root[data-theme="starryOceanPrince"] .theme-modal-content,
+ :root[data-theme="starryOceanPrince"] .theme-modal-container,
+ :root[data-theme="starryOceanPrince"] .dialog-content,
+ :root[data-theme="starryOceanPrince"] .popup-content {
+     background: rgba(5, 8, 20, 0.88) !important;
+     border: 1px solid var(--border-medium) !important;
+     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+     backdrop-filter: blur(16px) !important;
+     color: var(--text-primary) !important;
+ }
+
+ :root[data-theme="starryOceanPrince"] .back-btn,
+ :root[data-theme="starryOceanPrince"] .return-btn,
+ :root[data-theme="starryOceanPrince"] .cancel-btn {
+     background: linear-gradient(135deg, rgba(43, 108, 255, 0.95) 0%, rgba(20, 59, 159, 0.95) 100%) !important;
+     border: 1px solid rgba(43, 108, 255, 0.55) !important;
+     color: rgba(6, 10, 18, 0.96) !important;
+ }
+
+ :root[data-theme="starryOceanPrince"] .btn,
+ :root[data-theme="starryOceanPrince"] .buy-action-btn-large {
+     background: var(--action-buy-bg) !important;
+     color: var(--action-buy-text) !important;
+     border: 2px solid rgba(43, 108, 255, 0.5) !important;
+ }
+
+ :root[data-theme="starryOceanPrince"] .btn:hover,
+ :root[data-theme="starryOceanPrince"] .buy-action-btn-large:hover {
+     background: var(--action-buy-bg-hover) !important;
+ }
+
+ :root[data-theme="starryOceanPrince"] .dca-action-btn-large {
+     background: var(--action-dca-bg) !important;
+     color: var(--action-dca-text) !important;
+     border: 2px solid rgba(127, 215, 255, 0.42) !important;
+ }
+
+ :root[data-theme="starryOceanPrince"] .dca-action-btn-large:hover {
+     background: var(--action-dca-bg-hover) !important;
+ }
+
+ :root[data-theme="starryOceanPrince"] .budget-summary-label,
+ :root[data-theme="starryOceanPrince"] .budget-detail-label,
+ :root[data-theme="starryOceanPrince"] .stat-label,
+ :root[data-theme="starryOceanPrince"] .dividend-stat-label,
+ :root[data-theme="starryOceanPrince"] .account-info,
+ :root[data-theme="starryOceanPrince"] .account-item-name,
+ :root[data-theme="starryOceanPrince"] .account-item-currency,
+ :root[data-theme="starryOceanPrince"] .tab-text {
+     color: var(--text-secondary) !important;
+ }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="starryOceanPrince"] {
+    --k-main: #2b6cff;
+    --k-main-dark: #0042d8;
+    --k-main-light: #bfd0f8;
+    --k-btn-top: #5e8fff;
+    --k-btn-bottom: #2b6cff;
+    --k-on-main: #020408;
+    --k-paper: #f5f7fc;
+    --k-paper-2: #e3e9f7;
+    --k-line: #abbce3;
+    --k-ink: #192643;
+    --k-ink-soft: #44567e;
+    --k-title: #0042d8;
+    --k-deep: #010103;
+    --k-on-deep: #dbe2f0;
+}
+/* ===== 主題設計工具組配色結束 ===== */

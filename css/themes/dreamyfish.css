@@ -1,0 +1,351 @@
+/* ===== dreamyfish 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+/* ========== 夢幻魚語主題 ========== */
+:root[data-theme="dreamyfish"] {
+    --color-primary: #87CEEB;
+    --color-primary-light: #ADD8E6;
+    --color-primary-lighter: #B0E0E6;
+    --color-primary-dark: #5F9EA0;
+    --color-secondary: #DDA0DD;
+    --color-secondary-light: #E6B8E6;
+    --color-secondary-lighter: #F0D8F0;
+    --color-secondary-dark: #BA55D3;
+    --color-accent: #90EE90;
+    --color-accent-light: #A8F0A8;
+    --color-accent-lighter: #C0F0C0;
+    --color-accent-dark: #7CB342;
+    
+    /* 狀態顏色 */
+    --color-success: #22c55e;
+    --color-danger: #ef4444;
+    --color-warning: #f59e0b;
+    --color-info: #3b82f6;
+    --color-error: var(--color-danger);
+    
+    /* 背景顏色 */
+    --bg-primary: linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(221, 160, 221, 0.1) 50%, rgba(144, 238, 144, 0.08) 100%);
+    --bg-gradient: linear-gradient(135deg, rgba(135, 206, 235, 0.25) 0%, rgba(221, 160, 221, 0.2) 50%, rgba(144, 238, 144, 0.15) 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(135, 206, 235, 0.08) 0%, rgba(221, 160, 221, 0.06) 50%, rgba(144, 238, 144, 0.05) 100%);
+    --bg-light-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.92) 100%);
+    --bg-white: rgba(255, 255, 255, 0.9);
+    --bg-light: rgba(240, 248, 255, 0.85);
+    --bg-lighter: rgba(245, 255, 250, 0.8);
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --bg-soft: rgba(240, 248, 255, 0.7);
+    --bg-soft-strong: rgba(135, 206, 235, 0.15);
+    --bg-input-focus: rgba(135, 206, 235, 0.1);
+    --bg-hover: rgba(135, 206, 235, 0.12);
+    --bg-dark: rgba(95, 158, 160, 0.9);
+    --bg-toggle: rgba(135, 206, 235, 0.3);
+    
+    /* 文字顏色 */
+    --text-primary: #2F4F4F;
+    --text-secondary: rgba(47, 79, 79, 0.75);
+    --text-tertiary: rgba(47, 79, 79, 0.6);
+    --text-strong: var(--text-primary);
+    --text-white: #FFFFFF;
+    --text-primary-color: var(--color-primary);
+    --text-warning: #8B4513;
+    --text-primary-light: #F0F8FF;
+    --text-primary-lighter: #E6F3FF;
+    --text-primary-lightest: #DCEFFF;
+    
+    /* 邊框與陰影 */
+    --border-light: rgba(135, 206, 235, 0.3);
+    --border-strong: rgba(135, 206, 235, 0.5);
+    --border-medium: rgba(135, 206, 235, 0.2);
+    --card-border-color: rgba(135, 206, 235, 0.4);
+    --card-border-color-strong: rgba(135, 206, 235, 0.6);
+    --border-primary: var(--color-primary);
+    --shadow-xs: 0 4px 10px rgba(135, 206, 235, 0.15);
+    --shadow-sm: 0 8px 16px rgba(135, 206, 235, 0.2);
+    --shadow-md: 0 10px 30px rgba(135, 206, 235, 0.25);
+    --shadow-lg: 0 20px 50px rgba(135, 206, 235, 0.3);
+    --shadow-card: 0 10px 30px rgba(135, 206, 235, 0.2);
+    --shadow-soft: 0 8px 18px rgba(135, 206, 235, 0.15);
+    --shadow-focus: 0 0 0 3px rgba(135, 206, 235, 0.2);
+    
+    /* RGBA 透明度變數 */
+    --color-primary-rgba-08: rgba(135, 206, 235, 0.08);
+    --color-primary-rgba-10: rgba(135, 206, 235, 0.1);
+    --color-primary-rgba-12: rgba(135, 206, 235, 0.12);
+    --color-primary-rgba-15: rgba(135, 206, 235, 0.15);
+    --color-primary-rgba-18: rgba(135, 206, 235, 0.18);
+    --color-primary-rgba-20: rgba(135, 206, 235, 0.2);
+    --color-primary-rgba-25: rgba(135, 206, 235, 0.25);
+    --color-primary-rgba-30: rgba(135, 206, 235, 0.3);
+    --color-primary-rgba-35: rgba(135, 206, 235, 0.35);
+    --color-primary-rgba-40: rgba(135, 206, 235, 0.4);
+    --color-primary-rgba-50: rgba(135, 206, 235, 0.5);
+    --color-primary-rgba-60: rgba(135, 206, 235, 0.6);
+    --color-primary-rgba-70: rgba(135, 206, 235, 0.7);
+    --color-primary-rgba-80: rgba(135, 206, 235, 0.8);
+    
+    /* 動作按鈕 */
+    --action-buy-bg: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-primary-light) 80%, white) 0%,
+        color-mix(in srgb, var(--color-primary) 85%, var(--color-primary-dark)) 100%);
+    --action-buy-bg-hover: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-primary) 85%, white) 0%,
+        color-mix(in srgb, var(--color-primary-dark) 90%, black) 100%);
+    --action-buy-text: var(--bg-white);
+
+    --action-dca-bg: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-primary-light) 25%, var(--color-accent-light)) 0%,
+        color-mix(in srgb, var(--color-primary) 45%, var(--color-accent)) 100%);
+    --action-dca-bg-hover: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-primary) 30%, var(--color-accent-light)) 0%,
+        color-mix(in srgb, var(--color-primary-dark) 55%, var(--color-accent-dark)) 100%);
+    --action-dca-text: var(--bg-white);
+
+    --action-side-bg: color-mix(in srgb, var(--bg-white) 75%, rgba(47, 79, 79, 0.08));
+    --action-side-bg-hover: color-mix(in srgb, var(--bg-white) 65%, rgba(47, 79, 79, 0.2));
+    --action-side-text: var(--text-primary);
+}
+
+:root[data-theme="dreamyfish"] body {
+    background: transparent;
+    color: var(--text-primary);
+}
+
+:root[data-theme="dreamyfish"] body::before {
+    display: none;
+}
+
+/* 夢幻魚語主題頁面背景透明化 */
+:root[data-theme="dreamyfish"] .page-ledger,
+:root[data-theme="dreamyfish"] .page-input,
+:root[data-theme="dreamyfish"] .page-chart,
+:root[data-theme="dreamyfish"] .page-budget,
+:root[data-theme="dreamyfish"] .page-monthly-planner,
+:root[data-theme="dreamyfish"] .page-daily-budget,
+:root[data-theme="dreamyfish"] .page-settings,
+:root[data-theme="dreamyfish"] .page-category-manage,
+:root[data-theme="dreamyfish"] .page-investment,
+:root[data-theme="dreamyfish"] .page-wallet,
+:root[data-theme="dreamyfish"] .page-history,
+:root[data-theme="dreamyfish"] .page-planner,
+:root[data-theme="dreamyfish"] .page-manage-investment,
+:root[data-theme="dreamyfish"] .page-annual-report,
+:root[data-theme="dreamyfish"] .page-diary {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+/* 夢幻魚語主題卡片樣式 */
+:root[data-theme="dreamyfish"] .card,
+:root[data-theme="dreamyfish"] .record-card,
+:root[data-theme="dreamyfish"] .ledger-card,
+:root[data-theme="dreamyfish"] .summary-card,
+:root[data-theme="dreamyfish"] .budget-card,
+:root[data-theme="dreamyfish"] .wallet-card,
+:root[data-theme="dreamyfish"] .chart-card,
+:root[data-theme="dreamyfish"] .investment-card,
+:root[data-theme="dreamyfish"] .manage-investment-card,
+:root[data-theme="dreamyfish"] .annual-report-card,
+:root[data-theme="dreamyfish"] .diary-card {
+    background: var(--bg-card) !important;
+    border: 2px solid var(--card-border-color) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: var(--shadow-card) !important;
+}
+
+:root[data-theme="dreamyfish"] .card .highlight,
+:root[data-theme="dreamyfish"] .card .accent,
+:root[data-theme="dreamyfish"] .card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="dreamyfish"] .card .secondary-text,
+:root[data-theme="dreamyfish"] .card .muted-text {
+    color: var(--text-secondary) !important;
+}
+
+/* 夢幻魚語主題數字鍵盤樣式 - 修復可見性問題 */
+:root[data-theme="dreamyfish"] .key-btn {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid var(--color-primary-rgba-40) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 6px 18px var(--color-primary-rgba-15) !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+}
+
+:root[data-theme="dreamyfish"] .key-btn:hover {
+    background: var(--color-primary-rgba-20) !important;
+    border-color: var(--color-primary-rgba-50) !important;
+    box-shadow: 0 10px 24px var(--color-primary-rgba-20) !important;
+    transform: translateY(-2px) !important;
+}
+
+:root[data-theme="dreamyfish"] .key-btn:active {
+    background: var(--color-primary-rgba-30) !important;
+    transform: scale(0.95);
+}
+
+:root[data-theme="dreamyfish"] .key-btn.operator {
+    background: var(--color-primary-rgba-70) !important;
+    color: var(--text-white) !important;
+    border-color: var(--color-primary) !important;
+}
+
+:root[data-theme="dreamyfish"] .key-btn.equal {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+    color: var(--text-white) !important;
+    border-color: var(--color-primary) !important;
+}
+
+:root[data-theme="dreamyfish"] .key-btn.delete {
+    background: rgba(220, 53, 69, 0.9) !important;
+    color: var(--text-white) !important;
+    border-color: rgba(220, 53, 69, 0.8) !important;
+}
+
+/* 夢幻魚語主題日期文字樣式 - 修復可見性問題 */
+:root[data-theme="dreamyfish"] .date-text,
+:root[data-theme="dreamyfish"] .time-text,
+:root[data-theme="dreamyfish"] .record-card-date,
+:root[data-theme="dreamyfish"] .date-input,
+:root[data-theme="dreamyfish"] .date-btn {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    background: var(--bg-white) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+}
+
+:root[data-theme="dreamyfish"] .date-input::-webkit-datetime-edit-text {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="dreamyfish"] .date-input::-webkit-datetime-edit-month-field,
+:root[data-theme="dreamyfish"] .date-input::-webkit-datetime-edit-day-field,
+:root[data-theme="dreamyfish"] .date-input::-webkit-datetime-edit-year-field {
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="dreamyfish"] .date-input::-webkit-calendar-picker-indicator {
+    filter: none !important;
+    opacity: 0.8 !important;
+    color: var(--color-primary) !important;
+}
+
+/* 夢幻魚語主題按鈕樣式 */
+:root[data-theme="dreamyfish"] .btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: var(--text-white) !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+:root[data-theme="dreamyfish"] .btn:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px var(--color-primary-rgba-40) !important;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 50%, var(--color-accent-light) 100%) !important;
+}
+
+/* 夢幻魚語主題返回按鈕 */
+:root[data-theme="dreamyfish"] .back-btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: var(--text-white) !important;
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+:root[data-theme="dreamyfish"] .back-btn:hover {
+    transform: scale(1.1) rotate(15deg) !important;
+    box-shadow: 0 8px 20px var(--color-primary-rgba-50) !important;
+}
+
+/* 夢幻魚語主題模態框 */
+:root[data-theme="dreamyfish"] .modal,
+:root[data-theme="dreamyfish"] .dialog,
+:root[data-theme="dreamyfish"] .popup {
+    background: var(--bg-white) !important;
+    border: 2px solid var(--color-primary-rgba-50) !important;
+    border-radius: 25px !important;
+    backdrop-filter: blur(15px) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* 夢幻魚語主題小森對話框 */
+:root[data-theme="dreamyfish"] .xiaosen-dialog {
+    background: var(--bg-white) !important;
+    border: 2px solid var(--color-primary) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+:root[data-theme="dreamyfish"] .xiaosen-dialog .dialog-title {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="dreamyfish"] .xiaosen-dialog .dialog-content {
+    color: var(--text-primary) !important;
+}
+
+/* 夢幻魚語主題統計項目 */
+:root[data-theme="dreamyfish"] .stat-item {
+    background: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-15) 50%, var(--color-primary-rgba-08) 100%) !important;
+    border: 1px solid var(--color-primary-rgba-20) !important;
+    box-shadow: 0 4px 12px var(--color-primary-rgba-15) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="dreamyfish"] .stat-item:hover {
+    background: linear-gradient(135deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-20) 50%, var(--color-primary-rgba-12) 100%) !important;
+    box-shadow: 0 6px 16px var(--color-primary-rgba-20) !important;
+    transform: translateY(-2px) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 夢幻魚語主題滾動條 */
+:root[data-theme="dreamyfish"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+:root[data-theme="dreamyfish"] ::-webkit-scrollbar-track {
+    background: var(--color-primary-rgba-08);
+    border-radius: 4px;
+}
+
+:root[data-theme="dreamyfish"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: 4px;
+}
+
+:root[data-theme="dreamyfish"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%);
+}
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="dreamyfish"] {
+    --k-main: #50b8e2;
+    --k-main-dark: #2092c0;
+    --k-main-light: #c2e6f5;
+    --k-btn-top: #7cc9e9;
+    --k-btn-bottom: #50b8e2;
+    --k-on-main: #103341;
+    --k-paper: #f5fafc;
+    --k-paper-2: #e3f1f7;
+    --k-line: #abd3e3;
+    --k-ink: #193743;
+    --k-ink-soft: #446d7e;
+    --k-title: #176a8c;
+    --k-deep: #14283e;
+    --k-on-deep: #dbeaf0;
+}
+/* ===== 主題設計工具組配色結束 ===== */

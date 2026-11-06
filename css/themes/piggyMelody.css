@@ -198,8 +198,6 @@
     background: var(--action-dca-bg-hover) !important;
 }
 
-:root[data-theme="piggyMelody"] .smart-analysis-btn,
-:root[data-theme="piggyMelody"] .smart-reminders-btn,
 :root[data-theme="piggyMelody"] .smart-suggestion-btn {
     background: linear-gradient(135deg,
         color-mix(in srgb, var(--color-primary) 78%, white) 0%,
@@ -208,8 +206,6 @@
     border: 2px solid rgba(232, 111, 154, 0.22) !important;
 }
 
-:root[data-theme="piggyMelody"] .smart-analysis-btn:hover,
-:root[data-theme="piggyMelody"] .smart-reminders-btn:hover,
 :root[data-theme="piggyMelody"] .smart-suggestion-btn:hover {
     box-shadow: 0 10px 26px rgba(166, 69, 105, 0.18) !important;
 }
@@ -235,3 +231,22 @@
         max-height: 90vh;
     }
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="piggyMelody"] {
+    --k-main: #e34f84;
+    --k-main-dark: #c11f59;
+    --k-main-light: #f5c1d4;
+    --k-btn-top: #ea7ba2;
+    --k-btn-bottom: #e34f84;
+    --k-on-main: #390e1e;
+    --k-paper: #fcf5f8;
+    --k-paper-2: #f7e3ea;
+    --k-line: #e3abbf;
+    --k-ink: #431928;
+    --k-ink-soft: #7e4458;
+    --k-title: #c11f59;
+    --k-deep: #371a1e;
+    --k-on-deep: #f0dbe3;
+}
+/* ===== 主題設計工具組配色結束 ===== */

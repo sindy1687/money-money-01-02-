@@ -1,0 +1,328 @@
+/* ===== dreamy 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+/* ========== 夢幻境域主題 ========== */
+:root[data-theme="dreamy"] {
+    --color-primary: #87CEEB;
+    --color-primary-light: #ADD8E6;
+    --color-primary-lighter: #B0E0E6;
+    --color-primary-dark: #4682B4;
+    --color-secondary: #DDA0DD;
+    --color-secondary-light: #E6B8E6;
+    --color-secondary-dark: #BA55D3;
+    --color-accent: #90EE90;
+    --color-accent-light: #98FB98;
+    --color-accent-dark: #7CFC00;
+    --bg-primary: linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(221, 160, 221, 0.12) 50%, rgba(144, 238, 144, 0.1) 100%);
+    --bg-body: rgba(255, 255, 255, 0.95);
+    --bg-body-strong: rgba(255, 255, 255, 0.98);
+    --bg-gradient: linear-gradient(135deg, #87CEEB 0%, #DDA0DD 50%, #90EE90 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(135, 206, 235, 0.08) 0%, rgba(221, 160, 221, 0.06) 50%, rgba(144, 238, 144, 0.04) 100%);
+    --bg-white: rgba(255, 255, 255, 0.85);
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-light: rgba(135, 206, 235, 0.15);
+    --bg-lighter: rgba(221, 160, 221, 0.12);
+    --bg-soft: rgba(144, 238, 144, 0.1);
+    --bg-soft-strong: rgba(135, 206, 235, 0.2);
+    --text-primary: rgba(70, 130, 180, 0.95);
+    --text-secondary: rgba(135, 206, 235, 0.8);
+    --text-tertiary: rgba(221, 160, 221, 0.7);
+    --text-strong: rgba(70, 130, 180, 0.98);
+    --text-white: var(--color-primary-light);
+    --border-primary: rgba(135, 206, 235, 0.6);
+    --border-light: rgba(135, 206, 235, 0.2);
+    --border-medium: rgba(221, 160, 221, 0.4);
+    --card-border-color: rgba(135, 206, 235, 0.5);
+    --control-border-color: rgba(221, 160, 221, 0.3);
+    --table-border-color: rgba(144, 238, 144, 0.2);
+    --shadow-primary: 0 20px 60px rgba(135, 206, 235, 0.3);
+    --shadow-primary-lg: 0 30px 80px rgba(135, 206, 235, 0.25);
+    --color-primary-rgba-08: rgba(135, 206, 235, 0.08);
+    --color-primary-rgba-10: rgba(135, 206, 235, 0.1);
+    --color-primary-rgba-15: rgba(135, 206, 235, 0.15);
+    --color-primary-rgba-20: rgba(135, 206, 235, 0.2);
+    --color-primary-rgba-25: rgba(135, 206, 235, 0.25);
+    --color-primary-rgba-30: rgba(135, 206, 235, 0.3);
+    --color-primary-rgba-40: rgba(135, 206, 235, 0.4);
+    --color-primary-light-rgba-08: rgba(173, 216, 230, 0.08);
+    --color-primary-light-rgba-10: rgba(173, 216, 230, 0.1);
+    --color-primary-light-rgba-15: rgba(173, 216, 230, 0.15);
+    --color-primary-light-rgba-20: rgba(173, 216, 230, 0.2);
+    --color-primary-light-rgba-25: rgba(173, 216, 230, 0.25);
+    --color-primary-light-rgba-30: rgba(173, 216, 230, 0.3);
+    --color-primary-light-rgba-40: rgba(173, 216, 230, 0.4);
+    --color-secondary-rgba-08: rgba(221, 160, 221, 0.08);
+    --color-secondary-rgba-10: rgba(221, 160, 221, 0.1);
+    --color-secondary-rgba-15: rgba(221, 160, 221, 0.15);
+    --color-secondary-rgba-20: rgba(221, 160, 221, 0.2);
+    --color-secondary-rgba-25: rgba(221, 160, 221, 0.25);
+    --color-secondary-rgba-30: rgba(221, 160, 221, 0.3);
+    --color-secondary-rgba-40: rgba(221, 160, 221, 0.4);
+    --bg-light-gradient: linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(221, 160, 221, 0.12) 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, rgba(135, 206, 235, 0.15) 0%, rgba(221, 160, 221, 0.12) 100%);
+    --action-side-bg: color-mix(in srgb, rgba(255, 255, 255, 0.92) 75%, rgba(135, 206, 235, 0.08));
+    --action-side-bg-hover: color-mix(in srgb, rgba(255, 255, 255, 0.92) 65%, rgba(135, 206, 235, 0.2));
+    --action-side-text: rgba(70, 130, 180, 0.96);
+}
+
+:root[data-theme="dreamy"] body {
+    background: transparent;
+    color: var(--text-primary);
+}
+
+:root[data-theme="dreamy"] body::before {
+    display: none;
+}
+
+/* 夢幻境域主題頁面背景透明化 */
+:root[data-theme="dreamy"] .page-ledger,
+:root[data-theme="dreamy"] .page-input,
+:root[data-theme="dreamy"] .page-chart,
+:root[data-theme="dreamy"] .page-budget,
+:root[data-theme="dreamy"] .page-monthly-planner,
+:root[data-theme="dreamy"] .page-daily-budget,
+:root[data-theme="dreamy"] .page-settings,
+:root[data-theme="dreamy"] .page-category-manage,
+:root[data-theme="dreamy"] .page-investment,
+:root[data-theme="dreamy"] .page-wallet,
+:root[data-theme="dreamy"] .page-history,
+:root[data-theme="dreamy"] .page-planner,
+:root[data-theme="dreamy"] .page-manage-investment,
+:root[data-theme="dreamy"] .page-annual-report,
+:root[data-theme="dreamy"] .page-diary {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+/* 夢幻境域主題卡片樣式 */
+:root[data-theme="dreamy"] .card,
+:root[data-theme="dreamy"] .record-card,
+:root[data-theme="dreamy"] .ledger-card,
+:root[data-theme="dreamy"] .summary-card,
+:root[data-theme="dreamy"] .budget-card,
+:root[data-theme="dreamy"] .wallet-card,
+:root[data-theme="dreamy"] .chart-card,
+:root[data-theme="dreamy"] .investment-card,
+:root[data-theme="dreamy"] .manage-investment-card,
+:root[data-theme="dreamy"] .annual-report-card,
+:root[data-theme="dreamy"] .diary-card {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+    box-shadow: 0 15px 35px rgba(135, 206, 235, 0.2) !important;
+}
+
+:root[data-theme="dreamy"] .card .highlight,
+:root[data-theme="dreamy"] .card .accent,
+:root[data-theme="dreamy"] .card .primary-text {
+    color: var(--color-secondary) !important;
+}
+
+:root[data-theme="dreamy"] .card .secondary-text,
+:root[data-theme="dreamy"] .card .muted-text {
+    color: var(--text-secondary) !important;
+}
+
+/* 夢幻境域主題按鈕樣式 */
+:root[data-theme="dreamy"] .btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: var(--text-white) !important;
+    border-radius: 25px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="dreamy"] .btn:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px rgba(135, 206, 235, 0.4) !important;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 50%, var(--color-accent-light) 100%) !important;
+}
+
+/* 夢幻境域主題返回按鈕 */
+:root[data-theme="dreamy"] .back-btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
+    border: 2px solid var(--color-primary) !important;
+    color: var(--text-white) !important;
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="dreamy"] .back-btn:hover {
+    transform: scale(1.1) rotate(15deg) !important;
+    box-shadow: 0 8px 20px rgba(135, 206, 235, 0.5) !important;
+}
+
+/* 夢幻境域主題模態框 */
+:root[data-theme="dreamy"] .modal,
+:root[data-theme="dreamy"] .dialog,
+:root[data-theme="dreamy"] .popup {
+    background: var(--bg-white) !important;
+    border: 2px solid rgba(135, 206, 235, 0.5) !important;
+    border-radius: 25px !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 25px 50px rgba(135, 206, 235, 0.3) !important;
+}
+
+/* 夢幻境域主題小森對話框 */
+:root[data-theme="dreamy"] .xiaosen-dialog {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid var(--color-primary) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+:root[data-theme="dreamy"] .xiaosen-dialog .dialog-title {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme="dreamy"] .xiaosen-dialog .dialog-content {
+    color: var(--text-primary) !important;
+}
+
+/* 夢幻境域主題投資卡片 */
+:root[data-theme="dreamy"] .investment-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題記帳卡片 */
+:root[data-theme="dreamy"] .record-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(221, 160, 221, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題錢包預算設定卡片 */
+:root[data-theme="dreamy"] .budget-card {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border: 2px solid rgba(144, 238, 144, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題每月規劃卡片 */
+:root[data-theme="dreamy"] .monthly-planning-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題投資設定卡片 */
+:root[data-theme="dreamy"] .investment-settings-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(221, 160, 221, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題持有中卡片 */
+:root[data-theme="dreamy"] .holding-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(144, 238, 144, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題買入卡片 */
+:root[data-theme="dreamy"] .buying-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題賣出卡片 */
+:root[data-theme="dreamy"] .selling-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(221, 160, 221, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題股息卡片 */
+:root[data-theme="dreamy"] .dividend-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(144, 238, 144, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* 夢幻境域主題定期定額卡片 */
+:root[data-theme="dreamy"] .regular-investment-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid rgba(135, 206, 235, 0.4) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+:root[data-theme="dreamy"] .btn:hover {
+    animation: dreamyFloat 3s ease-in-out infinite;
+}
+
+:root[data-theme="dreamy"] .card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(135, 206, 235, 0.3);
+    border-color: var(--color-secondary);
+}
+
+/* 夢幻境域主題特殊效果 */
+:root[data-theme="dreamy"] .portfolio-shares:hover {
+    background: linear-gradient(135deg, rgba(135, 206, 235, 0.3) 0%, rgba(221, 160, 221, 0.3) 100%);
+    transform: scale(1.08);
+    box-shadow: 0 8px 25px rgba(135, 206, 235, 0.4);
+}
+
+:root[data-theme="dreamy"] .stock-grid-card-tag--shares:hover {
+    background: linear-gradient(135deg, rgba(221, 160, 221, 0.25) 0%, rgba(144, 238, 144, 0.25) 100%);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(221, 160, 221, 0.3);
+}
+
+/* 夢幻境域主題滾動條 */
+:root[data-theme="dreamy"] ::-webkit-scrollbar {
+    width: 12px;
+}
+
+:root[data-theme="dreamy"] ::-webkit-scrollbar-track {
+    background: rgba(135, 206, 235, 0.1);
+    border-radius: 10px;
+}
+
+:root[data-theme="dreamy"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: 10px;
+}
+
+:root[data-theme="dreamy"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%);
+}
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="dreamy"] {
+    --k-main: #50b8e2;
+    --k-main-dark: #2092c0;
+    --k-main-light: #c2e6f5;
+    --k-btn-top: #7cc9e9;
+    --k-btn-bottom: #50b8e2;
+    --k-on-main: #103341;
+    --k-paper: #f5fafc;
+    --k-paper-2: #e3f1f7;
+    --k-line: #abd3e3;
+    --k-ink: #193743;
+    --k-ink-soft: #446d7e;
+    --k-title: #176a8c;
+    --k-deep: #1f3324;
+    --k-on-deep: #dbeaf0;
+}
+/* ===== 主題設計工具組配色結束 ===== */

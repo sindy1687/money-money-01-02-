@@ -1,0 +1,240 @@
+/* ===== crimsonIvory 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+:root[data-theme="crimsonIvory"] {
+    --color-primary: #c7353f;
+    --color-primary-light: #f07b82;
+    --color-primary-lighter: #ffd4d7;
+    --color-primary-dark: #7a1f28;
+
+    --color-secondary: #d3b15f;
+    --color-secondary-light: #f2d889;
+    --color-secondary-dark: #a37e27;
+    --color-accent: #2f6b4f;
+    --color-accent-light: #6db493;
+    --color-accent-dark: #1f4a36;
+
+    --bg-primary: linear-gradient(135deg, rgba(255, 250, 244, 0.94) 0%, rgba(255, 244, 236, 0.9) 40%, rgba(199, 53, 63, 0.12) 100%);
+    --bg-body: rgba(255, 250, 244, 0.92);
+    --bg-body-strong: rgba(255, 250, 244, 0.96);
+    --bg-gradient: linear-gradient(135deg, rgba(255, 250, 244, 0.7) 0%, rgba(255, 244, 236, 0.65) 55%, rgba(195, 53, 63, 0.12) 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 246, 238, 0.74) 70%, rgba(211, 177, 95, 0.2) 100%);
+    --bg-light-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 246, 238, 0.82) 55%, rgba(211, 177, 95, 0.2) 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, rgba(211, 177, 95, 0.18) 0%, rgba(255, 255, 255, 0.94) 100%);
+
+    --bg-white: rgba(255, 255, 255, 0.92);
+    --bg-card: rgba(255, 255, 255, 0.92);
+    --bg-light: rgba(255, 246, 238, 0.62);
+    --bg-lighter: rgba(255, 214, 215, 0.32);
+    --bg-soft: rgba(199, 53, 63, 0.12);
+    --bg-soft-strong: rgba(211, 177, 95, 0.18);
+
+    --text-primary: rgba(40, 22, 24, 0.96);
+    --text-secondary: rgba(40, 22, 24, 0.76);
+    --text-tertiary: rgba(40, 22, 24, 0.58);
+    --text-strong: rgba(22, 12, 12, 0.98);
+    --text-white: rgba(255, 255, 255, 0.98);
+
+    --border-primary: rgba(199, 53, 63, 0.6);
+    --border-light: rgba(122, 31, 40, 0.14);
+    --border-medium: rgba(211, 177, 95, 0.32);
+    --card-border-color: rgba(199, 53, 63, 0.28);
+    --control-border-color: rgba(122, 31, 40, 0.18);
+    --table-border-color: rgba(122, 31, 40, 0.14);
+
+    --shadow-primary: 0 18px 54px rgba(122, 31, 40, 0.14);
+    --shadow-primary-lg: 0 28px 78px rgba(122, 31, 40, 0.12);
+
+    --color-primary-rgba-08: rgba(199, 53, 63, 0.08);
+    --color-primary-rgba-10: rgba(199, 53, 63, 0.10);
+    --color-primary-rgba-12: rgba(199, 53, 63, 0.12);
+    --color-primary-rgba-15: rgba(199, 53, 63, 0.15);
+    --color-primary-rgba-20: rgba(199, 53, 63, 0.20);
+    --color-primary-rgba-25: rgba(199, 53, 63, 0.25);
+    --color-primary-rgba-30: rgba(199, 53, 63, 0.30);
+    --color-primary-rgba-40: rgba(199, 53, 63, 0.40);
+
+    --action-buy-bg: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-primary) 80%, white) 0%,
+        color-mix(in srgb, var(--color-primary-dark) 78%, black) 100%);
+    --action-buy-bg-hover: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-primary) 86%, white) 0%,
+        color-mix(in srgb, var(--color-primary-dark) 84%, black) 100%);
+    --action-buy-text: var(--text-white);
+
+    --action-dca-bg: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-secondary-light) 72%, white) 0%,
+        color-mix(in srgb, var(--color-secondary) 70%, var(--color-accent)) 100%);
+    --action-dca-bg-hover: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-secondary) 75%, white) 0%,
+        color-mix(in srgb, var(--color-secondary-dark) 80%, var(--color-accent-dark)) 100%);
+    --action-dca-text: rgba(22, 12, 12, 0.98);
+
+    --action-side-bg: color-mix(in srgb, rgba(255, 255, 255, 0.92) 72%, rgba(199, 53, 63, 0.12));
+    --action-side-bg-hover: color-mix(in srgb, rgba(255, 255, 255, 0.92) 60%, rgba(199, 53, 63, 0.22));
+    --action-side-text: rgba(40, 22, 24, 0.96);
+}
+
+:root[data-theme="crimsonIvory"] body {
+    background: url("https://i.pinimg.com/1200x/90/cf/2f/90cf2f9508f557620d7da4bac4fdd6fd.jpg") center/cover no-repeat fixed;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+:root[data-theme="crimsonIvory"] body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.55), transparent 58%),
+        radial-gradient(circle at 78% 28%, rgba(211, 177, 95, 0.22), transparent 62%),
+        radial-gradient(circle at 70% 72%, rgba(47, 107, 79, 0.14), transparent 60%),
+        linear-gradient(135deg, rgba(255, 250, 244, 0.58) 0%, rgba(255, 244, 236, 0.48) 55%, rgba(199, 53, 63, 0.12) 100%);
+    opacity: 0.88;
+    pointer-events: none;
+}
+
+:root[data-theme="crimsonIvory"] .page-ledger,
+:root[data-theme="crimsonIvory"] .page-input,
+:root[data-theme="crimsonIvory"] .page-chart,
+:root[data-theme="crimsonIvory"] .page-budget,
+:root[data-theme="crimsonIvory"] .page-monthly-planner,
+:root[data-theme="crimsonIvory"] .page-daily-budget,
+:root[data-theme="crimsonIvory"] .page-settings,
+:root[data-theme="crimsonIvory"] .page-category-manage,
+:root[data-theme="crimsonIvory"] .page-investment,
+:root[data-theme="crimsonIvory"] .page-wallet,
+:root[data-theme="crimsonIvory"] .page-history,
+:root[data-theme="crimsonIvory"] .page-planner,
+:root[data-theme="crimsonIvory"] .page-manage-investment,
+:root[data-theme="crimsonIvory"] .page-annual-report,
+:root[data-theme="crimsonIvory"] .page-diary,
+:root[data-theme="crimsonIvory"] .page-installment,
+:root[data-theme="crimsonIvory"] .installment-page,
+:root[data-theme="crimsonIvory"] .dca-page,
+:root[data-theme="crimsonIvory"] .fixed-deposit-page {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+:root[data-theme="crimsonIvory"] .card,
+:root[data-theme="crimsonIvory"] .record-card,
+:root[data-theme="crimsonIvory"] .ledger-card,
+:root[data-theme="crimsonIvory"] .summary-card,
+:root[data-theme="crimsonIvory"] .budget-card,
+:root[data-theme="crimsonIvory"] .wallet-card,
+:root[data-theme="crimsonIvory"] .chart-card,
+:root[data-theme="crimsonIvory"] .investment-card,
+:root[data-theme="crimsonIvory"] .manage-investment-card,
+:root[data-theme="crimsonIvory"] .annual-report-card,
+:root[data-theme="crimsonIvory"] .diary-card,
+:root[data-theme="crimsonIvory"] .monthly-planning-card,
+:root[data-theme="crimsonIvory"] .investment-settings-card,
+:root[data-theme="crimsonIvory"] .wallet-budget-card,
+:root[data-theme="crimsonIvory"] .holding-card,
+:root[data-theme="crimsonIvory"] .buying-card,
+:root[data-theme="crimsonIvory"] .selling-card,
+:root[data-theme="crimsonIvory"] .dividend-card,
+:root[data-theme="crimsonIvory"] .regular-investment-card,
+:root[data-theme="crimsonIvory"] .investment-management-card,
+:root[data-theme="crimsonIvory"] .dca-card,
+:root[data-theme="crimsonIvory"] .installment-card,
+:root[data-theme="crimsonIvory"] .fixed-deposit-card {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border: 2px solid var(--card-border-color) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(14px) saturate(140%) !important;
+    box-shadow: 0 14px 34px rgba(122, 31, 40, 0.14) !important;
+}
+
+:root[data-theme="crimsonIvory"] .modal-content,
+:root[data-theme="crimsonIvory"] .modal-content-standard,
+:root[data-theme="crimsonIvory"] .budget-category-modal-content,
+:root[data-theme="crimsonIvory"] .budget-setting-modal-content,
+:root[data-theme="crimsonIvory"] .category-modal-content,
+:root[data-theme="crimsonIvory"] .dca-execute-modal .modal-content,
+:root[data-theme="crimsonIvory"] .account-modal-content,
+:root[data-theme="crimsonIvory"] .emoji-modal-content,
+:root[data-theme="crimsonIvory"] .history-modal-content,
+:root[data-theme="crimsonIvory"] .crop-modal-content,
+:root[data-theme="crimsonIvory"] .dialog-content,
+:root[data-theme="crimsonIvory"] .dialog-container,
+:root[data-theme="crimsonIvory"] .xiaosen-dialog,
+:root[data-theme="crimsonIvory"] .komori-dialog,
+:root[data-theme="crimsonIvory"] .mori-dialog,
+:root[data-theme="crimsonIvory"] .mori-dialog-box,
+:root[data-theme="crimsonIvory"] .theme-modal-content,
+:root[data-theme="crimsonIvory"] .theme-modal-container {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border: 1px solid var(--border-medium) !important;
+    box-shadow: 0 22px 60px rgba(122, 31, 40, 0.18) !important;
+    max-width: min(94vw, 520px);
+}
+
+:root[data-theme="crimsonIvory"] .theme-modal-overlay,
+:root[data-theme="crimsonIvory"] .modal-overlay,
+:root[data-theme="crimsonIvory"] .dialog-overlay {
+    background: color-mix(in srgb, rgba(40, 22, 24, 0.54) 75%, transparent) !important;
+    backdrop-filter: blur(8px);
+}
+
+
+
+:root[data-theme="crimsonIvory"] .btn,
+:root[data-theme="crimsonIvory"] .buy-action-btn-large {
+    background: var(--action-buy-bg) !important;
+    color: var(--action-buy-text) !important;
+    border: 2px solid color-mix(in srgb, var(--color-primary) 55%, white) !important;
+}
+
+:root[data-theme="crimsonIvory"] .btn:hover,
+:root[data-theme="crimsonIvory"] .buy-action-btn-large:hover {
+    background: var(--action-buy-bg-hover) !important;
+}
+
+:root[data-theme="crimsonIvory"] .dca-action-btn-large {
+    background: var(--action-dca-bg) !important;
+    color: var(--action-dca-text) !important;
+    border: 2px solid color-mix(in srgb, var(--color-secondary) 50%, white) !important;
+}
+
+:root[data-theme="crimsonIvory"] .dca-action-btn-large:hover {
+    background: var(--action-dca-bg-hover) !important;
+}
+
+:root[data-theme="crimsonIvory"] .back-btn,
+:root[data-theme="crimsonIvory"] .return-btn {
+    background: linear-gradient(135deg,
+        color-mix(in srgb, var(--color-primary) 76%, white) 0%,
+        color-mix(in srgb, var(--color-secondary) 70%, var(--color-accent)) 100%) !important;
+    border: 2px solid rgba(199, 53, 63, 0.45) !important;
+    color: rgba(22, 12, 12, 0.98) !important;
+}
+
+@media (max-width: 768px) {
+    :root[data-theme="crimsonIvory"] .modal-content,
+    :root[data-theme="crimsonIvory"] .dialog-content,
+    :root[data-theme="crimsonIvory"] .theme-modal-container {
+        width: 95vw;
+        max-height: 90vh;
+    }
+}
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="crimsonIvory"] {
+    --k-main: #c7353f;
+    --k-main-dark: #87242b;
+    --k-main-light: #f0c7c9;
+    --k-btn-top: #c7353f;
+    --k-btn-bottom: #87242b;
+    --k-on-main: #ffffff;
+    --k-paper: #fcf5f5;
+    --k-paper-2: #f7e3e5;
+    --k-line: #e3abaf;
+    --k-ink: #43191c;
+    --k-ink-soft: #7e4448;
+    --k-title: #87242b;
+    --k-deep: #3b1c17;
+    --k-on-deep: #f0dbdd;
+}
+/* ===== 主題設計工具組配色結束 ===== */

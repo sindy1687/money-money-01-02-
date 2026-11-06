@@ -351,8 +351,6 @@
 :root[data-theme="leafCatGreen"] .dca-execute-btn,
 :root[data-theme="leafCatGreen"] .allocation-btn.primary,
 :root[data-theme="leafCatGreen"] .modal-btn.confirm-btn,
-:root[data-theme="leafCatGreen"] .smart-analysis-btn,
-:root[data-theme="leafCatGreen"] .smart-reminders-btn,
 :root[data-theme="leafCatGreen"] .smart-suggestion-btn {
     background: var(--action-buy-bg) !important;
     color: var(--action-buy-text) !important;
@@ -368,8 +366,6 @@
 :root[data-theme="leafCatGreen"] .dca-execute-btn:hover,
 :root[data-theme="leafCatGreen"] .allocation-btn.primary:hover,
 :root[data-theme="leafCatGreen"] .modal-btn.confirm-btn:hover,
-:root[data-theme="leafCatGreen"] .smart-analysis-btn:hover,
-:root[data-theme="leafCatGreen"] .smart-reminders-btn:hover,
 :root[data-theme="leafCatGreen"] .smart-suggestion-btn:hover {
     background: var(--action-buy-bg-hover) !important;
 }
@@ -470,3 +466,22 @@
         border-radius: 16px 16px 0 0 !important;
     }
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="leafCatGreen"] {
+    --k-main: #30923b;
+    --k-main-dark: #1c5422;
+    --k-main-light: #c9edcd;
+    --k-btn-top: #2b8335;
+    --k-btn-bottom: #1c5422;
+    --k-on-main: #ffffff;
+    --k-paper: #f5fcf6;
+    --k-paper-2: #e4f6e6;
+    --k-line: #abe3b1;
+    --k-ink: #19431e;
+    --k-ink-soft: #407746;
+    --k-title: #1c5422;
+    --k-deep: #1c3b17;
+    --k-on-deep: #dbf0de;
+}
+/* ===== 主題設計工具組配色結束 ===== */

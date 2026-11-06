@@ -1,3 +1,64 @@
+/* ===== blue 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+:root[data-theme="blue"] {
+    --color-primary: #4a90e2;
+    --color-primary-light: #7bb3f0;
+    --color-primary-lighter: #5da3ed;
+    --color-primary-dark: #2e7bd6;
+    --bg-primary: linear-gradient(135deg, #e8f4fd 0%, #f0f8ff 100%);
+    --bg-gradient: linear-gradient(135deg, #7bb3f0 0%, #5da3ed 100%);
+    --bg-gradient-light: linear-gradient(135deg, #e8f4fd 0%, #f0f8ff 100%);
+    --border-primary: #4a90e2;
+    --shadow-primary: 0 2px 8px rgba(74, 144, 226, 0.25);
+    --shadow-primary-lg: 0 4px 12px rgba(74, 144, 226, 0.3);
+    --color-primary-rgba-08: rgba(74, 144, 226, 0.08);
+    --color-primary-rgba-10: rgba(74, 144, 226, 0.1);
+    --color-primary-rgba-15: rgba(74, 144, 226, 0.15);
+    --color-primary-rgba-20: rgba(74, 144, 226, 0.2);
+    --color-primary-rgba-25: rgba(74, 144, 226, 0.25);
+    --color-primary-rgba-30: rgba(74, 144, 226, 0.3);
+    --color-primary-rgba-12: rgba(74, 144, 226, 0.12);
+    --color-primary-rgba-18: rgba(74, 144, 226, 0.18);
+    --color-primary-light-rgba-08: rgba(123, 179, 240, 0.08);
+    --color-primary-light-rgba-10: rgba(123, 179, 240, 0.1);
+    --color-primary-light-rgba-15: rgba(123, 179, 240, 0.15);
+    --color-primary-light-rgba-20: rgba(123, 179, 240, 0.2);
+    --color-primary-light-rgba-25: rgba(123, 179, 240, 0.25);
+    --color-primary-light-rgba-30: rgba(123, 179, 240, 0.3);
+    --color-primary-light-rgba-40: rgba(123, 179, 240, 0.4);
+    --bg-light-gradient: linear-gradient(135deg, var(--bg-white) 0%, #f0f8ff 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, #f0f8ff 0%, var(--bg-white) 100%);
+}
+
+:root[data-theme="blue"] .budget-summary-label,
+:root[data-theme="blue"] .budget-detail-label,
+:root[data-theme="blue"] .stat-label,
+:root[data-theme="blue"] .dividend-stat-label,
+:root[data-theme="blue"] .account-info,
+:root[data-theme="blue"] .account-item-name,
+:root[data-theme="blue"] .account-item-currency,
+:root[data-theme="blue"] .tab-text {
+    color: rgba(74, 144, 226, 0.8) !important;
+}
+
+:root[data-theme="blue"] .portfolio-shares,
+:root[data-theme="blue"] .stock-grid-card-tag--shares {
+    color: var(--color-accent) !important;
+    background: linear-gradient(145deg, rgba(74, 144, 226, 0.15) 0%, rgba(74, 144, 226, 0.25) 50%, rgba(74, 144, 226, 0.15) 100%) !important;
+    border: 2px solid rgba(74, 144, 226, 0.35) !important;
+    box-shadow: 
+        0 4px 15px rgba(74, 144, 226, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+:root[data-theme="blue"] .portfolio-shares:hover,
+:root[data-theme="blue"] .stock-grid-card-tag--shares:hover {
+    border-color: rgba(74, 144, 226, 0.5) !important;
+    box-shadow: 
+        0 8px 25px rgba(74, 144, 226, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ===== blue 主題原有樣式 ===== */
 ﻿:root[data-theme="blue"].dark,
 
 :root[data-theme="blue"] {
@@ -30,7 +91,21 @@
     --bg-light-gradient-reverse: linear-gradient(180deg, #f0f8ff 0%, var(--bg-white) 100%);
 }
 
-:root[data-theme="blue"] body,
-
-:root[data-theme="blue"] body::before,
-
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="blue"] {
+    --k-main: #4a90e2;
+    --k-main-dark: #1e67bc;
+    --k-main-light: #c1d9f5;
+    --k-btn-top: #76abe9;
+    --k-btn-bottom: #4a90e2;
+    --k-on-main: #102741;
+    --k-paper: #f5f8fc;
+    --k-paper-2: #e3ecf7;
+    --k-line: #abc5e3;
+    --k-ink: #192c43;
+    --k-ink-soft: #445f7e;
+    --k-title: #1e67bc;
+    --k-deep: #0a223e;
+    --k-on-deep: #dbe5f0;
+}
+/* ===== 主題設計工具組配色結束 ===== */

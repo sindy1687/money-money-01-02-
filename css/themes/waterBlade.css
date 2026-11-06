@@ -1,3 +1,30 @@
+/* ===== waterBlade 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+:root[data-theme="waterBlade"] .modal-content,
+:root[data-theme="waterBlade"] .modal-content-standard,
+:root[data-theme="waterBlade"] .budget-category-modal-content,
+:root[data-theme="waterBlade"] .budget-setting-modal-content,
+:root[data-theme="waterBlade"] .category-modal-content,
+:root[data-theme="waterBlade"] .dca-execute-modal .modal-content,
+:root[data-theme="waterBlade"] .account-modal-content,
+:root[data-theme="waterBlade"] .emoji-modal-content,
+:root[data-theme="waterBlade"] .history-modal-content,
+:root[data-theme="waterBlade"] .crop-modal-content,
+:root[data-theme="waterBlade"] .dialog-container,
+:root[data-theme="waterBlade"] .xiaosen-dialog,
+:root[data-theme="waterBlade"] .komori-dialog,
+:root[data-theme="waterBlade"] .mori-dialog-box,
+:root[data-theme="waterBlade"] .theme-modal-content,
+:root[data-theme="waterBlade"] .theme-modal-container,
+:root[data-theme="waterBlade"] .dialog-content,
+:root[data-theme="waterBlade"] .popup-content {
+    background: rgba(7, 16, 22, 0.90) !important;
+    border: 1px solid rgba(73, 199, 211, 0.36) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.62) !important;
+    backdrop-filter: blur(16px) !important;
+    color: rgba(240, 252, 255, 0.96) !important;
+}
+
+/* ===== waterBlade 主題原有樣式 ===== */
 :root[data-theme="waterBlade"] {
     --color-primary: #49c7d3;
     --color-primary-light: #86e6ef;
@@ -193,3 +220,22 @@
     background: color-mix(in srgb, var(--bg-card) 92%, transparent) !important;
     border-color: var(--border-primary) !important;
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="waterBlade"] {
+    --k-main: #49c7d3;
+    --k-main-dark: #2798a3;
+    --k-main-light: #c6edf1;
+    --k-btn-top: #72d4dd;
+    --k-btn-bottom: #49c7d3;
+    --k-on-main: #103d41;
+    --k-paper: #f5fcfc;
+    --k-paper-2: #e3f5f7;
+    --k-line: #abdee3;
+    --k-ink: #193f43;
+    --k-ink-soft: #407377;
+    --k-title: #1d727a;
+    --k-deep: #142d2f;
+    --k-on-deep: #dbeef0;
+}
+/* ===== 主題設計工具組配色結束 ===== */

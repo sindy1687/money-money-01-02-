@@ -1,94 +1,12 @@
-﻿@import url("themes/shinobu.css");
-@import url("themes/cutecreatures.css");
-@import url("themes/red.css");
-@import url("themes/yellow.css");
-@import url("themes/indigo.css");
+/* 這三個檔案含有所有主題共用的樣式，必須一直載入。
+   其他主題檔案由 index.html 依目前主題按需載入（見 loadThemeStylesheet）。 */
 @import url("themes/money.css");
-@import url("themes/totoro.css");
-@import url("themes/cozyWood.css");
-@import url("themes/blueBunnyFlower.css");
-@import url("themes/anyaMelody.css");
-@import url("themes/crystalFortune.css");
-@import url("themes/oceanWhale.css");
-@import url("themes/capybaraSakuraPond.css");
-@import url("themes/autumnBunny.css");
-@import url("themes/hardworkMoney.css");
-@import url("themes/noface.css");
-@import url("themes/demonslayer.css");
-@import url("themes/jellyParty.css");
-@import url("themes/floralGradient.css");
-@import url("themes/blackGoldFrog.css");
-@import url("themes/luckyCatPink.css");
-@import url("themes/coinCatGold.css");
-@import url("themes/pink.css");
-@import url("themes/blue.css");
-@import url("themes/green.css");
-@import url("themes/forest.css");
-@import url("themes/piggyMelody.css");
-@import url("themes/purple.css");
-@import url("themes/orange.css");
-@import url("themes/cyan.css");
-@import url("themes/auroraflow.css");
-@import url("themes/midnight.css");
-@import url("themes/ocean.css");
-@import url("themes/galaxy.css");
 @import url("themes/obsidian.css");
-@import url("themes/teal.css");
-@import url("themes/snow.css");
-@import url("themes/cute.css");
-@import url("themes/meteor.css");
-@import url("themes/cyber.css");
-@import url("themes/peach.css");
 @import url("themes/mono.css");
 
-@import url("themes/hanfuElegance.css");
-
-@import url("themes/pastelCatDream.css");
-
-@import url("themes/waterBlade.css");
-
-@import url("themes/waveRonin.css");
-
-@import url("themes/amberRonin.css");
-
-@import url("themes/serpentEyes.css");
-
-@import url("themes/kitsuneElegance.css");
-
-@import url("themes/shibaPastel.css");
-
-@import url("themes/pikachuSnow.css");
-
-@import url("themes/blackCatCoinGalaxy.css");
-
-@import url("themes/samoyedSnowWave.css");
-
-@import url("themes/citrusNoirBlossom.css");
-
-@import url("themes/leafCatGreen.css");
-
-@import url("themes/pastelBlossomMist.css");
-
-@import url("themes/blueLotusGoldGlow.css");
-
-@import url("themes/mandalaNoirBloom.css");
-
-@import url("themes/totoroCitrusPool.css");
-
-@import url("themes/hanfuMaskNoir.css");
-
-@import url("themes/littlePrinceWhaleNight.css");
-
-@import url("themes/shinchanFlashlightNight.css");
-
-@import url("themes/starWhaleButterfly.css");
-
-@import url("themes/fortuneGodGetRich.css");
-
-@import url("themes/ganeshaGoldOm.css");
-
-@import url("themes/narutoGraffiti.css");
-
-@import url("themes/pastelStarryEyes.css");
-
-@import url("themes/sakuraButterflyNoir.css");
+/* 原本由 cutecreatures.css / shinobu.css 提供、全站都會用到的動畫；
+   改成按需載入後移到這裡，讓其他主題的效果維持不變 */
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}

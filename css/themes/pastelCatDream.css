@@ -490,3 +490,22 @@
         border-radius: 16px 16px 0 0 !important;
     }
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="pastelCatDream"] {
+    --k-main: #ff3383;
+    --k-main-dark: #e00058;
+    --k-main-light: #f8bfd5;
+    --k-btn-top: #ff66a2;
+    --k-btn-bottom: #ff3383;
+    --k-on-main: #411024;
+    --k-paper: #fcf5f8;
+    --k-paper-2: #f7e3eb;
+    --k-line: #e3abc1;
+    --k-ink: #431929;
+    --k-ink-soft: #7e445b;
+    --k-title: #cc0050;
+    --k-deep: #1c2336;
+    --k-on-deep: #f0dbe3;
+}
+/* ===== 主題設計工具組配色結束 ===== */

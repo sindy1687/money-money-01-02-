@@ -1,0 +1,96 @@
+/* ===== graffiti 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+/* ========== 塗鴉風格主題 ========== */
+:root[data-theme="graffiti"] {
+    /* 主要顏色 - 基於圖片中的塗鴉色彩 */
+    --color-primary: #1E90FF; /* 深天藍色 */
+    --color-secondary: #FF4500; /* 橙紅色 */
+    --color-accent: #ADFF2F; /* 黃綠色 */
+    
+    /* 背景顏色 */
+    --bg-white: rgba(30, 30, 30, 0.85);
+    --bg-light: rgba(40, 40, 40, 0.8);
+    --bg-soft: rgba(50, 50, 50, 0.75);
+    --bg-medium: rgba(60, 60, 60, 0.7);
+    --bg-dark: rgba(20, 20, 20, 0.9);
+    
+    /* 文字顏色 */
+    --text-primary: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --text-tertiary: rgba(255, 255, 255, 0.6);
+    --text-inverse: #1a1a1a;
+    
+    /* 邊框顏色 */
+    --border-light: rgba(30, 144, 255, 0.3);
+    --border-medium: rgba(30, 144, 255, 0.5);
+    --border-dark: rgba(30, 144, 255, 0.7);
+    
+    /* RGBA透明度變數 */
+    --color-primary-rgba-08: rgba(30, 144, 255, 0.08);
+    --color-primary-rgba-10: rgba(30, 144, 255, 0.10);
+    --color-primary-rgba-12: rgba(30, 144, 255, 0.12);
+    --color-primary-rgba-15: rgba(30, 144, 255, 0.15);
+    --color-primary-rgba-20: rgba(30, 144, 255, 0.20);
+    --color-primary-rgba-25: rgba(30, 144, 255, 0.25);
+    --color-primary-rgba-30: rgba(30, 144, 255, 0.30);
+    
+    --color-secondary-rgba-08: rgba(255, 69, 0, 0.08);
+    --color-secondary-rgba-10: rgba(255, 69, 0, 0.10);
+    --color-secondary-rgba-12: rgba(255, 69, 0, 0.12);
+    --color-secondary-rgba-15: rgba(255, 69, 0, 0.15);
+    --color-secondary-rgba-20: rgba(255, 69, 0, 0.20);
+    --color-secondary-rgba-25: rgba(255, 69, 0, 0.25);
+    --color-secondary-rgba-30: rgba(255, 69, 0, 0.30);
+    
+    --color-accent-rgba-08: rgba(173, 255, 47, 0.08);
+    --color-accent-rgba-10: rgba(173, 255, 47, 0.10);
+    --color-accent-rgba-12: rgba(173, 255, 47, 0.12);
+    --color-accent-rgba-15: rgba(173, 255, 47, 0.15);
+    --color-accent-rgba-20: rgba(173, 255, 47, 0.20);
+    --color-accent-rgba-25: rgba(173, 255, 47, 0.25);
+    --color-accent-rgba-30: rgba(173, 255, 47, 0.30);
+    
+    /* 狀態顏色 */
+    --color-success: #4CAF50;
+    --color-warning: #FF9800;
+    --color-danger: #F44336;
+    --color-info: #2196F3;
+    
+    /* 漸層背景 */
+    --gradient-primary: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, var(--color-primary-rgba-15) 50%, var(--color-primary-rgba-10) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--color-secondary-rgba-10) 0%, var(--color-secondary-rgba-15) 50%, var(--color-secondary-rgba-10) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-accent-rgba-10) 0%, var(--color-accent-rgba-15) 50%, var(--color-accent-rgba-10) 100%);
+    
+    /* 陰影 */
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* 咖啡色透明度變數 */
+:root[data-theme="graffiti"] {
+    --coffee-primary: #8B4513;
+    --coffee-light: #A0522D;
+    --coffee-dark: #654321;
+    --coffee-rgba-80: rgba(139, 69, 19, 0.8);
+    --coffee-rgba-60: rgba(139, 69, 19, 0.6);
+    --coffee-rgba-40: rgba(139, 69, 19, 0.4);
+}
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="graffiti"] {
+    --k-main: #1e90ff;
+    --k-main-dark: #0067cb;
+    --k-main-light: #bfdcf8;
+    --k-btn-top: #51a9ff;
+    --k-btn-bottom: #1e90ff;
+    --k-on-main: #102941;
+    --k-paper: #f5f9fc;
+    --k-paper-2: #e3edf7;
+    --k-line: #abc7e3;
+    --k-ink: #192e43;
+    --k-ink-soft: #44617e;
+    --k-title: #0067cb;
+    --k-deep: #11141d;
+    --k-on-deep: #dbe6f0;
+}
+/* ===== 主題設計工具組配色結束 ===== */

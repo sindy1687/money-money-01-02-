@@ -1,3 +1,75 @@
+/* ===== pink 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+/* ========== 主題顏色定義 ========== */
+:root[data-theme="pink"] {
+    --color-primary: #ff69b4;
+    --color-primary-light: #ffb6d9;
+    --color-primary-lighter: #ff9ec7;
+    --color-primary-dark: #ff1493;
+    --bg-primary: linear-gradient(135deg, #ffeef5 0%, #fff5f9 100%);
+    --bg-gradient: linear-gradient(135deg, #ffb6d9 0%, #ff9ec7 100%);
+    --bg-gradient-light: linear-gradient(135deg, #ffeef5 0%, #fff5f9 100%);
+    --border-primary: #ff69b4;
+    --shadow-primary: 0 2px 8px rgba(255, 105, 180, 0.25);
+    --shadow-primary-lg: 0 4px 12px rgba(255, 105, 180, 0.3);
+    --color-primary-rgba-08: rgba(255, 105, 180, 0.08);
+    --color-primary-rgba-10: rgba(255, 105, 180, 0.1);
+    --color-primary-rgba-15: rgba(255, 105, 180, 0.15);
+    --color-primary-rgba-16: rgba(255, 105, 180, 0.16);
+    --color-primary-rgba-20: rgba(255, 105, 180, 0.2);
+    --color-primary-rgba-25: rgba(255, 105, 180, 0.25);
+    --color-primary-rgba-30: rgba(255, 105, 180, 0.3);
+    --color-primary-rgba-40: rgba(255, 105, 180, 0.4);
+    --color-primary-rgba-28: rgba(255, 105, 180, 0.28);
+    --color-primary-rgba-12: rgba(255, 105, 180, 0.12);
+    --color-primary-rgba-18: rgba(255, 105, 180, 0.18);
+    --color-primary-rgba-22: rgba(255, 105, 180, 0.22);
+    --color-primary-rgba-32: rgba(255, 105, 180, 0.32);
+    --color-primary-rgba-35: rgba(255, 105, 180, 0.35);
+    --color-primary-rgba-42: rgba(255, 105, 180, 0.42);
+    --color-primary-rgba-55: rgba(255, 105, 180, 0.55);
+    --color-primary-rgba-60: rgba(255, 105, 180, 0.6);
+    --color-primary-light-rgba-08: rgba(255, 158, 199, 0.08);
+    --color-primary-light-rgba-10: rgba(255, 158, 199, 0.1);
+    --color-primary-light-rgba-15: rgba(255, 158, 199, 0.15);
+    --color-primary-light-rgba-20: rgba(255, 158, 199, 0.2);
+    --color-primary-light-rgba-25: rgba(255, 158, 199, 0.25);
+    --color-primary-light-rgba-30: rgba(255, 158, 199, 0.3);
+    --color-primary-light-rgba-40: rgba(255, 158, 199, 0.4);
+    --bg-light-gradient: linear-gradient(135deg, var(--bg-white) 0%, #fff5f9 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, #fff5f9 0%, var(--bg-white) 100%);
+}
+
+/* 各主題特定調整 */
+:root[data-theme="pink"] .budget-summary-label,
+:root[data-theme="pink"] .budget-detail-label,
+:root[data-theme="pink"] .stat-label,
+:root[data-theme="pink"] .dividend-stat-label,
+:root[data-theme="pink"] .account-info,
+:root[data-theme="pink"] .account-item-name,
+:root[data-theme="pink"] .account-item-currency,
+:root[data-theme="pink"] .tab-text {
+    color: var(--color-primary-rgba-80) !important;
+}
+
+:root[data-theme="pink"] .portfolio-shares,
+:root[data-theme="pink"] .stock-grid-card-tag--shares {
+    color: var(--color-accent) !important;
+    background: linear-gradient(145deg, var(--color-primary-rgba-15) 0%, var(--color-primary-rgba-25) 50%, var(--color-primary-rgba-15) 100%) !important;
+    border: 2px solid var(--color-primary-rgba-35) !important;
+    box-shadow: 
+        0 4px 15px var(--color-primary-rgba-25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+:root[data-theme="pink"] .portfolio-shares:hover,
+:root[data-theme="pink"] .stock-grid-card-tag--shares:hover {
+    border-color: var(--color-primary-rgba-50) !important;
+    box-shadow: 
+        0 8px 25px var(--color-primary-rgba-35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ===== pink 主題原有樣式 ===== */
 ﻿:root[data-theme="pink"].dark,
 
 :root[data-theme="pink"] {
@@ -39,7 +111,21 @@
     --bg-light-gradient-reverse: linear-gradient(180deg, #fff5f9 0%, var(--bg-white) 100%);
 }
 
-:root[data-theme="pink"] body,
-
-:root[data-theme="pink"] body::before,
-
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="pink"] {
+    --k-main: #ff3399;
+    --k-main-dark: #e00070;
+    --k-main-light: #f8bfdb;
+    --k-btn-top: #ff66b3;
+    --k-btn-bottom: #ff3399;
+    --k-on-main: #411029;
+    --k-paper: #fcf5f9;
+    --k-paper-2: #f7e3ed;
+    --k-line: #e3abc7;
+    --k-ink: #43192e;
+    --k-ink-soft: #7e4461;
+    --k-title: #cc0066;
+    --k-deep: #470024;
+    --k-on-deep: #f0dbe6;
+}
+/* ===== 主題設計工具組配色結束 ===== */

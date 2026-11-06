@@ -293,3 +293,22 @@
     background: color-mix(in srgb, var(--bg-card) 92%, transparent) !important;
     border-color: var(--border-primary) !important;
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="waveRonin"] {
+    --k-main: #2c7db3;
+    --k-main-dark: #1c4f72;
+    --k-main-light: #c6e0f1;
+    --k-btn-top: #2a77ab;
+    --k-btn-bottom: #1c4f72;
+    --k-on-main: #ffffff;
+    --k-paper: #f5f9fc;
+    --k-paper-2: #e3eff7;
+    --k-line: #abcde3;
+    --k-ink: #193243;
+    --k-ink-soft: #44677e;
+    --k-title: #1c4f72;
+    --k-deep: #182b37;
+    --k-on-deep: #dbe8f0;
+}
+/* ===== 主題設計工具組配色結束 ===== */

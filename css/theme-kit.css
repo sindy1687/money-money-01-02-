@@ -1,0 +1,972 @@
+/* ===================================================================
+   主題設計工具組（theme-kit）— 由產生器建立，請改 build-kit.js 後重新產生
+   每個主題在自己的 css/themes/<id>.css 裡定義 --k-* 配色；
+   這裡依 data-motif（圖案風格）決定按鈕、卡片、框線、「+」按鈕的形狀。
+   只有 theme.js 有指定圖案風格的主題才會套用（html 上會有 data-kit）。
+   =================================================================== */
+
+html[data-kit] {
+    --kc-card-bg: linear-gradient(180deg, var(--k-paper) 0%, var(--k-paper-2) 100%);
+    --kc-card-radius: 18px;
+    --kc-card-border: 1px solid var(--k-line);
+    --kc-card-outline: 0 solid transparent;
+    --kc-card-outline-offset: 0px;
+    --kc-card-shadow: 0 8px 22px color-mix(in srgb, var(--k-main-dark) 18%, transparent);
+    --kc-deco-bg: none;
+    --kc-deco-inset: auto 0 0 0;
+    --kc-deco-h: 0px;
+    --kc-panel-radius: 22px;
+
+    --kc-btn-bg: linear-gradient(180deg, var(--k-btn-top) 0%, var(--k-btn-bottom) 100%);
+    --kc-btn-radius: 14px;
+    --kc-btn-border: 1px solid color-mix(in srgb, var(--k-btn-bottom) 80%, black);
+    --kc-btn-shadow: 0 4px 12px color-mix(in srgb, var(--k-main-dark) 30%, transparent);
+    --kc-btn-clip: none;
+    --kc-btn-mask: none;
+    --kc-btn-spacing: 0.02em;
+    --kc-btn-press: scale(0.97);
+
+    --kc-btn2-bg: var(--k-paper);
+    --kc-btn2-border: 1px solid var(--k-line);
+    --kc-btn2-shadow: 0 3px 8px color-mix(in srgb, var(--k-main-dark) 14%, transparent);
+    --kc-chip-radius: 12px;
+
+    --kc-tab-radius: 12px;
+    --kc-tab-clip: none;
+
+    --kc-fab-bg: linear-gradient(180deg, var(--k-btn-top) 0%, var(--k-btn-bottom) 100%);
+    --kc-fab-border: 3px solid var(--k-paper);
+    --kc-fab-shadow: 0 8px 20px color-mix(in srgb, var(--k-main-dark) 45%, transparent);
+    --kc-fab-radius: 50%;
+    --kc-fab-clip: none;
+    --kc-fab-mask: none;
+    --kc-fab-anim: none;
+
+    --kc-nav-bg: color-mix(in srgb, var(--k-paper) 94%, transparent);
+    --kc-nav-border: 1px solid var(--k-line);
+    --kc-nav-text: var(--k-ink-soft);
+    --kc-nav-active-text: var(--k-title);
+    --kc-nav-active-bg: color-mix(in srgb, var(--k-main-light) 80%, transparent);
+
+    --kc-input-radius: 12px;
+    --kc-input-border: 1.5px solid var(--k-line);
+    --kc-key-radius: 14px;
+}
+
+html[data-kit][data-motif="paw"] {
+    --kc-card-radius: 30px;
+    --kc-card-border: 3px solid var(--k-line);
+    --kc-card-shadow: 0 6px 0 color-mix(in srgb, var(--k-line) 85%, var(--k-main)), 0 12px 24px color-mix(in srgb, var(--k-main-dark) 14%, transparent);
+    --kc-deco-bg:
+        radial-gradient(circle at 14px 9px, var(--k-main-light) 0 5px, transparent 5.5px),
+        radial-gradient(circle at 6px 3px, var(--k-main-light) 0 2.4px, transparent 2.9px),
+        radial-gradient(circle at 14px 1.5px, var(--k-main-light) 0 2.4px, transparent 2.9px),
+        radial-gradient(circle at 22px 3px, var(--k-main-light) 0 2.4px, transparent 2.9px);
+    --kc-deco-bg-size: 56px 16px;
+    --kc-deco-inset: auto 14px 8px 14px;
+    --kc-deco-h: 16px;
+    --kc-btn-radius: 999px;
+    --kc-btn-border: 3px solid var(--k-btn-bottom);
+    --kc-btn-shadow: 0 5px 0 color-mix(in srgb, var(--k-btn-bottom) 70%, black);
+    --kc-btn-press: translateY(4px);
+    --kc-btn2-border: 3px solid var(--k-line);
+    --kc-btn2-shadow: 0 4px 0 var(--k-line);
+    --kc-chip-radius: 999px;
+    --kc-tab-radius: 999px;
+    --kc-fab-border: 4px solid var(--k-paper);
+    --kc-fab-shadow: 0 6px 0 color-mix(in srgb, var(--k-btn-bottom) 70%, black), 0 10px 20px color-mix(in srgb, var(--k-main-dark) 30%, transparent);
+    --kc-fab-anim: kitBounce 2.8s ease-in-out infinite;
+    --kc-nav-border: 3px solid var(--k-line);
+    --kc-input-radius: 18px;
+    --kc-input-border: 2.5px solid var(--k-line);
+    --kc-key-radius: 22px;
+    --kc-panel-radius: 30px;
+}
+
+html[data-kit][data-motif="petal"] {
+    --kc-card-radius: 30px 10px 30px 10px;
+    --kc-card-border: 1.5px solid var(--k-line);
+    --kc-deco-bg: radial-gradient(circle at 12px 12px, color-mix(in srgb, var(--k-main-light) 90%, white) 0 8px, transparent 8.5px);
+    --kc-deco-bg-size: 24px 12px;
+    --kc-deco-inset: auto 0 0 0;
+    --kc-deco-h: 7px;
+    --kc-btn-radius: 22px 6px 22px 6px;
+    --kc-btn-border: 1px solid color-mix(in srgb, var(--k-btn-bottom) 85%, white);
+    --kc-btn-shadow: 0 6px 16px color-mix(in srgb, var(--k-main) 35%, transparent);
+    --kc-chip-radius: 16px 5px 16px 5px;
+    --kc-tab-radius: 18px 5px 18px 5px;
+    --kc-fab-radius: 0;
+    --kc-fab-border: none;
+    --kc-fab-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='black'><circle cx='50' cy='24' r='22'/><circle cx='75' cy='42' r='22'/><circle cx='66' cy='72' r='22'/><circle cx='34' cy='72' r='22'/><circle cx='25' cy='42' r='22'/><circle cx='50' cy='52' r='24'/></g></svg>") center / contain no-repeat;
+    --kc-fab-anim: kitSway 3.6s ease-in-out infinite;
+    --kc-input-radius: 16px 5px 16px 5px;
+    --kc-key-radius: 18px 6px 18px 6px;
+    --kc-panel-radius: 32px 12px 32px 12px;
+}
+
+html[data-kit][data-motif="wave"] {
+    --kc-card-radius: 24px;
+    --kc-card-border: 1.5px solid var(--k-line);
+    --kc-deco-bg: radial-gradient(circle at 10px -3px, transparent 9px, var(--k-main-light) 9.5px 12px, transparent 12.5px);
+    --kc-deco-bg-size: 20px 10px;
+    --kc-deco-inset: auto 0 0 0;
+    --kc-deco-h: 10px;
+    --kc-btn-radius: 999px;
+    --kc-btn-mask:
+        radial-gradient(circle 8px at 8px 0, #000 98%, transparent) 0 100% / 16px 8px repeat-x,
+        linear-gradient(#000 0 0) 0 0 / 100% calc(100% - 7px) no-repeat;
+    --kc-chip-radius: 999px;
+    --kc-tab-radius: 999px;
+    --kc-fab-bg: radial-gradient(circle at 35% 30%, #ffffff 0 10%, var(--k-main-light) 28%, var(--k-btn-top) 62%, var(--k-btn-bottom) 100%);
+    --kc-fab-border: 2px solid color-mix(in srgb, white 70%, transparent);
+    --kc-fab-anim: kitFloat 3.4s ease-in-out infinite;
+    --kc-input-radius: 999px;
+    --kc-key-radius: 999px;
+}
+
+html[data-kit][data-motif="jelly"] {
+    --kc-card-radius: 26px;
+    --kc-card-border: 2px solid var(--k-main-light);
+    --kc-deco-bg: repeating-linear-gradient(135deg, var(--k-main) 0 8px, var(--k-main-light) 8px 16px);
+    --kc-deco-bg-size: auto;
+    --kc-deco-inset: 0 0 auto 0;
+    --kc-deco-h: 6px;
+    --kc-btn-radius: 20px;
+    --kc-btn-shadow: inset 0 8px 0 rgba(255, 255, 255, 0.35), inset 0 -6px 10px color-mix(in srgb, var(--k-btn-bottom) 60%, black), 0 6px 14px color-mix(in srgb, var(--k-main) 40%, transparent);
+    --kc-btn-press: scale(1.04, 0.92);
+    --kc-chip-radius: 16px;
+    --kc-tab-radius: 16px;
+    --kc-fab-radius: 22px;
+    --kc-fab-shadow: inset 0 9px 0 rgba(255, 255, 255, 0.4), inset 0 -8px 12px color-mix(in srgb, var(--k-btn-bottom) 60%, black), 0 8px 18px color-mix(in srgb, var(--k-main) 45%, transparent);
+    --kc-fab-anim: kitWobble 3s ease-in-out infinite;
+    --kc-input-radius: 16px;
+    --kc-key-radius: 20px;
+    --kc-panel-radius: 28px;
+}
+
+html[data-kit][data-motif="blade"] {
+    --kc-card-radius: 6px;
+    --kc-card-border: 1px solid var(--k-line);
+    --kc-card-shadow: 6px 6px 0 color-mix(in srgb, var(--k-deep) 30%, transparent);
+    --kc-deco-bg: linear-gradient(var(--k-main), var(--k-main)) 0 0 / 5px 100% no-repeat, repeating-linear-gradient(-45deg, var(--k-main) 0 5px, transparent 5px 11px) right top / 92px 6px no-repeat;
+    --kc-deco-bg-size: auto;
+    --kc-deco-inset: 0;
+    --kc-deco-h: auto;
+    --kc-btn-radius: 0;
+    --kc-btn-clip: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+    --kc-btn-border: none;
+    --kc-btn-shadow: none;
+    --kc-btn-spacing: 0.08em;
+    --kc-btn2-border: 2px solid var(--k-line);
+    --kc-chip-radius: 4px;
+    --kc-tab-radius: 0;
+    --kc-tab-clip: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    --kc-fab-radius: 0;
+    --kc-fab-border: none;
+    --kc-fab-clip: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    --kc-fab-shadow: none;
+    --kc-nav-bg: linear-gradient(180deg, color-mix(in srgb, var(--k-deep) 92%, transparent), var(--k-deep));
+    --kc-nav-border: 3px solid var(--k-main);
+    --kc-nav-text: color-mix(in srgb, var(--k-on-deep) 78%, transparent);
+    --kc-nav-active-text: var(--k-on-deep);
+    --kc-nav-active-bg: linear-gradient(180deg, transparent 70%, var(--k-main) 70% 78%, transparent 78%);
+    --kc-input-radius: 4px;
+    --kc-key-radius: 6px;
+    --kc-panel-radius: 8px;
+}
+
+html[data-kit][data-motif="ink"] {
+    --kc-card-radius: 4px;
+    --kc-card-border: 1px solid var(--k-line);
+    --kc-card-outline: 1px solid color-mix(in srgb, var(--k-line) 70%, transparent);
+    --kc-card-outline-offset: -6px;
+    --kc-deco-bg:
+        linear-gradient(var(--k-main), var(--k-main)) left top / 16px 2px no-repeat,
+        linear-gradient(var(--k-main), var(--k-main)) left top / 2px 16px no-repeat,
+        linear-gradient(var(--k-main), var(--k-main)) right top / 16px 2px no-repeat,
+        linear-gradient(var(--k-main), var(--k-main)) right top / 2px 16px no-repeat,
+        linear-gradient(var(--k-main), var(--k-main)) left bottom / 16px 2px no-repeat,
+        linear-gradient(var(--k-main), var(--k-main)) left bottom / 2px 16px no-repeat,
+        linear-gradient(var(--k-main), var(--k-main)) right bottom / 16px 2px no-repeat,
+        linear-gradient(var(--k-main), var(--k-main)) right bottom / 2px 16px no-repeat;
+    --kc-deco-bg-size: auto;
+    --kc-deco-inset: 3px;
+    --kc-deco-h: auto;
+    --kc-btn-radius: 3px;
+    --kc-btn-shadow: inset 0 0 0 2px color-mix(in srgb, white 35%, transparent), 0 3px 8px color-mix(in srgb, var(--k-main-dark) 25%, transparent);
+    --kc-btn-spacing: 0.15em;
+    --kc-chip-radius: 3px;
+    --kc-tab-radius: 3px;
+    --kc-fab-radius: 12px;
+    --kc-fab-border: none;
+    --kc-fab-shadow: inset 0 0 0 3px var(--k-btn-bottom), inset 0 0 0 5px color-mix(in srgb, white 70%, transparent), 0 6px 14px color-mix(in srgb, var(--k-main-dark) 35%, transparent);
+    --kc-input-radius: 3px;
+    --kc-key-radius: 4px;
+    --kc-panel-radius: 6px;
+}
+
+html[data-kit][data-motif="gold"] {
+    --k-gold: #c9a14a;
+    --k-gold-light: #f6e3a8;
+    --k-gold-dark: #8a6420;
+    --kc-card-radius: 16px;
+    --kc-card-border: 2px solid var(--k-gold);
+    --kc-card-outline: 1px solid color-mix(in srgb, var(--k-gold) 55%, transparent);
+    --kc-card-outline-offset: -7px;
+    --kc-card-shadow: 0 8px 22px color-mix(in srgb, var(--k-gold-dark) 25%, transparent);
+    --kc-deco-bg: linear-gradient(45deg, transparent 42%, var(--k-gold) 42% 58%, transparent 58%) center top / 12px 12px no-repeat;
+    --kc-deco-bg-size: auto;
+    --kc-deco-inset: -6px 0 auto 0;
+    --kc-deco-h: 12px;
+    --kc-btn-bg: radial-gradient(ellipse at 50% 15%, #fff6d6 0%, var(--k-gold-light) 30%, var(--k-gold) 75%, var(--k-gold-dark) 100%);
+    --kc-btn-border: 1px solid var(--k-gold-dark);
+    --kc-btn-shadow: inset 0 0 0 2px color-mix(in srgb, white 50%, transparent), inset 0 -4px 7px color-mix(in srgb, var(--k-gold-dark) 50%, transparent), 0 5px 12px color-mix(in srgb, var(--k-gold-dark) 35%, transparent);
+    --kc-btn-radius: 999px;
+    --kc-btn-text: #3d2a05;
+    --kc-btn2-border: 1.5px solid var(--k-gold);
+    --kc-chip-radius: 999px;
+    --kc-tab-radius: 999px;
+    --kc-fab-bg: radial-gradient(circle at 40% 30%, #fff6d6 0%, var(--k-gold-light) 25%, var(--k-gold) 65%, var(--k-gold-dark) 100%);
+    --kc-fab-border: 3px solid var(--k-gold-dark);
+    --kc-fab-shadow: inset 0 0 0 4px color-mix(in srgb, white 45%, transparent), 0 8px 18px color-mix(in srgb, var(--k-gold-dark) 45%, transparent);
+    --kc-fab-anim: kitCoin 5s ease-in-out infinite;
+    --kc-nav-border: 2px solid var(--k-gold);
+    --kc-input-border: 1.5px solid color-mix(in srgb, var(--k-gold) 70%, transparent);
+}
+
+html[data-kit][data-motif="lucky"] {
+    --kc-card-radius: 16px;
+    --kc-card-border: 2px dashed color-mix(in srgb, var(--k-main) 65%, transparent);
+    --kc-deco-bg: linear-gradient(var(--k-main), var(--k-main)), radial-gradient(circle, #f3c54d 0 2px, transparent 2.5px) 0 0 / 14px 6px repeat-x;
+    --kc-deco-bg-size: auto;
+    --kc-deco-inset: 0 0 auto 0;
+    --kc-deco-h: 6px;
+    --kc-btn-radius: 10px;
+    --kc-btn-border: 2px solid #e8b53a;
+    --kc-btn-shadow: inset 0 -4px 0 color-mix(in srgb, var(--k-btn-bottom) 70%, black), 0 5px 12px color-mix(in srgb, var(--k-main) 35%, transparent);
+    --kc-chip-radius: 10px;
+    --kc-tab-radius: 10px;
+    --kc-fab-radius: 12px;
+    --kc-fab-border: 3px solid #e8b53a;
+    --kc-fab-anim: kitSway 3s ease-in-out infinite;
+}
+
+html[data-kit][data-motif="night"] {
+    --kc-card-radius: 20px;
+    --kc-card-border: 1px solid color-mix(in srgb, var(--k-main-light) 80%, white);
+    --kc-card-shadow: 0 0 0 1px color-mix(in srgb, white 50%, transparent), 0 0 24px color-mix(in srgb, var(--k-main) 35%, transparent), 0 12px 28px color-mix(in srgb, var(--k-deep) 45%, transparent);
+    --kc-deco-bg: radial-gradient(circle at 20% 40%, var(--k-main) 0 1.5px, transparent 2px), radial-gradient(circle at 55% 70%, var(--k-main) 0 1px, transparent 1.5px), radial-gradient(circle at 85% 30%, var(--k-main) 0 2px, transparent 2.5px);
+    --kc-deco-bg-size: auto;
+    --kc-deco-inset: 6px 8px auto auto;
+    --kc-deco-h: 18px;
+    --kc-btn-bg: linear-gradient(180deg, color-mix(in srgb, var(--k-deep) 80%, var(--k-main)) 0%, var(--k-deep) 100%);
+    --kc-btn-text: var(--k-on-deep);
+    --kc-btn-border: 1px solid var(--k-main-light);
+    --kc-btn-shadow: 0 0 0 1px color-mix(in srgb, var(--k-main) 40%, transparent), 0 0 16px color-mix(in srgb, var(--k-main) 55%, transparent);
+    --kc-btn-radius: 999px;
+    --kc-chip-radius: 999px;
+    --kc-tab-radius: 999px;
+    --kc-fab-bg: radial-gradient(circle at 35% 35%, #fffbe8 0 18%, var(--k-main-light) 40%, var(--k-main) 75%, var(--k-main-dark) 100%);
+    --kc-fab-border: 2px solid color-mix(in srgb, white 70%, transparent);
+    --kc-fab-shadow: 0 0 22px color-mix(in srgb, var(--k-main) 70%, transparent), 0 0 46px color-mix(in srgb, var(--k-main-light) 45%, transparent);
+    --kc-fab-anim: kitGlow 3s ease-in-out infinite;
+    --kc-nav-bg: linear-gradient(180deg, color-mix(in srgb, var(--k-deep) 88%, transparent), var(--k-deep));
+    --kc-nav-border: 1px solid color-mix(in srgb, var(--k-main-light) 50%, transparent);
+    --kc-nav-text: color-mix(in srgb, var(--k-on-deep) 75%, transparent);
+    --kc-nav-active-text: var(--k-on-deep);
+    --kc-nav-active-bg: radial-gradient(ellipse at 50% 40%, color-mix(in srgb, var(--k-main) 55%, transparent), transparent 70%);
+}
+
+html[data-kit][data-motif="prince"] {
+    --kc-card-radius: 16px;
+    --kc-card-border: 1px solid var(--k-line);
+    --kc-card-outline: 1px solid color-mix(in srgb, var(--k-line) 75%, transparent);
+    --kc-card-outline-offset: -5px;
+    --kc-deco-bg: linear-gradient(45deg, transparent 35%, var(--k-main) 35% 65%, transparent 65%) center / 10px 10px no-repeat, linear-gradient(90deg, transparent, var(--k-line) 30%, transparent 46%, transparent 54%, var(--k-line) 70%, transparent) center / 100% 1px no-repeat;
+    --kc-deco-bg-size: auto;
+    --kc-deco-inset: 0 22% auto 22%;
+    --kc-deco-h: 12px;
+    --kc-btn-radius: 12px;
+    --kc-btn-shadow: inset 0 0 0 1px color-mix(in srgb, white 45%, transparent), 0 5px 14px color-mix(in srgb, var(--k-main-dark) 30%, transparent);
+    --kc-btn-spacing: 0.06em;
+    --kc-chip-radius: 10px;
+    --kc-tab-radius: 10px;
+    --kc-fab-radius: 0;
+    --kc-fab-border: none;
+    --kc-fab-clip: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
+    --kc-fab-shadow: none;
+    --kc-fab-anim: kitShine 4s ease-in-out infinite;
+}
+
+html[data-kit][data-motif="basic"] {
+    --kc-card-radius: 18px;
+    --kc-btn-radius: 14px;
+}
+
+/* 舊主題用這些變數決定文字和底色；改成工具組算好的配色，字才不會淡到看不見 */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] {
+    --text-primary: var(--k-ink) !important;
+    --text-strong: var(--k-ink) !important;
+    --text-secondary: var(--k-ink-soft) !important;
+    --text-tertiary: var(--k-ink-soft) !important;
+    --bg-white: var(--k-paper) !important;
+    --bg-card: var(--k-paper) !important;
+    --bg-light: var(--k-paper-2) !important;
+    --border-light: color-mix(in srgb, var(--k-line) 70%, transparent) !important;
+    --border-medium: var(--k-line) !important;
+    --color-primary: var(--k-main) !important;
+    --color-primary-dark: var(--k-main-dark) !important;
+    --color-primary-light: var(--k-main-light) !important;
+}
+
+/* ---------- 卡片 ---------- */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .ledger-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .summary-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .wallet-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .chart-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .investment-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .manage-investment-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .annual-report-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .diary-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .monthly-planning-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .investment-settings-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .wallet-budget-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .holding-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .buying-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .selling-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dividend-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .regular-investment-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .investment-management-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .installment-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .fixed-deposit-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .stock-item-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-item,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .next-month-budget-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .daily-budget-summary-card,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .settings-item {
+    background: var(--kc-card-bg) !important;
+    border: var(--kc-card-border) !important;
+    border-radius: var(--kc-card-radius) !important;
+    outline: var(--kc-card-outline);
+    outline-offset: var(--kc-card-outline-offset);
+    box-shadow: var(--kc-card-shadow) !important;
+    color: var(--k-ink) !important;
+    position: relative;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .ledger-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .summary-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .wallet-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .chart-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .investment-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .manage-investment-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .annual-report-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .diary-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .monthly-planning-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .investment-settings-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .wallet-budget-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .holding-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .buying-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .selling-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dividend-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .regular-investment-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .investment-management-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .installment-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .fixed-deposit-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .stock-item-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-item::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .next-month-budget-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .daily-budget-summary-card::after,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .settings-item::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: var(--kc-deco-inset) !important;
+    height: var(--kc-deco-h) !important;
+    width: auto !important;
+    background: var(--kc-deco-bg) !important;
+    background-size: var(--kc-deco-bg-size, auto) !important;
+    background-repeat: repeat-x;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .ledger-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .summary-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .wallet-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .chart-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .investment-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .manage-investment-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .annual-report-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .diary-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .monthly-planning-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .investment-settings-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .wallet-budget-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .holding-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .buying-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .selling-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dividend-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .regular-investment-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .investment-management-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .installment-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .fixed-deposit-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .stock-item-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-item > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .next-month-budget-card > *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .daily-budget-summary-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .summary-item,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-summary-item,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .quick-note-btn {
+    background: color-mix(in srgb, var(--k-paper) 92%, white) !important;
+    border: 1px solid var(--k-line) !important;
+    border-radius: var(--kc-chip-radius) !important;
+    color: var(--k-ink) !important;
+    box-shadow: 0 3px 8px color-mix(in srgb, var(--k-main-dark) 12%, transparent) !important;
+}
+
+/* 卡片裡的次要文字 */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .settings-item-text { color: var(--k-ink) !important; }
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .settings-item-subtext,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .summary-label { color: var(--k-ink-soft) !important; }
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .settings-item-accent {
+    top: 50% !important;
+    bottom: auto !important;
+    left: 10px !important;
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    transform: translateY(-50%);
+}
+
+/* ---------- 對話框、面板 ---------- */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .modal-content,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .modal-content-standard,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-category-modal-content,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-setting-modal-content,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-modal-content,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-execute-modal .modal-content,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .account-modal-content,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .emoji-modal-content,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .history-modal-content,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .crop-modal-content,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dialog-container,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .xiaosen-dialog,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .komori-dialog,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .mori-dialog-box,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .theme-modal-content,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .theme-modal-container,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dialog-content,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .popup-content,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .spending-analysis-panel,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .reminder-panel,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .smart-notification,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .quick-settings {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--k-paper) 70%, white) 0%, var(--k-paper) 100%) !important;
+    border: var(--kc-card-border) !important;
+    border-radius: var(--kc-panel-radius) !important;
+    box-shadow: 0 22px 60px color-mix(in srgb, var(--k-deep) 35%, transparent) !important;
+    color: var(--k-ink) !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .panel-header {
+    background: linear-gradient(135deg, var(--k-btn-top) 0%, var(--k-btn-bottom) 100%) !important;
+    color: var(--k-on-main) !important;
+}
+
+/* ---------- 所有按鈕（基本：奶油紙色、主題框線；下面的分組再細分） ---------- */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] button:where(:not(.nav-item, .fab-btn, .emoji-item, .image-emoji-item, .summary-toggle, .summary-item, .star-btn, .check-btn, .theme-item, .key-btn)) {
+    background: var(--kc-btn2-bg) !important;
+    color: var(--k-ink) !important;
+    border: var(--kc-btn2-border) !important;
+    border-radius: var(--kc-chip-radius) !important;
+    box-shadow: var(--kc-btn2-shadow) !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] button:where(:not(.nav-item, .fab-btn, .emoji-item, .image-emoji-item, .summary-toggle, .summary-item, .star-btn, .check-btn, .theme-item, .key-btn)):active {
+    transform: var(--kc-btn-press);
+}
+
+/* 主要動作 */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-submit-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .submit-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-query-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-setup-save-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .app-modal-btn--primary,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .font-size-confirm-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .price-query-modal__btn--ok,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .nmb-hero-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .nmb-action:not(.nmb-action--secondary),
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .empty-state-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .set-next-month-budget-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .daily-budget-track-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .upload-background-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-template-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .view-history-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .auto-transfer-add-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .account-add-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .modal-btn.confirm-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .confirm-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .theme-primary-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-add-btn-full,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-edit-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .monthly-planner-btn:not(.monthly-planner-btn--outline),
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-add-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .entry-detail-edit-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .entry-edit-save,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .investment-form-submit-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .buy-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-execute-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .buy-action-btn-large,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .allocation-btn.primary,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-action-btn-large {
+    background: var(--kc-btn-bg) !important;
+    color: var(--kc-btn-text, var(--k-on-main)) !important;
+    -webkit-text-fill-color: var(--kc-btn-text, var(--k-on-main)) !important;
+    border: var(--kc-btn-border) !important;
+    border-radius: var(--kc-btn-radius) !important;
+    box-shadow: var(--kc-btn-shadow) !important;
+    clip-path: var(--kc-btn-clip);
+    -webkit-mask: var(--kc-btn-mask);
+    mask: var(--kc-btn-mask);
+    font-weight: 700 !important;
+    letter-spacing: var(--kc-btn-spacing);
+    text-shadow: none !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-submit-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .submit-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-query-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-setup-save-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .app-modal-btn--primary *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .font-size-confirm-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .price-query-modal__btn--ok *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .nmb-hero-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .nmb-action:not(.nmb-action--secondary) *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .empty-state-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .set-next-month-budget-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .daily-budget-track-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .upload-background-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-template-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .view-history-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .auto-transfer-add-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .account-add-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .modal-btn.confirm-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .confirm-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .theme-primary-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-add-btn-full *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-edit-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .monthly-planner-btn:not(.monthly-planner-btn--outline) *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-add-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .entry-detail-edit-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .entry-edit-save *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .investment-form-submit-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .buy-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-execute-btn *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .buy-action-btn-large *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .allocation-btn.primary *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-action-btn-large * {
+    color: inherit !important;
+    -webkit-text-fill-color: inherit !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-submit-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .submit-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-query-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-setup-save-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .app-modal-btn--primary:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .font-size-confirm-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .price-query-modal__btn--ok:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .nmb-hero-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .nmb-action:not(.nmb-action--secondary):active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .empty-state-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .set-next-month-budget-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .daily-budget-track-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .upload-background-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-template-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .view-history-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .auto-transfer-add-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .account-add-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .modal-btn.confirm-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .confirm-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .theme-primary-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-add-btn-full:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-edit-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .monthly-planner-btn:not(.monthly-planner-btn--outline):active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-add-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .entry-detail-edit-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .entry-edit-save:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .investment-form-submit-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .buy-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-execute-btn:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .buy-action-btn-large:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .allocation-btn.primary:active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-action-btn-large:active {
+    transform: var(--kc-btn-press) !important;
+}
+
+/* 次要動作 */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .monthly-planner-btn--outline,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .monthly-planner-btn--secondary,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .nmb-action--secondary {
+    background: var(--kc-btn2-bg) !important;
+    color: var(--k-title) !important;
+    -webkit-text-fill-color: var(--k-title) !important;
+    border: var(--kc-btn2-border) !important;
+}
+
+/* 刪除 */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .delete-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-delete-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .transaction-delete-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .history-transaction-delete-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-action-delete,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .next-month-bill-btn--delete,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .monthly-planner-goal-delete,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .monthly-planner-item-delete,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .quick-action-delete-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .delete {
+    background: linear-gradient(180deg, #e5574d 0%, #b8302a 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid #9c2620 !important;
+}
+
+/* 關閉 ✕、返回：圓形 */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .modal-close,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .modal-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .app-modal-close,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .price-query-modal__close,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .receipt-image-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .search-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .advisor-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .history-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .annual-report-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-category-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .budget-setup-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .creator-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .daily-detail-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .font-size-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .member-select-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .next-month-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .background-selector-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .image-remove-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .thumbnail-remove,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .account-image-remove-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .theme-image-remove-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .delete-custom-background-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .history-search-clear,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .stock-search-clear-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .theme-close-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .back-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .return-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .input-back-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .modal-back-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-back-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dca-setup-back-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .investment-form-back-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .dividend-back-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .detail-back-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .auto-transfer-back-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .auto-transfer-setup-back-btn {
+    border-radius: 50% !important;
+    color: var(--k-ink) !important;
+}
+
+/* 切換、選項 */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .tab-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .ledger-type-tab,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-type-tab,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .chart-tab-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-tab,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-tab,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-tab,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .toggle-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .type-btn,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-option,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-modal-type-option,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .font-size-preset {
+    border-radius: var(--kc-tab-radius) !important;
+    clip-path: var(--kc-tab-clip);
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .tab-btn:not(.active):not(.selected),
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .ledger-type-tab:not(.active):not(.selected),
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-type-tab:not(.active):not(.selected),
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .chart-tab-btn:not(.active):not(.selected),
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-tab:not(.active):not(.selected),
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-tab:not(.active):not(.selected),
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-tab:not(.active):not(.selected),
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .toggle-btn:not(.active):not(.selected),
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .type-btn:not(.active):not(.selected),
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-option:not(.active):not(.selected),
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-modal-type-option:not(.active):not(.selected),
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .font-size-preset:not(.active):not(.selected) {
+    color: var(--k-ink-soft) !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .tab-btn:not(.active):not(.selected) *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .ledger-type-tab:not(.active):not(.selected) *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-type-tab:not(.active):not(.selected) *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .chart-tab-btn:not(.active):not(.selected) *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-tab:not(.active):not(.selected) *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-tab:not(.active):not(.selected) *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-tab:not(.active):not(.selected) *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .toggle-btn:not(.active):not(.selected) *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .type-btn:not(.active):not(.selected) *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-option:not(.active):not(.selected) *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-modal-type-option:not(.active):not(.selected) *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .font-size-preset:not(.active):not(.selected) * {
+    color: var(--k-ink-soft) !important;
+    -webkit-text-fill-color: var(--k-ink-soft) !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .tab-btn.active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .ledger-type-tab.active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-type-tab.active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .chart-tab-btn.active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-tab.active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-tab.active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-tab.active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .toggle-btn.active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .type-btn.active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-option.active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-modal-type-option.active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .font-size-preset.active,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .tab-btn.selected,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .ledger-type-tab.selected,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-type-tab.selected,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .chart-tab-btn.selected,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-tab.selected,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-tab.selected,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-tab.selected,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .toggle-btn.selected,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .type-btn.selected,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-option.selected,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-modal-type-option.selected,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .font-size-preset.selected {
+    background: linear-gradient(180deg, var(--k-btn-top) 0%, var(--k-btn-bottom) 100%) !important;
+    color: var(--k-on-main) !important;
+    border: 1px solid var(--k-btn-bottom) !important;
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--k-main) 40%, transparent) !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .tab-btn.active *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .ledger-type-tab.active *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-type-tab.active *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .chart-tab-btn.active *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-tab.active *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-tab.active *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-tab.active *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .toggle-btn.active *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .type-btn.active *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-option.active *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-modal-type-option.active *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .font-size-preset.active *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .tab-btn.selected *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .ledger-type-tab.selected *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-type-tab.selected *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .chart-tab-btn.selected *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-tab.selected *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .record-tab.selected *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-tab.selected *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .toggle-btn.selected *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .type-btn.selected *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-option.selected *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .category-modal-type-option.selected *,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .font-size-preset.selected * {
+    color: var(--k-on-main) !important;
+    -webkit-text-fill-color: var(--k-on-main) !important;
+}
+
+/* 每月規劃的「全部／存股／儲蓄」：舊主題另外指定了字的填色，這裡一起蓋掉 */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-tab {
+    background: var(--kc-btn2-bg) !important;
+    color: var(--k-ink-soft) !important;
+    -webkit-text-fill-color: var(--k-ink-soft) !important;
+    text-shadow: none !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .savings-type-tab.active {
+    background: linear-gradient(180deg, var(--k-btn-top) 0%, var(--k-btn-bottom) 100%) !important;
+    color: var(--k-on-main) !important;
+    -webkit-text-fill-color: var(--k-on-main) !important;
+}
+
+/* 計算機鍵盤 */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .key-btn {
+    background: var(--k-paper) !important;
+    color: var(--k-ink) !important;
+    border: 1px solid var(--k-line) !important;
+    border-radius: var(--kc-key-radius) !important;
+    box-shadow: 0 3px 0 var(--k-line) !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .key-btn.operator {
+    background: var(--k-paper-2) !important;
+    color: var(--k-title) !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .key-btn.equal {
+    background: var(--kc-btn-bg) !important;
+    color: var(--kc-btn-text, var(--k-on-main)) !important;
+    border: var(--kc-btn-border) !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .key-btn.clear {
+    background: linear-gradient(180deg, #e5574d 0%, #b8302a 100%) !important;
+    color: #ffffff !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .key-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 var(--k-line) !important;
+}
+
+/* ---------- 輸入框 ---------- */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-input,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-select,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-textarea,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .note-input,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .advisor-chat-input,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .theme-search-input,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .date-input,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] input[type="text"],
+html[data-kit][data-kit][data-kit][data-kit][data-kit] input[type="number"],
+html[data-kit][data-kit][data-kit][data-kit][data-kit] input[type="date"],
+html[data-kit][data-kit][data-kit][data-kit][data-kit] select,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] textarea {
+    background: #ffffff !important;
+    color: var(--k-ink) !important;
+    -webkit-text-fill-color: var(--k-ink) !important;
+    border: var(--kc-input-border) !important;
+    border-radius: var(--kc-input-radius) !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-input:focus,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-select:focus,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-textarea:focus,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .note-input:focus,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .advisor-chat-input:focus,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .theme-search-input:focus,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .date-input:focus,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] input[type="text"]:focus,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] input[type="number"]:focus,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] input[type="date"]:focus,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] select:focus,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] textarea:focus {
+    border-color: var(--k-main) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--k-main) 25%, transparent) !important;
+    outline: none !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-input::placeholder,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-select::placeholder,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .form-textarea::placeholder,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .note-input::placeholder,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .advisor-chat-input::placeholder,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .theme-search-input::placeholder,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .date-input::placeholder,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] input[type="text"]::placeholder,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] input[type="number"]::placeholder,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] input[type="date"]::placeholder,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] select::placeholder,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] textarea::placeholder {
+    color: var(--k-ink-soft) !important;
+    -webkit-text-fill-color: var(--k-ink-soft) !important;
+    opacity: 0.8;
+}
+
+/* ---------- 標題、月份 ---------- */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .ledger-title,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .summary-month {
+    background: none !important;
+    color: var(--k-title) !important;
+    -webkit-text-fill-color: var(--k-title) !important;
+    text-shadow: 0 1px 0 #ffffff, 0 0 8px rgba(255, 255, 255, 0.9) !important;
+    filter: none !important;
+}
+
+/* ---------- 底部選單 ---------- */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .bottom-nav {
+    background: var(--kc-nav-bg) !important;
+    border-top: var(--kc-nav-border) !important;
+    box-shadow: 0 -6px 18px color-mix(in srgb, var(--k-deep) 18%, transparent) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .nav-item,
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .nav-item .nav-text {
+    color: var(--kc-nav-text) !important;
+    -webkit-text-fill-color: var(--kc-nav-text) !important;
+    text-shadow: none !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .nav-item {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .nav-item.active {
+    background: var(--kc-nav-active-bg) !important;
+    box-shadow: none !important;
+}
+
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .nav-item.active .nav-text {
+    color: var(--kc-nav-active-text) !important;
+    -webkit-text-fill-color: var(--kc-nav-active-text) !important;
+    font-weight: 700 !important;
+}
+
+/* ---------- 「+」按鈕 ---------- */
+html[data-kit][data-kit][data-kit][data-kit][data-kit] .fab-btn {
+    background: var(--kc-fab-bg) !important;
+    color: var(--k-on-main) !important;
+    border: var(--kc-fab-border) !important;
+    border-radius: var(--kc-fab-radius) !important;
+    box-shadow: var(--kc-fab-shadow) !important;
+    clip-path: var(--kc-fab-clip);
+    -webkit-mask: var(--kc-fab-mask);
+    mask: var(--kc-fab-mask);
+    width: 62px !important;
+    height: 62px !important;
+    animation: var(--kc-fab-anim);
+}
+
+@keyframes kitBounce { 0%, 100% { transform: translateY(0); } 45% { transform: translateY(-6px); } 55% { transform: translateY(-6px) scale(1.04, 0.96); } }
+@keyframes kitFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes kitWobble { 0%, 100% { transform: scale(1); } 30% { transform: scale(1.06, 0.94); } 60% { transform: scale(0.96, 1.04); } }
+@keyframes kitSpinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes kitCoin { 0%, 80%, 100% { transform: rotateY(0deg); } 90% { transform: rotateY(180deg); } }
+@keyframes kitSway { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+@keyframes kitGlow { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.18); } }
+@keyframes kitShine { 0%, 100% { filter: brightness(1) saturate(1); } 50% { filter: brightness(1.15) saturate(1.2); } }
+
+@media (prefers-reduced-motion: reduce) {
+    html[data-kit][data-kit][data-kit][data-kit][data-kit] .fab-btn { animation: none !important; }
+}

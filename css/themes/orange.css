@@ -1,3 +1,52 @@
+/* ===== orange 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+:root[data-theme="orange"] {
+    --color-primary: #ff9800;
+    --color-primary-light: #ffb74d;
+    --color-primary-lighter: #ffa726;
+    --color-primary-dark: #f57c00;
+    --bg-primary: linear-gradient(135deg, #fff3e0 0%, #fff8f0 100%);
+    --bg-gradient: linear-gradient(135deg, #ffb74d 0%, #ffa726 100%);
+    --bg-gradient-light: linear-gradient(135deg, #fff3e0 0%, #fff8f0 100%);
+    --border-primary: #ff9800;
+    --shadow-primary: 0 2px 8px rgba(255, 152, 0, 0.25);
+    --shadow-primary-lg: 0 4px 12px rgba(255, 152, 0, 0.3);
+    --color-primary-rgba-08: rgba(255, 152, 0, 0.08);
+    --color-primary-rgba-10: rgba(255, 152, 0, 0.1);
+    --color-primary-rgba-15: rgba(255, 152, 0, 0.15);
+    --color-primary-rgba-20: rgba(255, 152, 0, 0.2);
+    --color-primary-rgba-25: rgba(255, 152, 0, 0.25);
+    --color-primary-rgba-30: rgba(255, 152, 0, 0.3);
+    --color-primary-rgba-12: rgba(255, 152, 0, 0.12);
+    --color-primary-rgba-18: rgba(255, 152, 0, 0.18);
+    --color-primary-light-rgba-08: rgba(255, 183, 77, 0.08);
+    --color-primary-light-rgba-10: rgba(255, 183, 77, 0.1);
+    --color-primary-light-rgba-15: rgba(255, 183, 77, 0.15);
+    --color-primary-light-rgba-20: rgba(255, 183, 77, 0.2);
+    --color-primary-light-rgba-25: rgba(255, 183, 77, 0.25);
+    --color-primary-light-rgba-30: rgba(255, 183, 77, 0.3);
+    --color-primary-light-rgba-40: rgba(255, 183, 77, 0.4);
+    --bg-light-gradient: linear-gradient(135deg, var(--bg-white) 0%, #fff8f0 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, #fff8f0 0%, var(--bg-white) 100%);
+
+     --text-primary: #1f2937;
+     --text-secondary: rgba(31, 41, 55, 0.78);
+     --text-tertiary: rgba(31, 41, 55, 0.58);
+     --text-shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.12);
+     --text-shadow-strong: 0 2px 6px rgba(0, 0, 0, 0.20);
+}
+
+:root[data-theme="orange"] .budget-summary-label,
+:root[data-theme="orange"] .budget-detail-label,
+:root[data-theme="orange"] .stat-label,
+:root[data-theme="orange"] .dividend-stat-label,
+:root[data-theme="orange"] .account-info,
+:root[data-theme="orange"] .account-item-name,
+:root[data-theme="orange"] .account-item-currency,
+:root[data-theme="orange"] .tab-text {
+    color: rgba(255, 152, 0, 0.8) !important;
+}
+
+/* ===== orange 主題原有樣式 ===== */
 ﻿:root[data-theme="orange"].dark,
 
 :root[data-theme="orange"] {
@@ -36,7 +85,21 @@
      --text-shadow-strong: 0 2px 6px rgba(0, 0, 0, 0.20);
 }
 
-:root[data-theme="orange"] body,
-
-:root[data-theme="orange"] body::before,
-
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="orange"] {
+    --k-main: #ff9800;
+    --k-main-dark: #ad6700;
+    --k-main-light: #f8e1bf;
+    --k-btn-top: #ffad33;
+    --k-btn-bottom: #ff9800;
+    --k-on-main: #412e10;
+    --k-paper: #fcf9f5;
+    --k-paper-2: #f7efe3;
+    --k-line: #e3ccab;
+    --k-ink: #433219;
+    --k-ink-soft: #7e6644;
+    --k-title: #8e5500;
+    --k-deep: #472b00;
+    --k-on-deep: #f0e7db;
+}
+/* ===== 主題設計工具組配色結束 ===== */

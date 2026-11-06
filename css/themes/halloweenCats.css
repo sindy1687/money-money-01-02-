@@ -1,0 +1,540 @@
+/* ========== 萬聖貓咪派對（halloweenCats） ==========
+   卡片像貓咪的萬聖服裝（奶油白、深棕黑描邊、橘色縫線、底部黑橘鋸齒下擺），
+   按鈕是橘色條紋尾巴，選到的分頁是黑色巫師帽，畫面頂端掛一串會閃的小燈泡，
+   「+」按鈕是一顆偶爾像貓尾巴甩一下的南瓜。 */
+
+:root[data-theme="halloweenCats"] {
+    --color-primary: #ff7a1a;
+    --color-primary-light: #ffa45c;
+    --color-primary-lighter: #ffe2c7;
+    --color-primary-dark: #c95300;
+
+    --color-secondary: #7a4bb3;
+    --color-secondary-light: #b08ce0;
+    --color-secondary-dark: #4e2a80;
+
+    --color-accent: #ffc94d;
+    --color-accent-light: #ffe9b0;
+    --color-accent-dark: #c9900f;
+
+    --color-success: #ff7a1a;
+    --color-danger: #d93a3a;
+    --color-warning: #ffc94d;
+    --color-info: #7a4bb3;
+    --color-error: var(--color-danger);
+
+    --cat-black: #1d1512;
+    --cat-cream: #fff6ea;
+
+    --bg-primary: linear-gradient(160deg, rgba(29, 21, 18, 0.95) 0%, rgba(70, 36, 14, 0.9) 60%, rgba(255, 122, 26, 0.35) 100%);
+    --bg-body: rgba(255, 246, 234, 0.92);
+    --bg-body-strong: rgba(255, 246, 234, 0.97);
+    --bg-gradient: linear-gradient(135deg, rgba(255, 122, 26, 0.28) 0%, rgba(122, 75, 179, 0.2) 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 226, 199, 0.7) 100%);
+
+    --bg-white: rgba(255, 246, 234, 0.94);
+    --bg-card: rgba(255, 246, 234, 0.94);
+    --bg-light: rgba(255, 226, 199, 0.6);
+    --bg-lighter: rgba(255, 238, 220, 0.6);
+    --bg-soft: rgba(255, 122, 26, 0.1);
+    --bg-soft-strong: rgba(255, 122, 26, 0.18);
+
+    --text-primary: #2a1a12;
+    --text-secondary: rgba(42, 26, 18, 0.76);
+    --text-tertiary: rgba(42, 26, 18, 0.56);
+    --text-strong: #1d1512;
+    --text-white: #ffffff;
+
+    --border-primary: rgba(255, 122, 26, 0.6);
+    --border-light: rgba(29, 21, 18, 0.14);
+    --border-medium: rgba(29, 21, 18, 0.24);
+    --card-border-color: rgba(29, 21, 18, 0.85);
+    --control-border-color: rgba(255, 122, 26, 0.3);
+
+    --shadow-primary: 0 10px 26px rgba(10, 5, 2, 0.45), 0 0 18px rgba(255, 140, 40, 0.18);
+    --shadow-primary-lg: 0 20px 50px rgba(10, 5, 2, 0.55), 0 0 30px rgba(255, 140, 40, 0.22);
+
+    --color-primary-rgba-08: rgba(255, 122, 26, 0.08);
+    --color-primary-rgba-10: rgba(255, 122, 26, 0.10);
+    --color-primary-rgba-12: rgba(255, 122, 26, 0.12);
+    --color-primary-rgba-15: rgba(255, 122, 26, 0.15);
+    --color-primary-rgba-20: rgba(255, 122, 26, 0.20);
+    --color-primary-rgba-25: rgba(255, 122, 26, 0.25);
+    --color-primary-rgba-30: rgba(255, 122, 26, 0.30);
+    --color-primary-rgba-40: rgba(255, 122, 26, 0.40);
+
+    /* 橘色條紋尾巴 */
+    --tail-stripes: repeating-linear-gradient(135deg, #ff7a1a 0 12px, #ff9a45 12px 24px);
+    --tail-stripes-hover: repeating-linear-gradient(135deg, #ff8a2e 0 12px, #ffab5e 12px 24px);
+
+    --action-buy-bg: var(--tail-stripes);
+    --action-buy-bg-hover: var(--tail-stripes-hover);
+    --action-buy-text: #ffffff;
+
+    --action-dca-bg: linear-gradient(180deg, #8d5fc6 0%, #6a3ea3 100%);
+    --action-dca-bg-hover: linear-gradient(180deg, #9a6dd2 0%, #7748b0 100%);
+    --action-dca-text: #ffffff;
+
+    --action-side-bg: rgba(255, 246, 234, 0.92);
+    --action-side-bg-hover: rgba(255, 226, 199, 0.95);
+    --action-side-text: var(--text-primary);
+}
+
+/* ---------- 背景：插圖 + 暖色暗角 + 頂端一串閃爍小燈泡 ---------- */
+
+:root[data-theme="halloweenCats"] body {
+    background: url("https://i.pinimg.com/736x/60/7f/bc/607fbcd757e03814d13439c86c6b6ea4.jpg") center top/cover no-repeat fixed;
+    background-color: #1d1512;
+    color: var(--text-primary);
+}
+
+:root[data-theme="halloweenCats"] body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 50% 45%, transparent 35%, rgba(20, 10, 4, 0.55) 100%),
+        linear-gradient(180deg, rgba(20, 10, 4, 0.25) 0%, rgba(20, 10, 4, 0.05) 40%, rgba(20, 10, 4, 0.4) 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+:root[data-theme="halloweenCats"] body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 26px;
+    background:
+        radial-gradient(circle at 18px 14px, rgba(255, 214, 140, 1) 0 3.5px, rgba(255, 170, 60, 0.55) 5px, transparent 10px) repeat-x 0 0 / 46px 26px,
+        radial-gradient(circle at 23px 12px, rgba(255, 190, 110, 0.95) 0 3px, rgba(255, 150, 40, 0.5) 4.5px, transparent 9px) repeat-x 23px 2px / 46px 26px;
+    pointer-events: none;
+    z-index: 2999;
+    animation: halloweenCatsTwinkle 2.6s ease-in-out infinite alternate;
+}
+
+@keyframes halloweenCatsTwinkle {
+    from { opacity: 0.55; }
+    to { opacity: 1; }
+}
+
+/* ---------- 頁面底色透明，讓插圖透出來 ---------- */
+
+:root[data-theme="halloweenCats"] .page-input,
+:root[data-theme="halloweenCats"] .page-ledger,
+:root[data-theme="halloweenCats"] .page-chart,
+:root[data-theme="halloweenCats"] .page-budget,
+:root[data-theme="halloweenCats"] .page-monthly-planner,
+:root[data-theme="halloweenCats"] .page-daily-budget,
+:root[data-theme="halloweenCats"] .page-settings,
+:root[data-theme="halloweenCats"] .page-category-manage,
+:root[data-theme="halloweenCats"] .page-investment,
+:root[data-theme="halloweenCats"] .page-wallet,
+:root[data-theme="halloweenCats"] .page-history,
+:root[data-theme="halloweenCats"] .page-planner,
+:root[data-theme="halloweenCats"] .page-manage-investment,
+:root[data-theme="halloweenCats"] .page-annual-report,
+:root[data-theme="halloweenCats"] .page-diary,
+:root[data-theme="halloweenCats"] .page-installment,
+:root[data-theme="halloweenCats"] .installment-page,
+:root[data-theme="halloweenCats"] .dca-page,
+:root[data-theme="halloweenCats"] .fixed-deposit-page,
+:root[data-theme="halloweenCats"] .dividend-page,
+:root[data-theme="halloweenCats"] .dca-management-page,
+:root[data-theme="halloweenCats"] .dca-setup-page,
+:root[data-theme="halloweenCats"] .investment-input-page,
+:root[data-theme="halloweenCats"] .installment-management-page,
+:root[data-theme="halloweenCats"] .installment-setup-page,
+:root[data-theme="halloweenCats"] .wishlist-content,
+:root[data-theme="halloweenCats"] .savings-content {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+/* ---------- 卡片：貓咪的萬聖服裝 ---------- */
+
+:root[data-theme="halloweenCats"] .card,
+:root[data-theme="halloweenCats"] .record-card,
+:root[data-theme="halloweenCats"] .ledger-card,
+:root[data-theme="halloweenCats"] .summary-card,
+:root[data-theme="halloweenCats"] .budget-card,
+:root[data-theme="halloweenCats"] .wallet-card,
+:root[data-theme="halloweenCats"] .chart-card,
+:root[data-theme="halloweenCats"] .investment-card,
+:root[data-theme="halloweenCats"] .manage-investment-card,
+:root[data-theme="halloweenCats"] .annual-report-card,
+:root[data-theme="halloweenCats"] .diary-card,
+:root[data-theme="halloweenCats"] .monthly-planning-card,
+:root[data-theme="halloweenCats"] .investment-settings-card,
+:root[data-theme="halloweenCats"] .wallet-budget-card,
+:root[data-theme="halloweenCats"] .holding-card,
+:root[data-theme="halloweenCats"] .buying-card,
+:root[data-theme="halloweenCats"] .selling-card,
+:root[data-theme="halloweenCats"] .dividend-card,
+:root[data-theme="halloweenCats"] .regular-investment-card,
+:root[data-theme="halloweenCats"] .investment-management-card,
+:root[data-theme="halloweenCats"] .dca-card,
+:root[data-theme="halloweenCats"] .installment-card,
+:root[data-theme="halloweenCats"] .fixed-deposit-card,
+:root[data-theme="halloweenCats"] .stock-item-card,
+:root[data-theme="halloweenCats"] .budget-item,
+:root[data-theme="halloweenCats"] .next-month-budget-card,
+:root[data-theme="halloweenCats"] .daily-budget-summary-card {
+    background: var(--cat-cream) !important;
+    border: 2px solid var(--card-border-color) !important;
+    border-radius: 20px !important;
+    outline: 2px dashed rgba(255, 122, 26, 0.55);
+    outline-offset: -8px;
+    color: var(--text-primary) !important;
+    box-shadow: var(--shadow-primary) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 底部黑橘鋸齒下擺 */
+:root[data-theme="halloweenCats"] .card::after,
+:root[data-theme="halloweenCats"] .record-card::after,
+:root[data-theme="halloweenCats"] .ledger-card::after,
+:root[data-theme="halloweenCats"] .summary-card::after,
+:root[data-theme="halloweenCats"] .budget-card::after,
+:root[data-theme="halloweenCats"] .wallet-card::after,
+:root[data-theme="halloweenCats"] .chart-card::after,
+:root[data-theme="halloweenCats"] .investment-card::after,
+:root[data-theme="halloweenCats"] .manage-investment-card::after,
+:root[data-theme="halloweenCats"] .annual-report-card::after,
+:root[data-theme="halloweenCats"] .diary-card::after,
+:root[data-theme="halloweenCats"] .monthly-planning-card::after,
+:root[data-theme="halloweenCats"] .investment-settings-card::after,
+:root[data-theme="halloweenCats"] .wallet-budget-card::after,
+:root[data-theme="halloweenCats"] .holding-card::after,
+:root[data-theme="halloweenCats"] .buying-card::after,
+:root[data-theme="halloweenCats"] .selling-card::after,
+:root[data-theme="halloweenCats"] .dividend-card::after,
+:root[data-theme="halloweenCats"] .regular-investment-card::after,
+:root[data-theme="halloweenCats"] .investment-management-card::after,
+:root[data-theme="halloweenCats"] .dca-card::after,
+:root[data-theme="halloweenCats"] .installment-card::after,
+:root[data-theme="halloweenCats"] .fixed-deposit-card::after,
+:root[data-theme="halloweenCats"] .stock-item-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 8px;
+    background:
+        linear-gradient(135deg, #ff7a1a 25%, transparent 25%) -6px 0 / 12px 12px,
+        linear-gradient(225deg, #ff7a1a 25%, transparent 25%) -6px 0 / 12px 12px,
+        #1d1512;
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 0;
+}
+
+:root[data-theme="halloweenCats"] .card > *,
+:root[data-theme="halloweenCats"] .record-card > *,
+:root[data-theme="halloweenCats"] .ledger-card > *,
+:root[data-theme="halloweenCats"] .summary-card > *,
+:root[data-theme="halloweenCats"] .budget-card > *,
+:root[data-theme="halloweenCats"] .wallet-card > *,
+:root[data-theme="halloweenCats"] .chart-card > *,
+:root[data-theme="halloweenCats"] .investment-card > *,
+:root[data-theme="halloweenCats"] .manage-investment-card > *,
+:root[data-theme="halloweenCats"] .annual-report-card > *,
+:root[data-theme="halloweenCats"] .diary-card > *,
+:root[data-theme="halloweenCats"] .monthly-planning-card > *,
+:root[data-theme="halloweenCats"] .investment-settings-card > *,
+:root[data-theme="halloweenCats"] .wallet-budget-card > *,
+:root[data-theme="halloweenCats"] .holding-card > *,
+:root[data-theme="halloweenCats"] .buying-card > *,
+:root[data-theme="halloweenCats"] .selling-card > *,
+:root[data-theme="halloweenCats"] .dividend-card > *,
+:root[data-theme="halloweenCats"] .regular-investment-card > *,
+:root[data-theme="halloweenCats"] .investment-management-card > *,
+:root[data-theme="halloweenCats"] .dca-card > *,
+:root[data-theme="halloweenCats"] .installment-card > *,
+:root[data-theme="halloweenCats"] .fixed-deposit-card > *,
+:root[data-theme="halloweenCats"] .stock-item-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+:root[data-theme="halloweenCats"] .budget-item-info,
+:root[data-theme="halloweenCats"] .budget-item-header,
+:root[data-theme="halloweenCats"] .budget-item-details {
+    background: transparent !important;
+}
+
+/* ---------- 標題、月份：南瓜橘到巫師帽紫 ---------- */
+
+:root[data-theme="halloweenCats"] .ledger-title,
+:root[data-theme="halloweenCats"] .summary-month {
+    background: linear-gradient(90deg, #c95300 0%, #ff7a1a 45%, #6a3ea3 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.9));
+}
+
+/* ---------- 底部選單：黑絲絨，所在頁面亮起南瓜燈 ---------- */
+
+:root[data-theme="halloweenCats"] .bottom-nav {
+    background: linear-gradient(180deg, rgba(36, 24, 20, 0.94) 0%, rgba(20, 13, 10, 0.98) 100%) !important;
+    border-top: 2px solid rgba(255, 122, 26, 0.55) !important;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+:root[data-theme="halloweenCats"] .nav-item,
+:root[data-theme="halloweenCats"] .nav-item .nav-text {
+    color: rgba(255, 236, 214, 0.75) !important;
+}
+
+:root[data-theme="halloweenCats"] .nav-item.active {
+    background: radial-gradient(ellipse at 50% 35%, rgba(255, 140, 40, 0.35), transparent 70%) !important;
+    box-shadow: none !important;
+}
+
+:root[data-theme="halloweenCats"] .nav-item.active .nav-text {
+    color: #ffa45c !important;
+    text-shadow: 0 0 10px rgba(255, 122, 26, 0.85);
+}
+
+:root[data-theme="halloweenCats"] .nav-item.active .nav-icon {
+    filter: drop-shadow(0 0 6px rgba(255, 140, 40, 0.9));
+}
+
+/* ---------- 「+」按鈕：偶爾像貓尾巴甩一下的南瓜 ---------- */
+
+:root[data-theme="halloweenCats"] .fab-btn {
+    background: radial-gradient(circle at 35% 30%, #ffb066 0%, #ff7a1a 55%, #d45e00 100%) !important;
+    color: #ffffff !important;
+    border: 3px solid #1d1512 !important;
+    box-shadow: 0 0 0 2px rgba(255, 170, 80, 0.6), 0 0 20px rgba(255, 122, 26, 0.6), 0 8px 18px rgba(0, 0, 0, 0.45) !important;
+    animation: halloweenCatsSwish 4s ease-in-out infinite;
+    transform-origin: 50% 90%;
+}
+
+@keyframes halloweenCatsSwish {
+    0%, 80%, 100% { transform: rotate(0deg); }
+    85% { transform: rotate(-10deg); }
+    90% { transform: rotate(8deg); }
+    95% { transform: rotate(-4deg); }
+}
+
+/* ---------- 對話框、面板 ---------- */
+
+:root[data-theme="halloweenCats"] .modal-content,
+:root[data-theme="halloweenCats"] .modal-content-standard,
+:root[data-theme="halloweenCats"] .budget-category-modal-content,
+:root[data-theme="halloweenCats"] .budget-setting-modal-content,
+:root[data-theme="halloweenCats"] .category-modal-content,
+:root[data-theme="halloweenCats"] .dca-execute-modal .modal-content,
+:root[data-theme="halloweenCats"] .account-modal-content,
+:root[data-theme="halloweenCats"] .emoji-modal-content,
+:root[data-theme="halloweenCats"] .history-modal-content,
+:root[data-theme="halloweenCats"] .crop-modal-content,
+:root[data-theme="halloweenCats"] .dialog-container,
+:root[data-theme="halloweenCats"] .xiaosen-dialog,
+:root[data-theme="halloweenCats"] .komori-dialog,
+:root[data-theme="halloweenCats"] .mori-dialog-box,
+:root[data-theme="halloweenCats"] .theme-modal-content,
+:root[data-theme="halloweenCats"] .theme-modal-container,
+:root[data-theme="halloweenCats"] .dialog-content,
+:root[data-theme="halloweenCats"] .popup-content,
+:root[data-theme="halloweenCats"] .spending-analysis-panel,
+:root[data-theme="halloweenCats"] .reminder-panel,
+:root[data-theme="halloweenCats"] .smart-notification,
+:root[data-theme="halloweenCats"] .quick-settings {
+    background: rgba(255, 246, 234, 0.98) !important;
+    border: 2px solid var(--cat-black) !important;
+    border-radius: 22px !important;
+    box-shadow: var(--shadow-primary-lg) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="halloweenCats"] .theme-modal-overlay,
+:root[data-theme="halloweenCats"] .modal-overlay {
+    background: rgba(20, 10, 4, 0.6) !important;
+    backdrop-filter: blur(6px);
+}
+
+:root[data-theme="halloweenCats"] .panel-header {
+    background: linear-gradient(135deg, #1d1512 0%, #3a2418 55%, #ff7a1a 140%) !important;
+    color: #ffe2c7 !important;
+}
+
+/* ---------- 輸入框 ---------- */
+
+:root[data-theme="halloweenCats"] .form-input,
+:root[data-theme="halloweenCats"] .form-select,
+:root[data-theme="halloweenCats"] .form-textarea,
+:root[data-theme="halloweenCats"] .note-input,
+:root[data-theme="halloweenCats"] .advisor-chat-input {
+    background: #ffffff !important;
+    border: 2px solid rgba(29, 21, 18, 0.2) !important;
+    border-radius: 12px !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="halloweenCats"] .form-input:focus,
+:root[data-theme="halloweenCats"] .form-select:focus,
+:root[data-theme="halloweenCats"] .form-textarea:focus,
+:root[data-theme="halloweenCats"] .note-input:focus,
+:root[data-theme="halloweenCats"] .advisor-chat-input:focus {
+    border-color: #ff7a1a !important;
+    box-shadow: 0 0 0 3px rgba(255, 122, 26, 0.2) !important;
+}
+
+/* ---------- 分頁標籤：選到的是黑色巫師帽配橘字 ---------- */
+
+:root[data-theme="halloweenCats"] .tab-btn.active,
+:root[data-theme="halloweenCats"] .ledger-type-tab.active,
+:root[data-theme="halloweenCats"] .record-type-tab.active,
+:root[data-theme="halloweenCats"] .chart-tab-btn.active {
+    background: linear-gradient(180deg, #3a2a24 0%, #1d1512 100%) !important;
+    border: 2px solid #ff7a1a !important;
+    color: #ffa45c !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 12px rgba(255, 122, 26, 0.35) !important;
+}
+
+:root[data-theme="halloweenCats"] .tab-btn.active *,
+:root[data-theme="halloweenCats"] .ledger-type-tab.active *,
+:root[data-theme="halloweenCats"] .record-type-tab.active *,
+:root[data-theme="halloweenCats"] .chart-tab-btn.active * {
+    color: #ffa45c !important;
+    -webkit-text-fill-color: #ffa45c !important;
+}
+
+/* ---------- 按鈕：橘色條紋尾巴 ---------- */
+
+:root[data-theme="halloweenCats"] .btn,
+:root[data-theme="halloweenCats"] .dca-add-btn,
+:root[data-theme="halloweenCats"] .form-submit-btn,
+:root[data-theme="halloweenCats"] .entry-detail-edit-btn,
+:root[data-theme="halloweenCats"] .entry-edit-save,
+:root[data-theme="halloweenCats"] .investment-form-submit-btn,
+:root[data-theme="halloweenCats"] .buy-btn,
+:root[data-theme="halloweenCats"] .dca-execute-btn,
+:root[data-theme="halloweenCats"] .buy-action-btn-large,
+:root[data-theme="halloweenCats"] .allocation-btn.primary,
+:root[data-theme="halloweenCats"] .modal-btn.confirm-btn {
+    background: var(--action-buy-bg) !important;
+    color: var(--action-buy-text) !important;
+    border: 2px solid var(--cat-black) !important;
+    box-shadow: 0 4px 0 var(--cat-black), 0 0 14px rgba(255, 122, 26, 0.35) !important;
+    text-shadow: 0 1px 2px rgba(60, 25, 0, 0.6);
+}
+
+:root[data-theme="halloweenCats"] .btn:hover,
+:root[data-theme="halloweenCats"] .dca-add-btn:hover,
+:root[data-theme="halloweenCats"] .form-submit-btn:hover,
+:root[data-theme="halloweenCats"] .entry-detail-edit-btn:hover,
+:root[data-theme="halloweenCats"] .entry-edit-save:hover,
+:root[data-theme="halloweenCats"] .investment-form-submit-btn:hover,
+:root[data-theme="halloweenCats"] .buy-btn:hover,
+:root[data-theme="halloweenCats"] .dca-execute-btn:hover,
+:root[data-theme="halloweenCats"] .buy-action-btn-large:hover,
+:root[data-theme="halloweenCats"] .allocation-btn.primary:hover,
+:root[data-theme="halloweenCats"] .modal-btn.confirm-btn:hover {
+    background: var(--action-buy-bg-hover) !important;
+}
+
+:root[data-theme="halloweenCats"] .dca-action-btn-large,
+:root[data-theme="halloweenCats"] .advisor-send-btn {
+    background: var(--action-dca-bg) !important;
+    color: var(--action-dca-text) !important;
+    border: 2px solid var(--cat-black) !important;
+}
+
+:root[data-theme="halloweenCats"] .dca-action-btn-large:hover {
+    background: var(--action-dca-bg-hover) !important;
+}
+
+:root[data-theme="halloweenCats"] .allocation-btn,
+:root[data-theme="halloweenCats"] .modal-btn.cancel-btn,
+:root[data-theme="halloweenCats"] .back-btn,
+:root[data-theme="halloweenCats"] .return-btn,
+:root[data-theme="halloweenCats"] .input-back-btn,
+:root[data-theme="halloweenCats"] .modal-back-btn,
+:root[data-theme="halloweenCats"] .dca-back-btn,
+:root[data-theme="halloweenCats"] .dca-setup-back-btn,
+:root[data-theme="halloweenCats"] .investment-form-back-btn,
+:root[data-theme="halloweenCats"] .dividend-back-btn {
+    background: var(--action-side-bg) !important;
+    color: var(--action-side-text) !important;
+    border: 2px solid rgba(29, 21, 18, 0.35) !important;
+}
+
+:root[data-theme="halloweenCats"] .allocation-btn:hover,
+:root[data-theme="halloweenCats"] .modal-btn.cancel-btn:hover,
+:root[data-theme="halloweenCats"] .back-btn:hover,
+:root[data-theme="halloweenCats"] .return-btn:hover,
+:root[data-theme="halloweenCats"] .input-back-btn:hover,
+:root[data-theme="halloweenCats"] .modal-back-btn:hover,
+:root[data-theme="halloweenCats"] .dca-back-btn:hover,
+:root[data-theme="halloweenCats"] .dca-setup-back-btn:hover,
+:root[data-theme="halloweenCats"] .investment-form-back-btn:hover,
+:root[data-theme="halloweenCats"] .dividend-back-btn:hover {
+    background: var(--action-side-bg-hover) !important;
+    border-color: #ff7a1a !important;
+}
+
+/* ---------- 提示、建議 ---------- */
+
+:root[data-theme="halloweenCats"] .insight-item.info,
+:root[data-theme="halloweenCats"] .insight-item.warning,
+:root[data-theme="halloweenCats"] .insight-item.error,
+:root[data-theme="halloweenCats"] .recommendation-item,
+:root[data-theme="halloweenCats"] .error-message,
+:root[data-theme="halloweenCats"] .error-suggestion {
+    background: rgba(255, 246, 234, 0.92) !important;
+    border: 1px solid rgba(29, 21, 18, 0.18) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="halloweenCats"] .insight-item.info,
+:root[data-theme="halloweenCats"] .recommendation-item {
+    border-left: 4px solid #7a4bb3 !important;
+}
+
+:root[data-theme="halloweenCats"] .insight-item.warning {
+    border-left: 4px solid #ff7a1a !important;
+}
+
+:root[data-theme="halloweenCats"] .insight-item.error,
+:root[data-theme="halloweenCats"] .error-message {
+    border-left: 4px solid #d93a3a !important;
+}
+
+:root[data-theme="halloweenCats"] .advisor-quick-btn {
+    background: rgba(255, 122, 26, 0.1) !important;
+    border: 1px solid rgba(255, 122, 26, 0.3) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="halloweenCats"] .advisor-quick-btn:hover {
+    background: rgba(122, 75, 179, 0.12) !important;
+    border-color: rgba(122, 75, 179, 0.3) !important;
+}
+
+:root[data-theme="halloweenCats"] .advisor-chat-input-container {
+    background: rgba(255, 246, 234, 0.96) !important;
+}
+
+/* 手機開了「減少動態效果」就不要閃、不要甩 */
+@media (prefers-reduced-motion: reduce) {
+    :root[data-theme="halloweenCats"] body::after,
+    :root[data-theme="halloweenCats"] .fab-btn {
+        animation: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="halloweenCats"] .history-advisor-chat {
+        width: 100% !important;
+        height: 70vh !important;
+        border-radius: 22px 22px 0 0 !important;
+    }
+}

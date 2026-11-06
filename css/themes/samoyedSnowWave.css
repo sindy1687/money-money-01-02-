@@ -393,16 +393,12 @@
     border-color: rgba(45, 143, 190, 0.28) !important;
 }
 
-:root[data-theme="samoyedSnowWave"] .smart-analysis-btn,
-:root[data-theme="samoyedSnowWave"] .smart-reminders-btn,
 :root[data-theme="samoyedSnowWave"] .smart-suggestion-btn {
     background: var(--action-buy-bg) !important;
     color: var(--action-buy-text) !important;
     border: 2px solid color-mix(in srgb, var(--color-primary) 62%, white) !important;
 }
 
-:root[data-theme="samoyedSnowWave"] .smart-analysis-btn:hover,
-:root[data-theme="samoyedSnowWave"] .smart-reminders-btn:hover,
 :root[data-theme="samoyedSnowWave"] .smart-suggestion-btn:hover {
     background: var(--action-buy-bg-hover) !important;
 }
@@ -426,3 +422,22 @@
     background: color-mix(in srgb, var(--bg-card) 86%, rgba(22, 163, 74, 0.10)) !important;
     border-left-color: var(--color-success) !important;
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="samoyedSnowWave"] {
+    --k-main: #2d8fbe;
+    --k-main-dark: #1d5d7c;
+    --k-main-light: #c5e3f1;
+    --k-btn-top: #277ca5;
+    --k-btn-bottom: #1d5d7c;
+    --k-on-main: #ffffff;
+    --k-paper: #f5fafc;
+    --k-paper-2: #e3f1f7;
+    --k-line: #abd1e3;
+    --k-ink: #193543;
+    --k-ink-soft: #446b7e;
+    --k-title: #1d5d7c;
+    --k-deep: #14333d;
+    --k-on-deep: #dbe9f0;
+}
+/* ===== 主題設計工具組配色結束 ===== */

@@ -408,16 +408,12 @@
     border-color: rgba(43, 94, 168, 0.28) !important;
 }
 
-:root[data-theme="blueLotusGoldGlow"] .smart-analysis-btn,
-:root[data-theme="blueLotusGoldGlow"] .smart-reminders-btn,
 :root[data-theme="blueLotusGoldGlow"] .smart-suggestion-btn {
     background: var(--action-buy-bg) !important;
     color: var(--action-buy-text) !important;
     border: 2px solid color-mix(in srgb, var(--color-primary) 62%, white) !important;
 }
 
-:root[data-theme="blueLotusGoldGlow"] .smart-analysis-btn:hover,
-:root[data-theme="blueLotusGoldGlow"] .smart-reminders-btn:hover,
 :root[data-theme="blueLotusGoldGlow"] .smart-suggestion-btn:hover {
     background: var(--action-buy-bg-hover) !important;
 }
@@ -441,3 +437,22 @@
     background: color-mix(in srgb, var(--bg-card) 86%, rgba(22, 163, 74, 0.10)) !important;
     border-left-color: var(--color-success) !important;
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="blueLotusGoldGlow"] {
+    --k-main: #2b5ea8;
+    --k-main-dark: #1a3a67;
+    --k-main-light: #c6d7f0;
+    --k-btn-top: #2b5ea8;
+    --k-btn-bottom: #1a3a67;
+    --k-on-main: #ffffff;
+    --k-paper: #f5f8fc;
+    --k-paper-2: #e3ebf7;
+    --k-line: #abc2e3;
+    --k-ink: #192a43;
+    --k-ink-soft: #445c7e;
+    --k-title: #1a3a67;
+    --k-deep: #16253c;
+    --k-on-deep: #dbe4f0;
+}
+/* ===== 主題設計工具組配色結束 ===== */

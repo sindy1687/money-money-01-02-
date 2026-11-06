@@ -1,0 +1,255 @@
+/* ===== attractGold 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+/* ========== 吸金紅金主題 ========== */
+:root[data-theme="attractGold"] {
+    --color-primary: #C62828;
+    --color-primary-light: #E53935;
+    --color-primary-lighter: #FFCDD2;
+    --color-primary-dark: #8E1B1B;
+    --color-secondary: #D4AF37;
+    --color-secondary-light: #F4D27A;
+    --color-secondary-dark: #B8860B;
+    --color-accent: #FFF1D6;
+    --color-accent-dark: #E7C78A;
+
+    --color-success: #16a34a;
+    --color-danger: #ef4444;
+    --color-warning: #f59e0b;
+    --color-info: #3b82f6;
+    --color-error: var(--color-danger);
+
+    --bg-primary: linear-gradient(135deg, rgba(198, 40, 40, 0.92) 0%, rgba(142, 27, 27, 0.86) 55%, rgba(212, 175, 55, 0.42) 100%);
+    --bg-body: rgba(255, 241, 214, 0.92);
+    --bg-body-strong: rgba(255, 241, 214, 0.96);
+    --bg-gradient: linear-gradient(135deg, #8E1B1B 0%, #C62828 45%, #D4AF37 100%);
+    --bg-gradient-light: linear-gradient(135deg, rgba(198, 40, 40, 0.08) 0%, rgba(212, 175, 55, 0.24) 100%);
+    --bg-white: rgba(255, 241, 214, 0.92);
+    --bg-card: rgba(255, 241, 214, 0.86);
+    --bg-light: rgba(255, 241, 214, 0.72);
+    --bg-lighter: rgba(255, 241, 214, 0.62);
+    --bg-soft: rgba(255, 241, 214, 0.64);
+    --bg-soft-strong: rgba(255, 241, 214, 0.76);
+
+    --text-primary: rgba(77, 12, 12, 0.96);
+    --text-secondary: rgba(108, 24, 24, 0.82);
+    --text-tertiary: rgba(108, 24, 24, 0.62);
+    --text-strong: rgba(62, 10, 10, 0.98);
+    --text-white: rgba(255, 255, 255, 0.98);
+
+    --border-primary: rgba(212, 175, 55, 0.75);
+    --border-light: rgba(198, 40, 40, 0.18);
+    --border-medium: rgba(198, 40, 40, 0.35);
+    --card-border-color: rgba(212, 175, 55, 0.45);
+    --control-border-color: rgba(198, 40, 40, 0.26);
+    --table-border-color: rgba(198, 40, 40, 0.18);
+
+    --shadow-primary: 0 20px 60px rgba(77, 12, 12, 0.35);
+    --shadow-primary-lg: 0 30px 80px rgba(77, 12, 12, 0.28);
+
+    --color-primary-rgba-08: rgba(198, 40, 40, 0.08);
+    --color-primary-rgba-10: rgba(198, 40, 40, 0.1);
+    --color-primary-rgba-12: rgba(198, 40, 40, 0.12);
+    --color-primary-rgba-15: rgba(198, 40, 40, 0.15);
+    --color-primary-rgba-20: rgba(198, 40, 40, 0.2);
+    --color-primary-rgba-25: rgba(198, 40, 40, 0.25);
+    --color-primary-rgba-30: rgba(198, 40, 40, 0.3);
+    --color-primary-rgba-40: rgba(198, 40, 40, 0.4);
+
+    --color-secondary-rgba-08: rgba(212, 175, 55, 0.08);
+    --color-secondary-rgba-10: rgba(212, 175, 55, 0.1);
+    --color-secondary-rgba-12: rgba(212, 175, 55, 0.12);
+    --color-secondary-rgba-15: rgba(212, 175, 55, 0.15);
+    --color-secondary-rgba-20: rgba(212, 175, 55, 0.2);
+    --color-secondary-rgba-25: rgba(212, 175, 55, 0.25);
+    --color-secondary-rgba-30: rgba(212, 175, 55, 0.3);
+
+    --bg-light-gradient: linear-gradient(135deg, rgba(255, 241, 214, 0.88) 0%, rgba(255, 241, 214, 0.66) 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, rgba(255, 241, 214, 0.88) 0%, rgba(255, 241, 214, 0.66) 100%);
+
+    --action-side-bg: color-mix(in srgb, rgba(255, 241, 214, 0.92) 74%, rgba(198, 40, 40, 0.10));
+    --action-side-bg-hover: color-mix(in srgb, rgba(255, 241, 214, 0.92) 62%, rgba(198, 40, 40, 0.22));
+    --action-side-text: rgba(77, 12, 12, 0.96);
+
+    --action-buy-bg: linear-gradient(135deg, rgba(198, 40, 40, 0.96) 0%, rgba(142, 27, 27, 0.96) 100%);
+    --action-buy-bg-hover: linear-gradient(135deg, rgba(142, 27, 27, 0.98) 0%, rgba(212, 175, 55, 0.60) 100%);
+    --action-buy-text: var(--text-white);
+
+    --action-dca-bg: linear-gradient(135deg, rgba(212, 175, 55, 0.96) 0%, rgba(198, 40, 40, 0.92) 100%);
+    --action-dca-bg-hover: linear-gradient(135deg, rgba(244, 210, 122, 0.96) 0%, rgba(198, 40, 40, 0.96) 100%);
+    --action-dca-text: rgba(62, 10, 10, 0.98);
+}
+
+:root[data-theme="attractGold"] body {
+    background: url("https://i.pinimg.com/1200x/94/e4/9e/94e49ef07a1ce58f8bfa3b177a580bd5.jpg") center/cover no-repeat fixed;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+}
+
+:root[data-theme="attractGold"] body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: var(--bg-primary);
+    opacity: 0.75;
+    pointer-events: none;
+    z-index: -1;
+}
+
+:root[data-theme="attractGold"] .page-ledger {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+:root[data-theme="attractGold"] .page-input,
+:root[data-theme="attractGold"] .page-chart,
+:root[data-theme="attractGold"] .page-budget,
+:root[data-theme="attractGold"] .page-monthly-planner,
+:root[data-theme="attractGold"] .page-daily-budget,
+:root[data-theme="attractGold"] .page-settings,
+:root[data-theme="attractGold"] .page-category-manage,
+:root[data-theme="attractGold"] .page-investment,
+:root[data-theme="attractGold"] .page-wallet,
+:root[data-theme="attractGold"] .page-history,
+:root[data-theme="attractGold"] .page-planner {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+:root[data-theme="attractGold"] .card,
+:root[data-theme="attractGold"] .record-card,
+:root[data-theme="attractGold"] .ledger-card,
+:root[data-theme="attractGold"] .summary-card,
+:root[data-theme="attractGold"] .budget-card,
+:root[data-theme="attractGold"] .wallet-card,
+:root[data-theme="attractGold"] .chart-card,
+:root[data-theme="attractGold"] .investment-card,
+:root[data-theme="attractGold"] .stock-item-card,
+:root[data-theme="attractGold"] .dialog-content,
+:root[data-theme="attractGold"] .modal-content,
+:root[data-theme="attractGold"] .modal-content-standard,
+:root[data-theme="attractGold"] .budget-category-modal-content {
+    background: linear-gradient(135deg, var(--color-primary-rgba-10) 0%, rgba(255, 241, 214, 0.86) 55%, var(--color-secondary-rgba-12) 100%) !important;
+    border: 2px solid var(--border-primary) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(14px) !important;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="attractGold"] .btn,
+:root[data-theme="attractGold"] .button,
+:root[data-theme="attractGold"] button,
+:root[data-theme="attractGold"] .key-btn {
+    background: linear-gradient(135deg, rgba(255, 241, 214, 0.86) 0%, var(--color-secondary-rgba-20) 100%) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-medium) !important;
+}
+
+:root[data-theme="attractGold"] .btn:hover,
+:root[data-theme="attractGold"] .button:hover,
+:root[data-theme="attractGold"] button:hover,
+:root[data-theme="attractGold"] .key-btn:hover {
+    background: linear-gradient(135deg, var(--color-secondary-rgba-20) 0%, rgba(255, 241, 214, 0.92) 100%) !important;
+}
+
+:root[data-theme="attractGold"] .buy-action-btn-large {
+    background: var(--action-buy-bg) !important;
+    color: var(--action-buy-text) !important;
+    border: 2px solid color-mix(in srgb, var(--color-secondary) 65%, white) !important;
+}
+
+:root[data-theme="attractGold"] .buy-action-btn-large:hover {
+    background: var(--action-buy-bg-hover) !important;
+}
+
+:root[data-theme="attractGold"] .dca-action-btn-large {
+    background: var(--action-dca-bg) !important;
+    color: var(--action-dca-text) !important;
+    border: 2px solid color-mix(in srgb, var(--color-secondary) 70%, white) !important;
+}
+
+:root[data-theme="attractGold"] .dca-action-btn-large:hover {
+    background: var(--action-dca-bg-hover) !important;
+}
+
+:root[data-theme="attractGold"] .back-btn,
+:root[data-theme="attractGold"] .return-btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, color-mix(in srgb, var(--color-primary) 88%, var(--color-secondary)) 100%) !important;
+    color: var(--text-white) !important;
+    border: 1px solid var(--border-primary) !important;
+}
+
+:root[data-theme="attractGold"] .back-btn:hover,
+:root[data-theme="attractGold"] .return-btn:hover {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 88%, var(--color-secondary)) 0%, var(--color-secondary) 100%) !important;
+}
+
+:root[data-theme="attractGold"] input,
+:root[data-theme="attractGold"] textarea,
+:root[data-theme="attractGold"] select,
+:root[data-theme="attractGold"] .form-input,
+:root[data-theme="attractGold"] .form-select,
+:root[data-theme="attractGold"] .form-textarea {
+    background: rgba(255, 241, 214, 0.78) !important;
+    border: 1px solid var(--border-medium) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="attractGold"] input:focus,
+:root[data-theme="attractGold"] textarea:focus,
+:root[data-theme="attractGold"] select:focus,
+:root[data-theme="attractGold"] .form-input:focus,
+:root[data-theme="attractGold"] .form-select:focus,
+:root[data-theme="attractGold"] .form-textarea:focus {
+    border-color: var(--color-secondary) !important;
+    box-shadow: 0 0 0 3px var(--color-secondary-rgba-20) !important;
+}
+
+:root[data-theme="attractGold"] .panel-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
+    color: var(--text-white) !important;
+}
+
+:root[data-theme="attractGold"] .reminder-header {
+    background: linear-gradient(135deg, rgba(255, 241, 214, 0.82) 0%, var(--color-secondary-rgba-15) 100%) !important;
+}
+
+@media (max-width: 768px) {
+    :root[data-theme="attractGold"] .card,
+    :root[data-theme="attractGold"] .dialog-content,
+    :root[data-theme="attractGold"] .modal-content {
+        border-radius: 16px !important;
+        margin: 8px !important;
+        max-width: calc(100vw - 16px) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="attractGold"] .card,
+    :root[data-theme="attractGold"] .dialog-content,
+    :root[data-theme="attractGold"] .modal-content {
+        border-radius: 12px !important;
+        margin: 4px !important;
+        max-width: calc(100vw - 8px) !important;
+    }
+}
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="attractGold"] {
+    --k-main: #c62828;
+    --k-main-dark: #821a1a;
+    --k-main-light: #f3c4c4;
+    --k-btn-top: #c62828;
+    --k-btn-bottom: #821a1a;
+    --k-on-main: #ffffff;
+    --k-paper: #fcf5f5;
+    --k-paper-2: #f7e3e3;
+    --k-line: #e3abab;
+    --k-ink: #431919;
+    --k-ink-soft: #7e4444;
+    --k-title: #821a1a;
+    --k-deep: #401f11;
+    --k-on-deep: #f0dbdb;
+}
+/* ===== 主題設計工具組配色結束 ===== */

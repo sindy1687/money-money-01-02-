@@ -1,3 +1,36 @@
+/* ===== teal 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+/* ========== 新增主題：茶色主題 ========== */
+:root[data-theme="teal"] {
+    --color-primary: #26a69a;
+    --color-primary-light: #4db6ac;
+    --color-primary-lighter: #80cbc4;
+    --color-primary-dark: #00897b;
+    --bg-primary: linear-gradient(135deg, #e0f2f1 0%, #f0f9f8 100%);
+    --bg-gradient: linear-gradient(135deg, #4db6ac 0%, #26a69a 100%);
+    --bg-gradient-light: linear-gradient(135deg, #e0f2f1 0%, #f0f9f8 100%);
+    --border-primary: #26a69a;
+    --shadow-primary: 0 2px 8px rgba(38, 166, 154, 0.25);
+    --shadow-primary-lg: 0 4px 12px rgba(38, 166, 154, 0.3);
+    --color-primary-rgba-08: rgba(38, 166, 154, 0.08);
+    --color-primary-rgba-10: rgba(38, 166, 154, 0.1);
+    --color-primary-rgba-15: rgba(38, 166, 154, 0.15);
+    --color-primary-rgba-20: rgba(38, 166, 154, 0.2);
+    --color-primary-rgba-25: rgba(38, 166, 154, 0.25);
+    --color-primary-rgba-30: rgba(38, 166, 154, 0.3);
+    --color-primary-rgba-12: rgba(38, 166, 154, 0.12);
+    --color-primary-rgba-18: rgba(38, 166, 154, 0.18);
+    --color-primary-light-rgba-08: rgba(77, 182, 172, 0.08);
+    --color-primary-light-rgba-10: rgba(77, 182, 172, 0.1);
+    --color-primary-light-rgba-15: rgba(77, 182, 172, 0.15);
+    --color-primary-light-rgba-20: rgba(77, 182, 172, 0.2);
+    --color-primary-light-rgba-25: rgba(77, 182, 172, 0.25);
+    --color-primary-light-rgba-30: rgba(77, 182, 172, 0.3);
+    --color-primary-light-rgba-40: rgba(77, 182, 172, 0.4);
+    --bg-light-gradient: linear-gradient(135deg, var(--bg-white) 0%, #f0f9f8 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, #f0f9f8 0%, var(--bg-white) 100%);
+}
+
+/* ===== teal 主題原有樣式 ===== */
 ﻿:root[data-theme="teal"] {
     --color-primary: #26a69a;
     --color-primary-light: #4db6ac;
@@ -28,7 +61,21 @@
     --bg-light-gradient-reverse: linear-gradient(180deg, #f0f9f8 0%, var(--bg-white) 100%);
 }
 
-:root[data-theme="teal"] body,
-
-:root[data-theme="teal"] body::before,
-
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="teal"] {
+    --k-main: #26a69a;
+    --k-main-dark: #17645c;
+    --k-main-light: #c5f2ee;
+    --k-btn-top: #1c7d74;
+    --k-btn-bottom: #17645c;
+    --k-on-main: #ffffff;
+    --k-paper: #f5fcfc;
+    --k-paper-2: #e3f7f5;
+    --k-line: #abe3de;
+    --k-ink: #19433f;
+    --k-ink-soft: #407773;
+    --k-title: #17645c;
+    --k-deep: #0d3a36;
+    --k-on-deep: #dbf0ee;
+}
+/* ===== 主題設計工具組配色結束 ===== */

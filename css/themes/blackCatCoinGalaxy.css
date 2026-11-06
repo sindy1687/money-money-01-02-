@@ -239,8 +239,6 @@
 
 :root[data-theme="blackCatCoinGalaxy"] .btn,
 :root[data-theme="blackCatCoinGalaxy"] .buy-action-btn-large,
-:root[data-theme="blackCatCoinGalaxy"] .smart-analysis-btn,
-:root[data-theme="blackCatCoinGalaxy"] .smart-reminders-btn,
 :root[data-theme="blackCatCoinGalaxy"] .smart-suggestion-btn {
     background: var(--action-buy-bg) !important;
     color: var(--action-buy-text) !important;
@@ -249,8 +247,6 @@
 
 :root[data-theme="blackCatCoinGalaxy"] .btn:hover,
 :root[data-theme="blackCatCoinGalaxy"] .buy-action-btn-large:hover,
-:root[data-theme="blackCatCoinGalaxy"] .smart-analysis-btn:hover,
-:root[data-theme="blackCatCoinGalaxy"] .smart-reminders-btn:hover,
 :root[data-theme="blackCatCoinGalaxy"] .smart-suggestion-btn:hover {
     background: var(--action-buy-bg-hover) !important;
 }
@@ -314,3 +310,22 @@
         max-height: 90vh;
     }
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="blackCatCoinGalaxy"] {
+    --k-main: #d4af37;
+    --k-main-dark: #997c21;
+    --k-main-light: #f2e7c4;
+    --k-btn-top: #ddc061;
+    --k-btn-bottom: #d4af37;
+    --k-on-main: #413610;
+    --k-paper: #fcfbf5;
+    --k-paper-2: #f7f2e3;
+    --k-line: #e3d6ab;
+    --k-ink: #433919;
+    --k-ink-soft: #776a40;
+    --k-title: #77611a;
+    --k-deep: #241a16;
+    --k-on-deep: #f0ebdb;
+}
+/* ===== 主題設計工具組配色結束 ===== */

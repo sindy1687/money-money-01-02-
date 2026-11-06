@@ -389,3 +389,22 @@
         border-radius: 16px 16px 0 0 !important;
     }
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="hanfuElegance"] {
+    --k-main: #d14a3b;
+    --k-main-dark: #972f23;
+    --k-main-light: #f1cac5;
+    --k-btn-top: #db7064;
+    --k-btn-bottom: #d14a3b;
+    --k-on-main: #100504;
+    --k-paper: #fcf6f5;
+    --k-paper-2: #f7e5e3;
+    --k-line: #e3b0ab;
+    --k-ink: #431d19;
+    --k-ink-soft: #7e4a44;
+    --k-title: #972f23;
+    --k-deep: #1f2033;
+    --k-on-deep: #f0dddb;
+}
+/* ===== 主題設計工具組配色結束 ===== */

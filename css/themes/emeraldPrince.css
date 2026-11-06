@@ -1,0 +1,1470 @@
+/* ===== emeraldPrince 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+/* ========== 翡翠王子主題樣式 - 全新重寫 ========== */
+
+/* 翡翠王子主題 - 核心顏色系統 */
+:root[data-theme="emeraldPrince"] {
+    /* 主要色彩 - 翡翠綠色系 */
+    --color-primary: #2E8B57;
+    --color-primary-light: #4AA672;
+    --color-primary-lighter: #6BC28D;
+    --color-primary-dark: #236B45;
+    
+    /* 次要色彩 - 皇家金色系 */
+    --color-secondary: #DAA520;
+    --color-secondary-light: #F0E68C;
+    --color-secondary-dark: #B8860B;
+    
+    /* 強調色彩 - 王者白色 */
+    --color-accent: #F8F8FF;
+    --color-accent-light: #FFFFFF;
+    --color-accent-dark: #E6E6FA;
+    
+    /* 狀態色彩 */
+    --color-success: #32CD32;
+    --color-danger: #DC143C;
+    --color-warning: #FF8C00;
+    --color-info: #4682B4;
+    
+    /* 文字顏色系統 */
+    --text-primary: #2F4F4F;
+    --text-secondary: #708090;
+    --text-tertiary: #A9A9A9;
+    --text-white: #F8F8FF;
+    --text-inverse: #2F4F4F;
+    
+    /* 背景顏色系統 */
+    --bg-primary: rgba(46, 139, 87, 0.95);
+    --bg-secondary: rgba(218, 165, 32, 0.85);
+    --bg-accent: rgba(248, 248, 255, 0.9);
+    --bg-white: rgba(248, 248, 255, 0.85);
+    --bg-light: rgba(46, 139, 87, 0.08);
+    --bg-medium: rgba(46, 139, 87, 0.15);
+    --bg-dark: rgba(46, 139, 87, 0.25);
+    --bg-soft: rgba(218, 165, 32, 0.12);
+    --bg-card: rgba(248, 248, 255, 0.88);
+    --bg-modal: rgba(47, 79, 79, 0.92);
+    
+    /* 邊框顏色系統 */
+    --border-primary: rgba(46, 139, 87, 0.3);
+    --border-secondary: rgba(218, 165, 32, 0.4);
+    --border-accent: rgba(248, 248, 255, 0.6);
+    --border-light: rgba(46, 139, 87, 0.15);
+    --border-medium: rgba(218, 165, 32, 0.25);
+    --border-dark: rgba(47, 79, 79, 0.4);
+    
+    /* 陰影顏色系統 */
+    --shadow-primary: rgba(46, 139, 87, 0.25);
+    --shadow-secondary: rgba(218, 165, 32, 0.2);
+    --shadow-accent: rgba(248, 248, 255, 0.3);
+    --shadow-light: rgba(46, 139, 87, 0.15);
+    --shadow-medium: rgba(46, 139, 87, 0.3);
+    --shadow-dark: rgba(47, 79, 79, 0.4);
+    
+    /* 漸層背景系統 */
+    --bg-gradient: linear-gradient(135deg, 
+        var(--color-primary) 0%, 
+        var(--color-secondary) 50%, 
+        var(--color-accent) 100%);
+    --bg-gradient-light: linear-gradient(135deg, 
+        var(--bg-light) 0%, 
+        var(--bg-soft) 50%, 
+        var(--bg-medium) 100%);
+    --bg-gradient-card: linear-gradient(145deg, 
+        rgba(248, 248, 255, 0.9) 0%, 
+        rgba(218, 165, 32, 0.1) 100%);
+    
+    /* RGBA透明度系統 - 主色調 */
+    --color-primary-rgba-05: rgba(46, 139, 87, 0.05);
+    --color-primary-rgba-08: rgba(46, 139, 87, 0.08);
+    --color-primary-rgba-10: rgba(46, 139, 87, 0.1);
+    --color-primary-rgba-12: rgba(46, 139, 87, 0.12);
+    --color-primary-rgba-15: rgba(46, 139, 87, 0.15);
+    --color-primary-rgba-18: rgba(46, 139, 87, 0.18);
+    --color-primary-rgba-20: rgba(46, 139, 87, 0.2);
+    --color-primary-rgba-25: rgba(46, 139, 87, 0.25);
+    --color-primary-rgba-30: rgba(46, 139, 87, 0.3);
+    --color-primary-rgba-40: rgba(46, 139, 87, 0.4);
+    --color-primary-rgba-50: rgba(46, 139, 87, 0.5);
+    --color-primary-rgba-60: rgba(46, 139, 87, 0.6);
+    --color-primary-rgba-70: rgba(46, 139, 87, 0.7);
+    --color-primary-rgba-80: rgba(46, 139, 87, 0.8);
+    
+    /* RGBA透明度系統 - 次要色調 */
+    --color-secondary-rgba-05: rgba(218, 165, 32, 0.05);
+    --color-secondary-rgba-08: rgba(218, 165, 32, 0.08);
+    --color-secondary-rgba-10: rgba(218, 165, 32, 0.1);
+    --color-secondary-rgba-12: rgba(218, 165, 32, 0.12);
+    --color-secondary-rgba-15: rgba(218, 165, 32, 0.15);
+    --color-secondary-rgba-18: rgba(218, 165, 32, 0.18);
+    --color-secondary-rgba-20: rgba(218, 165, 32, 0.2);
+    --color-secondary-rgba-25: rgba(218, 165, 32, 0.25);
+    --color-secondary-rgba-30: rgba(218, 165, 32, 0.3);
+    
+    /* RGBA透明度系統 - 強調色調 */
+    --color-accent-rgba-05: rgba(248, 248, 255, 0.05);
+    --color-accent-rgba-08: rgba(248, 248, 255, 0.08);
+    --color-accent-rgba-10: rgba(248, 248, 255, 0.1);
+    --color-accent-rgba-12: rgba(248, 248, 255, 0.12);
+    --color-accent-rgba-15: rgba(248, 248, 255, 0.15);
+    --color-accent-rgba-18: rgba(248, 248, 255, 0.18);
+    --color-accent-rgba-20: rgba(248, 248, 255, 0.2);
+    --color-accent-rgba-25: rgba(248, 248, 255, 0.25);
+    --color-accent-rgba-30: rgba(248, 248, 255, 0.3);
+    
+    /* 特殊效果顏色 */
+    --glow-primary: rgba(46, 139, 87, 0.4);
+    --glow-secondary: rgba(218, 165, 32, 0.5);
+    --glow-accent: rgba(248, 248, 255, 0.6);
+}
+
+/* 翡翠王子主題背景圖片 */
+:root[data-theme="emeraldPrince"] body {
+    background-image: url("https://i.pinimg.com/736x/55/40/2f/55402fb6bcf0c65c832636ad5504499f.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* 翡翠王子主題 - 全新組件樣式 */
+
+/* 翡翠王子主題 - 頁面和卡片基礎樣式 */
+:root[data-theme="emeraldPrince"] .page,
+:root[data-theme="emeraldPrince"] .modal-content,
+:root[data-theme="emeraldPrince"] .card,
+:root[data-theme="emeraldPrince"] .dialog-container,
+:root[data-theme="emeraldPrince"] .installment-page,
+:root[data-theme="emeraldPrince"] .fixed-deposit-page,
+:root[data-theme="emeraldPrince"] .investment-management-card,
+:root[data-theme="emeraldPrince"] .komori-dialog,
+:root[data-theme="emeraldPrince"] .annual-report,
+:root[data-theme="emeraldPrince"] .about-ledger,
+:root[data-theme="emeraldPrince"] .ledger-diary {
+    background: var(--bg-gradient-card) !important;
+    backdrop-filter: blur(15px);
+    border: 2px solid var(--border-secondary);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px var(--shadow-primary);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+:root[data-theme="emeraldPrince"] .page:hover,
+:root[data-theme="emeraldPrince"] .modal-content:hover,
+:root[data-theme="emeraldPrince"] .card:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 12px 40px var(--shadow-secondary);
+    border-color: var(--border-accent);
+}
+
+/* 翡翠王子主題 - 按鈕系統 */
+:root[data-theme="emeraldPrince"] .btn,
+:root[data-theme="emeraldPrince"] .btn-primary,
+:root[data-theme="emeraldPrince"] .btn-secondary {
+    background: var(--bg-gradient) !important;
+    color: var(--text-white) !important;
+    border: 2px solid var(--border-secondary) !important;
+    border-radius: 25px !important;
+    padding: 14px 28px !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    box-shadow: 0 6px 20px var(--shadow-primary) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+:root[data-theme="emeraldPrince"] .btn::before,
+:root[data-theme="emeraldPrince"] .btn-primary::before,
+:root[data-theme="emeraldPrince"] .btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s;
+}
+
+:root[data-theme="emeraldPrince"] .btn:hover::before,
+:root[data-theme="emeraldPrince"] .btn-primary:hover::before,
+:root[data-theme="emeraldPrince"] .btn-secondary:hover::before {
+    left: 100%;
+}
+
+:root[data-theme="emeraldPrince"] .btn:hover,
+:root[data-theme="emeraldPrince"] .btn-primary:hover,
+:root[data-theme="emeraldPrince"] .btn-secondary:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent) 100%) !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 10px 30px var(--shadow-secondary) !important;
+    border-color: var(--border-accent) !important;
+}
+
+:root[data-theme="emeraldPrince"] .btn:active,
+:root[data-theme="emeraldPrince"] .btn-primary:active,
+:root[data-theme="emeraldPrince"] .btn-secondary:active {
+    transform: translateY(-1px) scale(1.02) !important;
+    box-shadow: 0 4px 15px var(--shadow-medium) !important;
+}
+
+/* 翡翠王子主題 - 返回按鈕 */
+:root[data-theme="emeraldPrince"] .back-btn,
+:root[data-theme="emeraldPrince"] .return-btn {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%) !important;
+    color: var(--text-primary) !important;
+    border: 2px solid var(--border-dark) !important;
+    border-radius: 20px !important;
+    padding: 12px 24px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 15px var(--shadow-secondary) !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="emeraldPrince"] .back-btn:hover,
+:root[data-theme="emeraldPrince"] .return-btn:hover {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary-light) 100%) !important;
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 8px 25px var(--shadow-accent) !important;
+}
+    /* 翡翠王子主題 - 文字顏色系統 */
+:root[data-theme="emeraldPrince"] h1,
+:root[data-theme="emeraldPrince"] h2,
+:root[data-theme="emeraldPrince"] h3,
+:root[data-theme="emeraldPrince"] h4,
+:root[data-theme="emeraldPrince"] h5,
+:root[data-theme="emeraldPrince"] h6,
+:root[data-theme="emeraldPrince"] .title,
+:root[data-theme="emeraldPrince"] .card-title {
+    color: var(--text-primary) !important;
+    font-weight: 700;
+    text-shadow: 0 1px 2px var(--shadow-light);
+}
+
+:root[data-theme="emeraldPrince"] p,
+:root[data-theme="emeraldPrince"] .text,
+:root[data-theme="emeraldPrince"] .description,
+:root[data-theme="emeraldPrince"] .content {
+    color: var(--text-secondary) !important;
+    font-weight: 400;
+}
+
+:root[data-theme="emeraldPrince"] .text-tertiary,
+:root[data-theme="emeraldPrince"] .text-muted {
+    color: var(--text-tertiary) !important;
+}
+
+/* 翡翠王子主題 - 記帳記錄卡片 */
+:root[data-theme="emeraldPrince"] .record-card {
+    background: linear-gradient(135deg,
+            var(--color-primary-rgba-08) 0%,
+            var(--color-primary-rgba-15) 50%,
+            var(--color-primary-rgba-08) 100%) !important;
+    border: 2px solid var(--border-primary) !important;
+    border-radius: 18px !important;
+    backdrop-filter: blur(12px) !important;
+    box-shadow: 0 8px 24px var(--shadow-primary) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+:root[data-theme="emeraldPrince"] .record-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 20%,
+            var(--color-accent-rgba-10) 0%,
+            var(--color-secondary-rgba-08) 40%,
+            transparent 70%) !important;
+    pointer-events: none;
+}
+
+:root[data-theme="emeraldPrince"] .record-card:hover {
+    background: linear-gradient(135deg,
+            var(--color-primary-rgba-12) 0%,
+            var(--color-primary-rgba-20) 50%,
+            var(--color-primary-rgba-12) 100%) !important;
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 12px 36px var(--shadow-secondary) !important;
+    border-color: var(--border-secondary) !important;
+}
+
+/* 翡翠王子主題 - 數字鍵盤樣式 */
+:root[data-theme="emeraldPrince"] .keyboard {
+    background: var(--bg-gradient-card) !important;
+    border: 2px solid var(--border-secondary) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 12px 36px var(--shadow-primary) !important;
+    backdrop-filter: blur(20px) !important;
+    padding: 20px !important;
+}
+
+:root[data-theme="emeraldPrince"] .key {
+    background: linear-gradient(145deg, var(--bg-white) 0%, var(--bg-soft) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    color: var(--text-primary) !important;
+    border-radius: 16px !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 12px var(--shadow-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] .key:hover {
+    background: var(--bg-gradient) !important;
+    transform: translateY(-3px) scale(1.08) !important;
+    box-shadow: 0 8px 24px var(--shadow-secondary) !important;
+    color: var(--text-white) !important;
+    border-color: var(--border-accent) !important;
+}
+
+:root[data-theme="emeraldPrince"] .key.operator {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="emeraldPrince"] .key.operator:hover {
+    background: linear-gradient(135deg, var(--color-secondary-light) 0%, var(--color-accent-light) 100%) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="emeraldPrince"] .key.delete {
+    background: linear-gradient(135deg, var(--color-danger) 0%, #ff6b6b 100%) !important;
+    color: var(--text-white) !important;
+}
+
+:root[data-theme="emeraldPrince"] .key.delete:hover {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%) !important;
+    transform: translateY(-3px) scale(1.1) !important;
+    box-shadow: 0 8px 24px rgba(220, 20, 60, 0.4) !important;
+}
+
+:root[data-theme="emeraldPrince"] .key.equal {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%) !important;
+    color: var(--text-white) !important;
+}
+
+:root[data-theme="emeraldPrince"] .key.equal:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary-lighter) 100%) !important;
+    transform: translateY(-3px) scale(1.1) !important;
+    box-shadow: 0 8px 24px var(--glow-primary) !important;
+}
+
+/* 翡翠王子主題 - 輸入框和表單元素 */
+:root[data-theme="emeraldPrince"] input,
+:root[data-theme="emeraldPrince"] textarea,
+:root[data-theme="emeraldPrince"] select {
+    background: var(--bg-white) !important;
+    border: 2px solid var(--border-light) !important;
+    border-radius: 16px !important;
+    color: var(--text-primary) !important;
+    padding: 14px 20px !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 2px 8px var(--shadow-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] input:focus,
+:root[data-theme="emeraldPrince"] textarea:focus,
+:root[data-theme="emeraldPrince"] select:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 4px var(--color-primary-rgba-20), 0 4px 12px var(--shadow-medium) !important;
+    outline: none !important;
+    transform: translateY(-1px) !important;
+}
+
+:root[data-theme="emeraldPrince"] input::placeholder,
+:root[data-theme="emeraldPrince"] textarea::placeholder {
+    color: var(--text-tertiary) !important;
+    font-style: italic !important;
+}
+
+/* 翡翠王子主題 - FAB懸浮按鈕 */
+:root[data-theme="emeraldPrince"] .fab-btn {
+    background: var(--bg-gradient) !important;
+    color: var(--text-white) !important;
+    border: 3px solid var(--border-accent) !important;
+    border-radius: 50% !important;
+    width: 64px !important;
+    height: 64px !important;
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    box-shadow: 0 8px 24px var(--shadow-primary) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+:root[data-theme="emeraldPrince"] .fab-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+    transition: all 0.6s ease;
+    transform: translate(-50%, -50%);
+}
+
+:root[data-theme="emeraldPrince"] .fab-btn:hover::before {
+    width: 120%;
+    height: 120%;
+}
+
+:root[data-theme="emeraldPrince"] .fab-btn:hover {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary-light) 100%) !important;
+    transform: scale(1.15) rotate(15deg) !important;
+    box-shadow: 0 12px 36px var(--shadow-secondary) !important;
+    border-color: var(--border-dark) !important;
+}
+
+/* 翡翠王子主題 - 導航列 */
+:root[data-theme="emeraldPrince"] .bottom-nav,
+:root[data-theme="emeraldPrince"] .nav-container {
+    background: var(--bg-modal) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 2px solid var(--border-secondary) !important;
+    border-radius: 24px 24px 0 0 !important;
+    box-shadow: 0 -8px 32px var(--shadow-primary) !important;
+}
+
+:root[data-theme="emeraldPrince"] .nav-item {
+    background: linear-gradient(145deg, var(--bg-light) 0%, var(--bg-soft) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 16px !important;
+    color: var(--text-primary) !important;
+    padding: 12px 16px !important;
+    margin: 8px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    font-weight: 600 !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+:root[data-theme="emeraldPrince"] .nav-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.8s ease;
+}
+
+:root[data-theme="emeraldPrince"] .nav-item:hover::before {
+    left: 100%;
+}
+
+:root[data-theme="emeraldPrince"] .nav-item:hover {
+    background: var(--bg-gradient) !important;
+    transform: translateY(-4px) scale(1.05) !important;
+    box-shadow: 0 8px 20px var(--shadow-secondary) !important;
+    color: var(--text-white) !important;
+    border-color: var(--border-accent) !important;
+}
+
+:root[data-theme="emeraldPrince"] .nav-item.active {
+    background: var(--bg-gradient) !important;
+    color: var(--text-white) !important;
+    border-color: var(--border-accent) !important;
+    box-shadow: 0 4px 16px var(--shadow-medium) !important;
+}
+
+/* 翡翠王子主題 - 模態框 */
+:root[data-theme="emeraldPrince"] .modal {
+    background: rgba(47, 79, 79, 0.85) !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+:root[data-theme="emeraldPrince"] .modal-content {
+    background: var(--bg-gradient-card) !important;
+    border: 3px solid var(--border-secondary) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 16px 48px var(--shadow-primary) !important;
+    backdrop-filter: blur(20px) !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+}
+
+/* 翡翠王子主題 - 小森對話框 */
+:root[data-theme="emeraldPrince"] .komori-dialog {
+    background: linear-gradient(135deg, 
+        rgba(248, 248, 255, 0.95) 0%, 
+        rgba(240, 230, 140, 0.85) 100%) !important;
+    border: 3px solid var(--border-accent) !important;
+    border-radius: 20px !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 12px 36px var(--shadow-secondary) !important;
+    backdrop-filter: blur(15px) !important;
+    position: relative !important;
+}
+
+:root[data-theme="emeraldPrince"] .komori-dialog::before {
+    content: '??';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-gradient);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border: 2px solid var(--border-accent);
+}
+
+/* 翡翠王子主題 - 投資卡片和持股卡片 */
+:root[data-theme="emeraldPrince"] .investment-card,
+:root[data-theme="emeraldPrince"] .stock-item-card,
+:root[data-theme="emeraldPrince"] .holdings-card,
+:root[data-theme="emeraldPrince"] .buy-card,
+:root[data-theme="emeraldPrince"] .sell-card,
+:root[data-theme="emeraldPrince"] .dividend-card {
+    background: var(--bg-gradient-card) !important;
+    border: 2px solid var(--border-secondary) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px var(--shadow-primary) !important;
+    backdrop-filter: blur(15px) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+:root[data-theme="emeraldPrince"] .investment-card::before,
+:root[data-theme="emeraldPrince"] .stock-item-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 25% 25%,
+            var(--color-accent-rgba-08) 0%,
+            var(--color-secondary-rgba-06) 50%,
+            transparent 80%) !important;
+    pointer-events: none !important;
+}
+
+:root[data-theme="emeraldPrince"] .investment-card:hover,
+:root[data-theme="emeraldPrince"] .stock-item-card:hover {
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 12px 36px var(--shadow-secondary) !important;
+    border-color: var(--border-accent) !important;
+}
+
+:root[data-theme="emeraldPrince"] .stock-name {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+}
+
+:root[data-theme="emeraldPrince"] .stock-code {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+:root[data-theme="emeraldPrince"] .stock-price {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    font-size: 1.2rem !important;
+}
+
+/* 翡翠王子主題 - 股數顯示樣式 */
+:root[data-theme="emeraldPrince"] .portfolio-shares {
+    background: linear-gradient(135deg, 
+        var(--bg-white) 0%, 
+        var(--bg-soft) 100%) !important;
+    border: 2px solid var(--border-secondary) !important;
+    color: var(--text-primary) !important;
+    font-weight: 800 !important;
+    font-size: 1.1rem !important;
+    border-radius: 20px !important;
+    padding: 10px 18px !important;
+    backdrop-filter: blur(12px) !important;
+    box-shadow: 0 4px 16px var(--shadow-light) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+:root[data-theme="emeraldPrince"] .portfolio-shares::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.8s ease;
+}
+
+:root[data-theme="emeraldPrince"] .portfolio-shares:hover::before {
+    left: 100%;
+}
+
+:root[data-theme="emeraldPrince"] .portfolio-shares:hover {
+    background: var(--bg-gradient) !important;
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 8px 24px var(--shadow-secondary) !important;
+    color: var(--text-white) !important;
+    border-color: var(--border-accent) !important;
+}
+
+:root[data-theme="emeraldPrince"] .stock-grid-card-tag--shares {
+    background: linear-gradient(135deg, 
+        var(--bg-white) 0%, 
+        var(--bg-soft) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+    border-radius: 12px !important;
+    padding: 6px 12px !important;
+    backdrop-filter: blur(8px) !important;
+    box-shadow: 0 2px 8px var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="emeraldPrince"] .stock-grid-card-tag--shares:hover {
+    background: var(--bg-gradient) !important;
+    transform: translateY(-1px) scale(1.08) !important;
+    box-shadow: 0 4px 12px var(--shadow-medium) !important;
+    color: var(--text-white) !important;
+    border-color: var(--border-secondary) !important;
+}
+
+/* 翡翠王子主題 - 預算和統計卡片 */
+:root[data-theme="emeraldPrince"] .budget-card,
+:root[data-theme="emeraldPrince"] .budget-summary-card,
+:root[data-theme="emeraldPrince"] .daily-budget-summary-card,
+:root[data-theme="emeraldPrince"] .wallet-budget-card,
+:root[data-theme="emeraldPrince"] .stat-item {
+    background: var(--bg-gradient-card) !important;
+    border: 2px solid var(--border-secondary) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 24px var(--shadow-primary) !important;
+    backdrop-filter: blur(15px) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+:root[data-theme="emeraldPrince"] .budget-card:hover,
+:root[data-theme="emeraldPrince"] .budget-summary-card:hover,
+:root[data-theme="emeraldPrince"] .daily-budget-summary-card:hover,
+:root[data-theme="emeraldPrince"] .wallet-budget-card:hover,
+:root[data-theme="emeraldPrince"] .stat-item:hover {
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 12px 36px var(--shadow-secondary) !important;
+    border-color: var(--border-accent) !important;
+}
+
+:root[data-theme="emeraldPrince"] .budget-amount,
+:root[data-theme="emeraldPrince"] .budget-remaining,
+:root[data-theme="emeraldPrince"] .budget-spent,
+:root[data-theme="emeraldPrince"] .stat-value {
+    background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-soft) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 16px !important;
+    padding: 12px 20px !important;
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    backdrop-filter: blur(8px) !important;
+    box-shadow: 0 2px 8px var(--shadow-light) !important;
+}
+
+/* 翡翠王子主題 - 淺色文字調整 */
+:root[data-theme="emeraldPrince"] .budget-summary-label,
+:root[data-theme="emeraldPrince"] .budget-detail-label,
+:root[data-theme="emeraldPrince"] .stat-label,
+:root[data-theme="emeraldPrince"] .dividend-stat-label,
+:root[data-theme="emeraldPrince"] .account-info,
+:root[data-theme="emeraldPrince"] .account-item-name,
+:root[data-theme="emeraldPrince"] .account-item-currency,
+:root[data-theme="emeraldPrince"] .tab-text {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+/* 翡翠王子主題 - 滾動條樣式 */
+:root[data-theme="emeraldPrince"] ::-webkit-scrollbar {
+    width: 10px !important;
+}
+
+:root[data-theme="emeraldPrince"] ::-webkit-scrollbar-track {
+    background: var(--bg-light) !important;
+    border-radius: 5px !important;
+}
+
+:root[data-theme="emeraldPrince"] ::-webkit-scrollbar-thumb {
+    background: var(--bg-gradient) !important;
+    border-radius: 5px !important;
+    border: 1px solid var(--border-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent) 100%) !important;
+}
+
+:root[data-theme="emeraldPrince"] .btn:hover {
+    animation: emeraldPrinceGlow 2s infinite;
+}
+
+:root[data-theme="emeraldPrince"] .card:hover {
+    animation: emeraldPrinceShine 3s infinite;
+    background-size: 200% 100%;
+}
+
+/* 翡翠王子主題 - 特殊光暈效果 */
+:root[data-theme="emeraldPrince"] .glow-effect {
+    box-shadow: 0 0 20px var(--glow-primary), 0 0 40px var(--glow-secondary) !important;
+}
+
+:root[data-theme="emeraldPrince"] .glow-effect:hover {
+    box-shadow: 0 0 30px var(--glow-primary), 0 0 60px var(--glow-secondary), 0 0 80px var(--glow-accent) !important;
+}
+
+/* 翡翠王子主題記帳日記文字顏色 */
+:root[data-theme="emeraldPrince"] .diary-card,
+:root[data-theme="emeraldPrince"] .diary-content,
+:root[data-theme="emeraldPrince"] .diary-text {
+    color: var(--text-primary) !important;
+    background: var(--bg-card);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border-light);
+}
+
+/* ========== 翡翠王子主題 - 完成重構 ========== */
+
+/* 翡翠王子主題 - 記帳日記樣式 */
+:root[data-theme="emeraldPrince"] .diary-card,
+:root[data-theme="emeraldPrince"] .diary-content,
+:root[data-theme="emeraldPrince"] .diary-text {
+    color: var(--text-primary) !important;
+    background: var(--bg-gradient-card) !important;
+    padding: 15px !important;
+    border-radius: 16px !important;
+    border: 1px solid var(--border-light) !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 16px var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="emeraldPrince"] .diary-card:hover,
+:root[data-theme="emeraldPrince"] .diary-content:hover,
+:root[data-theme="emeraldPrince"] .diary-text:hover {
+    background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-soft) 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px var(--shadow-medium) !important;
+    border-color: var(--border-secondary) !important;
+}
+
+/* 翡翠王子主題 - 表格樣式 */
+:root[data-theme="emeraldPrince"] table {
+    background: var(--bg-white) !important;
+    border: 2px solid var(--border-secondary) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 16px var(--shadow-light) !important;
+}
+
+:root[data-theme="emeraldPrince"] th {
+    background: var(--bg-gradient) !important;
+    color: var(--text-white) !important;
+    font-weight: 700 !important;
+    padding: 16px !important;
+    text-align: center !important;
+    border-bottom: 2px solid var(--border-accent) !important;
+}
+
+:root[data-theme="emeraldPrince"] td {
+    background: var(--bg-white) !important;
+    color: var(--text-secondary) !important;
+    padding: 12px 16px !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="emeraldPrince"] tr:hover td {
+    background: var(--bg-light) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 翡翠王子主題 - 進度條樣式 */
+:root[data-theme="emeraldPrince"] .progress-bar {
+    background: var(--bg-gradient) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px var(--shadow-light) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+:root[data-theme="emeraldPrince"] .progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: progressShine 2s infinite;
+}
+
+:root[data-theme="emeraldPrince"] .progress-track {
+    background: var(--bg-medium) !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 2px 4px var(--shadow-light) !important;
+}
+
+/* 翡翠王子主題 - 標籤和徽章樣式 */
+:root[data-theme="emeraldPrince"] .tag,
+:root[data-theme="emeraldPrince"] .badge {
+    background: var(--bg-gradient) !important;
+    color: var(--text-white) !important;
+    border: 1px solid var(--border-secondary) !important;
+    border-radius: 20px !important;
+    padding: 6px 12px !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    box-shadow: 0 2px 8px var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+}
+
+:root[data-theme="emeraldPrince"] .tag:hover,
+:root[data-theme="emeraldPrince"] .badge:hover {
+    transform: translateY(-1px) scale(1.05) !important;
+    box-shadow: 0 4px 12px var(--shadow-medium) !important;
+    border-color: var(--border-accent) !important;
+}
+
+/* 翡翠王子主題 - 警告和提示樣式 */
+:root[data-theme="emeraldPrince"] .alert,
+:root[data-theme="emeraldPrince"] .warning {
+    background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-soft) 100%) !important;
+    border: 2px solid var(--color-warning) !important;
+    color: var(--text-secondary) !important;
+    border-radius: 16px !important;
+    padding: 16px 20px !important;
+    box-shadow: 0 4px 16px var(--shadow-light) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="emeraldPrince"] .success {
+    background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-soft) 100%) !important;
+    border: 2px solid var(--color-success) !important;
+    color: var(--text-primary) !important;
+    border-radius: 16px !important;
+    padding: 16px 20px !important;
+    box-shadow: 0 4px 16px var(--shadow-light) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+:root[data-theme="emeraldPrince"] .error {
+    background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-soft) 100%) !important;
+    border: 2px solid var(--color-danger) !important;
+    color: var(--color-danger) !important;
+    border-radius: 16px !important;
+    padding: 16px 20px !important;
+    box-shadow: 0 4px 16px rgba(220, 20, 60, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 翡翠王子主題 - 圖表顏色 */
+:root[data-theme="emeraldPrince"] .chart-primary {
+    background-color: var(--color-primary) !important;
+}
+
+:root[data-theme="emeraldPrince"] .chart-secondary {
+    background-color: var(--color-secondary) !important;
+}
+
+:root[data-theme="emeraldPrince"] .chart-accent {
+    background-color: var(--color-accent) !important;
+}
+
+@media (max-width: 768px) {
+    :root[data-theme="emeraldPrince"] .btn,
+    :root[data-theme="emeraldPrince"] .btn-primary,
+    :root[data-theme="emeraldPrince"] .btn-secondary {
+        padding: 12px 20px !important;
+        font-size: 0.9rem !important;
+        border-radius: 20px !important;
+    }
+    
+    :root[data-theme="emeraldPrince"] .fab-btn {
+        width: 56px !important;
+        height: 56px !important;
+        font-size: 1.4rem !important;
+    }
+    
+    :root[data-theme="emeraldPrince"] .card,
+    :root[data-theme="emeraldPrince"] .modal-content {
+        border-radius: 16px !important;
+        margin: 10px !important;
+    }
+    
+    :root[data-theme="emeraldPrince"] .nav-item {
+        padding: 10px 12px !important;
+        margin: 6px !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="emeraldPrince"] .btn,
+    :root[data-theme="emeraldPrince"] .btn-primary,
+    :root[data-theme="emeraldPrince"] .btn-secondary {
+        padding: 10px 16px !important;
+        font-size: 0.85rem !important;
+        border-radius: 16px !important;
+    }
+    
+    :root[data-theme="emeraldPrince"] .fab-btn {
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 1.2rem !important;
+    }
+    
+    :root[data-theme="emeraldPrince"] .card,
+    :root[data-theme="emeraldPrince"] .modal-content {
+        border-radius: 12px !important;
+        margin: 8px !important;
+    }
+}
+/* ========== 翡翠王子主題 ========== */
+::root[data-theme="emeraldPrince"] {
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #666666;
+    --text-inverse: #ffffff;
+    --background-primary: linear-gradient(135deg, #f5f5dc 0%, #8fbc8f 50%, #2e8b57 100%);
+    --background-secondary: rgba(245, 245, 220, 0.8);
+    --background-card: rgba(255, 255, 255, 0.9);
+    --background-input: rgba(255, 255, 255, 0.8);
+    --border-light: rgba(46, 139, 87, 0.3);
+    --border-medium: rgba(46, 139, 87, 0.6);
+    --border-dark: rgba(46, 139, 87, 0.9);
+    --shadow-light: rgba(46, 139, 87, 0.1);
+    --shadow-medium: rgba(46, 139, 87, 0.3);
+    --shadow-dark: rgba(46, 139, 87, 0.5);
+    --color-primary: #2e8b57;
+    --color-secondary: #8fbc8f;
+    --color-accent: #daa520;
+    --color-primary-rgba-20: rgba(46, 139, 87, 0.2);
+    --color-primary-rgba-30: rgba(46, 139, 87, 0.3);
+    --color-primary-rgba-50: rgba(46, 139, 87, 0.5);
+    --color-primary-rgba-80: rgba(46, 139, 87, 0.8);
+    --color-secondary-rgba-20: rgba(143, 188, 143, 0.2);
+    --color-accent-rgba-20: rgba(218, 165, 32, 0.2);
+    --color-accent-rgba-30: rgba(218, 165, 32, 0.3);
+    --color-accent-rgba-50: rgba(218, 165, 32, 0.5);
+    --color-accent-rgba-80: rgba(218, 165, 32, 0.8);
+}
+
+::root[data-theme="emeraldPrince"] body {
+    background: url("https://i.pinimg.com/736x/55/40/2f/55402fb6bcf0c65c832636ad5504499f.jpg") center/cover no-repeat fixed;
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] body::before {
+    display: none;
+}
+
+/* 翡翠王子主題頁面背景 */
+::root[data-theme="emeraldPrince"] .page-ledger,
+::root[data-theme="emeraldPrince"] .page-wallet,
+::root[data-theme="emeraldPrince"] .page-investment,
+::root[data-theme="emeraldPrince"] .page-chart,
+::root[data-theme="emeraldPrince"] .page-settings {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* 翡翠王子主題導航欄 */
+::root[data-theme="emeraldPrince"] .bottom-nav {
+    background: var(--bg-white);
+    border-top: 1px solid var(--border-light);
+}
+
+::root[data-theme="emeraldPrince"] .nav-item {
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .nav-item.active {
+    color: var(--color-primary);
+}
+
+/* 翡翠王子主題浮動按鈕 */
+::root[data-theme="emeraldPrince"] .fab {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--text-inverse);
+}
+
+/* 翡翠王子主題卡片 */
+::root[data-theme="emeraldPrince"] .card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+/* 翡翠王子主題按鈕 */
+::root[data-theme="emeraldPrince"] .btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--text-inverse);
+}
+
+::root[data-theme="emeraldPrince"] .btn:hover {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px var(--shadow-medium);
+}
+
+/* 翡翠王子主題輸入框 */
+::root[data-theme="emeraldPrince"] input,
+::root[data-theme="emeraldPrince"] textarea,
+::root[data-theme="emeraldPrince"] select {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] input:focus,
+::root[data-theme="emeraldPrince"] textarea:focus,
+::root[data-theme="emeraldPrince"] select:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 10px var(--color-accent-rgba-30);
+}
+
+/* 翡翠王子主題表格 */
+::root[data-theme="emeraldPrince"] table {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+}
+
+::root[data-theme="emeraldPrince"] th {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--text-inverse);
+}
+
+::root[data-theme="emeraldPrince"] td {
+    background: var(--bg-white);
+    color: var(--text-secondary);
+    border-color: var(--border-light);
+}
+
+/* 翡翠王子主題標籤 */
+::root[data-theme="emeraldPrince"] .tag,
+::root[data-theme="emeraldPrince"] .badge {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+    color: var(--text-primary);
+    border: 1px solid var(--border-medium);
+}
+
+/* 翡翠王子主題警告和提示 */
+::root[data-theme="emeraldPrince"] .alert,
+::root[data-theme="emeraldPrince"] .warning {
+    background: var(--bg-white);
+    border: 1px solid var(--color-secondary);
+    color: var(--text-secondary);
+}
+
+::root[data-theme="emeraldPrince"] .success {
+    background: var(--bg-white);
+    border: 1px solid var(--color-primary);
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .error {
+    background: var(--bg-white);
+    border: 1px solid #ff0000;
+    color: #8B0000;
+}
+
+::root[data-theme="emeraldPrince"] .btn:hover {
+    animation: emeraldGlow 2s infinite;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px var(--color-primary-rgba-30);
+    color: var(--text-primary);
+}
+
+/* 翡翠王子主題特殊效果 */
+::root[data-theme="emeraldPrince"] .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px var(--shadow-dark);
+    border-color: var(--border-dark);
+}
+
+::root[data-theme="emeraldPrince"] .portfolio-shares {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(240, 230, 140, 0.6) 100%);
+    border: 1px solid var(--border-medium);
+    color: var(--text-primary);
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 8px 16px;
+    backdrop-filter: blur(10px);
+}
+
+::root[data-theme="emeraldPrince"] .stock-grid-card-tag--shares {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(240, 230, 140, 0.6) 100%);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 4px 8px;
+}
+
+/* 翡翠王子主題持股卡片 */
+::root[data-theme="emeraldPrince"] .stock-item-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary) !important;
+}
+
+::root[data-theme="emeraldPrince"] .stock-item-card .stock-name {
+    color: var(--text-primary) !important;
+}
+
+::root[data-theme="emeraldPrince"] .stock-item-card .stock-code {
+    color: var(--text-secondary) !important;
+}
+
+::root[data-theme="emeraldPrince"] .stock-item-card .stock-price {
+    color: var(--text-primary) !important;
+}
+
+::root[data-theme="emeraldPrince"] .stock-item-card .stock-change {
+    color: var(--text-primary) !important;
+}
+
+::root[data-theme="emeraldPrince"] .stock-item-card .stock-change.positive {
+    color: #2e8b57 !important;
+}
+
+::root[data-theme="emeraldPrince"] .stock-item-card .stock-change.negative {
+    color: #dc3545 !important;
+}
+
+::root[data-theme="emeraldPrince"] .stock-item-card .stock-quantity {
+    color: var(--text-secondary) !important;
+}
+
+::root[data-theme="emeraldPrince"] .stock-item-card .stock-value {
+    color: var(--text-primary) !important;
+}
+
+::root[data-theme="emeraldPrince"] .stock-item-card .stock-profit {
+    color: var(--text-primary) !important;
+}
+
+::root[data-theme="emeraldPrince"] .stock-item-card .stock-profit.positive {
+    color: #2e8b57 !important;
+}
+
+::root[data-theme="emeraldPrince"] .stock-item-card .stock-profit.negative {
+    color: #dc3545 !important;
+}
+
+/* 翡翠王子主題淺色文字調整 */
+::root[data-theme="emeraldPrince"] .budget-summary-label,
+::root[data-theme="emeraldPrince"] .budget-detail-label,
+::root[data-theme="emeraldPrince"] .stat-label,
+::root[data-theme="emeraldPrince"] .dividend-stat-label,
+::root[data-theme="emeraldPrince"] .account-info,
+::root[data-theme="emeraldPrince"] .account-item-name,
+::root[data-theme="emeraldPrince"] .account-item-currency,
+::root[data-theme="emeraldPrince"] .tab-text {
+    color: rgba(52, 73, 94, 0.8) !important;
+}
+
+/* 翡翠王子主題模態框 */
+::root[data-theme="emeraldPrince"] .modal-content {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 220, 0.9) 100%);
+    border: 2px solid var(--border-medium);
+    border-radius: 20px;
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .modal-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--text-inverse);
+}
+
+::root[data-theme="emeraldPrince"] .modal-title {
+    color: var(--text-inverse);
+}
+
+::root[data-theme="emeraldPrince"] .modal-close {
+    color: var(--text-inverse);
+}
+
+/* 翡翠王子主題進度條 */
+::root[data-theme="emeraldPrince"] .progress-bar {
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+}
+
+::root[data-theme="emeraldPrince"] .progress-track {
+    background: var(--bg-white);
+}
+
+/* 翡翠王子主題圖表容器 */
+::root[data-theme="emeraldPrince"] .chart-container {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+}
+
+::root[data-theme="emeraldPrince"] .chart-title {
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .chart-legend {
+    color: var(--text-secondary);
+}
+
+/* 翡翠王子主題統計卡片 */
+::root[data-theme="emeraldPrince"] .stat-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .stat-value {
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .stat-label {
+    color: var(--text-secondary);
+}
+
+/* 翡翠王子主題預算卡片 */
+::root[data-theme="emeraldPrince"] .budget-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .budget-amount {
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .budget-category {
+    color: var(--text-secondary);
+}
+
+/* 翡翠王子主題股息卡片 */
+::root[data-theme="emeraldPrince"] .dividend-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .dividend-amount {
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .dividend-rate {
+    color: var(--text-secondary);
+}
+
+/* 翡翠王子主題帳戶卡片 */
+::root[data-theme="emeraldPrince"] .account-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .account-balance {
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .account-name {
+    color: var(--text-secondary);
+}
+
+/* 翡翠王子主題交易列表 */
+::root[data-theme="emeraldPrince"] .transaction-item {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .transaction-amount {
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .transaction-category {
+    color: var(--text-secondary);
+}
+
+::root[data-theme="emeraldPrince"] .transaction-date {
+    color: var(--text-muted);
+}
+
+/* 翡翠王子主題設定頁面 */
+::root[data-theme="emeraldPrince"] .setting-item {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .setting-label {
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .setting-value {
+    color: var(--text-secondary);
+}
+
+/* 翡翠王子主題表單 */
+::root[data-theme="emeraldPrince"] .form-group {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .form-label {
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .form-input {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .form-input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 10px var(--color-accent-rgba-30);
+}
+
+/* 翡翠王子主題下拉選單 */
+::root[data-theme="emeraldPrince"] .dropdown {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .dropdown-item {
+    background: var(--bg-white);
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .dropdown-item:hover {
+    background: var(--color-primary-rgba-20);
+    color: var(--text-primary);
+}
+
+/* 翡翠王子主題選項卡 */
+::root[data-theme="emeraldPrince"] .tab {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+::root[data-theme="emeraldPrince"] .tab.active {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--text-inverse);
+}
+
+::root[data-theme="emeraldPrince"] .tab:hover {
+    background: var(--color-primary-rgba-20);
+    color: var(--text-primary);
+}
+
+/* 翡翠王子主題提示框 */
+::root[data-theme="emeraldPrince"] .tooltip {
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--text-inverse);
+    border: 1px solid var(--border-medium);
+}
+
+::root[data-theme="emeraldPrince"] .tooltip::after {
+    border-top-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 翡翠王子主題載入動畫 */
+::root[data-theme="emeraldPrince"] .loading {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+}
+
+::root[data-theme="emeraldPrince"] .loading-spinner {
+    border-color: var(--color-primary);
+    border-top-color: transparent;
+}
+
+/* 翡翠王子主題滾動條 */
+::root[data-theme="emeraldPrince"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+::root[data-theme="emeraldPrince"] ::-webkit-scrollbar-track {
+    background: var(--bg-white);
+}
+
+::root[data-theme="emeraldPrince"] ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+}
+
+::root[data-theme="emeraldPrince"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary);
+}
+
+@media (max-width: 768px) {
+    ::root[data-theme="emeraldPrince"] .card {
+        background: var(--bg-white);
+    }
+    
+    ::root[data-theme="emeraldPrince"] .modal-content {
+        background: var(--bg-white);
+    }
+    
+    ::root[data-theme="emeraldPrince"] .bottom-nav {
+        background: var(--bg-white);
+    }
+}
+
+@media (max-width: 480px) {
+    ::root[data-theme="emeraldPrince"] .card {
+        background: var(--bg-white);
+    }
+    
+    ::root[data-theme="emeraldPrince"] .modal-content {
+        background: var(--bg-white);
+    }
+    
+    ::root[data-theme="emeraldPrince"] .bottom-nav {
+        background: var(--bg-white);
+    }
+}
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="emeraldPrince"] {
+    --k-main: #30925b;
+    --k-main-dark: #1c5435;
+    --k-main-light: #c9edd9;
+    --k-btn-top: #2b8351;
+    --k-btn-bottom: #1c5435;
+    --k-on-main: #ffffff;
+    --k-paper: #f5fcf8;
+    --k-paper-2: #e4f6ec;
+    --k-line: #abe3c4;
+    --k-ink: #19432b;
+    --k-ink-soft: #407758;
+    --k-title: #1c5435;
+    --k-deep: #1e332d;
+    --k-on-deep: #dbf0e4;
+}
+/* ===== 主題設計工具組配色結束 ===== */

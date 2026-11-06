@@ -385,16 +385,12 @@
     border-color: rgba(43, 182, 177, 0.28) !important;
 }
 
-:root[data-theme="totoroCitrusPool"] .smart-analysis-btn,
-:root[data-theme="totoroCitrusPool"] .smart-reminders-btn,
 :root[data-theme="totoroCitrusPool"] .smart-suggestion-btn {
     background: var(--action-buy-bg) !important;
     color: var(--action-buy-text) !important;
     border: 2px solid color-mix(in srgb, var(--color-primary) 60%, white) !important;
 }
 
-:root[data-theme="totoroCitrusPool"] .smart-analysis-btn:hover,
-:root[data-theme="totoroCitrusPool"] .smart-reminders-btn:hover,
 :root[data-theme="totoroCitrusPool"] .smart-suggestion-btn:hover {
     background: var(--action-buy-bg-hover) !important;
 }
@@ -418,3 +414,22 @@
     background: color-mix(in srgb, var(--bg-card) 86%, rgba(22, 163, 74, 0.10)) !important;
     border-left-color: var(--color-success) !important;
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="totoroCitrusPool"] {
+    --k-main: #2bb6b1;
+    --k-main-dark: #1b7471;
+    --k-main-light: #c5f1f0;
+    --k-btn-top: #1d7c79;
+    --k-btn-bottom: #1b7471;
+    --k-on-main: #ffffff;
+    --k-paper: #f5fcfc;
+    --k-paper-2: #e3f7f6;
+    --k-line: #abe3e1;
+    --k-ink: #194341;
+    --k-ink-soft: #3d716f;
+    --k-title: #1b7471;
+    --k-deep: #1f331f;
+    --k-on-deep: #dbf0ef;
+}
+/* ===== 主題設計工具組配色結束 ===== */

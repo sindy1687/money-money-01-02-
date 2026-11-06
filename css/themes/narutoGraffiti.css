@@ -264,8 +264,6 @@
 
 :root[data-theme="narutoGraffiti"] .btn,
 :root[data-theme="narutoGraffiti"] .buy-action-btn-large,
-:root[data-theme="narutoGraffiti"] .smart-analysis-btn,
-:root[data-theme="narutoGraffiti"] .smart-reminders-btn,
 :root[data-theme="narutoGraffiti"] .smart-suggestion-btn {
     background: var(--action-buy-bg) !important;
     color: var(--action-buy-text) !important;
@@ -274,8 +272,6 @@
 
 :root[data-theme="narutoGraffiti"] .btn:hover,
 :root[data-theme="narutoGraffiti"] .buy-action-btn-large:hover,
-:root[data-theme="narutoGraffiti"] .smart-analysis-btn:hover,
-:root[data-theme="narutoGraffiti"] .smart-reminders-btn:hover,
 :root[data-theme="narutoGraffiti"] .smart-suggestion-btn:hover {
     background: var(--action-buy-bg-hover) !important;
 }
@@ -339,3 +335,22 @@
         max-height: 90vh;
     }
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="narutoGraffiti"] {
+    --k-main: #1f7fd6;
+    --k-main-dark: #15558f;
+    --k-main-light: #c1ddf6;
+    --k-btn-top: #1c74c4;
+    --k-btn-bottom: #15558f;
+    --k-on-main: #ffffff;
+    --k-paper: #f5f9fc;
+    --k-paper-2: #e3eef7;
+    --k-line: #abc8e3;
+    --k-ink: #192f43;
+    --k-ink-soft: #44627e;
+    --k-title: #15558f;
+    --k-deep: #1f2033;
+    --k-on-deep: #dbe6f0;
+}
+/* ===== 主題設計工具組配色結束 ===== */

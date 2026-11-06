@@ -1,3 +1,46 @@
+/* ===== cyan 主題：原本放在 styles.css / 根目錄主題檔的樣式（整理時搬過來，順序不變） ===== */
+:root[data-theme="cyan"] {
+    --color-primary: #00bcd4;
+    --color-primary-light: #4dd0e1;
+    --color-primary-lighter: #26c6da;
+    --color-primary-dark: #0097a7;
+    --bg-primary: linear-gradient(135deg, #e0f7fa 0%, #f0fdfe 100%);
+    --bg-gradient: linear-gradient(135deg, #4dd0e1 0%, #26c6da 100%);
+    --bg-gradient-light: linear-gradient(135deg, #e0f7fa 0%, #f0fdfe 100%);
+    --border-primary: #00bcd4;
+    --shadow-primary: 0 2px 8px rgba(0, 188, 212, 0.25);
+    --shadow-primary-lg: 0 4px 12px rgba(0, 188, 212, 0.3);
+    --color-primary-rgba-08: rgba(0, 188, 212, 0.08);
+    --color-primary-rgba-10: rgba(0, 188, 212, 0.1);
+    --color-primary-rgba-15: rgba(0, 188, 212, 0.15);
+    --color-primary-rgba-20: rgba(0, 188, 212, 0.2);
+    --color-primary-rgba-25: rgba(0, 188, 212, 0.25);
+    --color-primary-rgba-30: rgba(0, 188, 212, 0.3);
+    --color-primary-rgba-12: rgba(0, 188, 212, 0.12);
+    --color-primary-rgba-18: rgba(0, 188, 212, 0.18);
+    --color-primary-light-rgba-08: rgba(77, 208, 225, 0.08);
+    --color-primary-light-rgba-10: rgba(77, 208, 225, 0.1);
+    --color-primary-light-rgba-15: rgba(77, 208, 225, 0.15);
+    --color-primary-light-rgba-20: rgba(77, 208, 225, 0.2);
+    --color-primary-light-rgba-25: rgba(77, 208, 225, 0.25);
+    --color-primary-light-rgba-30: rgba(77, 208, 225, 0.3);
+    --color-primary-light-rgba-40: rgba(77, 208, 225, 0.4);
+    --bg-light-gradient: linear-gradient(135deg, var(--bg-white) 0%, #f0fdfe 100%);
+    --bg-light-gradient-reverse: linear-gradient(180deg, #f0fdfe 0%, var(--bg-white) 100%);
+}
+
+:root[data-theme="cyan"] .budget-summary-label,
+:root[data-theme="cyan"] .budget-detail-label,
+:root[data-theme="cyan"] .stat-label,
+:root[data-theme="cyan"] .dividend-stat-label,
+:root[data-theme="cyan"] .account-info,
+:root[data-theme="cyan"] .account-item-name,
+:root[data-theme="cyan"] .account-item-currency,
+:root[data-theme="cyan"] .tab-text {
+    color: rgba(0, 188, 212, 0.8) !important;
+}
+
+/* ===== cyan 主題原有樣式 ===== */
 ﻿:root[data-theme="cyan"].dark,
 
 :root[data-theme="cyan"] {
@@ -30,7 +73,21 @@
     --bg-light-gradient-reverse: linear-gradient(180deg, #f0fdfe 0%, var(--bg-white) 100%);
 }
 
-:root[data-theme="cyan"] body,
-
-:root[data-theme="cyan"] body::before,
-
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="cyan"] {
+    --k-main: #00bcd4;
+    --k-main-dark: #007482;
+    --k-main-light: #bff1f8;
+    --k-btn-top: #007d8d;
+    --k-btn-bottom: #007482;
+    --k-on-main: #ffffff;
+    --k-paper: #f5fcfc;
+    --k-paper-2: #e3f5f7;
+    --k-line: #abdde3;
+    --k-ink: #193e43;
+    --k-ink-soft: #407177;
+    --k-title: #006b78;
+    --k-deep: #003f47;
+    --k-on-deep: #dbedf0;
+}
+/* ===== 主題設計工具組配色結束 ===== */

@@ -1,0 +1,710 @@
+/* ========== 星星雲朵夢（starCloudDream） ==========
+   整體是插圖裡軟綿綿的 3D 黏土質感：
+   主要按鈕是雲朵（上下緣一排圓圓的雲泡），「+」是會漂浮的胖星星，
+   返回鍵是圓圓的棉花糖，選到的分頁是星星黃黏土，卡片像捏出來的黏土，
+   底部選單上緣是一排雲朵。 */
+
+:root[data-theme="starCloudDream"] {
+    --color-primary: #f5c842;
+    --color-primary-light: #ffe27a;
+    --color-primary-lighter: #fff4c4;
+    --color-primary-dark: #d9a514;
+
+    --color-secondary: #e5483f;
+    --color-secondary-light: #f47c74;
+    --color-secondary-dark: #b8302a;
+
+    --color-accent: #8fb3b6;
+    --color-accent-light: #c4dadb;
+    --color-accent-dark: #5f8a8e;
+
+    --color-success: #6aa86b;
+    --color-danger: #e5483f;
+    --color-warning: #f5c842;
+    --color-info: #5f8a8e;
+    --color-error: var(--color-danger);
+
+    --cloud-white: #fffaf5;
+    --cloud-shade: #f1e4dc;
+    --star-yellow: #ffe27a;
+    --star-yellow-deep: #f5c842;
+    --blush: #f6a5a5;
+
+    --bg-primary: linear-gradient(180deg, #b3cccd 0%, #c7d9d8 60%, #f4e8e1 100%);
+    --bg-body: rgba(255, 250, 245, 0.92);
+    --bg-body-strong: rgba(255, 250, 245, 0.97);
+    --bg-gradient: linear-gradient(135deg, rgba(255, 226, 122, 0.35) 0%, rgba(143, 179, 182, 0.3) 100%);
+    --bg-gradient-light: linear-gradient(135deg, #ffffff 0%, #fff4e8 100%);
+
+    --bg-white: rgba(255, 250, 245, 0.95);
+    --bg-card: rgba(255, 250, 245, 0.95);
+    --bg-light: rgba(241, 228, 220, 0.7);
+    --bg-lighter: rgba(255, 244, 196, 0.6);
+    --bg-soft: rgba(245, 200, 66, 0.14);
+    --bg-soft-strong: rgba(245, 200, 66, 0.24);
+
+    --text-primary: #4a3b36;
+    --text-secondary: rgba(74, 59, 54, 0.76);
+    --text-tertiary: rgba(74, 59, 54, 0.56);
+    --text-strong: #3a2c28;
+    --text-white: #ffffff;
+
+    --border-primary: rgba(245, 200, 66, 0.7);
+    --border-light: rgba(74, 59, 54, 0.1);
+    --border-medium: rgba(74, 59, 54, 0.18);
+    --card-border-color: rgba(255, 255, 255, 0.9);
+    --control-border-color: rgba(143, 179, 182, 0.4);
+
+    /* 黏土質感：上方亮面 + 下方凹陷陰影 + 柔和落影 */
+    --clay-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.95), inset 0 -8px 14px rgba(196, 160, 140, 0.22), 0 10px 22px rgba(95, 138, 142, 0.28);
+    --shadow-primary: var(--clay-shadow);
+    --shadow-primary-lg: inset 0 3px 0 rgba(255, 255, 255, 0.95), inset 0 -10px 18px rgba(196, 160, 140, 0.22), 0 18px 40px rgba(95, 138, 142, 0.35);
+
+    --color-primary-rgba-08: rgba(245, 200, 66, 0.08);
+    --color-primary-rgba-10: rgba(245, 200, 66, 0.10);
+    --color-primary-rgba-12: rgba(245, 200, 66, 0.12);
+    --color-primary-rgba-15: rgba(245, 200, 66, 0.15);
+    --color-primary-rgba-20: rgba(245, 200, 66, 0.20);
+    --color-primary-rgba-25: rgba(245, 200, 66, 0.25);
+    --color-primary-rgba-30: rgba(245, 200, 66, 0.30);
+    --color-primary-rgba-40: rgba(245, 200, 66, 0.40);
+
+    /* 雲朵按鈕：奶油白黏土，上亮下暗 */
+    --cloud-btn-bg: radial-gradient(ellipse at 50% 20%, #ffffff 0%, #fff6ee 45%, #f3e2d8 100%);
+    --cloud-btn-bg-hover: radial-gradient(ellipse at 50% 20%, #ffffff 0%, #fffaf3 50%, #f8eae1 100%);
+
+    --action-buy-bg: var(--cloud-btn-bg);
+    --action-buy-bg-hover: var(--cloud-btn-bg-hover);
+    --action-buy-text: #b8302a;
+
+    --action-dca-bg: radial-gradient(ellipse at 50% 20%, #fff6c9 0%, #ffe27a 50%, #f0c23a 100%);
+    --action-dca-bg-hover: radial-gradient(ellipse at 50% 20%, #fffadb 0%, #ffe891 50%, #f5c842 100%);
+    --action-dca-text: #6b4a12;
+
+    --action-side-bg: var(--cloud-white);
+    --action-side-bg-hover: #ffffff;
+    --action-side-text: var(--text-primary);
+
+    /* 雲朵外形：上下緣各一排半徑 9px 的圓泡，中間實心 */
+    --cloud-mask:
+        radial-gradient(circle 9px at 9px 9px, #000 98%, transparent 100%) 0 0 / 18px 18px repeat-x,
+        radial-gradient(circle 9px at 9px 9px, #000 98%, transparent 100%) 0 100% / 18px 18px repeat-x,
+        linear-gradient(#000 0 0) 0 9px / 100% calc(100% - 18px) no-repeat;
+
+    /* 圓角胖星星外形 */
+    --star-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 10 L61.5 36.5 L90 38.5 L68 57.5 L75 86 L50 71 L25 86 L32 57.5 L10 38.5 L38.5 36.5 Z' fill='black' stroke='black' stroke-width='16' stroke-linejoin='round'/></svg>") center / contain no-repeat;
+}
+
+/* ---------- 背景 ---------- */
+
+:root[data-theme="starCloudDream"] body {
+    background: url("https://i.pinimg.com/1200x/76/a1/86/76a1866eaa3ab6e1804df409a5c30977.jpg") center bottom/cover no-repeat fixed;
+    background-color: #b3cccd;
+    color: var(--text-primary);
+}
+
+:root[data-theme="starCloudDream"] body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(179, 204, 205, 0.15) 0%, rgba(255, 250, 245, 0.08) 60%, rgba(255, 250, 245, 0.2) 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ---------- 頁面底色透明 ---------- */
+
+:root[data-theme="starCloudDream"] .page-input,
+:root[data-theme="starCloudDream"] .page-ledger,
+:root[data-theme="starCloudDream"] .page-chart,
+:root[data-theme="starCloudDream"] .page-budget,
+:root[data-theme="starCloudDream"] .page-monthly-planner,
+:root[data-theme="starCloudDream"] .page-daily-budget,
+:root[data-theme="starCloudDream"] .page-settings,
+:root[data-theme="starCloudDream"] .page-category-manage,
+:root[data-theme="starCloudDream"] .page-investment,
+:root[data-theme="starCloudDream"] .page-wallet,
+:root[data-theme="starCloudDream"] .page-history,
+:root[data-theme="starCloudDream"] .page-planner,
+:root[data-theme="starCloudDream"] .page-manage-investment,
+:root[data-theme="starCloudDream"] .page-annual-report,
+:root[data-theme="starCloudDream"] .page-diary,
+:root[data-theme="starCloudDream"] .page-installment,
+:root[data-theme="starCloudDream"] .installment-page,
+:root[data-theme="starCloudDream"] .dca-page,
+:root[data-theme="starCloudDream"] .fixed-deposit-page,
+:root[data-theme="starCloudDream"] .dividend-page,
+:root[data-theme="starCloudDream"] .dca-management-page,
+:root[data-theme="starCloudDream"] .dca-setup-page,
+:root[data-theme="starCloudDream"] .investment-input-page,
+:root[data-theme="starCloudDream"] .installment-management-page,
+:root[data-theme="starCloudDream"] .installment-setup-page,
+:root[data-theme="starCloudDream"] .wishlist-content,
+:root[data-theme="starCloudDream"] .savings-content {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+/* ---------- 卡片：捏出來的黏土 ---------- */
+
+:root[data-theme="starCloudDream"] .card,
+:root[data-theme="starCloudDream"] .record-card,
+:root[data-theme="starCloudDream"] .ledger-card,
+:root[data-theme="starCloudDream"] .summary-card,
+:root[data-theme="starCloudDream"] .budget-card,
+:root[data-theme="starCloudDream"] .wallet-card,
+:root[data-theme="starCloudDream"] .chart-card,
+:root[data-theme="starCloudDream"] .investment-card,
+:root[data-theme="starCloudDream"] .manage-investment-card,
+:root[data-theme="starCloudDream"] .annual-report-card,
+:root[data-theme="starCloudDream"] .diary-card,
+:root[data-theme="starCloudDream"] .monthly-planning-card,
+:root[data-theme="starCloudDream"] .investment-settings-card,
+:root[data-theme="starCloudDream"] .wallet-budget-card,
+:root[data-theme="starCloudDream"] .holding-card,
+:root[data-theme="starCloudDream"] .buying-card,
+:root[data-theme="starCloudDream"] .selling-card,
+:root[data-theme="starCloudDream"] .dividend-card,
+:root[data-theme="starCloudDream"] .regular-investment-card,
+:root[data-theme="starCloudDream"] .investment-management-card,
+:root[data-theme="starCloudDream"] .dca-card,
+:root[data-theme="starCloudDream"] .installment-card,
+:root[data-theme="starCloudDream"] .fixed-deposit-card,
+:root[data-theme="starCloudDream"] .stock-item-card,
+:root[data-theme="starCloudDream"] .budget-item,
+:root[data-theme="starCloudDream"] .next-month-budget-card,
+:root[data-theme="starCloudDream"] .daily-budget-summary-card {
+    background: linear-gradient(180deg, #ffffff 0%, var(--cloud-white) 55%, #f8ede6 100%) !important;
+    border: none !important;
+    border-radius: 28px !important;
+    color: var(--text-primary) !important;
+    box-shadow: var(--clay-shadow) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ---------- 標題：紅帽子的紅 ---------- */
+
+:root[data-theme="starCloudDream"] .ledger-title,
+:root[data-theme="starCloudDream"] .summary-month {
+    background: none !important;
+    color: #e5483f !important;
+    -webkit-text-fill-color: #e5483f !important;
+    text-shadow: 0 2px 0 #ffffff, 0 0 10px rgba(255, 255, 255, 0.9) !important;
+    filter: none !important;
+}
+
+/* ---------- 底部選單：上緣一排雲朵 ---------- */
+
+:root[data-theme="starCloudDream"] .bottom-nav {
+    background: linear-gradient(180deg, #fffaf5 0%, #f6ebe4 100%) !important;
+    border-top: none !important;
+    box-shadow: 0 -6px 18px rgba(95, 138, 142, 0.22) !important;
+    overflow: visible !important;
+}
+
+:root[data-theme="starCloudDream"] .bottom-nav::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -13px;
+    height: 14px;
+    background: radial-gradient(circle 14px at 14px 14px, #fffaf5 98%, transparent 100%) repeat-x 0 0 / 28px 14px;
+    filter: drop-shadow(0 -3px 4px rgba(95, 138, 142, 0.15));
+    pointer-events: none;
+}
+
+:root[data-theme="starCloudDream"] .nav-item,
+:root[data-theme="starCloudDream"] .nav-item .nav-text {
+    color: rgba(74, 59, 54, 0.7) !important;
+}
+
+:root[data-theme="starCloudDream"] .nav-item.active {
+    background: radial-gradient(ellipse at 50% 35%, rgba(255, 226, 122, 0.75), rgba(255, 226, 122, 0) 68%) !important;
+    box-shadow: none !important;
+}
+
+:root[data-theme="starCloudDream"] .nav-item.active .nav-text {
+    color: #b8302a !important;
+    font-weight: 700 !important;
+}
+
+/* ---------- 「+」按鈕：漂浮的胖星星 ---------- */
+
+:root[data-theme="starCloudDream"] .fab-btn {
+    width: 66px !important;
+    height: 66px !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: radial-gradient(circle at 42% 35%, #fff6c9 0%, #ffe27a 40%, #f5c842 75%, #e0ad25 100%) !important;
+    color: #6b4a12 !important;
+    box-shadow: none !important;
+    -webkit-mask: var(--star-mask);
+    mask: var(--star-mask);
+    padding-top: 6px !important;
+    animation: starCloudFloat 3.4s ease-in-out infinite;
+}
+
+@keyframes starCloudFloat {
+    0%, 100% { transform: translateY(0) rotate(-4deg); }
+    50% { transform: translateY(-8px) rotate(4deg); }
+}
+
+/* ---------- 主要按鈕：雲朵 ---------- */
+
+:root[data-theme="starCloudDream"] .btn,
+:root[data-theme="starCloudDream"] .dca-add-btn,
+:root[data-theme="starCloudDream"] .form-submit-btn,
+:root[data-theme="starCloudDream"] .entry-detail-edit-btn,
+:root[data-theme="starCloudDream"] .entry-edit-save,
+:root[data-theme="starCloudDream"] .investment-form-submit-btn,
+:root[data-theme="starCloudDream"] .buy-btn,
+:root[data-theme="starCloudDream"] .dca-execute-btn,
+:root[data-theme="starCloudDream"] .buy-action-btn-large,
+:root[data-theme="starCloudDream"] .allocation-btn.primary,
+:root[data-theme="starCloudDream"] .modal-btn.confirm-btn,
+:root[data-theme="starCloudDream"] .theme-primary-btn,
+:root[data-theme="starCloudDream"] .budget-add-btn-full,
+:root[data-theme="starCloudDream"] .budget-edit-btn,
+:root[data-theme="starCloudDream"] .monthly-planner-btn {
+    background: var(--action-buy-bg) !important;
+    color: var(--action-buy-text) !important;
+    font-weight: 700 !important;
+    border: none !important;
+    border-radius: 18px !important;
+    box-shadow: inset 0 -6px 10px rgba(196, 160, 140, 0.35), inset 0 4px 4px rgba(255, 255, 255, 0.9) !important;
+    min-height: 48px;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    -webkit-mask: var(--cloud-mask);
+    mask: var(--cloud-mask);
+}
+
+:root[data-theme="starCloudDream"] .btn:hover,
+:root[data-theme="starCloudDream"] .dca-add-btn:hover,
+:root[data-theme="starCloudDream"] .form-submit-btn:hover,
+:root[data-theme="starCloudDream"] .entry-detail-edit-btn:hover,
+:root[data-theme="starCloudDream"] .entry-edit-save:hover,
+:root[data-theme="starCloudDream"] .investment-form-submit-btn:hover,
+:root[data-theme="starCloudDream"] .buy-btn:hover,
+:root[data-theme="starCloudDream"] .dca-execute-btn:hover,
+:root[data-theme="starCloudDream"] .buy-action-btn-large:hover,
+:root[data-theme="starCloudDream"] .allocation-btn.primary:hover,
+:root[data-theme="starCloudDream"] .modal-btn.confirm-btn:hover,
+:root[data-theme="starCloudDream"] .theme-primary-btn:hover,
+:root[data-theme="starCloudDream"] .budget-add-btn-full:hover,
+:root[data-theme="starCloudDream"] .budget-edit-btn:hover,
+:root[data-theme="starCloudDream"] .monthly-planner-btn:hover {
+    background: var(--action-buy-bg-hover) !important;
+}
+
+/* 「新增項目」這類次要按鈕：星星黃雲朵 */
+:root[data-theme="starCloudDream"] .monthly-planner-btn--secondary {
+    background: var(--action-dca-bg) !important;
+    color: var(--action-dca-text) !important;
+}
+
+/* 按下去像黏土被壓扁 */
+:root[data-theme="starCloudDream"] .btn:active,
+:root[data-theme="starCloudDream"] .form-submit-btn:active,
+:root[data-theme="starCloudDream"] .modal-btn.confirm-btn:active,
+:root[data-theme="starCloudDream"] .theme-primary-btn:active,
+:root[data-theme="starCloudDream"] .budget-add-btn-full:active,
+:root[data-theme="starCloudDream"] .monthly-planner-btn:active {
+    transform: scale(0.96, 0.92) !important;
+}
+
+/* 次要的重點按鈕：星星黃雲朵 */
+:root[data-theme="starCloudDream"] .dca-action-btn-large,
+:root[data-theme="starCloudDream"] .advisor-send-btn {
+    background: var(--action-dca-bg) !important;
+    color: var(--action-dca-text) !important;
+    font-weight: 700 !important;
+    border: none !important;
+    box-shadow: inset 0 -6px 10px rgba(180, 130, 20, 0.3), inset 0 4px 4px rgba(255, 255, 255, 0.8) !important;
+}
+
+:root[data-theme="starCloudDream"] .dca-action-btn-large {
+    -webkit-mask: var(--cloud-mask);
+    mask: var(--cloud-mask);
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+}
+
+:root[data-theme="starCloudDream"] .dca-action-btn-large:hover {
+    background: var(--action-dca-bg-hover) !important;
+}
+
+/* 返回、取消：圓圓的棉花糖 */
+:root[data-theme="starCloudDream"] .allocation-btn,
+:root[data-theme="starCloudDream"] .modal-btn.cancel-btn,
+:root[data-theme="starCloudDream"] .theme-secondary-btn,
+:root[data-theme="starCloudDream"] .back-btn,
+:root[data-theme="starCloudDream"] .return-btn,
+:root[data-theme="starCloudDream"] .input-back-btn,
+:root[data-theme="starCloudDream"] .modal-back-btn,
+:root[data-theme="starCloudDream"] .dca-back-btn,
+:root[data-theme="starCloudDream"] .dca-setup-back-btn,
+:root[data-theme="starCloudDream"] .investment-form-back-btn,
+:root[data-theme="starCloudDream"] .dividend-back-btn,
+:root[data-theme="starCloudDream"] .month-nav-btn {
+    background: radial-gradient(ellipse at 50% 25%, #ffffff 0%, #fdf4ee 60%, #f1e4dc 100%) !important;
+    color: var(--action-side-text) !important;
+    border: none !important;
+    border-radius: 999px !important;
+    box-shadow: inset 0 -4px 8px rgba(196, 160, 140, 0.3), inset 0 3px 3px #ffffff, 0 6px 12px rgba(95, 138, 142, 0.25) !important;
+}
+
+:root[data-theme="starCloudDream"] .allocation-btn:active,
+:root[data-theme="starCloudDream"] .modal-btn.cancel-btn:active,
+:root[data-theme="starCloudDream"] .back-btn:active,
+:root[data-theme="starCloudDream"] .month-nav-btn:active {
+    transform: scale(0.95, 0.9) !important;
+}
+
+/* ---------- 分頁標籤：選到的是星星黃黏土 ---------- */
+
+:root[data-theme="starCloudDream"] .tab-btn,
+:root[data-theme="starCloudDream"] .ledger-type-tab,
+:root[data-theme="starCloudDream"] .record-type-tab,
+:root[data-theme="starCloudDream"] .chart-tab-btn,
+:root[data-theme="starCloudDream"] .category-tab {
+    border-radius: 999px !important;
+}
+
+:root[data-theme="starCloudDream"] .tab-btn.active,
+:root[data-theme="starCloudDream"] .ledger-type-tab.active,
+:root[data-theme="starCloudDream"] .record-type-tab.active,
+:root[data-theme="starCloudDream"] .chart-tab-btn.active,
+:root[data-theme="starCloudDream"] .category-tab.active {
+    background: radial-gradient(ellipse at 50% 25%, #fff6c9 0%, #ffe27a 50%, #f5c842 100%) !important;
+    border: none !important;
+    color: #6b4a12 !important;
+    box-shadow: inset 0 -5px 8px rgba(180, 130, 20, 0.3), inset 0 3px 3px rgba(255, 255, 255, 0.85), 0 6px 14px rgba(245, 200, 66, 0.45) !important;
+}
+
+:root[data-theme="starCloudDream"] .tab-btn.active *,
+:root[data-theme="starCloudDream"] .ledger-type-tab.active *,
+:root[data-theme="starCloudDream"] .record-type-tab.active *,
+:root[data-theme="starCloudDream"] .chart-tab-btn.active *,
+:root[data-theme="starCloudDream"] .category-tab.active * {
+    color: #6b4a12 !important;
+    -webkit-text-fill-color: #6b4a12 !important;
+}
+
+/* ---------- 對話框、面板 ---------- */
+
+:root[data-theme="starCloudDream"] .modal-content,
+:root[data-theme="starCloudDream"] .modal-content-standard,
+:root[data-theme="starCloudDream"] .budget-category-modal-content,
+:root[data-theme="starCloudDream"] .budget-setting-modal-content,
+:root[data-theme="starCloudDream"] .category-modal-content,
+:root[data-theme="starCloudDream"] .dca-execute-modal .modal-content,
+:root[data-theme="starCloudDream"] .account-modal-content,
+:root[data-theme="starCloudDream"] .emoji-modal-content,
+:root[data-theme="starCloudDream"] .history-modal-content,
+:root[data-theme="starCloudDream"] .crop-modal-content,
+:root[data-theme="starCloudDream"] .dialog-container,
+:root[data-theme="starCloudDream"] .xiaosen-dialog,
+:root[data-theme="starCloudDream"] .komori-dialog,
+:root[data-theme="starCloudDream"] .mori-dialog-box,
+:root[data-theme="starCloudDream"] .theme-modal-content,
+:root[data-theme="starCloudDream"] .theme-modal-container,
+:root[data-theme="starCloudDream"] .dialog-content,
+:root[data-theme="starCloudDream"] .popup-content,
+:root[data-theme="starCloudDream"] .spending-analysis-panel,
+:root[data-theme="starCloudDream"] .reminder-panel,
+:root[data-theme="starCloudDream"] .smart-notification,
+:root[data-theme="starCloudDream"] .quick-settings {
+    background: linear-gradient(180deg, #ffffff 0%, var(--cloud-white) 100%) !important;
+    border: none !important;
+    border-radius: 30px !important;
+    box-shadow: var(--shadow-primary-lg) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="starCloudDream"] .theme-modal-overlay,
+:root[data-theme="starCloudDream"] .modal-overlay {
+    background: rgba(95, 138, 142, 0.45) !important;
+    backdrop-filter: blur(6px);
+}
+
+:root[data-theme="starCloudDream"] .panel-header {
+    background: radial-gradient(ellipse at 50% 20%, #fff6c9 0%, #ffe27a 55%, #f5c842 100%) !important;
+    color: #6b4a12 !important;
+}
+
+/* ---------- 輸入框：凹進去的黏土 ---------- */
+
+:root[data-theme="starCloudDream"] .form-input,
+:root[data-theme="starCloudDream"] .form-select,
+:root[data-theme="starCloudDream"] .form-textarea,
+:root[data-theme="starCloudDream"] .note-input,
+:root[data-theme="starCloudDream"] .advisor-chat-input,
+:root[data-theme="starCloudDream"] .theme-search-input {
+    background: #fffdfb !important;
+    border: none !important;
+    border-radius: 18px !important;
+    box-shadow: inset 0 3px 7px rgba(196, 160, 140, 0.35), inset 0 -2px 0 #ffffff !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="starCloudDream"] .form-input:focus,
+:root[data-theme="starCloudDream"] .form-select:focus,
+:root[data-theme="starCloudDream"] .form-textarea:focus,
+:root[data-theme="starCloudDream"] .note-input:focus,
+:root[data-theme="starCloudDream"] .advisor-chat-input:focus,
+:root[data-theme="starCloudDream"] .theme-search-input:focus {
+    box-shadow: inset 0 3px 7px rgba(196, 160, 140, 0.35), 0 0 0 3px rgba(255, 226, 122, 0.8) !important;
+}
+
+/* ---------- 提示、建議 ---------- */
+
+:root[data-theme="starCloudDream"] .insight-item.info,
+:root[data-theme="starCloudDream"] .insight-item.warning,
+:root[data-theme="starCloudDream"] .insight-item.error,
+:root[data-theme="starCloudDream"] .recommendation-item,
+:root[data-theme="starCloudDream"] .error-message,
+:root[data-theme="starCloudDream"] .error-suggestion {
+    background: var(--cloud-white) !important;
+    border: none !important;
+    border-radius: 20px !important;
+    box-shadow: var(--clay-shadow) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="starCloudDream"] .insight-item.info,
+:root[data-theme="starCloudDream"] .recommendation-item {
+    border-left: 5px solid #8fb3b6 !important;
+}
+
+:root[data-theme="starCloudDream"] .insight-item.warning {
+    border-left: 5px solid #f5c842 !important;
+}
+
+:root[data-theme="starCloudDream"] .insight-item.error,
+:root[data-theme="starCloudDream"] .error-message {
+    border-left: 5px solid #e5483f !important;
+}
+
+:root[data-theme="starCloudDream"] .advisor-quick-btn {
+    background: var(--cloud-white) !important;
+    border: none !important;
+    border-radius: 999px !important;
+    box-shadow: inset 0 -3px 6px rgba(196, 160, 140, 0.3), 0 4px 8px rgba(95, 138, 142, 0.2) !important;
+    color: var(--text-primary) !important;
+}
+
+:root[data-theme="starCloudDream"] .advisor-chat-input-container {
+    background: var(--cloud-white) !important;
+}
+
+/* ===================================================================
+   其他所有面板的按鈕也跟著黏土風格
+   =================================================================== */
+
+/* 基本：所有按鈕都是奶油白棉花糖黏土（下面的分組會再細分形狀） */
+:root[data-theme="starCloudDream"] button:where(:not(.nav-item, .fab-btn, .emoji-item, .image-emoji-item, .summary-toggle, .summary-item, .star-btn, .check-btn, .theme-item, .category-tab, .theme-close-btn)) {
+    background: radial-gradient(ellipse at 50% 22%, #ffffff 0%, #fdf4ee 60%, #f1e4dc 100%) !important;
+    color: var(--text-primary) !important;
+    border: none !important;
+    border-radius: 999px !important;
+    box-shadow: inset 0 -4px 8px rgba(196, 160, 140, 0.28), inset 0 3px 3px #ffffff, 0 5px 10px rgba(95, 138, 142, 0.22) !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+:root[data-theme="starCloudDream"] button:where(:not(.nav-item, .fab-btn, .emoji-item, .image-emoji-item, .summary-toggle, .summary-item, .star-btn, .check-btn, .theme-item, .category-tab, .theme-close-btn)):active {
+    transform: scale(0.95, 0.9);
+    box-shadow: inset 0 -2px 5px rgba(196, 160, 140, 0.35), inset 0 2px 2px #ffffff, 0 2px 5px rgba(95, 138, 142, 0.2) !important;
+}
+
+/* 主要確認動作：奶油雲朵 */
+:root[data-theme="starCloudDream"] .form-submit-btn,
+:root[data-theme="starCloudDream"] .submit-btn,
+:root[data-theme="starCloudDream"] .form-query-btn,
+:root[data-theme="starCloudDream"] .budget-setup-save-btn,
+:root[data-theme="starCloudDream"] .app-modal-btn--primary,
+:root[data-theme="starCloudDream"] .font-size-confirm-btn,
+:root[data-theme="starCloudDream"] .price-query-modal__btn--ok,
+:root[data-theme="starCloudDream"] .nmb-hero-btn,
+:root[data-theme="starCloudDream"] .nmb-action:not(.nmb-action--secondary),
+:root[data-theme="starCloudDream"] .empty-state-btn,
+:root[data-theme="starCloudDream"] .set-next-month-budget-btn,
+:root[data-theme="starCloudDream"] .daily-budget-track-btn,
+:root[data-theme="starCloudDream"] .upload-background-btn,
+:root[data-theme="starCloudDream"] .savings-template-btn,
+:root[data-theme="starCloudDream"] .view-history-btn,
+:root[data-theme="starCloudDream"] .auto-transfer-add-btn,
+:root[data-theme="starCloudDream"] .account-add-btn,
+:root[data-theme="starCloudDream"] .modal-btn.confirm-btn,
+:root[data-theme="starCloudDream"] .confirm-btn {
+    background: var(--cloud-btn-bg) !important;
+    color: #b8302a !important;
+    font-weight: 700 !important;
+    border-radius: 18px !important;
+    min-height: 46px;
+    box-shadow: inset 0 -6px 10px rgba(196, 160, 140, 0.35), inset 0 4px 4px rgba(255, 255, 255, 0.9) !important;
+    -webkit-mask: var(--cloud-mask);
+    mask: var(--cloud-mask);
+}
+
+/* 刪除：紅帽子黏土 */
+:root[data-theme="starCloudDream"] .delete-btn,
+:root[data-theme="starCloudDream"] .form-delete-btn,
+:root[data-theme="starCloudDream"] .transaction-delete-btn,
+:root[data-theme="starCloudDream"] .history-transaction-delete-btn,
+:root[data-theme="starCloudDream"] .record-action-delete,
+:root[data-theme="starCloudDream"] .next-month-bill-btn--delete,
+:root[data-theme="starCloudDream"] .monthly-planner-goal-delete,
+:root[data-theme="starCloudDream"] .monthly-planner-item-delete,
+:root[data-theme="starCloudDream"] .quick-action-delete-btn,
+:root[data-theme="starCloudDream"] .delete {
+    background: radial-gradient(ellipse at 50% 22%, #ff9a92 0%, #ec5a50 55%, #c93a31 100%) !important;
+    color: #ffffff !important;
+    box-shadow: inset 0 -4px 8px rgba(120, 20, 15, 0.3), inset 0 3px 3px rgba(255, 255, 255, 0.55), 0 5px 10px rgba(201, 58, 49, 0.3) !important;
+}
+
+/* 關閉 ✕、移除照片：小顆圓棉花糖 */
+:root[data-theme="starCloudDream"] .modal-close,
+:root[data-theme="starCloudDream"] .modal-close-btn,
+:root[data-theme="starCloudDream"] .app-modal-close,
+:root[data-theme="starCloudDream"] .price-query-modal__close,
+:root[data-theme="starCloudDream"] .receipt-image-close-btn,
+:root[data-theme="starCloudDream"] .search-close-btn,
+:root[data-theme="starCloudDream"] .advisor-close-btn,
+:root[data-theme="starCloudDream"] .history-close-btn,
+:root[data-theme="starCloudDream"] .annual-report-close-btn,
+:root[data-theme="starCloudDream"] .budget-category-close-btn,
+:root[data-theme="starCloudDream"] .budget-setup-close-btn,
+:root[data-theme="starCloudDream"] .creator-close-btn,
+:root[data-theme="starCloudDream"] .daily-detail-close-btn,
+:root[data-theme="starCloudDream"] .font-size-close-btn,
+:root[data-theme="starCloudDream"] .member-select-close-btn,
+:root[data-theme="starCloudDream"] .next-month-close-btn,
+:root[data-theme="starCloudDream"] .background-selector-close-btn,
+:root[data-theme="starCloudDream"] .image-remove-btn,
+:root[data-theme="starCloudDream"] .thumbnail-remove,
+:root[data-theme="starCloudDream"] .account-image-remove-btn,
+:root[data-theme="starCloudDream"] .theme-image-remove-btn,
+:root[data-theme="starCloudDream"] .delete-custom-background-btn,
+:root[data-theme="starCloudDream"] .history-search-clear,
+:root[data-theme="starCloudDream"] .stock-search-clear-btn,
+:root[data-theme="starCloudDream"] .theme-close-btn {
+    border-radius: 50% !important;
+    color: #8a6e66 !important;
+}
+
+/* 返回 */
+:root[data-theme="starCloudDream"] .detail-back-btn,
+:root[data-theme="starCloudDream"] .auto-transfer-back-btn,
+:root[data-theme="starCloudDream"] .auto-transfer-setup-back-btn {
+    border-radius: 50% !important;
+}
+
+/* 切換、選項：圓角藥丸，選到的是星星黃 */
+:root[data-theme="starCloudDream"] .record-tab.active,
+:root[data-theme="starCloudDream"] .savings-type-tab.active,
+:root[data-theme="starCloudDream"] .toggle-btn.active,
+:root[data-theme="starCloudDream"] .type-btn.active,
+:root[data-theme="starCloudDream"] .savings-type-option.active,
+:root[data-theme="starCloudDream"] .category-modal-type-option.active,
+:root[data-theme="starCloudDream"] .font-size-preset.active,
+:root[data-theme="starCloudDream"] .record-tab.selected,
+:root[data-theme="starCloudDream"] .savings-type-tab.selected,
+:root[data-theme="starCloudDream"] .toggle-btn.selected,
+:root[data-theme="starCloudDream"] .type-btn.selected,
+:root[data-theme="starCloudDream"] .savings-type-option.selected,
+:root[data-theme="starCloudDream"] .category-modal-type-option.selected,
+:root[data-theme="starCloudDream"] .font-size-preset.selected {
+    background: radial-gradient(ellipse at 50% 25%, #fff6c9 0%, #ffe27a 50%, #f5c842 100%) !important;
+    color: #6b4a12 !important;
+    box-shadow: inset 0 -5px 8px rgba(180, 130, 20, 0.3), inset 0 3px 3px rgba(255, 255, 255, 0.85), 0 5px 12px rgba(245, 200, 66, 0.4) !important;
+}
+
+/* 計算機鍵盤：棉花糖按鍵，= 是星星黃，清除是紅帽子 */
+:root[data-theme="starCloudDream"] .key-btn {
+    border-radius: 20px !important;
+}
+
+:root[data-theme="starCloudDream"] .key-btn.operator {
+    background: radial-gradient(ellipse at 50% 22%, #f2fbfb 0%, #d6e8e9 60%, #b9d2d4 100%) !important;
+    color: #3f6e72 !important;
+}
+
+:root[data-theme="starCloudDream"] .key-btn.equal {
+    background: radial-gradient(ellipse at 50% 22%, #fff6c9 0%, #ffe27a 50%, #f5c842 100%) !important;
+    color: #6b4a12 !important;
+    font-weight: 700 !important;
+}
+
+:root[data-theme="starCloudDream"] .key-btn.clear {
+    background: radial-gradient(ellipse at 50% 22%, #ff9a92 0%, #ec5a50 55%, #c93a31 100%) !important;
+    color: #ffffff !important;
+}
+
+
+/* 沒選到的分頁字：原本是白字，放在奶油白按鈕上看不到 */
+:root[data-theme="starCloudDream"] .record-type-tab:not(.active) .record-type-text,
+:root[data-theme="starCloudDream"] .ledger-type-tab:not(.active) .ledger-tab-text,
+:root[data-theme="starCloudDream"] .tab-btn:not(.active) .tab-text {
+    color: var(--text-secondary) !important;
+    -webkit-text-fill-color: var(--text-secondary) !important;
+}
+
+/* 設定頁的選單項目：捏出來的黏土卡片，左邊的色條改成一顆小糖豆 */
+:root[data-theme="starCloudDream"] .settings-item {
+    background: linear-gradient(180deg, #ffffff 0%, var(--cloud-white) 60%, #f8ede6 100%) !important;
+    border: none !important;
+    border-radius: 26px !important;
+    box-shadow: var(--clay-shadow) !important;
+    overflow: hidden;
+}
+
+:root[data-theme="starCloudDream"] .settings-item:active {
+    transform: scale(0.98, 0.95);
+}
+
+:root[data-theme="starCloudDream"] .settings-item-accent {
+    top: 50% !important;
+    bottom: auto !important;
+    left: 10px !important;
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    transform: translateY(-50%);
+}
+
+:root[data-theme="starCloudDream"] .settings-item-icon {
+    border-radius: 18px !important;
+    box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.12), inset 0 3px 3px rgba(255, 255, 255, 0.6) !important;
+}
+
+/* 日期欄位：原本白字，放在淺黃底上看不清楚，改成凹進去的黏土 */
+:root[data-theme="starCloudDream"] .date-input {
+    background: #fffdfb !important;
+    color: var(--text-primary) !important;
+    -webkit-text-fill-color: var(--text-primary) !important;
+    border: none !important;
+    border-radius: 999px !important;
+    box-shadow: inset 0 3px 7px rgba(196, 160, 140, 0.35), inset 0 -2px 0 #ffffff !important;
+}
+
+:root[data-theme="starCloudDream"] .date-input::-webkit-calendar-picker-indicator {
+    filter: invert(0.35) sepia(0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root[data-theme="starCloudDream"] .fab-btn {
+        animation: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    :root[data-theme="starCloudDream"] .history-advisor-chat {
+        width: 100% !important;
+        height: 70vh !important;
+        border-radius: 30px 30px 0 0 !important;
+    }
+}

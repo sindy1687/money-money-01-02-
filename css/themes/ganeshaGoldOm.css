@@ -391,16 +391,12 @@
     border-color: rgba(214, 178, 94, 0.30) !important;
 }
 
-:root[data-theme="ganeshaGoldOm"] .smart-analysis-btn,
-:root[data-theme="ganeshaGoldOm"] .smart-reminders-btn,
 :root[data-theme="ganeshaGoldOm"] .smart-suggestion-btn {
     background: var(--action-buy-bg) !important;
     color: var(--action-buy-text) !important;
     border: 2px solid rgba(214, 178, 94, 0.35) !important;
 }
 
-:root[data-theme="ganeshaGoldOm"] .smart-analysis-btn:hover,
-:root[data-theme="ganeshaGoldOm"] .smart-reminders-btn:hover,
 :root[data-theme="ganeshaGoldOm"] .smart-suggestion-btn:hover {
     background: var(--action-buy-bg-hover) !important;
 }
@@ -433,3 +429,22 @@
         max-height: 90vh;
     }
 }
+
+/* ===== 主題設計工具組配色（自動產生，請勿手動修改；由 theme-kit 產生器更新） ===== */
+:root[data-theme="ganeshaGoldOm"] {
+    --k-main: #d6b15c;
+    --k-main-dark: #b38b2e;
+    --k-main-light: #f1e4c6;
+    --k-btn-top: #e0c585;
+    --k-btn-bottom: #d6b15c;
+    --k-on-main: #413211;
+    --k-paper: #fcfaf5;
+    --k-paper-2: #f7f1e3;
+    --k-line: #e3d2ab;
+    --k-ink: #433619;
+    --k-ink-soft: #776740;
+    --k-title: #7a5f1f;
+    --k-deep: #1f160e;
+    --k-on-deep: #f0eadb;
+}
+/* ===== 主題設計工具組配色結束 ===== */
