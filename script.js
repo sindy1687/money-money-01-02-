@@ -429,69 +429,149 @@ function updateStockAllocationChart() {
 }
 
 
-async function applyBackupDataPayload(data) {
-    // 還原資料（包含所有資料）
-    if (data.accountingRecords) {
-        localStorage.setItem('accountingRecords', JSON.stringify(data.accountingRecords));
+// 備份檔不放的鍵：雲端硬碟登入資訊和同步狀態只屬於這台裝置
+const BACKUP_EXCLUDED_KEYS = new Set(['driveSyncUrl', 'driveSyncSession', 'driveSyncRev', 'driveSyncDirty']);
+const BACKUP_META_KEYS = new Set(['backupDate', 'backupVersion', 'appName']);
+
+// 把各種備份格式整理成 { key: localStorage 字串 }
+// - 2.0 版本機備份：{ appName, backupVersion: '2.0', data: { key: 原始字串 } }
+// - 雲端硬碟 data.json：{ app: '記帳本', data: { key: 值 } }
+// - 完整快照備份：{ appName, backupVersion: 'player-full-1.0', localStorageSnapshot: { key: 原始字串 } }
+// - 1.0 版本機備份：資料直接放在最外層
+function normalizeBackupPayload(data) {
+    if (!data || typeof data !== 'object' || Array.isArray(data)) return null;
+    const toRaw = (v) => (typeof v === 'string' ? v : JSON.stringify(v));
+    const entries = {};
+    let fullSnapshot = false;
+    let source;
+    if (data.data && typeof data.data === 'object' && !Array.isArray(data.data) && (data.backupVersion === '2.0' || data.app === '記帳本')) {
+        Object.keys(data.data).forEach(k => { entries[k] = toRaw(data.data[k]); });
+        fullSnapshot = true;
+        source = data.app === '記帳本' ? 'drive' : 'local';
+    } else if (data.localStorageSnapshot && typeof data.localStorageSnapshot === 'object' && !Array.isArray(data.localStorageSnapshot)) {
+        Object.keys(data.localStorageSnapshot).forEach(k => {
+            const v = data.localStorageSnapshot[k];
+            if (v !== undefined && v !== null) entries[k] = toRaw(v);
+        });
+        fullSnapshot = true;
+        source = 'local';
+    } else {
+        Object.keys(data).forEach(k => {
+            if (BACKUP_META_KEYS.has(k) || data[k] === undefined || data[k] === null) return;
+            entries[k] = toRaw(data[k]);
+        });
+        source = 'legacy';
     }
-    if (data.categoryBudgets) {
-        localStorage.setItem('categoryBudgets', JSON.stringify(data.categoryBudgets));
+    BACKUP_EXCLUDED_KEYS.forEach(k => delete entries[k]);
+    return { entries, fullSnapshot, source, date: data.backupDate || data.exportedAt || '' };
+}
+
+function describeBackupEntries(entries) {
+    const count = (key) => {
+        try {
+            const v = JSON.parse(entries[key] || 'null');
+            if (Array.isArray(v)) return v.length;
+            if (v && typeof v === 'object') return Object.keys(v).length;
+        } catch (e) { /* 不是 JSON */ }
+        return 0;
+    };
+    return `• 記帳記錄：${count('accountingRecords')} 筆
+• 投資記錄：${count('investmentRecords')} 筆
+• 帳戶：${count('accounts')} 個
+• 自定義分類：${count('customCategories')} 個
+• 預算設定：${count('categoryBudgets')} 個
+• 定期定額：${count('dcaPlans')} 個
+• 分期規則：${count('installmentRules')} 個
+• 資料項目：${Object.keys(entries).length} 種`;
+}
+
+// 寫入還原資料；空間不足時回到還原前的狀態
+function writeBackupEntries(entries, fullSnapshot) {
+    const previous = {};
+    for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        previous[k] = localStorage.getItem(k);
     }
-    if (data.categoryEnabledState) {
-        localStorage.setItem('categoryEnabledState', JSON.stringify(data.categoryEnabledState));
-    }
-    if (data.dailyBudgetTracking) {
-        localStorage.setItem('dailyBudgetTracking', JSON.stringify(data.dailyBudgetTracking));
-    }
-    if (data.customCategories) {
-        localStorage.setItem('customCategories', JSON.stringify(data.customCategories));
-    }
-    if (data.categoryCustomIcons) {
-        // 壓縮所有導入的圖標
-        console.log('開始壓縮導入的圖標...');
-        const compressedIcons = await compressAllIcons(data.categoryCustomIcons);
-        const saved = (typeof setCategoryCustomIcons === 'function')
-            ? await setCategoryCustomIcons(compressedIcons)
-            : safeSetItem('categoryCustomIcons', compressedIcons);
-        if (!saved) {
-            alert('還原失敗：圖標數據太大，無法保存。');
-            return;
+    try {
+        if (fullSnapshot) {
+            // 完整備份：移除備份裡沒有的舊資料，讓這台裝置跟備份一模一樣
+            Object.keys(previous).forEach(k => {
+                if (!BACKUP_EXCLUDED_KEYS.has(k) && !(k in entries)) localStorage.removeItem(k);
+            });
         }
-        console.log('✓ 圖標已壓縮並保存');
+        Object.keys(entries).forEach(k => localStorage.setItem(k, entries[k]));
+        return true;
+    } catch (e) {
+        console.error('還原寫入失敗:', e);
+        Object.keys(entries).forEach(k => { if (!(k in previous)) localStorage.removeItem(k); });
+        Object.keys(previous).forEach(k => {
+            try { localStorage.setItem(k, previous[k]); } catch (err) { /* 盡量回復 */ }
+        });
+        return false;
     }
-    if (data.investmentRecords) {
-        localStorage.setItem('investmentRecords', JSON.stringify(data.investmentRecords));
+}
+
+async function applyBackupDataPayload(data, { skipConfirm = true } = {}) {
+    const normalized = normalizeBackupPayload(data);
+    if (!normalized || Object.keys(normalized.entries).length === 0) {
+        alert('還原失敗：這個檔案裡沒有記帳本的資料。\n\n請選擇「備份」下載的 .json 檔，或雲端硬碟裡的 data.json。');
+        return false;
     }
-    if (data.dcaPlans) {
-        localStorage.setItem('dcaPlans', JSON.stringify(data.dcaPlans));
+    const { entries, fullSnapshot, source, date } = normalized;
+
+    // 雲端硬碟 data.json 的圖片另外存在「圖片」資料夾，本機檔案還原拿不到
+    let imageNote = '';
+    const imageRefs = Object.values(entries).some(v => v.includes('drive-image:'));
+    if (imageRefs) {
+        imageNote = '\n\n⚠️ 這是雲端硬碟的 data.json，圖片不在檔案裡，還原後自訂圖示會變回預設。\n要連圖片一起還原，請改用「從雲端硬碟還原」。';
+        Object.keys(entries).forEach(k => {
+            if (!entries[k].includes('drive-image:')) return;
+            try {
+                const strip = (v) => {
+                    if (typeof v === 'string') return v.startsWith('drive-image:') ? '' : v;
+                    if (Array.isArray(v)) return v.map(strip);
+                    if (v && typeof v === 'object') {
+                        const out = {};
+                        Object.keys(v).forEach(x => { out[x] = strip(v[x]); });
+                        return out;
+                    }
+                    return v;
+                };
+                const parsed = JSON.parse(entries[k]);
+                entries[k] = typeof parsed === 'string' ? strip(parsed) : JSON.stringify(strip(parsed));
+            } catch (e) {
+                if (entries[k].startsWith('drive-image:')) entries[k] = '';
+            }
+        });
     }
-    if (data.installmentRules) {
-        localStorage.setItem('installmentRules', JSON.stringify(data.installmentRules));
+
+    if (!skipConfirm) {
+        const dateText = date ? `\n備份時間：${new Date(date).toLocaleString('zh-TW')}` : '';
+        const modeText = fullSnapshot
+            ? '這將用備份完全取代這台裝置現有的資料！'
+            : '這是舊版備份檔，只會覆蓋檔案裡有的項目，其他資料會保留。';
+        if (!confirm(`備份內容：\n${describeBackupEntries(entries)}${dateText}\n\n${modeText}${imageNote}\n\n確定要還原嗎？`)) {
+            return false;
+        }
     }
-    if (data.stockCurrentPrices) {
-        localStorage.setItem('stockCurrentPrices', JSON.stringify(data.stockCurrentPrices));
+
+    // 舊版備份的圖示可能很大，先壓縮再寫入
+    if (source === 'legacy' && entries.categoryCustomIcons && typeof compressAllIcons === 'function') {
+        try {
+            entries.categoryCustomIcons = JSON.stringify(await compressAllIcons(JSON.parse(entries.categoryCustomIcons)));
+        } catch (e) {
+            console.warn('圖示壓縮失敗，改用原始資料:', e);
+        }
     }
-    if (data.accounts) {
-        localStorage.setItem('accounts', JSON.stringify(data.accounts));
-    }
-    if (data.imageEmojis) {
-        localStorage.setItem('imageEmojis', JSON.stringify(data.imageEmojis));
-    }
-    if (data.members) {
-        localStorage.setItem('members', JSON.stringify(data.members));
-    }
-    if (data.theme) {
-        localStorage.setItem('theme', data.theme);
-    }
-    if (data.fontSize) {
-        localStorage.setItem('fontSize', data.fontSize);
-    }
-    if (data.customTheme) {
-        localStorage.setItem('customTheme', JSON.stringify(data.customTheme));
+
+    if (!writeBackupEntries(entries, fullSnapshot)) {
+        alert('還原失敗：手機／瀏覽器的儲存空間不足，資料已回到還原前的狀態。');
+        return false;
     }
 
     alert('資料還原成功！\n頁面將重新載入以顯示最新資料。');
     location.reload();
+    return true;
 }
 
 // 數字格式化（含千分位，預設兩位小數）
@@ -1156,6 +1236,9 @@ let quoteProxyAvailability = {
 // 用於補抓昨收價時的去重集合，避免重複呼叫
 const pendingPrevCloseFetch = new Set();
 
+// 用於抓取現價時的去重集合，避免同一檔同時重複呼叫
+const pendingCurrentPriceFetch = new Map();
+
 // 簡易代理冷卻：若 429/403 過載，暫停使用該代理一段時間
 const proxyCooldowns = {};
 const PROXY_COOLDOWN_MS = 5 * 60 * 1000;
@@ -1171,6 +1254,72 @@ const publicQuoteProxies = [
     // 暫時移除 r.jina.ai (503 錯誤)
     // 'https://r.jina.ai/http://',
 ];
+
+// 透過自己的 Apps Script（drive-sync.gs 的 quote）查台股報價：由 Google 伺服器去問證交所，不受瀏覽器 CORS 限制
+// 同一時間要查的代碼會合併成一次請求；回傳 { price, prevClose } 或 null
+const appsScriptQuoteQueue = new Map(); // 代碼 -> [resolve, ...]
+let appsScriptQuoteTimer = null;
+let appsScriptQuoteDownUntil = 0; // 服務還沒更新或連不上時，暫停一段時間不再嘗試
+
+function fetchQuoteViaAppsScript(stockCode) {
+    const url = window.DriveSync && typeof DriveSync.getUrl === 'function' ? DriveSync.getUrl() : '';
+    if (!url || Date.now() < appsScriptQuoteDownUntil) return Promise.resolve(null);
+    const code = String(stockCode).trim().toUpperCase();
+    return new Promise(resolve => {
+        if (!appsScriptQuoteQueue.has(code)) appsScriptQuoteQueue.set(code, []);
+        appsScriptQuoteQueue.get(code).push(resolve);
+        clearTimeout(appsScriptQuoteTimer);
+        appsScriptQuoteTimer = setTimeout(() => flushAppsScriptQuotes(url), 50);
+    });
+}
+
+async function flushAppsScriptQuotes(url) {
+    const batch = new Map(appsScriptQuoteQueue);
+    appsScriptQuoteQueue.clear();
+    let quotes = {};
+    try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
+        const resp = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ action: 'quote', codes: [...batch.keys()] }),
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        const data = await resp.json();
+        if (data && data.ok) quotes = data.quotes || {};
+        else if (data && /未知的動作/.test(data.error || '')) {
+            // Apps Script 還是舊版（沒有 quote），10 分鐘內不再嘗試
+            console.warn('Apps Script 尚未更新股價功能，請重新部署 drive-sync.gs');
+            appsScriptQuoteDownUntil = Date.now() + 10 * 60 * 1000;
+        }
+    } catch (e) {
+        appsScriptQuoteDownUntil = Date.now() + 2 * 60 * 1000;
+    }
+    for (const [code, resolvers] of batch) {
+        const q = quotes[code];
+        const result = q && q.price > 0 ? { price: Number(q.price), prevClose: q.prevClose > 0 ? Number(q.prevClose) : null } : null;
+        resolvers.forEach(r => r(result));
+    }
+}
+
+function sleepMs(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function getRetryAfterMs(resp) {
+    try {
+        if (!resp || !resp.headers) return 0;
+        const ra = resp.headers.get('Retry-After');
+        if (!ra) return 0;
+        const sec = Number(ra);
+        if (!isNaN(sec) && sec > 0) return sec * 1000;
+        const dt = Date.parse(ra);
+        if (!isNaN(dt)) return Math.max(0, dt - Date.now());
+    } catch (_) {}
+    return 0;
+}
 
 function isProxyInCooldown(proxyBase) {
     if (!proxyCooldowns[proxyBase]) return false;
@@ -1244,7 +1393,14 @@ async function fetchPreviousCloseOnly(stockCode) {
     prevCloseAttemptAt[stockCode] = Date.now();
     pendingPrevCloseFetch.add(stockCode);
     try {
-        // 先嘗試 TWSE/OTC 來源（不依賴 Yahoo）
+        // 優先用自己的 Apps Script 代查（最穩定）
+        const viaScript = await fetchQuoteViaAppsScript(stockCode);
+        if (viaScript && viaScript.prevClose) {
+            saveStockPreviousClosePrice(stockCode, viaScript.prevClose);
+            return viaScript.prevClose;
+        }
+
+        // 再嘗試 TWSE/OTC 來源（不依賴 Yahoo）
         const twPrev = await fetchPrevCloseFromTwseOtc(stockCode);
         if (twPrev && twPrev > 0) {
             saveStockPreviousClosePrice(stockCode, twPrev);
@@ -1379,7 +1535,10 @@ function maybeAlertQuoteProxyDown() {
 }
 
 async function fetchYahooChartViaPublicProxies(yahooUrl, stockCode) {
-    for (const proxyBase of publicQuoteProxies) {
+    const shuffledProxies = shuffleProxies();
+    let backoffMs = 250;
+    for (const proxyBase of shuffledProxies) {
+        if (isProxyInCooldown(proxyBase)) continue;
         try {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 10000);
@@ -1393,7 +1552,21 @@ async function fetchYahooChartViaPublicProxies(yahooUrl, stockCode) {
                 }
 
                 const resp = await fetch(finalUrl, { signal: controller.signal });
-                if (!resp || !resp.ok) continue;
+                if (!resp) continue;
+
+                if (resp.status === 429 || resp.status === 403) {
+                    markProxyRateLimited(proxyBase);
+                    const retryAfter = getRetryAfterMs(resp);
+                    const waitMs = Math.min(30_000, Math.max(retryAfter || 0, backoffMs) + Math.floor(Math.random() * 250));
+                    backoffMs = Math.min(30_000, Math.floor(backoffMs * 2));
+                    await sleepMs(waitMs);
+                    continue;
+                }
+
+                if (!resp.ok) {
+                    await sleepMs(120);
+                    continue;
+                }
 
                 const text = await resp.text();
                 let raw = text;
@@ -1750,9 +1923,7 @@ function initCategoryGrid(tabType = 'recommended', recordType = null) {
                 categoryGrid.appendChild(groupHeader);
                 
                 // 獲取自定義圖標
-                const customIcons = (typeof getCategoryCustomIconsSync === 'function')
-                    ? getCategoryCustomIconsSync()
-                    : JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
+                const customIcons = JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
                 const savedCustomCategories = JSON.parse(localStorage.getItem('customCategories') || '[]');
                 
                 // 渲染該類型的分類
@@ -1871,9 +2042,7 @@ function initCategoryGrid(tabType = 'recommended', recordType = null) {
                 categoryGrid.appendChild(groupHeader);
                 
                 // 獲取自定義圖標
-                const customIcons = (typeof getCategoryCustomIconsSync === 'function')
-                    ? getCategoryCustomIconsSync()
-                    : JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
+                const customIcons = JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
                 
                 // 渲染該類型的所有分類
                 typeCategories.forEach((category, index) => {
@@ -1999,9 +2168,7 @@ function initCategoryGrid(tabType = 'recommended', recordType = null) {
                 categoryGrid.appendChild(groupHeader);
                 
                 // 獲取自定義圖標
-                const customIcons = (typeof getCategoryCustomIconsSync === 'function')
-                    ? getCategoryCustomIconsSync()
-                    : JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
+                const customIcons = JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
                 
                 // 渲染該類型的所有分類
                 typeCategories.forEach((category, index) => {
@@ -2084,9 +2251,7 @@ function initCategoryGrid(tabType = 'recommended', recordType = null) {
     categoryGrid.innerHTML = '';
     
     // 獲取自定義圖標（只獲取一次，避免每次迴圈都解析）
-    const customIcons = (typeof getCategoryCustomIconsSync === 'function')
-        ? getCategoryCustomIconsSync()
-        : JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
+    const customIcons = JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
     console.log('📷 自定義圖標數量:', Object.keys(customIcons).length);
     console.log('📷 自定義圖標列表:', Object.keys(customIcons));
     
@@ -2361,17 +2526,11 @@ function editCustomCategory(categoryName, categoryType) {
             }
             
             // 更新自定義圖標的鍵名
-            const customIcons = (typeof getCategoryCustomIconsSync === 'function')
-                ? getCategoryCustomIconsSync()
-                : JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
+            const customIcons = JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
             if (customIcons[categoryName]) {
                 customIcons[newName] = customIcons[categoryName];
                 delete customIcons[categoryName];
-                if (typeof setCategoryCustomIcons === 'function') {
-                    setCategoryCustomIcons(customIcons);
-                } else {
-                    localStorage.setItem('categoryCustomIcons', JSON.stringify(customIcons));
-                }
+                localStorage.setItem('categoryCustomIcons', JSON.stringify(customIcons));
             }
             
             // 更新啟用狀態的鍵名
@@ -2467,16 +2626,10 @@ function deleteCustomCategory(categoryName, categoryType) {
     }
     
     // 3. 刪除自定義圖標
-    const customIcons = (typeof getCategoryCustomIconsSync === 'function')
-        ? getCategoryCustomIconsSync()
-        : JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
+    const customIcons = JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
     if (customIcons[categoryName]) {
         delete customIcons[categoryName];
-        if (typeof setCategoryCustomIcons === 'function') {
-            setCategoryCustomIcons(customIcons);
-        } else {
-            safeSetItem('categoryCustomIcons', customIcons);
-        }
+        safeSetItem('categoryCustomIcons', customIcons);
         console.log('✓ 刪除自定義圖標');
     }
     
@@ -3702,8 +3855,16 @@ function initSaveButton() {
                     message += '• 刪除一些舊的記錄\n';
                     message += '• 清除瀏覽器快取';
                 }
-                
-                alert(message);
+
+                // 先自動壓縮以前存的大圖，有空出空間就請使用者再存一次
+                if (typeof shrinkStoredImages === 'function') {
+                    shrinkStoredImages().then(saved => {
+                        if (saved) alert(`儲存空間不足，已自動壓縮舊圖片，空出約 ${(saved / 1024 / 1024).toFixed(1)}MB。\n\n請再按一次儲存。`);
+                        else alert(message);
+                    });
+                } else {
+                    alert(message);
+                }
             } else {
                 alert('保存記帳記錄失敗，請重試。\n\n錯誤：' + error.message);
             }
@@ -4953,9 +5114,47 @@ function setGoogleCloudBackupKey() {
         alert('已清除雲端備份碼');
         return;
     }
-
     localStorage.setItem('googleCloudBackupKey', v);
     alert('已儲存雲端備份碼');
+}
+
+function collectFullBackupPayload() {
+    return {
+        // 記帳相關
+        accountingRecords: JSON.parse(localStorage.getItem('accountingRecords') || '[]'),
+        categoryBudgets: JSON.parse(localStorage.getItem('categoryBudgets') || '{}'),
+        categoryEnabledState: JSON.parse(localStorage.getItem('categoryEnabledState') || '{}'),
+        dailyBudgetTracking: JSON.parse(localStorage.getItem('dailyBudgetTracking') || '{}'),
+        customCategories: JSON.parse(localStorage.getItem('customCategories') || '[]'),
+        categoryCustomIcons: JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}'),
+
+        // 投資相關
+        investmentRecords: JSON.parse(localStorage.getItem('investmentRecords') || '[]'),
+        dcaPlans: JSON.parse(localStorage.getItem('dcaPlans') || '[]'),
+        stockCurrentPrices: JSON.parse(localStorage.getItem('stockCurrentPrices') || '{}'),
+
+        // 分期
+        installmentRules: JSON.parse(localStorage.getItem('installmentRules') || '[]'),
+
+        // 帳戶相關
+        accounts: JSON.parse(localStorage.getItem('accounts') || '[]'),
+
+        // 表情和圖標
+        imageEmojis: JSON.parse(localStorage.getItem('imageEmojis') || '[]'),
+
+        // 成員
+        members: JSON.parse(localStorage.getItem('members') || '[]'),
+
+        // 設定
+        theme: localStorage.getItem('theme') || 'default',
+        fontSize: localStorage.getItem('fontSize') || 'medium',
+        customTheme: JSON.parse(localStorage.getItem('customTheme') || '{}'),
+
+        // 備份資訊
+        backupDate: new Date().toISOString(),
+        backupVersion: 'cloud-1.0',
+        appName: '記帳本'
+    };
 }
 
 function cloudBackupToGoogleSheet() {
@@ -5714,7 +5913,7 @@ function initDividendForm() {
                 
                 // 如果有有效的買入價格，計算並創建買入記錄
                 if (buyPrice > 0) {
-                    const reinvestFee = calculateInvestmentFee(amount);
+                    const reinvestFee = calculateInvestmentFee(amount, Math.floor(amount / buyPrice));
                     const availableAmount = Math.max(amount - reinvestFee, 0);
                     const buyShares = Math.floor(availableAmount / buyPrice); // 向下取整
                     
@@ -5929,6 +6128,9 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
         const overlay = document.createElement('div');
         overlay.className = 'modal-overlay';
 
+        const content = document.createElement('div');
+        content.className = 'modal-content price-query-modal__content';
+
         const header = document.createElement('div');
         header.className = 'price-query-modal__header';
         const title = document.createElement('h3');
@@ -6062,248 +6264,274 @@ function showStockPriceQueryModal({ stockCode, stockName, isBondETF, defaultPric
     });
 }
 
- // 從 API 獲取股票現價
 async function fetchStockPrice(stockCode, options = {}) {
     const { allowPrompt = true, maxAgeMs = 6 * 60 * 60 * 1000 } = options;
-   
-   try {
-        // 處理債券 ETF 和特殊格式
-        // 台灣股票/ETF 格式：2330.TW 或 00751B.TW
-        // 注意：債券 ETF 代碼如 00751B 需要保持 B 後綴
-        let yahooSymbol;
-        
-        // 檢查是否為債券 ETF（以 B 結尾）或其他特殊格式
-        if (stockCode.endsWith('B') || stockCode.endsWith('L') || stockCode.endsWith('R') || stockCode.endsWith('U') || stockCode.endsWith('K')) {
-            // 債券 ETF 或特殊 ETF，保持原格式
-            yahooSymbol = `${stockCode}.TWO`;
-        } else if (stockCode.startsWith('A0')) {
-            // 政府債券代碼（如 A04109），Yahoo Finance 可能不支持，返回 null
-            console.log(`債券代碼 ${stockCode} 無法從 Yahoo Finance 獲取價格`);
-            return null;
-        } else {
-            // 一般股票或 ETF
-            yahooSymbol = `${stockCode}.TW`;
-        }
 
-        const symbolCandidates = (stockCode.endsWith('B') || stockCode.endsWith('L') || stockCode.endsWith('R') || stockCode.endsWith('U') || stockCode.endsWith('K'))
-            ? [`${stockCode}.TWO`, `${stockCode}.TW`]
-            : [yahooSymbol];
+    if (!stockCode) return null;
 
-        // 1) Try local proxy (opt-in)
-        const proxyEndpoint = 'http://localhost:5000/api/quote?symbols=';
-        const enableLocalQuoteProxy = String(localStorage.getItem('useLocalQuoteProxy') || '').toLowerCase() === 'true';
-        if (enableLocalQuoteProxy && !isLocalQuoteProxyInCooldown()) {
-            for (const candidateSymbol of symbolCandidates) {
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 8000);
-                try {
-                    const proxyUrl = `${proxyEndpoint}${encodeURIComponent(candidateSymbol)}`;
-                    const proxyResponse = await fetch(proxyUrl, {
-                        method: 'GET',
-                        headers: {
-                            'Accept': 'application/json'
-                        },
-                        signal: controller.signal
-                    });
+    const cached = getStockPriceData(stockCode);
+    if (cached && cached.price && cached.price > 0 && cached.timestamp && (Date.now() - cached.timestamp) < maxAgeMs) {
+        return cached.price;
+    }
 
-                    if (!proxyResponse || !proxyResponse.ok) {
-                        continue;
-                    }
+    const existing = pendingCurrentPriceFetch.get(stockCode);
+    if (existing) return existing;
 
-                    const responseText = await proxyResponse.text();
-                    let data;
+    const taskPromise = (async () => {
+        try {
+            // 處理債券 ETF 和特殊格式
+            // 台灣股票/ETF 格式：2330.TW 或 00751B.TW
+            // 注意：債券 ETF 代碼如 00751B 需要保持 B 後綴
+            let yahooSymbol;
+            
+            // 檢查是否為債券 ETF（以 B 結尾）或其他特殊格式
+            if (stockCode.endsWith('B') || stockCode.endsWith('L') || stockCode.endsWith('R') || stockCode.endsWith('U') || stockCode.endsWith('K')) {
+                // 債券 ETF 或特殊 ETF，保持原格式
+                yahooSymbol = `${stockCode}.TWO`;
+            } else if (stockCode.startsWith('A0')) {
+                // 政府債券代碼（如 A04109），Yahoo Finance 可能不支持，返回 null
+                console.log(`債券代碼 ${stockCode} 無法從 Yahoo Finance 獲取價格`);
+                return null;
+            } else {
+                // 一般股票或 ETF
+                yahooSymbol = `${stockCode}.TW`;
+            }
+
+            const symbolCandidates = (stockCode.endsWith('B') || stockCode.endsWith('L') || stockCode.endsWith('R') || stockCode.endsWith('U') || stockCode.endsWith('K'))
+                ? [`${stockCode}.TWO`, `${stockCode}.TW`]
+                : [yahooSymbol];
+
+            // 0) 優先用自己的 Apps Script 代查證交所（不受 CORS 與公開代理限制）
+            const viaScript = await fetchQuoteViaAppsScript(stockCode);
+            if (viaScript) {
+                if (viaScript.prevClose) saveStockPreviousClosePrice(stockCode, viaScript.prevClose);
+                saveStockCurrentPrice(stockCode, viaScript.price, false);
+                return viaScript.price;
+            }
+
+            // 1) Try local proxy (opt-in)
+            const proxyEndpoint = 'http://localhost:5000/api/quote?symbols=';
+            const enableLocalQuoteProxy = String(localStorage.getItem('useLocalQuoteProxy') || '').toLowerCase() === 'true';
+            if (enableLocalQuoteProxy && !isLocalQuoteProxyInCooldown()) {
+                for (const candidateSymbol of symbolCandidates) {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 8000);
                     try {
-                        data = JSON.parse(responseText);
-                    } catch (parseError) {
-                        continue;
-                    }
+                        const proxyUrl = `${proxyEndpoint}${encodeURIComponent(candidateSymbol)}`;
+                        const proxyResponse = await fetch(proxyUrl, {
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/json'
+                            },
+                            signal: controller.signal
+                        });
 
-                    if (data && data.quoteResponse && data.quoteResponse.result && data.quoteResponse.result.length > 0) {
-                        const q = data.quoteResponse.result[0];
-                        const previousClose = q.regularMarketPreviousClose || q.regularMarketPreviousClosePrice || q.regularMarketPreviousClose || null;
-                        if (previousClose && previousClose > 0) {
-                            saveStockPreviousClosePrice(stockCode, previousClose);
-                        }
-
-                        const currentPrice = q.regularMarketPrice || q.postMarketPrice || q.preMarketPrice || previousClose || null;
-                        if (currentPrice && currentPrice > 0) {
-                            saveStockCurrentPrice(stockCode, currentPrice, false);
-                            console.log(`✓ 成功獲取 ${stockCode} 價格: ${currentPrice}`);
-                            return currentPrice;
-                        }
-                    }
-
-                    if (data && data.chart && data.chart.result) {
-                        if (data.chart.result.length === 0) {
+                        if (!proxyResponse || !proxyResponse.ok) {
                             continue;
                         }
 
-                        const result = data.chart.result[0];
-                        if (result && result.meta && !result.error) {
-                            const previousClose = result.meta.previousClose || result.meta.regularMarketPreviousClose || null;
+                        const responseText = await proxyResponse.text();
+                        let data;
+                        try {
+                            data = JSON.parse(responseText);
+                        } catch (parseError) {
+                            continue;
+                        }
+
+                        if (data && data.quoteResponse && data.quoteResponse.result && data.quoteResponse.result.length > 0) {
+                            const q = data.quoteResponse.result[0];
+                            const previousClose = q.regularMarketPreviousClose || q.regularMarketPreviousClosePrice || q.regularMarketPreviousClose || null;
                             if (previousClose && previousClose > 0) {
                                 saveStockPreviousClosePrice(stockCode, previousClose);
                             }
 
-                            const currentPrice = result.meta.regularMarketPrice || previousClose || null;
+                            const currentPrice = q.regularMarketPrice || q.postMarketPrice || q.preMarketPrice || previousClose || null;
                             if (currentPrice && currentPrice > 0) {
                                 saveStockCurrentPrice(stockCode, currentPrice, false);
                                 console.log(`✓ 成功獲取 ${stockCode} 價格: ${currentPrice}`);
                                 return currentPrice;
                             }
                         }
-                    }
-                } catch (proxyError) {
-                    if (proxyError.name === 'AbortError') {
-                        continue;
-                    }
-                    markQuoteProxyFailed();
-                    maybeAlertQuoteProxyDown();
-                    break;
-                } finally {
-                    clearTimeout(timeoutId);
-                }
-            }
-        }
 
-        // 2) Public proxy fallback for ALL symbols，附加輕量重試
-        for (let attempt = 0; attempt < 2; attempt++) {
-            for (const candidateSymbol of symbolCandidates) {
-                const yahooChartUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${candidateSymbol}?interval=1d&range=1d`;
-                const currentPrice = await fetchYahooChartViaPublicProxies(yahooChartUrl, stockCode);
-                if (currentPrice && currentPrice > 0) {
-                    saveStockCurrentPrice(stockCode, currentPrice, false);
-                    console.log(`✓ 透過公開代理成功獲取 ${stockCode} 價格: ${currentPrice}`);
-                    return currentPrice;
-                }
-            }
-        }
+                        if (data && data.chart && data.chart.result) {
+                            if (data.chart.result.length === 0) {
+                                continue;
+                            }
 
-        // 如果所有代理都失敗，嘗試使用備用方案（僅針對債券 ETF）
-        // 注意：瀏覽器控制台可能仍會顯示 404 等錯誤，這是正常的，代碼會正確處理
-        if (stockCode.endsWith('B')) {
-            console.log(`債券 ETF ${stockCode} 無法從 Yahoo Finance 獲取價格，嘗試備用方法...`);
-            
-            // 嘗試方案1：使用不同的 Yahoo Finance 格式（移除 .TW 後綴）
-            try {
-                const alternativeSymbol = `${stockCode}.TWO`; // 不帶 .TW
-                const testUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${alternativeSymbol}?interval=1d&range=1d`;
-                
-                // 嘗試通過代理訪問
-                for (const proxyUrl of publicQuoteProxies) {
-                    try {
-                        let proxyResponse;
-                        if (proxyUrl.includes('allorigins')) {
-                            const yahooUrl = encodeURIComponent(testUrl);
-                            proxyResponse = await fetch(proxyUrl + yahooUrl);
-                        } else if (proxyUrl.includes('codetabs')) {
-                            proxyResponse = await fetch(proxyUrl + encodeURIComponent(testUrl));
-                        } else if (proxyUrl.includes('corsproxy.io')) {
-                            proxyResponse = await fetch(proxyUrl + encodeURIComponent(testUrl));
-                        } else {
-                            proxyResponse = await fetch(proxyUrl + testUrl);
-                        }
-                        
-                        // 檢查響應狀態
-                        if (!proxyResponse || proxyResponse.status === 404) {
-                            continue; // 靜默跳過 404 或無響應
-                        }
-                        
-                        if (proxyResponse.status === 200 && proxyResponse.ok) {
-                            const responseText = await proxyResponse.text();
-                            try {
-                                const data = JSON.parse(responseText);
-                                
-                                if (data && data.chart && data.chart.result && data.chart.result.length > 0) {
-                                    const result = data.chart.result[0];
-                                    if (result && result.meta) {
-                                        const currentPrice = result.meta.regularMarketPrice || result.meta.previousClose || null;
-                                        if (currentPrice && currentPrice > 0) {
-                                            saveStockCurrentPrice(stockCode, currentPrice, false); // false = 自動獲取
-                                            console.log(`✓ 通過備用格式成功獲取 ${stockCode} 價格: ${currentPrice}`);
-                                            return currentPrice;
-                                        }
-                                    }
+                            const result = data.chart.result[0];
+                            if (result && result.meta && !result.error) {
+                                const previousClose = result.meta.previousClose || result.meta.regularMarketPreviousClose || null;
+                                if (previousClose && previousClose > 0) {
+                                    saveStockPreviousClosePrice(stockCode, previousClose);
                                 }
-                            } catch (parseError) {
-                                continue; // 解析失敗，嘗試下一個
+
+                                const currentPrice = result.meta.regularMarketPrice || previousClose || null;
+                                if (currentPrice && currentPrice > 0) {
+                                    saveStockCurrentPrice(stockCode, currentPrice, false);
+                                    console.log(`✓ 成功獲取 ${stockCode} 價格: ${currentPrice}`);
+                                    return currentPrice;
+                                }
                             }
                         }
-                    } catch (altError) {
-                        continue; // 靜默跳過所有錯誤
+                    } catch (proxyError) {
+                        if (proxyError.name === 'AbortError') {
+                            continue;
+                        }
+                        markQuoteProxyFailed();
+                        maybeAlertQuoteProxyDown();
+                        break;
+                    } finally {
+                        clearTimeout(timeoutId);
                     }
                 }
-            } catch (backupError) {
-                console.log('備用格式嘗試失敗:', backupError);
+            }
+
+            // 2) Public proxy fallback for ALL symbols，附加輕量重試
+            for (let attempt = 0; attempt < 2; attempt++) {
+                for (const candidateSymbol of symbolCandidates) {
+                    const yahooChartUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${candidateSymbol}?interval=1d&range=1d`;
+                    const currentPrice = await fetchYahooChartViaPublicProxies(yahooChartUrl, stockCode);
+                    if (currentPrice && currentPrice > 0) {
+                        saveStockCurrentPrice(stockCode, currentPrice, false);
+                        console.log(`✓ 透過公開代理成功獲取 ${stockCode} 價格: ${currentPrice}`);
+                        return currentPrice;
+                    }
+                }
+            }
+
+            // 如果所有代理都失敗，嘗試使用備用方案（僅針對債券 ETF）
+            // 注意：瀏覽器控制台可能仍會顯示 404 等錯誤，這是正常的，代碼會正確處理
+            if (stockCode.endsWith('B')) {
+                console.log(`債券 ETF ${stockCode} 無法從 Yahoo Finance 獲取價格，嘗試備用方法...`);
+                
+                // 嘗試方案1：使用不同的 Yahoo Finance 格式（移除 .TW 後綴）
+                try {
+                    const alternativeSymbol = `${stockCode}.TWO`; // 不帶 .TW
+                    const testUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${alternativeSymbol}?interval=1d&range=1d`;
+                    
+                    // 嘗試通過代理訪問
+                    for (const proxyUrl of publicQuoteProxies) {
+                        try {
+                            let proxyResponse;
+                            if (proxyUrl.includes('allorigins')) {
+                                const yahooUrl = encodeURIComponent(testUrl);
+                                proxyResponse = await fetch(proxyUrl + yahooUrl);
+                            } else if (proxyUrl.includes('codetabs')) {
+                                proxyResponse = await fetch(proxyUrl + encodeURIComponent(testUrl));
+                            } else if (proxyUrl.includes('corsproxy.io')) {
+                                proxyResponse = await fetch(proxyUrl + encodeURIComponent(testUrl));
+                            } else {
+                                proxyResponse = await fetch(proxyUrl + testUrl);
+                            }
+                            
+                            // 檢查響應狀態
+                            if (!proxyResponse || proxyResponse.status === 404) {
+                                continue; // 靜默跳過 404 或無響應
+                            }
+                            
+                            if (proxyResponse.status === 200 && proxyResponse.ok) {
+                                const responseText = await proxyResponse.text();
+                                try {
+                                    const data = JSON.parse(responseText);
+                                    
+                                    if (data && data.chart && data.chart.result && data.chart.result.length > 0) {
+                                        const result = data.chart.result[0];
+                                        if (result && result.meta) {
+                                            const currentPrice = result.meta.regularMarketPrice || result.meta.previousClose || null;
+                                            if (currentPrice && currentPrice > 0) {
+                                                saveStockCurrentPrice(stockCode, currentPrice, false); // false = 自動獲取
+                                                console.log(`✓ 通過備用格式成功獲取 ${stockCode} 價格: ${currentPrice}`);
+                                                return currentPrice;
+                                            }
+                                        }
+                                    }
+                                } catch (parseError) {
+                                    continue; // 解析失敗，嘗試下一個
+                                }
+                            }
+                        } catch (altError) {
+                            continue; // 靜默跳過所有錯誤
+                        }
+                    }
+                } catch (backupError) {
+                    console.log('備用格式嘗試失敗:', backupError);
+                }
+                
+                // 嘗試方案2：檢查是否有已保存的價格
+                const savedPrice = getStockCurrentPrice(stockCode);
+                if (savedPrice && savedPrice > 0) {
+                    console.log(`使用已保存的 ${stockCode} 價格: ${savedPrice}`);
+                    return savedPrice;
+                }
+
+                // 如果都沒有，返回 null 交由通用流程處理
             }
             
-            // 嘗試方案2：檢查是否有已保存的價格
+            // 記錄警告信息
+            if (stockCode.endsWith('B')) {
+                console.warn(`債券 ETF ${stockCode} 無法自動獲取價格`);
+                console.info(`可能原因：該債券 ETF 不在 Yahoo Finance 數據庫中，或代碼格式不同`);
+            } else {
+                console.warn(`代碼 ${stockCode} 無法獲取價格`);
+                console.info(`請在個股詳情頁面手動輸入價格`);
+            }
+            
+            // 如果有已保存的價格，返回它（即使不是今天的）
             const savedPrice = getStockCurrentPrice(stockCode);
-            if (savedPrice && savedPrice > 0) {
-                console.log(`使用已保存的 ${stockCode} 價格: ${savedPrice}`);
+            if (savedPrice) {
                 return savedPrice;
             }
+            
+            throw new Error('所有代理服務都無法獲取價格');
+        } catch (error) {
+            const errorMsg = error.message || '未知錯誤';
+            console.error(`獲取 ${stockCode} 股價失敗:`, errorMsg);
+            const savedPrice = getStockCurrentPrice(stockCode);
 
-            // 如果都沒有，返回 null 交由通用流程處理
-        }
-        
-        // 記錄警告信息
-        if (stockCode.endsWith('B')) {
-            console.warn(`債券 ETF ${stockCode} 無法自動獲取價格`);
-            console.info(`可能原因：該債券 ETF 不在 Yahoo Finance 數據庫中，或代碼格式不同`);
-        } else {
-            console.warn(`代碼 ${stockCode} 無法獲取價格`);
-            console.info(`請在個股詳情頁面手動輸入價格`);
-        }
-        
-        // 如果有已保存的價格，返回它（即使不是今天的）
-        const savedPrice = getStockCurrentPrice(stockCode);
-        if (savedPrice) {
-            return savedPrice;
-        }
-        
-        throw new Error('所有代理服務都無法獲取價格');
-    } catch (error) {
-        const errorMsg = error.message || '未知錯誤';
-        console.error(`獲取 ${stockCode} 股價失敗:`, errorMsg);
-        const savedPrice = getStockCurrentPrice(stockCode);
+            // 顯示友好的提示框（保持手動輸入管道）
+            if (allowPrompt) {
+                const stockName = findStockName(stockCode) || stockCode;
+                const isBondETF = stockCode.endsWith('B');
 
-        // 顯示友好的提示框（保持手動輸入管道）
-        if (allowPrompt) {
-            const stockName = findStockName(stockCode) || stockCode;
-            const isBondETF = stockCode.endsWith('B');
+                const manualPrice = await showStockPriceQueryModal({
+                    stockCode,
+                    stockName,
+                    isBondETF,
+                    defaultPrice: savedPrice
+                });
 
-            const manualPrice = await showStockPriceQueryModal({
-                stockCode,
-                stockName,
-                isBondETF,
-                defaultPrice: savedPrice
-            });
-
-            if (manualPrice && !isNaN(manualPrice) && manualPrice > 0) {
-                saveStockCurrentPrice(stockCode, manualPrice, true);
-                console.log(`✓ 已保存手動輸入的 ${stockCode} 價格: ${manualPrice}`);
-                if (typeof updateInvestmentSummary === 'function') {
-                    updateInvestmentSummary();
+                if (manualPrice && !isNaN(manualPrice) && manualPrice > 0) {
+                    saveStockCurrentPrice(stockCode, manualPrice, true);
+                    console.log(`✓ 已保存手動輸入的 ${stockCode} 價格: ${manualPrice}`);
+                    if (typeof updateInvestmentSummary === 'function') {
+                        updateInvestmentSummary();
+                    }
+                    if (typeof updateStockList === 'function') {
+                        updateStockList();
+                    }
+                    return manualPrice;
                 }
-                if (typeof updateStockList === 'function') {
-                    updateStockList();
-                }
-                return manualPrice;
             }
+
+            // 如果是債券 ETF 或代碼不存在，給出更友好的提示
+            if (stockCode.endsWith('B')) {
+                console.info(`💡 提示：債券 ETF ${stockCode} 無法自動獲取價格`);
+                console.info(`   請點擊該持股卡片，在「現價」欄位中手動輸入當前價格`);
+            } else if (errorMsg.includes('不存在') || errorMsg.includes('404')) {
+                console.info(`💡 提示：代碼 ${stockCode} 在 Yahoo Finance 中不存在`);
+                console.info(`   請在個股詳情頁面手動輸入價格`);
+            }
+
+            // 返回已保存的價格（如果有的話），否則返回 null
+            return savedPrice || null;
         }
-        
-        // 如果是債券 ETF 或代碼不存在，給出更友好的提示
-        if (stockCode.endsWith('B')) {
-            console.info(`💡 提示：債券 ETF ${stockCode} 無法自動獲取價格`);
-            console.info(`   請點擊該持股卡片，在「現價」欄位中手動輸入當前價格`);
-        } else if (errorMsg.includes('不存在') || errorMsg.includes('404')) {
-            console.info(`💡 提示：代碼 ${stockCode} 在 Yahoo Finance 中不存在`);
-            console.info(`   請在個股詳情頁面手動輸入價格`);
-        }
-        
-        // 返回已保存的價格（如果有的話），否則返回 null
-        return savedPrice || null;
+    })();
+
+    pendingCurrentPriceFetch.set(stockCode, taskPromise);
+    try {
+        return await taskPromise;
+    } finally {
+        pendingCurrentPriceFetch.delete(stockCode);
     }
 }
 
@@ -6320,7 +6548,6 @@ async function fetchMultipleStockPrices(stockCodes) {
     return results;
 }
 
-// 更新持股選擇列表
 function updateStockSelects() {
     const portfolio = getPortfolio();
     const sellSelect = document.getElementById('sellStockSelect');
@@ -9078,42 +9305,16 @@ function showHistoryBackgroundSelector(modalContent) {
     fileInput.addEventListener('change', async (e) => {
         const file = e.target.files[0];
         if (file) {
-            // 檢查文件大小（手機放寬限制到 20MB）
-            const maxSize = 20 * 1024 * 1024; // 20MB
-            if (file.size > maxSize) {
-                alert(`圖片太大！請選擇小於 ${Math.round(maxSize / 1024 / 1024)}MB 的圖片。\n目前檔案大小：${Math.round(file.size / 1024 / 1024)}MB`);
-                fileInput.value = '';
-                return;
-            }
-            
             // 顯示上傳進度提示
             const progressMsg = document.createElement('div');
             progressMsg.textContent = '正在處理圖片，請稍候...';
             progressMsg.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); color: white; padding: 15px 25px; border-radius: 8px; z-index: 10000;';
             document.body.appendChild(progressMsg);
-            
+
             try {
-                const reader = new FileReader();
-                reader.onload = async (event) => {
-                    let imageData = event.target.result;
-                    
-                    // 壓縮圖片（針對手機優化：更小尺寸，適中品質）
-                    if (typeof compressImage === 'function') {
-                        try {
-                            // 手機使用更激進的壓縮
-                            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                            const maxWidth = isMobile ? 1280 : 1920;
-                            const maxHeight = isMobile ? 720 : 1080;
-                            const quality = isMobile ? 0.6 : 0.8;
-                            
-                            imageData = await compressImage(imageData, maxWidth, maxHeight, quality);
-                            console.log('背景圖片已壓縮（手機優化）');
-                        } catch (error) {
-                            console.error('圖片壓縮失敗:', error);
-                            // 壓縮失敗時使用原始圖片
-                        }
-                    }
-                    
+                    // 壓縮後再存，手機原圖太大會超過 localStorage 容量
+                    const imageData = await readImageFile(file, { maxWidth: 1600, maxHeight: 1600, quality: 0.7 });
+
                     // 保存到自訂背景列表
                     const customBackgrounds = JSON.parse(localStorage.getItem('customHistoryBackgrounds') || '[]');
                     const newBackground = {
@@ -9122,14 +9323,18 @@ function showHistoryBackgroundSelector(modalContent) {
                         name: file.name || '自訂背景',
                         date: new Date().toISOString(),
                         originalSize: file.size,
-                        compressed: imageData !== event.target.result
+                        compressed: true
                     };
                     customBackgrounds.push(newBackground);
-                    localStorage.setItem('customHistoryBackgrounds', JSON.stringify(customBackgrounds));
-                    
+                    const saved = await trySetItemWithAlert('customHistoryBackgrounds', JSON.stringify(customBackgrounds));
+
                     // 移除進度提示
-                    document.body.removeChild(progressMsg);
-                    
+                    progressMsg.remove();
+                    if (!saved) {
+                        fileInput.value = '';
+                        return;
+                    }
+
                     // 重新渲染背景選項
                     const grid = backgroundModal.querySelector('.background-options-grid');
                     if (grid) {
@@ -9157,15 +9362,11 @@ function showHistoryBackgroundSelector(modalContent) {
                     }
 
                     fileInput.value = '';
-                };
-                reader.readAsDataURL(file);
             } catch (error) {
                 console.error('圖片處理失敗:', error);
                 // 移除進度提示
-                if (document.body.contains(progressMsg)) {
-                    document.body.removeChild(progressMsg);
-                }
-                alert('圖片處理失敗，請重試');
+                progressMsg.remove();
+                alert('圖片處理失敗，請重試\n\n' + (error.message || ''));
                 fileInput.value = '';
             }
         }
@@ -9359,9 +9560,7 @@ function deleteTransaction(btn) {
 // 獲取分類圖標（簡化版）
 function getCategoryIcon(category) {
     // 檢查是否有自定義圖片圖標
-    const customIcons = (typeof getCategoryCustomIconsSync === 'function')
-        ? getCategoryCustomIconsSync()
-        : JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
+    const customIcons = JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
     const customIconValue = customIcons[category]?.value;
     if (customIcons[category] && customIcons[category].type === 'image' && isLikelyImageSrc(customIconValue)) {
         return `<img src="${customIconValue}" alt="${category}" class="transaction-emoji-image" onerror="this.outerHTML='📦'">`;
@@ -9953,90 +10152,6 @@ function getGeneralResponse(userMessage, records) {
     ];
     
     return responses[Math.floor(Math.random() * responses.length)] + '\n\n您可以問我關於支出、收入、分類、趨勢、預算等問題，或者查詢特定日期的記錄（例如："12月5號買了什麼"），我會根據您的記帳數據提供分析。';
-}
-
-// 刪除交易記錄
-function deleteTransaction(btn) {
-    // 確認刪除
-    if (!confirm('確定要刪除這筆交易記錄嗎？此操作無法復原。')) {
-        return;
-    }
-    
-    const records = JSON.parse(localStorage.getItem('accountingRecords') || '[]');
-    
-    // 獲取記錄的識別信息
-    const timestamp = btn.dataset.recordTimestamp;
-    const date = btn.dataset.recordDate;
-    const amount = parseFloat(btn.dataset.recordAmount);
-    const category = btn.dataset.recordCategory;
-    
-    // 找到並刪除對應的記錄（使用多個字段匹配以確保準確性）
-    const filteredRecords = records.filter(record => {
-        // 如果有timestamp，優先使用timestamp匹配
-        if (timestamp && record.timestamp) {
-            return record.timestamp !== timestamp;
-        }
-        // 否則使用多個字段組合匹配
-        return !(record.date === date && 
-                 record.amount === amount && 
-                 (record.category || '') === category);
-    });
-    
-    // 保存更新後的記錄
-    localStorage.setItem('accountingRecords', JSON.stringify(filteredRecords));
-    
-    // 更新顯示
-    if (typeof initLedger === 'function') {
-        initLedger();
-    } else {
-        // 如果initLedger不存在，直接更新
-        const updatedRecords = JSON.parse(localStorage.getItem('accountingRecords') || '[]');
-        if (typeof updateLedgerSummary === 'function') {
-            updateLedgerSummary(updatedRecords);
-        }
-        if (typeof displayLedgerTransactions === 'function') {
-            displayLedgerTransactions(updatedRecords);
-        }
-    }
-    
-    // 顯示成功訊息
-    const successMsg = document.createElement('div');
-    successMsg.textContent = '已刪除交易記錄';
-    successMsg.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.8); color: white; padding: 16px 24px; border-radius: 12px; z-index: 10001; font-size: 16px;';
-    document.body.appendChild(successMsg);
-    setTimeout(() => {
-        if (document.body.contains(successMsg)) {
-            document.body.removeChild(successMsg);
-        }
-    }, 1500);
-}
-
- // 獲取分類圖標（簡化版）
-function getCategoryIcon(category) {
-    // 檢查是否有自定義圖片圖標
-    const customIcons = (typeof getCategoryCustomIconsSync === 'function')
-        ? getCategoryCustomIconsSync()
-        : JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
-    const customIconValue = customIcons[category]?.value;
-    if (customIcons[category] && customIcons[category].type === 'image' && isLikelyImageSrc(customIconValue)) {
-        return `<img src="${customIconValue}" alt="${category}" class="transaction-emoji-image">`;
-    }
-    
-    // 查找分類的默認圖標
-    const categoryData = allCategories.find(cat => cat.name === category);
-    if (categoryData) {
-        return categoryData.icon;
-    }
-    
-    const iconMap = {
-        '飲食': '🍔',
-        '交通': '🚇',
-        '娛樂': '🎮',
-        '醫療': '🏥',
-        '卡費': '💳',
-        '投資': '📈'
-    };
-    return iconMap[category] || '📦';
 }
 
  // 初始化圖表頁面
@@ -10709,15 +10824,168 @@ function updateChartLegend(data, colors) {
             </div>
         `;
     });
-    
+
     html += '</div>';
     chartLegend.innerHTML = html;
 }
 
+function getCurrentMonthKey() {
+    const now = new Date();
+    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+}
+
+function parseMonthKeyParts(monthKey) {
+    const m = /^\d{4}-\d{2}$/.test(monthKey) ? monthKey : null;
+    if (!m) return null;
+    const [y, mo] = m.split('-').map(v => parseInt(v, 10));
+    if (!y || !mo) return null;
+    return { year: y, month: mo };
+}
+
+function shiftMonthKey(monthKey, deltaMonths) {
+    const parsed = parseMonthKeyParts(monthKey);
+    if (!parsed) return null;
+    const d = new Date(parsed.year, parsed.month - 1, 1);
+    d.setMonth(d.getMonth() + deltaMonths);
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    return `${y}-${m}`;
+}
+
+function getRecentMonthKeys(count = 12, anchorMonthKey = null) {
+    const anchor = anchorMonthKey && /^\d{4}-\d{2}$/.test(anchorMonthKey) ? anchorMonthKey : getCurrentMonthKey();
+    const keys = [];
+    for (let i = 0; i < count; i++) {
+        const k = shiftMonthKey(anchor, -i);
+        if (k) keys.push(k);
+    }
+    return keys;
+}
+
+function ensureMonthBudgetsInitialized(monthKey) {
+    if (!monthKey || !/^\d{4}-\d{2}$/.test(monthKey)) return;
+    ensureMonthlyBudgetMigration();
+    const byMonth = JSON.parse(localStorage.getItem('categoryBudgetsByMonth') || '{}');
+    const obj = byMonth && typeof byMonth === 'object' ? byMonth : {};
+    if (obj[monthKey] && typeof obj[monthKey] === 'object') return;
+
+    // Try to copy from the nearest previous month that has budgets
+    let source = null;
+    for (let i = 1; i <= 36; i++) {
+        const prevKey = shiftMonthKey(monthKey, -i);
+        if (!prevKey) break;
+        const prevBudgets = obj[prevKey];
+        if (prevBudgets && typeof prevBudgets === 'object' && Object.keys(prevBudgets).length > 0) {
+            source = prevBudgets;
+            break;
+        }
+    }
+
+    obj[monthKey] = source ? { ...source } : {};
+    localStorage.setItem('categoryBudgetsByMonth', JSON.stringify(obj));
+}
+
+function ensureMonthlyBudgetMigration() {
+    const monthKey = getCurrentMonthKey();
+    const byMonth = JSON.parse(localStorage.getItem('categoryBudgetsByMonth') || '{}');
+    const obj = byMonth && typeof byMonth === 'object' ? byMonth : {};
+
+    // categoryBudgets 是「本月」預算，其他功能（固定支出同步、下月卡費等）會直接寫入它，
+    // 所以以它為準同步到本月的分月預算
+    const legacyRaw = localStorage.getItem('categoryBudgets');
+    if (legacyRaw === null) return;
+    let legacy;
+    try {
+        legacy = JSON.parse(legacyRaw);
+    } catch (e) {
+        return;
+    }
+    if (!legacy || typeof legacy !== 'object') return;
+    if (JSON.stringify(obj[monthKey] || null) === JSON.stringify(legacy)) return;
+
+    obj[monthKey] = { ...legacy };
+    localStorage.setItem('categoryBudgetsByMonth', JSON.stringify(obj));
+}
+
+function setBudgetSelectedMonthKey(monthKey) {
+    if (!monthKey || !/^\d{4}-\d{2}$/.test(monthKey)) return;
+    localStorage.setItem('budgetSelectedMonthKey', monthKey);
+}
+
+function getBudgetSelectedMonthKey() {
+    ensureMonthlyBudgetMigration();
+    const stored = localStorage.getItem('budgetSelectedMonthKey');
+    if (stored && /^\d{4}-\d{2}$/.test(stored)) return stored;
+    return getCurrentMonthKey();
+}
+
+function getCategoryBudgetsForSelectedMonth() {
+    ensureMonthlyBudgetMigration();
+    const monthKey = getBudgetSelectedMonthKey();
+    ensureMonthBudgetsInitialized(monthKey);
+    const byMonth = JSON.parse(localStorage.getItem('categoryBudgetsByMonth') || '{}');
+    const budgets = byMonth && typeof byMonth === 'object' ? byMonth[monthKey] : null;
+    return budgets && typeof budgets === 'object' ? budgets : {};
+}
+
+function saveCategoryBudgetsForSelectedMonth(budgets) {
+    ensureMonthlyBudgetMigration();
+    const byMonth = JSON.parse(localStorage.getItem('categoryBudgetsByMonth') || '{}');
+    const monthKey = getBudgetSelectedMonthKey();
+    const nextByMonth = byMonth && typeof byMonth === 'object' ? { ...byMonth } : {};
+    nextByMonth[monthKey] = budgets && typeof budgets === 'object' ? { ...budgets } : {};
+    localStorage.setItem('categoryBudgetsByMonth', JSON.stringify(nextByMonth));
+
+    if (monthKey === getCurrentMonthKey()) {
+        localStorage.setItem('categoryBudgets', JSON.stringify(nextByMonth[monthKey] || {}));
+    }
+}
+
+function getBudgetMonthsSorted() {
+    ensureMonthlyBudgetMigration();
+    const byMonth = JSON.parse(localStorage.getItem('categoryBudgetsByMonth') || '{}');
+    const keys = byMonth && typeof byMonth === 'object' ? Object.keys(byMonth) : [];
+    const months = keys.filter(k => /^\d{4}-\d{2}$/.test(k)).sort((a, b) => b.localeCompare(a));
+    const selected = getBudgetSelectedMonthKey();
+    if (!months.includes(selected)) months.unshift(selected);
+    const recent = getRecentMonthKeys(12, selected);
+    return Array.from(new Set([...recent, ...months]));
+}
+
+function getTotalBudgetAmountForMonthKey(monthKey) {
+    const byMonth = JSON.parse(localStorage.getItem('categoryBudgetsByMonth') || '{}');
+    const budgets = byMonth && typeof byMonth === 'object' ? byMonth[monthKey] : null;
+    const obj = budgets && typeof budgets === 'object' ? budgets : {};
+    let total = 0;
+    Object.keys(obj).forEach(k => { total += Number(obj[k]) || 0; });
+    return total;
+}
+
+function renderBudgetMonthPanel() {
+    const selectEl = document.getElementById('budgetMonthSelect');
+    const listEl = document.getElementById('budgetMonthList');
+    if (!selectEl || !listEl) return;
+
+    const months = getBudgetMonthsSorted();
+    const selected = getBudgetSelectedMonthKey();
+
+    selectEl.innerHTML = months.map(m => `<option value="${m}" ${m === selected ? 'selected' : ''}>${m}</option>`).join('');
+
+    if (!selectEl.dataset.bound) {
+        selectEl.addEventListener('change', () => {
+            setBudgetSelectedMonthKey(selectEl.value);
+            initBudget();
+        });
+        selectEl.dataset.bound = '1';
+    }
+
+    listEl.innerHTML = '';
+    listEl.style.display = 'none';
+}
+
 // 計算分類的已使用金額（當月）
 function getCategoryUsedAmount(categoryName, records) {
-    const now = new Date();
-    const currentMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+    const currentMonth = getBudgetSelectedMonthKey();
     
     let used = 0;
     records.forEach(record => {
@@ -10735,7 +11003,7 @@ function getCategoryUsedAmount(categoryName, records) {
 
 // 顯示預算設定對話框（美化版）
 function showBudgetSettingDialog(categoryName) {
-    const budgets = JSON.parse(localStorage.getItem('categoryBudgets') || '{}');
+    const budgets = { ...getCategoryBudgetsForSelectedMonth() };
     const dailyTrackingState = JSON.parse(localStorage.getItem('dailyBudgetTracking') || '{}');
     const currentBudget = budgets[categoryName] || 0;
     const isCurrentlyTracking = dailyTrackingState[categoryName] === true;
@@ -10894,7 +11162,7 @@ function showBudgetSettingDialog(categoryName) {
             }
     }
     
-    localStorage.setItem('categoryBudgets', JSON.stringify(budgets));
+    saveCategoryBudgetsForSelectedMonth(budgets);
         localStorage.setItem('dailyBudgetTracking', JSON.stringify(dailyTrackingState));
         
         // 關閉模態框
@@ -10923,8 +11191,10 @@ function initBudget() {
     // 自動套用下月預算（如果有的話）
     applyNextMonthBudgets();
     
+    renderBudgetMonthPanel();
+    
     const records = JSON.parse(localStorage.getItem('accountingRecords') || '[]');
-    const budgets = JSON.parse(localStorage.getItem('categoryBudgets') || '{}');
+    const budgets = getCategoryBudgetsForSelectedMonth();
     
     // 計算總預算
     let totalBudget = 0;
@@ -10933,8 +11203,8 @@ function initBudget() {
     });
     
     // 計算已使用
-    const now = new Date();
-    const currentMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+    const currentMonth = getBudgetSelectedMonthKey();
+    
     let totalUsed = 0;
     
     records.forEach(record => {
@@ -12291,7 +12561,11 @@ function applyNextMonthBudgets() {
     let nextMonthBudgets = JSON.parse(localStorage.getItem('nextMonthBudgets') || '{}');
     
     if (nextMonthBudgets[budgetKey]) {
-        let categoryBudgets = JSON.parse(localStorage.getItem('categoryBudgets') || '{}');
+        ensureMonthlyBudgetMigration();
+        const monthKey = getCurrentMonthKey();
+        const prevSelected = getBudgetSelectedMonthKey();
+        setBudgetSelectedMonthKey(monthKey);
+        let categoryBudgets = { ...getCategoryBudgetsForSelectedMonth() };
         let hasChanges = false;
         
         for (const [categoryName, budgetInfo] of Object.entries(nextMonthBudgets[budgetKey])) {
@@ -12300,7 +12574,7 @@ function applyNextMonthBudgets() {
         }
         
         if (hasChanges) {
-            localStorage.setItem('categoryBudgets', JSON.stringify(categoryBudgets));
+            saveCategoryBudgetsForSelectedMonth(categoryBudgets);
             
             // 清除已套用的下月預算
             delete nextMonthBudgets[budgetKey];
@@ -12311,6 +12585,8 @@ function applyNextMonthBudgets() {
                 initBudget();
             }
         }
+
+        setBudgetSelectedMonthKey(prevSelected);
     }
 }
 
@@ -12323,7 +12599,7 @@ function showAddBudgetDialog() {
     // 使用 getEnabledCategories(null) 獲取所有啟用的分類，不分類型
     let allAvailableCategories = getEnabledCategories(null);
     
-    const budgets = JSON.parse(localStorage.getItem('categoryBudgets') || '{}');
+    const budgets = getCategoryBudgetsForSelectedMonth();
     
     // 創建模態框
     const modal = document.createElement('div');
@@ -12477,6 +12753,7 @@ function initCategoryManagePage() {
     renderCategoryManageList();
 }
 
+// 渲染分類管理列表（顯示所有分類，不分類型）
 function renderCategoryManageList() {
     const categoryManageList = document.getElementById('categoryManageList');
     if (!categoryManageList) return;
@@ -12485,9 +12762,7 @@ function renderCategoryManageList() {
     
     // 顯示所有分類，不分類型，統一顯示
     // 獲取自定義圖標
-    const customIcons = (typeof getCategoryCustomIconsSync === 'function')
-        ? getCategoryCustomIconsSync()
-        : JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
+    const customIcons = JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}');
     
     let html = '';
     
@@ -12889,16 +13164,22 @@ function initSettingsPage() {
                             ]
         },
         {
-            title: '☁️ 雲端同步',
-            items: [
-                { icon: '☁️', title: '雲端備份（完整）', description: '一鍵備份所有資料', action: 'cloudBackupFull', accent: 'linear-gradient(135deg, #43e97b, #38f9d7)', iconGradient: 'linear-gradient(135deg, #43e97b, #38f9d7)' },
-                { icon: '☁️', title: '雲端還原（完整）', description: '從雲端還原備份', action: 'cloudRestoreFull', accent: 'linear-gradient(135deg, #fa709a, #fee140)', iconGradient: 'linear-gradient(135deg, #fa709a, #fee140)' },
-                { icon: '🔗', title: 'Sheet 網址', description: '設定 Google Sheet Web App', action: 'setGoogleSheetUploadUrl', accent: 'linear-gradient(135deg, #5ee7df, #b490ca)', iconGradient: 'linear-gradient(135deg, #5ee7df, #b490ca)' },
-                { icon: '🔑', title: '雲端備份碼', description: '設定雲端還原安全碼', action: 'setGoogleCloudBackupKey', accent: 'linear-gradient(135deg, #4facfe, #00f2fe)', iconGradient: 'linear-gradient(135deg, #4facfe, #00f2fe)' },
-                { icon: '🧾', title: '上傳明細', description: '同步所有記錄明細', action: 'uploadAllRecordsDetailsToGoogleSheet', accent: 'linear-gradient(135deg, #30cfd0, #330867)', iconGradient: 'linear-gradient(135deg, #30cfd0, #330867)' },
-                { icon: '🧮', title: '按帳戶備份', description: '依帳戶上傳資料', action: 'uploadRecordsByAccountToGoogleSheet', accent: 'linear-gradient(135deg, #f6d365, #fda085)', iconGradient: 'linear-gradient(135deg, #f6d365, #fda085)' },
-                { icon: '📊', title: '上傳加總', description: '同步收支分類加總', action: 'uploadIncomeExpenseCategorySummaryToGoogleSheet', accent: 'linear-gradient(135deg, #89f7fe, #66a6ff)', iconGradient: 'linear-gradient(135deg, #89f7fe, #66a6ff)' }
-            ]
+            title: '👤 雲端硬碟帳號',
+            items: (() => {
+                const session = window.DriveSync ? DriveSync.getSession() : null;
+                const items = [
+                    session
+                        ? { icon: '👤', title: `已登入：${session.username}`, description: '點這裡登出', action: 'driveAccount', accent: 'linear-gradient(135deg, #a1c4fd, #c2e9fb)', iconGradient: 'linear-gradient(135deg, #a1c4fd, #c2e9fb)' }
+                        : { icon: '👤', title: '登入 / 註冊', description: '登入後資料會上傳到雲端硬碟', action: 'driveAccount', accent: 'linear-gradient(135deg, #a1c4fd, #c2e9fb)', iconGradient: 'linear-gradient(135deg, #a1c4fd, #c2e9fb)' }
+                ];
+                if (session) {
+                    items.push(
+                        { icon: '⬆️', title: '上傳到雲端硬碟', description: '資料存成 data.json，圖片放進「圖片」資料夾', action: 'driveUpload', accent: 'linear-gradient(135deg, #43e97b, #38f9d7)', iconGradient: 'linear-gradient(135deg, #43e97b, #38f9d7)' },
+                        { icon: '⬇️', title: '從雲端硬碟還原', description: '用雲端資料取代這台裝置的資料', action: 'driveRestore', accent: 'linear-gradient(135deg, #fa709a, #fee140)', iconGradient: 'linear-gradient(135deg, #fa709a, #fee140)' }
+                    );
+                }
+                return items;
+            })()
         },
         {
             title: '💾 本機備份',
@@ -12967,7 +13248,15 @@ function initSettingsPage() {
     document.querySelectorAll('.settings-item').forEach(item => {
         item.addEventListener('click', () => {
             const action = item.dataset.action;
-            if (action === 'uploadAllData') {
+            if (action === 'driveAccount') {
+                DriveSync.accountMenu();
+            } else if (action === 'driveUpload') {
+                DriveSync.upload();
+            } else if (action === 'driveRestore') {
+                DriveSync.restore();
+            } else if (action === 'driveSetUrl') {
+                DriveSync.setUrl();
+            } else if (action === 'uploadAllData') {
                 uploadAllDataToGoogleSheet();
             } else if (action === 'deleteAllData') {
                 deleteAllDataFromGoogleSheet();
@@ -13680,78 +13969,30 @@ function exportAnnualReport(year, data) {
     alert('年度報告已匯出！');
 }
 
-// 備份資料（包含所有資料）
+// 備份資料（localStorage 裡的所有資料）
 function backupData() {
     try {
-        // 收集所有 localStorage 中的資料
+        const entries = {};
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (BACKUP_EXCLUDED_KEYS.has(key)) continue;
+            entries[key] = localStorage.getItem(key);
+        }
         const data = {
-            // 記帳相關
-            accountingRecords: JSON.parse(localStorage.getItem('accountingRecords') || '[]'),
-            categoryBudgets: JSON.parse(localStorage.getItem('categoryBudgets') || '{}'),
-            categoryEnabledState: JSON.parse(localStorage.getItem('categoryEnabledState') || '{}'),
-            dailyBudgetTracking: JSON.parse(localStorage.getItem('dailyBudgetTracking') || '{}'),
-            customCategories: JSON.parse(localStorage.getItem('customCategories') || '[]'),
-            categoryCustomIcons: (typeof getCategoryCustomIconsSync === 'function')
-                ? getCategoryCustomIconsSync()
-                : JSON.parse(localStorage.getItem('categoryCustomIcons') || '{}'),
-            
-            // 投資相關
-            investmentRecords: JSON.parse(localStorage.getItem('investmentRecords') || '[]'),
-            dcaPlans: JSON.parse(localStorage.getItem('dcaPlans') || '[]'),
-            stockCurrentPrices: JSON.parse(localStorage.getItem('stockCurrentPrices') || '{}'),
-
-            installmentRules: JSON.parse(localStorage.getItem('installmentRules') || '[]'),
-            
-            // 帳戶相關
-            accounts: JSON.parse(localStorage.getItem('accounts') || '[]'),
-            
-            // 表情和圖標
-            imageEmojis: JSON.parse(localStorage.getItem('imageEmojis') || '[]'),
-            
-            // 成員
-            members: JSON.parse(localStorage.getItem('members') || '[]'),
-            
-            // 設定
-            theme: localStorage.getItem('theme') || 'default',
-            fontSize: localStorage.getItem('fontSize') || 'medium',
-            customTheme: JSON.parse(localStorage.getItem('customTheme') || '{}'),
-            
-            // 備份資訊
+            appName: '記帳本',
+            backupVersion: '2.0',
             backupDate: new Date().toISOString(),
-            backupVersion: '1.0',
-            appName: '記帳本'
+            data: entries
         };
-        
-        // 計算資料大小
+
         const dataStr = JSON.stringify(data, null, 2);
         const sizeInMB = new Blob([dataStr]).size / (1024 * 1024);
-        
-        // 顯示資料統計
-        const stats = {
-            accountingRecords: data.accountingRecords.length,
-            investmentRecords: data.investmentRecords.length,
-            accounts: data.accounts.length,
-            categories: data.customCategories.length,
-            budgets: Object.keys(data.categoryBudgets).length,
-            dcaPlans: data.dcaPlans.length,
-            installmentRules: data.installmentRules.length
-        };
-        
-        const statsMessage = `資料統計：
-• 記帳記錄：${stats.accountingRecords} 筆
-• 投資記錄：${stats.investmentRecords} 筆
-• 帳戶：${stats.accounts} 個
-• 自定義分類：${stats.categories} 個
-• 預算設定：${stats.budgets} 個
-• 定期定額：${stats.dcaPlans} 個
-• 分期規則：${stats.installmentRules} 個
-• 檔案大小：${sizeInMB.toFixed(2)} MB`;
-        
-        // 確認備份
+        const statsMessage = `資料統計：\n${describeBackupEntries(entries)}\n• 檔案大小：${sizeInMB.toFixed(2)} MB`;
+
         if (!confirm(`${statsMessage}\n\n確定要下載備份檔案嗎？`)) {
             return;
         }
-        
+
         const blob = new Blob([dataStr], { type: 'application/json;charset=utf-8' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -13762,9 +14003,9 @@ function backupData() {
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        
-        alert(`資料備份成功！\n\n${statsMessage}\n\n檔案已下載到您的下載資料夾。\n\n您可以在其他設備上使用「還原資料」功能來匯入此備份檔案。`);
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+        alert(`資料備份成功！\n\n${statsMessage}\n\n檔案已下載到您的下載資料夾。\n\n您可以在其他設備上使用「還原」功能來匯入此備份檔案。`);
     } catch (error) {
         console.error('備份失敗:', error);
         alert('備份失敗，請稍後再試。\n\n錯誤訊息：' + error.message);
@@ -13778,35 +14019,38 @@ function backupData() {
 function restoreData() {
     const input = document.createElement('input');
     input.type = 'file';
-    input.accept = '.json';
+    input.accept = '.json,application/json';
     input.style.display = 'none';
-    
-    input.addEventListener('change', async (e) => {
+
+    input.addEventListener('change', (e) => {
         const file = e.target.files[0];
+        input.remove();
         if (!file) return;
-        
+
         const reader = new FileReader();
         reader.onload = async (event) => {
+            let data;
             try {
-                const data = JSON.parse(event.target.result);
-                
-                if (!confirm('確定要還原資料嗎？\n這將覆蓋現有的所有資料！')) {
-                    return;
-                }
-
-                await applyBackupDataPayload(data);
+                data = JSON.parse(String(event.target.result).replace(/^﻿/, ''));
             } catch (error) {
                 console.error('還原失敗:', error);
-                alert('還原失敗，請確認檔案格式正確。');
+                alert('還原失敗：檔案不是正確的 JSON 格式。');
+                return;
+            }
+            try {
+                await applyBackupDataPayload(data, { skipConfirm: false });
+            } catch (error) {
+                console.error('還原失敗:', error);
+                alert('還原失敗：' + error.message);
             }
         };
-        
+        reader.onerror = () => alert('還原失敗：無法讀取檔案。');
         reader.readAsText(file);
     });
-    
+
+    // 選檔視窗開著時 input 要留在頁面上，部分手機瀏覽器才會觸發 change
     document.body.appendChild(input);
     input.click();
-    document.body.removeChild(input);
 }
 
 // 匯入投資記錄（CSV 格式）
@@ -14268,82 +14512,6 @@ function showCreatorInfo() {
     });
 }
 
-// 顯示創作者信息
-function showCreatorInfo() {
-    const modal = document.createElement('div');
-    modal.className = 'creator-modal';
-    modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10004; display: flex; align-items: center; justify-content: center; overflow-y: auto;';
-    
-    modal.innerHTML = `
-        <div class="creator-content" style="background: white; border-radius: 20px; padding: 32px; max-width: 400px; width: 90%; max-height: 90vh; overflow-y: auto; margin: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); -webkit-overflow-scrolling: touch;">
-            <div style="display: flex; justify-content: flex-end; margin-bottom: 16px; position: sticky; top: 0; background: white; z-index: 10; padding-bottom: 8px;">
-                <button class="creator-close-btn" style="background: none; border: none; font-size: 24px; color: #999; cursor: pointer; padding: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: all 0.2s;">✕</button>
-            </div>
-            
-            <div style="font-size: 64px; margin-bottom: 20px;">👨‍💻</div>
-            <h2 style="font-size: 24px; font-weight: 600; color: #333; margin: 0 0 8px 0;">記帳本</h2>
-            <p style="font-size: 14px; color: #999; margin: 0 0 24px 0;">版本 1.0.7</p>
-            
-            <div style="text-align: left; margin-bottom: 24px; padding: 20px; background: linear-gradient(135deg, #fff5f9 0%, #ffeef5 100%); border-radius: 12px;">
-                <h3 style="font-size: 16px; font-weight: 600; color: #ff69b4; margin: 0 0 12px 0;">關於本應用</h3>
-                <p style="font-size: 14px; color: #666; line-height: 1.8; margin: 0 0 12px 0;">
-                    這是一個功能完整的個人記帳應用，幫助您輕鬆管理財務、追蹤支出、設定預算，並進行投資記錄。
-                </p>
-                <p style="font-size: 14px; color: #666; line-height: 1.8; margin: 0;">
-                    所有數據都存儲在您的設備本地，保護您的隱私安全。
-                </p>
-            </div>
-            
-            <div style="text-align: left; margin-bottom: 24px;">
-                <h3 style="font-size: 16px; font-weight: 600; color: #333; margin: 0 0 12px 0;">主要功能</h3>
-                <div style="font-size: 14px; color: #666; line-height: 2;">
-                    <div>✓ 多帳戶管理</div>
-                    <div>✓ 分類記帳</div>
-                    <div>✓ 預算設定</div>
-                    <div>✓ 投資追蹤</div>
-                    <div>✓ 圖表分析</div>
-                    <div>✓ 資料備份與還原</div>
-                </div>
-            </div>
-            
-            <div style="padding-top: 20px; border-top: 1px solid #f0f0f0;">
-                <p style="font-size: 12px; color: #999; margin: 0;">
-                    Made with ❤️ for better financial management
-                </p>
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(modal);
-    
-    // 綁定關閉按鈕
-    const closeBtn = modal.querySelector('.creator-close-btn');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            if (document.body.contains(modal)) {
-                document.body.removeChild(modal);
-            }
-        });
-        
-        // 懸停效果
-        closeBtn.addEventListener('mouseenter', () => {
-            closeBtn.style.background = '#f5f5f5';
-        });
-        closeBtn.addEventListener('mouseleave', () => {
-            closeBtn.style.background = 'none';
-        });
-    }
-    
-    // 點擊遮罩關閉
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            if (document.body.contains(modal)) {
-                document.body.removeChild(modal);
-            }
-        }
-    });
-}
-
 // 應用字體大小
 function applyFontSize(fontSize) {
     const root = document.documentElement;
@@ -14575,15 +14743,7 @@ function showFontSizeSelector() {
 }
 
 // 頁面載入時初始化
-document.addEventListener('DOMContentLoaded', async () => {
-    if (typeof initCategoryCustomIconsStorage === 'function') {
-        try {
-            await initCategoryCustomIconsStorage();
-        } catch (e) {
-            console.warn('initCategoryCustomIconsStorage failed:', e);
-        }
-    }
-
+document.addEventListener('DOMContentLoaded', () => {
     // 載入股票名稱映射表
     loadStockNames();
 
@@ -14743,19 +14903,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (settingsBackBtn) {
         settingsBackBtn.addEventListener('click', () => {
             goBackToLedger();
-        });
-    }
-    
-    // 初始化智慧提醒按鈕
-    const smartRemindersBtn = document.getElementById('smartRemindersBtn');
-    if (smartRemindersBtn) {
-        smartRemindersBtn.addEventListener('click', () => {
-            if (window.smartReminderSystem && typeof window.smartReminderSystem.showReminderPanel === 'function') {
-                window.smartReminderSystem.showReminderPanel();
-            } else {
-                console.warn('智慧提醒系統未載入');
-                alert('智慧提醒系統正在載入中，請稍後再試...');
-            }
         });
     }
     
@@ -15167,34 +15314,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             // 處理每個檔案
             for (const file of files) {
-                // 檢查文件大小（限制為 5MB）
-                if (file.size > 5 * 1024 * 1024) {
-                    alert(`圖片 ${file.name} 太大！請選擇小於 5MB 的圖片。`);
-                    continue;
-                }
-                
                 try {
-                    const imageData = await new Promise((resolve, reject) => {
-                        const reader = new FileReader();
-                        reader.onload = (event) => resolve(event.target.result);
-                        reader.onerror = reject;
-                        reader.readAsDataURL(file);
-                    });
-                    
-                    let processedImageData = imageData;
-                    
-                    // 壓縮圖片（使用 storage.js 中的壓縮函數）
-                    if (typeof compressImage === 'function') {
-                        try {
-                            processedImageData = await compressImage(imageData, 800, 800, 0.7);
-                            console.log('圖片已壓縮');
-                        } catch (error) {
-                            console.error('圖片壓縮失敗:', error);
-                            // 如果壓縮失敗，使用原始圖片
-                            processedImageData = imageData;
-                        }
-                    }
-                    
+                    // 手機照片常超過 5MB，先壓縮再存，不用原檔大小擋掉
+                    const processedImageData = await readImageFile(file, { maxWidth: 1000, maxHeight: 1000, quality: 0.7 });
+
                     // 添加到圖片陣列
                     window.selectedReceiptImages.push(processedImageData);
                     
@@ -15209,7 +15332,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     
                 } catch (error) {
                     console.error('處理圖片失敗:', error);
-                    alert(`處理圖片 ${file.name} 時發生錯誤`);
+                    alert(`處理圖片 ${file.name} 時發生錯誤\n\n${error.message || ''}`);
                 }
             }
             
@@ -18101,22 +18224,6 @@ function updateInvestmentDisplay() {
     }
 }
 
-// 初始化快捷鍵
-function initQuickActions() {
-    document.querySelectorAll('.quick-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const shares = parseInt(btn.dataset.shares);
-            if (shares) {
-                const sharesInput = document.getElementById('calcSharesInput');
-                if (sharesInput) {
-                    sharesInput.value = shares.toString();
-                    updateInvestmentDisplay();
-                }
-            }
-        });
-    });
-}
-
 // 保存投資記錄
 function saveInvestmentRecord(type) {
     // 從新的表單輸入框獲取值
@@ -18739,7 +18846,7 @@ function saveDividendRecord() {
         
         // 如果有有效的買入價格，計算並創建買入記錄
         if (buyPrice > 0) {
-            const fee = calculateInvestmentFee(amount);
+            const fee = calculateInvestmentFee(amount, Math.floor(amount / buyPrice));
             const availableAmount = amount - fee; // 扣除手續費後可用金額
             const buyShares = Math.floor(availableAmount / buyPrice); // 向下取整
             
@@ -18849,12 +18956,6 @@ function saveDividendRecord() {
     // 更新顯示
     updateInvestmentOverview();
     alert('股息記錄已儲存！🎉');
-}
-
-// 計算投資手續費
-function calculateInvestmentFee(totalAmount) {
-    // 手續費為總金額的0.1425%，最低20元
-    return Math.max(Math.round(totalAmount * 0.001425), 20);
 }
 
 // 顯示股息頁面
@@ -20825,14 +20926,21 @@ function uploadImageEmoji(container) {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*';
-    input.addEventListener('change', (e) => {
+    input.style.display = 'none';
+    input.addEventListener('change', async (e) => {
         const file = e.target.files[0];
+        input.remove();
         if (file) {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                // 直接使用原始圖片，不進行裁切
-                const imageData = event.target.result;
-                
+            let imageData;
+            try {
+                // 縮小成表情大小並保留透明背景；小檔（例如 GIF 動畫）維持原檔
+                imageData = await readImageFile(file, { maxWidth: 256, maxHeight: 256, keepTransparency: true, keepIfUnder: 200 * 1024 });
+            } catch (error) {
+                console.error('處理圖片失敗:', error);
+                alert('處理圖片時發生錯誤\n\n' + (error.message || ''));
+                return;
+            }
+            {
                 // 保存圖片表情
                 const savedEmojis = JSON.parse(localStorage.getItem('imageEmojis') || '[]');
                 const emojiData = {
@@ -20841,8 +20949,8 @@ function uploadImageEmoji(container) {
                     createdAt: new Date().toISOString()
                 };
                 savedEmojis.push(emojiData);
-                localStorage.setItem('imageEmojis', JSON.stringify(savedEmojis));
-                
+                if (!(await trySetItemWithAlert('imageEmojis', JSON.stringify(savedEmojis)))) return;
+
                 // 添加到表情容器
                 if (container) {
                     const emojiBtn = document.createElement('button');
@@ -20855,10 +20963,11 @@ function uploadImageEmoji(container) {
                     });
                     container.appendChild(emojiBtn);
                 }
-            };
-            reader.readAsDataURL(file);
+            }
         }
     });
+    // 選檔視窗開著時 input 要留在頁面上，部分手機瀏覽器才會觸發 change
+    document.body.appendChild(input);
     input.click();
 }
 
@@ -21114,24 +21223,27 @@ function initAccountImageUpload() {
         imageInput.click();
     });
     
-    // 文件選擇 - 直接使用原始圖片
-    imageInput.addEventListener('change', (e) => {
+    // 文件選擇 - 縮小後使用（手機原圖太大會存不進去）
+    imageInput.addEventListener('change', async (e) => {
         const file = e.target.files[0];
+        imageInput.value = '';
         if (file) {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                // 直接使用原始圖片，不進行裁切
-                const imageData = event.target.result;
-                
-                // 顯示圖片預覽
-                if (previewImg) {
-                    previewImg.src = imageData;
-                    previewImg.style.display = 'block';
-                }
-                if (placeholder) placeholder.style.display = 'none';
-                if (removeBtn) removeBtn.style.display = 'block';
-            };
-            reader.readAsDataURL(file);
+            let imageData;
+            try {
+                imageData = await readImageFile(file, { maxWidth: 512, maxHeight: 512, keepTransparency: /png|gif|webp/.test(file.type), keepIfUnder: 150 * 1024 });
+            } catch (error) {
+                console.error('處理圖片失敗:', error);
+                alert('處理圖片時發生錯誤\n\n' + (error.message || ''));
+                return;
+            }
+
+            // 顯示圖片預覽
+            if (previewImg) {
+                previewImg.src = imageData;
+                previewImg.style.display = 'block';
+            }
+            if (placeholder) placeholder.style.display = 'none';
+            if (removeBtn) removeBtn.style.display = 'block';
         }
     });
     
@@ -21613,13 +21725,6 @@ function saveSavingsGoal() {
     
     closeSavingsForm();
     renderSavingsList();
-}
-
-// 關閉想買的東西表單
-function closeWishlistForm() {
-    const modal = document.getElementById('wishlistModal');
-    closeModal(modal);
-    wishlistSavingsManager.currentEditingItem = null;
 }
 
 // 關閉存錢目標表單

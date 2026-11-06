@@ -1,0 +1,1010 @@
+{
+ "mandalaNoirBloom": {
+  "name": "曼陀羅黑金",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#aa8641",
+  "deep": "#795934",
+  "light": "#c4c2bf",
+  "all": [
+   "#aa8641:21",
+   "#aca89d:21",
+   "#bca168:19",
+   "#c4c2bf:16",
+   "#898275:13",
+   "#795934:11"
+  ]
+ },
+ "totoro": {
+  "name": "龍貓主題",
+  "cat": "anime",
+  "dark": false,
+  "vivid": "#58abe8",
+  "deep": "#356086",
+  "light": "#e6eae2",
+  "all": [
+   "#7dc3f0:26",
+   "#58abe8:24",
+   "#e6eae2:19",
+   "#b7b2aa:13",
+   "#4a8bbd:10",
+   "#356086:8"
+  ]
+ },
+ "noface": {
+  "name": "無臉男主題",
+  "cat": "anime",
+  "dark": false,
+  "vivid": "#d8af6c",
+  "deep": "#312d2b",
+  "light": "#dfceb8",
+  "all": [
+   "#312d2b:30",
+   "#5f4e48:23",
+   "#9c774c:14",
+   "#dfceb8:14",
+   "#9c9386:12",
+   "#d8af6c:7"
+  ]
+ },
+ "demonslayer": {
+  "name": "鬼滅之刃主題",
+  "cat": "anime",
+  "dark": true,
+  "vivid": "#13e9f4",
+  "deep": "#122932",
+  "light": "#13e9f4",
+  "all": [
+   "#122932:25",
+   "#526569:20",
+   "#175c6c:20",
+   "#20899e:17",
+   "#18b2cc:10",
+   "#13e9f4:8"
+  ]
+ },
+ "waterBlade": {
+  "name": "水之刃",
+  "cat": "anime",
+  "dark": false,
+  "vivid": "#a8584d",
+  "deep": "#222122",
+  "light": "#ccb8a0",
+  "all": [
+   "#ccb8a0:24",
+   "#969080:21",
+   "#66665f:17",
+   "#222122:16",
+   "#49403e:15",
+   "#a8584d:7"
+  ]
+ },
+ "waveRonin": {
+  "name": "浪人水影",
+  "cat": "anime",
+  "dark": false,
+  "vivid": "#667682",
+  "deep": "#24272b",
+  "light": "#e0d6ca",
+  "all": [
+   "#24272b:23",
+   "#667682:20",
+   "#8e8f90:17",
+   "#4c5157:14",
+   "#b5b2ac:14",
+   "#e0d6ca:13"
+  ]
+ },
+ "amberRonin": {
+  "name": "暖金浪人",
+  "cat": "anime",
+  "dark": false,
+  "vivid": "#e2974e",
+  "deep": "#352226",
+  "light": "#f8de8f",
+  "all": [
+   "#b76140:24",
+   "#894232:23",
+   "#5f332d:20",
+   "#e2974e:13",
+   "#352226:13",
+   "#f8de8f:7"
+  ]
+ },
+ "serpentEyes": {
+  "name": "蛇影雙瞳",
+  "cat": "anime",
+  "dark": false,
+  "vivid": "#2c3136",
+  "deep": "#2c3136",
+  "light": "#f6f5f9",
+  "all": [
+   "#2c3136:28",
+   "#5d6266:20",
+   "#8c8e92:20",
+   "#b5b3b5:12",
+   "#dcd8d8:10",
+   "#f6f5f9:9"
+  ]
+ },
+ "kitsuneElegance": {
+  "name": "九尾和風",
+  "cat": "anime",
+  "dark": false,
+  "vivid": "#9b885f",
+  "deep": "#010101",
+  "light": "#d5c8a4",
+  "all": [
+   "#d5c8a4:40",
+   "#9b885f:24",
+   "#585139:19",
+   "#302d21:8",
+   "#010101:6",
+   "#111210:3"
+  ]
+ },
+ "shinchan": {
+  "name": "蠟筆小新主題",
+  "cat": "anime",
+  "dark": false,
+  "vivid": "#eabf66",
+  "deep": "#60452d",
+  "light": "#f3ecd7",
+  "all": [
+   "#eabf66:29",
+   "#4ab0dd:23",
+   "#f3ecd7:21",
+   "#74c2e2:15",
+   "#acc9c6:10",
+   "#60452d:2"
+  ]
+ },
+ "anyMelody": {
+  "name": "安妮亞旋律",
+  "cat": "anime",
+  "dark": false,
+  "vivid": "#e9a598",
+  "deep": "#2e2222",
+  "light": "#fcefd8",
+  "all": [
+   "#fcefd8:34",
+   "#e9a598:18",
+   "#9ca5bf:16",
+   "#b86b65:12",
+   "#e6ccbb:11",
+   "#2e2222:9"
+  ]
+ },
+ "caitu": {
+  "name": "財兔滿滿",
+  "cat": "wealth",
+  "dark": false,
+  "vivid": "#ca9745",
+  "deep": "#653b20",
+  "light": "#e9dcb3",
+  "all": [
+   "#dbbb71:27",
+   "#e9dcb3:24",
+   "#ca9745:21",
+   "#a67439:15",
+   "#8b5628:9",
+   "#653b20:3"
+  ]
+ },
+ "floralGradient": {
+  "name": "花漾漸層",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#1b738a",
+  "deep": "#1b738a",
+  "light": "#eecda8",
+  "all": [
+   "#eecda8:29",
+   "#d49b79:25",
+   "#b4c0b8:18",
+   "#81adae:16",
+   "#4e93a1:8",
+   "#1b738a:4"
+  ]
+ },
+ "mintRoseFairy": {
+  "name": "薄荷玫瑰精靈",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#c6989e",
+  "deep": "#766e6c",
+  "light": "#f7e8e1",
+  "all": [
+   "#c6989e:30",
+   "#e8d3c9:16",
+   "#849ca4:15",
+   "#f7e8e1:14",
+   "#766e6c:12",
+   "#b7d2d1:12"
+  ]
+ },
+ "crystalFortune": {
+  "name": "粉晶招財",
+  "cat": "wealth",
+  "dark": false,
+  "vivid": "#e2bd75",
+  "deep": "#b67b36",
+  "light": "#eae5e3",
+  "all": [
+   "#e7ccb8:20",
+   "#d3a6a2:19",
+   "#c89763:17",
+   "#eae5e3:16",
+   "#e2bd75:14",
+   "#b67b36:13"
+  ]
+ },
+ "emeraldPrince": {
+  "name": "翡翠王子",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#beb69e",
+  "deep": "#20312c",
+  "light": "#f3efe6",
+  "all": [
+   "#beb69e:22",
+   "#8e8c7a:21",
+   "#20312c:20",
+   "#64685b:17",
+   "#3d473e:10",
+   "#f3efe6:10"
+  ]
+ },
+ "cuteCats": {
+  "name": "可愛貓咪",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#df8e71",
+  "deep": "#df8e71",
+  "light": "#fffbe7",
+  "all": [
+   "#f7eee2:34",
+   "#f6ca9e:20",
+   "#fffbe7:18",
+   "#e1dac4:16",
+   "#df8e71:9",
+   "#f8f4ec:4"
+  ]
+ },
+ "shibaPastel": {
+  "name": "柴犬粉彩",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#f9bdab",
+  "deep": "#aea5b0",
+  "light": "#fef6ef",
+  "all": [
+   "#fef6ef:39",
+   "#fad6bb:17",
+   "#d3d9d9:15",
+   "#f9bdab:11",
+   "#f7e4d8:11",
+   "#aea5b0:7"
+  ]
+ },
+ "pikachuSnow": {
+  "name": "雪境皮卡丘",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#0a70e5",
+  "deep": "#0a70e5",
+  "light": "#f1f3e7",
+  "all": [
+   "#0a70e5:25",
+   "#569fe1:19",
+   "#8bbbe6:18",
+   "#f1f3e7:13",
+   "#cea873:13",
+   "#bad4ed:12"
+  ]
+ },
+ "blueLotusGoldGlow": {
+  "name": "藍金蓮光",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#27436b",
+  "deep": "#27436b",
+  "light": "#decfb7",
+  "all": [
+   "#839eb4:28",
+   "#52799d:23",
+   "#27436b:19",
+   "#adb9be:14",
+   "#786767:9",
+   "#decfb7:7"
+  ]
+ },
+ "hanfuMaskNoir": {
+  "name": "金箔面具夜色",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#4a4034",
+  "deep": "#13110e",
+  "light": "#c8bfb1",
+  "all": [
+   "#93877a:25",
+   "#6d6255:24",
+   "#c8bfb1:18",
+   "#4a4034:15",
+   "#2e2921:11",
+   "#13110e:5"
+  ]
+ },
+ "samoyedSnowWave": {
+  "name": "雪浪白犬",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#69b3cd",
+  "deep": "#69b3cd",
+  "light": "#f3fafb",
+  "all": [
+   "#bdf0f8:26",
+   "#f3fafb:22",
+   "#d8eef1:17",
+   "#90cadd:13",
+   "#69b3cd:11",
+   "#bfdce3:10"
+  ]
+ },
+ "citrusNoirBlossom": {
+  "name": "柑橘夜花",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#eb7537",
+  "deep": "#140d17",
+  "light": "#e4bd9f",
+  "all": [
+   "#eb7537:33",
+   "#e4bd9f:25",
+   "#140d17:13",
+   "#2f2735:12",
+   "#585058:9",
+   "#714032:7"
+  ]
+ },
+ "totoroCitrusPool": {
+  "name": "龍貓柑橘沁涼",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#9dc85a",
+  "deep": "#4d6e4e",
+  "light": "#ececd5",
+  "all": [
+   "#ececd5:24",
+   "#b7d2b1:21",
+   "#7cbd9a:16",
+   "#4d6e4e:16",
+   "#999885:13",
+   "#9dc85a:10"
+  ]
+ },
+ "leafCatGreen": {
+  "name": "葉影貓咪綠",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#bec215",
+  "deep": "#4da23e",
+  "light": "#faf5ea",
+  "all": [
+   "#aacd5f:49",
+   "#faf5ea:15",
+   "#c0d287:14",
+   "#ddd5b7:10",
+   "#4da23e:6",
+   "#bec215:5"
+  ]
+ },
+ "pastelBlossomMist": {
+  "name": "粉彩花霧",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#d598ac",
+  "deep": "#889790",
+  "light": "#f5f8f5",
+  "all": [
+   "#e6eee9:28",
+   "#cdc4c7:22",
+   "#e7d5db:20",
+   "#f5f8f5:11",
+   "#d598ac:10",
+   "#889790:8"
+  ]
+ },
+ "pastelStarryEyes": {
+  "name": "夢幻星瞳",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#c8a1eb",
+  "deep": "#7c6fb7",
+  "light": "#f4dcf4",
+  "all": [
+   "#f4dcf4:39",
+   "#ddc7f6:24",
+   "#dadffa:14",
+   "#edb8e5:13",
+   "#c8a1eb:7",
+   "#7c6fb7:2"
+  ]
+ },
+ "peonyAzureMask": {
+  "name": "藍金牡丹星眸",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#e0b671",
+  "deep": "#56565b",
+  "light": "#dfc3b4",
+  "all": [
+   "#dfc3b4:38",
+   "#90a2a3:19",
+   "#357fa0:14",
+   "#d89d97:14",
+   "#56565b:10",
+   "#e0b671:5"
+  ]
+ },
+ "starryBlossomEyes": {
+  "name": "星夜櫻眸",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#124691",
+  "deep": "#051a47",
+  "light": "#ccceeb",
+  "all": [
+   "#8d91c0:55",
+   "#ccceeb:17",
+   "#3a72ba:11",
+   "#124691:8",
+   "#072c69:7",
+   "#051a47:3"
+  ]
+ },
+ "dreamy": {
+  "name": "夢幻境域",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#7dbee4",
+  "deep": "#77ad85",
+  "light": "#d2d3e8",
+  "all": [
+   "#a7cadc:28",
+   "#d2d3e8:23",
+   "#b9cea1:21",
+   "#7dbee4:15",
+   "#e9d198:8",
+   "#77ad85:6"
+  ]
+ },
+ "dreamyfish": {
+  "name": "夢幻魚語",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#2a5585",
+  "deep": "#2a5585",
+  "light": "#cac1d9",
+  "all": [
+   "#9989b3:25",
+   "#cac1d9:25",
+   "#80abc9:19",
+   "#5483ac:17",
+   "#2a5585:7",
+   "#605890:7"
+  ]
+ },
+ "emerald": {
+  "name": "翠綠之夢",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#357e67",
+  "deep": "#102019",
+  "light": "#c4baa9",
+  "all": [
+   "#9d9279:26",
+   "#c4baa9:25",
+   "#274b3b:17",
+   "#102019:13",
+   "#6e6045:11",
+   "#357e67:9"
+  ]
+ },
+ "graffiti": {
+  "name": "塗鴉風格",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#ebd3a2",
+  "deep": "#13151b",
+  "light": "#ebd3a2",
+  "all": [
+   "#9a928f:24",
+   "#6d6c66:18",
+   "#1f2a35:18",
+   "#ebd3a2:18",
+   "#36414c:14",
+   "#13151b:8"
+  ]
+ },
+ "shinobu": {
+  "name": "蝴蝶忍",
+  "cat": "anime",
+  "dark": true,
+  "vivid": "#9b6399",
+  "deep": "#181325",
+  "light": "#dba9cb",
+  "all": [
+   "#6b4372:23",
+   "#9b6399:22",
+   "#2a1d38:16",
+   "#452b51:16",
+   "#dba9cb:15",
+   "#181325:8"
+  ]
+ },
+ "attractGold": {
+  "name": "吸金紅金",
+  "cat": "wealth",
+  "dark": false,
+  "vivid": "#d0975e",
+  "deep": "#b35530",
+  "light": "#f5f1e7",
+  "all": [
+   "#f0e8dc:27",
+   "#b35530:25",
+   "#d0975e:24",
+   "#e4c192:12",
+   "#eddbc3:7",
+   "#f5f1e7:4"
+  ]
+ },
+ "getrich": {
+  "name": "恭喜發財",
+  "cat": "wealth",
+  "dark": false,
+  "vivid": "#b6122c",
+  "deep": "#5d2930",
+  "light": "#fefcf8",
+  "all": [
+   "#fbede6:36",
+   "#fefcf8:17",
+   "#b6122c:16",
+   "#a77478:11",
+   "#d7b4b5:10",
+   "#5d2930:9"
+  ]
+ },
+ "fortuneGodGetRich": {
+  "name": "眾生請發財",
+  "cat": "wealth",
+  "dark": false,
+  "vivid": "#cbaf97",
+  "deep": "#362e2f",
+  "light": "#ffffff",
+  "all": [
+   "#fdfdfd:34",
+   "#ffffff:33",
+   "#847668:12",
+   "#cbaf97:7",
+   "#e4d5cb:7",
+   "#362e2f:7"
+  ]
+ },
+ "ganeshaGoldOm": {
+  "name": "金曜梵音",
+  "cat": "wealth",
+  "dark": true,
+  "vivid": "#d8bc86",
+  "deep": "#1f160e",
+  "light": "#d8bc86",
+  "all": [
+   "#6d4d31:25",
+   "#97744e:22",
+   "#4d3521:21",
+   "#352416:14",
+   "#d8bc86:12",
+   "#1f160e:6"
+  ]
+ },
+ "festive": {
+  "name": "節日慶典",
+  "cat": "celebration",
+  "dark": false,
+  "vivid": "#f1a65b",
+  "deep": "#2b241d",
+  "light": "#e9c1a5",
+  "all": [
+   "#bb2c2b:54",
+   "#8c2f2a:12",
+   "#a97259:11",
+   "#e9c1a5:10",
+   "#f1a65b:10",
+   "#2b241d:3"
+  ]
+ },
+ "mori": {
+  "name": "小森主題",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#da5a38",
+  "deep": "#3f1e19",
+  "light": "#f6f2e7",
+  "all": [
+   "#f6f2e7:38",
+   "#d5caaf:24",
+   "#aea186:16",
+   "#3f1e19:9",
+   "#da5a38:8",
+   "#79503b:4"
+  ]
+ },
+ "littlePrince": {
+  "name": "小王子星光",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#c98a63",
+  "deep": "#616487",
+  "light": "#e9e0d4",
+  "all": [
+   "#e0c9b5:31",
+   "#cfb7ab:29",
+   "#9e8d9b:14",
+   "#616487:11",
+   "#e9e0d4:9",
+   "#c98a63:5"
+  ]
+ },
+ "jellyParty": {
+  "name": "果凍派對",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#f5b351",
+  "deep": "#c53c51",
+  "light": "#e2d8cf",
+  "all": [
+   "#e2d8cf:30",
+   "#f5b351:22",
+   "#ec6338:18",
+   "#dc9387:14",
+   "#c53c51:8",
+   "#2b99c3:7"
+  ]
+ },
+ "cozyWood": {
+  "name": "溫暖木屋",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#dab594",
+  "deep": "#645743",
+  "light": "#f5f2ef",
+  "all": [
+   "#dab594:36",
+   "#f2d2b8:24",
+   "#a48a6c:20",
+   "#f5f2ef:11",
+   "#b4bfc6:5",
+   "#645743:5"
+  ]
+ },
+ "oceanWhale": {
+  "name": "海洋鯨魚",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#6da0da",
+  "deep": "#6da0da",
+  "light": "#eae8f3",
+  "all": [
+   "#b6d0f1:22",
+   "#9dc6ee:19",
+   "#eae8f3:17",
+   "#8bb2e5:16",
+   "#6da0da:15",
+   "#7aa9e0:11"
+  ]
+ },
+ "shinchanFlashlightNight": {
+  "name": "小新手電筒夜",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#c8957a",
+  "deep": "#3b3027",
+  "light": "#eca6a9",
+  "all": [
+   "#434656:23",
+   "#675b69:21",
+   "#937874:19",
+   "#c8957a:18",
+   "#eca6a9:17",
+   "#3b3027:2"
+  ]
+ },
+ "capybaraSakuraPond": {
+  "name": "水豚櫻花池",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#d3aa7d",
+  "deep": "#2b2c2a",
+  "light": "#e2ceaf",
+  "all": [
+   "#afb599:27",
+   "#96937d:18",
+   "#2b2c2a:17",
+   "#e2ceaf:15",
+   "#67665c:13",
+   "#d3aa7d:10"
+  ]
+ },
+ "piggyMelody": {
+  "name": "粉豬旋律",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#fbb5bb",
+  "deep": "#c78891",
+  "light": "#fff5f6",
+  "all": [
+   "#fbb5bb:40",
+   "#fed7db:34",
+   "#c78891:10",
+   "#fee9eb:8",
+   "#fddfe3:6",
+   "#fff5f6:2"
+  ]
+ },
+ "autumnBunny": {
+  "name": "秋日兔兔",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#c7814a",
+  "deep": "#c7814a",
+  "light": "#fffffe",
+  "all": [
+   "#f9efe3:68",
+   "#fffffe:15",
+   "#c7814a:6",
+   "#e4d7d0:4",
+   "#faf6f1:3",
+   "#cdaf8d:3"
+  ]
+ },
+ "mintBunnyTea": {
+  "name": "薄荷兔奶茶",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#ceb482",
+  "deep": "#727c58",
+  "light": "#f8e4c9",
+  "all": [
+   "#f8e4c9:30",
+   "#aec5b5:30",
+   "#ceddcc:19",
+   "#95a275:11",
+   "#ceb482:6",
+   "#727c58:5"
+  ]
+ },
+ "goldfishLantern": {
+  "name": "金魚燈籠",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#e4682a",
+  "deep": "#37251c",
+  "light": "#eeb98a",
+  "all": [
+   "#ad7353:24",
+   "#8a4e33:21",
+   "#5c3b29:18",
+   "#eeb98a:13",
+   "#37251c:12",
+   "#e4682a:12"
+  ]
+ },
+ "starryOceanPrince": {
+  "name": "星夜王子",
+  "cat": "fantasy",
+  "dark": true,
+  "vivid": "#274e97",
+  "deep": "#010103",
+  "light": "#8da3c7",
+  "all": [
+   "#274e97:26",
+   "#0e2556:19",
+   "#071229:16",
+   "#8da3c7:15",
+   "#010103:13",
+   "#04060e:11"
+  ]
+ },
+ "lilyCatPond": {
+  "name": "睡蓮喵池",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#d3aa7d",
+  "deep": "#2b2c2a",
+  "light": "#e2ceaf",
+  "all": [
+   "#afb599:27",
+   "#96937d:18",
+   "#2b2c2a:17",
+   "#e2ceaf:15",
+   "#67665c:13",
+   "#d3aa7d:10"
+  ]
+ },
+ "blackGoldFrog": {
+  "name": "黑金招財蛙",
+  "cat": "wealth",
+  "dark": true,
+  "vivid": "#d9c56c",
+  "deep": "#0a0a0a",
+  "light": "#d9c56c",
+  "all": [
+   "#9d6d2e:21",
+   "#5e432a:21",
+   "#36281d:20",
+   "#1b1916:15",
+   "#d9c56c:12",
+   "#0a0a0a:11"
+  ]
+ },
+ "blackCatCoinGalaxy": {
+  "name": "黑貓金幣星河",
+  "cat": "wealth",
+  "dark": false,
+  "vivid": "#ba9a4e",
+  "deep": "#241a16",
+  "light": "#aed0be",
+  "all": [
+   "#241a16:20",
+   "#ba9a4e:18",
+   "#725230:18",
+   "#445658:15",
+   "#6f9292:15",
+   "#aed0be:14"
+  ]
+ },
+ "luckyCatPink": {
+  "name": "招財貓金幣粉色",
+  "cat": "wealth",
+  "dark": false,
+  "vivid": "#dead6c",
+  "deep": "#c8754a",
+  "light": "#fbebe1",
+  "all": [
+   "#f6d0c8:26",
+   "#f8dbd6:22",
+   "#dead6c:16",
+   "#c8754a:15",
+   "#dbbd9e:14",
+   "#fbebe1:8"
+  ]
+ },
+ "coinCatGold": {
+  "name": "金幣招財喵",
+  "cat": "wealth",
+  "dark": false,
+  "vivid": "#f2c76c",
+  "deep": "#683315",
+  "light": "#f6e6b7",
+  "all": [
+   "#df9042:24",
+   "#b96429:22",
+   "#d6a888:16",
+   "#683315:15",
+   "#f2c76c:15",
+   "#f6e6b7:8"
+  ]
+ },
+ "crimsonIvory": {
+  "name": "紅金象牙",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#dd5044",
+  "deep": "#572922",
+  "light": "#f5e5da",
+  "all": [
+   "#a58681:26",
+   "#f5e5da:20",
+   "#cfac9f:18",
+   "#82544b:15",
+   "#572922:14",
+   "#dd5044:6"
+  ]
+ },
+ "blueBunnyFlower": {
+  "name": "藍花兔兔",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#7b9ad5",
+  "deep": "#717e89",
+  "light": "#eeddc7",
+  "all": [
+   "#aabcd8:27",
+   "#eeddc7:25",
+   "#95a9c3:21",
+   "#c0b595:10",
+   "#7b9ad5:9",
+   "#717e89:8"
+  ]
+ },
+ "mintBlossomGarden": {
+  "name": "薄荷花園",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#93d1a4",
+  "deep": "#72c478",
+  "light": "#e7f2e4",
+  "all": [
+   "#cae8d3:26",
+   "#a4ddc5:21",
+   "#b9e0bf:18",
+   "#e7f2e4:15",
+   "#93d1a4:15",
+   "#72c478:3"
+  ]
+ },
+ "narutoGraffiti": {
+  "name": "鳴人塗鴉",
+  "cat": "anime",
+  "dark": false,
+  "vivid": "#e99148",
+  "deep": "#343547",
+  "light": "#ead5bd",
+  "all": [
+   "#343547:24",
+   "#e99148:18",
+   "#99615a:17",
+   "#ead5bd:16",
+   "#2282b4:13",
+   "#9e99ab:12"
+  ]
+ },
+ "hanfuElegance": {
+  "name": "漢服雅韻",
+  "cat": "fantasy",
+  "dark": false,
+  "vivid": "#b0756b",
+  "deep": "#494a5a",
+  "light": "#fefcf5",
+  "all": [
+   "#ceafa2:27",
+   "#b0756b:27",
+   "#494a5a:20",
+   "#e9d1c2:13",
+   "#f9f2ea:7",
+   "#fefcf5:5"
+  ]
+ },
+ "littlePrinceWhaleNight": {
+  "name": "小王子鯨夜",
+  "cat": "fantasy",
+  "dark": true,
+  "vivid": "#ac8c58",
+  "deep": "#0f1a38",
+  "light": "#ac8c58",
+  "all": [
+   "#19304b:25",
+   "#274a61:23",
+   "#4f6365:23",
+   "#ac8c58:11",
+   "#0f1a38:10",
+   "#599b9d:8"
+  ]
+ },
+ "pastelCatDream": {
+  "name": "粉彩貓夢",
+  "cat": "cute",
+  "dark": false,
+  "vivid": "#7ea9d9",
+  "deep": "#6279af",
+  "light": "#f8f0ea",
+  "all": [
+   "#f3c4b0:22",
+   "#acd7ea:20",
+   "#7ea9d9:20",
+   "#f8f0ea:17",
+   "#c095a9:14",
+   "#6279af:8"
+  ]
+ }
+}

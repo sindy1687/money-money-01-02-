@@ -5,22 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>記帳 - 主輸入畫面</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="styles.css?v=20260224_1">
-    <link rel="stylesheet" href="mori-theme.css?v=20260224_1">
-    <link rel="stylesheet" href="emerald-dream-theme.css?v=20260224_1">
-    <link rel="stylesheet" href="flame-theme.css?v=20260224_1">
-    <link rel="stylesheet" href="shinchan-theme.css?v=20260224_1">
-    <link rel="stylesheet" href="shinchan-pool-theme.css?v=20260224_1">
-    <link rel="stylesheet" href="festive-theme.css?v=20260224_1">
-    <link rel="stylesheet" href="dreamy-galaxy-theme.css?v=20260224_1">
-    <link rel="stylesheet" href="whimsical-starry-theme.css?v=20260224_1">
-    <link rel="stylesheet" href="cute-pastel-theme.css?v=20260224_1">
-    <link rel="stylesheet" href="little-prince-theme.css?v=20260224_1">
-    <link rel="stylesheet" href="cyberpunk-city-theme.css?v=20260224_1">
-    <link rel="stylesheet" href="css/styles-themes.css?v=20260224_1">
-    <link rel="stylesheet" href="searchHistory.css?v=20260224_1">
-    <link rel="stylesheet" href="css/smart-accounting.css?v=20260224_1">
-    <link rel="stylesheet" href="css/smart-reminders.css?v=20260224_1">
+    <link rel="stylesheet" href="styles.css?v=20261030_8">
+    <link rel="stylesheet" href="css/styles-themes.css?v=20261030_4">
+    <!-- 主題設計工具組：依各主題圖片的圖案風格，統一按鈕、卡片、框線的形狀 -->
+    <link rel="stylesheet" href="css/theme-kit.css?v=20261031_3">
+    <!-- 只載入目前使用中的主題樣式，切換主題時再載入新的 -->
+    <script>
+        (function () {
+            const themeFiles = ['amberRonin','anyMelody','attractGold','autumnBunny','blackCatCoinGalaxy','blackGoldFrog','blue','blueBunnyFlower','blueLotusGoldGlow','caitu','capybaraSakuraPond','citrusNoirBlossom','coinCatGold','cozyWood','crimsonIvory','crystalFortune','cuteCats','cyan','demonslayer','dreamy','dreamyfish','emerald','emeraldPrince','festive','floralGradient','fortuneGodGetRich','ganeshaGoldOm','getrich','ghostHalloween','goldfishLantern','graffiti','green','halloweenCats','hanfuElegance','hanfuMaskNoir','indigo','jellyParty','kitsuneElegance','leafCatGreen','littlePrince','littlePrinceWhaleNight','luckyCatPink','mandalaNoirBloom','mintBlossomGarden','mintRoseFairy','mori','narutoGraffiti','noface','oceanWhale','orange','pastelBlossomMist','pastelCatDream','pastelStarryEyes','peonyAzureMask','piggyMelody','pikachuSnow','pink','purple','red','samoyedSnowWave','serpentEyes','shibaPastel','shinchan','shinchanFlashlightNight','shinobu','starCloudDream','starryBlossomEyes','starryOceanPrince','teal','totoro','totoroCitrusPool','waterBlade','waveRonin','yellow'];
+            // 主題樣式有改動時更新這個版本號，手機才不會用到快取的舊檔
+            const THEME_CSS_VERSION = '20261031_1';
+            // 與其他主題共用同一個檔案的主題
+            const themeFileAliases = { mintBunnyTea: 'autumnBunny', lilyCatPond: 'capybaraSakuraPond'};
+            let pendingThemeLink = null;
+            const themeFileFor = (themeId) => themeFileAliases[themeId] || (themeFiles.includes(themeId) ? themeId : null);
+
+            window.loadThemeStylesheet = function (themeId) {
+                const file = themeFileFor(themeId);
+                const current = document.getElementById('activeThemeStylesheet');
+                const href = file ? 'css/themes/' + file + '.css?v=' + THEME_CSS_VERSION : '';
+                if (!current) return;
+                if (!href || current.getAttribute('href') === href) {
+                    if (pendingThemeLink) pendingThemeLink.remove();
+                    pendingThemeLink = null;
+                    if (!href) current.removeAttribute('href');
+                    document.dispatchEvent(new Event('themestylesheetload'));
+                    return;
+                }
+                // 新樣式載入完成後才移除舊的，避免切換時畫面閃爍
+                const next = document.createElement('link');
+                next.rel = 'stylesheet';
+                next.setAttribute('href', href);
+                next.onload = next.onerror = () => {
+                    if (pendingThemeLink !== next) {
+                        // 載入期間又切換了主題，這個已經用不到
+                        next.remove();
+                        return;
+                    }
+                    pendingThemeLink = null;
+                    const old = document.getElementById('activeThemeStylesheet');
+                    if (old) old.remove();
+                    next.id = 'activeThemeStylesheet';
+                    // 通知文字對比守衛：新主題的顏色已經套上，可以檢查了
+                    document.dispatchEvent(new Event('themestylesheetload'));
+                };
+                if (pendingThemeLink) pendingThemeLink.remove();
+                pendingThemeLink = next;
+                current.parentNode.insertBefore(next, current.nextSibling);
+            };
+
+            let savedTheme = 'blue';
+            try {
+                savedTheme = localStorage.getItem('selectedTheme') || localStorage.getItem('theme') || 'blue';
+            } catch (e) {}
+            // 首次載入直接寫進 HTML，讓瀏覽器等主題樣式載完才畫出畫面，不會先閃一下預設樣式
+            const initialFile = themeFileFor(savedTheme);
+            document.write('<link rel="stylesheet" id="activeThemeStylesheet"' + (initialFile ? ' href="css/themes/' + initialFile + '.css?v=' + THEME_CSS_VERSION + '"' : '') + '>');
+        })();
+    </script>
+    <link rel="stylesheet" href="searchHistory.css">
     
     <!-- Google Fonts - 美觀字體系統 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,24 +73,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
-    <div class="theme-video-background" aria-hidden="true">
-        <video id="moneyThemeVideo" class="theme-video" autoplay loop muted playsinline preload="auto">
-            <source src="https://v1.pinimg.com/videos/iht/expMp4/a4/53/29/a45329a21920d8db7a7f778daa592453_720w.mp4" type="video/mp4">
-        </video>
-        <video id="spaceThemeVideo" class="theme-video" autoplay loop muted playsinline preload="auto">
-            <source src="https://v1.pinimg.com/videos/iht/720p/4e/00/d1/4e00d1999152ab007ebe4aef36d5e2c9.mp4" type="video/mp4">
-        </video>
-        <video id="shinchanPoolThemeVideo" class="theme-video" autoplay loop muted playsinline preload="auto">
-            <source src="https://v1.pinimg.com/videos/iht/expMp4/76/35/eb/7635eb2cc1d1c08a867742f7144faf11_720w.mp4" type="video/mp4">
-        </video>
-        <video id="nightglowSeasonsThemeVideo" class="theme-video" autoplay loop muted playsinline preload="auto">
-            <source src="https://v1.pinimg.com/videos/iht/expMp4/c7/39/73/c739737a7c0471e01fa4e606507d0a48_720w.mp4" type="video/mp4">
-        </video>
-        <video id="cyberpunkCityThemeVideo" class="theme-video" autoplay loop muted playsinline preload="auto">
-            <source src="https://v1.pinimg.com/videos/iht/expMp4/f0/38/aa/f038aad8dd17f765f1c3c975a4e869f0_720w.mp4" type="video/mp4">
-        </video>
-        <div class="theme-video-gradient"></div>
-    </div>
     <!-- 記帳輸入頁面 -->
     <div class="page-input" id="pageInput" style="display: none;">
         <div class="app-container">
@@ -426,8 +451,6 @@
         <div class="ledger-header">
             <button class="search-btn" id="searchBtn">🔍</button>
             <h2 class="ledger-title">默認帳本</h2>
-            <button class="smart-analysis-btn" id="smartAnalysisBtn" title="智慧分析">🧠 智慧分析</button>
-            <button class="smart-reminders-btn" id="smartRemindersBtn" title="智慧提醒">🔔 智慧提醒</button>
         </div>
 
         <!-- 搜索框 -->
@@ -624,6 +647,15 @@
         <div class="budget-header">
             <button class="back-btn" id="budgetBackBtn">←</button>
             <h2 class="budget-title">預算設定</h2>
+        </div>
+
+        <div class="budget-month-panel" id="budgetMonthPanel" style="padding: 0 16px 12px 16px;">
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <div style="flex: 1;">
+                    <select id="budgetMonthSelect" style="width: 100%; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--border-light); background: var(--bg-white); color: var(--text-primary); font-weight: 600;"></select>
+                </div>
+            </div>
+            <div id="budgetMonthList" style="margin-top: 10px;"></div>
         </div>
 
         <div class="budget-summary">
@@ -1923,27 +1955,27 @@
     <!-- 底部導航欄 -->
     <div class="bottom-nav">
         <button class="nav-item active" data-page="ledger">
-            <img src="./image/1.png?t=20251220" alt="記帳本" class="nav-icon">
+            <img src="./image/1.png?t=20261030" alt="記帳本" class="nav-icon">
             <span class="nav-text">記帳本</span>
         </button>
         <button class="nav-item" data-page="wallet">
-            <img src="./image/2.png?t=20251220" alt="錢包" class="nav-icon">
+            <img src="./image/2.png?t=20261030" alt="錢包" class="nav-icon">
             <span class="nav-text">錢包</span>
         </button>
          <button class="nav-item" data-page="monthlyPlanner">
-             <img src="./image/6.png?t=20251220" alt="每月規劃" class="nav-icon">
+             <img src="./image/6.png?t=20261030" alt="每月規劃" class="nav-icon">
              <span class="nav-text">每月規劃</span>
          </button>
         <button class="nav-item" data-page="investment">
-            <img src="./image/3.png?t=20251220" alt="投資專區" class="nav-icon">
+            <img src="./image/3.png?t=20261030" alt="投資專區" class="nav-icon">
             <span class="nav-text">投資專區</span>
         </button>
         <button class="nav-item" data-page="chart">
-            <img src="./image/4.png?t=20251220" alt="圖表分析" class="nav-icon">
+            <img src="./image/4.png?t=20261030" alt="圖表分析" class="nav-icon">
             <span class="nav-text">圖表分析</span>
         </button>
         <button class="nav-item" data-page="settings">
-            <img src="./image/5.png?t=20251220" alt="設置" class="nav-icon">
+            <img src="./image/5.png?t=20261030" alt="設置" class="nav-icon">
             <span class="nav-text">設置</span>
         </button>
     </div>
@@ -2020,36 +2052,20 @@
     </div>
 
     <!-- 模組化腳本 -->
-    <script src="js/categories.js?v=20260224_1"></script>
-    <script src="js/storage.js?v=20260224_1"></script>
-    <script src="js/advisor.js?v=20260224_1"></script>
-    <script src="js/theme.js?v=20260224_1"></script>
-    <script src="js/autoTransfer.js?v=20260224_1"></script>
-    <!-- 智慧記帳功能 -->
-    <script src="js/smart-accounting.js?v=20260224_1"></script>
-    <!-- 智慧記帳整合功能 -->
-    <script src="js/smart-accounting-integration.js?v=20260224_1"></script>
-    <!-- 智慧提醒系統 -->
-    <script src="js/smart-reminders.js?v=20260224_1"></script>
+    <script src="js/categories.js"></script>
+    <script src="js/storage.js?v=20261030_2"></script>
+    <script src="js/advisor.js"></script>
+    <script src="js/theme.js?v=20261031_1"></script>
+    <!-- 文字對比守衛：字跟背景太接近時自動調整，讓每個主題的字都清楚 -->
+    <script src="js/contrast-guard.js?v=20261031_4"></script>
+    <script src="js/autoTransfer.js"></script>
+    <!-- 雲端硬碟帳號與同步 -->
+    <script src="js/drive-sync.js?v=20261030_5"></script>
     <!-- 性能優化器 -->
-    <script src="js/performance-optimizer-simple.js?v=20260224_1"></script>
-    <!-- 強制蝴蝶忍主題卡費文字白色 -->
-    <script src="force_fee_white.js?v=20260224_1"></script>
-    <!-- 住房物業分類顏色修復 -->
-    <script src="housing_category_fix.js?v=20260224_1"></script>
-    <!-- 錢文字淺黃色修復 -->
-    <script src="money_color_fix.js?v=20260224_1"></script>
-    <!-- 圖表文字淺黃色修復 -->
-    <script src="chart_color_fix.js?v=20260224_1"></script>
-    <!-- 強制日期文字白色 -->
-    <script src="force_date_white.js?v=20260224_1"></script>
-    <!-- 極端日期白色修復 -->
-    <script src="extreme_date_fix.js?v=20260224_1"></script>
-    <!-- 可愛粉彩主題日期修復 -->
-    <script src="cute_pastel_date_fix.js?v=20260224_1"></script>
+    <script src="js/performance-optimizer-simple.js"></script>
     <!-- 主腳本（保留其他功能） -->
-    <script src="script.js?v=20260224_1"></script>
-    <script src="searchHistoryInit.js?v=20260224_1" type="module"></script>
+    <script src="script.js?v=20261030_5"></script>
+    <script src="searchHistoryInit.js" type="module"></script>
     
     <!-- 自動修復投資卡片背景圖片 -->
     <script>

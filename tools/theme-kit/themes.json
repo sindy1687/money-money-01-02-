@@ -1,0 +1,610 @@
+[
+ {
+  "id": "pink",
+  "name": "粉色主題",
+  "cat": "basic",
+  "color": "#ff69b4",
+  "img": "",
+  "cssBg": false
+ },
+ {
+  "id": "blue",
+  "name": "藍色主題",
+  "cat": "basic",
+  "color": "#4a90e2",
+  "img": "",
+  "cssBg": false
+ },
+ {
+  "id": "green",
+  "name": "綠色主題",
+  "cat": "basic",
+  "color": "#4caf50",
+  "img": "",
+  "cssBg": false
+ },
+ {
+  "id": "purple",
+  "name": "紫色主題",
+  "cat": "basic",
+  "color": "#9c27b0",
+  "img": "",
+  "cssBg": false
+ },
+ {
+  "id": "orange",
+  "name": "橙色主題",
+  "cat": "basic",
+  "color": "#ff9800",
+  "img": "",
+  "cssBg": false
+ },
+ {
+  "id": "cyan",
+  "name": "青色主題",
+  "cat": "basic",
+  "color": "#00bcd4",
+  "img": "",
+  "cssBg": false
+ },
+ {
+  "id": "red",
+  "name": "紅色主題",
+  "cat": "basic",
+  "color": "#e53935",
+  "img": "",
+  "cssBg": false
+ },
+ {
+  "id": "yellow",
+  "name": "黃色主題",
+  "cat": "basic",
+  "color": "#fbc02d",
+  "img": "",
+  "cssBg": false
+ },
+ {
+  "id": "indigo",
+  "name": "靛藍主題",
+  "cat": "basic",
+  "color": "#5c6bc0",
+  "img": "",
+  "cssBg": false
+ },
+ {
+  "id": "teal",
+  "name": "茶色主題",
+  "cat": "basic",
+  "color": "#26a69a",
+  "img": "",
+  "cssBg": false
+ },
+ {
+  "id": "mandalaNoirBloom",
+  "name": "曼陀羅黑金",
+  "cat": "fantasy",
+  "color": "#c9b79a",
+  "img": "https://i.pinimg.com/1200x/b9/81/2a/b9812ad57a6a2115ebfd25638ecc2ce5.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "totoro",
+  "name": "龍貓主題",
+  "cat": "anime",
+  "color": "#4682B4",
+  "img": "https://i.pinimg.com/736x/f6/e9/10/f6e910dc17992265ad9833055ff153ac.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "noface",
+  "name": "無臉男主題",
+  "cat": "anime",
+  "color": "#f6c343",
+  "img": "https://i.pinimg.com/1200x/fe/b3/f9/feb3f9990f903e1b7b0f4a2066a97722.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "demonslayer",
+  "name": "鬼滅之刃主題",
+  "cat": "anime",
+  "color": "#00c2d1",
+  "img": "https://i.pinimg.com/736x/73/3c/b0/733cb0696372d66f16702dd385a5aa5b.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "waterBlade",
+  "name": "水之刃",
+  "cat": "anime",
+  "color": "#49c7d3",
+  "img": "https://i.pinimg.com/736x/25/bc/b8/25bcb8505a3a276fcd8d978684ca797c.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "waveRonin",
+  "name": "浪人水影",
+  "cat": "anime",
+  "color": "#2c7db3",
+  "img": "https://i.pinimg.com/736x/c5/d5/60/c5d5605539ede1eb0e8c9c1aef661dee.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "amberRonin",
+  "name": "暖金浪人",
+  "cat": "anime",
+  "color": "#f4b24a",
+  "img": "https://i.pinimg.com/736x/10/21/7b/10217b8f99106e8ff921040354429197.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "serpentEyes",
+  "name": "蛇影雙瞳",
+  "cat": "anime",
+  "color": "#2aa9a4",
+  "img": "https://i.pinimg.com/736x/2e/60/08/2e6008635951b66dcc9ad7b0943526f2.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "kitsuneElegance",
+  "name": "九尾和風",
+  "cat": "anime",
+  "color": "#d9793c",
+  "img": "https://i.pinimg.com/736x/2e/66/5c/2e665c345865193001e3870c80cc4d06.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "shinchan",
+  "name": "蠟筆小新主題",
+  "cat": "anime",
+  "color": "#FFD700",
+  "img": "https://i.pinimg.com/1200x/c3/66/a8/c366a88a9b62dee30d8628ddae89afa9.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "anyMelody",
+  "name": "安妮亞旋律",
+  "cat": "anime",
+  "color": "#f06c9b",
+  "img": "https://i.pinimg.com/736x/5b/e3/dd/5be3dd7d3c655fbc76f891dc98240304.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "caitu",
+  "name": "財兔滿滿",
+  "cat": "wealth",
+  "color": "#FFD700",
+  "img": "https://i.pinimg.com/736x/85/9c/7c/859c7c50479b84c65089909c4acec1f3.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "floralGradient",
+  "name": "花漾漸層",
+  "cat": "cute",
+  "color": "#ff5a8a",
+  "img": "https://i.pinimg.com/1200x/ad/aa/b6/adaab6e2e82651185578cf132884c482.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "mintRoseFairy",
+  "name": "薄荷玫瑰精靈",
+  "cat": "fantasy",
+  "color": "#53c8c1",
+  "img": "https://i.pinimg.com/474x/c9/11/ec/c911ec31a445ed3e6a3ebc14392a0e11.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "crystalFortune",
+  "name": "粉晶招財",
+  "cat": "wealth",
+  "color": "#f3b7d6",
+  "img": "https://i.pinimg.com/1200x/ce/51/ad/ce51ad70ef8ce24f13090a3dc913b0f6.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "emeraldPrince",
+  "name": "翡翠王子",
+  "cat": "fantasy",
+  "color": "#2E8B57",
+  "img": "https://i.pinimg.com/736x/55/40/2f/55402fb6bcf0c65c832636ad5504499f.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "cuteCats",
+  "name": "可愛貓咪",
+  "cat": "cute",
+  "color": "#FFB6C1",
+  "img": "https://i.pinimg.com/736x/fe/2a/cf/fe2acfb6eedcf65941dad52ad03e3490.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "shibaPastel",
+  "name": "柴犬粉彩",
+  "cat": "cute",
+  "color": "#f4a58e",
+  "img": "https://i.pinimg.com/1200x/22/08/48/220848ccfb147982dacd366023399186.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "pikachuSnow",
+  "name": "雪境皮卡丘",
+  "cat": "cute",
+  "color": "#1e5bff",
+  "img": "https://i.pinimg.com/736x/09/47/3b/09473b4845e1a576e384d8185f0b0adc.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "blueLotusGoldGlow",
+  "name": "藍金蓮光",
+  "cat": "fantasy",
+  "color": "#2b5ea8",
+  "img": "https://i.pinimg.com/1200x/09/1b/cd/091bcdf0eb9b1cc5125cb60f4fa3854d.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "hanfuMaskNoir",
+  "name": "金箔面具夜色",
+  "cat": "fantasy",
+  "color": "#d6b25e",
+  "img": "https://i.pinimg.com/736x/3c/d4/1c/3cd41c515b0c0d50d3d455c93bb09aa0.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "samoyedSnowWave",
+  "name": "雪浪白犬",
+  "cat": "cute",
+  "color": "#2d8fbe",
+  "img": "https://i.pinimg.com/736x/d8/86/9b/d8869b7555b465b043ea42cf297d78eb.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "citrusNoirBlossom",
+  "name": "柑橘夜花",
+  "cat": "fantasy",
+  "color": "#ff7a1a",
+  "img": "https://i.pinimg.com/736x/54/7b/5e/547b5ea055f9bdc0288b711d842e3e90.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "totoroCitrusPool",
+  "name": "龍貓柑橘沁涼",
+  "cat": "cute",
+  "color": "#2bb6b1",
+  "img": "https://i.pinimg.com/736x/93/90/fc/9390fceb4e3f56bcbf59ff6e12698228.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "leafCatGreen",
+  "name": "葉影貓咪綠",
+  "cat": "cute",
+  "color": "#2f8f3a",
+  "img": "https://i.pinimg.com/1200x/da/80/c5/da80c5a273bc8fe4e4f62f4bf66c6f95.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "pastelBlossomMist",
+  "name": "粉彩花霧",
+  "cat": "cute",
+  "color": "#e86a8d",
+  "img": "https://i.pinimg.com/736x/32/62/23/326223aca9d453a14355f46b2831e985.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "pastelStarryEyes",
+  "name": "夢幻星瞳",
+  "cat": "cute",
+  "color": "#b58cff",
+  "img": "https://i.pinimg.com/1200x/c2/c2/95/c2c29589e119b36a664e3f541ae5aeaa.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "peonyAzureMask",
+  "name": "藍金牡丹星眸",
+  "cat": "fantasy",
+  "color": "#2aa9a4",
+  "img": "https://i.pinimg.com/736x/01/fa/42/01fa420519e6ce78785135c0e7a7072d.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "starryBlossomEyes",
+  "name": "星夜櫻眸",
+  "cat": "fantasy",
+  "color": "#4fd3ff",
+  "img": "https://i.pinimg.com/736x/7b/de/dd/7bdeddd9adbe0a4fa24bb082797093ac.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "dreamy",
+  "name": "夢幻境域",
+  "cat": "cute",
+  "color": "#87CEEB",
+  "img": "https://i.pinimg.com/736x/21/4d/cc/214dccff6dac6b30bebd621afc60669d.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "dreamyfish",
+  "name": "夢幻魚語",
+  "cat": "cute",
+  "color": "#87CEEB",
+  "img": "https://i.pinimg.com/736x/a3/82/37/a382370de3785e43c0bd8db75fa13e67.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "emerald",
+  "name": "翠綠之夢",
+  "cat": "fantasy",
+  "color": "#2E8B57",
+  "img": "https://i.pinimg.com/736x/54/58/17/5458177129997fbd8f56b713e39d2d0f.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "graffiti",
+  "name": "塗鴉風格",
+  "cat": "fantasy",
+  "color": "#1E90FF",
+  "img": "https://i.pinimg.com/1200x/fa/a1/0c/faa10cd0b7816efb3ac74d940bc4bda4.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "shinobu",
+  "name": "蝴蝶忍",
+  "cat": "anime",
+  "color": "#9B59B6",
+  "img": "https://i.pinimg.com/736x/26/c9/c0/26c9c0297b0cad3dfa8d6d5c41ccfc18.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "attractGold",
+  "name": "吸金紅金",
+  "cat": "wealth",
+  "color": "#C62828",
+  "img": "https://i.pinimg.com/1200x/94/e4/9e/94e49ef07a1ce58f8bfa3b177a580bd5.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "getrich",
+  "name": "恭喜發財",
+  "cat": "wealth",
+  "color": "#D42C2C",
+  "img": "https://i.pinimg.com/1200x/c9/6c/28/c96c28bb9f8555ef81c7649f97aac720.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "fortuneGodGetRich",
+  "name": "眾生請發財",
+  "cat": "wealth",
+  "color": "#b11f2a",
+  "img": "https://i.pinimg.com/1200x/14/34/74/1434744422d640eb5d8d955a2a86247b.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "ganeshaGoldOm",
+  "name": "金曜梵音",
+  "cat": "wealth",
+  "color": "#d6b25e",
+  "img": "https://i.pinimg.com/1200x/d4/ed/3b/d4ed3ba9170e4f38f19dc1d3868eb986.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "festive",
+  "name": "節日慶典",
+  "cat": "celebration",
+  "color": "#E63946",
+  "img": "https://i.pinimg.com/736x/c8/57/a1/c857a19b3f5bd274ba864e54dc27f550.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "mori",
+  "name": "小森主題",
+  "cat": "fantasy",
+  "color": "#3B7A57",
+  "img": "https://i.pinimg.com/736x/91/12/d5/9112d581109a8069dff4011d272cd26f.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "littlePrince",
+  "name": "小王子星光",
+  "cat": "fantasy",
+  "color": "#3E5B9A",
+  "img": "https://i.pinimg.com/736x/91/87/48/918748238a3b26c91dcacd9926591d57.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "jellyParty",
+  "name": "果凍派對",
+  "cat": "cute",
+  "color": "#ff7aa2",
+  "img": "https://i.pinimg.com/736x/c2/b1/45/c2b14507e3346ef9d72d09d83f54e430.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "cozyWood",
+  "name": "溫暖木屋",
+  "cat": "cute",
+  "color": "#c58a5a",
+  "img": "https://i.pinimg.com/736x/cf/3f/fd/cf3ffdf44aef4e6600bba86f0f9877f2.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "oceanWhale",
+  "name": "海洋鯨魚",
+  "cat": "cute",
+  "color": "#4aa6e8",
+  "img": "https://i.pinimg.com/1200x/aa/71/a7/aa71a78307c34e76fb8f3058996ba65e.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "shinchanFlashlightNight",
+  "name": "小新手電筒夜",
+  "cat": "cute",
+  "color": "#5a6fc4",
+  "img": "https://i.pinimg.com/1200x/5d/ea/1b/5dea1b06637f915b5ddcdfdad801983e.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "capybaraSakuraPond",
+  "name": "水豚櫻花池",
+  "cat": "cute",
+  "color": "#e889a6",
+  "img": "https://i.pinimg.com/736x/23/09/c8/2309c8b8703951c217f99a7ed505e580.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "piggyMelody",
+  "name": "粉豬旋律",
+  "cat": "cute",
+  "color": "#e86f9a",
+  "img": "https://i.pinimg.com/736x/41/d8/c5/41d8c595cfef850cb707ed8d4a008d7f.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "autumnBunny",
+  "name": "秋日兔兔",
+  "cat": "cute",
+  "color": "#d98b3a",
+  "img": "https://i.pinimg.com/1200x/1f/b2/c3/1fb2c3bf2f76c698f85bdf7a5c1116b9.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "mintBunnyTea",
+  "name": "薄荷兔奶茶",
+  "cat": "cute",
+  "color": "#4fb8b3",
+  "img": "https://i.pinimg.com/736x/7b/91/62/7b9162124b29ec7ba01ddf685efbdfc8.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "goldfishLantern",
+  "name": "金魚燈籠",
+  "cat": "fantasy",
+  "color": "#ff7a1a",
+  "img": "https://i.pinimg.com/1200x/7b/8e/5b/7b8e5b7b975562a392bec4e3bca9de64.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "starryOceanPrince",
+  "name": "星夜王子",
+  "cat": "fantasy",
+  "color": "#2b6cff",
+  "img": "https://i.pinimg.com/1200x/a5/1c/e4/a51ce4741b9a6ff901bc67d09f9a791c.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "lilyCatPond",
+  "name": "睡蓮喵池",
+  "cat": "cute",
+  "color": "#4FB8B3",
+  "img": "https://i.pinimg.com/736x/23/09/c8/2309c8b8703951c217f99a7ed505e580.jpg",
+  "cssBg": false
+ },
+ {
+  "id": "blackGoldFrog",
+  "name": "黑金招財蛙",
+  "cat": "wealth",
+  "color": "#D4AF37",
+  "img": "https://i.pinimg.com/736x/2f/45/4f/2f454fc2eeb4f4df1989181167f3ee53.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "blackCatCoinGalaxy",
+  "name": "黑貓金幣星河",
+  "cat": "wealth",
+  "color": "#D4AF37",
+  "img": "https://i.pinimg.com/1200x/93/28/ab/9328ab5e8beb9c858fc42dd9a10d9407.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "luckyCatPink",
+  "name": "招財貓金幣粉色",
+  "cat": "wealth",
+  "color": "#FF69B4",
+  "img": "https://i.pinimg.com/1200x/ec/6a/b3/ec6ab38b73b1d50220475548dbab5853.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "coinCatGold",
+  "name": "金幣招財喵",
+  "cat": "wealth",
+  "color": "#D4AF37",
+  "img": "https://i.pinimg.com/736x/28/20/3b/28203b8793e1c88974581f3f6c5c03c5.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "crimsonIvory",
+  "name": "紅金象牙",
+  "cat": "fantasy",
+  "color": "#c7353f",
+  "img": "https://i.pinimg.com/1200x/90/cf/2f/90cf2f9508f557620d7da4bac4fdd6fd.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "blueBunnyFlower",
+  "name": "藍花兔兔",
+  "cat": "cute",
+  "color": "#5a86c8",
+  "img": "https://i.pinimg.com/736x/57/e8/74/57e874b367bec0044835bee700c85c9f.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "mintBlossomGarden",
+  "name": "薄荷花園",
+  "cat": "cute",
+  "color": "#5fb8a8",
+  "img": "https://i.pinimg.com/736x/d2/7b/08/d27b08c045e17c2c73427e866c5ff5e9.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "narutoGraffiti",
+  "name": "鳴人塗鴉",
+  "cat": "anime",
+  "color": "#1f7fd6",
+  "img": "https://i.pinimg.com/1200x/6d/6a/41/6d6a4198c235f519f1c6f79f9efeeea4.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "hanfuElegance",
+  "name": "漢服雅韻",
+  "cat": "fantasy",
+  "color": "#d14a3b",
+  "img": "https://i.pinimg.com/1200x/5a/dc/60/5adc6000b0d25635619451b2d26da82f.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "littlePrinceWhaleNight",
+  "name": "小王子鯨夜",
+  "cat": "fantasy",
+  "color": "#2a7fb9",
+  "img": "https://i.pinimg.com/1200x/51/f6/de/51f6de37c93075f19577d0b01ac13af6.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "pastelCatDream",
+  "name": "粉彩貓夢",
+  "cat": "cute",
+  "color": "#ff78ad",
+  "img": "https://i.pinimg.com/736x/a5/a3/08/a5a308f2df47d464b7f4b270dc0afff8.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "ghostHalloween",
+  "name": "萬聖小幽靈",
+  "cat": "celebration",
+  "color": "#7c4dff",
+  "img": "https://i.pinimg.com/1200x/e9/ff/cd/e9ffcd3ab13b3e2d417536d5d0d6d319.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "halloweenCats",
+  "name": "萬聖貓咪派對",
+  "cat": "celebration",
+  "color": "#ff7a1a",
+  "img": "https://i.pinimg.com/736x/60/7f/bc/607fbcd757e03814d13439c86c6b6ea4.jpg",
+  "cssBg": true
+ },
+ {
+  "id": "starCloudDream",
+  "name": "星星雲朵夢",
+  "cat": "cute",
+  "color": "#f5c842",
+  "img": "https://i.pinimg.com/1200x/76/a1/86/76a1866eaa3ab6e1804df409a5c30977.jpg",
+  "cssBg": true
+ }
+]
